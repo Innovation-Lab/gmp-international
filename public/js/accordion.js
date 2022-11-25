@@ -3,22 +3,20 @@
   // アコーディオンの挙動
   class Accordion {
     constructor(object) {
-
       const elm = document.querySelector(object.hookName);
-      const trigger = elm.getElementsByTagName(object.tagName);
-
+      const trigger = elm.querySelectorAll(object.tagName);
       const triggerLength = trigger.length;
+      console.log(trigger);
       let index = 0;
       while (index < triggerLength) {
         trigger[index].addEventListener('click', (e) => this.clickHandler(e));
         index++;
       }
     }
-
     clickHandler(e) {
       e.preventDefault();
       e.stopPropagation();
-      const target = e.currentTarget;
+      const target = e.currentTarget; //クリックした要素
       const content = target.nextElementSibling;
       if (content.style.display === 'block') {
         content.style.display = 'none';
@@ -33,8 +31,7 @@
     constructor(object) {
       document.addEventListener('click', (e) => {
         const elm = document.querySelector(object.hookName);
-        const trigger = elm.getElementsByTagName(object.tagName);
-    
+        const trigger = elm.querySelectorAll(object.tagName);
         const triggerLength = trigger.length;
         let index = 0;
         while (index < triggerLength) {
@@ -48,10 +45,20 @@
 
   const mainHeadAccordion = new Accordion({
     hookName: "#js-accordion",
-    tagName: "button"
-  });const mainHeadResetAccordion = new ResetAccordion({
+    tagName: ".p-main__account__act__btn"
+  });
+  const mainHeadResetAccordion = new ResetAccordion({
     hookName: "#js-accordion",
-    tagName: "button"
+    tagName: ".p-main__account__act__btn"
+  });
+
+  const filterAccordion = new Accordion({
+    hookName: ".js-accordion",
+    tagName: ".p-main__head__filter__btn"
+  });
+  const filterResetAccordion = new ResetAccordion({
+    hookName: ".js-accordion",
+    tagName: ".p-main__head__filter__btn"
   });
 
 

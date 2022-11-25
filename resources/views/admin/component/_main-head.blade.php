@@ -18,7 +18,6 @@
         <div class="p-main__account__act" id="js-accordion">
           <button
             class="p-main__account__act__btn"
-            id="p-main__account__act__btn"
           >
             <svg class="icon">
               <use xlink:href="#dot"/>
@@ -26,7 +25,6 @@
           </button>
           <div
             class="p-main__account__act__menu"
-            id="p-main__account__act__menu"
           >
             <a href="{{ route('admin.auth.login') }}" class="c-btn--sm">ログアウト</a>
           </div>
