@@ -1,0 +1,103 @@
+// ヘッド
+.t-head {
+  color: var(--c-text-weak);
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 0 8px;
+  display: flex;
+  &__count {
+    transform: translateY(-8px);
+  }
+}
+
+// テーブル
+.t-table {
+  overflow: auto;
+  position: relative;
+  max-height: 50vh;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background: #ccc;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #000;
+  }
+
+  // テーブル
+  table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    thead,
+    tbody,
+    tr {
+      display: contents;
+    }
+    th {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 20px;
+      text-align: left;
+      background: #fff;
+      border-bottom: 1px solid var(--c-border);
+      position: sticky;
+      top: 0;
+      padding: 8px 16px;
+    }
+    td {
+      font-size: 14px;
+      line-height: 22px;
+      padding: 16px 16px;
+      background-color: #fff;
+      border-bottom: 1px solid var(--c-border-light);
+    }
+    a {
+      color: var(--c-primary);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    input[type="checkbox"] + label {
+      min-height: 22px;
+      width: 22px;
+      height: 22px;
+      padding: 0 !important;
+      background-position: center center;
+    }
+  }
+}
+
+// フット
+.t-foot {
+  padding: 24px 0 0;
+}
+
+// ページャー
+.t-pager {
+  height: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1rem 0 0;
+  &_btn {
+    font-size: 15px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid #000;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    &.is-active {
+      pointer-events: none;
+      border-color: #e4e4e4;
+      background-color: #e4e4e4;
+    }
+  }
+}

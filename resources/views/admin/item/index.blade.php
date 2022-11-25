@@ -1,4 +1,5 @@
 @extends('admin.layout._page-default')
+@section('title', '商品管理')
 @section('content')
   <div class="p-main">
     @component('admin.component._main-head')
@@ -12,12 +13,15 @@
       @endslot
       @slot('sub')
         <form action="" class="p-main__head__form">
-          <input type="text" placeholder="キーワード">
+          <div class="p-main__head__search">
+            <input type="text" placeholder="キーワード">
+          </div>
+          @include('admin.item._filter')
         </form>
       @endslot
     @endcomponent
-    <div class="p-main__body">
-      ボディ
+    <div class="p-main__body" style="display: block;">
+      @include('admin.item._table')
     </div>
   </div>
 @endsection

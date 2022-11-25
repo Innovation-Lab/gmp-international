@@ -838,6 +838,7 @@ input[type=radio] {
   appearance: none;
   -webkit-appearance: none;
   position: absolute;
+  top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
@@ -933,6 +934,7 @@ input[type=checkbox] {
   appearance: none;
   -webkit-appearance: none;
   position: absolute;
+  top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
@@ -1651,6 +1653,104 @@ input[type=reset].f-lg,
   max-width: 12rem;
 }
 
+.t-head {
+  color: var(--c-text-weak);
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 0 8px;
+  display: flex;
+}
+.t-head__count {
+  transform: translateY(-8px);
+}
+
+.t-table {
+  overflow: auto;
+  position: relative;
+  max-height: 50vh;
+}
+.t-table::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.t-table::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: #ccc;
+}
+.t-table::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #000;
+}
+.t-table table {
+  display: grid;
+  border-collapse: collapse;
+  min-width: 100%;
+}
+.t-table table thead,
+.t-table table tbody,
+.t-table table tr {
+  display: contents;
+}
+.t-table table th {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  background: #fff;
+  border-bottom: 1px solid var(--c-border);
+  position: sticky;
+  top: 0;
+  padding: 8px 16px;
+}
+.t-table table td {
+  font-size: 14px;
+  line-height: 22px;
+  padding: 16px 16px;
+  background-color: #fff;
+  border-bottom: 1px solid var(--c-border-light);
+}
+.t-table table a {
+  color: var(--c-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.t-table table input[type=checkbox] + label {
+  min-height: 22px;
+  width: 22px;
+  height: 22px;
+  padding: 0 !important;
+  background-position: center center;
+}
+
+.t-foot {
+  padding: 24px 0 0;
+}
+
+.t-pager {
+  height: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1rem 0 0;
+}
+.t-pager_btn {
+  font-size: 15px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid #000;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.t-pager_btn.is-active {
+  pointer-events: none;
+  border-color: #e4e4e4;
+  background-color: #e4e4e4;
+}
+
 .l-wrapper {
   min-height: 100vh;
   display: flex;
@@ -1664,7 +1764,7 @@ input[type=reset].f-lg,
 
 .l-main {
   flex: 1 1 auto;
-  display: flex;
+  overflow: hidden;
 }
 
 :root {

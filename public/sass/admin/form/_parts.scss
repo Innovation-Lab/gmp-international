@@ -149,6 +149,7 @@ input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   position: absolute;
+  top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
@@ -203,6 +204,7 @@ input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   position: absolute;
+  top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
