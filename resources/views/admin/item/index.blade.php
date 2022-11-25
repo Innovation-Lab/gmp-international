@@ -4,8 +4,11 @@
     @component('admin.component._main-head')
       @slot('main')
       <h2 class="p-main__head__main__txt__ttl">
-        ダッシュボード
+        商品管理
       </h2>
+      <div class="p-main__head__main__txt__act">
+        <a href="" class="c-btn--sm">商品を新規追加</a>
+      </div>
       @endslot
       @slot('sub')
         <form action="" class="p-main__head__form">

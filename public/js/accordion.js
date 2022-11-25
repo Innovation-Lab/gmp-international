@@ -1,0 +1,58 @@
+(() => {
+
+  // アコーディオンの挙動
+  class Accordion {
+    constructor(object) {
+
+      const elm = document.querySelector(object.hookName);
+      const trigger = elm.getElementsByTagName(object.tagName);
+
+      const triggerLength = trigger.length;
+      let index = 0;
+      while (index < triggerLength) {
+        trigger[index].addEventListener('click', (e) => this.clickHandler(e));
+        index++;
+      }
+    }
+
+    clickHandler(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const target = e.currentTarget;
+      const content = target.nextElementSibling;
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+      }
+    }
+  }
+
+  // アコーディオンのリセット
+  class ResetAccordion {
+    constructor(object) {
+      document.addEventListener('click', (e) => {
+        const elm = document.querySelector(object.hookName);
+        const trigger = elm.getElementsByTagName(object.tagName);
+    
+        const triggerLength = trigger.length;
+        let index = 0;
+        while (index < triggerLength) {
+          const content = trigger[index].nextElementSibling;
+          content.style.display = 'none';
+          index++;
+        }
+      })
+    }
+  }
+
+  const mainHeadAccordion = new Accordion({
+    hookName: "#js-accordion",
+    tagName: "button"
+  });const mainHeadResetAccordion = new ResetAccordion({
+    hookName: "#js-accordion",
+    tagName: "button"
+  });
+
+
+})();

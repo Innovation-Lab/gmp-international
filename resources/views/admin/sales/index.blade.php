@@ -4,7 +4,7 @@
     @component('admin.component._main-head')
       @slot('main')
       <h2 class="p-main__head__main__txt__ttl">
-        ダッシュボード
+        売上管理
       </h2>
       @endslot
       @slot('sub')

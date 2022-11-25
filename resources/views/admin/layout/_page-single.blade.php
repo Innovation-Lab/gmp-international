@@ -8,5 +8,6 @@
         @yield('content')
       </main>
     </div>
+    @include('admin.layout._script')
   </body>
 </html>

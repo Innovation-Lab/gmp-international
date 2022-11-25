@@ -1,9 +1,18 @@
+@use "../../form/var" as *;
+@use "../../form/icon" as *;
+@use "../../form/func" as *;
+
 .p-main {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
   &__head {
-    border-bottom: 1px solid var(--c-border);
-    padding: 1rem;
+    flex: none;
+    border-bottom: 1px solid var(--c-border-light);
+    padding: 1rem 1rem 1rem 1.5rem;
     &__main {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       width: 100%;
       &__txt {
@@ -22,16 +31,22 @@
     }
     &__form {
       margin: 1rem 0 0;
-      input {
-        font-size: 15px;
+      > input {
+        font-size: 14px;
         line-height: 22px;
         max-width: 200px;
         border-color: var(--c-primary-bg);
         background-color: var(--c-primary-bg);
+        @include fi-left($fi-search, $fc-border);
+        background-position: left 10px center;
+        background-size: 18px 18px;
+        padding-left: 36px !important;
       }
     }
   }
   &__body {
+    display: flex;
+    flex: auto;
     padding: 1.5rem 1.5rem;
   }
 
@@ -39,32 +54,126 @@
   &__account {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    span {
-      display: block;
-      width: 28px;
-      height: 28px;
-      background-color: var(--c-primary);
-      border-radius: 50%;
+    gap: 1.5rem;
+    &__user {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      span {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        background-color: var(--c-primary);
+        border-radius: 50%;
+        svg {
+          display: block;
+          width: 20px;
+          height: 20px;
+          fill: #fff;
+        }
+      }
     }
     &__name {
       font-size: 13px;
       line-height: 18px;
     }
     &__act {
-      margin: 0 0 0 1rem;
-      a {
+      position: relative;
+      &__btn {
         width: 28px;
         height: 28px;
         display: grid;
         place-items: center;
+        background-color: var(--c-bg-light);
+        border-radius: 4px;
+        &:hover {
+          background-color: var(--c-bg);
+        }
+        svg {
+          display: block;
+          width: 20px;
+          height: 20px;
+        }
+      }
+      &__menu {
+        padding: 4px;
+        background-color: #fff;
+        min-width: max-content;
+        border: 1px solid var(--c-border);
+        border-radius: 6px;
+        box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
+        position: absolute;
+        inset: calc(100% + 4px) -4px auto auto;
+        display: none;
+      }
+    }
+  }
+
+  // レイアウト
+  &__wrapper {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    &--lg {
+      @extend .p-main__wrapper;
+      max-width: none;
+    }
+    &__sidebar {
+      flex: 0 0 12rem;
+      border-right: 1px solid var(--c-border-light);
+    }
+    &__container {
+      flex: auto;
+    }
+  }
+
+  // サイドバー
+  &__sidebar {
+    flex: 0 0 320px;
+    border-right: 1px solid var(--c-border-light);
+    padding-right: 1rem;
+    &--sm {
+      @extend .p-main__sidebar;
+      flex: 0 0 184px;
+    }
+    &__btn {
+      font-size: 13px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 0.25rem;
+      padding: 8px 12px;
+      border-radius: 4px;
+      &:hover {
         background-color: var(--c-bg);
+      }
+      &.is-active {
+        color: var(--c-primary);
+        background-color: var(--c-primary-bg);
+        svg {
+          fill: var(--c-primary);
+        }
       }
       svg {
         display: block;
         width: 20px;
         height: 20px;
       }
+    }
+    &__ttl {
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 0 1rem;
+    }
+    &__divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid var(--c-border-light);
+      margin: 1.5rem 0;
     }
   }
 }

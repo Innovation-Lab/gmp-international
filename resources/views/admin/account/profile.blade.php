@@ -4,17 +4,17 @@
     @component('admin.component._main-head')
       @slot('main')
       <h2 class="p-main__head__main__txt__ttl">
-        ダッシュボード
+        アカウント
       </h2>
-      @endslot
-      @slot('sub')
-        <form action="" class="p-main__head__form">
-          <input type="text" placeholder="キーワード">
-        </form>
       @endslot
     @endcomponent
     <div class="p-main__body">
-      ボディ
+      <div class="p-main__wrapper--lg">
+        @include('admin.account._sidebar')
+        <div class="p-main__wrapper__container">
+          <a class="c-btn" href="{{route('admin.account.edit')}}">アカウントを編集</a>
+        </div>
+      </div>
     </div>
   </div>
 @endsection
