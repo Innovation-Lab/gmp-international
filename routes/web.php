@@ -34,7 +34,7 @@ Route::get('/', function () {
 Route::view('/admin/auth/login', 'admin.auth.login')->name('admin.auth.login');
 
 // ダッシュボード
-Route::view('/admin', 'admin.home')->name('admin.home');
+Route::view('/admin', 'admin.dashboard.index')->name('admin.home');
 
 // 商品管理
 Route::view('/admin/item', 'admin.item.index')->name('admin.item');

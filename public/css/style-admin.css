@@ -1716,6 +1716,7 @@ input[type=reset].f-lg,
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 0.5rem;
   width: 100%;
 }
 .p-main__head__main__txt {
@@ -1756,7 +1757,7 @@ input[type=reset].f-lg,
 .p-main__head__filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.5rem 1.5rem;
 }
 .p-main__head__filter__item {
   position: relative;
@@ -1777,6 +1778,13 @@ input[type=reset].f-lg,
   font-size: 13px;
   font-weight: 600;
   line-height: 20px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y" fill="%23444"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.99091 9.24091C7.27209 8.95973 7.72797 8.95973 8.00915 9.24091L12 13.2318L15.9909 9.24091C16.2721 8.95973 16.728 8.95973 17.0091 9.24091C17.2903 9.52209 17.2903 9.97797 17.0091 10.2591L12.5091 14.7591C12.228 15.0403 11.7721 15.0403 11.4909 14.7591L6.99091 10.2591C6.70973 9.97797 6.70973 9.52209 6.99091 9.24091Z"/></svg>');
+  background-position: right var(--fs-padding-inline-half) top calc(var(--fs-padding-block) / 2 + 2px);
+  background-repeat: no-repeat;
+  background-size: var(--fs-text);
+  padding-right: calc(var(--fs-text) * 1.25) !important;
+  background-position: right center;
+  padding-right: 24px !important;
 }
 .p-main__head__filter__content {
   padding: 4px;
