@@ -1,0 +1,14 @@
+@use "../../foundation/_var" as *;
+
+.c-btn {
+  color: #fff;
+  background-color: var(--c-primary);
+  padding: 1rem;
+  border-radius: 4px;
+  &--sm {
+    @extend .c-btn;
+    font-size: 13px;
+    line-height: 24px;
+    padding: 2px 16px;
+  }
+}

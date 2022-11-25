@@ -1,0 +1,52 @@
+@use "../form/var" as *;
+@use "../form/icon" as *;
+@use "../form/func" as *;
+
+/* ------------------------------
+ *
+ * image
+ * ファイルアップ時のサムネイル
+ *
+ ------------------------------ */
+.f-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0.5em 0;
+  position: relative;
+  max-width: none;
+  overflow: hidden;
+  cursor: pointer;
+  @media screen and (min-width: 480px) {
+    max-width: 20rem;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border: 1px solid var(--fc-border);
+    border-radius: var(--fs-border-radius);
+    vertical-align: bottom;
+    background-color: #fff;
+    &.wide {
+      aspect-ratio: 4 / 3;
+    }
+  }
+}
+.f-close {
+  @include fi($fi-close);
+  display: block;
+  width: var(--fs-input);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--fs-border-radius);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transform-origin: center center;
+  transform: scale(0.96);
+  cursor: pointer;
+  &:hover {
+    background-color: #eee;
+  }
+}

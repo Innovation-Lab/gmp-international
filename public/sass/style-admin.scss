@@ -1,0 +1,18 @@
+@use "admin/foundation/_reset.scss";
+@use "admin/foundation/_base.scss";
+
+@use "admin/form/_group.scss";
+@use "admin/form/_form.scss";
+
+@use "admin/layout/_wrapper.scss";
+@use "admin/layout/_header.scss";
+@use "admin/layout/_sidebar.scss";
+@use "admin/layout/_main.scss";
+@use "admin/layout/_footer.scss";
+
+@use "admin/object/component/_btn.scss" as c-btn;
+
+@use "admin/object/project/_auth.scss" as p-auth;
+@use "admin/object/project/_main.scss" as p-main;
+@use "admin/object/project/_header.scss" as p-header;
+@use "admin/object/project/_sidebar.scss" as p-sidebar;

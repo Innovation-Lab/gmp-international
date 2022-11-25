@@ -1,0 +1,251 @@
+@use "../form/var" as *;
+@use "../form/icon" as *;
+@use "../form/func" as *;
+
+/* ==============================
+ *
+ *
+ * form parts
+ * フォームパーツ
+ *
+ *
+ ============================== */
+
+/* ------------------------------
+ *
+ * input[type="text"]
+ * テキスト
+ *
+ ------------------------------ */
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  @include f-base();
+  width: 100%;
+  &.is-invalid {
+    @include fi-right($fi-invalid, $fc-invalid);
+    @include invalid();
+  }
+  &.f-lg {
+    @include f-base(lg);
+  }
+}
+
+// number
+input[type="number"] {
+  font-variant-numeric: tabular-nums;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+/* ------------------------------
+ *
+ * input[type="date"]
+ * 日付
+ *
+ ------------------------------ */
+input[type="date"] {
+  @include f-base();
+  @include fi-right($fi-date);
+  position: relative;
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0 auto auto 0;
+    opacity: 0;
+  }
+}
+
+/* ------------------------------
+ *
+ * input[type="time"]
+ * 時間
+ *
+ ------------------------------ */
+input[type="time"] {
+  @include f-base();
+  @include fi-right($fi-time);
+  position: relative;
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0 auto auto 0;
+    opacity: 0;
+  }
+}
+
+/* ------------------------------
+ *
+ * input[type="file"]
+ * ファイル
+ *
+ ------------------------------ */
+input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  & + label {
+    @include f-base();
+    display: inline-block;
+    min-width: max-content;
+    cursor: pointer;
+  }
+}
+
+/* ------------------------------
+ *
+ * select
+ * セレクトボックス
+ *
+ ------------------------------ */
+select {
+  @include f-base();
+  @include fi-right($fi-select);
+  appearance: none;
+  width: auto;
+  &.is-invalid {
+    @include fi-right($fi-select, $fc-icon, $fi-invalid, $fc-invalid);
+    @include invalid();
+  }
+  &.f-lg {
+    @include f-base(lg);
+  }
+}
+
+/* ------------------------------
+ *
+ * textarea
+ * テキストエリア
+ *
+ ------------------------------ */
+textarea {
+  @include f-base();
+  resize: none;
+  height: 5rem;
+  vertical-align: bottom;
+
+  &.is-invalid {
+    @include fi-right($fi-invalid, $fc-invalid);
+    @include invalid();
+  }
+}
+
+/* ------------------------------
+ *
+ * input[type="radio"]
+ * ラジオボタン
+ *
+ ------------------------------ */
+input[type="radio"] {
+  @include focusLabel;
+  padding-right: 80px;
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  & + label {
+    @include f-base();
+    @include fi-left($fi-radio);
+    width: auto;
+    display: inline-block;
+    padding-left: calc(var(--fs-font) * 2);
+    user-select: none;
+    cursor: pointer;
+    border-color: transparent;
+  }
+  &:checked + label {
+    @include fi-left($fi-radio-checked, $fc-accent);
+  }
+  // 無効
+  &.is-invalid {
+    & + label {
+      color: var(--fc-invalid);
+      @include fi-left($fi-radio, $fc-invalid);
+    }
+    &:checked + label {
+      color: var(--fc-text);
+      @include fi-left($fi-radio-checked, $fc-accent);
+    }
+  }
+  // ディスエイブルド
+  &[disabled],
+  &:disabled {
+    & + label {
+      color: var(--fc-disabled);
+      @include fi-left($fi-radio, $fc-disabled);
+      cursor: default;
+    }
+    &:checked + label {
+      color: var(--fc-disabled);
+      @include fi-left($fi-radio-checked, $fc-disabled);
+      cursor: default;
+    }
+  }
+}
+
+/* ------------------------------
+ *
+ * input[type="checkbox"]
+ * チェックボックス
+ *
+ ------------------------------ */
+input[type="checkbox"] {
+  @include focusLabel;
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  & + label {
+    @include f-base();
+    @include fi-left($fi-check);
+    width: auto;
+    display: inline-block;
+    min-height: calc(var(--fs-input) + 2px);
+    padding-left: calc(var(--fs-font) * 2);
+    user-select: none;
+    cursor: pointer;
+    border-color: transparent;
+    vertical-align: bottom;
+  }
+  &:checked + label {
+    @include fi-left($fi-check-checked, $fc-accent);
+  }
+  // 無効
+  &.is-invalid {
+    & + label {
+      color: var(--fc-invalid);
+      @include fi-left($fi-check, $fc-invalid);
+      background-color: var(--fc-invalid-bg);
+    }
+    &:checked + label {
+      color: var(--fc-text);
+      @include fi-left($fi-check-checked, $fc-accent);
+      background-color: transparent;
+    }
+  }
+  // ディスエイブルド
+  &[disabled],
+  &:disabled {
+    & + label {
+      color: var(--fc-disabled);
+      @include fi-left($fi-check, $fc-disabled);
+      cursor: default;
+    }
+    &:checked + label {
+      color: var(--fc-disabled);
+      @include fi-left($fi-check-checked, $fc-disabled);
+      cursor: default;
+    }
+  }
+}

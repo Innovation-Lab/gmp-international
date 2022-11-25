@@ -1,0 +1,114 @@
+@use "../form/var" as *;
+@use "../form/icon" as *;
+@use "../form/func" as *;
+
+/* ------------------------------
+ *
+ * button / submit
+ * ボタン・送信
+ *
+ ------------------------------ */
+button,
+input[type="submit"],
+.f-btn {
+  color: #fff;
+  @include f-base();
+  text-align: center;
+  -webkit-appearance: none;
+  min-height: calc(var(--fs-input) + 2px);
+  background-color: var(--fc-accent);
+  border-color: var(--fc-accent);
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+  vertical-align: bottom;
+  &[disabled],
+  &:disabled {
+    background-color: var(--fc-text);
+    border-color: var(--fc-text);
+    opacity: 0.24;
+    pointer-events: none;
+  }
+  &.f-lg {
+    @include f-base(lg);
+    background-color: var(--fc-accent);
+    border-color: var(--fc-accent);
+    width: 100%;
+  }
+}
+// リセットボタン
+input[type="reset"],
+.f-btn--reset {
+  @include f-base();
+  text-align: center;
+  color: var(--fc-text);
+  border-color: var(--fc-border);
+  display: inline-block;
+  background-color: #fff;
+  width: auto;
+  cursor: pointer;
+  &.f-lg {
+    border-color: var(--fc-border);
+    background-color: #fff;
+  }
+}
+
+// アイコンボタン
+%icon {
+  content: "";
+  display: inline-block;
+  width: var(--fs-text);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  vertical-align: bottom;
+}
+.f-btn--icon,
+.f-btn--icon-left {
+  @include f-base();
+  color: var(--fc-text);
+  border-color: var(--fc-border);
+  background-color: #fff;
+  width: auto;
+  cursor: pointer;
+  &::before {
+    @extend %icon;
+    margin-left: calc(-1 * var(--fs-padding-inline-half));
+    @include fi($fi-chevron-left);
+  }
+  // 右側にアイコンを表示
+  &-right {
+    @include f-base();
+    @extend .f-btn--icon;
+    &::before {
+      content: none;
+    }
+    &::after {
+      @extend %icon;
+      margin-right: calc(-1 * var(--fs-padding-inline-half));
+      @include fi($fi-chevron-right);
+    }
+  }
+  // アイコンの種類
+  &.icon-trush {
+    &::before {
+      @include fi($fi-trush);
+    }
+    &::after {
+      @include fi($fi-trush);
+    }
+  }
+}
+
+// テキストボタン
+.f-btn--text {
+  @include f-base();
+  text-align: center;
+  color: var(--fc-accent);
+  border-color: transparent;
+  display: block;
+  width: max-content;
+  &:hover {
+    text-decoration: underline;
+  }
+}

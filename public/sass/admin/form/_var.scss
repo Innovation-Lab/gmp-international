@@ -1,0 +1,64 @@
+/* ==============================
+ *
+ *
+ * form variables
+ * フォーム内で使用する変数の定義
+ *
+ *
+ ============================== */
+/* ------------------------------
+ *
+ * form size
+ * サイズ
+ *
+ ------------------------------ */
+:root {
+  --fs-font: 16px; //テキスト
+  --fs-line-height: 1.5;
+  --fs-text: calc(
+    var(--fs-font) * var(--fs-line-height)
+  ); //テキストの範囲サイズ
+  --fs-input: calc(
+    var(--fs-text) + var(--fs-padding-inline)
+  ); //input要素のサイズ
+  --fs-icon: var(--fs-font); //アイコン
+  --fs-padding-inline: calc(var(--fs-font) / 2);
+  --fs-padding-inline-half: calc(var(--fs-padding-inline) / 2);
+  --fs-padding-block: calc(var(--fs-font) / 4);
+  --fs-border-radius: 4px; //角丸
+}
+
+/* ------------------------------
+ *
+ * form color
+ * カラーコード
+ *
+ ------------------------------ */
+:root {
+  --fc-accent: #7e6cf5;
+  --fc-accent-bg: #eae8f4;
+
+  --fc-border: #969697;
+  --fc-border-light: #ddd;
+  --fc-border-strong: #555;
+
+  --fc-text: #000;
+  --fc-text-light: #444;
+
+  --fc-placeholder: #999;
+  --fc-disabled: #ddd;
+  --fc-note: #888;
+  --fc-icon: #444;
+  --fc-focus: #1a73e8;
+  --fc-focus-bg: #1a73e811;
+
+  --fc-invalid: #ff4444;
+  --fc-invalid-bg: #ffe7e7;
+}
+
+//  icon用カラーコード
+$fc-icon: "%23444";
+$fc-border: "%23999";
+$fc-invalid: "%23ff0000";
+$fc-accent: "%237e6cf5";
+$fc-disabled: "%23ddd";
