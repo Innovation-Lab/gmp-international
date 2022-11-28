@@ -8,7 +8,10 @@
     <table>
       <thead>
         <tr>
-          <th></th>
+          <th>
+            <input type="checkbox" id="all">
+            <label for="all"></label>
+          </th>
           <th>
             氏名
           </th>
@@ -39,8 +42,8 @@
         <?php for($i=0;$i<30;$i++) { ?>
         <tr>
           <td>
-            <input type="checkbox">
-            <label for=""></label>
+            <input type="checkbox" id="{{$i}}">
+            <label for="{{$i}}"></label>
           </td>
           <td>
             <a href="{{route('admin.user.detail')}}">斉藤 啓介</a>
