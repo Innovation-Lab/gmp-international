@@ -2004,7 +2004,12 @@ input[type=reset].f-lg,
   box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
   position: absolute;
   inset: calc(100% + 4px) -4px auto auto;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+.is-active + .p-main__head__filter__content {
+  opacity: 1;
+  pointer-events: all;
 }
 .p-main__head__filter__action {
   margin: 8px 0 0;
@@ -2069,7 +2074,12 @@ input[type=reset].f-lg,
   box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
   position: absolute;
   inset: calc(100% + 4px) -4px auto auto;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+.is-active + .p-main__account__act__menu {
+  opacity: 1;
+  pointer-events: all;
 }
 .p-main__wrapper, .p-main__wrapper--lg {
   display: flex;

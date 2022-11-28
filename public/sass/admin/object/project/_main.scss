@@ -104,7 +104,12 @@
         box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
         position: absolute;
         inset: calc(100% + 4px) -4px auto auto;
-        display: none;
+        opacity: 0;
+        pointer-events: none;
+        .is-active + & {
+          opacity: 1;
+          pointer-events: all;
+        }
       }
       &__main {
       }
@@ -173,7 +178,12 @@
         box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
         position: absolute;
         inset: calc(100% + 4px) -4px auto auto;
-        display: none;
+        opacity: 0;
+        pointer-events: none;
+        .is-active + & {
+          opacity: 1;
+          pointer-events: all;
+        }
       }
     }
   }
