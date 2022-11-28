@@ -11,7 +11,7 @@
     <div class="p-main__body">
       <div class="p-main__wrapper--lg">
         @include('admin.account._sidebar')
-        <div class="p-main__wrapper__container">
+        <div class="p-main__container">
           コンテナ
           <a class="c-btn" href="{{route('admin.account.admin.edit')}}">アカウントを編集</a>
         </div>

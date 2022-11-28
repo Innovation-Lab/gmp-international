@@ -9,7 +9,7 @@
       @endslot
     @endcomponent
     <div class="p-main__body">
-      ボディ
+      <h1 class="c-h0 u-mb24">ダッシュボード</h1>
     </div>
   </div>
 @endsection

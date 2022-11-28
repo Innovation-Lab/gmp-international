@@ -1,0 +1,38 @@
+@use "../../form/var" as *;
+@use "../../form/icon" as *;
+@use "../../form/func" as *;
+
+.p-bread {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -12px 0 48px;
+  a,
+  p {
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+  }
+  a {
+    color: var(--c-primary);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  p {
+    color: var(--c-text-weak);
+  }
+  & > * + * {
+    padding-left: 3em;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      inset: 0 auto auto 1em;
+      @include fi-center($fi-chevron-right);
+      background-size: contain;
+    }
+  }
+}

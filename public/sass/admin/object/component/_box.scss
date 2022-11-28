@@ -1,0 +1,25 @@
+.c-box {
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  padding: 24px;
+  margin: 0 0 8px;
+  &--xl {
+    @extend .c-box;
+    padding: 40px;
+  }
+  &--lg {
+    @extend .c-box;
+    padding: 32px;
+  }
+  &--normal {
+    @extend .c-box;
+  }
+  &--sm {
+    @extend .c-box;
+    padding: 16px;
+  }
+  &--xs {
+    @extend .c-box;
+    padding: 12px;
+  }
+}

@@ -12,8 +12,17 @@
 @use "admin/layout/_footer.scss";
 
 @use "admin/object/component/_btn.scss" as c-btn;
+@use "admin/object/component/_box.scss" as c-box;
+@use "admin/object/component/_heading.scss" as c-heading;
+@use "admin/object/component/_dl.scss" as c-dl;
 
 @use "admin/object/project/_auth.scss" as p-auth;
 @use "admin/object/project/_main.scss" as p-main;
 @use "admin/object/project/_header.scss" as p-header;
 @use "admin/object/project/_sidebar.scss" as p-sidebar;
+
+@use "admin/object/project/_bread.scss" as p-bread;
+@use "admin/object/project/_profile.scss" as p-profile;
+
+// utility
+@use "admin/utility/_margin.scss" as u-margin;

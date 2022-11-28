@@ -10,7 +10,7 @@
     @endcomponent
     <div class="p-main__body">
       <div class="p-main__wrapper--lg">
-        <div class="p-main__wrapper__container">
+        <div class="p-main__container">
           コンテナ
         </div>
       </div>

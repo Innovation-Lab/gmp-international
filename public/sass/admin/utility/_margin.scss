@@ -1,0 +1,17 @@
+.u-m0 {
+  margin: 0;
+}
+
+@for $i from 1 through 5 {
+  $num: $i * 8;
+  .u-mt#{$num} {
+    margin-top: #{$num}px;
+  }
+}
+
+@for $i from 1 through 5 {
+  $num: $i * 8;
+  .u-mb#{$num} {
+    margin-bottom: #{$num}px;
+  }
+}

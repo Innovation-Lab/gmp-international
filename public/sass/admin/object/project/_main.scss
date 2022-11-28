@@ -10,6 +10,8 @@
     flex: none;
     border-bottom: 1px solid var(--c-border-light);
     padding: 1rem 1rem 1rem 1.5rem;
+    position: relative;
+    z-index: 1;
     &__main {
       display: flex;
       flex-wrap: wrap;
@@ -20,6 +22,18 @@
         display: flex;
         align-items: center;
         gap: 1.5rem;
+        &__btn {
+          width: 28px;
+          height: 28px;
+          display: grid;
+          place-items: center;
+          background-color: var(--c-bg-light);
+          border-radius: 4px;
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
         &__ttl {
           font-size: 20px;
           line-height: 28px;
@@ -100,9 +114,8 @@
     }
   }
   &__body {
-    display: flex;
     flex: auto;
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem;
   }
 
   // アカウント
@@ -168,30 +181,29 @@
   // レイアウト
   &__wrapper {
     display: flex;
-    gap: 40px;
+    gap: 80px;
     max-width: 1200px;
     width: 100%;
+    margin: 0 auto;
     &--lg {
       @extend .p-main__wrapper;
+      gap: 40px;
       max-width: none;
     }
-    &__sidebar {
-      flex: 0 0 12rem;
-      border-right: 1px solid var(--c-border-light);
-    }
-    &__container {
-      flex: auto;
-    }
+    // &__sidebar {
+    //   flex: 0 0 12rem;
+    //   border-right: 1px solid var(--c-border-light);
+    // }
   }
 
   // サイドバー
   &__sidebar {
     flex: 0 0 320px;
-    border-right: 1px solid var(--c-border-light);
-    padding-right: 1rem;
     &--sm {
       @extend .p-main__sidebar;
       flex: 0 0 184px;
+      padding-right: 1rem;
+      border-right: 1px solid var(--c-border-light);
     }
     &__btn {
       font-size: 13px;
@@ -230,5 +242,10 @@
       border-top: 1px solid var(--c-border-light);
       margin: 1.5rem 0;
     }
+  }
+
+  // コンテナ {
+  &__container {
+    flex: auto;
   }
 }

@@ -127,6 +127,19 @@
   padding-left: calc(var(--fs-text) * 1.25) !important;
 }
 
+// アイコン中央
+@mixin fi-center(
+  $formIcon,
+  $formColor: #{$fc-icon},
+  $secondFormIcon: null,
+  $secondFormColor: #{$fc-icon}
+) {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y" fill="#{$formColor}">#{$formIcon}</svg>');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: var(--fs-text);
+}
+
 // アイコン単体
 @mixin fi($formIcon, $formColor: #{$fc-icon}) {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y" fill="#{$formColor}">#{$formIcon}</svg>');
