@@ -34,19 +34,26 @@ Route::get('/', function () {
 Route::view('/admin/auth/login', 'admin.auth.login')->name('admin.auth.login');
 
 // ダッシュボード
-Route::view('/admin', 'admin.dashboard.index')->name('admin.home');
+Route::view('/admin', 'admin.dashboard.index')->name('admin.dashboard');
 
 // 商品管理
 Route::view('/admin/item', 'admin.item.index')->name('admin.item');
+Route::view('/admin/item/detail', 'admin.item.detail')->name('admin.item.detail');
+
 Route::view('/admin/sales', 'admin.sales.index')->name('admin.sales');
 
+// ユーザー
 Route::view('/admin/user', 'admin.user.index')->name('admin.user');
 Route::view('/admin/user/detail', 'admin.user.detail')->name('admin.user.detail');
 
+// お知らせ
 Route::view('/admin/news', 'admin.news.index')->name('admin.news');
+Route::view('/admin/news/edit', 'admin.news.edit')->name('admin.news.edit');
+
 Route::view('/admin/contact', 'admin.contact.index')->name('admin.contact');
 Route::view('/admin/master', 'admin.master.index')->name('admin.master');
 
+// アカウント
 Route::view('/admin/account', 'admin.account.profile')->name('admin.account.profile');
 Route::view('/admin/account/edit', 'admin.account.edit')->name('admin.account.edit');
 Route::view('/admin/account/mail', 'admin.account.mail')->name('admin.account.mail');

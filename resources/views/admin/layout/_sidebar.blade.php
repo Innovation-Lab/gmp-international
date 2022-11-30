@@ -2,7 +2,7 @@
   @foreach([
     'dashboard'=> [
       'label' => 'ダッシュボード',
-      'path' => 'admin.home',
+      'path' => 'admin.dashboard',
     ],
     'item'=> [
       'label' => '商品',

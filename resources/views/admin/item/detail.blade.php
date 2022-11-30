@@ -1,31 +1,30 @@
 @extends('admin.layout._page-default')
-@section('title', 'ユーザー詳細')
+@section('title', '商品詳細')
 @section('content')
   <div class="p-main">
     @component('admin.component._main-head')
       @slot('main')
-      <a href="{{route('admin.user')}}" class="p-main__head__main__txt__btn"></a>
+      <a href="{{route('admin.item')}}" class="p-main__head__main__txt__btn"></a>
       <h2 class="p-main__head__main__txt__ttl">
-        ユーザー詳細
+        商品詳細
       </h2>
       @endslot
     @endcomponent
     <div class="p-main__body">
       <div class="p-bread">
-        <a href="{{route('admin.user')}}">ユーザー管理</a>
-        <p>斎藤 啓介</p>
+        <a href="{{route('admin.user')}}">商品管理</a>
+        <p>THE TABLE / 杉無垢材 × Black Steel</p>
       </div>
       <div class="p-main__wrapper">
         <div class="p-main__sidebar">
-          <div class="p-profile u-mb24">
-            <div class="p-profile__img">
-              <img src="https://placehold.jp/3697c7/ffffff/200x200.png?text=画像">
-            </div>
+          <div class="p-profile">
             <div class="p-profile__txt">
-              <div class="c-h1 u-mt0 u-mb4">山田 太郎</div>
-              <div class="p-profile__sub">やまだ たろう</div>
+              <div class="p-profile__sub">TBL-K01-SQU-BK</div>
+              <div class="c-h1 u-mt8 u-mb16">THE TABLE / 杉無垢材 × Black Steel</div>
             </div>
           </div>
+          <a href="" class="c-btn u-w100p">編集する</a>
+          <div class="c-divider"></div>
           <p>記事とは、現象・存在・状況などを文字からなる単語を組み合わせ、文章で表した事物を、伝えるための文章である。</p>
           <dl class="c-dl--sm">
             <dt>氏名</dt>

@@ -1,5 +1,6 @@
 @use "admin/foundation/_reset.scss";
 @use "admin/foundation/_base.scss";
+@use "admin/foundation/_responsive.scss";
 
 @use "admin/form/_group.scss";
 @use "admin/form/_form.scss";
@@ -12,8 +13,10 @@
 @use "admin/layout/_footer.scss";
 
 @use "admin/object/component/_btn.scss" as c-btn;
+@use "admin/object/component/_link.scss" as c-link;
 @use "admin/object/component/_box.scss" as c-box;
 @use "admin/object/component/_heading.scss" as c-heading;
+@use "admin/object/component/_divider.scss" as c-divider;
 @use "admin/object/component/_dl.scss" as c-dl;
 
 @use "admin/object/project/_auth.scss" as p-auth;
@@ -21,8 +24,13 @@
 @use "admin/object/project/_header.scss" as p-header;
 @use "admin/object/project/_sidebar.scss" as p-sidebar;
 
+@use "admin/object/project/_dashboard.scss" as p-dashboard;
 @use "admin/object/project/_bread.scss" as p-bread;
+@use "admin/object/project/_tab.scss" as p-tab;
 @use "admin/object/project/_profile.scss" as p-profile;
 
 // utility
 @use "admin/utility/_margin.scss" as u-margin;
+@use "admin/utility/_padding.scss" as u-padding;
+@use "admin/utility/_width.scss" as u-width;
+@use "admin/utility/_align.scss" as u-align;

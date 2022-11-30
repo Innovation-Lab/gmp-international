@@ -1,5 +1,50 @@
+@use "../foundation/responsive" as *;
+
 .l-sidebar {
   flex: 0 0 200px;
+  width: 200px;
   background-color: var(--c-bg-light);
-  padding: 1.5rem 1rem;
+  padding: 1rem;
+  transition: transform 0.1s ease;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include responsive(lg) {
+    padding: 1.5rem 1rem;
+    animation: none;
+    position: relative;
+  }
+  &.is-active {
+    height: 100vh;
+    opacity: 1;
+    pointer-events: all;
+    z-index: 999;
+    animation: showSidebar 0.2s linear forwards;
+  }
+  @include responsive(lg) {
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+  }
 }
+
+// @keyframes showSidebar {
+//   0% {
+//     pointer-events: all;
+//     transform: translateX(-100%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }
+// @keyframes hideSidebar {
+//   0% {
+//     pointer-events: all;
+//     transform: translateX(0);
+//   }
+//   100% {
+//     transform: translateX(-100%);
+//   }
+// }

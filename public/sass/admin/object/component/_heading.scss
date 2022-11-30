@@ -1,29 +1,70 @@
-.c-h0 {
-  font-size: 32px;
-  line-height: 40px;
+@use "../../foundation/responsive" as *;
+
+.c-h {
+  color: var(--c-text-strong);
   font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 2em 0 1em;
+  [class*="btn"] {
+    margin: 0 0 0 auto;
+  }
 }
-.c-h1 {
+.c-h0 {
+  @extend .c-h;
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold;
-  margin-bottom: 1em;
+  @include responsive(lg) {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  @include responsive(xl) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+.c-h1 {
+  @extend .c-h;
+  font-size: 18px;
+  line-height: 24px;
+  @include responsive(lg) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  @include responsive(xl) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 .c-h2 {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: bold;
-  margin: 2em 0 1em;
+  @extend .c-h;
+  font-size: 16px;
+  line-height: 20px;
+  @include responsive(lg) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  @include responsive(xl) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 .c-h3 {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: bold;
-  margin: 2em 0 1em;
+  @extend .c-h;
+  font-size: 14px;
+  line-height: 20px;
+  @include responsive(xl) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 .c-h4 {
+  @extend .c-h;
   font-size: 14px;
-  line-height: 24px;
-  font-weight: bold;
-  margin-bottom: 1em;
+  line-height: 20px;
+  @include responsive(xl) {
+    font-size: 14px;
+    line-height: 24px;
+  }
 }

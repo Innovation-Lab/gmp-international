@@ -37,10 +37,10 @@
               <input type="file" id="file-01">
               <label for="file-01">ファイルを選択</label>
             </div>
-            <div class="f-image">
-              <img src="https://source.unsplash.com/d1UPkiFd04A">
+            <label class="f-image" for="file-01">
+              <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=サムネイル" class="lg">
               <span class="f-close"></span>
-            </div>
+            </label>
           </div>
           <!-- ---------- input[type="radio"] ---------- -->
           <div class="f-item">

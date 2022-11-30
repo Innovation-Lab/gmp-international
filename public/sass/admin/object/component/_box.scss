@@ -1,25 +1,48 @@
+@use "../../foundation/responsive" as *;
+
 .c-box {
   border: 1px solid var(--c-border);
-  border-radius: 4px;
-  padding: 24px;
-  margin: 0 0 8px;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 0 12px;
+  @include responsive(xl) {
+    padding: 24px;
+  }
+
+  // サイズ
   &--xl {
     @extend .c-box;
-    padding: 40px;
+    padding: 24px;
+    @include responsive(xl) {
+      padding: 40px;
+    }
   }
   &--lg {
     @extend .c-box;
-    padding: 32px;
-  }
-  &--normal {
-    @extend .c-box;
+    padding: 20px;
+    @include responsive(xl) {
+      padding: 32px;
+    }
   }
   &--sm {
     @extend .c-box;
-    padding: 16px;
+    padding: 12px;
+    @include responsive(xl) {
+      padding: 16px;
+    }
   }
   &--xs {
     @extend .c-box;
-    padding: 12px;
+    padding: 8px;
+    @include responsive(xl) {
+      padding: 12px;
+    }
+  }
+
+  // スタイル
+  &--fill {
+    @extend .c-box;
+    background-color: var(--c-primary-bg-light);
+    border-color: var(--c-primary-bg-light);
   }
 }

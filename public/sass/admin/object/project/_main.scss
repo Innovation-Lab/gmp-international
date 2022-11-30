@@ -1,3 +1,4 @@
+@use "../../foundation/responsive" as *;
 @use "../../form/var" as *;
 @use "../../form/icon" as *;
 @use "../../form/func" as *;
@@ -9,9 +10,12 @@
   &__head {
     flex: none;
     border-bottom: 1px solid var(--c-border-light);
-    padding: 1rem 1rem 1rem 1.5rem;
+    padding: 1rem;
     position: relative;
     z-index: 1;
+    @include responsive(lg) {
+      padding: 1rem 1rem 1rem 1.5rem;
+    }
     &__main {
       display: flex;
       flex-wrap: wrap;
@@ -21,23 +25,41 @@
       &__txt {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-        &__btn {
+        gap: 1rem;
+        @include responsive(lg) {
+          gap: 1.5rem;
+        }
+        // ハンバーガー
+        &__burger {
           width: 28px;
           height: 28px;
-          display: grid;
-          place-items: center;
+          display: block;
           background-color: var(--c-bg-light);
           border-radius: 4px;
-          svg {
-            width: 20px;
-            height: 20px;
+          @include fi-center($fi-burger);
+          background-size: 16px 16px;
+          cursor: pointer;
+          @include responsive(lg) {
+            display: none;
           }
         }
+        // 戻るボタン
+        &__btn {
+          display: block;
+          width: 28px;
+          height: 28px;
+          background-color: var(--c-bg-light);
+          border-radius: 4px;
+          @include fi-center($fi-chevron-left);
+          background-size: 20px 20px;
+        }
         &__ttl {
-          font-size: 20px;
+          font-size: 16px;
           line-height: 28px;
           font-weight: 600;
+          @include responsive(lg) {
+            font-size: 20px;
+          }
         }
       }
       &__act {
@@ -120,7 +142,10 @@
   }
   &__body {
     flex: auto;
-    padding: 1.5rem;
+    padding: 16px;
+    @include responsive(sm) {
+      padding: 24px;
+    }
   }
 
   // アカウント
@@ -150,23 +175,27 @@
     &__name {
       font-size: 13px;
       line-height: 18px;
+      display: none;
+      @include responsive(lg) {
+        display: block;
+      }
     }
     &__act {
       position: relative;
+      display: none;
+      @include responsive(lg) {
+        display: block;
+      }
       &__btn {
         width: 28px;
         height: 28px;
-        display: grid;
-        place-items: center;
+        display: block;
         background-color: var(--c-bg-light);
         border-radius: 4px;
+        @include fi-center($fi-dot);
+        background-size: 16px 16px;
         &:hover {
           background-color: var(--c-bg);
-        }
-        svg {
-          display: block;
-          width: 20px;
-          height: 20px;
         }
       }
       &__menu {
@@ -191,10 +220,17 @@
   // レイアウト
   &__wrapper {
     display: flex;
-    gap: 80px;
-    max-width: 1200px;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+    max-width: 1440px;
     width: 100%;
     margin: 0 auto;
+    @include responsive(md) {
+      flex-wrap: nowrap;
+    }
+    @include responsive(xl) {
+      gap: 40px 80px;
+    }
     &--lg {
       @extend .p-main__wrapper;
       gap: 40px;
@@ -208,7 +244,16 @@
 
   // サイドバー
   &__sidebar {
-    flex: 0 0 320px;
+    flex: 0 0 100%;
+    width: 100%;
+    @include responsive(md) {
+      flex: 0 0 280px;
+      width: 280px;
+    }
+    @include responsive(xl) {
+      flex: 0 0 320px;
+      width: 320px;
+    }
     &--sm {
       @extend .p-main__sidebar;
       flex: 0 0 184px;
@@ -257,5 +302,14 @@
   // コンテナ {
   &__container {
     flex: auto;
+    margin: 0 auto;
+    &--lg {
+      @extend .p-main__container;
+      max-width: 1440px;
+    }
+    &--sm {
+      @extend .p-main__container;
+      max-width: 560px;
+    }
   }
 }

@@ -130,7 +130,7 @@ textarea {
   resize: none;
   height: 5rem;
   vertical-align: bottom;
-
+  width: 100%;
   &.is-invalid {
     @include fi-right($fi-invalid, $fc-invalid);
     @include invalid();

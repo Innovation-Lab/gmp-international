@@ -8,7 +8,7 @@
         ユーザー管理
       </h2>
       <div class="p-main__head__main__txt__act">
-        <a href="" class="c-btn--sm">ユーザーを新規追加</a>
+        <a href="" class="c-btn--sm">ユーザーを追加</a>
       </div>
       @endslot
       @slot('sub')

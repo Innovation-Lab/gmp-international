@@ -1,0 +1,9 @@
+.c-link {
+  font-size: 13px;
+  line-height: 22px;
+  color: var(--c-primary);
+  text-decoration: underline;
+  &:hover {
+    opacity: 0.5;
+  }
+}

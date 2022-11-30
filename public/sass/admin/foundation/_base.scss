@@ -1,11 +1,11 @@
 html {
   min-height: 100vh;
+  font-family: "Roboto", "Noto Sans JP", "Helvetica Neue", "Helvetica",
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo",
+    sans-serif;
 }
 body {
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  padding: 0 1.5rem;
+  color: var(--c-text);
+  font-size: 14px;
+  line-height: 22px;
 }

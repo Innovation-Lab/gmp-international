@@ -1,0 +1,13 @@
+.u-align {
+  display: flex;
+  align-items: center;
+  // 水平方向
+  &--horizontal {
+    @extend .u-align;
+    flex-direction: column;
+  }
+  &--both {
+    @extend .u-align;
+    justify-content: center;
+  }
+}

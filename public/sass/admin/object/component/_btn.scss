@@ -2,8 +2,11 @@
 
 .c-btn {
   color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  padding: 6px;
   background-color: var(--c-primary);
-  padding: 1rem;
   border-radius: 4px;
   &--sm {
     @extend .c-btn;

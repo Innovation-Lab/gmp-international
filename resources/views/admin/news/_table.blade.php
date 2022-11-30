@@ -43,11 +43,12 @@
             <label for="{{$i}}"></label>
           </td>
           <td>
-            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=サムネイル">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=サムネイル" class="lg">
           </td>
           <td>
-            <a href="{{route('admin.item.detail')}}">世界中のコレクションが集まる「天然石のギャラリー」</a>
-            <p class="u-mt4">加工工場に直結した天然石ギャラリー「Strad. Stone Gallery」が、岐阜県関ヶ原にオープンした。70年の歴史をもつ、</p>
+            <a href="{{route('admin.news.edit')}}">世界中のコレクションが集まる「天然石のギャラリー」</a>
+            <p class="line2 u-mt4">加工工場に直結した天然石ギャラリー「Strad. Stone Gallery」が、岐阜県関ヶ原にオープンした。70年の歴史をもつ、「関ヶ原石材株式会社」が選び抜いた表情豊かな石の数々。
+            </p>
           </td>
           <td>
             ¥1,200

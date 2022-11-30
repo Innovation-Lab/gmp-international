@@ -1,3 +1,5 @@
+@use "../foundation/responsive" as *;
+
 // ヘッド
 .t-head {
   color: var(--c-text-weak);
@@ -47,14 +49,39 @@
       border-bottom: 1px solid var(--c-border);
       position: sticky;
       top: 0;
-      padding: 8px 16px;
+      padding: 4px 8px;
+      @include responsive(sm) {
+        padding: 8px 16px;
+      }
     }
     td {
       font-size: 14px;
       line-height: 22px;
-      padding: 16px 16px;
+      padding: 8px;
       background-color: #fff;
       border-bottom: 1px solid var(--c-border-light);
+      @include responsive(sm) {
+        padding: 16px;
+      }
+    }
+    img {
+      display: block;
+      width: 80px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      &.lg {
+        width: 100px;
+      }
+    }
+    p {
+      width: 400px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      &.line2 {
+        -webkit-line-clamp: 2;
+      }
     }
     a {
       color: var(--c-primary);

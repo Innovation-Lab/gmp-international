@@ -21,9 +21,9 @@
       } else {
         target.classList.add('is-active')
       }
-      target.onblur = function(){
-        this.classList.remove('is-active')
-      }
+      // target.onblur = function(){
+      //   this.classList.remove('is-active')
+      // }
     }
   }
 

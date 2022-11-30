@@ -16,13 +16,7 @@
           </p>
         </a>
         <div class="p-main__account__act" id="js-accordion">
-          <button
-            class="p-main__account__act__btn"
-          >
-            <svg class="icon">
-              <use xlink:href="#dot"/>
-            </svg>
-          </button>
+          <button class="p-main__account__act__btn"></button>
           <div
             class="p-main__account__act__menu"
           >

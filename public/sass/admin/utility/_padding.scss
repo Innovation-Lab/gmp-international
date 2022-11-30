@@ -1,36 +1,37 @@
 @use "../foundation/responsive" as *;
-.u-m0 {
-  margin: 0;
-}
 
-// margin-top
-@for $i from 0 through 50 {
-  $num: $i * 4;
-  .u-mt#{$num} {
-    margin-top: #{calc($num / 2)}px;
-  }
-}
-@include responsive(lg) {
-  @for $i from 0 through 50 {
-    $num: $i * 4;
-    .u-mt#{$num} {
-      margin-top: #{$num}px;
-    }
-  }
+.u-p0 {
+  padding: 0;
 }
 
 // margin-bottom
 @for $i from 0 through 50 {
   $num: $i * 4;
-  .u-mb#{$num} {
-    margin-bottom: #{calc($num / 2)}px;
+  .u-pt#{$num} {
+    padding-top: #{calc($num / 2)}px;
   }
 }
 @include responsive(lg) {
   @for $i from 0 through 50 {
     $num: $i * 4;
-    .u-mb#{$num} {
-      margin-bottom: #{$num}px;
+    .u-pt#{$num} {
+      padding-top: #{$num}px;
+    }
+  }
+}
+
+// padding-bottom
+@for $i from 0 through 50 {
+  $num: $i * 4;
+  .u-pb#{$num} {
+    padding-bottom: #{calc($num / 2)}px;
+  }
+}
+@include responsive(lg) {
+  @for $i from 0 through 50 {
+    $num: $i * 4;
+    .u-pb#{$num} {
+      padding-bottom: #{$num}px;
     }
   }
 }

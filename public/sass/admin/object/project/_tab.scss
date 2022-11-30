@@ -1,0 +1,28 @@
+@use "../../foundation/responsive" as *;
+
+.p-tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid var(--c-border-light);
+  padding: 0 0 6px;
+  margin: 0 0 16px;
+  &__item {
+    color: var(--c-text-weak);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    line-height: 24px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background-color: var(--c-bg-light);
+    cursor: pointer;
+    &:hover {
+      background-color: var(--c-bg);
+    }
+    &.is-active {
+      color: var(--c-primary);
+      background-color: var(--c-primary-bg);
+      pointer-events: none;
+    }
+  }
+}
