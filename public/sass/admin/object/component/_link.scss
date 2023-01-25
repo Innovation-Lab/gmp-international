@@ -1,9 +1,33 @@
 .c-link {
-  font-size: 13px;
-  line-height: 22px;
-  color: var(--c-primary);
+  color: var(--primary);
+  font-weight: 500;
+  display: inline-flex;
+  gap: 8px;
+  line-height: inherit;
   text-decoration: underline;
+  text-underline-offset: 4px;
+  border-radius: 2px;
+  transition-property: box-shadow, color, background-color;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  position: relative;
   &:hover {
-    opacity: 0.5;
+    color: var(--primary-dark);
+    background-color: var(--primary-bg);
+    box-shadow: 0 0 0 4px var(--primary-bg);
+  }
+  &--sm {
+    @extend .c-link;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  // 画像
+  &:has(svg, img) {
+    :where(svg, img) {
+      fill: var(--primary);
+      width: 1em;
+      aspect-ratio: 1 / 1;
+    }
   }
 }

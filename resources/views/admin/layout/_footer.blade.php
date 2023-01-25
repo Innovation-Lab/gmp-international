@@ -1,6 +1,11 @@
 <footer class="l-footer">
   <nav class="l-footer__nav">
-    <a href="" class="l-footer__nav__item">運営会社</a>
+    <a href="" class="l-footer__nav__item">
+      運営会社
+      <svg>
+        <use xlink:href="#chevron-right"/>
+      </svg>
+    </a>
     <a href="" class="l-footer__nav__item">利用規約</a>
     <a href="" class="l-footer__nav__item">プライバシーポリシー</a>
   </nav>

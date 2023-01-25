@@ -6,5 +6,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- css -->
   <link rel="stylesheet" href="{{ asset('css/style-admin.css') }}">
+  <link rel="stylesheet" href="library/dopyo/dopyo.css">
+  <!-- script -->
+  <script src="library/dopyo/dopyo.js"></script>
 </head>

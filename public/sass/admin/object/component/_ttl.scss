@@ -1,0 +1,68 @@
+@use "../../foundation/responsive" as *;
+
+.c-ttl {
+  color: var(--txt-strong);
+  line-height: 1.3;
+  font-weight: 600;
+  :where(&--xxl, &--xl, &--lg, &--md, &--sm) {
+    @extend .c-ttl;
+  }
+  &:has(*) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  &:has([class*="c-btn"]) {
+    :where([class*="c-btn"]) {
+      margin-left: auto;
+    }
+  }
+  &--xs {
+    font-size: 12px;
+  }
+  &--sm {
+    font-size: 14px;
+  }
+  &--md {
+    font-size: 16px;
+    @include max(xl) {
+      font-size: 14px;
+    }
+  }
+  &--lg {
+    font-size: 20px;
+    @include max(xl) {
+      font-size: 18px;
+    }
+    @include max(lg) {
+      font-size: 16px;
+    }
+  }
+  &--xl {
+    font-size: 28px;
+    @include max(xl) {
+      font-size: 22px;
+    }
+    @include max(lg) {
+      font-size: 20px;
+    }
+  }
+  &--xxl {
+    font-size: 32px;
+    @include max(xl) {
+      font-size: 28px;
+    }
+    @include max(lg) {
+      font-size: 24px;
+    }
+  }
+  &--xxxl {
+    font-size: 40px;
+    @include max(xl) {
+      font-size: 32px;
+    }
+    @include max(lg) {
+      font-size: 28px;
+    }
+  }
+}

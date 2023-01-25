@@ -24,7 +24,7 @@
   &__act {
     opacity: 1;
     pointer-events: all;
-    @include responsive(lg) {
+    @include min(lg) {
       opacity: 0;
       pointer-events: none;
     }
@@ -32,13 +32,13 @@
       width: 28px;
       height: 28px;
       display: block;
-      background-color: var(--c-bg-light);
+      background-color: var(--bg-light);
       border-radius: 4px;
       @include fi-center($fi-close);
       background-size: 16px 16px;
       cursor: pointer;
       &:hover {
-        background-color: var(--c-bg);
+        background-color: var(--bg);
       }
     }
     svg {

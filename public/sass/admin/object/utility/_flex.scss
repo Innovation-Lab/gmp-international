@@ -1,0 +1,10 @@
+@use "../../foundation/global" as *;
+
+.u-flex {
+  &--auto {
+    flex: auto;
+  }
+  &--full {
+    flex: 0 0 100%;
+  }
+}

@@ -2,14 +2,14 @@
 @section('title', '管理画面ログイン')
 @section('main-class', 'l-main--nohidden')
 @section('content')
-  <div class="p-main u-pb200">
-    <div class="p-main__body u-align--both">
-      <div class="p-main__container--sm">
-        <div class="u-align--horizontal">
-          <h1 class="c-h0 u-mt0 u-mb16">SAMPLE APP CMS</h1>
+    <div class="u-w--100p u-align--both u-pb--80">
+      <div class="u-max--560">
+        <div class="p-ttl u-tac">
+          <h1 class="c-ttl--xxxl">SAMPLE APP CMS</h1>
           <p>管理画面ログイン</p>
         </div>
-        <div class="c-box--fill c-box--xl u-mt40">
+        <div class="c-box--fill c-box--xl u-mt--24">
+          <!-- フォーム -->
           <form action="" class="f-form">
             <div class="f-item">
               <label class="f-label">メールアドレス</label>
@@ -17,22 +17,24 @@
             </div>
             <div class="f-item">
               <label class="f-label">パスワード</label>
-              <input type="password" placeholder="">
+              <input type="password" placeholder="" class="is-invalid">
+              <div class="f-invalid">パスワードに誤りがあります</div>
             </div>
             <div class="f-item">
               @if(false)
-                <button class="c-btn u-w100p">ログイン</button>
+                <button class="c-btn--full">ログイン</button>
               @else
-                <a href="{{route('admin.dashboard')}}" class="c-btn u-w100p">ログイン</a>
+                <a href="{{route('admin.dashboard')}}" class="c-btn--lg u-w--100p">ログイン</a>
               @endif
             </div>
-            <div class="f-item u-align--horizontal u-mt40">
-              <a href="" class="c-link">パスワードをお忘れの方</a>
+            <div class="f-item">
+              <div class="u-align--vlc u-w--100p">
+                <a href="{{route('admin.auth.reset')}}" class="c-link">パスワードをお忘れの方</a>
+              </div>
             </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
 
 @endsection

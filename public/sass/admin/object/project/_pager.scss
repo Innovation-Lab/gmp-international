@@ -1,0 +1,17 @@
+// ページャー
+.p-pager {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  &__status {
+    color: var(--txt-weak);
+    font-size: 12px;
+    line-height: 1;
+  }
+  &__nums {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

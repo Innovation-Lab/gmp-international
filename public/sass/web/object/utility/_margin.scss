@@ -1,0 +1,47 @@
+@use "../../foundation/global" as *;
+
+.u-m--0 {
+  margin: 0;
+}
+
+.u-mi--a {
+  margin-inline: auto;
+}
+// margin-top
+// スマホ時矯正半数
+@for $i from 0 through 50 {
+  $num: $i * 4;
+  .u-mt--#{$num} {
+    margin-top: #{calc($num / 2)}px;
+  }
+}
+@include min(lg) {
+  @for $i from 0 through 50 {
+    $num: $i * 4;
+    .u-mt--#{$num} {
+      margin-top: #{$num}px;
+    }
+  }
+}
+
+// margin-bottom
+// スマホ時矯正半数
+@for $i from 0 through 50 {
+  $num: $i * 4;
+  .u-mb--#{$num} {
+    margin-bottom: #{calc($num / 2)}px;
+  }
+}
+@include min(lg) {
+  @for $i from 0 through 50 {
+    $num: $i * 4;
+    .u-mb--#{$num} {
+      margin-bottom: #{$num}px;
+    }
+  }
+}
+
+// margin-left
+.u-ml--a {
+  margin-left: auto;
+}

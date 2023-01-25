@@ -1,20 +1,20 @@
 @extends('admin.layout._page-single')
 @section('content')
-  <div class="p-main">
-    @component('admin.component._main-head')
+  <div class="l-main__head">
+    @component('admin.component._head')
       @slot('main')
-      <h2 class="p-main__head__main__txt__ttl">
+      <a href="{{route('admin.account.profile')}}" class="c-btn--goast">
+        <svg>
+          <use xlink:href="#chevron-left"/>
+        </svg>
+      </a>
+      <h2 class="c-ttl--lg">
         アカウントを編集
       </h2>
       @endslot
     @endcomponent
-    <div class="p-main__body">
-      <div class="p-main__wrapper--lg">
-        <div class="p-main__container">
-          コンテナ
-          <a class="c-btn" href="{{route('admin.account.admin.index')}}">一覧に戻る</a>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="l-main__body">
+    123
   </div>
 @endsection

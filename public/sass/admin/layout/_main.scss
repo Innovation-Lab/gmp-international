@@ -1,3 +1,5 @@
+@use "../foundation/global" as *;
+
 .l-main {
   flex: 1 1 auto;
   overflow: hidden;
@@ -6,7 +8,10 @@
     display: flex;
     overflow: auto;
   }
-
+  &--initial {
+    @extend .l-main;
+    overflow: initial;
+  }
   // サイドバーが開かれている時
   &.is-hide {
     pointer-events: none;
@@ -20,6 +25,28 @@
       position: absolute;
       inset: 0 auto auto 0;
       z-index: 998;
+    }
+  }
+  // ヘッド
+  &__head {
+    flex: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+    @include min(lg) {
+      padding: 1rem 1rem 1rem 1.5rem;
+    }
+    [class*="c-ttl"] [class*="c-btn"] {
+      margin-left: 1em;
+    }
+  }
+  // ボディ
+  &__body {
+    flex: auto;
+    padding: 16px;
+    @include min(sm) {
+      padding: 24px;
     }
   }
 }

@@ -1,0 +1,30 @@
+@use "../../foundation/global" as *;
+.p-grid {
+  display: grid;
+  gap: 16px;
+  &--start {
+    align-items: flex-start;
+  }
+}
+[class*="p-grid"] {
+  @extend .p-grid;
+  @for $i from 1 through 12 {
+    &[data-col="#{$i}"] {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+  @include max(md) {
+    @for $i from 1 through 12 {
+      &[data-col-md="#{$i}"] {
+        grid-template-columns: repeat(#{$i}, 1fr);
+      }
+    }
+  }
+  @include max(sm) {
+    @for $i from 1 through 12 {
+      &[data-col-sm="#{$i}"] {
+        grid-template-columns: repeat(#{$i}, 1fr);
+      }
+    }
+  }
+}

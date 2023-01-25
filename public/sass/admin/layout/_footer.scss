@@ -12,21 +12,31 @@
   &__nav {
     margin: 0 0 32px;
     &__item {
+      display: inline-flex;
+      align-items: center;
       font-size: 13px;
       padding: 0 1em;
-      @include responsive(sm) {
+      gap: 0.5em;
+      @include min(sm) {
         padding: 0 1.5em;
       }
       &:hover {
-        color: var(--c-primary);
+        color: var(--primary);
+        svg {
+          fill: var(--primary);
+        }
       }
       & + & {
-        border-left: 1px solid var(--c-border);
+        border-left: 1px solid var(--border);
+      }
+      svg {
+        height: 1em;
+        aspect-ratio: 1;
       }
     }
   }
   &__copyright {
-    color: var(--c-text-light);
+    color: var(--txt-light);
     font-size: 11px;
   }
 }

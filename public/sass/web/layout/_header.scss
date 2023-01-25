@@ -1,0 +1,14 @@
+.l-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  &__logo {
+    display: flex;
+    align-items: center;
+    svg {
+      height: 20px;
+      width: auto;
+    }
+  }
+}

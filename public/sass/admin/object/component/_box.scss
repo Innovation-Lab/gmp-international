@@ -1,48 +1,49 @@
 @use "../../foundation/responsive" as *;
 
 .c-box {
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 16px;
   margin: 0 0 12px;
-  @include responsive(xl) {
+  background-color: #fff;
+  @include min(xl) {
     padding: 24px;
   }
-
+  :where(&--xl, &--lg, &--sm, &--xs, &--xxs, &--fill) {
+    @extend .c-box;
+  }
   // サイズ
   &--xl {
     @extend .c-box;
     padding: 24px;
-    @include responsive(xl) {
+    @include min(xl) {
       padding: 40px;
     }
   }
   &--lg {
-    @extend .c-box;
     padding: 20px;
-    @include responsive(xl) {
+    @include min(xl) {
       padding: 32px;
     }
   }
   &--sm {
-    @extend .c-box;
     padding: 12px;
-    @include responsive(xl) {
+    @include min(xl) {
       padding: 16px;
     }
   }
   &--xs {
-    @extend .c-box;
     padding: 8px;
-    @include responsive(xl) {
+    @include min(xl) {
       padding: 12px;
     }
   }
-
+  &--xxs {
+    padding: 4px;
+  }
   // スタイル
   &--fill {
-    @extend .c-box;
-    background-color: var(--c-primary-bg-light);
-    border-color: var(--c-primary-bg-light);
+    background-color: var(--primary-bg-light);
+    border-color: var(--primary-bg-light);
   }
 }

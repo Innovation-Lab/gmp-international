@@ -1,20 +1,23 @@
 @extends('admin.layout._page-default')
 @section('content')
-  <div class="p-main">
-    @component('admin.component._main-head')
+  <div class="l-main__head">
+    @component('admin.component._head')
       @slot('main')
-      <h2 class="p-main__head__main__txt__ttl">
+      <h2 class="c-ttl--lg">
         お問合せ管理
       </h2>
       @endslot
       @slot('sub')
-        <form action="" class="p-main__head__form">
+      <form action="" class="p-filter">
+        <div class="p-filter__search">
           <input type="text" placeholder="キーワード">
-        </form>
+        </div>
+        @include('admin.item._filter')
+      </form>
       @endslot
     @endcomponent
-    <div class="p-main__body">
-      ボディ
-    </div>
+  </div>
+  <div class="l-main__body">
+    ボディ
   </div>
 @endsection

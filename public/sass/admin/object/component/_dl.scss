@@ -1,38 +1,21 @@
+@use "../../foundation/responsive" as *;
 .c-dl {
-  color: var(--c-text);
   display: grid;
-  grid-template-columns: minmax(100px, auto) 1fr;
-  align-items: baseline;
-  gap: 8px 16px;
-  dt {
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: bold;
-  }
-  dd {
-    font-size: 15px;
-    line-height: 22px;
+  grid-template-columns: minmax(80px, auto) 1fr;
+  align-items: center;
+  @include min(sm) {
+    grid-template-columns: minmax(100px, auto) 1fr;
   }
   &--sm {
     @extend .c-dl;
-    grid-template-columns: auto 1fr;
-    gap: 4px 16px;
-    dt {
-      font-size: 13px;
-    }
-    dd {
-      font-size: 14px;
-    }
+    grid-template-columns: minmax(80px, auto) 1fr;
   }
-  &__wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 24px 24px;
-    dl {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
+  // 左右に分ける
+  &--between {
+    @extend .c-dl;
+    dd {
+      text-align: right;
+      min-width: max-content;
     }
   }
 }

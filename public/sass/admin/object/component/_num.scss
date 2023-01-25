@@ -1,0 +1,21 @@
+@use "../../foundation/responsive" as *;
+
+.c-num {
+  color: var(--txt-strong);
+  font-size: 1em;
+  line-height: inherit;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  :where(&--xxl, &--xl, &--lg, &--md, &--sm) {
+    @extend .c-num;
+  }
+  &--xxl {
+    font-size: 32px;
+    @include max(xl) {
+      font-size: 28px;
+    }
+    @include max(lg) {
+      font-size: 24px;
+    }
+  }
+}

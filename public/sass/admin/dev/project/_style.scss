@@ -1,0 +1,51 @@
+@use "../../foundation/global" as *;
+// スタイルガイド用
+
+.p-style {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  @include min(md) {
+    grid-template-columns: 120px 1fr;
+  }
+  &__panel {
+    border: 1px solid var(--border-light);
+    padding: 3rem 1.5rem 1.5rem;
+    margin: 0 0 1rem;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.08);
+    position: relative;
+    @include min(md) {
+      padding: 3rem;
+    }
+  }
+  &__ttl {
+    color: var(--txt-weak);
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    background-color: var(--bg);
+    padding: 0.3em 0.6em;
+    position: absolute;
+    inset: 2px auto auto 2px;
+  }
+  // ナビゲーション
+  &__side {
+    position: sticky;
+    top: 0;
+    @include max(md) {
+      display: none;
+    }
+    .c-tab {
+      display: block;
+      font-size: 12px;
+      line-height: 1;
+      justify-content: flex-start;
+      padding: 0.25em;
+    }
+  }
+}

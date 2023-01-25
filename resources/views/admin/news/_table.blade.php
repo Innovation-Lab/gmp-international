@@ -1,16 +1,12 @@
-<div class="t-wrapper">
-  <div class="t-head">
-    <div class="t-head__count">
-      1〜3件目を表示 / 全3件
-    </div>
-  </div>
-  <div class="t-table">
-    <table>
+<div class="p-table__wrapper--index">
+  <div class="p-table">
+    <table class="c-table">
       <thead>
         <tr>
           <th>
-            <input type="checkbox" id="all">
-            <label for="all"></label>
+            <label>
+              <input type="checkbox" id="all">
+            </label>
           </th>
           <th>
             アイキャッチ
@@ -39,15 +35,16 @@
         <?php for($i=0;$i<30;$i++) { ?>
         <tr>
           <td>
-            <input type="checkbox" id="{{$i}}">
-            <label for="{{$i}}"></label>
+            <label>
+              <input type="checkbox" id="{{$i}}">
+            </label>
           </td>
           <td>
-            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=サムネイル" class="lg">
+            <img class="c-media u-w--120" src="https://placehold.jp/3697c7/ffffff/400x300.png?text=サムネイル" class="lg">
           </td>
           <td>
-            <a href="{{route('admin.news.edit')}}">世界中のコレクションが集まる「天然石のギャラリー」</a>
-            <p class="line2 u-mt4">加工工場に直結した天然石ギャラリー「Strad. Stone Gallery」が、岐阜県関ヶ原にオープンした。70年の歴史をもつ、「関ヶ原石材株式会社」が選び抜いた表情豊かな石の数々。
+            <a class="c-link" href="{{route('admin.news.edit')}}">世界中のコレクションが集まる「天然石のギャラリー」</a>
+            <p class="c-txt--sm line2 u-mt--4">加工工場に直結した天然石ギャラリー「Strad. Stone Gallery」が、岐阜県関ヶ原にオープンした。70年の歴史をもつ、「関ヶ原石材株式会社」が選び抜いた表情豊かな石の数々。
             </p>
           </td>
           <td>
@@ -71,9 +68,7 @@
       </tbody>
     </table>
   </div>
-  <div class="t-foot">
-    <div class="t-pagert">
-      123
-    </div>
+  <div class="p-table__foot">
+    @include('admin.component._pager')
   </div>
 </div>

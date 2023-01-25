@@ -1,0 +1,110 @@
+.c-msg {
+  background-color: #fff;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--primary);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 2px;
+  .p-msg & {
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.12),
+      0px 2px 12px 0 rgba(0, 0, 0, 0.08);
+    margin: 0 0 8px;
+  }
+  opacity: 0;
+  pointer-events: none;
+  // 表示
+  &.is-active {
+    animation-name: showMsg;
+    animation-direction: alternate;
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.55, 0.1, 0, 1.17);
+    animation-fill-mode: forwards;
+  }
+  // 非表示
+  &.is-hide {
+    animation: hideMsg 0.8s cubic-bezier(0.55, 0.1, 0, 1.17) alternate forwards;
+  }
+  // 自動非表示
+  &.is-auto-hide.is-active {
+    animation: showMsg 0.8s cubic-bezier(0.55, 0.1, 0, 1.17) alternate forwards,
+      hideMsg 0.8s cubic-bezier(0.55, 0.1, 0, 1.17) 6s alternate forwards;
+  }
+  &.is-auto-hide--l.is-active {
+    animation: showMsg 0.8s cubic-bezier(0.55, 0.1, 0, 1.17) alternate forwards,
+      hideMsg 0.8s cubic-bezier(0.55, 0.1, 0, 1.17) 12s alternate forwards;
+  }
+  // アニメーション
+  @keyframes showMsg {
+    0% {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(0, 2rem);
+    }
+    100% {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes hideMsg {
+    0% {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(0, 0);
+    }
+    90% {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-2rem, 0);
+    }
+    100% {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-2rem, 0);
+    }
+  }
+
+  // カラー
+  &:has(.c-msg__ico--valid) {
+    border-left-color: var(--valid);
+  }
+  &:has(.c-msg__ico--invalid) {
+    border-left-color: var(--invalid);
+  }
+  &__ico {
+    display: block;
+    width: 1.5rem;
+    height: auto;
+    aspect-ratio: 1;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="%237e6bf5"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    :where(&--valid, &--invalid) {
+      @extend .c-msg__ico;
+    }
+    &--valid {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12ZM7 12.1995L10.6364 16L17 9.34917L15.7182 8L10.6364 13.3112L8.28182 10.8599L7 12.1995Z" fill="%230dc9b3" /></svg>');
+    }
+    &--invalid {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="%23f3537b"/></svg>');
+    }
+  }
+  &__close {
+    @extend .c-msg__ico;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="%23cccccc"/></svg>');
+    background-size: 20px;
+    &:hover {
+      background-color: var(--bg-light);
+    }
+  }
+}

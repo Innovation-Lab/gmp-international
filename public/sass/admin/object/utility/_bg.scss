@@ -1,0 +1,9 @@
+@use "../../foundation/global" as *;
+
+.u-bg {
+  @each $colorName in $colors {
+    &--#{$colorName} {
+      background-color: var(--#{$colorName});
+    }
+  }
+}

@@ -1,15 +1,23 @@
 (() => {
-  let headHeight = document.getElementsByClassName('p-main__head')[0].offsetHeight;
+  const table = document.querySelector('table');
+  const tTable = document.getElementsByClassName('p-table')[0];
+  let lMainHead = document.getElementsByClassName('l-main__head')[0];
+  let pTableFoot = document.getElementsByClassName('p-table__foot')[0];
+  let headHeight = 0
+  let tFoot = 0
   let bodyPadding = 48;
-  let tHead = document.getElementsByClassName('t-head')[0].offsetHeight;
-  let tFoot = document.getElementsByClassName('t-foot')[0].offsetHeight;
+  if(headHeight) {
+    headHeight = lMainHead.offsetHeight;
+  }
+  if(pTableFoot) {
+    tFoot = pTableFoot.offsetHeight;
+  }
   // thの数を取得
   let thCount = document.querySelector('thead tr').childElementCount;
   // tableにカラムのスタイルを指定
-  const table = document.querySelector('table');
   table.style.gridTemplateColumns = 'repeat('+thCount+', minmax(max-content, 1fr))';
-  const tTable = document.getElementsByClassName('t-table')[0];
-  let tTableHeight = 'calc(100vh - '+ (headHeight + bodyPadding + tHead + tFoot) +'px)';
-  console.log('tt:'+tTableHeight)
-  tTable.style.maxHeight = tTableHeight;
+  let tTableHeight = 'calc(100vh - '+ (headHeight + bodyPadding + tFoot ) +'px)';//-16 →ネガティブマージン分
+  if(tTable){
+    tTable.style.maxHeight = tTableHeight;
+  }
 })();

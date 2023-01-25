@@ -1,19 +1,20 @@
 @extends('admin.layout._page-default')
 @section('content')
-  <div class="p-main">
-    @component('admin.component._main-head')
+  <div class="l-main__head">
+    @component('admin.component._head')
       @slot('main')
-      <h2 class="p-main__head__main__txt__ttl">
+      <a href="{{route('admin.account')}}" class="c-btn--goast">
+        <svg>
+          <use xlink:href="#chevron-left"/>
+        </svg>
+      </a>
+      <h2 class="c-ttl--lg">
         プロフィールを編集
       </h2>
       @endslot
     @endcomponent
-    <div class="p-main__body">
-      <div class="p-main__wrapper--lg">
-        <div class="p-main__container">
-          コンテナ
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="l-main__body">
+    123
   </div>
 @endsection

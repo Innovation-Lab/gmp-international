@@ -1,0 +1,26 @@
+@use "../../foundation/global" as *;
+
+.u-w--0 {
+  width: 0;
+}
+.u-w--100p {
+  width: 100%;
+}
+@for $i from 1 through 50 {
+  $num: $i * 8;
+  .u-w--#{$num} {
+    width: #{$num}px;
+  }
+}
+@for $i from 1 through 40 {
+  $num: $i * 10;
+  .u-w--#{$num} {
+    width: #{$num}px;
+  }
+}
+@for $i from 1 through 8 {
+  $num: $i * 50;
+  .u-w--#{$num} {
+    width: #{$num}px;
+  }
+}

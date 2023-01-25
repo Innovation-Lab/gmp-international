@@ -1,0 +1,7 @@
+// tab-panel
+.js-panel {
+  display: none;
+  &.is-show {
+    display: block;
+  }
+}

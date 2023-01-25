@@ -28,11 +28,11 @@
     <a
       href="{{route($val['path'])}}"
       class="
-        p-sidebar__btn
+        c-tab
         {{ in_array(explode('.', Route::currentRouteName())[1], [explode('.', $val['path'])[1]], TRUE) ? 'is-active' : '' }}
       "
     >
-      <svg class="icon">
+      <svg>
         <use xlink:href="{{'#'.$key}}"/>
       </svg>
       {{$val['label']}}
@@ -50,11 +50,11 @@
     <a
       href="{{route($val['path'])}}"
       class="
-        p-sidebar__btn
+        c-tab
         {{ in_array(explode('.', Route::currentRouteName())[1], [explode('.', $val['path'])[1]], TRUE) ? 'is-active' : '' }}
       "
     >
-      <svg class="icon">
+      <svg>
         <use xlink:href="{{'#'.$key}}"/>
       </svg>
       {{$val['label']}}

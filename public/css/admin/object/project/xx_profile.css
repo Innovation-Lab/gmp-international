@@ -1,0 +1,19 @@
+.p-profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.p-profile img {
+  display: block;
+  width: 88px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  border-radius: 50%;
+}
+@media screen and (min-width: 1200px) {
+  .p-profile img {
+    width: 120px;
+  }
+}
+
+/*# sourceMappingURL=xx_profile.css.map */

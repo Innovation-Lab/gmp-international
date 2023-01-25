@@ -1,16 +1,12 @@
-<div class="t-wrapper">
-  <div class="t-head">
-    <div class="t-head__count">
-      1〜3件目を表示 / 全3件
-    </div>
-  </div>
-  <div class="t-table">
-    <table>
+<div class="p-table__wrapper--index">
+  <div class="p-table">
+    <table class="c-table">
       <thead>
         <tr>
           <th>
-            <input type="checkbox" id="all">
-            <label for="all"></label>
+            <label>
+              <input type="checkbox" id="all">
+            </label>
           </th>
           <th>
             氏名
@@ -39,14 +35,15 @@
         </tr>
       </thead>
       <tbody>
-        <?php for($i=0;$i<30;$i++) { ?>
+        <?php for($i=0;$i<40;$i++) { ?>
         <tr>
           <td>
-            <input type="checkbox" id="{{$i}}">
-            <label for="{{$i}}"></label>
+            <label>
+              <input type="checkbox" id="{{$i}}">
+            </label>
           </td>
           <td>
-            <a href="{{route('admin.user.detail')}}">斉藤 啓介</a>
+            <a href="{{route('admin.user.detail')}}" class="c-link">斉藤 啓介</a>
           </td>
           <td>
             サイトウ ケイスケ
@@ -69,14 +66,27 @@
           <td>
             公開
           </td>
+          <div class="p-table__sp">
+            <details>
+              <summary>
+                <a href="{{route('admin.user.detail')}}" class="c-link">斉藤 啓介</a>
+                <p class="c-txt--sm u-color--txt-weak">サイトウ ケイスケ</p>
+              </summary>
+              <div class="c-box u-mt--16">
+                <div class="u-align u-gap--8">
+                  <span class="c-tag">ABC会員</span>
+                  <span class="c-tag">男性</span>
+                  <span class="c-tag">東京都</span>
+                </div>
+              </div>
+            </details>
+          </div>
         </tr>
         <?php } ?>
       </tbody>
     </table>
   </div>
-  <div class="t-foot">
-    <div class="t-pagert">
-      123
-    </div>
+  <div class="p-table__foot">
+    @include('admin.component._pager')
   </div>
 </div>

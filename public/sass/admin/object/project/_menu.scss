@@ -1,0 +1,21 @@
+@use "../../foundation/global" as *;
+
+.p-menu {
+  position: relative;
+  display: none;
+  @include min(lg) {
+    display: block;
+  }
+  [class*="c-box"] {
+    min-width: max-content;
+    box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
+    position: absolute;
+    inset: calc(100% + 4px) -4px auto auto;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .is-active ~ [class*="c-box"] {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

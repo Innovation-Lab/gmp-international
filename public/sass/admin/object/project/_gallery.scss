@@ -1,0 +1,41 @@
+.p-gallery {
+  max-width: 400px;
+  margin: 0 auto 24px;
+  padding: 16px;
+  background-color: var(--primary-bg-light);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  &__main {
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 4px;
+    }
+  }
+  &__sub {
+    padding: 0 0 4px;
+    margin: 4px 0;
+    display: flex;
+    gap: 4px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 2px;
+      background: #ccc;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background: #000;
+    }
+    img {
+      display: block;
+      width: calc((100% - 8px) / 3);
+      aspect-ratio: 4 / 3;
+      border-radius: 4px;
+    }
+  }
+}

@@ -1,97 +1,128 @@
 @extends('admin.layout._page-default')
 @section('title', '商品詳細')
 @section('content')
-  <div class="p-main">
-    @component('admin.component._main-head')
+  <div class="l-main__head">
+    @component('admin.component._head')
       @slot('main')
-      <a href="{{route('admin.item')}}" class="p-main__head__main__txt__btn"></a>
-      <h2 class="p-main__head__main__txt__ttl">
+      <a href="{{route('admin.item')}}" class="c-btn--goast">
+        <svg>
+          <use xlink:href="#chevron-left"/>
+        </svg>
+      </a>
+      <h2 class="c-ttl--lg">
         商品詳細
       </h2>
       @endslot
     @endcomponent
-    <div class="p-main__body">
-      <div class="p-bread">
-        <a href="{{route('admin.user')}}">商品管理</a>
-        <p>THE TABLE / 杉無垢材 × Black Steel</p>
-      </div>
-      <div class="p-main__wrapper">
-        <div class="p-main__sidebar">
-          <div class="p-profile">
-            <div class="p-profile__txt">
-              <div class="p-profile__sub">TBL-K01-SQU-BK</div>
-              <div class="c-h1 u-mt8 u-mb16">THE TABLE / 杉無垢材 × Black Steel</div>
-            </div>
+  </div>
+  <div class="l-main__body">
+    <div class="p-bread">
+      <a href="{{route('admin.item')}}">商品管理</a>
+      <p>THE TABLE / 杉無垢材 × Black Steel</p>
+    </div>
+    <div class="p-page">
+      <div class="p-page__side">
+        <div class="p-profile u-mb--16">
+          <div class="p-profile__txt">
+            <div class="p-profile__sub">TBL-K01-SQU-BK</div>
+            <div class="c-ttl--lg u-mt--8 u-mb--0">THE TABLE / 杉無垢材 × Black Steel</div>
           </div>
-          <a href="" class="c-btn u-w100p">編集する</a>
-          <div class="c-divider"></div>
-          <p>記事とは、現象・存在・状況などを文字からなる単語を組み合わせ、文章で表した事物を、伝えるための文章である。</p>
-          <dl class="c-dl--sm">
-            <dt>氏名</dt>
-            <dd>山田 太郎</dd>
-            <dt>フリガナ</dt>
-            <dd>ヤマダ タロウ</dd>
-            <dt>電話番号</dt>
-            <dd>090-1234-5678</dd>
-            <dt>メール</dt>
-            <dd>sample@example.com</dd>
-            <dt>住所</dt>
-            <dd>
-              〒123-1234<br>
-              東京都渋谷区渋谷123 渋谷マンション1201
-            </dd>
-          </dl>
         </div>
-        <div class="p-main__container">
+        <dl class="c-dl--sm u-mb--16">
+          <dt>料金</dt>
+          <dd>¥55,000(税込)</dd>
+          <dt>送料</dt>
+          <dd>¥1,000(税込)</dd>
+          <dt>在庫</dt>
+          <dd>64</dd>
+        </dl>
+        <a href="{{route('admin.item.edit')}}" class="c-btn u-w--100p">商品情報を編集する</a>
+        <div class="c-div--md"></div>
+        <div class="p-gallery">
+          <div class="p-gallery__main">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=商品画像" class="lg">
+          </div>
+          <div class="p-gallery__sub">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=商品画像" class="lg">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=商品画像" class="lg">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=商品画像" class="lg">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=商品画像" class="lg">
+            <img src="https://placehold.jp/3697c7/ffffff/400x300.png?text=商品画像" class="lg">
+          </div>
+        </div>
+        <div class="c-div"></div>
+        <div class="p-ttl">
+          <h3 class="c-ttl--md">レビュー</h3>
+        </div>
+        <div class="c-box">
+          ★★★★★
+        </div>
+      </div>
+      <div class="p-page__cnt">
+        <section class="js-tab">
           <div class="p-tab">
-            <div class="p-tab__item is-active">基本情報</div>
-            <div class="p-tab__item">支払い情報</div>
-            <div class="p-tab__item">タブ項目</div>
+            <div class="c-tab is-active">基本情報</div>
+            <div class="c-tab">販売履歴</div>
+            <div class="c-tab">メモ</div>
           </div>
-          <h3 class="c-h3">契約内容</h3>
-          <div class="c-box">
-            契約中のプラン
-          </div>
-          <h3 class="c-h3">プロフィール</h3>
-          <div class="c-box">
+          <div class="js-panel is-show">
+            <div class="p-ttl">
+              <h3 class="c-ttl--md">商品説明</h3>
+            </div>
+            <div class="c-box">
+              <p>温かみのある杉無垢材の天板と、マットブラックの鉄脚を組み合わせた、シンプルモダンなデザインのテーブルです。</p>
+              <p>杉は、美しい木目や表情豊かな節が特徴の、明るい雰囲気の木材。木目を生かしてカッティングされた、 厚みのある杉無垢材を丁寧に組み合わせて、品のある天板に仕上げています。木肌のナチュラルな風合いが好きな方におすすめです。</p>
+              <p>ダイニングテーブルにもワークスペース用のデスクにもぴったりのこちらのテーブルは、サイズオーダーが無料。空間や利用人数、用途に合わせて、テーブルの長さをカスタムオーダーできます。天板と合わせるテーブル脚のセレクションも充実。</p>
+              <p>KANADEMONO では、シンプルでミニマルモダンなアイアン脚を多く取り揃えています。</p>
+              <p>空間にフィットするサイズの天板と、お好みのアイアン脚を組み合わせて、オリジナルのテーブルをオーダーしてみませんか。</p>
+            </div>
+            <div class="p-ttl">
+              <h3 class="c-ttl--md">商品情報</h3>
+            </div>
+            <div class="c-box">
             <dl class="c-dl">
-              <dt>氏名</dt>
-              <dd>山田 太郎</dd>
-              <dt>フリガナ</dt>
-              <dd>ヤマダ タロウ</dd>
-              <dt>電話番号</dt>
-              <dd>090-1234-5678</dd>
-              <dt>メール</dt>
-              <dd>sample@example.com</dd>
-              <dt>住所</dt>
+              <dt>サイズ</dt>
               <dd>
-                〒123-1234<br>
-                東京都渋谷区渋谷123 渋谷マンション1201
+                ・天板の幅・奥行きはお好きなサイズでオーダー可能<br>
+                ・テーブルの高さ：700 mm※Square H70：730 mm<br>
+                ・アジャスターの高さ：10 mm〜
               </dd>
+              <dt>天板厚み</dt>
+              <dd>30mm</dd>
+              <dt>素材</dt>
+              <dd>天板：杉無垢材 脚：スチール</dd>
+              <dt>仕上げ</dt>
+              <dd>天板：マットウレタンニス塗装 脚：マットブラック粉体塗装</dd>
+              <dt>耐荷重</dt>
+              <dd>50kg</dd>
+              <dt>備考</dt>
+              <dd>備考を記載。</dd>
             </dl>
-          </div>
-          <div class="c-box">
-            <div class="c-dl__wrapper">
-              @foreach([
-                '生年月日' => '1988/10/10',
-                '性別' => '男性',
-                'メールアドレス' => 'sample@example.com',
-                '電話番号' => '090-1234-1234',
-                '住所' => '
-                  〒1230000<br>
-                  東京都渋谷区渋谷123<br>
-                  渋谷マンション1201',
-                '登録日時' => '2022/11/28<br>17:00',
-              ] as $title => $data)
-                <dl class="c-dl">
-                  <dt>{!!$title!!}</dt>
-                  <dd>{!!$data!!}</dd>
-                </dl>
-              @endforeach
             </div>
           </div>
-        </div>
-      </div>
+          <div class="js-panel">
+            <div class="p-ttl">
+              <h3 class="c-ttl--md">販売履歴</h3>
+            </div>
+            <div class="c-box">
+              <p>温かみのある杉無垢材の天板と、マットブラックの鉄脚を組み合わせた、シンプルモダンなデザインのテーブルです。</p>
+              <p>杉は、美しい木目や表情豊かな節が特徴の、明るい雰囲気の木材。木目を生かしてカッティングされた、 厚みのある杉無垢材を丁寧に組み合わせて、品のある天板に仕上げています。木肌のナチュラルな風合いが好きな方におすすめです。</p>
+              <p>ダイニングテーブルにもワークスペース用のデスクにもぴったりのこちらのテーブルは、サイズオーダーが無料。空間や利用人数、用途に合わせて、テーブルの長さをカスタムオーダーできます。天板と合わせるテーブル脚のセレクションも充実。</p>
+              <p>KANADEMONO では、シンプルでミニマルモダンなアイアン脚を多く取り揃えています。</p>
+              <p>空間にフィットするサイズの天板と、お好みのアイアン脚を組み合わせて、オリジナルのテーブルをオーダーしてみませんか。</p>
+            </div>
+          </div>
+          <div class="js-panel">
+            <div class="p-ttl">
+              <h3 class="c-ttl--md">メモ</h3>
+            </div>
+            <textarea></textarea>
+            <div class="u-mt--8">
+              <button class="f-btn">メモを保存する</button>
+            </div>
+          </div>
+        </section>
+      </section>
     </div>
   </div>
 @endsection

@@ -1,6 +1,6 @@
-<nav class="p-main__sidebar--sm">
-  <div class="p-main__sidebar__ttl">
-    アカウント管理
+<nav class="p-page__side--sm is-top">
+  <div class="p-ttl u-mt--0">
+    <h3 class="c-ttl--xs">アカウント管理</h3>
   </div>
   @foreach([
     'profile'=> [
@@ -15,20 +15,24 @@
       'label' => 'パスワード変更',
       'path' => 'admin.account.password',
     ],
+    'logout'=> [
+      'label' => 'ログアウト',
+      'path' => 'admin.auth.login',
+    ],
   ] as $key => $val)
     <a
       href="{{route($val['path'])}}"
       class="
-        p-main__sidebar__btn
+      c-tab
         {{ in_array(explode('.', Route::currentRouteName())[2], [explode('.', $val['path'])[2]], TRUE) ? 'is-active' : '' }}
       "
     >
       {{$val['label']}}
     </a>
   @endforeach
-  <div class="p-main__sidebar__divider"></div>
-  <div class="p-main__sidebar__ttl">
-    管理者権限
+  <div class="c-div--md"></div>
+  <div class="p-ttl">
+    <h3 class="c-ttl--xs">管理者権限</h3>
   </div>
   @foreach([
     'account'=> [
@@ -39,7 +43,7 @@
     <a
       href="{{route($val['path'])}}"
       class="
-        p-main__sidebar__btn
+        c-tab
         {{ in_array(explode('.', Route::currentRouteName())[2], [explode('.', $val['path'])[2]], TRUE) ? 'is-active' : '' }}
       "
     >

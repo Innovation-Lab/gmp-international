@@ -1,0 +1,80 @@
+@use "../../foundation/global" as *;
+
+.p-table {
+  overflow: auto;
+  position: relative;
+  max-height: 50vh;
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background: #ccc;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #000;
+  }
+  @include min(sm) {
+    border-top: none;
+    background-color: transparent;
+  }
+  // ラッパー
+  &__wrapper {
+    &--index {
+      margin-top: -16px;
+      .p-table {
+        margin-left: -16px;
+        margin-right: -16px;
+        @include min(sm) {
+          margin-left: -24px;
+          margin-right: -24px;
+        }
+      }
+    }
+  }
+  // フット
+  &__foot {
+    border-top: 1px solid var(--border);
+    padding: 16px 24px 0;
+    margin-left: -16px;
+    margin-right: -16px;
+    @include min(sm) {
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+  }
+  // スマホ表示
+  &__sp {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: block;
+    padding: 16px;
+    margin: 0 0 4px;
+    background-color: #fff;
+    @include min(sm) {
+      display: none;
+    }
+    summary {
+      padding-right: 48px;
+      @include fi-right($fi-chevron-down);
+      background-size: 20px;
+      &::marker {
+        content: "";
+      }
+    }
+    [open] summary {
+      @include fi-right($fi-chevron-up);
+      background-size: 20px;
+    }
+    &__sub {
+      // display: none;
+      border-top: 1px solid var(--border-light);
+      margin: 8px 0 0;
+      padding: 8px 0 0;
+    }
+  }
+}

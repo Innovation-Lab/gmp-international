@@ -1,0 +1,21 @@
+.c-media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  :where(&--1-1, &--4-3, &--16-9, &--round) {
+    @extend .c-media;
+  }
+  &--1-1 {
+    aspect-ratio: 1 / 1;
+  }
+  &--4-3 {
+    aspect-ratio: 4 / 3;
+  }
+  &--16-9 {
+    aspect-ratio: 16 / 9;
+  }
+  &--round {
+    border-radius: 400px;
+  }
+}

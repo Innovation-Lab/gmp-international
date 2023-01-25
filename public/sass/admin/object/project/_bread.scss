@@ -1,3 +1,4 @@
+@use "../../foundation/responsive" as *;
 @use "../../form/var" as *;
 @use "../../form/icon" as *;
 @use "../../form/func" as *;
@@ -5,7 +6,10 @@
 .p-bread {
   display: flex;
   flex-wrap: wrap;
-  margin: -12px 0 48px;
+  margin: -8px 0 32px;
+  @include min(lg) {
+    margin: -12px 0 48px;
+  }
   a,
   p {
     font-size: 12px;
@@ -13,13 +17,13 @@
     display: block;
   }
   a {
-    color: var(--c-primary);
+    color: var(--primary);
     &:hover {
       text-decoration: underline;
     }
   }
   p {
-    color: var(--c-text-weak);
+    color: var(--txt-weak);
   }
   & > * + * {
     padding-left: 3em;

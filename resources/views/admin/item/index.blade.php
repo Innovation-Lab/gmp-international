@@ -1,27 +1,25 @@
 @extends('admin.layout._page-default')
 @section('title', '商品管理')
 @section('content')
-  <div class="p-main">
-    @component('admin.component._main-head')
+  <div class="l-main__head">
+    @component('admin.component._head')
       @slot('main')
-      <h2 class="p-main__head__main__txt__ttl">
+      <h2 class="c-ttl--lg">
         商品管理
+        <a href="{{route('admin.item.add')}}" class="c-btn--sm">商品を新規作成</a>
       </h2>
-      <div class="p-main__head__main__txt__act">
-        <a href="" class="c-btn--sm">商品を追加</a>
-      </div>
       @endslot
       @slot('sub')
-        <form action="" class="p-main__head__form">
-          <div class="p-main__head__search">
+        <form action="" class="p-filter">
+          <div class="p-filter__search">
             <input type="text" placeholder="キーワード">
           </div>
           @include('admin.item._filter')
         </form>
       @endslot
     @endcomponent
-    <div class="p-main__body" style="display: block;">
-      @include('admin.item._table')
-    </div>
+  </div>
+  <div class="l-main__body">
+    @include('admin.item._table')
   </div>
 @endsection

@@ -1,0 +1,8 @@
+.u-max {
+  @for $i from 1 through 20 {
+    $num: $i * 40;
+    &--#{$num} {
+      width: min(#{$num}px, 100%);
+    }
+  }
+}

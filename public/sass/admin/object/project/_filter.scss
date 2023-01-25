@@ -1,0 +1,85 @@
+@use "../../foundation/global" as *;
+
+.p-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin: 1rem 0 0;
+  // 検索
+  &__search {
+    input {
+      font-size: 14px;
+      line-height: 22px;
+      max-width: 200px;
+      border-color: var(--primary-bg);
+      background-color: var(--primary-bg);
+      @include fi-left($fi-search, $fc-border);
+      background-position: left 10px center;
+      background-size: 18px 18px;
+      padding-left: 36px !important;
+    }
+  }
+  // フィルター
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+  // 項目
+  &__item {
+    position: relative;
+  }
+  // ボタン
+  &__btn {
+    dl {
+      display: flex;
+      align-items: center;
+    }
+    dt {
+      font-size: 12px;
+      line-height: 20px;
+      &::after {
+        content: "：";
+      }
+    }
+    dd {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 20px;
+      @include fi-right($fi-select);
+      background-position: right center;
+      padding-right: 24px !important;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+  &__count {
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    display: block;
+    background-color: var(--primary);
+    padding: 3px 6px 2px;
+    border-radius: 100px;
+  }
+  // コンテンツ
+  [class*="c-box"] {
+    min-width: max-content;
+    box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.12);
+    position: absolute;
+    inset: calc(100% + 4px) -4px auto auto;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .is-active [class*="c-box"] {
+    opacity: 1;
+    pointer-events: all;
+  }
+  // アクション
+  &__action {
+    margin: 8px 0 0;
+  }
+}

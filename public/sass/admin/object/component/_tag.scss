@@ -1,0 +1,37 @@
+@use "../../foundation/global" as *;
+
+:root {
+  --type-a: hsl(220, 87%, 62%);
+  --type-b: hsl(200, 87%, 56%);
+  --type-c: hsl(170, 80%, 42%);
+  --type-d: hsl(110, 40%, 56%);
+  --type-e: hsl(36, 83%, 48%);
+  --type-f: hsl(360, 72%, 64%);
+  --type-g: hsl(320, 64%, 64%);
+  --type-h: hsl(280, 64%, 64%);
+}
+.c-tag {
+  color: var(--txt-weak);
+  font-size: 13px;
+  line-height: 1;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--bg);
+  border-radius: 2px;
+  user-select: none;
+  $colorsTypes: primary, valid, invalid, type-a, type-b, type-c, type-d, type-e,
+    type-f, type-g, type-h;
+  @each $colorName in $colorsTypes {
+    &--#{$colorName} {
+      color: #fff;
+      background-color: var(--#{$colorName});
+      @extend .c-tag;
+    }
+  }
+}
+a.c-tag {
+  @extend .c-tag;
+  &:hover {
+    opacity: 0.7;
+  }
+}
