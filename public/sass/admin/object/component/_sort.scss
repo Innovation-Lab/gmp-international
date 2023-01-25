@@ -1,7 +1,9 @@
 @use "../../foundation/global" as *;
 
 .c-sort {
+  line-height: 1;
   display: inline-flex;
+  align-items: center;
   min-width: max-content;
   gap: 4px;
   cursor: pointer;

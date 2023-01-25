@@ -26,6 +26,7 @@
           <a href="#c-dl" class="c-tab u-w--100p">c-dl</a>
           <a href="#c-bl" class="c-tab u-w--100p">c-bl</a>
           <a href="#c-table" class="c-tab u-w--100p">c-table</a>
+          <a href="#c-sort" class="c-tab u-w--100p">c-sort</a>
           <a href="#c-div" class="c-tab u-w--100p">c-div</a>
           <a href="#c-media" class="c-tab u-w--100p">c-media</a>
           <a href="#c-box" class="c-tab u-w--100p">c-box</a>
@@ -407,6 +408,22 @@
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+        <!-- 
+
+          ソートボタン
+
+        -->
+        <section class="p-style__panel" id="c-sort">
+          <h1 class="p-style__ttl">ソートラベル</h1>
+          <div class="p-ttl">
+            <h4 class="c-ttl--md">c-sort .is-desc .is-asc</h4>
+          </div>
+          <div class="u-align u-gap--16">
+            <label class="c-sort">並び替え可能項目</label>
+            <label class="c-sort is-desc">降順</label>
+            <label class="c-sort is-asc">昇順</label>
           </div>
         </section>
         <!-- 
