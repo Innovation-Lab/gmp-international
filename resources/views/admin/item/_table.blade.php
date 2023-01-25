@@ -12,13 +12,13 @@
             アイキャッチ
           </th>
           <th>
-            商品名
+            <label class="c-sort is-asc">商品名</label>
           </th>
           <th>
-            商品管理
+            <label class="c-sort is-desc">商品管理</label>
           </th>
           <th>
-            公開
+            <label class="c-sort">公開</label>
           </th>
           <th>
             カテゴリ

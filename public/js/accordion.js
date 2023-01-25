@@ -15,8 +15,8 @@
       // トリガー以外をクリックしたら、全activeを削除
       document.addEventListener('click', function(e) {
         //elmに含まれる要素以外にイベント適用
-        if (!elm.contains(e.target)) {
-          triggers.forEach(trigger => {
+        if (!elm?.contains(e.target)) {
+          triggers?.forEach(trigger => {
             trigger.classList.remove('is-active');
           });
         }
