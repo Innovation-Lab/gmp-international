@@ -45,7 +45,7 @@
     fill: #fff;
   }
   // スタイル
-  :where(&--lg, &--light, &--goast, &--invalid) {
+  :where(&--lg, &--sm, &--light, &--goast, &--invalid) {
     @extend .f-btn;
   }
   &--lg {
@@ -63,6 +63,7 @@
     color: #fff;
     background-color: var(--fc-primary);
     border-color: var(--fc-primary);
+    padding-inline: 5px;
     &:hover {
       background-color: var(--fc-primary-dark);
       border-color: var(--fc-primary-dark);
@@ -72,6 +73,7 @@
     @extend .f-btn;
     color: var(--fc-primary);
     background-color: var(--fc-bg-light);
+    border-color: var(--fc-bg-light);
     &:hover {
       background-color: var(--fc-bg);
     }

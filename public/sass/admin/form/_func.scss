@@ -22,7 +22,7 @@
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   @if ($base-size == lg) {
     --fs-font: 18px;
     --fs-line-height: 2;

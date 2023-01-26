@@ -20,7 +20,7 @@
       <a href="{{route('admin.item')}}">商品管理</a>
       <p>THE TABLE / 杉無垢材 × Black Steel</p>
     </div>
-    <div class="p-page">
+    <div class="p-page is-side-left">
       <div class="p-page__side">
         <div class="p-profile u-mb--16">
           <div class="p-profile__txt">

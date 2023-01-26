@@ -223,7 +223,7 @@ p + p {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   font-size: 14px;
   line-height: var(--fs-txt);
   display: inline-block;
@@ -256,7 +256,7 @@ p + p {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   font-size: 14px;
   line-height: var(--fs-txt);
   display: inline-block;
@@ -401,7 +401,7 @@ input:where([type=text],
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   width: 100%;
 }
 input:where([type=text],
@@ -463,7 +463,7 @@ input:where([type=text],
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   --fs-font: 18px;
   --fs-line-height: 2;
   --fs-txt: calc(var(--fs-font) * var(--fs-line-height));
@@ -525,7 +525,7 @@ input:where([type=text],
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   --fs-font: 14px;
   --fs-line-height: 1.3;
   --fs-txt: calc(var(--fs-font) * var(--fs-line-height));
@@ -584,7 +584,7 @@ input:where([type=text],
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
 }
 :where(select, input:where([type=date], [type=time]))::placeholder {
   color: var(--fc-placeholder);
@@ -612,7 +612,7 @@ input:where([type=text],
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   --fs-font: 18px;
   --fs-line-height: 2;
   --fs-txt: calc(var(--fs-font) * var(--fs-line-height));
@@ -650,7 +650,7 @@ input:where([type=text],
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   --fs-font: 14px;
   --fs-line-height: 1.3;
   --fs-txt: calc(var(--fs-font) * var(--fs-line-height));
@@ -754,7 +754,7 @@ input[type=file] + label {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   display: inline-block;
   min-width: max-content;
   cursor: pointer;
@@ -815,7 +815,7 @@ textarea {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   resize: none;
   height: 5.5rem;
   vertical-align: bottom;
@@ -859,7 +859,7 @@ label:has(input[type=radio]) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y" fill="%23444"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" /></svg>');
   background-position: left var(--fs-padding-inline-half) top calc(var(--fs-padding-block) / 2 + 2px);
   background-repeat: no-repeat;
@@ -958,7 +958,7 @@ label:has(input[type=checkbox]) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="24" height="24" viewBox="x,y" fill="%23444"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 4H7C5.34315 4 4 5.34315 4 7V17C4 18.6569 5.34315 20 7 20H17C18.6569 20 20 18.6569 20 17V7C20 5.34315 18.6569 4 17 4ZM7 3C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21H17C19.2091 21 21 19.2091 21 17V7C21 4.79086 19.2091 3 17 3H7Z" /></svg>');
   background-position: left var(--fs-padding-inline-half) top calc(var(--fs-padding-block) / 2 + 2px);
   background-repeat: no-repeat;
@@ -1050,7 +1050,7 @@ input[type=checkbox]:disabled:checked) {
  * ボタン・送信
  *
  ------------------------------ */
-.f-btn, .f-btn--goast, .f-btn--light, :where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
+.f-btn, .f-btn--goast, .f-btn--light, :where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
   font-size: var(--fs-font);
   line-height: var(--fs-line-height);
   padding-inline: var(--fs-padding-inline);
@@ -1058,7 +1058,7 @@ input[type=checkbox]:disabled:checked) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   border: none;
   color: #fff;
   text-align: center;
@@ -1075,25 +1075,25 @@ input[type=checkbox]:disabled:checked) {
   cursor: pointer;
   user-select: none;
 }
-.f-btn::placeholder, .f-btn--goast::placeholder, .f-btn--light::placeholder, :where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid)::placeholder {
+.f-btn::placeholder, .f-btn--goast::placeholder, .f-btn--light::placeholder, :where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid)::placeholder {
   color: var(--fc-placeholder);
 }
-.f-btn[readonly], [readonly]:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
+.f-btn[readonly], [readonly]:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
   border-color: var(--fc-border-light);
   pointer-events: none;
 }
-.f-btn[disabled], [disabled]:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid), .f-btn:disabled, :disabled:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
+.f-btn[disabled], [disabled]:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid), .f-btn:disabled, :disabled:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
   background-color: var(--fc-disabled);
   pointer-events: none;
 }
-.f-btn:focus, :focus:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
+.f-btn:focus, :focus:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
   outline-color: var(--fc-focus);
 }
-.f-btn:hover, :hover:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
+.f-btn:hover, :hover:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid) {
   background-color: var(--fc-primary-dark);
   border-color: var(--fc-primary-dark);
 }
-:is(.f-btn[disabled], [disabled]:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid), .f-btn:disabled, :disabled:where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid)) {
+:is(.f-btn[disabled], [disabled]:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid), .f-btn:disabled, :disabled:where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid)) {
   background-color: var(--fc-text);
   border-color: var(--fc-text);
   opacity: 0.24;
@@ -1101,7 +1101,7 @@ input[type=checkbox]:disabled:checked) {
   cursor: default;
   cursor: not-allowed;
 }
-.f-btn :where(svg, img), .f-btn--goast :where(svg, img), .f-btn--light :where(svg, img), :where(.f-btn--lg, .f-btn--light, .f-btn--goast, .f-btn--invalid) :where(svg, img) {
+.f-btn :where(svg, img), .f-btn--goast :where(svg, img), .f-btn--light :where(svg, img), :where(.f-btn--lg, .f-btn--sm, .f-btn--light, .f-btn--goast, .f-btn--invalid) :where(svg, img) {
   width: calc(var(--fs-txt) - 2px);
   height: auto;
   aspect-ratio: 1/1;
@@ -1115,7 +1115,7 @@ input[type=checkbox]:disabled:checked) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   --fs-font: 18px;
   --fs-line-height: 2;
   --fs-txt: calc(var(--fs-font) * var(--fs-line-height));
@@ -1160,7 +1160,7 @@ input[type=checkbox]:disabled:checked) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   --fs-font: 14px;
   --fs-line-height: 1.3;
   --fs-txt: calc(var(--fs-font) * var(--fs-line-height));
@@ -1178,6 +1178,7 @@ input[type=checkbox]:disabled:checked) {
   color: #fff;
   background-color: var(--fc-primary);
   border-color: var(--fc-primary);
+  padding-inline: 5px;
 }
 .f-btn--sm::placeholder {
   color: var(--fc-placeholder);
@@ -1200,6 +1201,7 @@ input[type=checkbox]:disabled:checked) {
 .f-btn--light {
   color: var(--fc-primary);
   background-color: var(--fc-bg-light);
+  border-color: var(--fc-bg-light);
 }
 .f-btn--light:hover {
   background-color: var(--fc-bg);
@@ -1248,7 +1250,7 @@ input[type=checkbox]:disabled:checked) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
   color: var(--fc-text);
   border-color: var(--fc-border);
   background-color: #fff;
@@ -1297,7 +1299,7 @@ input[type=checkbox]:disabled:checked) {
   border: 1px solid var(--fc-border);
   border-radius: var(--fs-border-radius);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
 }
 .f-btn--icon-right::placeholder,
 .f-btn--icon-left-right::placeholder {

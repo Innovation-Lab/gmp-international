@@ -12,8 +12,8 @@
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  // サイドがある場合
-  &:has(&__side) {
+  // サイドがある場合 .is-side-left → Firefox対応
+  :is(&.is-side-left, &:has(&__side)) {
     grid-template:
       "head" auto
       "cnt" auto
@@ -32,8 +32,8 @@
         / auto 1fr;
     }
   }
-  // サイドが右側の場合
-  &:has(&__side:last-child) {
+  // サイドが右側の場合 .is-side-right → Firefox対応
+  :is(&.is-side-right, &:has(&__side:last-child)) {
     grid-template:
       "head" auto
       "cnt" auto

@@ -21,7 +21,6 @@
       <a href="{{route('admin.item.detail')}}">THE TABLE / 杉無垢材 × Black Steel</a>
       <p>商品情報の編集</p>
     </div>
-    
     <form action="" class="f-form">
       <div class="p-page">
         <div class="p-page__head">

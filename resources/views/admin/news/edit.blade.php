@@ -21,7 +21,7 @@
       <p>お知らせを編集</p>
     </div>
     <form action="" class="f-form">
-      <div class="p-page">
+      <div class="p-page is-side-right">
         <div class="p-page__head">
           <h2 class="c-ttl--lg">
             お知らせ

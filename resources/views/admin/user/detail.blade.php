@@ -20,7 +20,7 @@
         <a href="{{route('admin.user')}}">ユーザー管理</a>
         <p>斎藤 啓介</p>
       </div>
-      <div class="p-page">
+      <div class="p-page is-side-left">
         <div class="p-page__side">
           <div class="u-align--hlc u-gap--24 u-mb--24">
             <div class="u-max--120">

@@ -1475,6 +1475,40 @@
                 <label class="f-label optional">建物名・部屋番号など</label>
                 <input type="text" placeholder="例）渋谷マンション1201">
               </div>
+              <div class="c-div--lg"></div>
+              <!-- ---------- 項目の追加・削除 ---------- -->
+              <div class="f-item">
+                <label class="f-label">項目の追加・削除</label>
+                <div class="u-align--vl u-gap--8 u-w--100p">
+                  <div class="u-align--nowrap u-gap--4 u-w--100p">
+                    <input class="f-sm" type="text" placeholder="項目">
+                  </div>
+                  <div class="u-align--nowrap u-gap--4 u-w--100p">
+                    <input class="f-sm" type="text" placeholder="項目">
+                    <button class="f-btn--light f-btn--sm">
+                      <svg>
+                        <use href="#close"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="u-align--nowrap u-gap--4 u-w--100p">
+                    <input class="f-sm" type="text" placeholder="項目">
+                    <button class="f-btn--light f-btn--sm">
+                      <svg>
+                        <use href="#close"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="u-align--nowrap u-w--100p">
+                    <button class="f-btn--sm u-ml--a">
+                      <svg>
+                        <use href="#add"/>
+                      </svg>
+                      項目を追加する
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- 
               
