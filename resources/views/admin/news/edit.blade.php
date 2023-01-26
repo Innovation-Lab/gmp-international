@@ -6,7 +6,7 @@
       @slot('main')
       <a href="{{route('admin.news')}}" class="c-btn--goast">
         <svg>
-          <use xlink:href="#chevron-left"/>
+          <use href="#chevron-left"/>
         </svg>
       </a>
       <h2 class="c-ttl--lg">

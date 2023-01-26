@@ -148,17 +148,17 @@
           <a href="#" class="c-btn">c-btn ボタン</a>
           <a href="#" class="c-btn">
             <svg>
-              <use xlink:href="#user"/>
+              <use href="#user"/>
             </svg>
           </a>
           <a href="#" class="c-btn--light">
             <svg>
-              <use xlink:href="#user"/>
+              <use href="#user"/>
             </svg>
           </a>
           <a href="#" class="c-btn">
             <svg>
-              <use xlink:href="#user"/>
+              <use href="#user"/>
             </svg>
             c-btn
           </a>
@@ -170,33 +170,33 @@
             <a href="#" class="c-btn--goast">c-btn--goast</a>
             <a href="#" class="c-btn--invalid">
               <svg>
-                <use xlink:href="#alert" />
+                <use href="#alert" />
               </svg>
               c-btn--invalid
             </a>
             <a href="#" class="c-btn--goast">
               c-btn--goast
               <svg>
-                <use xlink:href="#chevron-right"/>
+                <use href="#chevron-right"/>
               </svg>
             </a>
             <a href="#" class="c-btn--sm">c-btn--sm</a>
             <a href="#" class="c-btn--sm c-btn--light">
               c-btn--sm
               <svg>
-                <use xlink:href="#chevron-right"/>
+                <use href="#chevron-right"/>
               </svg>
             </a>
             <a href="#" class="c-btn--lg">c-btn--lg</a>
             <a href="#" class="c-btn--lg">
               <svg>
-                <use xlink:href="#chevron-left"/>
+                <use href="#chevron-left"/>
               </svg>
               c-btn--lg
             </a>
             <a href="#" class="c-btn--lg">
               <svg>
-                <use xlink:href="#user"/>
+                <use href="#user"/>
               </svg>
             </a>
           </div>
@@ -213,12 +213,12 @@
             <a href="" class="c-link">
               c-link
               <svg>
-                <use xlink:href="#chevron-right"/>
+                <use href="#chevron-right"/>
               </svg>
             </a>
             <a href="" class="c-link">
               <svg>
-                <use xlink:href="#user"/>
+                <use href="#user"/>
               </svg>
               c-link
             </a>
@@ -237,7 +237,7 @@
             <button class="c-tab">c-tab</button>
             <button class="c-tab">
               <svg>
-                <use xlink:href="#user"/>
+                <use href="#user"/>
               </svg>
               c-tab
             </button>
@@ -591,7 +591,7 @@
                   モーダルタイトル
                   <button class="c-btn--light" data-modal-close>
                     <svg>
-                      <use xlink:href="#close"/>
+                      <use href="#close"/>
                     </svg>
                   </button>
                 </h1>
@@ -609,7 +609,7 @@
                   <div class="u-max--240">
                     <button type="submit" class="c-btn--invalid c-btn--sm u-w--100p">
                       <svg>
-                        <use xlink:href="#alert" />
+                        <use href="#alert" />
                       </svg>
                       削除する
                     </button>
@@ -1295,25 +1295,25 @@
                 <label class="f-label">アイコン付き</label>
                 <a href="" class="f-btn">
                   <svg>
-                    <use xlink:href="#add"/>
+                    <use href="#add"/>
                   </svg>
                   追加
                 </a>
                 <a href="" class="f-btn--goast">
                   <svg>
-                    <use xlink:href="#add-circle"/>
+                    <use href="#add-circle"/>
                   </svg>
                   追加
                 </a>
                 <a href="" class="f-btn--light">
                   次へ
                   <svg>
-                    <use xlink:href="#chevron-right"/>
+                    <use href="#chevron-right"/>
                   </svg>
                 </a>
                 <a href="" class="f-btn" disabled>
                   <svg>
-                    <use xlink:href="#trush"/>
+                    <use href="#trush"/>
                   </svg>
                   削除
                 </a>

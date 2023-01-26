@@ -3,7 +3,7 @@
     <a href="" class="l-footer__nav__item">
       運営会社
       <svg>
-        <use xlink:href="#chevron-right"/>
+        <use href="#chevron-right"/>
       </svg>
     </a>
     <a href="" class="l-footer__nav__item">利用規約</a>

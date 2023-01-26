@@ -5,7 +5,7 @@
       @slot('main')
       <a href="{{route('admin.auth.login')}}" class="c-btn--goast">
         <svg>
-          <use xlink:href="#chevron-left"/>
+          <use href="#chevron-left"/>
         </svg>
       </a>
       <h2 class="c-ttl--lg">

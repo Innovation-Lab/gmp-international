@@ -103,13 +103,13 @@
               <div class="u-align--hlc u-gap--8 u-ml--a">
                 <div class="c-btn--light">
                   <svg>
-                    <use xlink:href="#chevron-left"/>
+                    <use href="#chevron-left"/>
                   </svg>
                 </div>
                 <p class="c-txt--sm">1/3</p>
                 <div class="c-btn--light">
                   <svg>
-                    <use xlink:href="#chevron-right"/>
+                    <use href="#chevron-right"/>
                   </svg>
                 </div>
               </div>
@@ -139,7 +139,7 @@
             <dt>
               <div class="u-align u-gap--16">
                 <svg class="c-media--1-1 u-w--20">
-                  <use xlink:href="#digital"/>
+                  <use href="#digital"/>
                 </svg>
                 デジタル
               </div>
@@ -148,7 +148,7 @@
             <dt>
               <div class="u-align u-gap--16">
                 <svg class="c-media--1-1 u-w--20">
-                  <use xlink:href="#life"/>
+                  <use href="#life"/>
                 </svg>
                 生活
               </div>
@@ -157,7 +157,7 @@
             <dt>
               <div class="u-align u-gap--16">
                 <svg class="c-media--1-1 u-w--20">
-                  <use xlink:href="#kitchen"/>
+                  <use href="#kitchen"/>
                 </svg>
                 キッチン
               </div>
@@ -166,7 +166,7 @@
             <dt>
               <div class="u-align u-gap--16">
                 <svg class="c-media--1-1 u-w--20">
-                  <use xlink:href="#sports"/>
+                  <use href="#sports"/>
                 </svg>
                 スポーツ
               </div>
@@ -175,7 +175,7 @@
             <dt>
               <div class="u-align u-gap--16">
                 <svg class="c-media--1-1 u-w--20">
-                  <use xlink:href="#others"/>
+                  <use href="#others"/>
                 </svg>
                 その他
               </div>

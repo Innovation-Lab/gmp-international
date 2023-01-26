@@ -7,7 +7,7 @@
       <a href="{{ route('admin.account.profile') }}" class="u-align u-gap--12">
         <p class="c-link--sm">
           <svg>
-            <use xlink:href="#user"/>
+            <use href="#user"/>
           </svg>
           sample@example.com
         </p>
@@ -16,7 +16,7 @@
       <div class="p-menu" id="js-accordion">
         <div class="c-btn--light">
           <svg>
-            <use xlink:href="#dot"/>
+            <use href="#dot"/>
           </svg>
         </div>
         <div

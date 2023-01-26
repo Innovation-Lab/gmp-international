@@ -33,7 +33,7 @@
       "
     >
       <svg>
-        <use xlink:href="{{'#'.$key}}"/>
+        <use href="{{'#'.$key}}"/>
       </svg>
       {{$val['label']}}
     </a>
@@ -55,7 +55,7 @@
       "
     >
       <svg>
-        <use xlink:href="{{'#'.$key}}"/>
+        <use href="{{'#'.$key}}"/>
       </svg>
       {{$val['label']}}
     </a>
