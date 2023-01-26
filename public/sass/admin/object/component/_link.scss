@@ -23,11 +23,10 @@
     font-weight: 400;
   }
   // 画像
-  &:has(svg, img) {
-    :where(svg, img) {
-      fill: var(--primary);
-      width: 1em;
-      aspect-ratio: 1 / 1;
-    }
+  :where(svg, img) {
+    fill: var(--primary);
+    width: 1em;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 }

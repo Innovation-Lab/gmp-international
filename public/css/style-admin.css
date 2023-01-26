@@ -1859,9 +1859,10 @@ input[type=checkbox]:disabled:checked) {
 .c-btn--full {
   width: 100%;
 }
-.c-btn:has(svg, img) :where(svg, img), :has(svg, img):where(.c-btn--sm, .c-btn--lg, .c-btn--light, .c-btn--goast, .c-btn--invalid, .c-btn--ico, .c-btn--full) :where(svg, img) {
+.c-btn :where(svg, img), :where(.c-btn--sm, .c-btn--lg, .c-btn--light, .c-btn--goast, .c-btn--invalid, .c-btn--ico, .c-btn--full) :where(svg, img) {
   fill: #fff;
   width: 1em;
+  height: auto;
   aspect-ratio: 1/1;
 }
 .c-btn--light {
@@ -1871,7 +1872,7 @@ input[type=checkbox]:disabled:checked) {
 .c-btn--light:hover {
   background-color: var(--bg);
 }
-.c-btn--light:has(svg, img) :where(svg, img) {
+.c-btn--light :where(svg, img) {
   fill: var(--primary);
 }
 .c-btn--goast {
@@ -1916,9 +1917,10 @@ input[type=checkbox]:disabled:checked) {
   font-size: 13px;
   font-weight: 400;
 }
-.c-link:has(svg, img) :where(svg, img), .c-link--sm:has(svg, img) :where(svg, img) {
+.c-link :where(svg, img), .c-link--sm :where(svg, img) {
   fill: var(--primary);
   width: 1em;
+  height: auto;
   aspect-ratio: 1/1;
 }
 

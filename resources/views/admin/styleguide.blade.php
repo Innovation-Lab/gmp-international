@@ -1050,24 +1050,24 @@
               <div class="f-item">
                 <label class="f-label"> ラジオ </label>
                 <label>
-                  項目1
                   <input type="radio" name="radio1" id="radio-1-01" checked>
+                  項目1
                 </label>
                 <label>
-                  項目2
                   <input type="radio" name="radio1" id="radio-1-02">
+                  項目2
                 </label>
               </div>
               <div class="f-item">
                 <label class="f-label"> ラジオ（縦並び） </label>
                 <div class="u-align--vl u-gap--4">
                   <label class="is-invalid">
-                    ラジオ項目1
                     <input type="radio" name="radio2" id="radio-2-01" checked>
+                    ラジオ項目1
                   </label>
                   <label class="is-invalid">
-                    ラジオ項目2
                     <input type="radio" name="radio2" id="radio-2-02">
+                    ラジオ項目2
                   </label>
                 </div>
               </div>
@@ -1075,22 +1075,22 @@
                 <label class="f-label"> タブ </label>
                 <div class="f-tab">
                   <label>
-                    タブ項目1
                     <input type="radio" name="radio3" id="radio-3-01" checked>
+                    タブ項目1
                   </label>
                   <label>
-                    タブ項目2
                     <input type="radio" name="radio3" id="radio-3-02">
+                    タブ項目2
                   </label>
                   <label>
-                    タブ長いラベル名項目3
                     <input type="radio" name="radio3" id="radio-3-03">
+                    タブ長いラベル名項目3
                   </label>
                 </div>
                 <div class="f-tab">
                   <label>
-                    すべて
                     <input type="radio" name="radio3" id="radio-3-04">
+                    すべて
                   </label>
                 </div>
               </div>
@@ -1102,24 +1102,24 @@
                   <input type="checkbox" name="checkbox1" id="checkbox-1-00" checked>
                 </label>
                 <label>
-                  項目1
                   <input type="checkbox" name="checkbox1" id="checkbox-1-01" checked>
+                  項目1
                 </label>
                 <label>
-                  項目2
                   <input type="checkbox" name="checkbox1" id="checkbox-1-02">
+                  項目2
                 </label>
               </div>
               <div class="f-item">
                 <label class="f-label"> チェックボックス（縦並び） </label>
                 <div class="u-align--vl u-gap--4">
                   <label class="is-invalid">
-                    チェックボックス項目1
                     <input type="checkbox" name="checkbox2" id="checkbox-2-01">
+                    チェックボックス項目1
                   </label>
                   <label class="is-invalid">
-                    チェックボックス項目2
                     <input type="checkbox" name="checkbox2" id="checkbox-2-02">
+                    チェックボックス項目2
                   </label>
                 </div>
                 <div class="f-invalid">少なくとも1つは選択してください</div>
@@ -1131,8 +1131,8 @@
                     <input type="checkbox" id="checkbox-3-01" checked>
                   </label>
                   <label>
-                    ラベルあり
                     <input type="checkbox" id="checkbox-3-02">
+                    ラベルあり
                   </label>
                 </div>
               </div>
@@ -1164,20 +1164,20 @@
               </div>
               <div class="f-item">
                 <label>
-                  Disabled
                   <input type="radio" id="radio-disabled" disabled>
+                  Disabled
                 </label>
                 <label>
-                  Disabled
                   <input type="radio" id="radio-disabled" checked disabled>
+                  Disabled
                 </label>
                 <label>
-                  Disabled
                   <input type="checkbox" id="checkbox-disabled" disabled>
+                  Disabled
                 </label>
                 <label>
-                  Disabled
                   <input type="checkbox" id="checkbox-disabled" checked disabled>
+                  Disabled
                 </label>
               </div>
             </div>
