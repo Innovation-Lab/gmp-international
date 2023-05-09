@@ -1,0 +1,110 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+:root {
+  --dashboard-gap: 1rem;
+  @include global.responsive(xl) {
+    --dashboard-gap: 1.5rem;
+  }
+}
+/* ! ==================================================
+　Dashboard ダッシュボード
+================================================== */
+.p-dashboard {
+  flex: auto;
+  min-width: 0;
+  margin: 0 0 2.5rem;
+
+  /* ! --------------------------------------------------
+  　Row 行
+  -------------------------------------------------- */
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--dashboard-gap);
+    flex: auto;
+    min-width: 0;
+    & + & {
+      margin: var(--dashboard-gap) 0 0;
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Column 列
+  -------------------------------------------------- */
+  @at-root [class*="p-dashboard__col"] {
+    display: flex;
+    flex-direction: column;
+  }
+  &__col {
+    $sizes: ("", "lg", "xl", "xxl");
+    @each $size in $sizes {
+      @if $size == "" {
+        @for $i from 1 through 12 {
+          &__#{$i} {
+            grid-column: span #{$i};
+          }
+        }
+      } @else {
+        @for $i from 1 through 12 {
+          @if $size != "" {
+            @include global.responsive($size) {
+              &__#{$i}--#{$size} {
+                grid-column: span #{$i};
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Item アイテム
+  -------------------------------------------------- */
+  &__item {
+    flex: auto;
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid var(--color_border_1);
+    background-color: #fff;
+  }
+
+  /* ! ----------
+  　Head ヘッド
+  ---------- */
+  &__head {
+    border-bottom: 1px solid var(--color_border_1);
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    padding: 0 1rem;
+    // タイトル
+    &__title {
+      @extend .c-text__sm !optional;
+      color: var(--color_primary_darkest);
+      font-weight: 700;
+      line-height: 1;
+    }
+  }
+
+  /* ! ----------
+  　Body ボディ
+  ---------- */
+  &__body {
+    padding: 1rem;
+    overflow-y: auto;
+
+    /* ! ----------
+    　スクロールバー
+    ---------- */
+    @extend .c-scroll !optional;
+  }
+
+  /* ! ----------
+  　Content コンテント （余白なしの場合はこれのみ）
+  ---------- */
+  &__コンテント {
+    width: 100%;
+  }
+}

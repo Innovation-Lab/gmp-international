@@ -1,8 +1,0 @@
-.p-ttl {
-  margin: 1.6em 0 0.5em;
-  &:has([class*="c-txt"]) {
-    [class*="c-ttl"] {
-      margin: 0 0 0.5em;
-    }
-  }
-}

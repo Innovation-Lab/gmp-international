@@ -1,0 +1,5 @@
+<footer>
+  <div>
+    フッター
+  </div>
+</footer>

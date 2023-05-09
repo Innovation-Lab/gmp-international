@@ -1,0 +1,16 @@
+<div 
+  class="
+    {{'p-dashboard__col__'.$span}}
+    @isset($lg)
+      {{'p-dashboard__col__'.$lg.'--lg'}}
+    @endisset
+    @isset($xl)
+      {{'p-dashboard__col__'.$xl.'--xl'}}
+    @endisset
+    @isset($xxl)
+      {{'p-dashboard__col__'.$xxl.'--xxl'}}
+    @endisset
+  "
+>
+  {{$slot}}
+</div>

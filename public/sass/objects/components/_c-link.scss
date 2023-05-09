@@ -1,0 +1,19 @@
+.c-link {
+  color: color(textThird);
+  font-size: rem(14px);
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 0.08em;
+  padding: 0 0 0 1.25rem;
+  background-image: url(../img/admin/icon/external.svg);
+  background-size: 1rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  &:hover {
+    color: color(primary);
+    text-decoration: underline;
+  }
+  &--back {
+    background-image: url(../img/admin/icon/back.svg);
+  }
+}

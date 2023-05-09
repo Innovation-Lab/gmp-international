@@ -1,2 +1,2 @@
-import './bootstrap';
-
+require('jquery');
+require('micromodal');

@@ -1,0 +1,16 @@
+@use "../../global" as global;
+
+/* ! ==================================================
+　Color カラー
+================================================== */
+.c-color {
+  &__primary {
+    color: var(--color_primary);
+  }
+  &__primary_dark {
+    color: var(--color_primary_dark);
+  }
+  &__secondary {
+    color: var(--color_secondary);
+  }
+}

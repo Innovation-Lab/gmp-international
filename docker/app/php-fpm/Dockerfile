@@ -12,7 +12,7 @@ RUN apk update \
   && apk add --no-cache zip unzip \
   && apk add --no-cache --virtual build-dependencies icu-dev \
   && apk add --no-cache freetype-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev \
-  && pecl install xdebug \
+  && pecl install xdebug-3.1.6 \
   apt-get install -y \
   libfreetype6-dev \
   libjpeg62-turbo-dev \

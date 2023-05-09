@@ -1,0 +1,161 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　FlashMessage メッセージ
+================================================== */
+.p-flash {
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+
+  &__inner {
+    display: grid;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      background: radial-gradient(
+        circle,
+        rgba(28, 28, 34, 0.2) 0%,
+        rgba(28, 28, 34, 0) 80%
+      );
+      width: calc(100% - 2rem);
+      height: calc(100% - 2rem);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  /* ! ----------
+  　アイテム
+  ---------- */
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem 1rem 1rem 3rem;
+    min-height: 3rem;
+    width: global.rem(320px);
+    border: 1px solid var(--color_border_1);
+    background: rgba(255, 255, 255, 1);
+    background-image: url(../img/admin/flash/info.png);
+    background-size: 1rem 1rem;
+    background-position: top 1rem left 1rem;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(40px);
+    border-radius: 0.5rem;
+    box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.08),
+      0px 4px 8px -4px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    $item: #{&};
+    & + & {
+      margin-top: 2px;
+    }
+    .title {
+      @extend .c-text__sm !optional;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .description {
+      color: var(--color_text_3);
+      @extend .c-text__xs !optional;
+      margin: 0.5em 0 0;
+    }
+    // Info インフォ
+    &--info {
+      background-image: url(../img/admin/flash/info.png);
+    }
+    // Success 成功
+    &--success {
+      background-image: url(../img/admin/flash/success.png);
+    }
+    // Alert アラート
+    &--alert {
+      background-image: url(../img/admin/flash/alert.png);
+    }
+
+    /* ! ----------
+    　is-hide 非表示
+    ---------- */
+    &.is-hide,
+    &.auto-hide {
+      animation-name: flash-hide;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+      transition: opacity 0.1s, height 0.1s;
+      > * {
+        animation-name: flash-contents-hide;
+        animation-duration: 0.1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+        transition: opacity 0.1s, height 0.1s;
+      }
+    }
+    // auto-hide 自動表示
+    &.auto-hide {
+      animation-delay: 4s;
+      > * {
+        animation-delay: 4s;
+      }
+    }
+    // is-hide 非表示
+    &.is-hide {
+      animation-delay: 0s;
+      > * {
+        animation-delay: 0s;
+      }
+    }
+
+    /* ! ----------
+    　keyframes キーフレーム
+    ---------- */
+    @keyframes flash-hide {
+      from {
+        opacity: 1;
+        height: auto;
+      }
+      to {
+        opacity: 0;
+        height: 0px;
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+      }
+    }
+    @keyframes flash-contents-hide {
+      from {
+        display: block;
+      }
+      to {
+        display: none;
+      }
+    }
+  }
+
+  /* ! ----------
+  　Close 閉じるボタン
+  ---------- */
+  &__close {
+    display: inline-grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    @extend .c-text__xs !optional;
+    color: var(--color_text_button);
+    margin: 0 0 0 auto;
+    cursor: pointer;
+    &::before {
+      content: "\2715";
+    }
+  }
+}

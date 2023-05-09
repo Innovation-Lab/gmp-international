@@ -1,0 +1,63 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Tab タブ
+================================================== */
+.p-tab {
+  margin: 0 0 1.5rem;
+
+  /* ! --------------------------------------------------
+  　Tab List タブリスト
+  -------------------------------------------------- */
+  &List {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    border-bottom: 1px solid var(--color_border_1);
+    // ラベル
+    &__label {
+      @extend .c-text__sm !optional;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      height: calc(2rem - 1px);
+      border-bottom: 2px solid transparent;
+      transform: translateY(1px);
+      & > span {
+        color: var(--color_text_button);
+        @extend .c-text__xs !optional;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        height: 1rem;
+        padding: 0 0.25rem;
+        background-color: #f2f4f6;
+        border-radius: 0.25rem;
+        &.alert {
+          color: #fff;
+          background-color: var(--color_alert) !important;
+        }
+      }
+
+      /* ! ----------
+      　Hover ホバー
+      ---------- */
+      &:hover {
+        color: var(--color_text_1);
+      }
+
+      /* ! ----------
+      　Active アクティブ
+      ---------- */
+      &.is-active {
+        color: var(--color_text_1);
+        border-color: var(--color_primary);
+        & > span {
+          color: #fff;
+          background-color: var(--color_primary);
+        }
+      }
+    }
+  }
+}

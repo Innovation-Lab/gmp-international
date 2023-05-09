@@ -1,0 +1,108 @@
+@use "../../global/" as global;
+@use "./c-text";
+
+/* ! ==================================================
+　Button ボタン
+================================================== */
+.c-button {
+  color: #fff;
+  @extend .c-text__sm !optional;
+  line-height: 1;
+  display: inline-grid;
+  place-items: center;
+  height: 2rem;
+  padding: 0 1em;
+  background-color: var(--color_primary);
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+
+  /* ! ----------
+  　Small 小さいボタン
+  ---------- */
+  &.small {
+    font-size: global.rem(13px);
+    height: 1.5rem;
+  }
+
+  /* ! ----------
+  　Hover ホバー
+  ---------- */
+  &:hover {
+    background-color: var(--color_primary_dark);
+  }
+  // &[disabled] {
+  //   color: #333;
+  //   background-color: #eee;
+  //   border-color: #eee;
+  //   pointer-events: none;
+  // }
+
+  /* ! --------------------------------------------------
+  　Secondary
+  -------------------------------------------------- */
+  &__2 {
+    @extend .c-button !optional;
+    color: var(--color_text_2);
+    background-color: #fff;
+    border-color: var(--color_border_1);
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_background_3);
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Reset リセット
+  -------------------------------------------------- */
+  &__reset {
+    @extend .c-button !optional;
+    color: var(--color_primary);
+    background-color: #fff;
+    border-color: var(--color_border_1);
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_background_3);
+      border-color: var(--color_primary);
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Alert アラート
+  -------------------------------------------------- */
+  &__alert {
+    @extend .c-button !optional;
+    color: #fff;
+    background-color: var(--color_alert);
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_alert_dark);
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Disabled ディスエイブルド
+  -------------------------------------------------- */
+  &__disabled {
+    @extend .c-button !optional;
+    background-color: var(--color_form_disabled);
+    pointer-events: none;
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_background_3);
+    }
+  }
+}

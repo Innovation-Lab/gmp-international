@@ -1,0 +1,11 @@
+@use "./_rem.scss" as rem;
+
+/* ! ==================================================
+　Font フォント
+================================================== */
+@function font($weight, $px, $lineHeight) {
+  $family: "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont",
+    "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  @return $weight rem.rem($px) #{"/"} $lineHeight $family;
+}

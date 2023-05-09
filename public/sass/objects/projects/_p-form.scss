@@ -1,0 +1,73 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Form フォーム
+================================================== */
+.p-form {
+  width: 100%;
+
+  /* ! ----------
+  　注意書き
+  ---------- */
+  small {
+    color: var(--color_form_ps);
+    @extend .c-text__xxs !optional;
+  }
+
+  /* ! --------------------------------------------------
+  　List リスト
+  -------------------------------------------------- */
+  &List {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 1rem;
+    &__item {
+    }
+    &__content {
+      display: grid;
+      grid-auto-rows: auto;
+      gap: 0.25rem;
+    }
+    &__label {
+      // color: var(--color_text_button);
+      @extend .c-text__xs !optional;
+      display: flex;
+      align-items: center;
+
+      /* ! ----------
+      　Optional 任意
+      ---------- */
+      @at-root .optional {
+        &::after {
+          color: var(--color_form_ps);
+          font: global.font(700, 10px, 1);
+          content: "任意入力";
+          display: inline-flex;
+          height: 1rem;
+          align-items: center;
+          padding: 0.15em 0.4em 0;
+          background-color: var(--color_background_3);
+          margin: 0 0 0 0.5em;
+          border-radius: 3px;
+          transform: translateY(-1px);
+        }
+      }
+    }
+    &__data {
+      @extend .c-text__sm !optional;
+
+      /* ! ----------
+      　Error エラー
+      ---------- */
+      .error {
+        @extend .c-text__xxs !optional;
+        color: var(--color_alert);
+        background-color: var(--color_alert_background);
+        padding: 0.5em 1em;
+        border-radius: 2px;
+        margin: 2px 0 0;
+      }
+    }
+  }
+}

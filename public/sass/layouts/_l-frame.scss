@@ -1,0 +1,54 @@
+@use "../global" as global;
+@use "../global/_components.scss";
+
+/* ! ----------
+　サイズ定義
+---------- */
+:root {
+  --width_sidebar: 12.5rem;
+  @include global.responsive(xl) {
+    --width_sidebar: 15rem;
+  }
+}
+
+/* ! ==================================================
+　Frames 全体フレーム
+================================================== */
+.l-frame {
+  flex: auto;
+  min-width: 0;
+  display: grid;
+  // テーブル表示の関係で、幅計算の必要がある↓
+  grid:
+    "sidebar main" 1fr
+    / var(--width_sidebar) calc(100vw - var(--width_sidebar));
+  &.is-hide {
+    --width_sidebar: 4.5rem;
+    @extend .c-text__sm !optional;
+  }
+
+  /* ! ----------
+  　編集ページの場合
+  ---------- */
+  &.edit {
+    grid:
+      "main" 1fr
+      / 100%;
+  }
+
+  /* ! --------------------------------------------------
+  　Sidebar サイドバーフレーム
+  -------------------------------------------------- */
+  &__sidebar {
+    display: flex;
+  }
+
+  /* ! --------------------------------------------------
+  　Main メインフレーム
+  -------------------------------------------------- */
+  &__main {
+    display: flex;
+    // 最大幅　1024px - サイドバー幅
+    min-width: calc(64rem - var(--width_sidebar));
+  }
+}

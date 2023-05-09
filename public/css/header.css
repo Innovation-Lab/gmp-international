@@ -1,0 +1,14 @@
+header > div {
+    height: 100px;
+    background-color: white;
+    border: 5px solid aqua;
+    border-radius: 10px;
+    align-content: center;
+}
+
+header h1 {
+    color: aqua;
+    margin: 25px 20px;
+    font-size: 30px;
+    text-align: center;
+}

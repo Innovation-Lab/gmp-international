@@ -1,0 +1,18 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Photo List 写真リスト
+================================================== */
+.p-photo {
+  &__list {
+    display: grid;
+    gap: .25rem;
+    grid-template-columns: repeat(auto-fit,minmax(64px,1fr));
+    &__item {
+    }
+    img {
+      aspect-ratio: 4 / 3;
+    }
+  }
+}

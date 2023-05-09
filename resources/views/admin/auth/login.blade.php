@@ -1,40 +1,80 @@
-@extends('admin.layout._page-single')
-@section('title', '管理画面ログイン')
-@section('main-class', 'l-main--nohidden')
+@extends('admin.layouts.pages._auth')
+@section('title', 'ログイン')
 @section('content')
-    <div class="u-w--100p u-align--both u-pb--80">
-      <div class="u-max--560">
-        <div class="p-ttl u-tac">
-          <h1 class="c-ttl--xxxl">SAMPLE APP CMS</h1>
-          <p>管理画面ログイン</p>
-        </div>
-        <div class="c-box--fill c-box--xl u-mt--24">
-          <!-- フォーム -->
-          <form action="" class="f-form">
-            <div class="f-item">
-              <label class="f-label">メールアドレス</label>
-              <input type="text" placeholder="">
+<div class="p-login">
+  <div class="wrapper">
+    <div class="container">
+      <div class="inner">
+        <div class="p-login__item">
+          <div class="p-login__head">
+            <div class="p-login__head__logo">
+              <img
+                src="{{ asset('img/admin/logo/normal.png')}}"
+                width="160px"
+                height="42px"
+              >
             </div>
-            <div class="f-item">
-              <label class="f-label">パスワード</label>
-              <input type="password" placeholder="" class="is-invalid">
-              <div class="f-invalid">パスワードに誤りがあります</div>
+          </div>
+          <div class="p-login__body">
+            {{-- テキスト --}}
+            <div class="p-login__body__text">
+              {{-- フォーム --}}
+              {!! Form::open(['class' => 'p-form']) !!}
+                <div class="p-login__body__text__head">
+                  <h1 class="p-login__body__text__head__title">管理システムログイン</h1>
+                </div>
+                <div class="p-login__body__text__body">
+                  <ul class="p-formList">
+                    <li class="p-formList__item">
+                      <div class="p-formList__content">
+                        <div class="p-formList__label">
+                          メールアドレス
+                        </div>
+                        <div class="p-formList__data">
+                          {!! Form::email('email', null, ['placeholder' => 'メールアドレスを入力']) !!}
+                        </div>
+                      </div>
+                    </li>
+                    <li class="p-formList__item">
+                      <div class="p-formList__content">
+                        <div class="p-formList__label">
+                          パスワード
+                        </div>
+                        <div class="p-formList__data">
+                          {!! Form::password('password', ['placeholder' => 'パスワードを入力']) !!}
+                          <div class="error">メールアドレスとパスワードが一致しません</div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="p-formList__item">
+                      <a class="c-button" href="{{route(('admin.users.index'))}}">ログイン</a>
+                      {{--
+                        <button onclick="window.location='{{ route("admin.users.index") }}'" class="c-button">ログイン</button>
+                      --}}
+                    </li>
+                    <li class="p-formList__item">
+                      <div class="l-grid">
+                        <div class="l-grid__item">
+                          <input type="checkbox" id="keep-login">
+                          <label for="keep-login">ログイン状態を保持</label>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              {!! Form::close() !!}
             </div>
-            <div class="f-item">
-              @if(false)
-                <button class="c-btn--full">ログイン</button>
-              @else
-                <a href="{{route('admin.dashboard')}}" class="c-btn--lg u-w--100p">ログイン</a>
-              @endif
+            {{-- 画像 --}}
+            <div class="p-login__body__image">
+              <img src="{{asset('img/admin/auth/login.png')}}" width="720px" height="560px">
             </div>
-            <div class="f-item">
-              <div class="u-align--vlc u-w--100p">
-                <a href="{{route('admin.auth.reset')}}" class="c-link">パスワードをお忘れの方</a>
-              </div>
-            </div>
-          </form>
+          </div>
+          <div class="p-login__foot">
+            <div class="copyright">© 2022 Innovation Lab, Inc.</div>
+          </div>
         </div>
       </div>
     </div>
-
+  </div>
+</div>
 @endsection
