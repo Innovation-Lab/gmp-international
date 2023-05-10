@@ -19,6 +19,7 @@ class CreateMColorsTable extends Migration
             $table->string('alphabet_name', 50)->comment('カラー名（英語表記）');
             $table->string('color', 50)->comment('カラー');
             $table->string('second_color', 50)->comment('カラー2');
+            $table->string('image_path', 255)->comment('カラー画像');
             $table->timestamps();
         });
     }
