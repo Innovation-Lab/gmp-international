@@ -7,11 +7,11 @@
     {{-- フラッシュメッセージ --}}
     {{-- ページフレーム --}}
     <div class="l-frame" id="js-target__gnavSwitch">
-      @include('web.layouts._header--login')
+      @include('web.layouts._header--mypage')
       <main class="l-frame__main">
         @yield('content')
       </main>
-      @include('web.layouts._footer--login')
+      @include('web.layouts._footer--mypage')
     </div>
 
     {{-- ---------- モーダル ---------- --}}

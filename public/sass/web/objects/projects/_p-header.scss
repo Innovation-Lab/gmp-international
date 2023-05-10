@@ -1,0 +1,29 @@
+.p-header {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  &--form{
+    background: #F5F2E7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__logo{
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border: 1px solid #8C8C8C;
+    border-radius: 20px;
+    position: absolute;
+    right: 2rem;
+    top: 1.2rem;
+    height: 24px;
+  }
+}

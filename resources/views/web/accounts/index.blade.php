@@ -1,4 +1,4 @@
-@extends('layouts.pages._default')
+@extends('web.layouts.pages._default')
 @section('title', 'アカウント管理')
 @section('class', 'nofilter')
 @section('content')

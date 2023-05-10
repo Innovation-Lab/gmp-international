@@ -1,4 +1,4 @@
-@extends('layouts.pages._default')
+@extends('web.layouts.pages._default')
 @section('title', 'ユーザー詳細')
 @section('content')
 <div class="p-detail">

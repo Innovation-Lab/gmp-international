@@ -82,9 +82,7 @@ body {
 img {
   max-width: 100%;
   vertical-align: bottom;
-}
-
-/* ! ==================================================
+} /* ! ==================================================
 　Colors
 ================================================== */
 :root {
@@ -140,8 +138,7 @@ img {
 ================================================== */
 /* ! ==================================================
 　Breakpoints　ブレイクポイント
-================================================== */
-/* ! ==================================================
+================================================== */ /* ! ==================================================
 　Responsive レスポンシブ
 ================================================== */
 /* ! ==================================================
@@ -201,7 +198,6 @@ body {
   font-size: 1rem;
   font-family: "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-feature-settings: "palt";
-  display: flex;
   flex: auto;
   min-height: 100vh;
 }
@@ -247,6 +243,11 @@ a {
   cursor: pointer;
 }
 
+::-moz-selection {
+  color: #fff;
+  background: #000;
+}
+
 ::selection {
   color: #fff;
   background: #000;
@@ -256,28 +257,27 @@ strong {
   font-weight: 700;
 }
 
-.c-text__xl, .p-index__head__title {
+.c-txt__xl {
   font: 700 1.5rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0;
 }
-.c-text__lg, .p-login__body__text__head__title {
+.c-txt__lg {
   font: 400 1.25rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__md, .p-profileImage__text__title, .p-edit__head__title, .p-detail__main__box__head__title, .p-dashboard__ranking__list__data .amount {
+.c-txt__md {
   font: 400 1rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__sm, .p-formList__data, .p-flash__item .title, .p-menuList__button, .p-pagination__count, .p-pagination__page, .p-table tbody td, .p-filterList__label, .p-tabList__label, .p-list__data, .p-edit__nav__list li a, .p-detail__sidebar__box__head__title, .p-dashboard__ranking__list__text .title, .p-dashboard__head__title, .l-frame.is-hide, .radio label, input[type=checkbox] + label, input[type=file] + label::after, .c-button, .c-button__2, .c-button__reset, .c-button__alert, .c-button__disabled, .modal__btn, .modal__btn-primary, .modal__btn-alert {
+.c-txt__sm {
   font: 400 0.875rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__xs, .p-formList__label, .p-flash__item .description, .p-flash__close, .p-pagination__count__amount::before, .p-pagination__count__amount::after, .p-pagination__page__denominator::before, .p-pagination__page__denominator::after, .p-table thead th, .p-table tbody td > span, .p-filterList__label > span, .p-tabList__label > span, .p-dataList__data, .p-list__label, .p-list__label a,
-.p-list__label [data-micromodal-trigger], .p-profile__text__sub, .p-profileImage__text__title span, .p-dashboard__ranking__list__text .sub {
+.c-txt__xs {
   font: 400 0.8125rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__xxs, .p-form small, .p-formList__data .error, .p-dataList__label, .p-login__foot {
+.c-txt__xxs {
   font: 400 0.75rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
@@ -285,6 +285,11 @@ strong {
 small {
   color: var(--color_text_2);
   font: 400 0.75rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.c-txt--copyLight {
+  font-size: 10px;
+  color: #ccc;
 }
 
 /* ! ==================================================
@@ -301,7 +306,9 @@ small {
   border-radius: 0.25rem;
   border: 1px solid transparent;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   /* ! ----------
   　Small 小さいボタン
   ---------- */
@@ -410,18 +417,21 @@ input:not([type=checkbox], [type=radio]),
 select,
 textarea {
   font: 400 0.875rem / 1 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  height: 2rem;
+  height: 3rem;
   width: 100%;
-  padding: 0 0.5rem;
-  border: 1px solid var(--color_form_border);
-  border-radius: 0.25em;
-  background-color: var(--color_form_background);
+  padding: 0 0.8rem;
+  border: none;
+  border-radius: 0.4em;
+  background: #f5f5f5;
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
 }
 
 label {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
 
@@ -462,7 +472,9 @@ input[type=radio] {
   padding: 0 1rem;
   border-radius: 0.125rem;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .radio input:checked + label {
   color: var(--color_primary);
@@ -498,6 +510,7 @@ input[type=checkbox]:checked + label {
 }
 
 input:-webkit-autofill {
+  -webkit-transition: background-color 5000s ease-in-out 0s !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
@@ -550,7 +563,8 @@ input[type=file] + label:hover::before, input[type=file] + label:hover::after {
 input[type=file] + label img {
   width: 100%;
   aspect-ratio: 1/1;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* ! ----------
@@ -587,7 +601,6 @@ input[type=file] + label img {
   flex: auto;
   min-width: 0;
   display: grid;
-  grid: "sidebar main" 1fr/var(--width_sidebar) calc(100vw - var(--width_sidebar));
   /* ! ----------
   　編集ページの場合
   ---------- */
@@ -598,20 +611,12 @@ input[type=file] + label img {
   　Main メインフレーム
   -------------------------------------------------- */
 }
-.l-frame.is-hide {
-  --width_sidebar: 4.5rem;
-}
 .l-frame.edit {
   grid: "main" 1fr/100%;
 }
 .l-frame__sidebar {
   display: flex;
 }
-.l-frame__main {
-  display: flex;
-  min-width: calc(64rem - var(--width_sidebar));
-}
-
 .collection-steps-header-progress {
   margin-bottom: 24px;
 }
@@ -732,6 +737,7 @@ input[type=file] + label img {
 }
 .l-index__head {
   grid-area: head;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -750,6 +756,7 @@ input[type=file] + label img {
 }
 .l-index__foot {
   grid-area: foot;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -796,6 +803,7 @@ input[type=file] + label img {
 }
 .l-detail__head {
   grid-area: head;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -830,8 +838,13 @@ input[type=file] + label img {
 }
 .l-detail__foot {
   grid-area: foot;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+}
+
+.l-container {
+  padding: 0 24px;
 }
 
 /* ! ----------
@@ -928,9 +941,23 @@ input[type=file] + label img {
   ---------- */
 }
 .c-loading.is-hide {
-  animation-name: hide-loading;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+  -webkit-animation-name: hide-loading;
+          animation-name: hide-loading;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes hide-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 @keyframes hide-loading {
   0% {
@@ -958,6 +985,62 @@ input[type=file] + label img {
 }
 .c-color__secondary {
   color: var(--color_secondary);
+}
+
+.c-txt {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.c-txt--step {
+  text-align: center;
+  color: #8e91a0;
+}
+.c-txt--support {
+  font-size: 11px;
+  color: #8e91a0;
+}
+.c-txt--copyLight {
+  font-size: 10px;
+  color: #ccc;
+}
+.c-txt--num {
+  color: #fff;
+}
+.c-txt--err {
+  font-size: 12px;
+  color: #c30e2e;
+}
+.c-txt--must {
+  color: #c30e2e;
+}
+.c-txt--ttl {
+  font-size: 16px;
+}
+
+/* ! ==================================================
+　Button ボタン
+================================================== */
+.c-btn {
+  font-size: 16px;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0px;
+  border-radius: 5px;
+}
+.c-btn--back {
+  background: #fff;
+  color: #C30E2E;
+  border: 1px solid #C30E2E;
+  min-width: 120px;
+}
+.c-btn--next {
+  background: #C30E2E;
+  color: #fff;
+  width: 100%;
 }
 
 /* ! ==================================================
@@ -1047,9 +1130,7 @@ input[type=file] + label img {
   :root {
     --dashboard-gap: 1.5rem;
   }
-}
-
-/* ! ==================================================
+} /* ! ==================================================
 　Dashboard ダッシュボード
 ================================================== */
 .p-dashboard {
@@ -1462,7 +1543,8 @@ input[type=file] + label img {
   align-items: center;
   margin: 0 0 1.5rem;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   border-bottom: 1px solid var(--color_border_1);
   position: relative;
   /* ! ----------
@@ -1514,7 +1596,8 @@ input[type=file] + label img {
   align-items: center;
   margin: 0 0 1.5rem;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   position: relative;
   border-bottom: 1px solid var(--color_border_1);
   /* ! ----------
@@ -1533,6 +1616,7 @@ input[type=file] + label img {
 }
 .p-detail__sidebar {
   border: 1px solid var(--color_border_1);
+  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
   /* ! ----------
@@ -1567,6 +1651,7 @@ input[type=file] + label img {
 }
 .p-detail__main {
   border: 1px solid var(--color_border_1);
+  position: -webkit-sticky;
   position: sticky;
   /* ! ----------
   　Box ボックス
@@ -1617,7 +1702,9 @@ input[type=file] + label img {
   padding: 1rem;
   border-top: 1px solid var(--color_border_1);
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1633,7 +1720,8 @@ input[type=file] + label img {
   border-top: 1px solid var(--color_border_1);
   padding: 1.5rem 0;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   position: relative;
 }
 
@@ -1668,6 +1756,7 @@ input[type=file] + label img {
   position: relative;
 }
 .p-edit__nav {
+  position: -webkit-sticky;
   position: sticky;
   top: 4rem;
   padding: 0.5rem 0;
@@ -1725,6 +1814,7 @@ input[type=file] + label img {
 }
 .p-edit__head__title {
   font-weight: 500;
+  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
 }
@@ -1742,6 +1832,7 @@ input[type=file] + label img {
   background-color: var(--color_background_1);
   border-right: 1px solid var(--color_border_1);
   height: 100vh;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   /* ! --------------------------------------------------
@@ -1826,6 +1917,7 @@ input[type=file] + label img {
   place-items: center;
   border-top: 1px solid var(--color_border_1);
   padding: 0 1rem;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1883,7 +1975,8 @@ input[type=file] + label img {
   grid-template-columns: 2.5rem 1fr;
 }
 .p-profile__image img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 1rem;
 }
 .is-hide .p-profile__image img {
@@ -1922,7 +2015,8 @@ input[type=file] + label img {
 .p-profileImage__image {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-image: url(../img/admin/profile/noimage.png);
   background-size: cover;
   background-position: center center;
@@ -2002,6 +2096,56 @@ input[type=file] + label img {
 }
 .p-profileImage__text__title > * + * {
   margin: 0.5em 0 0;
+}
+
+.p-header {
+  position: relative;
+  width: 100%;
+  height: 64px;
+}
+.p-header--form {
+  background: #F5F2E7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-header__logo {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-header__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border: 1px solid #8C8C8C;
+  border-radius: 20px;
+  position: absolute;
+  right: 2rem;
+  top: 1.2rem;
+  height: 24px;
+}
+
+.p-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80px 0 24px;
+  height: 60px;
+}
+.p-footer--login {
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.p-footer--txt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 /* ! ==================================================
@@ -2179,7 +2323,9 @@ input[type=file] + label img {
   background-position: right center;
   background-repeat: no-repeat;
   border-bottom: 1px solid var(--color_text_button);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
   /* ! ----------
   　Active アクティブ （フィルターが1つ以上適用されている状態）
@@ -2204,6 +2350,8 @@ input[type=file] + label img {
 }
 .p-filterList__content {
   display: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   border: 1px solid var(--color_border_1);
   background-color: #fff;
@@ -2280,10 +2428,13 @@ input[type=file] + label img {
   background: var(--color_background_3);
   padding: 0 1rem;
   height: 3rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 .p-table thead th .item {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
   min-width: max-content;
 }
 .p-table tbody tr[data-href], .p-table tbody tr[data-micromodal-trigger] {
@@ -2310,6 +2461,7 @@ input[type=file] + label img {
 }
 .p-table tfoot td {
   height: 2.5rem;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   transform: translateY(4px);
@@ -2495,12 +2647,13 @@ input[type=file] + label img {
   min-height: 3rem;
   width: 20rem;
   border: 1px solid var(--color_border_1);
-  background: white;
+  background: rgb(255, 255, 255);
   background-image: url(../img/admin/flash/info.png);
   background-size: 1rem 1rem;
   background-position: top 1rem left 1rem;
   background-repeat: no-repeat;
-  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
   border-radius: 0.5rem;
   box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -2534,30 +2687,56 @@ input[type=file] + label img {
   background-image: url(../img/admin/flash/alert.png);
 }
 .p-flash__item.is-hide, .p-flash__item.auto-hide {
-  animation-name: flash-hide;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  -webkit-animation-name: flash-hide;
+          animation-name: flash-hide;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.is-hide > *, .p-flash__item.auto-hide > * {
-  animation-name: flash-contents-hide;
-  animation-duration: 0.1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  -webkit-animation-name: flash-contents-hide;
+          animation-name: flash-contents-hide;
+  -webkit-animation-duration: 0.1s;
+          animation-duration: 0.1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.auto-hide {
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 .p-flash__item.auto-hide > * {
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 .p-flash__item.is-hide {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 .p-flash__item.is-hide > * {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+@-webkit-keyframes flash-hide {
+  from {
+    opacity: 1;
+    height: auto;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
 }
 @keyframes flash-hide {
   from {
@@ -2571,6 +2750,14 @@ input[type=file] + label img {
     padding-top: 0;
     padding-bottom: 0;
     margin: 0;
+  }
+}
+@-webkit-keyframes flash-contents-hide {
+  from {
+    display: block;
+  }
+  to {
+    display: none;
   }
 }
 @keyframes flash-contents-hide {
@@ -2609,11 +2796,6 @@ input[type=file] + label img {
 .p-form small {
   color: var(--color_form_ps);
 }
-.p-formList {
-  display: grid;
-  grid-auto-rows: auto;
-  gap: 1rem;
-}
 .p-formList__content {
   display: grid;
   grid-auto-rows: auto;
@@ -2651,6 +2833,107 @@ input[type=file] + label img {
   padding: 0.5em 1em;
   border-radius: 2px;
   margin: 2px 0 0;
+}
+
+.p-formList {
+  width: 100%;
+}
+.p-formList__item + .p-formList__item {
+  margin-top: 40px;
+}
+.p-formList__data input {
+  background: #FFE0E6;
+  border: #C30E2E 1px solid;
+}
+
+.p-register__head {
+  background: #F5F2E7;
+  width: 100%;
+  padding: 0 0 16px;
+}
+.p-register__ttl {
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-register__body {
+  margin-top: 40px;
+}
+.p-register__step {
+  margin-top: 24px;
+}
+
+.p-step {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.p-step__item {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  width: 33.33%;
+  color: #8c8c8c;
+  display: flex;
+  counter-increment: steps;
+}
+.p-step__item ::before {
+  content: "";
+  color: #fff;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 15px auto 8px auto;
+  line-height: 20px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #8c8c8c;
+  content: counter(steps);
+}
+.p-step__item + .p-step__item::after {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  top: 24px;
+  left: -50%;
+  width: calc(100% - 30px);
+  height: 2px;
+  background-color: #8c8c8c;
+  transform: translate(16px, 0px);
+}
+.p-step__item--current p {
+  color: #c30e2e;
+}
+.p-step__item--current ::before {
+  background: #c30e2e;
+  color: #fff;
+}
+.p-step__item--current + .p-step__item::after {
+  background: #8c8c8c;
+}
+.p-step__item--complete p {
+  color: #c30e2e;
+}
+.p-step__item--complete ::before {
+  background: #c30e2e;
+  color: #fff;
+}
+.p-step__item--complete + .p-step__item::after {
+  background: #c30e2e;
+}
+
+.p-btnWrap {
+  margin-top: 40px;
+  display: flex;
+}
+.p-btnWrap a + a {
+  margin-left: 8px;
 }
 
 /* ! ==================================================
@@ -2717,7 +3000,9 @@ input[type=file] + label img {
   background: transparent;
   border: 0;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   margin: 0 -0.25rem 0 0.5rem;
 }
 .modal__close:hover {
@@ -2747,12 +3032,28 @@ input[type=file] + label img {
 /**************************\
   Demo Animation Style
 \**************************/
+@-webkit-keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes mmfadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+@-webkit-keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 @keyframes mmfadeOut {
@@ -2763,12 +3064,28 @@ input[type=file] + label img {
     opacity: 0;
   }
 }
+@-webkit-keyframes mmslideIn {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 @keyframes mmslideIn {
   from {
     transform: translateY(15%);
   }
   to {
     transform: translateY(0);
+  }
+}
+@-webkit-keyframes mmslideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
   }
 }
 @keyframes mmslideOut {
@@ -2824,5 +3141,4 @@ input[type=file] + label img {
 /* ! --------------------------------------------------
 　Libraries ライブラリ
 -------------------------------------------------- */
-
-/*# sourceMappingURL=style-admin.css.map */
+/*# sourceMappingURL=style-web.css.map */

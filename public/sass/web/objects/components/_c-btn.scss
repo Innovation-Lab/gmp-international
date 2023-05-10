@@ -1,0 +1,26 @@
+
+/* ! ==================================================
+　Button ボタン
+================================================== */
+.c-btn {
+    font-size: 16px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    border-radius: 5px;
+    &--back{
+        background: #fff;
+        color: #C30E2E;
+        border: 1px solid #C30E2E;
+        min-width: 120px;
+    }
+    &--next{
+        background: #C30E2E;
+        color: #fff;
+        width: 100%;
+    }
+
+}

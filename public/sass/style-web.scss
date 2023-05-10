@@ -7,45 +7,54 @@
 　Foundations 定義
 -------------------------------------------------- */
 // Reset リセット
-@use "foundations/_reset.scss";
-
+@use "web/foundations/_reset.scss";
 // Colors 色
-@use "foundations/variables/_colors.scss";
+@use "web/foundations/variables/_colors.scss";
 
 // Default デフォルト
-@use "foundations/_default.scss";
+@use "web/foundations/_default.scss";
 
 // Form フォーム
-@use "foundations/_form.scss";
+@use "web/foundations/_form.scss";
 
 /* ! --------------------------------------------------
 　Layouts レイアウト
 -------------------------------------------------- */
-@use "layouts/_l-frame.scss";
+@use "web/layouts/_l-frame.scss";
 
 // Grid グリッド
-@use "layouts/_l-grid.scss";
+@use "web/layouts/_l-grid.scss";
 
 // Index 一覧ページ
-@use "layouts/_l-index.scss";
+@use "web/layouts/_l-index.scss";
 
 // Detail 詳細ページ
-@use "layouts/_l-detail.scss";
+@use "web/layouts/_l-detail.scss";
+
+// Container コンテナ
+@use "web/layouts/_l-container.scss";
 
 /* ! --------------------------------------------------
 　Components コンポーネント
 -------------------------------------------------- */
 // Status ステータス表示
-@use "objects/components/_c-status.scss";
+@use "web/objects/components/_c-status.scss";
 
 // Loading ローディング
-@use "objects/components/_c-loading.scss";
+@use "web/objects/components/_c-loading.scss";
 
 // Color カラー
-@use "objects/components/_c-color.scss";
+@use "web/objects/components/_c-color.scss";
 
 // Scroll スクロール
-@use "objects/components/_c-scroll.scss";
+@use "web/objects/components/_c-scroll.scss";
+
+// Text テキスト
+@use "web/objects/components/_c-txt.scss";
+
+// Button ボタン
+@use "web/objects/components/_c-btn.scss";
+
 
 /* ! --------------------------------------------------
 　Projects プロジェクト
@@ -54,74 +63,94 @@
 　Pages ページ
 ---------- */
 // Login ログイン
-@use "objects/projects/_p-login.scss";
+@use "web/objects/projects/_p-login.scss";
 
 // Dashboard ダッシュボード
-@use "objects/projects/_p-dashboard.scss";
-@use "objects/projects/dashboard/_ranking.scss";
+@use "web/objects/projects/_p-dashboard.scss";
+@use "web/objects/projects/dashboard/_ranking.scss";
 
 // Index 一覧ページ
-@use "objects/projects/_p-index.scss";
+@use "web/objects/projects/_p-index.scss";
 
 // Detail 詳細ページ
-@use "objects/projects/_p-detail.scss";
+@use "web/objects/projects/_p-detail.scss";
 
 // Edit 編集ページ
-@use "objects/projects/_p-edit.scss";
+@use "web/objects/projects/_p-edit.scss";
 
 /* ! ----------
 　Layouts・Area レイアウト・エリア
 ---------- */
 // Sidebar サイドバー
-@use "objects/projects/_p-sidebar.scss";
+@use "web/objects/projects/_p-sidebar.scss";
 
 // GlobalNav グローバルナビ
-@use "objects/projects/_p-gnav.scss";
+@use "web/objects/projects/_p-gnav.scss";
 
 // Profile プロフィール
-@use "objects/projects/_p-profile.scss";
+@use "web/objects/projects/_p-profile.scss";
+
+// ヘッダー
+@use "web/objects/projects/_p-header.scss";
+
+// フッター
+@use "web/objects/projects/_p-footer.scss";
 
 /* ! ----------
 　Parts パーツ
 ---------- */
 // List リスト
-@use "objects/projects/_p-list.scss";
+@use "web/objects/projects/_p-list.scss";
 
 // Data データ（料金リスト）
-@use "objects/projects/_p-data.scss";
+@use "web/objects/projects/_p-data.scss";
 
 // Photo 写真リスト
-@use "objects/projects/_p-photo.scss";
+@use "web/objects/projects/_p-photo.scss";
 
 // Tab タブ
-@use "objects/projects/_p-tab.scss";
+@use "web/objects/projects/_p-tab.scss";
 
 // Filter フィルター
-@use "objects/projects/_p-filter.scss";
+@use "web/objects/projects/_p-filter.scss";
 
 // Table テーブル
-@use "objects/projects/_p-table.scss";
+@use "web/objects/projects/_p-table.scss";
 
 // Pagination ページネーション
-@use "objects/projects/_p-pagination.scss";
+@use "web/objects/projects/_p-pagination.scss";
 
 // Menu メニュー
-@use "objects/projects/_p-menu.scss";
+@use "web/objects/projects/_p-menu.scss";
 
 // Flash Message フラッシュメッセージ
-@use "objects/projects/_p-flash.scss";
+@use "web/objects/projects/_p-flash.scss";
+
+
 
 /* ! ----------
 　Others その他
 ---------- */
 // Form フォーム
-@use "objects/projects/_p-form.scss";
+@use "web/objects/projects/_p-form.scss";
+
+// Form フォームリスト
+@use "web/objects/projects/_p-formList.scss";
+
+// Register 会員登録
+@use "web/objects/projects/_p-register.scss";
+
+// Step ステップ
+@use "web/objects/projects/_p-step.scss";
+
+// BtnWrap ボタンラップ
+@use "web/objects/projects/_p-btnWrap.scss";
 
 /* ! --------------------------------------------------
 　Libraries ライブラリ
 -------------------------------------------------- */
 // Micromodal マイクロモーダル
-@use "libraries/_micromodal.scss";
+@use "web/libraries/_micromodal.scss";
 
 // @import "object/project/_p-auth.scss";
 // @import "object/project/_p-login.scss";

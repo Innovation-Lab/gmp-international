@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
   {{-- ヘッド --}}
-  @include('layouts._head')
+  @include('web.layouts._head')
   <body class="@yield('class')" id="body">
     {{-- ローディング --}}
     <div class="c-loading" id="js-target__loading">
@@ -14,15 +14,15 @@
       <img src="{{asset('img/admin/develop/icon.svg')}}" width="24px" height="24px">
     </div>
 
-    @include('layouts._modal-develop')
+    @include('web.layouts._modal-develop')
     
 
     {{-- ページフレーム --}}
-    <div class="l-frame edit" id="js-target__gnavSwitch">
+    <!-- <div class="l-frame edit" id="js-target__gnavSwitch">
       <main class="l-frame__main">
         @yield('content')
       </main>
-    </div>
+    </div> -->
 
     {{-- ---------- モーダル ---------- --}}
     <!-- その他 -->

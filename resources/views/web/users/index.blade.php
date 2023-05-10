@@ -1,4 +1,4 @@
-@extends('layouts.pages._default')
+@extends('web.layouts.pages._default')
 @section('title', 'ユーザー管理')
 @section('content')
 <div class="p-index">

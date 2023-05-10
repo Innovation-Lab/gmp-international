@@ -1,0 +1,14 @@
+.p-formList{
+  width: 100%;
+  &__item{
+    & + &{
+      margin-top: 40px;
+    }
+  }
+  &__data{
+    input{
+      background: #FFE0E6;
+      border: #C30E2E 1px solid;
+    }
+  }
+}

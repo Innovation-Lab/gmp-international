@@ -1,4 +1,4 @@
-@extends('layouts.pages._edit')
+@extends('web.layouts.pages._edit')
 @section('title', 'ユーザー管理')
 @section('class', 'body_edit')
 @section('content')
