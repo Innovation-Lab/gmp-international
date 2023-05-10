@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Common\SerializeDate;
 use App\Http\Common\UtilClass;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,9 +47,41 @@ class User extends Authenticatable
     |--------------------------------------------------------------------------
     */
 
-    public function cars()
+    /**
+     * @return HasMany
+     * 購入商品
+     */
+    public function salesProducts(): HasMany
     {
-        return $this->hasMany('App\Models\Car');
+        return $this->hasMany(SalesProduct::class);
     }
 
+    /**
+     * フルネーム
+     *
+     * @return string
+     */
+    public function getFullNameAttribute(): string
+    {
+        return $this->last_name . ' ' . $this->first_name;
+    }
+    
+    /**
+     * フルネーム カナ
+     *
+     * @return string
+     */
+    public function getFullNameKanaAttribute(): string
+    {
+        return $this->last_name_kana . ' ' . $this->first_name_kana;
+    }
+
+    /**
+     * @return string
+     * 住所
+     */
+    public function getFullAddressAttribute(): string
+    {
+        return $this->prefecture .' '. $this->address_city .' '. $this->address_block .' '. $this->address_building;
+    }
 }

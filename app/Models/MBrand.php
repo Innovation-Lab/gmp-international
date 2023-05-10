@@ -20,4 +20,19 @@ class MBrand extends Model
     protected $guarded = [
         'id'
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * @return HasMany
+     * 商品
+     */
+    public function mProducts(): HasMany
+    {
+        return $this->hasMany(MProduct::class);
+    }
 }
