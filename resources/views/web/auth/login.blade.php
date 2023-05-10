@@ -27,7 +27,10 @@
       {!! Form::open(['method' => 'POST', 'route' => 'login', 'class' => '']) !!}
         <input type="email" name="email" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
-        <button type="submit" name="button" value="">ログイン</button>
+        @foreach ($errors->all() as $error)
+          <div class="error">{{ $error }}</div>
+        @endforeach
+        <input type="submit" name="button" value="ログイン">
       {!! Form::close() !!}
       <a href="">パスワードを忘れた方はこちら</a>
     </div>
