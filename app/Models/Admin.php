@@ -50,4 +50,22 @@ class Admin extends Authenticatable
     {
         return $this->authority == self::MANAGER;
     }
+
+    /**
+     * @return string
+     * フルネーム（漢字）
+     */
+    public function getFullNameAttribute(): string
+    {
+        return $this->last_name.' '.$this->first_name;
+    }
+    
+    /**
+     * @return string
+     * フルネーム（カナ）
+     */
+    public function getFullNameKanaAttribute(): string
+    {
+        return $this->last_name_kana.' '.$this->first_name_kana;
+    }
 }
