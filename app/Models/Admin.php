@@ -17,11 +17,8 @@ class Admin extends Authenticatable
     use Notifiable;
     use SerializeDate;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'authority',
+    protected $guarded = [
+        'id'
     ];
 
     public function sendPasswordResetNotification($token): void
