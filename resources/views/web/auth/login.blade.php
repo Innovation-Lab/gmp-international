@@ -24,9 +24,14 @@
       <a href="" class="c-btn">新規会員登録</a>
     </div>
     <div class="p-login__body__auth">
-      <input type="mail" name="user_mail" placeholder="メールアドレス">
-      <input type="password" name="password" placeholder="パスワード">
-      <input type="submit" name="button" value="ログイン">
+      {!! Form::open(['method' => 'POST', 'route' => 'login', 'class' => '']) !!}
+        <input type="email" name="email" placeholder="メールアドレス">
+        <input type="password" name="password" placeholder="パスワード">
+        @foreach ($errors->all() as $error)
+          <div class="error">{{ $error }}</div>
+        @endforeach
+        <input type="submit" name="button" value="ログイン">
+      {!! Form::close() !!}
       <a href="">パスワードを忘れた方はこちら</a>
     </div>
     <div class="p-login__body__information">
