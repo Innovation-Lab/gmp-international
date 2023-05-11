@@ -36,7 +36,7 @@
                     <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="">
+                    <input placeholder="例）gmp-international@sample.com" class="err" name="email" type="text" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">メールアドレスを半角英数字で入力してください</p>
@@ -49,7 +49,7 @@
                     <p class="c-txt">パスワード（半角英数字6〜10文字）　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="例）sample123" class="c-form" name="passward" type="passward" value="">
+                    <input placeholder="例）sample123" class="err" name="passward" type="text" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">パスワードを半角英数字で入力してください</p>
@@ -62,7 +62,7 @@
                     <p class="c-txt">パスワード（確認用）　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="パスワードを再入力してください" class="c-form" name="passward" type="passward" value="">
+                    <input placeholder="パスワードを再入力してください" class="err" name="passward" type="text" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">同じパスワードを入力してください</p>

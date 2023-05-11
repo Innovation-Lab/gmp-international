@@ -20,6 +20,10 @@ textarea {
   // background-color: var(--color_form_background);
   -webkit-appearance: none;
   appearance: none;
+  &.err{
+    background: #FFE0E6;
+    border: #C30E2E 1px solid;
+  }
 }
 label {
   user-select: none;

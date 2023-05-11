@@ -427,6 +427,12 @@ textarea {
   -moz-appearance: none;
        appearance: none;
 }
+input:not([type=checkbox], [type=radio]).err,
+select.err,
+textarea.err {
+  background: #FFE0E6;
+  border: #C30E2E 1px solid;
+}
 
 label {
   -webkit-user-select: none;
@@ -2841,11 +2847,6 @@ input[type=file] + label img {
 .p-formList__item + .p-formList__item {
   margin-top: 40px;
 }
-.p-formList__data input {
-  background: #FFE0E6;
-  border: #C30E2E 1px solid;
-}
-
 .p-register__head {
   background: #F5F2E7;
   width: 100%;
