@@ -158,7 +158,7 @@
       </li>
     </ul>
     <div class="p-btnWrap">
-      <a href="localhost:8082/login" class="c-btn">戻る</a>
+      <a href="{{route('web.login')}}" class="c-btn">戻る</a>
       <button type="submit" class="c-btn" id="register_form_button">購入製品の登録へ</button>
     </div>
   </div>

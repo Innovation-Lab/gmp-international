@@ -27,10 +27,10 @@
       </div>
       <div class="p-register__body">
         <div class="l-container">
-          <ul class="p-formList">
-            <!-- メールアドレス -->
-            <li class="p-formList__item">
-              <form action="">
+          <form action="">
+            <ul class="p-formList">
+              <!-- メールアドレス -->
+              <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
                     <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
@@ -41,11 +41,9 @@
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">メールアドレスを半角英数字で入力してください</p>
                 </div>
-              </form>
-            </li>
-            <!-- パスワード -->
-            <li class="p-formList__item">
-              <form action="">
+              </li>
+              <!-- パスワード -->
+              <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
                     <p class="c-txt">パスワード（半角英数字6〜10文字）　<span class="c-txt c-txt--must">必須</span></p>
@@ -56,11 +54,9 @@
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">パスワードを半角英数字で入力してください</p>
                 </div>
-              </form>
-            </li>
-            <!-- パスワード確認用 -->
-            <li class="p-formList__item">
-              <form action="">
+              </li>
+              <!-- パスワード確認用 -->
+              <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
                     <p class="c-txt">パスワード（確認用）　<span class="c-txt c-txt--must">必須</span></p>
@@ -71,12 +67,12 @@
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">同じパスワードを入力してください</p>
                 </div>
-              </form>
-            </li>
-          </ul>
-          <div class="p-btnWrap">
-            <a href="localhost:8082/login" class="c-btn c-btn--back">戻る</a>
-            <a href="http://localhost:8100/register/user" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
+              </li>
+            </ul>
+            <div class="p-btnWrap">
+              <a href="{{route('web.login')}}" class="c-btn c-btn--back">戻る</a>
+              <a href="{{route('web.user')}}" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
+            </div>
           </div>
         </div>
       </div>

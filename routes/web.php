@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\View;
 |
 */
 
-
-
 /* ! ==================================================
-　画面名 (マイページとか登録画面とか)
+　ログイン
 ================================================== */
 
 //新規会員登録
@@ -30,22 +28,29 @@ Route::get('/home', function () {
 require __DIR__.'/auth.php';
 
 //ログイン
-Route::view('/login', 'web.auth.login')->name('login');
-
-//マイページ
-Route::view('/mypage', 'web.mypage.index')->name('mypage');
+Route::view('/login', 'web.auth.login')->name('web.login');
 
 
-//新規会員登録
+/* ! ==================================================
+　マイページ
+================================================== */
+
+Route::view('/mypage', 'web.mypage.index')->name('web.mypage');
+
+
+/* ! ==================================================
+　新規会員登録
+================================================== */
+
 //利用規約同意
-Route::view('/register', 'web.register.terms')->name('terms');
+Route::view('/register', 'web.register.terms')->name('web.terms');
 //アカウント情報入力
-Route::view('/register/account', 'web.register.account')->name('account');
+Route::view('/register/account', 'web.register.account')->name('web.account');
 //ユーザー情報入力
-Route::view('/register/user', 'web.register.user')->name('user');
+Route::view('/register/user', 'web.register.user')->name('web.user');
 //購入製品登録
-Route::view('/register/product', 'web.register.product')->name('product');
+Route::view('/register/product', 'web.register.product')->name('web.product');
 //入力情報確認
-Route::view('/register/confirm', 'web.register.confirm')->name('confirm');
+Route::view('/register/confirm', 'web.register.confirm')->name('web.confirm');
 //入力完了画面
-Route::view('/register/complete', 'web.register.complete')->name('complete');
+Route::view('/register/complete', 'web.register.complete')->name('web.complete');
