@@ -1,0 +1,28 @@
+.p-card {
+    p{
+        color: #fff;
+    }
+    &__item{
+        background: #c30e2e;
+        border-radius: 10px;
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__info{}
+    &__mainData{}
+    &__brand{}
+    &__product{}
+    &__color{
+        margin-top: 8px;
+    }
+    &__subData{
+        margin-top: 24px;
+    }
+    &__purchase{}
+    &__serialNum{}
+    &__img{
+        background: #fff;
+        width: 120px;
+    }
+}

@@ -988,9 +988,25 @@ input[type=file] + label img {
 }
 
 .c-txt {
+  font: 400 0.75rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
+}
+.c-txt--lg {
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  line-height: 1em;
+  width: 160px;
+  word-wrap: break-word;
+}
+.c-txt--md {
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+.c-txt--sm {
+  font-size: 12px;
+  letter-spacing: 0.04em;
 }
 .c-txt--step {
   text-align: center;
@@ -1018,18 +1034,37 @@ input[type=file] + label img {
   font-size: 16px;
 }
 
+.c-ttl {
+  font-size: 14px;
+  font-weight: 500;
+}
+.c-ttl--xl {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
 /* ! ==================================================
 　Button ボタン
 ================================================== */
 .c-btn {
-  font-size: 16px;
-  height: 48px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+  display: inline-flex;
   align-items: center;
-  padding: 16px 0px;
+  justify-content: center;
+  gap: 4px;
+  padding: 0.2em 1.2em;
   border-radius: 5px;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  transition-property: box-shadow, color, background-color;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 .c-btn--back {
   background: #fff;
@@ -1041,6 +1076,14 @@ input[type=file] + label img {
   background: #C30E2E;
   color: #fff;
   width: 100%;
+}
+.c-btn--ghost {
+  background-color: transparent;
+  border-radius: 20px;
+}
+.c-btn--ghost--rd {
+  color: #c30e2e;
+  border-color: #c30e2e;
 }
 
 /* ! ==================================================
@@ -1519,56 +1562,9 @@ input[type=file] + label img {
   z-index: 1;
 }
 
-/* ! ==================================================
-　Index 一覧ページ
-================================================== */
-.p-index {
-  width: 100%;
-  /* ! --------------------------------------------------
-  　Head ヘッド
-  -------------------------------------------------- */
-  /* ! --------------------------------------------------
-  　Body ヘッド
-  -------------------------------------------------- */
-  /* ! --------------------------------------------------
-  　Foot フット
-  -------------------------------------------------- */
-}
-.p-index__inner {
-  width: 100%;
-}
-.p-index__head {
-  height: 5rem;
+.p-index--bar {
   display: flex;
-  align-items: center;
-  margin: 0 0 1.5rem;
-  background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-  border-bottom: 1px solid var(--color_border_1);
-  position: relative;
-  /* ! ----------
-  　Action アクション
-  ---------- */
-}
-.p-index__head__inner {
-  display: flex;
-  align-items: center;
-}
-.p-index__head__action {
-  margin: 0 0 0 auto;
-}
-.p-index__body {
-  flex: auto;
-  min-width: 0;
-  width: 100%;
-}
-.p-index__foot {
-  height: 3rem;
-  background: var(--color_background_3);
-  padding: 0 1.5rem;
-  display: flex;
-  align-items: center;
+  justify-content: space-between;
 }
 
 /* ! ==================================================
@@ -2119,12 +2115,11 @@ input[type=file] + label img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 16px;
   border: 1px solid #8C8C8C;
   border-radius: 20px;
   position: absolute;
   right: 2rem;
-  top: 1.2rem;
+  top: 0.4rem;
   height: 24px;
 }
 
@@ -2779,6 +2774,24 @@ input[type=file] + label img {
 }
 .p-flash__close::before {
   content: "✕";
+}
+
+.p-card p {
+  color: #fff;
+}
+.p-card__item {
+  background: #c30e2e;
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.p-card__color {
+  margin-top: 8px;
+}
+.p-card__img {
+  background: #fff;
+  width: 120px;
 }
 
 /* ! ==================================================

@@ -3,14 +3,29 @@
 　Button ボタン
 ================================================== */
 .c-btn {
-    font-size: 16px;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    font-size: 12px;
+    text-align: center;
+    display: inline-flex;
     align-items: center;
-    padding: 16px 0px;
+    justify-content: center;
+    gap: 4px;
+    padding: 0.2em 1.2em;
     border-radius: 5px;
+    border: 1px solid transparent;
+    vertical-align: middle;
+    transition-property: box-shadow, color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+    user-select: none;
+    cursor: pointer;
+    // font-size: 16px;
+    // height: 48px;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+    // padding: 16px 0px;
+    // border-radius: 5px;
     &--back{
         background: #fff;
         color: #C30E2E;
@@ -22,5 +37,12 @@
         color: #fff;
         width: 100%;
     }
-
+    &--ghost{
+        background-color: transparent;
+        border-radius: 20px;
+        &--rd{
+            color: #c30e2e;
+            border-color: #c30e2e;
+        }
+    }
 }

@@ -52,6 +52,9 @@
 // Text テキスト
 @use "web/objects/components/_c-txt.scss";
 
+// Title タイトル
+@use "web/objects/components/_c-ttl.scss";
+
 // Button ボタン
 @use "web/objects/components/_c-btn.scss";
 
@@ -126,6 +129,11 @@
 // Flash Message フラッシュメッセージ
 @use "web/objects/projects/_p-flash.scss";
 
+// Card カード
+@use "web/objects/projects/_p-card.scss";
+
+// Information インフォメーション
+@use "web/objects/projects/_p-info.scss";
 
 
 /* ! ----------

@@ -29,6 +29,8 @@ Route::get('/home', function () {
 });
 require __DIR__.'/auth.php';
 
+
+
 //ログイン
 Route::view('/login', 'web.auth.login')->name('login');
 

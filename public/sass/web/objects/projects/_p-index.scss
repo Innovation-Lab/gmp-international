@@ -1,62 +1,6 @@
-@use "../../global" as global;
-@use "../../global/_components.scss";
-
-/* ! ==================================================
-　Index 一覧ページ
-================================================== */
-.p-index {
-  width: 100%;
-  &__inner {
-    width: 100%;
-  }
-  /* ! --------------------------------------------------
-  　Head ヘッド
-  -------------------------------------------------- */
-  &__head {
-    height: 5rem;
+.p-index{
+  &--bar{
     display: flex;
-    align-items: center;
-    margin: 0 0 1.5rem;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(2px);
-    border-bottom: 1px solid var(--color_border_1);
-    position: relative;
-
-    &__inner {
-      display: flex;
-      align-items: center;
-    }
-
-    // タイトル
-    &__title {
-      @extend .c-text__xl !optional;
-    }
-
-    /* ! ----------
-    　Action アクション
-    ---------- */
-    &__action {
-      margin: 0 0 0 auto;
-    }
-  }
-
-  /* ! --------------------------------------------------
-  　Body ヘッド
-  -------------------------------------------------- */
-  &__body {
-    flex: auto;
-    min-width: 0;
-    width: 100%;
-  }
-
-  /* ! --------------------------------------------------
-  　Foot フット
-  -------------------------------------------------- */
-  &__foot {
-    height: 3rem;
-    background: var(--color_background_3);
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
+    justify-content: space-between;
   }
 }
