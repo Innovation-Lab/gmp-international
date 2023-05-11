@@ -1,4 +1,19 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+
 
 /* ! ==================================================
 　画面名 (マイページとか登録画面とか)
@@ -8,7 +23,11 @@
 // Route::view('/register', 'register')->name('register');
 
 //ホーム
-Route::view('/', 'web.home')->name('home');
+// ログイン後のホーム画面
+Route::get('/home', function () {
+    return view('web.home');
+});
+require __DIR__.'/auth.php';
 
 //ログイン
 Route::view('/login', 'web.auth.login')->name('login');

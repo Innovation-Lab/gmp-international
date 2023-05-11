@@ -17,11 +17,8 @@ class Admin extends Authenticatable
     use Notifiable;
     use SerializeDate;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'authority',
+    protected $guarded = [
+        'id'
     ];
 
     public function sendPasswordResetNotification($token): void
@@ -49,5 +46,23 @@ class Admin extends Authenticatable
     public function isManager()
     {
         return $this->authority == self::MANAGER;
+    }
+
+    /**
+     * @return string
+     * フルネーム（漢字）
+     */
+    public function getFullNameAttribute(): string
+    {
+        return $this->last_name.' '.$this->first_name;
+    }
+    
+    /**
+     * @return string
+     * フルネーム（カナ）
+     */
+    public function getFullNameKanaAttribute(): string
+    {
+        return $this->last_name_kana.' '.$this->first_name_kana;
     }
 }

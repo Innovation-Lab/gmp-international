@@ -3117,70 +3117,28 @@ input[type=file] + label img {
 /* ! --------------------------------------------------
 　Foundations 定義
 -------------------------------------------------- */
-@use "web/foundations/_reset.scss";
-@use "web/foundations/variables/_colors.scss";
-@use "web/foundations/_default.scss";
-@use "web/foundations/_form.scss";
 /* ! --------------------------------------------------
 　Layouts レイアウト
 -------------------------------------------------- */
-@use "web/layouts/_l-frame.scss";
-@use "web/layouts/_l-grid.scss";
-@use "web/layouts/_l-index.scss";
-@use "web/layouts/_l-detail.scss";
-@use "web/layouts/_l-container.scss";
 /* ! --------------------------------------------------
 　Components コンポーネント
 -------------------------------------------------- */
-@use "web/objects/components/_c-status.scss";
-@use "web/objects/components/_c-loading.scss";
-@use "web/objects/components/_c-color.scss";
-@use "web/objects/components/_c-scroll.scss";
-@use "web/objects/components/_c-txt.scss";
-@use "web/objects/components/_c-btn.scss";
 /* ! --------------------------------------------------
 　Projects プロジェクト
 -------------------------------------------------- */
 /* ! ----------
 　Pages ページ
 ---------- */
-@use "web/objects/projects/_p-login.scss";
-@use "web/objects/projects/_p-dashboard.scss";
-@use "web/objects/projects/dashboard/_ranking.scss";
-@use "web/objects/projects/_p-index.scss";
-@use "web/objects/projects/_p-detail.scss";
-@use "web/objects/projects/_p-edit.scss";
 /* ! ----------
 　Layouts・Area レイアウト・エリア
 ---------- */
-@use "web/objects/projects/_p-sidebar.scss";
-@use "web/objects/projects/_p-gnav.scss";
-@use "web/objects/projects/_p-profile.scss";
-@use "web/objects/projects/_p-header.scss";
-@use "web/objects/projects/_p-footer.scss";
 /* ! ----------
 　Parts パーツ
 ---------- */
-@use "web/objects/projects/_p-list.scss";
-@use "web/objects/projects/_p-data.scss";
-@use "web/objects/projects/_p-photo.scss";
-@use "web/objects/projects/_p-tab.scss";
-@use "web/objects/projects/_p-filter.scss";
-@use "web/objects/projects/_p-table.scss";
-@use "web/objects/projects/_p-pagination.scss";
-@use "web/objects/projects/_p-menu.scss";
-@use "web/objects/projects/_p-flash.scss";
 /* ! ----------
 　Others その他
 ---------- */
-@use "web/objects/projects/_p-form.scss";
-@use "web/objects/projects/_p-formList.scss";
-@use "web/objects/projects/_p-register.scss";
-@use "web/objects/projects/_p-step.scss";
-@use "web/objects/projects/_p-btnWrap.scss";
 /* ! --------------------------------------------------
 　Libraries ライブラリ
 -------------------------------------------------- */
-@use "web/libraries/_micromodal.scss";
-
 /*# sourceMappingURL=style-web.css.map */
