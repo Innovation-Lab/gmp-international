@@ -1014,9 +1014,6 @@ input[type=file] + label img {
 .c-txt--must {
   color: #c30e2e;
 }
-.c-txt--ttl {
-  font-size: 16px;
-}
 
 /* ! ==================================================
 　Button ボタン
@@ -1041,6 +1038,20 @@ input[type=file] + label img {
   background: #C30E2E;
   color: #fff;
   width: 100%;
+}
+
+.c-ttl {
+  font-size: 16px;
+  font-weight: 500;
+}
+.c-ttl--xl {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.c-description {
+  font-size: 14px;
 }
 
 /* ! ==================================================
@@ -2803,7 +2814,7 @@ input[type=file] + label img {
 }
 .p-formList__label {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   /* ! ----------
   　Optional 任意
   ---------- */
@@ -2839,11 +2850,24 @@ input[type=file] + label img {
   width: 100%;
 }
 .p-formList__item + .p-formList__item {
-  margin-top: 40px;
+  margin-top: 32px;
 }
-.p-formList__data input {
+.p-formList__item--half {
+  display: flex;
+  align-items: flex-end;
+}
+.p-formList__content + .p-formList__content {
+  margin-left: 8px;
+}
+.p-formList__data--err input {
   background: #FFE0E6;
   border: #C30E2E 1px solid;
+}
+.p-formList__ttl + .p-formList__ttl {
+  margin-top: 32px;
+}
+.p-formList__other {
+  margin-top: 32px;
 }
 
 .p-register__head {
@@ -2863,6 +2887,9 @@ input[type=file] + label img {
 }
 .p-register__step {
   margin-top: 24px;
+}
+.p-register__foot {
+  margin-top: 40px;
 }
 
 .p-step {
@@ -2929,11 +2956,59 @@ input[type=file] + label img {
 }
 
 .p-btnWrap {
-  margin-top: 40px;
   display: flex;
 }
 .p-btnWrap a + a {
   margin-left: 8px;
+}
+.p-terms__head {
+  background: #F5F2E7;
+  width: 100%;
+  padding: 0 0 16px;
+}
+.p-terms__ttl {
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-terms__ttl--top {
+  margin-top: 16px;
+}
+.p-terms__ttl--sub {
+  background: #F5F2E7;
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.p-terms__ttl--sub + .p-terms__ttl--sub {
+  margin-top: 40px;
+}
+.p-terms__txt {
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+.p-terms__txt--sub {
+  padding: 0 16px;
+}
+.p-terms__body {
+  margin-top: 40px;
+}
+.p-terms__step {
+  margin-top: 24px;
+}
+.p-terms__box {
+  height: 400px;
+  overflow: scroll;
+}
+.p-terms__foot {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ! ==================================================

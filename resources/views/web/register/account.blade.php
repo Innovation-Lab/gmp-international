@@ -7,7 +7,7 @@
       <div class="p-register__head">
         <div class="l-container"> 
           <div class="p-register__ttl">
-            <p class="c-txt c-txt--ttl">新規会員登録</p>
+            <p class="c-ttl">新規会員登録</p>
           </div>
           <!-- ステップ1 -->
           <div class="p-register__step">
@@ -35,7 +35,7 @@
                   <div class="p-formList__label">
                     <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
-                  <div class="p-formList__data">
+                  <div class="p-formList__data--err">
                     <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
@@ -69,10 +69,14 @@
                 </div>
               </li>
             </ul>
-            <div class="p-btnWrap">
-              <a href="{{route('web.login')}}" class="c-btn c-btn--back">戻る</a>
-              <a href="{{route('web.user')}}" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
-            </div>
+          </form>
+        </div>
+      </div>
+      <div class="p-register__foot">
+        <div class="l-container">
+          <div class="p-btnWrap">
+            <a href="{{route('web.terms')}}" class="c-btn c-btn--back">戻る</a>
+            <a href="{{route('web.user')}}" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
           </div>
         </div>
       </div>

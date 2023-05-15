@@ -55,6 +55,12 @@
 // Button ボタン
 @use "web/objects/components/_c-btn.scss";
 
+// Title タイトル
+@use "web/objects/components/_c-ttl.scss";
+
+// Description デスクリプション
+@use "web/objects/components/_c-description.scss";
+
 
 /* ! --------------------------------------------------
 　Projects プロジェクト
@@ -145,6 +151,9 @@
 
 // BtnWrap ボタンラップ
 @use "web/objects/projects/_p-btnWrap.scss";
+
+// BtnWrap ボタンラップ
+@use "web/objects/projects/_p-terms.scss";
 
 /* ! --------------------------------------------------
 　Libraries ライブラリ

@@ -1,5 +1,55 @@
 .p-terms {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  &__head{
+    background: #F5F2E7;
+    width: 100%;
+    padding: 0 0 16px;
+  }
+  &__ttl{
+    padding-top: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--top{
+      margin-top: 16px;
+    }
+    &--sub{
+      & + &{
+        margin-top: 40px;
+      }
+      background: #F5F2E7;
+      width: 100%;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: left;
+
+
+    }
+  }
+  &__txt{
+    margin-top: 16px;
+    margin-bottom: 40px;
+    &--sub{
+      padding: 0 16px;
+    }
+  }
+  &__body{
+    margin-top: 40px;
+  }
+  &__step{
+    margin-top: 24px;
+  }
+  &__item{
+  }
+  &__box{
+    height: 400px;
+    overflow: scroll;
+  }
+  &__foot{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
