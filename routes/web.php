@@ -1,6 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +20,6 @@ use Illuminate\Support\Facades\View;
 　ログイン
 ================================================== */
 
-//新規会員登録
-// Route::view('/register', 'register')->name('register');
-
 //ホーム
 // ログイン後のホーム画面
 Route::get('/home', function () {
@@ -27,27 +27,8 @@ Route::get('/home', function () {
 });
 require __DIR__.'/auth.php';
 
-
-
-//ログイン
-Route::view('/login', 'web.auth.login')->name('web.login');
-
 //製品一覧
 Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
-
-
-
-
-//新規会員登録
-
-//利用規約同意
-Route::view('/register', 'web.register.terms')->name('web.register.terms');
-
-//アカウント情報入力
-Route::view('/register/account', 'web.register.account')->name('web.register.account');
-
-//ユーザー情報入力
-Route::view('/register/user', 'web.register.user')->name('web.register.user');
 
 //購入製品登録
 Route::view('/register/product', 'web.register.product')->name('web.register.product');
@@ -63,3 +44,37 @@ Route::view('/register/complete', 'web.register.complete')->name('web.register.c
 ================================================== */
 
 Route::view('/mypage', 'web.mypage.index')->name('web.mypage');
+
+Route::get('/', [RegisterController::class, 'login'])->name('login');
+Route::get('/login', [RegisterController::class, 'login'])->name('login');
+
+//新規会員登録
+Route::group([
+    'prefix' => 'register',
+    'as' => 'register.',
+], function() {
+    //利用規約同意
+    Route::get('/', [RegisterController::class, 'terms'])->name('terms');
+    //アカウント情報入力
+    Route::get('/account', [RegisterController::class, 'account'])->name('account');
+    Route::post('/store/account', [RegisterController::class, 'storeAccount'])->name('store.account');
+    //ユーザー情報入力
+    Route::get('/info', [RegisterController::class, 'information'])->name('info');
+    Route::post('/store/info', [RegisterController::class, 'storeInformation'])->name('store.information');
+
+    //購入製品登録
+    Route::get('/product', [RegisterController::class, 'product'])->name('product');
+    //入力情報確認
+    Route::get('/confirm', [RegisterController::class, 'confirm'])->name('confirm');
+    //入力完了画面
+    Route::get('/complete', [RegisterController::class, 'complete'])->name('complete');
+});
+
+//ホーム
+Route::group([
+    'namespace' => 'Mypage',
+    'prefix' => 'mypage',
+    'as' => 'mypage.',
+], function() {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+});

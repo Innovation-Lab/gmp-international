@@ -13,7 +13,7 @@
       </div>
       <div class="p-terms__body">
         <div class="l-container">
-          <a href="http://localhost:8082/login">登録済みの方はこちら</a>
+          <a href="{{ route('login') }}">登録済みの方はこちら</a>
           <div class="p-terms__ttl--top">
             <p class="c-ttl">ユーザー登録システム利用規約</p>
           </div>
@@ -192,7 +192,7 @@
           </label>
           <!-- ボタン -->
           <div class="p-btnWrap p-btnWrap--single">
-            <a href="{{route('web.register.account')}}" class="c-btn c-btn--next">アカウント情報の入力へ</a>
+            <a href="{{ route('register.account') }}" class="c-btn c-btn--next">アカウント情報の入力へ</a>
           </div>
         </div>
       </div>
