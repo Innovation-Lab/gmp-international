@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="p-terms__body">
-    <a href="http://localhost:8082/login">登録済みの方はこちら</a>
+    <a href="http://localhost:8100/login">登録済みの方はこちら</a>
     <div class="p-term__ttl">
       <p class="c-ttl">ユーザー登録システム利用規約</p>
     </div>
@@ -185,7 +185,7 @@
     </label>
     <!-- ボタン -->
     <div class="p-btnWrap">
-        <button type="submit" class="c-btn" id="register_form_button" href="http://localhost:8082/register/account">アカウント情報の入力へ</button>
+        <button class="c-btn" id="register_form_button" onclick="window.location.href = '{{ route('register.account') }}'">アカウント情報の入力へ</button>
     </div>
   </div>
   <div class="p-terms__foot">

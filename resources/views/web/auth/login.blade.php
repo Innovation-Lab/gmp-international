@@ -15,7 +15,7 @@
         <img src="" alt="">
         <img src="" alt="">
       </div>
-      <a href="http://localhost:8082/register" class="c-btn">新規会員登録</a>
+      <a href="{{ route('register.terms') }}" class="c-btn">新規会員登録</a>
     </div>
     <div class="p-login__body__auth">
       {!! Form::open(['method' => 'POST', 'route' => 'login', 'class' => '']) !!}

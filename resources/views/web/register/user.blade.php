@@ -25,6 +25,8 @@
         </div>
       </div>
       <div class="p-register__body">
+      <form method="POST" action="{{ route('register.store.information') }}">
+        @csrf
         <ul class="p-formList">
           <!-- お名前 -->
           <li class="p-formList__item p-formList__item__half">
@@ -34,16 +36,22 @@
                 お名前　<span class="c-txt c-txt--must">必須</b>
               </div>
               <div class="p-formList__data">
-                <input placeholder="例）山田" class="required" name="name" type="name" value="">
+                <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name') }}">
               </div>
-              <span class="c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</span>
+              {{-- <span class="c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</span> --}}
+              @error('last_name')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
             </div>
             <!-- 名 -->
             <div class="p-formList__content">
               <div class="p-formList__data">
-                <input placeholder="例）太郎" class="required" name="email" type="email" value="">
+                <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name') }}">
               </div>
-              <span class="c-txt--err">「名」を入力してください。<br>※全角で入力してください。</span>
+              {{-- <span class="c-txt--err">「名」を入力してください。<br>※全角で入力してください。</span> --}}
+              @error('first_name')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
             </div>
           </li>
           <!-- フリガナ -->
@@ -54,16 +62,22 @@
                 フリガナ　<span class="c-txt c-txt--must">必須</b>
               </div>
               <div class="p-formList__data">
-                <input placeholder="例）ヤマダ" class="required" name="name" type="name" value="">
+                <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana') }}">
               </div>
-              <span class="c-txt--err">「セイ」を入力してください。<br>※全角カタカナで入力してください。</span>
+              {{-- <span class="c-txt--err">「セイ」を入力してください。<br>※全角カタカナで入力してください。</span> --}}
+              @error('last_name_kana')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
             </div>
             <!-- 名 -->
             <div class="p-formList__content">
               <div class="p-formList__data">
-                <input placeholder="例）タロウ" class="required" name="email" type="email" value="">
+                <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana') }}">
               </div>
-              <span class="c-txt--err">「メイ」を入力してください。<br>※全角カタカナで入力してください。</span>
+              {{-- <span class="c-txt--err">「メイ」を入力してください。<br>※全角カタカナで入力してください。</span> --}}
+              @error('first_name_kana')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
             </div>
           </li>
           <!-- 郵便番号 -->
@@ -73,9 +87,12 @@
                 郵便番号　<span class="c-txt">必須</span>
               </div>
               <div class="p-formList__data">
-                <input placeholder="" maxlength="7" class="required" name="passward" type="passward" value="">
+                <input placeholder="" maxlength="7" class="required" name="zip_code" type="number" value="{{ old('zip_code') }}">
               </div>
-              <span class="c-txt--err">郵便番号を入力してください。</span>
+              {{-- <span class="c-txt--err">郵便番号を入力してください。</span> --}}
+              @error('zip_code')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
             </div>
           </li>
           <!-- 住所 -->
@@ -85,8 +102,8 @@
                 住所　<span class="c-txt">必須</span>
               </div>
               <div class="p-formList__data">
-                <select name="pref">
-                  <option value="" selected>都道府県</option>
+                <select name="prefecture" value="{{ old('prefecture') }}">
+                  <option value="" selected>選択してください。</option>
                   <option value="北海道">北海道</option>
                   <option value="青森県">青森県</option>
                   <option value="岩手県">岩手県</option>
@@ -135,14 +152,26 @@
                   <option value="鹿児島県">鹿児島県</option>
                   <option value="沖縄県">沖縄県</option>
                 </select>
+                @error('prefecture')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+                @enderror
               </div>
               <div class="p-formList__data">
-                <input placeholder="市区町村 番地" class="required" name="passward" type="passward" value="">
+                <input placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city') }}">
               </div>
+              @error('address_city')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
               <div class="p-formList__data">
-                <input placeholder="建物名" class="required" name="passward" type="passward" value="">
+                <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block') }}">
               </div>
-              <span class="c-txt--err">都道府県を選択してください。</span>
+              @error('address_block')
+                <div class="c-txt c-txt--err">{{ $message }}</div>
+              @enderror
+              <div class="p-formList__data">
+                <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
+              </div>
+              {{-- <span class="c-txt--err">都道府県を選択してください。</span> --}}
             </div>
           </li>
           <!-- 住所 -->
@@ -152,16 +181,20 @@
                 電話番号　<span class="c-txt">必須</span>
               </div>
               <div class="p-formList__data">
-                <input placeholder="例）08012345678" class="required" name="passward" type="passward" value="">
+                <input placeholder="例）08012345678" class="required" name="tel" type="number" value="{{ old('tel') }}">
               </div>
-              <span class="c-txt--err">電話番号を入力してください。</span>
+              {{-- <span class="c-txt--err">電話番号を入力してください。</span> --}}
+              @error('tel')
+              <div class="c-txt c-txt--err">{{ $message }}</div>
+            @enderror
             </div>
           </li>
         </ul>
         <div class="p-btnWrap">
-          <a href="localhost:8082/login" class="c-btn">戻る</a>
+          <a href="localhost:8100/login" class="c-btn">戻る</a>
           <button type="submit" class="c-btn" id="register_form_button">購入製品の登録へ</button>
         </div>
+      </form>
       </div>
       <div class="p-register__foot">
 
