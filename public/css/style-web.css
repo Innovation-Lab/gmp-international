@@ -2929,6 +2929,25 @@ input[type=file] + label img {
   background: #c30e2e;
 }
 
+.p-terms__head {
+  background: #F5F2E7;
+  width: 100%;
+  padding: 0 0 16px;
+}
+.p-terms__ttl {
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-terms__body {
+  margin-top: 40px;
+}
+.p-terms__step {
+  margin-top: 24px;
+}
+
 .p-btnWrap {
   margin-top: 40px;
   display: flex;
