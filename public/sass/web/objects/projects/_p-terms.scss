@@ -1,5 +1,20 @@
 .p-terms {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  &__head{
+    background: #F5F2E7;
+    width: 100%;
+    padding: 0 0 16px;
+  }
+  &__ttl{
+    padding-top: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__body{
+    margin-top: 40px;
+  }
+  &__step{
+    margin-top: 24px;
+  }
 }
