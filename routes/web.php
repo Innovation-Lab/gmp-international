@@ -23,7 +23,7 @@ use App\Http\Controllers\UserController;
 //ホーム
 // ログイン後のホーム画面
 Route::get('/home', function () {
-    return view('web.home');
+    return view('web.users.mypage.index');
 });
 require __DIR__.'/auth.php';
 
