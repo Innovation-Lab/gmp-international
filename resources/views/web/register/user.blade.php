@@ -165,8 +165,8 @@
       <div class="p-register__foot">
         <div class="l-container">
           <div class="p-btnWrap">
-              <a href="{{route('web.account')}}" class="c-btn c-btn--back">戻る</a>
-              <a href="{{route('web.product')}}" class="c-btn c-btn--next">購入製品の登録へ</a>
+              <a href="{{route('web.register.account')}}" class="c-btn c-btn--back">戻る</a>
+              <a href="{{route('web.register.product')}}" class="c-btn c-btn--next">購入製品の登録へ</a>
           </div>
         </div>
       </div>

@@ -131,8 +131,8 @@
             </li>
           </ul>
           <div class="p-btnWrap">
-              <a href="{{route('web.user')}}" class="c-btn c-btn--back">戻る</a>
-              <a href="{{route('web.confirm')}}" class="c-btn c-btn--next">入力情報の確認へ</a>
+              <a href="{{route('web.register.user')}}" class="c-btn c-btn--back">戻る</a>
+              <a href="{{route('web.register.confirm')}}" class="c-btn c-btn--next">入力情報の確認へ</a>
           </div>
         </div>
       </div>

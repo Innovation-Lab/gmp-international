@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="p-card__edit">
-                                <a class="c-btn">編集する</p>
+                                <p class="c-btn">編集する</p>
                                 <p class="c-txt">エアバギー代官山</p>
                             </div>
                         </div>

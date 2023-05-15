@@ -49,7 +49,7 @@
                     <p class="c-txt">パスワード（半角英数字6〜10文字）　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="例）sample123" class="c-form" name="passward" type="passward" value="">
+                    <input placeholder="例）sample123" class="err" name="passward" type="text" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">パスワードを半角英数字で入力してください</p>
@@ -62,7 +62,7 @@
                     <p class="c-txt">パスワード（確認用）　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="パスワードを再入力してください" class="c-form" name="passward" type="passward" value="">
+                    <input placeholder="パスワードを再入力してください" class="err" name="passward" type="text" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   <p style="display: none;" class="c-txt c-txt--err">同じパスワードを入力してください</p>
@@ -75,8 +75,8 @@
       <div class="p-register__foot">
         <div class="l-container">
           <div class="p-btnWrap">
-            <a href="{{route('web.terms')}}" class="c-btn c-btn--back">戻る</a>
-            <a href="{{route('web.user')}}" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
+            <a href="{{route('web.register.terms')}}" class="c-btn c-btn--back">戻る</a>
+            <a href="{{route('web.register.user')}}" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@
       <a href="http://localhost:8082/register" class="c-btn">新規会員登録</a>
     </div>
     <div class="p-login__body__auth">
-      {!! Form::open(['method' => 'POST', 'route' => 'login', 'class' => '']) !!}
+      {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
         <input type="email" name="email" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
         @foreach ($errors->all() as $error)

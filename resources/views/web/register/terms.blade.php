@@ -192,7 +192,7 @@
           </label>
           <!-- ボタン -->
           <div class="p-btnWrap p-btnWrap--single">
-            <a href="{{route('web.account')}}" class="c-btn c-btn--next">アカウント情報の入力へ</a>
+            <a href="{{route('web.register.account')}}" class="c-btn c-btn--next">アカウント情報の入力へ</a>
           </div>
         </div>
       </div>
