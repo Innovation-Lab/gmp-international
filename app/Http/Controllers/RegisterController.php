@@ -63,7 +63,11 @@ class RegisterController extends Controller
      */
     public function information(Request $request): View|Factory|Application
     {   
-        return view('web.register.user');
+        $prefectures = config('prefecture');
+        return view('web.register.user')
+            ->with([
+                'prefectures' => $prefectures
+            ]);
     }
     
     /**
