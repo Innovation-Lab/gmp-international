@@ -1,6 +1,16 @@
 .p-index{
-  &--bar{
+  &__bar{
     display: flex;
     justify-content: space-between;
+  }
+  &__btn{
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  &__body{
+    margin-top: 24px;
   }
 }

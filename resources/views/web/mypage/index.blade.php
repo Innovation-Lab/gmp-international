@@ -17,6 +17,7 @@
                         <a href="" class="c-btn c-btn--ghost c-btn--ghost--rd">製品の追加登録</a>
                     </div>
                 </div>
+                <!-- 登録製品複数の場合 -->
                 <ul class="p-card">
                     <li class="p-card__item">
                         <div class="p-card__info">
@@ -35,18 +36,80 @@
                             <div class="p-card__subData">
                                 <!-- 購入日・シリアルナンバー -->
                                 <div class="p-card__purchase">
-                                    <p class="c-txt c-txt--sm">購入日</p>
+                                    <p class="c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
                                     <p class="c-txt">2023/04/04</p>
                                 </div>
                                 <div class="p-card__serialNum">
-                                    <p class="c-txt c-txt--sm">シリアルナンバー</p>
+                                    <p class="c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
                                     <p class="c-txt">GMP123456789</p>
                                 </div>
                             </div>
                         </div>
                         <!-- 製品画像 -->
                         <div class="p-card__img">
-                            <img src="" alt="">
+                            <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
+                        </div>
+                    </li>
+                    <li class="p-card__item">
+                        <div class="p-card__info">
+                            <!-- ブランド・製品名・カラー -->
+                            <div class="p-card__mainData">
+                                <div class="p-card__brand">
+                                    <p class="c-txt">AIR BUGGY</p>
+                                </div>
+                                <div class="p-card__product">
+                                    <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
+                                </div>
+                                <div class="p-card__color">
+                                    <p class="c-txt">GRASS GREEN</p>
+                                </div>
+                            </div>
+                            <div class="p-card__subData">
+                                <!-- 購入日・シリアルナンバー -->
+                                <div class="p-card__purchase">
+                                    <p class="c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
+                                    <p class="c-txt">2023/04/04</p>
+                                </div>
+                                <div class="p-card__serialNum">
+                                    <p class="c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
+                                    <p class="c-txt">GMP123456789</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 製品画像 -->
+                        <div class="p-card__img">
+                            <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
+                        </div>
+                    </li>
+                    <li class="p-card__item">
+                        <div class="p-card__info">
+                            <!-- ブランド・製品名・カラー -->
+                            <div class="p-card__mainData">
+                                <div class="p-card__brand">
+                                    <p class="c-txt">AIR BUGGY</p>
+                                </div>
+                                <div class="p-card__product">
+                                    <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
+                                </div>
+                                <div class="p-card__color">
+                                    <p class="c-txt">GRASS GREEN</p>
+                                </div>
+                            </div>
+                            <div class="p-card__subData">
+                                <!-- 購入日・シリアルナンバー -->
+                                <div class="p-card__purchase">
+                                    <p class="c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
+                                    <p class="c-txt">2023/04/04</p>
+                                </div>
+                                <div class="p-card__serialNum">
+                                    <p class="c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
+                                    <p class="c-txt">GMP123456789</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 製品画像 -->
+                        <div class="p-card__img">
+                            <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
                         </div>
                     </li>
                 </ul>
@@ -57,9 +120,9 @@
             </div>
             <div class="p-index__body">
                 <!-- カテゴリータイトル -->
-                <div class="p-index__ttlBar">
+                <div class="p-index__bar">
                     <div class="p-index__ttl">
-                        <p class="c-ttl c-ttl--xl">user</p>
+                        <p class="c-ttl c-ttl--xl">USER</p>
                         <p class="c-ttl">会員登録情報</p>
                     </div>
                 </div>
@@ -67,34 +130,34 @@
                 <div class="p-info">
                     <div class="p-info__bar">
                         <div class="p-info__ttl">
-                            <p class="c-txt">ユーザー情報</p>
+                            <p class="c-ttl">ユーザー情報</p>
                         </div>
                         <!-- 変更ボタン -->
                         <div class="p-info__btn">
-                            <a href="" class="c-btn">変更する</a>
+                            <a href="" class="c-btn c-btn--rd">変更する</a>
                         </div>
                     </div>
                     <div class="p-info__txt">
-                        <p class="c-txt">名前 なまえ</p>
-                        <p class="c-txt">〒102-0094</p>
-                        <p class="c-txt">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</p>
-                        <p class="c-txt">03-6380-8220</p>
+                        <div class="c-txt">名前 なまえ</div>
+                        <div class="c-txt">〒102-0094</div>
+                        <div class="c-txt">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</div>
+                        <div class="c-txt">03-6380-8220</div>
                     </div>
                 </div>
                 <!-- アカウント情報 -->
                 <div class="p-info">
                     <div class="p-info__bar">
                         <div class="p-info__ttl">
-                            <p class="c-txt">アカウント情報</p>
+                            <p class="c-ttl">アカウント情報</p>
                         </div>
                         <!-- 変更ボタン -->
                         <div class="p-info__btn">
-                            <a href="" class="c-btn">変更する</a>
+                            <a href="" class="c-btn c-btn--rd">変更する</a>
                         </div>
                     </div>
                     <div class="p-info__txt">
-                        <p class="c-txt">h.koyama@soushin-lab.co.jp</p>
-                        <p class="c-txt">パスワードはセキュリティのため非表示</p>
+                        <div class="c-txt">h.koyama@soushin-lab.co.jp</div>
+                        <div class="c-txt">パスワードはセキュリティのため非表示</div>
                     </div>
                 </div>
             </div>

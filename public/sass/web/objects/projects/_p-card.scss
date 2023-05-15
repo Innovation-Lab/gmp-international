@@ -1,5 +1,13 @@
+.visual{
+    background-color: #9f9f9f;
+    margin-bottom: 60px;
+}
 .p-card {
-    p{
+    &--all{
+        margin-top: 16px;   
+    }
+    margin-top: 16px;
+    p:not(.c-txt--sm--ghost){
         color: #fff;
     }
     &__item{
@@ -14,7 +22,17 @@
     &__brand{}
     &__product{}
     &__color{
-        margin-top: 8px;
+        margin-top: 4px;
+        ::before{
+            content: "";
+            display: inline-block;
+            background: #fff;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            margin-right: 4px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 7);
+        }
     }
     &__subData{
         margin-top: 24px;
@@ -22,7 +40,9 @@
     &__purchase{}
     &__serialNum{}
     &__img{
-        background: #fff;
         width: 120px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: right;
     }
 }
