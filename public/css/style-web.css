@@ -1074,6 +1074,13 @@ input[type=file] + label img {
   font-size: 14px;
 }
 
+.c-label {
+
+}
+span.c-label {
+
+}
+
 /* ! ==================================================
 　Login ログインページ
 ================================================== */
@@ -3019,7 +3026,7 @@ input[type=file] + label img {
 .p-terms__ttl--sub {
   background: #F5F2E7;
   width: 100%;
-  padding: 12px 16px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: left;
