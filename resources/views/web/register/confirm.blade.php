@@ -3,14 +3,14 @@
 @section('class', 'body_')
 @section('content')
   <div class="l-frame__body">
-    <div class="p-confirm">
-      <div class="p-confirm__head">
+    <div class="p-register">
+      <div class="p-register__head">
         <div class="l-container">
-          <div class="p-confirm__ttl">
+          <div class="p-register__ttl">
             <p class="c-ttl">新規会員登録</p>
           </div>
           <!-- ステップ2 -->
-          <div class="p-confirm__step">
+          <div class="p-register__step">
             <ul class="p-step">
               <li class="p-step__item p-step__item--complete">
                 <p class="c-txt c-txt--step">アカウント<br>情報の入力</p>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="p-confirm__body">
+      <div class="p-register__body">
         <div class="l-container">
           <ul class="p-formList">
             <!-- 購入日 -->

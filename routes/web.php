@@ -32,13 +32,9 @@ require __DIR__.'/auth.php';
 //ログイン
 Route::view('/login', 'web.auth.login')->name('web.login');
 
-
-
-//マイページ
-Route::view('/mypage', 'web.mypage.index')->name('web.mypage');
-
-//登録済み製品一覧
+//製品一覧
 Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
+
 
 
 
@@ -62,3 +58,8 @@ Route::view('/register/confirm', 'web.register.confirm')->name('web.register.con
 //入力完了画面
 Route::view('/register/complete', 'web.register.complete')->name('web.register.complete');
 
+/* ! ==================================================
+　マイページ
+================================================== */
+
+Route::view('/mypage', 'web.mypage.index')->name('web.mypage');

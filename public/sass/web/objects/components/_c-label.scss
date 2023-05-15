@@ -1,3 +1,16 @@
 .c-label {
-
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(18px);
+  padding: 0 0.25rem;
+  background-color: color(textDisabled);
+  @at-root span#{&} {
+    margin-right: 0.25rem;
+    transform: translateY(-2px);
+  }
 }
