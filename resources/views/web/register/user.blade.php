@@ -86,7 +86,7 @@
                 <div class="p-formList__label">
                     <p class="c-txt">住所　<span class="c-txt c-txt--must">必須</span></p>
                 </div>
-                <div class="p-formList__data">
+                <div style="width:152px;" class="p-formList__data">
                   <select name="pref">
                     <option value="" selected>都道府県</option>
                     <option value="北海道">北海道</option>
@@ -159,6 +159,38 @@
                 <p style="display: none;" class="c-txt c-txt--err">電話番号を入力してください。</p>
               </div>
             </li>
+            <!-- カタログの送付 -->
+            <li class="p-formList__item">
+              <div class="p-formList__content">
+                <div class="p-formList__label">
+                    <p class="c-txt">カタログの送付　<span class="c-txt c-txt--must">必須</span></p>
+                </div>
+                <div class="p-formList__data">
+                  <form action="radio.php" method="post">
+                      <input type="radio" id="inq1" name="num_of_inq" value="1">
+                      <label for="inq1">希望する</label>
+                      <input type="radio" id="inq2" name="num_of_inq" value="2">
+                      <label for="inq2">希望しない</label>
+                  </form>
+                </div>
+              </div>
+            </li>
+            <!-- DMの送付 -->
+            <li class="p-formList__item">
+              <div class="p-formList__content">
+                <div class="p-formList__label">
+                    <p class="c-txt">DMの送付　<span class="c-txt c-txt--must">必須</span></p>
+                </div>
+                <div class="p-formList__data">
+                  <form action="radio.php" method="post">
+                      <input type="radio" id="inq1" name="num_of_inq" value="1">
+                      <label for="inq1">希望する</label>
+                      <input type="radio" id="inq2" name="num_of_inq" value="2">
+                      <label for="inq2">希望しない</label>
+                  </form>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -166,7 +198,7 @@
         <div class="l-container">
           <div class="p-btnWrap">
               <a href="{{route('web.register.account')}}" class="c-btn c-btn--back">戻る</a>
-              <a href="{{route('web.register.product')}}" class="c-btn c-btn--next">購入製品の登録へ</a>
+              <a href="{{route('web.register.confirm')}}" class="c-btn c-btn--next">購入製品の登録へ</a>
           </div>
         </div>
       </div>

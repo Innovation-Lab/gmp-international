@@ -61,6 +61,9 @@
 // Description デスクリプション
 @use "web/objects/components/_c-description.scss";
 
+// Label ラベル
+@use "web/objects/components/_c-label.scss";
+
 
 /* ! --------------------------------------------------
 　Projects プロジェクト
@@ -159,6 +162,9 @@
 
 // BtnWrap ボタンラップ
 @use "web/objects/projects/_p-btnWrap.scss";
+
+// Confirm コンファーム
+@use "web/objects/projects/_p-confirm.scss";
 
 /* ! --------------------------------------------------
 　Libraries ライブラリ
