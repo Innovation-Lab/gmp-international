@@ -2,13 +2,32 @@
   width: 100%;
   &__item{
     & + &{
-      margin-top: 40px;
+      margin-top: 32px;
+    }
+    &--half{
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+  &__content{
+    & + &{
+      margin-left: 8px;
     }
   }
   &__data{
-    input{
-      background: #FFE0E6;
-      border: #C30E2E 1px solid;
+    &--err{
+      input{
+        background: #FFE0E6;
+        border: #C30E2E 1px solid;
+      }
     }
+  }
+  &__ttl{
+    & + &{
+      margin-top: 32px;
+    }
+  }
+  &__other{
+    margin-top: 32px;
   }
 }

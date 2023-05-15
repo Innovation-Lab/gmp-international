@@ -1,8 +1,4 @@
 .p-register {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
   &__head{
     background: #F5F2E7;
     width: 100%;
@@ -20,5 +16,8 @@
   }
   &__step{
     margin-top: 24px;
+  }
+  &__foot{
+    margin-top: 40px;
   }
 }

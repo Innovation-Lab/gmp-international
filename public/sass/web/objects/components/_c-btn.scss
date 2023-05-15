@@ -3,24 +3,51 @@
 　Button ボタン
 ================================================== */
 .c-btn {
-    font-size: 16px;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    color: #fff;
+    background: #000;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    display: inline-flex;
     align-items: center;
-    padding: 16px 0px;
-    border-radius: 5px;
+    justify-content: center;
+    gap: 4px;
+    padding: 0.2em 1.2em;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    vertical-align: middle;
+    transition-property: box-shadow, color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+    user-select: none;
+    cursor: pointer;
+    &--rd{
+        background: #c30e2e;
+    }
     &--back{
+        font-size: 16px;
         background: #fff;
         color: #C30E2E;
         border: 1px solid #C30E2E;
+        border-radius: 5px;
+        padding: 0.7em 0;
         min-width: 120px;
     }
     &--next{
+        font-size: 16px;
         background: #C30E2E;
+        border-radius: 5px;
         color: #fff;
         width: 100%;
-    }
+        padding: 0.7em 0;
 
+    }
+    &--ghost{
+        color: #8c8c8c;
+        background-color: transparent;
+        &--rd{
+            color: #c30e2e;
+            border-color: #c30e2e;
+        }
+    }
 }

@@ -52,8 +52,14 @@
 // Text テキスト
 @use "web/objects/components/_c-txt.scss";
 
+// Title タイトル
+@use "web/objects/components/_c-ttl.scss";
+
 // Button ボタン
 @use "web/objects/components/_c-btn.scss";
+
+// Description デスクリプション
+@use "web/objects/components/_c-description.scss";
 
 
 /* ! --------------------------------------------------
@@ -126,6 +132,11 @@
 // Flash Message フラッシュメッセージ
 @use "web/objects/projects/_p-flash.scss";
 
+// Card カード
+@use "web/objects/projects/_p-card.scss";
+
+// Information インフォメーション
+@use "web/objects/projects/_p-info.scss";
 
 
 /* ! ----------
@@ -142,6 +153,9 @@
 
 // Step ステップ
 @use "web/objects/projects/_p-step.scss";
+
+// Terms タームス
+@use "web/objects/projects/_p-terms.scss";
 
 // BtnWrap ボタンラップ
 @use "web/objects/projects/_p-btnWrap.scss";
