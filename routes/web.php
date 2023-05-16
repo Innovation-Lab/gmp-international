@@ -27,28 +27,20 @@ Route::get('/home', function () {
 });
 require __DIR__.'/auth.php';
 
-//製品一覧
-Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
-
-//購入製品登録
-Route::view('/register/product', 'web.register.product')->name('web.register.product');
-
-//入力情報確認
-Route::view('/register/confirm', 'web.register.confirm')->name('web.register.confirm');
-
-//入力完了画面
-Route::view('/register/complete', 'web.register.complete')->name('web.register.complete');
-
-/* ! ==================================================
-　マイページ
-================================================== */
-
-Route::view('/mypage', 'web.mypage.index')->name('web.mypage');
-
 Route::get('/', [RegisterController::class, 'login'])->name('login');
 Route::get('/login', [RegisterController::class, 'login'])->name('login');
 
-//新規会員登録
+//パスワード再設定メール
+Route::view('/forgot', 'web.auth.forgot.index')->name('web.forgot.index');
+Route::view('/forgot/complete', 'web.auth.forgot.complete')->name('web.forgot.complete');
+//パスワード再設定
+Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
+Route::view('/reset/complete', 'web.auth.reset.complete')->name('web.reset.complete');
+
+
+/* ! ==================================================
+　新規会員登録
+================================================== */
 Route::group([
     'prefix' => 'register',
     'as' => 'register.',
@@ -70,6 +62,10 @@ Route::group([
     Route::get('/complete', [RegisterController::class, 'complete'])->name('complete');
 });
 
+
+/* ! ==================================================
+　マイページ
+================================================== */
 //ホーム
 Route::group([
     'namespace' => 'Mypage',
@@ -78,3 +74,8 @@ Route::group([
 ], function() {
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
+
+Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
+
+//登録済み製品一覧
+Route::view('/mypage/product', 'web.mypage.product')->name('web.product');

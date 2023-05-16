@@ -66,4 +66,13 @@ line-height: 18px;
   &--must{
     color: #c30e2e;
   }
+  &--center{
+    text-align: center;
+    &--md{
+      text-align: left;
+      @include global.responsive(md) {
+        text-align: center;
+      }
+    }
+  }
 }

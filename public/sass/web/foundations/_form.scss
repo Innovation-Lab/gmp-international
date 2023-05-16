@@ -84,23 +84,24 @@ input[type="checkbox"] {
 }
 input[type="checkbox"] {
   & + label {
-    color: var(--color_form_button);
-    @extend .c-text__sm !optional;
-    display: inline-flex;
-    height: 2rem;
+    font-size: 16px;
+    color: #222;
+    display: flex;
     align-items: center;
-    padding: 0 0 0 1.75rem;
-    background-image: url(../img/admin/form/checkbox.png);
-    background-size: 1.5rem 1.5rem;
-    background-position: left center;
-    background-repeat: no-repeat;
-    &:hover {
-      color: var(--color_text_1);
+    &:before{
+      content: '';
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      background: url(../img/web/icon/checkbox.png)no-repeat center;
+      background-size: contain !important;
+      margin: 0 8px 0 0;
     }
   }
   &:checked + label {
-    color: var(--color_primary);
-    background-image: url(../img/admin/form/checkbox-checked.png);
+    &:before{
+      background: url(../img/web/icon/checkbox--checked.png)no-repeat center;
+    }
   }
 }
 input:-webkit-autofill {

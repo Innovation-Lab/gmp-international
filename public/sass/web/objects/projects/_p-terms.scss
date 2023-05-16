@@ -1,55 +1,52 @@
+/* ! ==================================================
+　規約同意
+================================================== */
 .p-terms {
   &__head{
-    background: #F5F2E7;
-    width: 100%;
-    padding: 0 0 16px;
-  }
-  &__ttl{
-    padding-top: 24px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &--top{
-      margin-top: 16px;
+    .c-ttl{
+      margin: 40px 0 0;
     }
-    &--sub{
-      & + &{
-        margin-top: 40px;
-      }
-      background: #F5F2E7;
-      width: 100%;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: left;
-
-
-    }
-  }
-  &__txt{
-    margin-top: 16px;
-    margin-bottom: 40px;
-    &--sub{
-      padding: 0 16px;
+    .c-description{
+      margin: 16px 0 0;
     }
   }
   &__body{
-    margin-top: 40px;
+    margin: 40px 0 0;
   }
-  &__step{
-    margin-top: 24px;
-  }
-  &__item{
-  }
-  &__box{
-    height: 400px;
-    overflow: scroll;
-  }
-  &__foot{
-    margin-top: 40px;
+  &__scroll{
+    max-height: 400px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    overflow: scroll;
+    border: solid 1px #EAEBEA;
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 0;
+      transition: all 0.4s ease;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 12px;
+      background: #EAEBEA;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background: #8C8C8C;
+    }
+  }
+  &__list{
+    flex: 0 0 auto;
+    &__item{
+      .c-ttl{
+        min-height: 44px;
+        background: #F5F2E7;
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        line-height: 1.3em;
+      }
+      .c-description{
+        padding: 16px;
+      }
+    }
   }
 }
