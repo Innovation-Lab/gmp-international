@@ -1156,6 +1156,9 @@ input[type=file] + label img {
 .c-input--post, .c-input--prefectures {
   width: 120px;
 }
+.c-input--date {
+  width: 140px;
+}
 .c-input--tel {
   width: 160px;
 }
@@ -3294,6 +3297,22 @@ input[type=file] + label img {
 .p-formList__ttl + .p-formList__ttl {
   margin-top: 32px;
 }
+.p-formList__guide {
+  margin: 0 0 0 4px;
+}
+.p-formList__guide__btn {
+  width: 14px;
+  height: 14px;
+  background: url(../img/web/icon/guide_btn.png) no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  display: block;
+  -webkit-appearance: none;
+  border: none;
+}
+.p-formList__guide__btn:hover {
+  opacity: 0.7;
+}
 .p-formList__other {
   margin-top: 12px;
 }
@@ -3521,43 +3540,56 @@ input[type=file] + label img {
 
 .modal__container {
   background-color: #fff;
-  padding: 30px;
+  padding: 32px;
   max-width: 500px;
   max-height: 100vh;
-  border-radius: 4px;
-  overflow-y: auto;
+  border-radius: 10px;
   box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.modal__container--min {
+  max-width: 340px;
 }
 
 /* ! ----------
 　Header ヘッダー
 ---------- */
 .modal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
 }
 
 .modal__title {
-  color: var(--color_text_1);
-  margin-top: 0;
-  margin-bottom: 0;
+  color: #222;
+  font-size: 20px;
   font-weight: 600;
-  font-size: 1.25rem;
   line-height: 1.25;
-  box-sizing: border-box;
+}
+
+.modal__description {
+  margin: 1rem 0 0;
+  font-size: 13px;
+}
+.modal__description b {
+  color: #C30E2E;
 }
 
 /* ! ----------
 　閉じる
 ---------- */
 .modal__close {
-  background: transparent;
-  border: 0;
+  position: absolute;
+  right: 0;
+  top: -12px;
+  width: 20px;
+  height: 20px;
+  background: url(../img/web/icon/modal_close.png) no-repeat center;
+  background-size: contain;
+  padding: 0;
+  transform: translate(0, -100%);
+  z-index: 1;
+  border: none;
   cursor: pointer;
-  user-select: none;
-  margin: 0 -0.25rem 0 0.5rem;
 }
 .modal__close:hover {
   opacity: 0.5;
@@ -3570,6 +3602,14 @@ input[type=file] + label img {
 /* ! ----------
 　Content 内容
 ---------- */
+.modal__content__foot {
+  margin: 1.5rem 0 0;
+}
+.modal__content__foot .p-btnWrap .c-btn {
+  font-size: 14px;
+  height: 56px;
+}
+
 /* ! ----------
 　Footer フッター
 ---------- */

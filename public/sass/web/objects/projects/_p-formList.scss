@@ -48,6 +48,21 @@
       margin-top: 32px;
     }
   }
+  &__guide{
+    margin: 0 0 0 4px;
+    &__btn{
+      width: 14px; height: 14px;
+      background: url(../img/web/icon/guide_btn.png)no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      display: block;
+      -webkit-appearance: none;
+      border: none;
+      &:hover{
+        opacity: .7;
+      }
+    }
+  }
   &__other{
     margin-top: 12px;
     @include global.responsive(md) {

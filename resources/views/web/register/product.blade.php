@@ -42,7 +42,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input placeholder="2023/05/16" class="required" name="name" type="name" value="">
+                        <input id="date" placeholder="2023/05/16" class="required" name="" type="text" value="">
                       </div>
                     </div>
                     <p style="display: none;" class="c-txt c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</p>
@@ -87,9 +87,6 @@
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                       <p class="c-txt">カラー</p>
-                      <div class="p-formList__guide">
-                        <a clas="p-formList__guide__btn" data-remodal-target="js-modal__guide--"></a>
-                      </div>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
@@ -117,7 +114,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">シリアルナンバー</p>
                       <div class="p-formList__guide">
-                        <a clas="p-formList__guide__btn" data-remodal-target="js-modal__guide--"></a>
+                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button>
                       </div>
                     </div>
                     <div class="p-formList__data">
@@ -131,7 +128,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">購入店舗</p>
                       <div class="p-formList__guide">
-                        <a clas="p-formList__guide__btn" data-remodal-target="js-modal__guide--"></a>
+                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
                       </div>
                     </div>
                     <div class="p-formList__data">
@@ -170,7 +167,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input placeholder="2023/05/16" class="required" name="name" type="name" value="">
+                        <input id="date" placeholder="2023/05/16" class="required" name="" type="text" value="">
                       </div>
                     </div>
                     <p style="display: none;" class="c-txt c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</p>
@@ -215,9 +212,6 @@
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                         <p class="c-txt">カラー</p>
-                        <div class="p-formList__guide">
-                          <a clas="p-formList__guide__btn" data-remodal-target="js-modal__guide--"></a>
-                        </div>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
@@ -245,7 +239,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">シリアルナンバー</p>
                       <div class="p-formList__guide">
-                        <a clas="p-formList__guide__btn" data-remodal-target="js-modal__guide--"></a>
+                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button>
                       </div>
                     </div>
                     <div class="p-formList__data">
@@ -258,6 +252,9 @@
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                         <p class="c-txt">購入店舗</p>
+                        <div class="p-formList__guide">
+                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
+                      </div>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
@@ -296,6 +293,11 @@
       </div>
     </div>
   </div>
+  {{-- モーダル --}}
+  @include('web.components.modal._modal-guide--color')
+  @include('web.components.modal._modal-guide--serial')
+  @include('web.components.modal._modal-guide--shop')
+
   {{-- 登録製品追加 / 削除 --}}
   <script>
     $(document).on('click', '', function(){
@@ -303,5 +305,11 @@
     });
   </script>
   {{-- フォームの表示切り替え --}}
+  {{-- 日付選択 --}}
+  <script>
+    $(function() {
+      $('.c-input--date input').datepicker();
+    });
+  </script>
   
 @endsection

@@ -20,15 +20,9 @@
     <!-- その他 -->
 
     {{-- ---------- スクリプト ---------- --}}
-    {{-- jQuery読み込み --}}
-    <script src="{{ asset('js/admin/library/jquery-3.5.1.min.js') }}"></script>
-    <script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
-    <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
-    {{-- モーダル --}}
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script>
       MicroModal.init({
-        disableScroll: true,
+        disableScroll: false,
         awaitOpenAnimation: true,
         // awaitCloseAnimation: true
       });
