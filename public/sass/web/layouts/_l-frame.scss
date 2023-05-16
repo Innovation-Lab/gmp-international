@@ -18,6 +18,9 @@
   flex: auto;
   min-width: 0;
   display: grid;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   // テーブル表示の関係で、幅計算の必要がある↓
   // grid:
   //   "sidebar main" 1fr
@@ -52,8 +55,19 @@
     // min-width: calc(64rem - var(--width_sidebar));
   }
 
-
+  &__head{
+    flex: 0 0 auto;
+  }
+  &__main,
   &__body{
-    
+    flex: auto;
+    min-height: 1px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__body{
+  }
+  &__foot{
+    flex: 0 0 auto;
   }
 }

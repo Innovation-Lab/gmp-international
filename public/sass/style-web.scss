@@ -34,6 +34,9 @@
 // Container コンテナ
 @use "web/layouts/_l-container.scss";
 
+// Stack スタック
+@use "web/layouts/_l-stack.scss";
+
 /* ! --------------------------------------------------
 　Components コンポーネント
 -------------------------------------------------- */
@@ -63,6 +66,9 @@
 
 // Label ラベル
 @use "web/objects/components/_c-label.scss";
+
+// input
+@use "web/objects/components/_c-input.scss";
 
 
 /* ! --------------------------------------------------

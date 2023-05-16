@@ -1,3 +1,5 @@
+@use "../../global/" as global;
+@use "../../global/_components.scss";
 
 /* ! ==================================================
 　Button ボタン
@@ -33,14 +35,20 @@
         padding: 0.7em 0;
         min-width: 120px;
     }
-    &--next{
+    &--next,
+    &--accent{
         font-size: 16px;
         background: #C30E2E;
         border-radius: 5px;
         color: #fff;
         width: 100%;
-        padding: 0.7em 0;
-
+        padding: 0.7em 1em;
+        height: 48px;
+        max-width: 220px;
+        @include global.responsive(md) {
+            height: 60px;
+            max-width: 260px;
+        }
     }
     &--ghost{
         color: #8c8c8c;

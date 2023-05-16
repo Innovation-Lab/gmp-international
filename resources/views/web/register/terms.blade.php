@@ -130,15 +130,16 @@
             </div>
           </div>
         </div>
-        <div class="p-formPage__foot">
+        <div class="p-formPage__foot p-formPage__foot--terms">
           <!-- チェックボックス -->
-          <label class="c-label">
-            <input type="checkbox" name="checkbox1" id="checkbox-1-01" checked="">上記の利用規約に同意する
+          <div class="c-input c-input--checkbox">
+            <input type="checkbox" name="checkbox1" id="checkbox-1-01" checked="">
+            <label for="checkbox-1-01">上記の利用規約に同意する</label>
             <!-- 入力不備エラーメッセージ -->
-          </label>
-          <p {{--style="display: none;"--}} class="c-txt c-txt--err">※登録には利用規約への同意が必要です。</p>
+          </div>
+          <p style="display: none;" class="c-txt c-txt--err">※登録には利用規約への同意が必要です。</p>
           <!-- ボタン -->
-          <div class="p-btnWrap p-btnWrap--single">
+          <div class="p-btnWrap p-btnWrap--center">
             <a href="{{ route('register.account') }}" class="c-btn c-btn--next">アカウント情報の入力へ</a>
           </div>
         </div>

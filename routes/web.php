@@ -30,6 +30,14 @@ require __DIR__.'/auth.php';
 Route::get('/', [RegisterController::class, 'login'])->name('login');
 Route::get('/login', [RegisterController::class, 'login'])->name('login');
 
+//パスワード再設定メール
+Route::view('/forgot', 'web.auth.forgot.index')->name('web.forgot.index');
+Route::view('/forgot/complete', 'web.auth.forgot.complete')->name('web.forgot.complete');
+//パスワード再設定
+Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
+Route::view('/reset/complete', 'web.auth.reset.complete')->name('web.reset.complete');
+
+
 /* ! ==================================================
 　新規会員登録
 ================================================== */

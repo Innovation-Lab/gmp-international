@@ -20,17 +20,17 @@
     overflow: scroll;
     border: solid 1px #EAEBEA;
     &::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 0;
       transition: all 0.4s ease;
     }
     &::-webkit-scrollbar-track {
-      border-radius: 2px;
-      background: #f2f4f7;
+      border-radius: 12px;
+      background: #EAEBEA;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 2px;
-      background: #0a2372;
+      border-radius: 12px;
+      background: #8C8C8C;
     }
   }
   &__list{
@@ -42,6 +42,7 @@
         display: flex;
         align-items: center;
         padding: 8px 16px;
+        line-height: 1.3em;
       }
       .c-description{
         padding: 16px;

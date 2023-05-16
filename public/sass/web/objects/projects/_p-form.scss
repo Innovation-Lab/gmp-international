@@ -13,24 +13,97 @@
   }
   //ページレイアウト
   &Page{
+    flex: auto;
+    min-height: 1px;
+    @include global.responsive(md) {
+      background: #F7F4EC;
+      display: flex;
+      flex-direction: column;
+    }
     &__head{
       background: #F5F2E7;
       margin: 0 0 40px;
+      @include global.responsive(md) {
+        margin: 80px 0 0;
+        background: none;
+      }
       &__ttl{
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
+        @include global.responsive(sm) {
+          height: auto;
+        }
         .c-ttl{
-          
+          @include global.responsive(sm) {
+            font-size: 32px;
+          }
         }
       }
     }
     &__body{
-
+      @include global.responsive(md) {
+        padding: 56px;
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,.08);
+        max-width: 800px;
+        margin: 40px auto 0;
+      }
+    }
+    //完了画面
+    &__complete{
+      margin: 80px 0 0;
+      @include global.responsive(md) {
+      
+      }
+      &__img{
+        max-width: 300px;
+        width: 100%;
+        margin: auto;
+      }
+      &__txt{
+        .c-ttl{
+          font-size: 14px;
+          margin: 4px 0 0;
+        }
+        .c-description{
+          margin: 24px 0 0;
+        }
+        .p-btnWrap{
+          margin-top: 44px;
+        }
+      }
     }
     &__foot{
       margin: 40px 0 0;
+      &--terms{
+        margin: 24px 0 0;
+        padding: 24px 0 0;
+        border-top: solid 1px #EAEBEA;
+        @include global.responsive(md) {
+          border: none;
+        }
+        .c-input{
+          display: flex;
+          justify-content: center;
+        }
+        .p-btnWrap{
+          margin-top: 40px;
+        }
+      }
+      &--wide{
+        margin: 56px 0 0;
+      }
+    }
+    //確認画面
+    &--confirm{
+
+    }
+    //完了画面
+    &--complete{
+      background: #F5F2E7;
     }
   }
   //リスト
