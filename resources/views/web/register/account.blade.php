@@ -27,7 +27,8 @@
       </div>
       <div class="p-register__body">
         <div class="l-container">
-          <form action="">
+          <form method="POST" action="{{ route('register.store.account') }}" id="accountSubmitForm">
+            @csrf
             <ul class="p-formList">
               <!-- メールアドレス -->
               <li class="p-formList__item">
@@ -36,10 +37,12 @@
                     <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data--err">
-                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="">
+                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email') }}">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
-                  <p style="display: none;" class="c-txt c-txt--err">メールアドレスを半角英数字で入力してください</p>
+                  @error('email')
+                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                  @enderror
                 </div>
               </li>
               <!-- パスワード -->
@@ -49,10 +52,12 @@
                     <p class="c-txt">パスワード（半角英数字6〜10文字）　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="例）sample123" class="err" name="passward" type="text" value="">
+                    <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
-                  <p style="display: none;" class="c-txt c-txt--err">パスワードを半角英数字で入力してください</p>
+                  @error('email')
+                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                  @enderror
                 </div>
               </li>
               <!-- パスワード確認用 -->
@@ -62,10 +67,12 @@
                     <p class="c-txt">パスワード（確認用）　<span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data">
-                    <input placeholder="パスワードを再入力してください" class="err" name="passward" type="text" value="">
+                    <input placeholder="パスワードを再入力してください" class="c-form" name="password_confirmation" type="password" value="">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
-                  <p style="display: none;" class="c-txt c-txt--err">同じパスワードを入力してください</p>
+                  @error('password_confirmation')
+                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                  @enderror
                 </div>
               </li>
             </ul>
@@ -75,8 +82,8 @@
       <div class="p-register__foot">
         <div class="l-container">
           <div class="p-btnWrap">
-            <a href="{{route('web.register.terms')}}" class="c-btn c-btn--back">戻る</a>
-            <a href="{{route('web.register.user')}}" class="c-btn c-btn--next">ユーザー情報の入力へ</a>
+            <a href="{{ route('register.terms') }}" class="c-btn c-btn--back">戻る</a>
+            <button type="submit" class="c-btn c-btn--next" form="accountSubmitForm">ユーザー情報の入力へ</button>
           </div>
         </div>
       </div>

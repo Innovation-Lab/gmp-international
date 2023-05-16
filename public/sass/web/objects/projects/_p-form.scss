@@ -6,18 +6,34 @@
 ================================================== */
 .p-form {
   width: 100%;
-
-  /* ! ----------
-  　注意書き
-  ---------- */
+  //注意書き
   small {
     color: var(--color_form_ps);
     @extend .c-text__xxs !optional;
   }
+  //ページレイアウト
+  &Page{
+    &__head{
+      background: #F5F2E7;
+      margin: 0 0 40px;
+      &__ttl{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .c-ttl{
+          
+        }
+      }
+    }
+    &__body{
 
-  /* ! --------------------------------------------------
-  　List リスト
-  -------------------------------------------------- */
+    }
+    &__foot{
+      margin: 40px 0 0;
+    }
+  }
+  //リスト
   &List {
     // display: grid;
     // grid-auto-rows: auto;

@@ -30,7 +30,7 @@
       <li class="p-formList__item">
         <div class="p-formList__content">
           <div class="p-formList__label">
-            メールアドレス　<span class="c-txt c-txt--must">必須</b>
+            メールアドレス　<span class="c-txt c-txt--must">必須</span>
           </div>
           <div class="p-formList__data">
             <input placeholder="例）sample@example.com" class="required" name="email" type="email" value="">
@@ -109,7 +109,7 @@
         <!-- 姓 -->
         <div class="p-formList__content">
           <div class="p-formList__label">
-            お名前　<span class="c-txt c-txt--must">必須</b>
+            お名前　<span class="c-txt c-txt--must">必須</span>
           </div>
           <div class="p-formList__data">
             <input placeholder="例）山田" class="required" name="name" type="name" value="">

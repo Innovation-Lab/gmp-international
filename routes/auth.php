@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
 
     // 新規登録
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
-                
+    // Route::get('register/account', [RegisteredUserController::class, 'create'])
+    //             ->name('register');
+
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     // ログイン

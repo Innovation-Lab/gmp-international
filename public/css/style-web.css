@@ -243,11 +243,6 @@ a {
   cursor: pointer;
 }
 
-::-moz-selection {
-  color: #fff;
-  background: #000;
-}
-
 ::selection {
   color: #fff;
   background: #000;
@@ -271,9 +266,7 @@ strong {
   border-radius: 0.25rem;
   border: 1px solid transparent;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   /* ! ----------
   　Small 小さいボタン
   ---------- */
@@ -389,8 +382,7 @@ textarea {
   border-radius: 0.4em;
   background: #f5f5f5;
   -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
 }
 input:not([type=checkbox], [type=radio]).err,
 select.err,
@@ -400,9 +392,7 @@ textarea.err {
 }
 
 label {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 
@@ -443,9 +433,7 @@ input[type=radio] {
   padding: 0 1rem;
   border-radius: 0.125rem;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .radio input:checked + label {
   color: var(--color_primary);
@@ -481,7 +469,6 @@ input[type=checkbox]:checked + label {
 }
 
 input:-webkit-autofill {
-  -webkit-transition: background-color 5000s ease-in-out 0s !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
@@ -534,8 +521,7 @@ input[type=file] + label:hover::before, input[type=file] + label:hover::after {
 input[type=file] + label img {
   width: 100%;
   aspect-ratio: 1/1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 /* ! ----------
@@ -708,7 +694,6 @@ input[type=file] + label img {
 }
 .l-index__head {
   grid-area: head;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -727,7 +712,6 @@ input[type=file] + label img {
 }
 .l-index__foot {
   grid-area: foot;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -774,7 +758,6 @@ input[type=file] + label img {
 }
 .l-detail__head {
   grid-area: head;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -809,7 +792,6 @@ input[type=file] + label img {
 }
 .l-detail__foot {
   grid-area: foot;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -912,23 +894,9 @@ input[type=file] + label img {
   ---------- */
 }
 .c-loading.is-hide {
-  -webkit-animation-name: hide-loading;
-          animation-name: hide-loading;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-@-webkit-keyframes hide-loading {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  animation-name: hide-loading;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 @keyframes hide-loading {
   0% {
@@ -1036,9 +1004,7 @@ input[type=file] + label img {
   transition-property: box-shadow, color, background-color;
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 .c-btn--rd {
@@ -1069,16 +1035,24 @@ input[type=file] + label img {
   color: #c30e2e;
   border-color: #c30e2e;
 }
+.c-btn--icon {
+  background-image: url(../img/web/user/register/add.png);
+  background-repeat: no-repeat;
+}
+.c-btn--text {
+  text-decoration: underline;
+  color: #8C8C8C;
+  padding: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 400;
+}
+.c-btn--text:hover {
+  color: #737373;
+}
 
 .c-description {
   font-size: 14px;
-}
-
-.c-label {
-
-}
-span.c-label {
-
 }
 
 /* ! ==================================================
@@ -1596,8 +1570,7 @@ span.c-label {
   align-items: center;
   margin: 0 0 1.5rem;
   background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   position: relative;
   border-bottom: 1px solid var(--color_border_1);
   /* ! ----------
@@ -1616,7 +1589,6 @@ span.c-label {
 }
 .p-detail__sidebar {
   border: 1px solid var(--color_border_1);
-  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
   /* ! ----------
@@ -1651,7 +1623,6 @@ span.c-label {
 }
 .p-detail__main {
   border: 1px solid var(--color_border_1);
-  position: -webkit-sticky;
   position: sticky;
   /* ! ----------
   　Box ボックス
@@ -1702,9 +1673,7 @@ span.c-label {
   padding: 1rem;
   border-top: 1px solid var(--color_border_1);
   background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-  position: -webkit-sticky;
+  backdrop-filter: blur(2px);
   position: sticky;
   bottom: 0;
 }
@@ -1720,8 +1689,7 @@ span.c-label {
   border-top: 1px solid var(--color_border_1);
   padding: 1.5rem 0;
   background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   position: relative;
 }
 
@@ -1756,7 +1724,6 @@ span.c-label {
   position: relative;
 }
 .p-edit__nav {
-  position: -webkit-sticky;
   position: sticky;
   top: 4rem;
   padding: 0.5rem 0;
@@ -1814,7 +1781,6 @@ span.c-label {
 }
 .p-edit__head__title {
   font-weight: 500;
-  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
 }
@@ -1832,7 +1798,6 @@ span.c-label {
   background-color: var(--color_background_1);
   border-right: 1px solid var(--color_border_1);
   height: 100vh;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   /* ! --------------------------------------------------
@@ -1917,7 +1882,6 @@ span.c-label {
   place-items: center;
   border-top: 1px solid var(--color_border_1);
   padding: 0 1rem;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1975,8 +1939,7 @@ span.c-label {
   grid-template-columns: 2.5rem 1fr;
 }
 .p-profile__image img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 1rem;
 }
 .is-hide .p-profile__image img {
@@ -2015,8 +1978,7 @@ span.c-label {
 .p-profileImage__image {
   width: 100%;
   aspect-ratio: 4/3;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   background-image: url(../img/admin/profile/noimage.png);
   background-size: cover;
   background-position: center center;
@@ -2322,9 +2284,7 @@ span.c-label {
   background-position: right center;
   background-repeat: no-repeat;
   border-bottom: 1px solid var(--color_text_button);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   cursor: pointer;
   /* ! ----------
   　Active アクティブ （フィルターが1つ以上適用されている状態）
@@ -2349,8 +2309,6 @@ span.c-label {
 }
 .p-filterList__content {
   display: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
   width: max-content;
   border: 1px solid var(--color_border_1);
   background-color: #fff;
@@ -2427,13 +2385,10 @@ span.c-label {
   background: var(--color_background_3);
   padding: 0 1rem;
   height: 3rem;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 .p-table thead th .item {
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
   min-width: max-content;
 }
 .p-table tbody tr[data-href], .p-table tbody tr[data-micromodal-trigger] {
@@ -2460,7 +2415,6 @@ span.c-label {
 }
 .p-table tfoot td {
   height: 2.5rem;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   transform: translateY(4px);
@@ -2651,8 +2605,7 @@ span.c-label {
   background-size: 1rem 1rem;
   background-position: top 1rem left 1rem;
   background-repeat: no-repeat;
-  -webkit-backdrop-filter: blur(40px);
-          backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
   border-radius: 0.5rem;
   box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -2686,56 +2639,30 @@ span.c-label {
   background-image: url(../img/admin/flash/alert.png);
 }
 .p-flash__item.is-hide, .p-flash__item.auto-hide {
-  -webkit-animation-name: flash-hide;
-          animation-name: flash-hide;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  animation-name: flash-hide;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.is-hide > *, .p-flash__item.auto-hide > * {
-  -webkit-animation-name: flash-contents-hide;
-          animation-name: flash-contents-hide;
-  -webkit-animation-duration: 0.1s;
-          animation-duration: 0.1s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  animation-name: flash-contents-hide;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.auto-hide {
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  animation-delay: 4s;
 }
 .p-flash__item.auto-hide > * {
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  animation-delay: 4s;
 }
 .p-flash__item.is-hide {
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
 }
 .p-flash__item.is-hide > * {
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-@-webkit-keyframes flash-hide {
-  from {
-    opacity: 1;
-    height: auto;
-  }
-  to {
-    opacity: 0;
-    height: 0px;
-    min-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0;
-  }
+  animation-delay: 0s;
 }
 @keyframes flash-hide {
   from {
@@ -2749,14 +2676,6 @@ span.c-label {
     padding-top: 0;
     padding-bottom: 0;
     margin: 0;
-  }
-}
-@-webkit-keyframes flash-contents-hide {
-  from {
-    display: block;
-  }
-  to {
-    display: none;
   }
 }
 @keyframes flash-contents-hide {
@@ -2850,15 +2769,22 @@ span.c-label {
 ================================================== */
 .p-form {
   width: 100%;
-  /* ! ----------
-  　注意書き
-  ---------- */
-  /* ! --------------------------------------------------
-  　List リスト
-  -------------------------------------------------- */
 }
 .p-form small {
   color: var(--color_form_ps);
+}
+.p-formPage__head {
+  background: #F5F2E7;
+  margin: 0 0 40px;
+}
+.p-formPage__head__ttl {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-formPage__foot {
+  margin: 40px 0 0;
 }
 .p-formList__content {
   display: grid;
@@ -3008,62 +2934,81 @@ span.c-label {
   background: #c30e2e;
 }
 
-.p-terms__head {
+/* ! ==================================================
+　規約同意
+================================================== */
+.p-terms__head .c-ttl {
+  margin: 40px 0 0;
+}
+.p-terms__head .c-description {
+  margin: 16px 0 0;
+}
+.p-terms__body {
+  margin: 40px 0 0;
+}
+.p-terms__scroll {
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  border: solid 1px #EAEBEA;
+}
+.p-terms__scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  transition: all 0.4s ease;
+}
+.p-terms__scroll::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: #f2f4f7;
+}
+.p-terms__scroll::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #0a2372;
+}
+.p-terms__list {
+  flex: 0 0 auto;
+}
+.p-terms__list__item .c-ttl {
+  min-height: 44px;
+  background: #F5F2E7;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+}
+.p-terms__list__item .c-description {
+  padding: 16px;
+}
+
+.p-btnWrap {
+  display: flex;
+  margin: -4px;
+}
+.p-btnWrap > * {
+  margin: 4px;
+}
+.p-confirm__head {
   background: #F5F2E7;
   width: 100%;
   padding: 0 0 16px;
 }
-.p-terms__ttl {
+.p-confirm__ttl {
   padding-top: 24px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.p-terms__ttl--top {
-  margin-top: 16px;
-}
-.p-terms__ttl--sub {
-  background: #F5F2E7;
-  width: 100%;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-}
-.p-terms__ttl--sub + .p-terms__ttl--sub {
+.p-confirm__body {
   margin-top: 40px;
 }
-.p-terms__txt {
-  margin-top: 16px;
-  margin-bottom: 40px;
-}
-.p-terms__txt--sub {
-  padding: 0 16px;
-}
-.p-terms__body {
-  margin-top: 40px;
-}
-.p-terms__step {
+.p-confirm__step {
   margin-top: 24px;
 }
-.p-terms__box {
-  height: 400px;
-  overflow: scroll;
-}
-.p-terms__foot {
+.p-confirm__foot {
   margin-top: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.p-btnWrap {
-  display: flex;
-}
-.p-btnWrap a + a {
-  margin-left: 8px;
-}
 /* ! ==================================================
 　Micromodal マイクロモーダル
 ================================================== */
@@ -3128,9 +3073,7 @@ span.c-label {
   background: transparent;
   border: 0;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   margin: 0 -0.25rem 0 0.5rem;
 }
 .modal__close:hover {
@@ -3160,28 +3103,12 @@ span.c-label {
 /**************************\
   Demo Animation Style
 \**************************/
-@-webkit-keyframes mmfadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 @keyframes mmfadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-@-webkit-keyframes mmfadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 @keyframes mmfadeOut {
@@ -3192,28 +3119,12 @@ span.c-label {
     opacity: 0;
   }
 }
-@-webkit-keyframes mmslideIn {
-  from {
-    transform: translateY(15%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
 @keyframes mmslideIn {
   from {
     transform: translateY(15%);
   }
   to {
     transform: translateY(0);
-  }
-}
-@-webkit-keyframes mmslideOut {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-10%);
   }
 }
 @keyframes mmslideOut {
@@ -3269,4 +3180,5 @@ span.c-label {
 /* ! --------------------------------------------------
 　Libraries ライブラリ
 -------------------------------------------------- */
+
 /*# sourceMappingURL=style-web.css.map */

@@ -51,7 +51,18 @@
         }
     }
     &--icon{
-        background-image: url="{{asset('img/web/user/register/add.png')}}";
+        background-image: url(../img/web/user/register/add.png);
         background-repeat: no-repeat;
+    }
+    &--text{
+        text-decoration: underline;
+        color: #8C8C8C;
+        padding: 0;
+        background: none;
+        font-size: 13px;
+        font-weight: 400;
+        &:hover{
+            color: darken(#8C8C8C,10%);
+        }
     }
 }

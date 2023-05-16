@@ -1,0 +1,1 @@
+FROM --platform=linux/x86_64 nginx:1.15.6-alpine
