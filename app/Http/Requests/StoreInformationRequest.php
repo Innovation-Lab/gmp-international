@@ -24,14 +24,14 @@ class StoreInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'last_name' => 'required|max:40|regex:/^[^\x01-\x7E\xA1-\xDF]+$/',
-            'first_name' => 'required|max:40|regex:/^[^\x01-\x7E\xA1-\xDF]+$/',
-            'last_name_kana' => 'required|max:20|regex:/^[ァ-ヶー　]+$/u',
-            'first_name_kana' => 'required|max:20|regex:/^[ァ-ヶー　]+$/u',
+            'last_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',
+            'first_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',
+            'last_name_kana' => 'required|max:40|regex:/^[ァ-ヶー　]+$/u',
+            'first_name_kana' => 'required|max:40|regex:/^[ァ-ヶー　]+$/u',
             'zip_code' => 'required|size:7|regex:/^[0-9]+$/',
-            'prefecture' => 'required|max:255',
-            'address_city' => 'required|max:255',
-            'address_block' => 'required|max:255',
+            'prefecture' => 'required',
+            'address_city' => 'required|max:100',
+            'address_block' => 'required|max100',
             'tel' => 'required|regex:/^[0-9]{10,11}$/',
         ];
     }
@@ -62,7 +62,7 @@ class StoreInformationRequest extends FormRequest
             'first_name_kana.max' => ':attributeは40文字以内で入力してください。',
             'last_name_kana.regex' => ':attributeは全角カタカナで入力してください。',
             'first_name_kana.regex' => ':attributeは全角カタカナで入力してください。',
-            'tel.regex' => ':attributeはハイフンなしで、10〜11桁の半角数字で入力してください。',
+            'tel.regex' => ':attributeはハイフンなしで、10桁または11桁の半角数字で入力してください。',
             'prefecture.required' => '都道府県を選択してください。',
         ];
     }

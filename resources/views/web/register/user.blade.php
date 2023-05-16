@@ -39,19 +39,19 @@
                   </div>
                   <div class="p-formList__data">
                     <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name') }}">
+                    @error('last_name')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('last_name')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
                 <!-- 名 -->
                 <div class="p-formList__content">
                   <div class="p-formList__data">
                     <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name') }}">
+                    @error('first_name')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('first_name')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
               </li>
               <!-- フリガナ -->
@@ -63,19 +63,19 @@
                   </div>
                   <div class="p-formList__data">
                     <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana') }}">
+                    @error('last_name_kana')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('last_name_kana')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
                 <!-- 名 -->
                 <div class="p-formList__content">
                   <div class="p-formList__data">
                     <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana') }}">
+                    @error('first_name_kana')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('last_name_kana')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
               </li>
               <!-- 郵便番号 -->
@@ -86,10 +86,10 @@
                   </div>
                   <div class="p-formList__data">
                     <input placeholder="" maxlength="7" class="required" name="zip_code" type="number" value="{{ old('zip_code') }}">
+                    @error('zip_code')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('zip_code')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
               </li>
               <!-- 住所 -->
@@ -105,16 +105,28 @@
                         <option value="{{ $index }}" {{ old('prefecture') == $index ? 'selected' : '' }} >{{ $name }}</option>
                       @endforeach
                     </select>
+                    @error('prefecture')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="p-formList__data">
+                    <input placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city') }}">
+                    @error('address_city')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="p-formList__data">
                     <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block') }}">
+                    @error('address_block')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="p-formList__data">
                     <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
+                    @error('address_building')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('prefecture')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
               </li>
               <!-- 電話番号 -->
@@ -125,10 +137,10 @@
                   </div>
                   <div class="p-formList__data">
                     <input placeholder="例）08012345678" class="required" name="tel" type="number" value="{{ old('tel') }}">
+                    @error('tel')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('tel')
-                    <div class="c-txt c-txt--err">{{ $message }}</div>
-                  @enderror
                 </div>
               </li>
             </ul>
