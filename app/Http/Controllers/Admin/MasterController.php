@@ -17,7 +17,7 @@ class MasterController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
-        return view('masters.index', [
+        return view('admin.masters.index', [
         ]);
     }
 }

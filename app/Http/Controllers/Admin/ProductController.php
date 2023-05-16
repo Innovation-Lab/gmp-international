@@ -18,8 +18,8 @@ class ProductController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
-        return view('products.index', [
-            'products' => MProduct::all()
+        return view('admin.products.index', [
+            'products' => []
         ]);
     }
     
@@ -29,6 +29,6 @@ class ProductController extends Controller
      */
     public function detail(MProduct $product): View|Factory|Application
     {
-        return view('products.detail', compact('product'));
+        return view('admin.products.detail', compact('product'));
     }
 }

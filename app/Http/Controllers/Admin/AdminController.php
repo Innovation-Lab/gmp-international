@@ -20,7 +20,7 @@ class AdminController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
-        return view('staffs.index', [
+        return view('admin.staffs.index', [
             'admins' => Admin::all()
         ]);
     }
