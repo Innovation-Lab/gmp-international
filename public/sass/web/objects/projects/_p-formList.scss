@@ -1,3 +1,5 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
 .p-formList{
   width: 100%;
   &__item{
@@ -6,7 +8,6 @@
     }
     &--half{
       display: flex;
-      align-items: flex-end;
     }
   }
   &__content{
@@ -15,11 +16,31 @@
     }
   }
   &__data{
+    .c-input{
+      + .c-input{
+        margin: 8px 0 0;
+      }
+    }
     &--err{
       input{
         background: #FFE0E6;
         border: #C30E2E 1px solid;
       }
+    }
+    &--selectErr{
+      .c-input--select{
+        &:before{
+          background: url(../img/web/icon/select--err.png)no-repeat center;
+          background-size: contain;
+        }
+        select{
+          background: #FFE0E6;
+          border: #C30E2E 1px solid;
+        }
+      }
+    }
+    .c-txt--err{
+      margin: 0.25rem 0 0;
     }
   }
   &__ttl{
@@ -28,6 +49,22 @@
     }
   }
   &__other{
-    margin-top: 32px;
+    margin-top: 12px;
+    @include global.responsive(md) {
+      display: block;
+    }
+    .p-formList__label{
+      width: 100%;
+      padding: 0;
+      display: block;
+      .c-txt{
+        color: #444;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 0 0 3px;
+        display: block;
+        width: 100%;
+      }
+    }
   }
 }

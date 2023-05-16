@@ -33,7 +33,10 @@
         border: 1px solid #C30E2E;
         border-radius: 5px;
         padding: 0.7em 0;
-        min-width: 120px;
+        min-width: 90px;
+        @include global.responsive(sm) {
+         min-width: 120px;
+        }
     }
     &--next,
     &--accent{
@@ -45,6 +48,7 @@
         padding: 0.7em 1em;
         height: 48px;
         max-width: 220px;
+        font-weight: 600;
         @include global.responsive(md) {
             height: 60px;
             max-width: 260px;
@@ -71,6 +75,32 @@
         font-weight: 400;
         &:hover{
             color: darken(#8C8C8C,10%);
+        }
+    }
+    //アイコン
+    &--ico{
+        padding: 0;
+        background: none;
+        color: #8c8c8c;
+        font-size: 16px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        &:hover{
+            color: darken(#8c8c8c,10%);
+            text-decoration: underline;
+        }
+        &:before{
+            //content: '';
+            width: 16px; height: 16px;
+            background-size: contain !important;
+            margin: 0 4px 0 0;
+        }
+        &--add{
+            &:before{
+                content: '';
+                background: url(../img/web/icon/btn--add.png)no-repeat center;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="l-container">
-        <div class="p-formPage__body">
+        <div class="p-formPage__body p-formPage__body--thin">
           <div class="l-stack">
             <div class="l-stack__item">
               <p class="c-description c-txt--center--md">
@@ -28,7 +28,7 @@
                   <li class="p-formList__item">
                     <div class="p-formList__content">
                       <div class="p-formList__label">
-                        <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
+                        <p class="c-txt">メールアドレス <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
                         <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email') }}">

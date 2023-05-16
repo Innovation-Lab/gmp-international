@@ -42,6 +42,15 @@
         }
       }
     }
+    &__step{
+      padding: 0 0 24px;
+      max-width: 560px;
+      margin: 0 auto;
+      @include global.responsive(md) {
+        margin: 24px auto 0;
+        padding: 0;
+      }
+    }
     &__body{
       @include global.responsive(md) {
         padding: 56px;
@@ -51,10 +60,17 @@
         max-width: 800px;
         margin: 40px auto 0;
       }
+      &--thin{
+        @include global.responsive(md) {
+          max-width: 560px;
+          border-radius: 16px;
+          padding: 48px;
+        }
+      }
     }
     //完了画面
     &__complete{
-      margin: 80px 0 0;
+      margin: 80px auto 0;
       @include global.responsive(md) {
       
       }
@@ -72,6 +88,7 @@
           margin: 24px 0 0;
         }
         .p-btnWrap{
+          margin: 0;
           margin-top: 44px;
         }
       }
@@ -113,10 +130,32 @@
     // gap: 1rem;
     // &__item {
     // }
+    &__item{
+      &--productLine{
+        position: relative;
+        margin: 1rem 0 0;
+        padding:  1rem 0 0;
+        &:before{
+          content: '';
+          width: 50%; height: 1px;
+          background: #EAEBEA;
+          position: absolute;
+          top: 0; left: 0;
+        }
+      }
+    }
+    &__ttl{
+      margin: 0 0 32px;
+    }
     &__content {
       display: grid;
       grid-auto-rows: auto;
       gap: 0.25rem;
+      @include global.responsive(md) {
+        display: flex;
+        flex: auto;
+        min-width: 1px;
+      }
     }
     &__label {
       // color: var(--color_text_button);
@@ -142,6 +181,24 @@
           transform: translateY(-1px);
         }
       }
+      @include global.responsive(md) {
+        flex: 0 0 auto;
+        width: 210px;
+        padding: 16px 0 0;
+      }
+      .c-txt{
+        br{
+          display: none;
+          @include global.responsive(md) {
+            display: block;
+          }
+        }
+      }
+      &--thin{
+        @include global.responsive(md) {
+          padding: 8px 0 0;
+        }
+      }
     }
     &__data {
       @extend .c-text__sm !optional;
@@ -156,6 +213,67 @@
         padding: 0.5em 1em;
         border-radius: 2px;
         margin: 2px 0 0;
+      }
+      @include global.responsive(md) {
+        flex: auto;
+        min-width: 1px;
+      }
+    }
+    //確認画面
+    &--confirm{
+      .p-formList{
+        &__item{
+
+        }
+        &__ttl{
+          .c-txt{
+            margin: 1rem 0 0;
+          }
+        }
+        &__content{
+          .l-stack{
+            &__item{
+              display: flex;
+              + .l-stack__item{
+                margin: .75rem 0 0;
+              }
+            }
+          }
+        }
+        
+        &__label{
+          flex: 0 0 auto;
+          width: 140px;
+          @include global.responsive(sm) {
+            width: 160px;
+          }
+          .c-txt{
+            color: #8C8C8C;
+            letter-spacing: 0;
+          }
+        }
+        &__data{
+          flex: auto;
+          min-width: 1px;
+          .c-txt{
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+//確認画面
+.body_confirm{
+  .p-formPage{
+    &__foot{
+      margin: 2rem 0 0;
+      padding: 2rem 0 0;
+      border-top: solid 1px #EAEBEA;
+      @include global.responsive(md) {
+        padding: 0;
+        border: none;
       }
     }
   }

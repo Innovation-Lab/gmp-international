@@ -1,5 +1,77 @@
 .c-input {
+  position: relative;
+  //サイズ
+  &--post,
+  &--prefectures{
+    width: 120px;
+  }
+  &--tel{
+    width: 160px;
+  }
+  //氏名
+  &--name{
+    display: flex;
+    margin: -4px;
+    .c-input{
+      &__item{
+        padding: 4px;
+        .c-txt--err{
+          margin: 0.25rem 0 0;
+        }
+        &--err{
+          input{
+            background: #FFE0E6;
+            border: #C30E2E 1px solid;
+          }
+        }
+      }
+    }
+  }
+  //セレクト
+  &--select{
+    &:before{
+      content: '';
+      width: 18px; height: 18px;
+      position: absolute;
+      right: 8px; top: 50%;
+      transform: translate(0,-50%);
+      background: url(../img/web/icon/select.png)no-repeat center;
+      background-size: contain;
+      pointer-events: none;
+    }
+    select{
+      padding-right: 24px;
+    }
+  }
+  //チェックボックス
   &--checkbox{
     
+  }
+  //ラジオ
+  &--radio{
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px;
+    input[type="radio"]{
+      + label{
+        display: flex;
+        align-items: center;
+        padding: 13px 8px;
+        &:before{
+          content: '';
+          width: 20px; height: 20px;
+          margin: 0 8px 0 0;
+          background: url(../img/web/icon/radio.png)no-repeat center;
+          background-size: contain !important;
+        }
+      }
+      &:checked{
+        + label{
+          &:before{
+            background: url(../img/web/icon/radio--checked.png)no-repeat center;
+          }
+        }
+      }
+    }
   }
 }
