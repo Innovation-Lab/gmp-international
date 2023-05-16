@@ -13,7 +13,7 @@
           <div class="l-detail__body__inner">
             {{-- サイドバー --}}
             <div class="l-detail__sidebar">
-              @include('items.detail._sidebar')
+              @include('products.detail._sidebar')
             </div>
             {{-- メイン --}}
             <div class="l-detail__main">
