@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -75,29 +76,28 @@ class RegisterController extends Controller
      */
     public function storeInformation(StoreInformationRequest $request)
     {   
-
         $session = Session::get('session_account');
         $params = $request->all();
-        // dd($session, $params);
 
-        $user = User::create([
-            'email' => $session['email'],
-            'password' => Hash::make($session['password']),
-            'last_name' => $params['last_name'],
-            'first_name' => $params['first_name'],
-            'last_name_kana' => $params['last_name_kana'],
-            'first_name_kana' => $params['first_name_kana'],
-            'zip_code' => $params['zip_code'],
-            'prefecture' => $params['prefecture'],
-            'address_city' => $params['address_city'],
-            'address_block' => $params['address_block'],
-            'address_building' => $params['address_building'],
-            'tel' => $params['tel']
-        ]);
+        DB::transaction(function () use ($session, $params) {
+            $user = User::create([
+                'email' => $session['email'],
+                'password' => Hash::make($session['password']),
+                'last_name' => $params['last_name'],
+                'first_name' => $params['first_name'],
+                'last_name_kana' => $params['last_name_kana'],
+                'first_name_kana' => $params['first_name_kana'],
+                'zip_code' => $params['zip_code'],
+                'prefecture' => $params['prefecture'],
+                'address_city' => $params['address_city'],
+                'address_block' => $params['address_block'],
+                'address_building' => $params['address_building'],
+                'tel' => $params['tel']
+            ]);
+        });
 
-        // return ;
+        return view('web.register.product');
     }
-
 
     public function product()
     {

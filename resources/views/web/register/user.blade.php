@@ -122,12 +122,24 @@
                       </select>
                     </div>
                     <div class="c-input">
-                      <input id="address2" placeholder="市区町村" class="required" name="address_block" type="text" value="{{ old('address_block') }}">
+                      <input id="address2" placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city') }}">
                     </div>
                     <div class="c-input">
-                      <input id="address3" placeholder="番地・建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
+                      <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block') }}">
+                    </div>
+                    <div class="c-input">
+                      <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
                     </div>
                     @error('prefecture')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
+                    @error('address_city')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
+                    @error('address_block')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
+                    @error('address_building')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
                     @enderror
                   </div>                  
