@@ -23,13 +23,12 @@ use App\Http\Controllers\UserController;
 //ホーム
 // ログイン後のホーム画面
 Route::get('/home', function () {
-    return view('web.home');
+    return view('web.users.mypage.index');
 });
 require __DIR__.'/auth.php';
 
 Route::get('/', [RegisterController::class, 'login'])->name('login');
 Route::get('/login', [RegisterController::class, 'login'])->name('login');
-
 
 /* ! ==================================================
 　新規会員登録
@@ -68,7 +67,6 @@ Route::group([
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
 
-//製品一覧
 Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
 
 //登録済み製品一覧
