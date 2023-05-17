@@ -1,6 +1,6 @@
 @extends('web.layouts.pages._mypage')
-@section('title', 'ホーム')
-@section('class', 'body_')
+@section('title', 'マイページ')
+@section('class', 'body_mypage--home')
 @section('content')
 <div class="l-frame__body">
   <div class="p-index">
@@ -14,7 +14,7 @@
           </div>
           <!-- 追加登録ボタン -->
           <div class="p-index__btn">
-            <a href="" class="c-btn c-btn--ghost c-btn--ghost--rd c-btn--innerIco  c-btn--innerIco--add">製品の追加登録</a>
+            <a href="{{route('mypage.add')}}" class="c-btn c-btn--ghost c-btn--ghost--rd c-btn--innerIco  c-btn--innerIco--add">製品の追加登録</a>
           </div>
         </div>
         <!-- 登録製品複数の場合 -->
@@ -40,6 +40,11 @@
                     <div class="p-card__purchase">
                       <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
                       <p class="data c-txt">2023/04/04</p>
+                    </div>
+                    <!-- 購入店舗 -->
+                    <div class="p-card__store">
+                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
+                      <p class="data c-txt">エアバギー代官山店</p>
                     </div>
                     <div class="p-card__serialNum">
                       <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
@@ -96,8 +101,8 @@
         <a href="{{route('mypage.product')}}" class="c-btn">登録済み製品一覧へ</a>
       </div>
     </div>
-    <div class="l-container">
-      <div class="p-index__body">
+    <div class="p-index__body">
+      <div class="l-container">
         <!-- カテゴリータイトル -->
         <div class="p-index__bar">
           <div class="p-index__ttl">
@@ -113,14 +118,16 @@
             </div>
             <!-- 変更ボタン -->
             <div class="p-info__btn">
-              <a href="" class="c-btn c-btn--rd">変更する</a>
+              <a href="{{route('mypage.user')}}" class="c-btn c-btn--rd">変更する</a>
             </div>
           </div>
           <div class="p-info__txt">
-            <div class="c-txt">小山 浩行（コヤマ ヒロユキ）</div>
-            <div class="c-txt">〒102-0094</div>
-            <div class="c-txt">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</div>
-            <div class="c-txt">03-6380-8220</div>
+            <p class="c-txt" data-ttl="氏名">小山 浩行（コヤマ ヒロユキ）</p>
+            <p class="c-txt" data-ttl="郵便番号">〒102-0094</p>
+            <p class="c-txt" data-ttl="住所">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</p>
+            <p class="c-txt" data-ttl="電話番号">03-6380-8220</p>
+            <p class="c-txt" data-ttl="カタログの送付">希望する</p>
+            <p class="c-txt" data-ttl="DMの送付">希望する</p>
           </div>
         </div>
         <!-- アカウント情報 -->
@@ -131,13 +138,12 @@
             </div>
             <!-- 変更ボタン -->
             <div class="p-info__btn">
-              <a href="" class="c-btn c-btn--rd">変更する</a>
+              <a href="{{route('mypage.account')}}" class="c-btn c-btn--rd">変更する</a>
             </div>
           </div>
           <div class="p-info__txt">
-            <div class="c-txt">h.koyama@soushin-lab.co.jp</div>
-              <div class="c-txt">パスワードはセキュリティのため非表示</div>
-            </div>
+            <p class="c-txt" data-ttl="メールアドレス">h.koyama@soushin-lab.co.jp</p>
+            <p class="c-txt" data-ttl="パスワード">パスワードはセキュリティのため非表示</p>
           </div>
         </div>
       </div>
@@ -156,14 +162,17 @@
     slidesToShow: 1,
     centerMode: false,
     variableWidth: false,
-    arrows: false,
-    centerPadding: '16px',
+    arrows: true,
+    centerPadding: '0px',
     responsive: [
       {
         breakpoint: 768,
         settings: {
+          infinite: false,
           slidesToShow: 1,
           variableWidth: false,
+          arrows: false,
+          centerPadding: '16px',
         }
       },
       {
@@ -171,9 +180,25 @@
         settings: {
           slidesToShow: 1,
           variableWidth: true,
+          arrows: false,
         }
       },
     ]
+  });
+</script>
+<script>
+  $(function(){
+    let Tag = $('.slick-dots'),
+        Num = Tag.find('li').length,
+        Pos = 62 + (Num * 18),
+        Ng  = $('.p-card').innerWidth(); 
+    if(Pos > Ng - 160){
+      Pos = Ng - 200;
+    }
+    if(Tag.length > 0){
+      $('.p-index__head .p-index__btn').addClass('right');
+      $('.p-card .slick-arrow.slick-next').css('left',Pos+'px');
+    }
   });
 </script>
 @endsection
