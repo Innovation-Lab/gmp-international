@@ -30,43 +30,56 @@
 
 .modal__container {
   background-color: #fff;
-  padding: 30px;
+  padding: 32px;
   max-width: 500px;
   max-height: 100vh;
-  border-radius: 4px;
-  overflow-y: auto;
+  border-radius: 10px;
   box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  &--min{
+    max-width: 340px;
+  }
+}
+.modal__box {
+
 }
 
 /* ! ----------
 　Header ヘッダー
 ---------- */
 .modal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
 }
 
 .modal__title {
-  color: var(--color_text_1);
-  margin-top: 0;
-  margin-bottom: 0;
+  color: #222;
+  font-size: 20px;
   font-weight: 600;
-  font-size: 1.25rem;
   line-height: 1.25;
-  box-sizing: border-box;
+}
+.modal__description{
+  margin: 1rem 0 0;
+  font-size: 13px;
+  b{
+    color: #C30E2E;
+  }
 }
 
 /* ! ----------
 　閉じる
 ---------- */
 .modal__close {
-  background: transparent;
-  border: 0;
+  position: absolute;
+  right: 0; top: -12px;
+  width: 20px; height: 20px;
+  background: url(../img/web/icon/modal_close.png)no-repeat center;
+  background-size: contain;
+  padding: 0;
+  transform: translate(0, -100%);
+  z-index: 1;
+  border: none;
   cursor: pointer;
-  user-select: none;
-  margin: 0 -0.25rem 0 0.5rem;
   &:hover {
     opacity: 0.5;
   }
@@ -80,6 +93,18 @@
 　Content 内容
 ---------- */
 .modal__content {
+  &__body{
+
+  }
+  &__foot{
+    margin: 1.5rem 0 0;
+    .p-btnWrap{
+      .c-btn{
+        font-size: 14px;
+        height: 56px;
+      }
+    }
+  }
 }
 
 /* ! ----------

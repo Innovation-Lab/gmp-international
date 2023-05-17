@@ -20,15 +20,25 @@
     <!-- その他 -->
 
     {{-- ---------- スクリプト ---------- --}}
-    {{-- jQuery読み込み --}}
-    <script src="{{ asset('js/admin/library/jquery-3.5.1.min.js') }}"></script>
-    {{-- モーダル --}}
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script>
       MicroModal.init({
-        disableScroll: true,
+        disableScroll: false,
         awaitOpenAnimation: true,
         // awaitCloseAnimation: true
+      });
+    </script>
+    {{-- 住所検索 --}}
+    <script type="text/javascript">
+      $(window).ready( function() {
+        $('#postcode').jpostal({
+          postcode : [
+            '#postcode'
+          ],
+          address : {
+            '#address1'  : '%3',
+            '#address2'  : '%4%5',
+          }
+        });
       });
     </script>
     {{-- ボタン --}}
