@@ -31,7 +31,7 @@
               <p class="p-menuList__button" data-micromodal-trigger="modal-account-edit" data-micromodal-close>プロフィールの変更</p>
             </li>
             <li class="p-menuList__item">
-              <a href="{{route('admin.accounts.index')}}" class="p-menuList__button">アカウント管理</a>
+              <a href="{{route('admin.staffs.index')}}" class="p-menuList__button">アカウント管理</a>
             </li>
             <li class="p-menuList__item">
               <p class="p-menuList__button" data-micromodal-trigger="modal-account-logout" data-micromodal-close>ログアウト</p>

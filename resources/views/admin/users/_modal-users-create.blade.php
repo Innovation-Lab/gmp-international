@@ -170,7 +170,7 @@
           class="modal__btn"
           data-micromodal-close
         >戻る</button>
-        <button onclick="window.location='{{ route("admin.users.detail.account") }}'" class="modal__btn-primary">
+        <button  class="modal__btn-primary">
           この内容で作成する
         </button>
       </footer>

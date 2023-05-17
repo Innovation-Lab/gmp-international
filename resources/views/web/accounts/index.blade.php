@@ -17,7 +17,7 @@
           </div>
           <div class="l-index__middle">
             {{-- ---------- タブ ---------- --}}
-            @include('accounts._tab')
+            @include('staffs._tab')
           <div class="l-index__body">
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
@@ -98,7 +98,7 @@
   </div>
 </div>
 {{-- アカウント作成モーダル --}}
-@include('accounts._modal-account-create')
+@include('staffs._modal-account-create')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

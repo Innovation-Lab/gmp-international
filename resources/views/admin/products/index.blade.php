@@ -70,7 +70,7 @@
                 <tbody>
                   @for ($i = 0; $i < 30; $i++)
                   <!-- 1人 -->
-                  <tr data-href="{{route('admin.items.detail.index')}}">
+                  <tr data-href="{{route('admin.products.detail')}}">
                     <td class="item">
                       田嶋浩明
                       <span>タジマヒロアキ</span>
