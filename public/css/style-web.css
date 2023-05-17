@@ -1139,11 +1139,15 @@ input[type=file] + label img {
   width: 16px;
   height: 16px;
   background-size: contain !important;
-  margin: 0 4px 0 0;
+  margin: 0 2px 0 0;
 }
 .c-btn--ico--add:before {
   content: "";
   background: url(../img/web/icon/btn--add.png) no-repeat center;
+}
+.c-btn--ico--remove:before {
+  content: "";
+  background: url(../img/web/icon/btn--remove.png) no-repeat center;
 }
 
 .c-description {
@@ -3222,6 +3226,9 @@ input[type=file] + label img {
     min-width: 1px;
   }
 }
+.p-formList--confirm .p-formList__ttl {
+  display: block;
+}
 .p-formList--confirm .p-formList__ttl .c-txt {
   margin: 1rem 0 0;
 }
@@ -3293,6 +3300,12 @@ input[type=file] + label img {
 }
 .p-formList__data .c-txt--err {
   margin: 0.25rem 0 0;
+}
+.p-formList__ttl {
+  display: flex;
+}
+.p-formList__ttl > .p-btnWrap {
+  margin-left: auto;
 }
 .p-formList__ttl + .p-formList__ttl {
   margin-top: 32px;
@@ -3536,6 +3549,7 @@ input[type=file] + label img {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 24px;
 }
 
 .modal__container {

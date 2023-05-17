@@ -27,7 +27,7 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <div class="l-stack">
+          <div class="l-stack l-stack--product">
             <div class="l-stack__item">
               <!-- 登録製品1 -->
               <ul class="p-formList">
@@ -90,14 +90,14 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="pref">
+                        <select name="color">
                           <option value="" selected>カラーを選択してください</option>
-                          <option value="エアバギー代官山店">エアバギー代官山店</option>
                           <option value="GRASS GREEN">GRASS GREEN</option>
+                          <option value="other">上記以外のカラー</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
-                      <div {{--style="display:none;"--}} class="p-formList__content p-formList__other">
+                      <div style="display:none;" class="p-formList__content p-formList__other">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                         </div>
@@ -136,11 +136,11 @@
                         <select name="pref">
                           <option value="" selected>購入店舗を選択してください</option>
                           <option value="エアバギー代官山店">エアバギー代官山店</option>
-                          <option value="上記以外の店舗">上記以外の店舗</option>
+                          <option value="other">上記以外の店舗</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
-                      <div {{--style="display:none;"--}} class="p-formList__content p-formList__other">
+                      <div style="display:none;" class="p-formList__content p-formList__other">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                         </div>
@@ -160,6 +160,9 @@
                 <li class="p-formList__item">
                   <div class="p-formList__ttl">
                     <p class="c-ttl">製品2</p>
+                    <div class="p-btnWrap">
+                      <p class="c-btn c-btn--ico c-btn--ico--remove">削除</p>
+                    </div>
                   </div>
                   <div class="p-formList__content">
                     <div class="p-formList__label">
@@ -215,10 +218,10 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="pref">
+                        <select name="color">
                           <option value="" selected>カラーを選択してください</option>
-                          <option value="エアバギー代官山店">エアバギー代官山店</option>
                           <option value="GRASS GREEN">GRASS GREEN</option>
+                          <option value="other">上記以外のカラー</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
@@ -261,7 +264,7 @@
                         <select name="pref">
                           <option value="" selected>購入店舗を選択してください</option>
                           <option value="エアバギー代官山店">エアバギー代官山店</option>
-                          <option value="上記以外の店舗">上記以外の店舗</option>
+                          <option value="other">上記以外の店舗</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
@@ -300,16 +303,45 @@
 
   {{-- 登録製品追加 / 削除 --}}
   <script>
-    $(document).on('click', '', function(){
-
+    //製品の追加とナンバリング
+    $(document).on('click', '#js-product--add', function(){
+      let Tag = $('.l-stack__item.l-stack__item--line').eq(0),
+          Code = Tag.clone(),
+          Num = $('.l-stack--product > .l-stack__item').length;
+      $('#js-product--add').before(Code);
+      $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('製品'+Num);
+    });
+  </script>
+  <script>
+    //製品の削除とナンバリング
+    $(document).on('click', '.c-btn--ico--remove', function(){
+      $(this).parents('.l-stack__item--line').remove();
+      let Tag = $('.l-stack--product > .l-stack__item'),
+          Num = Tag.length;
+      Tag.each(function(){
+        let This = $(this),
+            Ind = This.index() + 1;
+        This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
+      });
     });
   </script>
   {{-- フォームの表示切り替え --}}
+  <script>
+    $('select').on('keydown keyup keypress change click lord',function(){    
+      if($(this).val() == 'other'){
+        $(this).parents('.p-formList__data').find('.p-formList__other').css('display','grid');
+      }else{   
+        $(this).parents('.p-formList__data').find('.p-formList__other').hide();
+      }  
+    }).change();
+  </script>
   {{-- 日付選択 --}}
   <script>
     $(function() {
       $('.c-input--date input').datepicker();
     });
   </script>
+
+
   
 @endsection

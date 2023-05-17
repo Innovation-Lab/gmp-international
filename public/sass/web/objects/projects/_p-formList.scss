@@ -44,6 +44,10 @@
     }
   }
   &__ttl{
+    display: flex;
+    > .p-btnWrap{
+      margin-left: auto;
+    }
     & + &{
       margin-top: 32px;
     }
