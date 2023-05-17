@@ -13,13 +13,12 @@ class UserController extends Controller
 {
     /**
      * ユーザー一覧
-     *
      * @param Request $request
      * @return View
      */
     public function index()
     {
-        return view('web.users.mypage.index');
+        return view('web.mypage.index');
     }
 
 }

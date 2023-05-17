@@ -38,7 +38,6 @@ Route::view('/forgot/complete', 'web.auth.forgot.complete')->name('web.forgot.co
 
 //パスワード再設定
 Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
-Route::view('/reset/complete', 'web.auth.reset.complete')->name('web.reset.complete');
 
 
 /* ! ==================================================
@@ -77,9 +76,6 @@ Route::group([
 ], function() {
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
-
-//マイページ
-Route::view('/mypage', 'web.mypage.index')->name('web.index');
 
 //登録済み製品一覧
 Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
