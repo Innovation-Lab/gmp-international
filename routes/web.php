@@ -75,7 +75,14 @@ Route::group([
     Route::get('/', [UserController::class, 'index'])->name('index');
 });
 
-Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
+//マイページ
+Route::view('/mypage', 'web.mypage.index')->name('web.index');
 
 //登録済み製品一覧
 Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
+
+//製品の追加登録
+Route::view('/mypage/add', 'web.mypage.add')->name('web.add');
+
+//製品の入力情報確認
+Route::view('/mypage/confirm', 'web.mypage.confirm')->name('web.confirm');

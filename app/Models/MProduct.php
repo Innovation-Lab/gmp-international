@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MProduct extends Model
 {
-    use HasFactory, SoftDeletes, Sortable;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

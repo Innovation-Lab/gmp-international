@@ -17,4 +17,11 @@
             margin-top: 4px;
         }
     }
+    /* PC */
+    @media screen and (min-width: 768px){
+        padding: 40px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
 }

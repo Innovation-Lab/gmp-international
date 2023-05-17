@@ -62,12 +62,13 @@
   /* ! --------------------------------------------------
   　Item アイテム
   -------------------------------------------------- */
+  &__list{
+    margin-top: 24px;
+  }
   &__item {
-    flex: auto;
-    min-width: 0;
-    min-height: 0;
-    border: 1px solid var(--color_border_1);
-    background-color: #fff;
+    & + &{
+      margin-top: 16px;
+    }
   }
 
   /* ! ----------

@@ -1,4 +1,4 @@
-<div class="l-frame__head">
+<div class="l-frame__head l-frame__head--mypage">
   <header class="p-header">
     <div class="p-header__logo">
       <img src="{{ asset('img/web/user/logo/GMP_logo.png')}}" alt="" width="45px">

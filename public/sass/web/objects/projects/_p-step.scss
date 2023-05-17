@@ -1,3 +1,5 @@
+@use "../../global/" as global;
+
 .p-step {
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +16,7 @@
     display: flex;
     counter-increment: steps;
     ::before{
-      content: '';
+      content: counter(steps);
       color: #fff;
       display: block;
       width: 20px;
@@ -25,7 +27,16 @@
       text-align: center;
       border-radius: 50%;
       background-color: #8c8c8c;
-      content: counter(steps);
+      @include global.responsive(md) {
+        margin: 15px auto 20px auto;
+      }
+    }
+    .c-txt{
+      br{
+        @include global.responsive(md) {
+          display: none;
+        }
+      }
     }
     + .p-step__item::after{
       content: "";
@@ -55,8 +66,11 @@
         color: #c30e2e;
       }
       ::before{
-        background: #c30e2e;
+        content: '';
+        background: url(../img/web/icon/step--checked.png)no-repeat center;
+        background-size: contain;
         color: #fff;
+        
       }
       + .p-step__item::after{
         background: #c30e2e;

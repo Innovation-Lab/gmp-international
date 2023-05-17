@@ -1,33 +1,105 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
 .p-formList{
   width: 100%;
+  &--add{
+    margin-top: 40px;
+  }
   &__item{
     & + &{
       margin-top: 32px;
     }
     &--half{
       display: flex;
-      align-items: flex-end;
+    }
+    &--add{
+      & + &{
+        margin-top: 16px;
+      }
     }
   }
   &__content{
+    &--add{
+      display: flex;
+    }
     & + &{
       margin-left: 8px;
     }
   }
+  &__label{
+    &--add{
+      min-width: 150px;
+    }
+  }
   &__data{
+    .c-input{
+      + .c-input{
+        margin: 8px 0 0;
+      }
+    }
     &--err{
       input{
         background: #FFE0E6;
         border: #C30E2E 1px solid;
       }
     }
+    &--selectErr{
+      .c-input--select{
+        &:before{
+          background: url(../img/web/icon/select--err.png)no-repeat center;
+          background-size: contain;
+        }
+        select{
+          background: #FFE0E6;
+          border: #C30E2E 1px solid;
+        }
+      }
+    }
+    .c-txt--err{
+      margin: 0.25rem 0 0;
+    }
   }
   &__ttl{
+    display: flex;
+    > .p-btnWrap{
+      margin-left: auto;
+    }
     & + &{
       margin-top: 32px;
     }
   }
+  &__guide{
+    margin: 0 0 0 4px;
+    &__btn{
+      width: 14px; height: 14px;
+      background: url(../img/web/icon/guide_btn.png)no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      display: block;
+      -webkit-appearance: none;
+      border: none;
+      &:hover{
+        opacity: .7;
+      }
+    }
+  }
   &__other{
-    margin-top: 32px;
+    margin-top: 12px;
+    @include global.responsive(md) {
+      display: block;
+    }
+    .p-formList__label{
+      width: 100%;
+      padding: 0;
+      display: block;
+      .c-txt{
+        color: #444;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 0 0 3px;
+        display: block;
+        width: 100%;
+      }
+    }
   }
 }
