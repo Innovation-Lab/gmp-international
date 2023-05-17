@@ -6,7 +6,7 @@
     {{-- ローディング --}}
     {{-- フラッシュメッセージ --}}
     {{-- ページフレーム --}}
-    <div class="l-frame" id="js-target__gnavSwitch">
+    <div class="l-frame l-frame--mypage" id="js-target__gnavSwitch">
       @include('web.layouts._header--mypage')
       <aside class="l-frame__sidebar">
         @include('web.components._sidebar')

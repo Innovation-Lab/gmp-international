@@ -72,17 +72,17 @@ Route::group([
     'prefix' => 'mypage',
     'as' => 'mypage.',
 ], function() {
+    //マイページ
     Route::get('/', [UserController::class, 'index'])->name('index');
+    //登録済み製品一覧
+    Route::view('/product', 'web.users.mypage.product')->name('product');
+    //製品の追加登録
+    Route::view('/add', 'web.users.mypage.add')->name('add');
+    //製品の入力情報確認
+    Route::view('/confirm', 'web.users.mypage.confirm')->name('confirm');
+    //アカウント情報の編集
+    Route::view('/account', 'web.users.mypage.account')->name('account');
+    //基本情報の編集
+    Route::view('/user', 'web.users.mypage.user')->name('user');
 });
 
-//マイページ
-Route::view('/mypage', 'web.mypage.index')->name('web.index');
-
-//登録済み製品一覧
-Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
-
-//製品の追加登録
-Route::view('/mypage/add', 'web.mypage.add')->name('web.add');
-
-//製品の入力情報確認
-Route::view('/mypage/confirm', 'web.mypage.confirm')->name('web.confirm');

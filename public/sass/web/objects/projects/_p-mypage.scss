@@ -1,0 +1,15 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+.p-mypage {
+  padding: 0;
+  @include global.responsive(md) {
+    padding: 56px 40px 32px;
+  }
+  &__head{
+    
+  }
+  &__body{
+
+  }
+}

@@ -1,31 +1,173 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
 .p-index{
+  /* PC */
+  @include global.responsive(md) {
+    display: block;
+    padding: 40px;
+    padding-bottom: 24px;
+    max-width: 1280px;
+    flex: auto;
+    min-height: 1px;
+    position: relative;
+  }
+  @include global.responsive(xl) {
+    display: flex;
+    padding: 56px;
+  }
+  .l-container{
+    @include global.responsive(md) {
+      padding: 0;
+    }
+  }
   &__bar{
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
+    @include global.responsive(md) {
+      align-items: end;
+    }
+    .c-ttl{
+      line-height: 1.3em;
+      font-size: 14px;
+      &--xl{
+        font-size: 26px;
+      }
+    }
+    .p-index{
+      &__btn{
+        margin-top: 0;
+        .c-btn{
+          height: 24px;
+          min-width: auto;
+          &--innerIco--add{
+            @include global.responsive(md) {
+              border: none;
+              height: auto;
+              padding: 0;
+              font-size: 18px;
+            }
+            &:before{
+              @include global.responsive(md) {
+                content: '';
+                width: 20px;
+                height: 20px;
+                background-size: contain !important;
+                background: url(../img/web/icon/btn--add--red.png) no-repeat center;
+                margin: 0 2px 0 0;
+              }
+            }
+            &:after{
+              @include global.responsive(md) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__ttl{
+    @include global.responsive(md) {
+      display: flex;
+      align-items: baseline;
+    }
+    .c-ttl{
+      @include global.responsive(md) {
+        font-size: 20px;
+      }
+      &--xl{
+        @include global.responsive(md) {
+          font-size: 40px;
+          line-height: 1;
+          margin: 0 16px 0 0;
+        }
+      }
+    }
   }
   &__btn{
     margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    .c-btn{
+      height: 32px;
+      min-width: 154px;
+    }
+  }
+  &__head{
+    overflow: hidden;
+    @include global.responsive(md) {
+      flex: 0 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: visible;
+      padding-bottom: 48px;
+    }
+    @include global.responsive(xl) {
+      max-width: 560px;
+      width: 60%;
+      padding-bottom: 0;
+    }
+    .l-container{
+      @include global.responsive(md) {
+        flex: auto;
+        min-height: 1px;
+        display: flex;
+        flex-direction: column;
+      }
+      .p-index__bar{
+        @include global.responsive(md) {
+          flex: 0 0 auto;
+        }
+      }
+      .p-card{
+        @include global.responsive(md) {
+          flex: auto;
+          min-height: 1px;
+          display: flex;
+          flex-direction: column;
+        }
+        .slick-list{
+          
+        }
+      }
+    }
+    > .p-index__btn{
+      @include global.responsive(md) {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        margin: 0;
+      }
+      @include global.responsive(xl) {
+        bottom: -48px;
+      }
+      .c-btn{
+        @include global.responsive(xl) {
+          height: 40px;
+        }
+      }
+      &.right{
+        left: auto; right: 0;
+        transform: translate(0,0);
+      }
+    }
   }
   &__body{
     margin-top: 24px;
-  }
-  /* PC */
-  @media screen and (min-width: 768px){
-    display: flex;
-    align-items: baseline;
-    &__bar{
-      align-items: end;
+    @include global.responsive(md) {
+      margin-top: 32px;
+      flex: auto;
+      min-width: 1px;
     }
-    &__ttl{
-      display: flex;
-    }
-    &__body{
+    @include global.responsive(xl) {
+      margin-left: 50px;
       margin-top: 0;
-      margin-left: 24px;
     }
   }
 }

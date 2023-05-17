@@ -113,4 +113,22 @@
             }
         }
     }
+    &--innerIco{
+        padding: 0 28px 0 16px;
+        position: relative;
+        max-width: none;
+        &:after{
+          content: '';
+          position: absolute;
+          right: 8px; top: 50%;
+          transform: translate(0, -50%);
+          width: 12px; height: 12px;
+          background-size: contain !important;
+        }
+        &--add{
+            &:after{
+                background: url(../img/web/icon/btn--add--red.png)no-repeat center;
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@
 @section('title', 'ホーム')
 @section('class', 'body_')
 @section('content')
-<div class="l-flame__body">
+<div class="l-frame__body">
     <div class="l-container">
         <div class="p-index">
             <div class="p-index__head">
@@ -201,7 +201,7 @@
         </div>
         <!-- PCマイページのみ表示 -->
         <footer class="p-footer p-footer--mypage">
-            <p class="c-txt--copyLight">Copyright©2008 GMP International Co., Ltd. All Right Reserved</p>
+            <p class="c-txt--copyRight">Copyright©2008 GMP International Co., Ltd. All Right Reserved</p>
         </footer>
     </div>
 </div>
