@@ -12,8 +12,7 @@
     "body" 1fr
     "foot" auto
     / 100%;
-  background-color: var(--color_background_1);
-  border-right: 1px solid var(--color_border_1);
+  background: #F5F2E7; 
   height: 100vh;
   position: sticky;
   top: 0;
@@ -96,21 +95,34 @@
   　Body ボディ
   -------------------------------------------------- */
   &__body {
-    grid-area: body;
-    overflow: auto;
+    // grid-area: body;
+    // overflow: auto;
+    border: 1px solid #E8E5DD;
+    border-width: 1px 0 0 0;
+    padding: 40px 0 0;
   }
 
   /* ! --------------------------------------------------
   　Foot フット
   -------------------------------------------------- */
   &__foot {
-    grid-area: foot;
-    height: 6rem;
-    display: grid;
-    place-items: center;
-    border-top: 1px solid var(--color_border_1);
-    padding: 0 1rem;
-    position: sticky;
-    bottom: 0;
+    margin: 0 0 2.5rem;
+
+    // grid-area: foot;
+    // height: 6rem;
+    // display: grid;
+    // place-items: center;
+    // border-top: 1px solid var(--color_border_1);
+    // padding: 0 1rem;
+    // position: sticky;
+    // bottom: 0;
+  }
+  &__logout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E8E5DD;
+    border-width: 1px 0 0 0;
+    padding: 40px 0;
   }
 }

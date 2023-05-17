@@ -1,5 +1,8 @@
 .p-formList{
   width: 100%;
+  &--add{
+    margin-top: 40px;
+  }
   &__item{
     & + &{
       margin-top: 32px;
@@ -8,10 +11,23 @@
       display: flex;
       align-items: flex-end;
     }
+    &--add{
+      & + &{
+        margin-top: 16px;
+      }
+    }
   }
   &__content{
+    &--add{
+      display: flex;
+    }
     & + &{
       margin-left: 8px;
+    }
+  }
+  &__label{
+    &--add{
+      min-width: 150px;
     }
   }
   &__data{

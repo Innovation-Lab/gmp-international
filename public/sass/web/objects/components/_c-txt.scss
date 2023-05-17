@@ -1,24 +1,25 @@
 @use "../../global/" as global;
 
 .c-txt {
-  // &__xl {
-  //   font: global.font(700, 24px, 1.3);
-  //   letter-spacing: 0;
-  // }
+
   &--lg {
-  //   font: global.font(400, 20px, 1.3);
-  //   letter-spacing: 0.04em;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.04em;
     line-height: 1em;
     width: 160px;
     word-wrap: break-word;
+    &--rd{
+      color: #c30e2e;
+    }
   }
   &--md {
   //   font: global.font(400, 16px, 1.3);
     font-size: 16px;
     letter-spacing: 0.04em;
+    &--gr{
+      color: #8c8c8c;
+    }
 
   }
   &--sm {
@@ -39,9 +40,6 @@
   //   letter-spacing: 0.04em;
   // }
 
-font-size: 14px;
-font-weight: 500;
-line-height: 18px;
 
   &--step{
     text-align: center;
@@ -66,4 +64,11 @@ line-height: 18px;
   &--must{
     color: #c30e2e;
   }
+  &--gr{
+    color: #8c8c8c;
+  }
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #000;
 }

@@ -22,5 +22,13 @@
   <script type="text/javascript" src="{{ asset('js/library/jquery-3.5.1.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/web/product.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/web/slick.js') }}"></script>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.your-class').slick({
+        setting-name: setting-value
+      });
+    });
+  </script>
 
 </head>

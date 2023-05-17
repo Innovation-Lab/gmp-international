@@ -8,6 +8,9 @@
     {{-- ページフレーム --}}
     <div class="l-frame" id="js-target__gnavSwitch">
       @include('web.layouts._header--mypage')
+      <aside class="l-frame__sidebar">
+        @include('web.components._sidebar')
+      </aside>
       <main class="l-frame__main">
         @yield('content')
       </main>

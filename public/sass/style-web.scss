@@ -64,6 +64,9 @@
 // Label ラベル
 @use "web/objects/components/_c-label.scss";
 
+// Dots ドット
+@use "web/objects/components/_c-dots.scss";
+
 
 /* ! --------------------------------------------------
 　Projects プロジェクト
@@ -165,6 +168,9 @@
 
 // Confirm コンファーム
 @use "web/objects/projects/_p-confirm.scss";
+
+// Support サポート
+@use "web/objects/projects/_p-support.scss";
 
 /* ! --------------------------------------------------
 　Libraries ライブラリ

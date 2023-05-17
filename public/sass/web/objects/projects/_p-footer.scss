@@ -16,4 +16,13 @@
     justify-content: center;
     margin-bottom: 16px;
   }
+  &--mypage{
+    display: none;
+  }
+  /* PC */
+  @media screen and (min-width: 768px){
+    &--mypage{
+      display: block;
+    }
+  }
 }
