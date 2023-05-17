@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\UserController;
 
 
@@ -33,6 +35,7 @@ Route::get('/login', [RegisterController::class, 'login'])->name('login');
 //パスワード再設定メール
 Route::view('/forgot', 'web.auth.forgot.index')->name('web.forgot.index');
 Route::view('/forgot/complete', 'web.auth.forgot.complete')->name('web.forgot.complete');
+
 //パスワード再設定
 Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
 Route::view('/reset/complete', 'web.auth.reset.complete')->name('web.reset.complete');

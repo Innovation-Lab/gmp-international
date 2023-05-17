@@ -21,7 +21,7 @@
               </p>
             </div>
             <div class="l-stack__item">
-              <form method="POST" action="{{ route('register.store.account') }}" id="accountSubmitForm">
+              <form method="POST" action="{{ route('password.email') }}" id="accountSubmitForm">
                 @csrf
                 <ul class="p-formList">
                   <!-- メールアドレス -->
@@ -46,9 +46,9 @@
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
-            <a href="" class="c-btn c-btn--back">戻る</a>
-            <!-- <button type="submit" class="c-btn c-btn--next" form="accountSubmitForm">送信する</button> -->
-            <a class="c-btn c-btn--next"  href="{{ route('web.forgot.complete') }}">送信する</a>
+            <a href="{{ route('login') }}" class="c-btn c-btn--back">戻る</a>
+            <button type="submit" class="c-btn c-btn--next" form="accountSubmitForm">送信する</button>
+            {{-- <a class="c-btn c-btn--next"  href="{{ route('web.forgot.complete') }}">送信する</a> --}}
           </div>
         </div>
       </div>

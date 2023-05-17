@@ -26,7 +26,7 @@
         @endforeach
         <input type="submit" name="button" value="ログイン">
       {!! Form::close() !!}
-      <a href="{{route('web.forgot.index')}}">パスワードを忘れた方はこちら</a>
+      <a href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
     </div>
   </div>
   <div class="p-login__foot">
