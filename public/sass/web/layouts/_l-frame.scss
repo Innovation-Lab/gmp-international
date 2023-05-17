@@ -21,15 +21,11 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  // テーブル表示の関係で、幅計算の必要がある↓
-  // grid:
-  //   "sidebar main" 1fr
-  //   / var(--width_sidebar) calc(100vw - var(--width_sidebar));
-  // &.is-hide {
-  //   --width_sidebar: 4.5rem;
-  //   @extend .c-text__sm !optional;
-  // }
-
+  /* PC */
+  @include global.responsive(md) {
+    display: flex;
+  }
+  
   /* ! ----------
   　編集ページの場合
   ---------- */
@@ -44,6 +40,10 @@
   -------------------------------------------------- */
   &__sidebar {
     display: flex;
+    /* PC */
+    @media screen and (max-width: 768px){
+      display: none;
+    }
   }
 
   /* ! --------------------------------------------------
@@ -54,9 +54,13 @@
     // 最大幅　1024px - サイドバー幅
     // min-width: calc(64rem - var(--width_sidebar));
   }
-
   &__head{
     flex: 0 0 auto;
+    &__mypage{
+      @include global.responsive(md) {
+        display: none;
+      }
+    }
   }
   &__main,
   &__body{
@@ -69,5 +73,10 @@
   }
   &__foot{
     flex: 0 0 auto;
+    &--mypage{
+      @include global.responsive(md) {
+        display: none;
+      }
+    }
   }
 }

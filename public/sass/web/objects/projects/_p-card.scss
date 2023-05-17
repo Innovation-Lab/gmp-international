@@ -3,17 +3,32 @@
     margin-bottom: 60px;
 }
 .p-card {
-    &--all{
-        margin-top: 16px;   
-    }
+    max-width: 1366px;
     margin-top: 16px;
     p:not(.c-txt--sm--ghost){
         color: #fff;
     }
+    &--list{
+        margin-top: 16px;   
+        p:not(.c-txt--sm--ghost){
+            color: #fff;
+        }
+    }    
     &__item{
+        width: 340px;
+        height: 210px;
+        margin: 0 36px;
         background: #c30e2e;
         border-radius: 10px;
         padding: 24px;
+        &__item + &{
+            margin-left: 16px;
+        }
+        &--list{
+            padding: 16px;
+        }
+    }
+    &__box{
         display: flex;
         justify-content: space-between;
     }
@@ -36,13 +51,41 @@
     }
     &__subData{
         margin-top: 24px;
+        &--list{
+            margin-top: 16px;
+
+        }
     }
-    &__purchase{}
-    &__serialNum{}
+    &__purchase{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__serialNum{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__store{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     &__img{
-        width: 120px;
+        // width: 120px;
         display: flex;
         align-items: flex-end;
         justify-content: right;
+    }
+    &__other{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    // 1080px以上のデザイン
+    /* PC */
+    @media screen and (max-width: 1080px){
+        
     }
 }

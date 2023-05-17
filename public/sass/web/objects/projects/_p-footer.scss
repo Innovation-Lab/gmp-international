@@ -87,6 +87,13 @@
       }
     }
   }
+  &--mypage{
+    display: none;
+    /* PC */
+    @include global.responsive(md) {
+      display: block;
+    }
+  }
 }
 //完了画面
 .body_complete{

@@ -13,4 +13,19 @@
   &__body{
     margin-top: 24px;
   }
+  /* PC */
+  @media screen and (min-width: 768px){
+    display: flex;
+    align-items: baseline;
+    &__bar{
+      align-items: end;
+    }
+    &__ttl{
+      display: flex;
+    }
+    &__body{
+      margin-top: 0;
+      margin-left: 24px;
+    }
+  }
 }
