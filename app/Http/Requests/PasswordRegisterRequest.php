@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Requests\Api\Auth;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ForgotPasswordRequest extends FormRequest
+class PasswordRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    // public function authorize()
-    // {
-    //     return false;
-    // }
+    public function authorize()
+    {
+        return true;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,16 +24,18 @@ class ForgotPasswordRequest extends FormRequest
     public function rules()
     {
         return [
+            'email' => 'required|email',
             'password' => 'required|min:6|max:10|regex:/^[a-zA-Z0-9]+$/',
-            'password_confirmation' => 'required|same:password',
+            'password_confirmation' => 'required|same:password'
         ];
     }
 
     public function attributes()
     {
         return [
-            'password' => '新しいパスワード',
-            'password_confirmation' => '確認用パスワード',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
+            'password_confirmation' => 'パスワード（確認用）',
         ];
     }
 
@@ -44,10 +46,5 @@ class ForgotPasswordRequest extends FormRequest
             'password.min' => 'パスワードは6文字以上10文字以下で入力してください',
             'password.max' => 'パスワードは6文字以上10文字以下で入力してください',
         ];
-    }
-
-    protected function getRedirectUrl()
-    {
-        return  $_SERVER["HTTP_REFERER"];
     }
 }
