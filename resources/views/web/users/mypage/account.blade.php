@@ -1,5 +1,5 @@
 @extends('web.layouts.pages._form')
-@section('title', 'アカウント情報の入力')
+@section('title', 'アカウント情報の変更')
 @section('class', 'body_')
 @section('content')
   <div class="l-frame__body">
@@ -7,7 +7,7 @@
       <div class="p-formPage__head">
         <div class="l-container"> 
           <div class="p-formPage__head__ttl">
-            <p class="c-ttl">新規会員登録</p>
+            <p class="c-ttl">アカウント情報の変更</p>
           </div>
         </div>
       </div>

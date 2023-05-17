@@ -81,8 +81,19 @@
                     }
                 }
                 &__color{
+                    display: flex;
                     @include global.responsive(md) {
                         margin-top: 18px;
+                    }
+                    .c-colorBall{
+                        @include global.responsive(md) {
+                            width: 15px; height: 15px;
+                            border-radius: 18px;
+                            margin-right: 8px;
+                        }
+                        @include global.responsive(xl) {
+                            width: 18px; height: 18px;
+                        }
                     }
                     .c-txt{
                         @include global.responsive(md) {
@@ -90,16 +101,6 @@
                         }
                         @include global.responsive(xl) {
                             font-size: 24px;
-                        }
-                        &:before{
-                            @include global.responsive(md) {
-                                width: 15px; height: 15px;
-                                border-radius: 18px;
-                                margin-right: 8px;
-                            }
-                            @include global.responsive(xl) {
-                                width: 18px; height: 18px;
-                            }
                         }
                     }
                 }
@@ -280,15 +281,8 @@
     &__product{}
     &__color{
         margin-top: 8px;
-        ::before{
-            content: "";
+        .c-colorBall{
             display: inline-block;
-            background: #fff;
-            width: 10px;
-            height: 10px;
-            border-radius: 10px;
-            margin-right: 4px;
-            box-shadow: 0 0 1px rgba(0, 0, 0, 7);
         }
     }
     &__subData{

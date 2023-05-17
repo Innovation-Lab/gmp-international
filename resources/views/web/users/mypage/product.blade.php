@@ -34,6 +34,7 @@
                     <p class="c-txt c-txt--sm">ココプレミア フロムバース</p>
                   </div>
                   <div class="p-card__color">
+                    <div class="c-colorBall"></div>
                     <p class="c-txt">GRASS GREEN</p>
                   </div>
                 </div>

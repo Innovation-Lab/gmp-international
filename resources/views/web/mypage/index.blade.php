@@ -32,6 +32,10 @@
                       <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
                     </div>
                     <div class="p-card__color">
+                      <div class="c-colorBall">
+                        {{-- 2色の場合に追加 --}}
+                        <div class="c-colorBall__pallet2"></div>
+                      </div>
                       <p class="c-txt">GRASS GREEN</p>
                     </div>
                   </div>
@@ -72,6 +76,7 @@
                       <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
                     </div>
                     <div class="p-card__color">
+                      <div class="c-colorBall"></div>
                       <p class="c-txt">GRASS GREEN</p>
                     </div>
                   </div>
