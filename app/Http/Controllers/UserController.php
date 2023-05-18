@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function product(): View
     {
-        return view('web.mypage.product');
+        return view('web.mypage.product.index');
     }
     
     /**
@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function productAdd(): View
     {
-        return view('web.mypage.add');
+        return view('web.mypage.product.add');
     }
     
     /**
