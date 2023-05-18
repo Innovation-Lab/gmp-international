@@ -601,12 +601,24 @@ input[type=file] + label img {
   .l-frame--mypage {
     flex-direction: row;
     flex-wrap: nowrap;
+    overflow: visible;
   }
 }
 @media screen and (min-width: 768px) {
   .l-frame--mypage .l-frame__head {
     display: none;
   }
+}
+.l-frame--mypage .l-frame__head .p-header {
+  justify-content: center;
+}
+.l-frame--mypage .l-frame__head .p-header__logo {
+  margin: 0;
+}
+.l-frame--mypage .l-frame__head .p-header__btn {
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 24px;
 }
 .l-frame--mypage .l-frame__main {
   max-width: 100%;

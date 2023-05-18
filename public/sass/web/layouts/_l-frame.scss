@@ -49,11 +49,23 @@
     @include global.responsive(md) {
       flex-direction: row;
       flex-wrap: nowrap;
+      overflow: visible;
     }
     .l-frame{
       &__head{
         @include global.responsive(md) {
           display: none;
+        }
+        .p-header{
+          justify-content: center;
+          &__logo{
+            margin: 0;
+          }
+          &__btn{
+            top: 50%;
+            transform: translate(0, -50%);
+            right: 24px;
+          }
         }
       }
       &__main{
