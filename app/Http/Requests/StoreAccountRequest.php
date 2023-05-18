@@ -36,7 +36,7 @@ class StoreAccountRequest extends FormRequest
             'email' => 'メールアドレス',
             'tel' => '電話番号',
             'password' => 'パスワード',
-            'password_confirmation' => 'パスワード（確認用）',
+            'password_confirmation' => 'パスワード(確認用)',
         ];
     }
 

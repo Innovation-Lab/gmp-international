@@ -41,7 +41,7 @@
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   @error('email')
-                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                    <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>
@@ -56,7 +56,7 @@
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   @error('password')
-                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                    <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>
@@ -71,7 +71,7 @@
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   @error('password_confirmation')
-                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                    <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>
