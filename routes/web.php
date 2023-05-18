@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\UserController;
 
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,12 @@ use App\Http\Controllers\UserController;
 　ログイン
 ================================================== */
 
-//ホーム
-// ログイン後のホーム画面
-Route::get('/home', function () {
-    return view('web.users.mypage.index');
+Route::group([
+    'middleware' => 'guest:web',
+], function() {
+    Route::get('/', [RegisterController::class, 'login'])->name('login');
+    Route::get('/login', [RegisterController::class, 'login'])->name('login');
 });
-require __DIR__.'/auth.php';
-
-Route::get('/', [RegisterController::class, 'login'])->name('login');
-Route::get('/login', [RegisterController::class, 'login'])->name('login');
 
 //パスワード再設定メール
 Route::view('/forgot', 'web.auth.forgot.index')->name('web.forgot.index');
@@ -68,22 +66,27 @@ Route::group([
 /* ! ==================================================
 　マイページ
 ================================================== */
-//ホーム
-Route::group([
-    'namespace' => 'Mypage',
-    'prefix' => 'mypage',
-    'as' => 'mypage.',
-], function() {
-    //マイページ
-    Route::get('/', [UserController::class, 'index'])->name('index');
+Route::middleware(['auth:web'])->group(function () {
+    // ログイン後のホーム画面
+    Route::get('/home', function () {
+        return view('web.users.mypage.index');
+    });
+
+    Route::group([
+        'namespace' => 'Mypage',
+        'prefix' => 'mypage',
+        'as' => 'mypage.',
+    ], function() {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/product', [UserController::class, 'productsList'])->name('index');
+    });
+
     //登録済み製品一覧
-    Route::get('/product', [UserController::class, 'product'])->name('product');
+    Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
+
     //製品の追加登録
-    Route::get('/add', [UserController::class, 'productAdd'])->name('add');
+    Route::view('/mypage/add', 'web.mypage.add')->name('web.add');
+
     //製品の入力情報確認
-    Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
-    //アカウント情報の編集
-    Route::get('/account', [UserController::class, 'account'])->name('account');
-    //基本情報の編集
-    Route::get('/user', [UserController::class, 'user'])->name('user');
+    Route::view('/mypage/confirm', 'web.mypage.confirm')->name('web.confirm');
 });
