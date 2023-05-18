@@ -15,7 +15,7 @@
         <button class="p-login__registered__btn" data-micromodal-trigger="modal__guide--serial" role="button">登録済みの方はこちら</button>
       </div>
       <div class="p-login__forget">
-        <a class="c-btn--text c-btn--text--nv" href="{{route('web.forgot.index')}}">パスワードを忘れた方はこちら</a>
+        <a class="c-btn--text c-btn--text--nv" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
       </div>
       <a href="{{ route('register.terms') }}" class="c-btn">新規会員登録</a>
     </div>
