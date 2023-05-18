@@ -1,26 +1,264 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
 .visual{
     background-color: #9f9f9f;
     margin-bottom: 60px;
 }
 .p-card {
-    max-width: 1366px;
+    //max-width: 1366px;
     margin-top: 16px;
     p:not(.c-txt--sm--ghost){
         color: #fff;
     }
-    &--list{
-        margin-top: 16px;   
-        p:not(.c-txt--sm--ghost){
-            color: #fff;
+    // スライダー
+    .slick-list{
+        overflow: visible;
+        @include global.responsive(md) {
+            display: flex;
+            flex-direction: column;
+            flex: auto;
+            min-height: 1px;
+            overflow: hidden;
         }
-    }    
+    }
+    .slick-track{
+        @include global.responsive(md) {
+            flex: auto;
+            min-height: 1px;
+        }
+    }
+    .slick-slide{
+        @include global.responsive(md) {
+            height: 100%;
+            min-height: 1px;
+        }
+        > div{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        li{
+            @include global.responsive(md) {
+                flex: auto;
+                min-height: 1px;
+            }
+            .p-card{
+                &__item{
+                    @include global.responsive(md) {
+                        height: 100%;
+                        position: relative;
+                        padding: 32px;
+                        min-height: 420px;
+                    }
+                    @include global.responsive(xl) {
+                        min-height: auto;
+                    }
+                }
+                &__brand{
+                    .c-txt{
+                        @include global.responsive(md) {
+                            font-size: 24px;
+                            font-weight: 300;
+                            line-height: 24px;
+                        }
+                        @include global.responsive(xl) {
+                            font-size: 32px;
+                            line-height: 32px;
+                        }
+                    }
+                }
+                &__product{
+                    .c-txt{
+                        @include global.responsive(md) {
+                            font-size: 40px;
+                            width: auto;
+                            margin: 10px 0 0;
+                        }
+                        @include global.responsive(xl) {
+                            font-size: 55px;
+                        }
+                    }
+                }
+                &__color{
+                    display: flex;
+                    @include global.responsive(md) {
+                        margin-top: 18px;
+                    }
+                    .c-colorBall{
+                        @include global.responsive(md) {
+                            width: 15px; height: 15px;
+                            border-radius: 18px;
+                            margin-right: 8px;
+                        }
+                        @include global.responsive(xl) {
+                            width: 18px; height: 18px;
+                        }
+                    }
+                    .c-txt{
+                        @include global.responsive(md) {
+                            font-size: 20px;
+                        }
+                        @include global.responsive(xl) {
+                            font-size: 24px;
+                        }
+                    }
+                }
+                &__subData{
+                    > div{
+                        @include global.responsive(md) {
+                            flex-direction: column;
+                        }
+                        + div{
+                            @include global.responsive(md) {
+                                margin: 16px 0 0;
+                            }
+                        }
+                        .label{
+                            @include global.responsive(md) {
+                                color: #fff;
+                                font-size: 14px;
+                                width: auto;
+                            }
+                            @include global.responsive(xl) {
+                                font-size: 16px;
+                            }
+                        }
+                        .data{
+                            @include global.responsive(md) {
+                                font-size: 16px;
+                                margin: 6px 0 0;
+                            }
+                            @include global.responsive(xl) {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+                &__img{
+                    @include global.responsive(md) {
+                        position: absolute;
+                        right: 16px;
+                        bottom: 16px;
+                    }
+                    img{
+                        @include global.responsive(md) {
+                            width: 140px;
+                            height: auto;
+                        }
+                        @include global.responsive(md) {
+                            width: 180px;
+                        }
+                    }
+                }
+                &__info{
+                    @include global.responsive(md) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                &__subData{
+                    @include global.responsive(md) {
+                        margin-top: auto;
+                        padding-top: 24px;
+                    }
+                }
+            }
+        }
+    }
+    > li,
+    .slick-slide li{
+        padding-right: 8px;
+        @include global.responsive(sm) {
+            padding-right: 16px;
+        }
+        @include global.responsive(md) {
+            padding-right: 0px;
+        }
+    }
+    .slick-arrow{
+        position: absolute;
+        bottom: -40px;
+        font-size: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: url(../img/web/icon/arrow--prev.png)no-repeat center;
+        background-size: contain !important;
+        left: 0;
+        display: none;
+        cursor: pointer;
+        @include global.responsive(md) {
+            display: block;
+        }
+        @include global.responsive(xl) {
+            bottom: -45px;
+        }
+        &[aria-disabled="true"]{
+            background: url(../img/web/icon/arrow--prev--disabled.png)no-repeat center;
+            cursor: default;
+        }
+        &.slick-next{
+            background: url(../img/web/icon/arrow--next.png)no-repeat center;
+            left: 104px;
+            &[aria-disabled="true"]{
+                background: url(../img/web/icon/arrow--next--disabled.png)no-repeat center;
+            }
+        }
+    }
+    .slick-dots{
+        display: flex;
+        align-items: center;
+        margin: -4px;
+        margin-top: 4px;
+        margin-bottom: -16px;
+        @include global.responsive(md) {
+            position: absolute;
+            left: 0; bottom: -34px;
+            margin: 0 48px;
+        }
+        @include global.responsive(xl) {
+            bottom: -38px;
+        }
+        > li{
+            padding: 4px;
+            font-size: 0;
+            button{
+              font-size: 0;
+              padding: 0;
+              border: none;
+              width: 8px; height: 8px;
+              border-radius: 50%;
+              background: rgba(195, 14, 47, 0.2);
+              cursor: pointer;
+              @include global.responsive(md) {
+                width: 10px; height: 10px;
+              }
+            }
+            &.slick-active{
+                button{
+                    background: rgba(195, 14, 47, 1);
+                }
+            }
+        }
+    }
     &__item{
-        width: 340px;
-        height: 210px;
-        margin: 0 36px;
+        //height: 210px;
+        min-height: 210px;
         background: #c30e2e;
         border-radius: 10px;
-        padding: 24px;
+        padding: 20px 16px;
+        max-width: 100%;
+        width: 330px;
+        display: flex;
+        @include global.responsive(min) {
+            width: 340px;
+            padding: 24px;
+        }
+        @include global.responsive(sm) {
+            width: 100%;
+        }
         &__item + &{
             margin-left: 16px;
         }
@@ -31,45 +269,56 @@
     &__box{
         display: flex;
         justify-content: space-between;
+        flex: auto;
+        min-width: 1px;
     }
-    &__info{}
+    &__info{
+        flex: auto;
+        min-width: 1px;
+    }
     &__mainData{}
     &__brand{}
     &__product{}
     &__color{
-        margin-top: 4px;
-        ::before{
-            content: "";
+        margin-top: 8px;
+        .c-colorBall{
             display: inline-block;
-            background: #fff;
-            width: 10px;
-            height: 10px;
-            border-radius: 10px;
-            margin-right: 4px;
-            box-shadow: 0 0 1px rgba(0, 0, 0, 7);
         }
     }
     &__subData{
         margin-top: 24px;
         &--list{
             margin-top: 16px;
-
         }
+        > div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            @include global.responsive(sm) {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            + div{
+                @include global.responsive(sm) {
+                    margin: 4px 0 0;
+                }
+            }
+            .label{
+                flex: 0 0 auto;
+                width: 120px;
+            }
+            .data{
+                flex: auto;
+                min-width: 1px;
+            }
+        }
+        
     }
     &__purchase{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
     &__serialNum{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
     &__store{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
     &__img{
         // width: 120px;
@@ -82,10 +331,138 @@
         flex-direction: column;
         justify-content: space-between;
     }
-
-    // 1080px以上のデザイン
-    /* PC */
-    @media screen and (max-width: 1080px){
-        
+    //一覧ページ
+    &--list{
+        display: flex;
+        flex-wrap: wrap;
+        margin: -4px;
+        margin-top: 16px;
+        > li{
+            padding: 4px;
+            flex: auto;
+            min-width: 1px;
+            display: flex;
+            @include global.responsive(sm) {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+            @include global.responsive(md) {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+        } 
+        p:not(.c-txt--sm--ghost){
+            color: #fff;
+        }
+        .p-card{    
+            &__item{
+                flex: auto;
+                min-width: 1px;
+                @include global.responsive(md) {
+                    padding-left: 160px;
+                    position: relative;
+                    min-height: 104px;
+                }
+            }        
+            &__info{
+                display: flex;
+                flex-direction: column;
+                @include global.responsive(md) {
+                    
+                }
+                @include global.responsive(xl) {
+                    flex-direction: row;
+                }
+            }
+            &__other{
+                flex: 0 0 auto;
+            }
+            &__mainData{
+                flex: 0 0 auto;
+            }
+            &__brand p,
+            &__product .c-txt--sm{
+                font-weight: 300;
+            }
+            &__product{
+                .c-txt--md{
+                    @include global.responsive(md) {
+                        font-size: 22px;
+                        line-height: 24px;
+                    }
+                }
+            }
+            &__subData{
+                margin-top: auto;
+                padding: 16px 0 0;
+                @include global.responsive(md) {
+                    display: flex;
+                    padding: 0;
+                    margin: 12px 0 0;
+                }
+                @include global.responsive(xl) {
+                    padding: 0 0 0 16px;
+                    margin: 0 0 0 auto;
+                }
+                > div{
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    @include global.responsive(min) {
+                        flex-direction: row;
+                    }
+                    @include global.responsive(md) {
+                        flex-direction: column;
+                        padding: 0 16px;
+                        border-left: solid 1px rgba(255,255,255,.3);
+                        border-right: solid 1px rgba(255,255,255,.3);
+                        min-height: 48px;
+                    }
+                    @include global.responsive(xl) {
+                        padding: 0 24px;
+                    }
+                    + div{
+                        border-left: none !important;
+                        margin: 0;
+                    }
+                    .label{
+                        width: 80px;
+                        @include global.responsive(md) {
+                            width: auto;
+                            line-height: 1.2em;
+                        }
+                    }
+                    .data{
+                        @include global.responsive(md) {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+            &__other{
+                @include global.responsive(md) {
+                    margin: 0 0 0 24px;
+                }
+            }
+            &__img{
+                @include global.responsive(md) {
+                    position: absolute;
+                    left: 24px;
+                    top: 8px;
+                    width: 110px;
+                    height: calc(100% - 16px);
+                    align-items: center;
+                    justify-content: center;
+                }
+                img{
+                    @include global.responsive(md) {
+                        max-width: 100%;
+                        height: auto;
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
     }
 }

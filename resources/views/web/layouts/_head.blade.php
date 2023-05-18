@@ -30,12 +30,4 @@
   <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.your-class').slick({
-        setting-name: setting-value
-      });
-    });
-  </script>
-
 </head>

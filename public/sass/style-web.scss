@@ -49,6 +49,9 @@
 // Color カラー
 @use "web/objects/components/_c-color.scss";
 
+// ColorBall カラーボール
+@use "web/objects/components/_c-colorBall.scss";
+
 // Scroll スクロール
 @use "web/objects/components/_c-scroll.scss";
 
@@ -152,6 +155,12 @@
 
 // Information インフォメーション
 @use "web/objects/projects/_p-info.scss";
+
+// マイページレイアウト
+@use "web/objects/projects/_p-mypage.scss";
+
+// モーダル製品削除
+@use "web/objects/projects/_p-deleteProduct";
 
 
 /* ! ----------

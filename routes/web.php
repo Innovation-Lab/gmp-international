@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\UserController;
 
 
@@ -33,9 +35,9 @@ Route::get('/login', [RegisterController::class, 'login'])->name('login');
 //パスワード再設定メール
 Route::view('/forgot', 'web.auth.forgot.index')->name('web.forgot.index');
 Route::view('/forgot/complete', 'web.auth.forgot.complete')->name('web.forgot.complete');
+
 //パスワード再設定
 Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
-Route::view('/reset/complete', 'web.auth.reset.complete')->name('web.reset.complete');
 
 
 /* ! ==================================================
@@ -72,17 +74,16 @@ Route::group([
     'prefix' => 'mypage',
     'as' => 'mypage.',
 ], function() {
+    //マイページ
     Route::get('/', [UserController::class, 'index'])->name('index');
+    //登録済み製品一覧
+    Route::get('/product', [UserController::class, 'product'])->name('product');
+    //製品の追加登録
+    Route::get('/add', [UserController::class, 'productAdd'])->name('add');
+    //製品の入力情報確認
+    Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
+    //アカウント情報の編集
+    Route::get('/account', [UserController::class, 'account'])->name('account');
+    //基本情報の編集
+    Route::get('/user', [UserController::class, 'user'])->name('user');
 });
-
-//マイページ
-Route::view('/mypage', 'web.mypage.index')->name('web.index');
-
-//登録済み製品一覧
-Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
-
-//製品の追加登録
-Route::view('/mypage/add', 'web.mypage.add')->name('web.add');
-
-//製品の入力情報確認
-Route::view('/mypage/confirm', 'web.mypage.confirm')->name('web.confirm');

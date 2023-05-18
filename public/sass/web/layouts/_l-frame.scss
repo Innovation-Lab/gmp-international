@@ -44,7 +44,31 @@
       width: 110%;
     }
   }
-  
+  //マイページ
+  &--mypage{
+    @include global.responsive(md) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+    .l-frame{
+      &__head{
+        @include global.responsive(md) {
+          display: none;
+        }
+      }
+      &__main{
+        max-width: 100%;
+        overflow: hidden;
+      }
+      &__body{
+        @include global.responsive(md) {
+          flex: auto;
+          min-height: 1px;
+          display: flex;
+        }
+      }
+    }
+  }
   /* ! ----------
   　編集ページの場合
   ---------- */
@@ -58,10 +82,12 @@
   　Sidebar サイドバーフレーム
   -------------------------------------------------- */
   &__sidebar {
-    display: flex;
+    display: none;
+    flex: 0 0 auto;
+    width: 200px;
     /* PC */
-    @media screen and (max-width: 768px){
-      display: none;
+    @include global.responsive(md) {
+      display: flex;
     }
   }
 
@@ -101,5 +127,11 @@
         display: none;
       }
     }
+  }
+}
+
+.body_mypage--home{
+  @include global.responsive(md) {
+    background: #F5F2E7;
   }
 }

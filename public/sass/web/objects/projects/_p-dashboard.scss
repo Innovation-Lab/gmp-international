@@ -13,7 +13,6 @@
 .p-dashboard {
   flex: auto;
   min-width: 0;
-  margin: 0 0 2.5rem;
 
   /* ! --------------------------------------------------
   　Row 行
@@ -59,6 +58,25 @@
     }
   }
 
+  &__userName{
+    .c-txt{
+      &--md{
+        display: flex;
+        align-items: baseline;
+        font-weight: 600;
+        &:before{
+          content: '';
+          width: 16px; height: 16px;
+          background: url(../img/web/icon/user.png)no-repeat center;
+          background-size: contain;
+          margin: 0 8px 0 0;
+        }
+      }
+      &--sm{
+        margin-left: 4px;
+      }
+    }
+  }
   /* ! --------------------------------------------------
   　Item アイテム
   -------------------------------------------------- */
@@ -66,6 +84,9 @@
     margin-top: 24px;
   }
   &__item {
+    a{
+      color: #444;
+    }
     & + &{
       margin-top: 16px;
     }

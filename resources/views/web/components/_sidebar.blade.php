@@ -11,10 +11,10 @@
           <p class="c-txt c-txt--md">山田 太郎<span class="c-txt--sm"> 様</span></p>
         </div>
         <ul class="p-dashboard__list">
-          <li class="p-dashboard__item"><a href="" class="c-txt">マイページ</a></li>
-          <li class="p-dashboard__item"><a href="" class="c-txt">登録済み製品一覧</a></li>
-          <li class="p-dashboard__item"><a href="" class="c-txt">ユーザー情報変更</a></li>
-          <li class="p-dashboard__item"><a href="" class="c-txt">アカウント情報変更</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.index')}}" class="c-txt">マイページ</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.product')}}" class="c-txt">登録済み製品一覧</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.user')}}" class="c-txt">ユーザー情報変更</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.account')}}" class="c-txt">アカウント情報変更</a></li>
         </ul>
       </div>
     </div>
@@ -29,16 +29,16 @@
         </div>
         <div class="p-support__tel">
           <p class="c-txt c-txt--gr">ベビー用品</p>
-          <p class="c-txt c-txt--lg c-txt--lg--rd">0120-178-363</p>
+          <a href="tel:0120-178-363" class="c-txt c-txt--lg c-txt--lg--rd">0120-178-363</a>
         </div>
         <div class="p-support__tel">
           <p class="c-txt c-txt--gr">ペット用品</p>
-          <p class="c-txt c-txt--lg c-txt--lg--rd">0120-98-1511</p>
+          <a href="tel:0120-98-1511" class="c-txt c-txt--lg c-txt--lg--rd">0120-98-1511</a>
         </div>
       </div>
     </div>
     <div class="p-sidebar__logout">
-      <p class="c-txt c-txt--md c-txt--md--gr">ログアウト</p>
+      <a href="{{route('login')}}">ログアウト</a>
     </div>
   </div>
 </div>

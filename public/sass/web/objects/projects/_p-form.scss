@@ -245,6 +245,7 @@
         &__label{
           flex: 0 0 auto;
           width: 140px;
+          padding: 0;
           @include global.responsive(sm) {
             width: 160px;
           }

@@ -11,7 +11,7 @@
         <div class="p-formPage__complete__txt">
           <p class="c-ttl c-txt--center">パスワードの変更が完了しました。</p>
           <div class="p-btnWrap p-btnWrap--center">
-            <a class="c-btn c-btn--accent" href="{{route('web.mypage.index')}">マイページへ</a>
+            <a class="c-btn c-btn--accent" href="{{ route('mypage.index')}} ">マイページへ</a>
           </div>
         </div>
       </div>

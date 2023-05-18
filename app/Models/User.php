@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Carbon;
-use App\Notifications\Api\Auth\ResetPasswordNotification;
+use App\Notifications\Web\ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -38,6 +38,7 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token): void
     {
+        $url = url("reset-password/{token}");
         $this->notify(new ResetPasswordNotification($token, $this->email));
     }
 
