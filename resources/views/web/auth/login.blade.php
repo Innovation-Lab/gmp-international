@@ -21,7 +21,6 @@
     </div>
     <div class="p-login__body__auth">
       {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
-        @csrf
         <input type="email" name="email" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
         @foreach ($errors->all() as $error)
@@ -48,17 +47,15 @@
             <div class="p-login__ttl">
               <p class="c-ttl">登録済みの方はこちら</p>
             </div>
-            {{--!! Form::open(['method' => 'POST', 'route' => 'login'])1 !! --}}
-            <form class="form" action="">
+            {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
               <input class="mailbox" type="email" name="email" placeholder="メールアドレス">
               <input class="passbox"type="password" name="password" placeholder="パスワード">
               @foreach ($errors->all() as $error)
               <div class="error">{{ $error }}</div>
               @endforeach
               <input class="login" type="submit" name="button" value="ログイン">
-            </form>
-            {{-- !! Form::close() !! --}}
-            <a class="c-btn c-btn--text" href="{{route('web.forgot.index')}}">パスワードを忘れた方はこちら</a>
+             {!! Form::close() !!}
+            <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
           </div>
         </div>
         <div class="p-login__support">
@@ -71,5 +68,5 @@
       </div>
     </div>
   </div>
-  
+
 @endsection

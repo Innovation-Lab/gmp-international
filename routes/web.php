@@ -19,21 +19,6 @@ require __DIR__.'/auth.php';
 |
 */
 
-/* ! ==================================================
-　ログイン
-================================================== */
-
-Route::group([
-    'middleware' => 'guest:web',
-], function() {
-    Route::get('/', [RegisterController::class, 'login'])->name('login');
-    Route::get('/login', [RegisterController::class, 'login'])->name('login');
-});
-
-//パスワード再設定メール
-Route::view('/forgot', 'web.auth.forgot.index')->name('web.forgot.index');
-Route::view('/forgot/complete', 'web.auth.forgot.complete')->name('web.forgot.complete');
-
 //パスワード再設定
 Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
 
@@ -67,11 +52,9 @@ Route::group([
 　マイページ
 ================================================== */
 Route::middleware(['auth:web'])->group(function () {
-    // ログイン後のホーム画面
-    Route::get('/home', function () {
-        return view('web.users.mypage.index');
-    });
-
+    // ホーム
+    Route::get('/home', [UserController::class, 'index']);
+    
     Route::group([
         'namespace' => 'Mypage',
         'prefix' => 'mypage',
@@ -79,14 +62,15 @@ Route::middleware(['auth:web'])->group(function () {
     ], function() {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('/product', [UserController::class, 'productsList'])->name('index');
+        
+        //登録済み製品一覧
+        Route::get('/product', [UserController::class, 'product'])->name('product');
+        //製品の追加登録
+        Route::get('/add', [UserController::class, 'productAdd'])->name('add');
+        //製品の入力情報確認
+        Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
     });
 
-    //登録済み製品一覧
-    Route::view('/mypage/product', 'web.mypage.product')->name('web.product');
 
-    //製品の追加登録
-    Route::view('/mypage/add', 'web.mypage.add')->name('web.add');
 
-    //製品の入力情報確認
-    Route::view('/mypage/confirm', 'web.mypage.confirm')->name('web.confirm');
 });

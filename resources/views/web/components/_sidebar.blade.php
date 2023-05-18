@@ -13,8 +13,8 @@
         <ul class="p-dashboard__list">
           <li class="p-dashboard__item"><a href="{{route('mypage.index')}}" class="c-txt">マイページ</a></li>
           <li class="p-dashboard__item"><a href="{{route('mypage.product')}}" class="c-txt">登録済み製品一覧</a></li>
-          <li class="p-dashboard__item"><a href="{{route('mypage.user')}}" class="c-txt">ユーザー情報変更</a></li>
-          <li class="p-dashboard__item"><a href="{{route('mypage.account')}}" class="c-txt">アカウント情報変更</a></li>
+          <li class="p-dashboard__item"><a href="" class="c-txt">ユーザー情報変更</a></li>
+          <li class="p-dashboard__item"><a href="" class="c-txt">アカウント情報変更</a></li>
         </ul>
       </div>
     </div>
