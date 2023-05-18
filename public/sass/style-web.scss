@@ -153,8 +153,11 @@
 // Information インフォメーション
 @use "web/objects/projects/_p-info.scss";
 
-// Information インフォメーション
+// マイページレイアウト
 @use "web/objects/projects/_p-mypage.scss";
+
+// モーダル製品削除
+@use "web/objects/projects/_p-deleteProduct";
 
 
 /* ! ----------

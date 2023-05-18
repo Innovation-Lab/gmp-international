@@ -77,13 +77,13 @@ Route::group([
     //マイページ
     Route::get('/', [UserController::class, 'index'])->name('index');
     //登録済み製品一覧
-    Route::view('/product', 'web.users.mypage.product')->name('product');
+    Route::get('/product', [UserController::class, 'product'])->name('product');
     //製品の追加登録
-    Route::view('/add', 'web.users.mypage.add')->name('add');
+    Route::get('/add', [UserController::class, 'productAdd'])->name('add');
     //製品の入力情報確認
-    Route::view('/confirm', 'web.users.mypage.confirm')->name('confirm');
+    Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
     //アカウント情報の編集
-    Route::view('/account', 'web.users.mypage.account')->name('account');
+    Route::get('/account', [UserController::class, 'account'])->name('account');
     //基本情報の編集
-    Route::view('/user', 'web.users.mypage.user')->name('user');
+    Route::get('/user', [UserController::class, 'user'])->name('user');
 });

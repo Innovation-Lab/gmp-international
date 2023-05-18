@@ -1039,6 +1039,9 @@ input[type=file] + label img {
   display: inline-block;
   overflow: hidden;
   position: relative;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 .c-colorBall:before {
   display: none;
@@ -3870,6 +3873,39 @@ input[type=file] + label img {
     padding: 56px 40px 32px;
   }
 }
+.p-deleteProduct__img img {
+  width: 100%;
+  height: auto;
+  max-width: 180px;
+  display: block;
+  margin: auto;
+}
+.p-deleteProduct__txt {
+  margin: 16px 0 0;
+}
+.p-deleteProduct__txt .name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #C30E2E;
+}
+.p-deleteProduct__txt .info {
+  margin: 6px 0 0;
+}
+.p-deleteProduct__txt .info > div {
+  display: flex;
+}
+.p-deleteProduct__txt .info > div .label {
+  color: #666;
+  font-size: 12px;
+  width: 76px;
+}
+.p-deleteProduct__txt .info > div .data {
+  font-size: 14px;
+}
+.p-deleteProduct__txt .info > div + div {
+  margin: 4px 0 0;
+}
+
 /* ! ==================================================
 　Form フォーム
 ================================================== */
@@ -4440,20 +4476,51 @@ input[type=file] + label img {
   justify-content: center;
   align-items: center;
   padding: 24px;
+  flex-direction: column;
 }
 
 .modal__container {
   background-color: #fff;
-  padding: 32px;
+  padding: 32px 0;
   max-width: 500px;
   max-height: 100vh;
   border-radius: 10px;
   box-sizing: border-box;
   width: 100%;
   position: relative;
+  flex: 0 0 auto;
+  min-height: 1px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .modal__container--min {
   max-width: 340px;
+}
+.modal__container--thin {
+  padding: 24px 0;
+}
+.modal__container--thin .modal__header {
+  padding: 0 24px;
+}
+.modal__container--thin .modal__content__head {
+  padding: 0 24px;
+}
+.modal__container--thin .modal__content__body {
+  padding: 0 24px;
+}
+.modal__container--thin .modal__content__foot {
+  padding: 0 24px;
+}
+.modal__container--thin .modal__content__foot .p-btnWrap .c-btn {
+  height: 48px;
+}
+
+.modal__box {
+  flex: auto;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ! ----------
@@ -4461,6 +4528,7 @@ input[type=file] + label img {
 ---------- */
 .modal__header {
   margin: 0 0 1.5rem;
+  padding: 0 32px;
 }
 
 .modal__title {
@@ -4506,8 +4574,38 @@ input[type=file] + label img {
 /* ! ----------
 　Content 内容
 ---------- */
+.modal__content {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+.modal__content__head {
+  flex: 0 0 auto;
+  padding: 0 32px;
+}
+.modal__content__body {
+  flex: auto;
+  min-height: 1px;
+  overflow: auto;
+  padding: 0 32px;
+}
+.modal__content__body .p-formList__item + .p-formList__item {
+  margin-top: 16px;
+}
+.modal__content__body .p-formList__content {
+  flex-direction: column;
+}
+.modal__content__body .p-formList__label {
+  padding: 0;
+  width: auto;
+}
+.modal__content__body .p-formList__label .c-txt {
+  font-size: 12px;
+}
 .modal__content__foot {
   margin: 1.5rem 0 0;
+  flex: 0 0 auto;
+  padding: 0 32px;
 }
 .modal__content__foot .p-btnWrap .c-btn {
   font-size: 14px;

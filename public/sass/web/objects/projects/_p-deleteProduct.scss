@@ -1,0 +1,39 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+.p-deleteProduct{
+  &__img{
+    img{
+      width: 100%;
+      height: auto;
+      max-width: 180px;
+      display: block;
+      margin: auto;
+    }
+  }
+  &__txt{
+    margin: 16px 0 0;
+    .name{
+      font-size: 18px;
+      font-weight: 600;
+      color: #C30E2E;
+    }
+    .info{
+      margin: 6px 0 0;
+      > div{
+        display: flex;
+        .label{
+          color: #666;
+          font-size: 12px;
+          width: 76px;
+        }
+        .data{
+          font-size: 14px;
+        }
+        + div{
+          margin: 4px 0 0;
+        }
+      }
+    }
+  }
+}

@@ -13,6 +13,9 @@
   display: inline-block;
   overflow: hidden;
   position: relative;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
   &:before{
     display: none;
   }

@@ -17,11 +17,6 @@
       @include('web.layouts._footer--mypage')
     </div>
 
-    {{-- ---------- モーダル ---------- --}}
-    <!-- アカウント関連 -->
-
-    <!-- その他 -->
-
     {{-- ---------- スクリプト ---------- --}}
     {{-- jQuery読み込み --}}
     <script src="{{ asset('js/admin/library/jquery-3.5.1.min.js') }}"></script>

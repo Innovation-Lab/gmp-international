@@ -60,7 +60,7 @@
                   <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
                 </div>
                 <!-- 編集ボタン -->
-                <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh" type="submit" data-modal-open="edit">編集する</button>
+                <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh" data-micromodal-trigger="modal-edit--product" role="button">編集する</button>
                 </div>
               </div>
           </li>
@@ -74,4 +74,12 @@
     </footer>
   </div>
 </div>
+{{-- 編集/削除 --}}
+@include('web.mypage.product._modal-edit--product')
+@include('web.mypage.product._modal-delete--product')
+{{-- 登録ガイド --}}
+@include('web.components.modal._modal-guide--color')
+@include('web.components.modal._modal-guide--serial')
+@include('web.components.modal._modal-guide--shop')
+
 @endsection
