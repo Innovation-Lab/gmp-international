@@ -3874,11 +3874,11 @@ input[type=file] + label img {
   }
 }
 .p-deleteProduct__img img {
-  width: 100%;
+  width: auto;
   height: auto;
-  max-width: 180px;
   display: block;
   margin: auto;
+  max-height: 180px;
 }
 .p-deleteProduct__txt {
   margin: 16px 0 0;
@@ -3887,9 +3887,11 @@ input[type=file] + label img {
   font-size: 18px;
   font-weight: 600;
   color: #C30E2E;
+  line-height: 1.2em;
+  text-align: center;
 }
 .p-deleteProduct__txt .info {
-  margin: 6px 0 0;
+  margin: 12px 0 0;
 }
 .p-deleteProduct__txt .info > div {
   display: flex;

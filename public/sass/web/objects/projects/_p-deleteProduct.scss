@@ -4,11 +4,11 @@
 .p-deleteProduct{
   &__img{
     img{
-      width: 100%;
+      width: auto;
       height: auto;
-      max-width: 180px;
       display: block;
       margin: auto;
+      max-height: 180px;
     }
   }
   &__txt{
@@ -17,9 +17,11 @@
       font-size: 18px;
       font-weight: 600;
       color: #C30E2E;
+      line-height: 1.2em;
+      text-align: center;
     }
     .info{
-      margin: 6px 0 0;
+      margin: 12px 0 0;
       > div{
         display: flex;
         .label{
