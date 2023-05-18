@@ -68,6 +68,14 @@ class NewPasswordController extends Controller
     }
 
     /**
+     * Display the password forgot complete view.
+     */
+    public function forgotComplete(): View
+    {
+        return view('web.auth.forgot.complete');
+    }
+
+    /**
      * Display the password reset complete view.
      */
     public function resetComplete(): View
