@@ -47,12 +47,19 @@
   }
 
   &--support{
+    @include global.responsive(md) {
+      font-size: 14px;
+    }
     font-size: 11px;
     color: #8e91a0;
   }
   &--copyright{
     font-size: 10px;
     color: #ccc;
+    @include global.responsive(md) {
+      font-size: 12px;
+      color: #8c8c8c;
+    }
   }
   &--num{
     color: #fff;

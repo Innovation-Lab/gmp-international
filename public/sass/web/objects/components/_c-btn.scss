@@ -23,6 +23,21 @@
     transition-timing-function: ease-out;
     user-select: none;
     cursor: pointer;
+    &--login{
+        background: #C30E2E;
+        border-radius: 35px;
+        width: 240px;
+        height: 48px;
+        padding: 16px 0;
+        font-size: 16px;
+        font-weight: 500;
+        @include global.responsive(md) {
+            height: 60px;
+            // width: 320px;
+            width: 100%;
+            font-size: 20px;
+        }
+    }
     &--rd{
         background: #c30e2e;
     }
@@ -79,6 +94,10 @@
         font-weight: 400;
         &:hover{
             color: darken(#8C8C8C,10%);
+        }
+        &--nv{
+            color: #27305A;
+            font-size: 14px;
         }
     }
     //アイコン

@@ -6,4 +6,23 @@
     </div>
     <p class="c-txt--copyright">Copyright©2008 GMP International Co., Ltd. All Right Reserved</p>
   </footer>
+  <footer class="p-footer p-footer--brand">
+    <ul class="p-login__brand">
+      <li>
+        <img class="c-brand" src="{{ asset('img/web/brand/airbuggy.svg')}}" alt="">
+      </li>
+      <li>
+        <img class="c-brand" src="{{ asset('img/web/brand/img_footer_brand_maxicosi.png')}}" alt="">
+      </li>
+      <li>
+        <img class="c-brand" src="{{ asset('img/web/brand/img_footer_brand_britax.png')}}" alt="">
+      </li>
+      <li>
+        <img class="c-brand" src="{{ asset('img/web/brand/airbuggy_pet.svg')}}" alt="">
+      </li>
+      <li>
+        <img class="c-brand" src="{{ asset('img/web/brand/img_footer_brand_veer.png')}}" alt="">
+      </li>
+    </ul>
+  </footer>
 </div>

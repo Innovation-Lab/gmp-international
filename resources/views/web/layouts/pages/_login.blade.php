@@ -7,6 +7,7 @@
     {{-- フラッシュメッセージ --}}
     {{-- ページフレーム --}}
     <div class="l-frame" id="js-target__gnavSwitch">
+      <div class="l-frame__background"></div>
       @include('web.layouts._header--login')
       <main class="l-frame__main">
         @yield('content')
