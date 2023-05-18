@@ -281,6 +281,8 @@
     &__product{}
     &__color{
         margin-top: 8px;
+        display: flex;
+        align-items: center;
         .c-colorBall{
             display: inline-block;
         }
@@ -299,6 +301,7 @@
                 justify-content: flex-start;
             }
             + div{
+                margin: 4px 0 0;
                 @include global.responsive(sm) {
                     margin: 4px 0 0;
                 }
@@ -306,10 +309,13 @@
             .label{
                 flex: 0 0 auto;
                 width: 120px;
+                line-height: 1.3em;
             }
             .data{
                 flex: auto;
                 min-width: 1px;
+                line-height: 1.3em;
+                font-size: 13px;
             }
         }
         
