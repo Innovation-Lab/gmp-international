@@ -31,7 +31,7 @@ class StoreInformationRequest extends FormRequest
             'zip_code' => 'required|size:7|regex:/^[0-9]+$/',
             'prefecture' => 'required',
             'address_city' => 'required|max:100',
-            'address_block' => 'required|max100',
+            'address_block' => 'required|max:100',
             'tel' => 'required|regex:/^[0-9]{10,11}$/',
         ];
     }

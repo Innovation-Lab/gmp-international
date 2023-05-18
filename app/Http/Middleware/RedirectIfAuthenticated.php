@@ -23,10 +23,21 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if($guard == 'admin'){
+                    return redirect(RouteServiceProvider::ADMIN_HOME);
+                } else {
+                    return redirect(RouteServiceProvider::HOME);
+                }
             }
         }
 
+        // if (Auth::guard('web')->check() && $request->routeIs('web.*')) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
+        // if (Auth::guard('admin')->check() && $request->routeIs('admin.*')) {
+        //     return redirect(RouteServiceProvider::ADMIN_HOME);
+        // }
+        
         return $next($request);
     }
 }

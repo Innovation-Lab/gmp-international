@@ -4,7 +4,10 @@
       <img src="{{ asset('img/web/user/logo/GMP_logo.png')}}" alt="" width="45px">
     </div>
     <div class="p-header__btn">
-      <a href="http://localhost:8100/login" class="c-btn c-btn--ghost">ログアウト</a>
+      {!! Form::open(['method' => 'POST', 'route' => 'logout']) !!}
+        {{-- <a href="{{ route('logout') }}" class="c-btn c-btn--ghost">ログアウト</a> --}}
+        <button type="submit" name="button" class="c-btn c-btn--ghost">ログアウト</button>
+      {!! Form::close() !!}
     </div>
   </header>
 </div>

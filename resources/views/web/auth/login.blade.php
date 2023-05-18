@@ -19,6 +19,7 @@
     </div>
     <div class="p-login__body__auth">
       {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
+        @csrf
         <input type="email" name="email" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
         @foreach ($errors->all() as $error)

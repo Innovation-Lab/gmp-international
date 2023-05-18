@@ -2,20 +2,15 @@
 
 namespace App\Models;
 
-use App\Http\Common\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use App\Notifications\Admin\Auth\ResetPasswordNotification;
 
 class Admin extends Authenticatable
 {
-    use HasFactory,SoftDeletes;
-    use Notifiable;
-    use SerializeDate;
+    use HasFactory;
 
     protected $guarded = [
         'id'

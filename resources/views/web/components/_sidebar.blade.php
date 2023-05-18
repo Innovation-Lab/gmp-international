@@ -38,7 +38,10 @@
       </div>
     </div>
     <div class="p-sidebar__logout">
-      <p class="c-txt c-txt--md c-txt--md--gr">ログアウト</p>
+      {!! Form::open(['method' => 'POST', 'route' => 'logout']) !!}
+        {{-- <p class="c-txt c-txt--md c-txt--md--gr">ログアウト</p> --}}
+        <input type="submit" name="button" value="ログアウト" class="c-txt c-txt--md c-txt--md--gr">
+      {!! Form::close() !!}
     </div>
   </div>
 </div>
