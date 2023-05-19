@@ -11,19 +11,13 @@
         <div class="p-login__auth p-login__auth--modal">
           {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
             <input class="mailbox" type="email" name="email" placeholder="メールアドレス">
-            <input class="passbox"type="password" name="password" placeholder="パスワード">
+            <input class="passbox" type="password" name="password" placeholder="パスワード">
             @foreach ($errors->all() as $error)
-              <div class="error">{{ $error }}</div>
+              <p class="c-txt c-txt--err">{{ $error }}</p>
             @endforeach
             <input class="login" type="submit" name="button" value="ログイン">
-<<<<<<< HEAD
-          </form>
-          {{-- !! Form::close() !! --}}
-          <a class="c-btn c-btn--text" href="{{route('web.reset.index')}}">パスワードを忘れた方はこちら</a>
-=======
           {!! Form::close() !!}
           <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
->>>>>>> 897abbd0db56c68252b229c47aa418e553743194
         </div>
       </main>
     </div>
