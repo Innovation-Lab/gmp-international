@@ -3,7 +3,7 @@
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
       <div class="modal__box">
-        <header class="modal__header">
+        <header class="modal__header modal__header--column">
           <h2 class="modal__title" id="modal-1-title">
             シリアルナンバーについて
           </h2>

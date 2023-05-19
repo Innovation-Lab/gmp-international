@@ -120,10 +120,12 @@
     &:hover{
       color: darken(#B0ADA5,20%);
     }
-    *{
+    input[type="submit"]{
       font-size: 14px;
       color: #B0ADA5;
       font-weight: 500;
+      background: none;
+      cursor: pointer;
     }
   }
 }

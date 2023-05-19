@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function product(): View
     {
-        return view('web.mypage.product');
+        return view('web.mypage.product.index');
     }
     
     /**
@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function productAdd(): View
     {
-        return view('web.mypage.add');
+        return view('web.mypage.product.add');
     }
     
     /**
@@ -47,11 +47,14 @@ class UserController extends Controller
      */
     public function productConfirm(): View
     {
-        return view('web.mypage.confirm');
+        return view('web.mypage.product.confirm');
     }
-
-    //基本情報編集
-    public function user()
+    
+    /**
+     * 基本情報編集
+     * @return View
+     */
+    public function edit(): View
     {
         return view('web.mypage.user');
     }

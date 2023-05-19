@@ -5,6 +5,7 @@
   <body class="@yield('class')" id="body">
     {{-- ローディング --}}
     {{-- フラッシュメッセージ --}}
+    @include('components.project._p-flashMessage')
     {{-- ページフレーム --}}
     <div class="l-frame" id="js-target__gnavSwitch">
       <div class="l-frame__background"></div>

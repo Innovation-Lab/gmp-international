@@ -3,7 +3,7 @@
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
       <div class="modal__box">
-        <header class="modal__header" style="margin:0;">
+        <header class="modal__header modal__header--column" style="margin:0;">
           <h2 class="modal__title c-txt--center" id="modal-1-title">
             購入店舗について
           </h2>
