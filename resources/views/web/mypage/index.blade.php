@@ -181,8 +181,8 @@
             <p class="c-txt" data-ttl="郵便番号">〒102-0094</p>
             <p class="c-txt" data-ttl="住所">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</p>
             <p class="c-txt" data-ttl="電話番号">03-6380-8220</p>
-            <p class="c-txt c-txt--radio" data-ttl="カタログの送付">希望する</p>
-            <p class="c-txt c-txt--radio" data-ttl="DMの送付">希望する</p>
+            <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>希望する</p>
+            <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>希望する</p>
           </div>
         </div>
         <!-- アカウント情報 -->
@@ -235,6 +235,14 @@
         settings: {
           slidesToShow: 1,
           variableWidth: true,
+          arrows: false,
+        }
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          variableWidth: false,
           arrows: false,
         }
       },

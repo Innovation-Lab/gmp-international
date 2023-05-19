@@ -2,22 +2,16 @@
 
 namespace App\Models;
 
-use App\Http\Common\SerializeDate;
-use App\Http\Common\UtilClass;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Carbon;
 use App\Notifications\Web\ResetPasswordNotification;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    use SoftDeletes;
-    use SerializeDate;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.

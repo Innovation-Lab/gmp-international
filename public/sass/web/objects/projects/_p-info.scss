@@ -44,6 +44,7 @@
             margin-top: 32px;
         }
         .c-txt{
+            font-size: 13px;
             @include global.responsive(md) {
                 display: flex;
             }
@@ -60,6 +61,11 @@
                 margin-top: 4px;
                 @include global.responsive(md) {
                     margin-top: 16px;
+                }
+            }
+            span{
+                @include global.responsive(md) {
+                    display: none;
                 }
             }
         }

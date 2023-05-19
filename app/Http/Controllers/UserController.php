@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -16,26 +18,36 @@ class UserController extends Controller
      * @param Request $request
      * @return View
      */
-    public function index()
+    public function index(Request $request): View
     {
         return view('web.mypage.index');
     }
-
-    //登録製品一覧
-    public function product()
+    
+    /**
+     * 登録製品一覧
+     * @return View
+     */
+    public function product(): View
     {
-        return view('web.mypage.product.index');
+        return view('web.mypage.product');
     }
-
-    //製品追加登録
-    public function productAdd()
+    
+    /**
+     * 製品追加登録
+     * @return View
+     */
+    public function productAdd(): View
     {
-        return view('web.mypage.product.add');
+        return view('web.mypage.add');
     }
-    //製品追加登録 - 確認画面
-    public function productConfirm()
+    
+    /**
+     * 製品追加登録
+     * @return View
+     */
+    public function productConfirm(): View
     {
-        return view('web.mypage.product.confirm');
+        return view('web.mypage.confirm');
     }
 
     //基本情報編集

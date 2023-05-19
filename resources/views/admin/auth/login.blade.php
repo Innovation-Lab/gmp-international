@@ -19,7 +19,8 @@
             {{-- テキスト --}}
             <div class="p-login__body__text">
               {{-- フォーム --}}
-              {!! Form::open(['class' => 'p-form']) !!}
+              {!! Form::open(['method' => 'POST', 'route' => 'admin.login', 'class' => 'p-form']) !!}
+                @csrf
                 <div class="p-login__body__text__head">
                   <h1 class="p-login__body__text__head__title">管理システムログイン</h1>
                 </div>
@@ -32,6 +33,9 @@
                         </div>
                         <div class="p-formList__data">
                           {!! Form::email('email', null, ['placeholder' => 'メールアドレスを入力']) !!}
+                          @error('email')
+                            <div class="error">{{ $message }}</div>
+                          @enderror
                         </div>
                       </div>
                     </li>
@@ -42,15 +46,15 @@
                         </div>
                         <div class="p-formList__data">
                           {!! Form::password('password', ['placeholder' => 'パスワードを入力']) !!}
-                          <div class="error">メールアドレスとパスワードが一致しません</div>
+                          {{-- <div class="error">メールアドレスとパスワードが一致しません</div> --}}
+                          @error('password')
+                            <div class="error">{{ $message }}</div>
+                          @enderror
                         </div>
                       </div>
                     </li>
                     <li class="p-formList__item">
-                      <a class="c-button" href="{{route(('admin.users.index'))}}">ログイン</a>
-                      {{--
-                        <button onclick="window.location='{{ route("admin.users.index") }}'" class="c-button">ログイン</button>
-                      --}}
+                      <input type="submit" name="button" value="ログイン">
                     </li>
                     <li class="p-formList__item">
                       <div class="l-grid">

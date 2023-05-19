@@ -615,12 +615,24 @@ input[type=file] + label img {
   .l-frame--mypage {
     flex-direction: row;
     flex-wrap: nowrap;
+    overflow: visible;
   }
 }
 @media screen and (min-width: 768px) {
   .l-frame--mypage .l-frame__head {
     display: none;
   }
+}
+.l-frame--mypage .l-frame__head .p-header {
+  justify-content: center;
+}
+.l-frame--mypage .l-frame__head .p-header__logo {
+  margin: 0;
+}
+.l-frame--mypage .l-frame__head .p-header__btn {
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 24px;
 }
 .l-frame--mypage .l-frame__main {
   max-width: 100%;
@@ -1085,7 +1097,7 @@ input[type=file] + label img {
 ================================================== */
 .c-colorBall {
   flex: 0 0 auto;
-  width: 10x;
+  width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #A3BBB1;
@@ -4141,6 +4153,8 @@ input[type=file] + label img {
   display: flex;
   align-items: center;
   margin-top: 8px;
+  display: flex;
+  align-items: center;
 }
 .p-card__color .c-colorBall {
   width: 12px;
@@ -4166,6 +4180,9 @@ input[type=file] + label img {
     justify-content: flex-start;
   }
 }
+.p-card__subData > div + div {
+  margin: 4px 0 0;
+}
 @media screen and (min-width: 576px) {
   .p-card__subData > div + div {
     margin: 4px 0 0;
@@ -4174,10 +4191,13 @@ input[type=file] + label img {
 .p-card__subData > div .label {
   flex: 0 0 auto;
   width: 120px;
+  line-height: 1.3em;
 }
 .p-card__subData > div .data {
   flex: auto;
   min-width: 1px;
+  line-height: 1.3em;
+  font-size: 13px;
 }
 .p-card__img {
   display: flex;
@@ -4382,6 +4402,9 @@ input[type=file] + label img {
     margin-top: 32px;
   }
 }
+.p-info__txt .c-txt {
+  font-size: 13px;
+}
 @media screen and (min-width: 768px) {
   .p-info__txt .c-txt {
     display: flex;
@@ -4404,6 +4427,11 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-info__txt .c-txt + .c-txt {
     margin-top: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .p-info__txt .c-txt span {
+    display: none;
   }
 }
 
