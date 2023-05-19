@@ -13,6 +13,14 @@
   }
   //ページレイアウト
   &Page{
+    >.l-container{
+      max-width: 500px;
+      margin: 0 auto;
+      @include global.responsive(md) {
+        max-width: none;
+        margin: 0;
+      }
+    }
     flex: auto;
     min-height: 1px;
     @include global.responsive(md) {

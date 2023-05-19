@@ -1589,11 +1589,14 @@ input[type=file] + label img {
   }
 }
 .p-login__auth--modal {
+  padding: 0 32px;
+}
+.p-login__auth--modal form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 32px;
+  width: 100%;
 }
 .p-login__auth--modal .login {
   margin-top: 16px;
@@ -4684,6 +4687,16 @@ input[type=file] + label img {
   flex: auto;
   min-height: 1px;
 }
+.p-formPage > .l-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .p-formPage > .l-container {
+    max-width: none;
+    margin: 0;
+  }
+}
 @media screen and (min-width: 768px) {
   .p-formPage {
     background: #F7F4EC;
@@ -5248,7 +5261,7 @@ input[type=file] + label img {
 .modal__container {
   background-color: #fff;
   padding: 32px 0;
-  max-width: 500px;
+  max-width: 340px;
   max-height: 100vh;
   border-radius: 10px;
   box-sizing: border-box;
@@ -5464,6 +5477,12 @@ input[type=file] + label img {
 }
 .micromodal-slide {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  #modal-login {
+    display: none;
+  }
 }
 
 .micromodal-slide.is-open {

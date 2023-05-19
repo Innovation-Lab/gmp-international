@@ -33,7 +33,7 @@
 .modal__container {
   background-color: #fff;
   padding: 32px 0;
-  max-width: 500px;
+  max-width: 340px;
   max-height: 100vh;
   border-radius: 10px;
   box-sizing: border-box;
@@ -244,6 +244,11 @@
 
 .micromodal-slide {
   display: none;
+}
+#modal-login {
+  @include global.responsive(md) {
+    display: none;
+  }
 }
 
 .micromodal-slide.is-open {
