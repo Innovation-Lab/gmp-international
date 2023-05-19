@@ -6,9 +6,9 @@
 ================================================== */
 .c-btn {
     // --black: hsl(349 87% 41%);
-    &:hover{
-        background: #000000c4;
-    }
+    // &:hover{
+    //     background: #000000c4;
+    // }
     color: #fff;
     background: #000;
     // background: var( --black);
@@ -54,6 +54,9 @@
         padding: 16px 0;
         font-size: 16px;
         font-weight: 500;
+        &:hover{
+            background: #99152c;
+        }
         @include global.responsive(md) {
             height: 60px;
             // width: 320px;
@@ -65,6 +68,12 @@
         background: #c30e2e;
         &:hover{
             background: #99152c;
+        }
+    }
+    &--bk{
+        &:hover{
+            background: lighten(#000,20%);
+
         }
     }
     &--back{
@@ -104,12 +113,16 @@
     &--ghost{
         color: #8c8c8c;
         background-color: transparent;
-
+        &:hover{
+            color: darken(#8C8C8C,10%);
+            background: none;
+        }
         &--rd{
             color: #c30e2e;
             border-color: #c30e2e;
             &:hover{
-                color: lighten(#c30e2e,10%);
+                color: darken(#c30e2e,10%);
+                border-color: darken(#c30e2e,10%);
                 background: none;
             }
         }
@@ -117,7 +130,10 @@
             color: #fff;
             border-color: #fff;
             &:hover{
-                background: darken(#c30e2e,10%);
+                // background: darken(#c30e2e,10%);
+                color: darken(#fff,20%);
+                border-color: darken(#fff,20%);
+
             }
         }
     }

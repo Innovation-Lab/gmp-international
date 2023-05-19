@@ -153,7 +153,7 @@
       </div>
       <!-- 一覧ページボタン -->
       <div class="p-index__btn">
-        <a href="{{route('mypage.product')}}" class="c-btn">登録済み製品一覧へ</a>
+        <a href="{{route('mypage.product')}}" class="c-btn c-btn--bk">登録済み製品一覧へ</a>
       </div>
     </div>
     <div class="p-index__body">
