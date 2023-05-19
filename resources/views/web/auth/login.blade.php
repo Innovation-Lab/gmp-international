@@ -1,7 +1,23 @@
 @extends('web.layouts.pages._login')
 @section('title', 'ログイン')
 @section('content')
-
+<?php
+  $userAgent = request()->header('User-Agent');
+    if (isMobile($userAgent) && count($errors->all()) > 0) {
+        $javascriptCode = "$(document).ready(function() {
+          $('#modal-login').show()
+        });";
+        echo "<script>{$javascriptCode}</script>";
+    }
+  /**
+   * @param $userAgent
+   * @return false|int
+   */
+  function isMobile($userAgent): false|int
+  {
+      return preg_match('/(iPhone|Android)/', $userAgent);
+  }
+?>
   <!-- SP -->
   <div class="p-login p-login--sp">
     <div class="p-login__head">
