@@ -177,12 +177,12 @@
             </div>
           </div>
           <div class="p-info__txt">
-            <p class="c-txt" data-ttl="氏名">小山 浩行（コヤマ ヒロユキ）</p>
-            <p class="c-txt" data-ttl="郵便番号">〒102-0094</p>
-            <p class="c-txt" data-ttl="住所">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</p>
-            <p class="c-txt" data-ttl="電話番号">03-6380-8220</p>
-            <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>希望する</p>
-            <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>希望する</p>
+            <p class="c-txt" data-ttl="氏名">{{ $user->full_name }}（{{ $user->full_name_kana }}）</p>
+            <p class="c-txt" data-ttl="郵便番号">〒{{ $user->zip_code }}</p>
+            <p class="c-txt" data-ttl="住所">{{ $user->full_address }}</p>
+            <p class="c-txt" data-ttl="電話番号">{{ $user->tel }}</p>
+            <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>{{ $catalog_request }}</p>
+            <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>{{ $dm_request }}</p>
           </div>
         </div>
         <!-- アカウント情報 -->
@@ -197,7 +197,7 @@
             </div>
           </div>
           <div class="p-info__txt">
-            <p class="c-txt" data-ttl="メールアドレス">h.koyama@soushin-lab.co.jp</p>
+            <p class="c-txt" data-ttl="メールアドレス">{{ $user->email }}</p>
             <p class="c-txt" data-ttl="パスワード">パスワードはセキュリティのため非表示</p>
           </div>
         </div>
