@@ -9,17 +9,15 @@
       </header>
       <main class="modal__content" id="modal-1-content">
         <div class="p-login__auth p-login__auth--modal">
-          {{--!! Form::open(['method' => 'POST', 'route' => 'login'])1 !! --}}
-          <form class="form" action="">
+          {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
             <input class="mailbox" type="email" name="email" placeholder="メールアドレス">
             <input class="passbox"type="password" name="password" placeholder="パスワード">
             @foreach ($errors->all() as $error)
-            <div class="error">{{ $error }}</div>
+              <div class="error">{{ $error }}</div>
             @endforeach
             <input class="login" type="submit" name="button" value="ログイン">
-          </form>
-          {{-- !! Form::close() !! --}}
-          <a class="c-btn c-btn--text" href="{{route('web.forgot.index')}}">パスワードを忘れた方はこちら</a>
+          {!! Form::close() !!}
+          <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
         </div>
       </main>
     </div>

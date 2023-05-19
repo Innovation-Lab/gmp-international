@@ -69,6 +69,11 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/add', [UserController::class, 'productAdd'])->name('add');
         //製品の入力情報確認
         Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
+        // 基本情報編集
+        Route::get('/user', [UserController::class, 'edit'])->name('user');
+        // アカウント情報編集
+        Route::get('/account', [UserController::class, 'account'])->name('account');
+        
     });
 
 

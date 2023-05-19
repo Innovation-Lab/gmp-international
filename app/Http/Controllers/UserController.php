@@ -49,9 +49,12 @@ class UserController extends Controller
     {
         return view('web.mypage.confirm');
     }
-
-    //基本情報編集
-    public function user()
+    
+    /**
+     * 基本情報編集
+     * @return View
+     */
+    public function edit(): View
     {
         return view('web.mypage.user');
     }
