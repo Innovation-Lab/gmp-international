@@ -2,7 +2,7 @@
   <div class="modal__overlay" tabindex="-1">
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <div class="modal__box">
-        <header class="modal__header">
+        <header class="modal__header modal__header--column">
           <h2 class="modal__title c-txt--center" id="modal-1-title">
             注意事項
           </h2>

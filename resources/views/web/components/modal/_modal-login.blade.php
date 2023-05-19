@@ -19,7 +19,7 @@
             <input class="login" type="submit" name="button" value="ログイン">
           </form>
           {{-- !! Form::close() !! --}}
-          <a class="c-btn c-btn--text" href="{{route('web.forgot.index')}}">パスワードを忘れた方はこちら</a>
+          <a class="c-btn c-btn--text" href="{{route('web.reset.index')}}">パスワードを忘れた方はこちら</a>
         </div>
       </main>
     </div>

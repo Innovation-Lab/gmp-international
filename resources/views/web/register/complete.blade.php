@@ -15,7 +15,7 @@
             送りましたので、ご確認ください。
           </p>
           <div class="p-btnWrap p-btnWrap--center">
-            <a class="c-btn c-btn--accent" href="{{route('web.mypage.index')}">マイページへ</a>
+            <a class="c-btn c-btn--accent" href="{{route('mypage.index')}}">マイページへ</a>
           </div>
         </div>
       </div>

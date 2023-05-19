@@ -23,7 +23,7 @@
 $('.p-login__brand').slick({
     autoplay: true, // 自動でスクロール
     autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
-    speed: 13000, // スライドが流れる速度を設定
+    speed: 30000, // スライドが流れる速度を設定
     cssEase: 'linear',
     slidesToShow: 1, // 表示するスライドの数
     slidesToScroll: 1,
@@ -33,6 +33,12 @@ $('.p-login__brand').slick({
     pauseOnHover: false, // スライダーにマウスホバーした時にスライドを停止させるか
     centerPadding: '32px',
     responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          speed: 15000,
+        }
+      },
       {
         breakpoint: 768,
         settings: {

@@ -42,6 +42,7 @@
     @include global.responsive(sm) {
       height: 100%;
       width: 110%;
+      min-width: 830px;
     }
   }
   //マイページ

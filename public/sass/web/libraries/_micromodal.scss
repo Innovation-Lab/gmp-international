@@ -89,6 +89,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  &--column{
+    flex-direction: column;
+  }
 }
 
 .modal__title {
@@ -112,7 +115,7 @@
   position: absolute;
   right: 0; top: -12px;
   width: 20px; height: 20px;
-  background: url(../img/web/icon/modal_close.png)no-repeat center;
+  background: url(../img/web/icon/close--white.png)no-repeat center;
   background-size: contain;
   padding: 0;
   transform: translate(0, -100%);

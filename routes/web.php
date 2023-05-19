@@ -47,13 +47,13 @@ Route::group([
     Route::get('/complete', [RegisterController::class, 'complete'])->name('complete');
 });
 
-
 /* ! ==================================================
 　マイページ
 ================================================== */
 Route::middleware(['auth:web'])->group(function () {
+    
     // ホーム
-    Route::get('/home', [UserController::class, 'index']);
+    Route::get('/mypage', [UserController::class, 'index']);
     
     Route::group([
         'namespace' => 'Mypage',
@@ -61,6 +61,7 @@ Route::middleware(['auth:web'])->group(function () {
         'as' => 'mypage.',
     ], function() {
         Route::get('/', [UserController::class, 'index'])->name('index');
+
         Route::get('/product', [UserController::class, 'productsList'])->name('index');
         
         //登録済み製品一覧
@@ -69,8 +70,11 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/add', [UserController::class, 'productAdd'])->name('add');
         //製品の入力情報確認
         Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
+
+        //基本情報編集
+        Route::view('/user', [UserController::class, 'user'])->name('user');
+        //アカウント情報編集
+        Route::view('/account', [UserController::class, 'account'])->name('account');
     });
-
-
 
 });
