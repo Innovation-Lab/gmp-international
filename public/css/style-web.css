@@ -1245,9 +1245,6 @@ input[type=file] + label img {
           user-select: none;
   cursor: pointer;
 }
-.c-btn:hover {
-  background: rgba(0, 0, 0, 0.768627451);
-}
 .c-btn--img {
   width: 28px;
   margin-right: 14px;
@@ -1283,6 +1280,9 @@ input[type=file] + label img {
     width: 100%;
     font-size: 20px;
   }
+}
+.c-btn--login:hover {
+  background: #99152c;
 }
 .c-btn--rd {
   background: #c30e2e;
@@ -1549,6 +1549,12 @@ input[type=file] + label img {
     padding-left: 56px;
   }
 }
+.p-login__auth .login:hover {
+  background: #e8e8e8;
+  transition-property: box-shadow, color, background-color;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+}
 .p-login__auth--modal {
   display: flex;
   flex-direction: column;
@@ -1572,6 +1578,9 @@ input[type=file] + label img {
   padding: 16px 0;
   font-size: 16px;
   font-weight: 500;
+}
+.p-login__auth--modal .form .login:hover {
+  background: #99152c;
 }
 .p-login__auth--modal .form .modal__header {
   display: flex;
@@ -1620,6 +1629,7 @@ input[type=file] + label img {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 16px;
 }
 .p-login__img {
   flex: auto;

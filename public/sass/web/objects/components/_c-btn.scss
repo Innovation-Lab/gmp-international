@@ -6,9 +6,9 @@
 ================================================== */
 .c-btn {
     // --black: hsl(349 87% 41%);
-    &:hover{
-        background: #000000c4;
-    }
+    // &:hover{
+    //     background: #000000c4;
+    // }
     color: #fff;
     background: #000;
     // background: var( --black);
@@ -59,6 +59,9 @@
             // width: 320px;
             width: 100%;
             font-size: 20px;
+        }
+        &:hover{
+            background: #99152c;
         }
     }
     &--rd{
