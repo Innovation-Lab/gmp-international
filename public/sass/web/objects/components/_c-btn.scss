@@ -29,15 +29,15 @@
     user-select: none;
     cursor: pointer;
     &--img{
-        width: 28px;
+        width: 32px;
         margin-right: 14px;
+        padding-left: 6px;
         height: 45px;
         margin-top: 6px;
-        margin-left: 4px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        border-right: solid 2px #ddd;
+        border-right: solid 1px #ddd;
         @include global.responsive(md) {
             display: none;
         }
