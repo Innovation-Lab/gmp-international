@@ -625,6 +625,7 @@ input[type=file] + label img {
   }
 }
 .l-frame--mypage .l-frame__head .p-header {
+  display: flex;
   justify-content: center;
 }
 .l-frame--mypage .l-frame__head .p-header__logo {
@@ -1247,15 +1248,15 @@ input[type=file] + label img {
   cursor: pointer;
 }
 .c-btn--img {
-  width: 28px;
+  width: 32px;
   margin-right: 14px;
+  padding-left: 6px;
   height: 45px;
   margin-top: 6px;
-  margin-left: 4px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-right: solid 2px #ddd;
+  border-right: solid 1px #ddd;
 }
 @media screen and (min-width: 768px) {
   .c-btn--img {
@@ -1284,6 +1285,9 @@ input[type=file] + label img {
     width: 100%;
     font-size: 20px;
   }
+}
+.c-btn--login:hover {
+  background: #99152c;
 }
 .c-btn--rd {
   background: #c30e2e;
@@ -1561,7 +1565,8 @@ input[type=file] + label img {
   }
 }
 .p-login__auth .login:hover {
-  background: #ebebeb;
+  background: #e8e8e8;
+  transition-property: box-shadow, color, background-color;
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
 }
@@ -1612,6 +1617,19 @@ input[type=file] + label img {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+.p-login__auth--modal .form .login {
+  border: none;
+  color: #fff;
+  margin-top: 24px;
+  background: #C30E2E;
+  border-radius: 35px;
+  padding: 16px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+.p-login__auth--modal .form .login:hover {
+  background: #99152c;
 }
 .p-login__auth--modal .form .modal__header {
   display: flex;

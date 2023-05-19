@@ -19,8 +19,9 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     // ログイン
-    Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login');
+    Route::get('/', [AuthenticatedSessionController::class, 'create']);
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
 
     // パスワード再設定用リンク送信
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');

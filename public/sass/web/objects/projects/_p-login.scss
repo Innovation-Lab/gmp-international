@@ -57,7 +57,8 @@
     }
     .login{
       &:hover{
-        background: #ebebeb;
+        background: #e8e8e8;
+        transition-property: box-shadow, color, background-color;
         transition-duration: 0.1s;
         transition-timing-function: ease-out;
       }
@@ -110,6 +111,19 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        .login{
+          border: none;
+          color: #fff;
+          margin-top: 24px;
+          background: #C30E2E;
+          border-radius: 35px;
+          padding: 16px 0;
+          font-size: 16px;
+          font-weight: 500;
+          &:hover{
+            background: #99152c;
+          }
+        }
         .modal__header{
           display: flex;
           align-items: center;
