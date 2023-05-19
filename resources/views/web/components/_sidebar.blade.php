@@ -8,7 +8,7 @@
     <div class="p-sidebar__body">
       <div class="p-dashboard">
         <div class="p-dashboard__userName">
-          <p class="c-txt c-txt--md">山田 太郎<span class="c-txt--sm"> 様</span></p>
+          <p class="c-txt c-txt--md">{{ $user->full_name }}<span class="c-txt--sm"> 様</span></p>
         </div>
         <ul class="p-dashboard__list">
           <li class="p-dashboard__item"><a href="{{route('mypage.index')}}" class="c-txt">マイページ</a></li>

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -20,7 +21,24 @@ class UserController extends Controller
      */
     public function index(Request $request): View
     {
-        return view('web.mypage.index');
+        $user = Auth::user();
+
+        if(Auth::user()->is_catalog == 1 ) {
+            $catalog_request = '希望する';
+        } else {
+            $catalog_request = '希望しない';
+        }
+
+        if(Auth::user()->is_dm == 1 ) {
+            $dm_request = '希望する';
+        } else {
+            $dm_request = '希望しない';
+        }
+
+        return view('web.mypage.index')->with([
+            'user' => $user, 'catalog_request' => $catalog_request, 'dm_request' => $dm_request,
+        ]);
+
     }
     
     /**
@@ -29,7 +47,11 @@ class UserController extends Controller
      */
     public function product(): View
     {
-        return view('web.mypage.product.index');
+        $user = Auth::user();
+        
+        return view('web.mypage.product.index')->with([
+            'user' => $user,
+        ]);
     }
     
     /**
