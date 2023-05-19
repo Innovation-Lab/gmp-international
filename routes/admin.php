@@ -20,7 +20,7 @@ Route::group([
 ], function () {
     // ログイン
     Route::middleware('guest:admin')->group(function () {
-        Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+        Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('loginForm');
         Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login');
     });
     // Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');

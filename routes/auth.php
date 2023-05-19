@@ -19,7 +19,7 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     // ログイン
-    Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('loginForm');
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login');
 
     // パスワード再設定用リンク送信

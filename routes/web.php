@@ -61,7 +61,7 @@ Route::middleware(['auth:web'])->group(function () {
         'as' => 'mypage.',
     ], function() {
         Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::get('/product', [UserController::class, 'productsList'])->name('index');
+        Route::get('/product', [UserController::class, 'productsList'])->name('productsList');
         
         //登録済み製品一覧
         Route::get('/product', [UserController::class, 'product'])->name('product');
