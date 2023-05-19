@@ -15,7 +15,7 @@
         <div class="p-formPage__body">
           <div class="p-terms">
             <div class="p-terms__head">
-              <a class="c-btn c-btn--text" href="{{ route('login') }}">登録済みの方はこちら</a>
+              <a class="c-btn c-btn--text" href="{{ route('loginForm') }}">登録済みの方はこちら</a>
               <p class="c-ttl">ユーザー登録システム利用規約</p>
               <p class="c-description">
                 以下の利用規約をよくお読みの上、「上記の利用規約に同意する。」にチェックを入れて「新規登録ページへ」をクリックしてください。<br>
@@ -133,17 +133,67 @@
         <div class="p-formPage__foot p-formPage__foot--terms">
           <!-- チェックボックス -->
           <div class="c-input c-input--checkbox">
-            <input type="checkbox" name="checkbox1" id="checkbox-1-01" checked="">
+            <input type="checkbox" name="checkbox1" id="checkbox-1-01">
             <label for="checkbox-1-01">上記の利用規約に同意する</label>
             <!-- 入力不備エラーメッセージ -->
           </div>
-          <p style="display: none;" class="c-txt c-txt--err">※登録には利用規約への同意が必要です。</p>
+          <p style="text-align: center;" class="c-txt c-txt--err">※登録には利用規約への同意が必要です。</p>
           <!-- ボタン -->
           <div class="p-btnWrap p-btnWrap--center">
-            <a href="{{ route('register.account') }}" class="c-btn c-btn--next">アカウント情報の入力へ</a>
+            <a href="{{ route('register.account') }}" class="c-btn c-btn--next" id="register-link">アカウント情報の入力へ</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+    // ページの読み込みが完了したら実行される
+
+      // チェックボックスの状態に応じてリンクの無効/有効と背景色の変更を行う関数を定義
+      function toggleLink() {
+        var checkbox = $('#checkbox-1-01');
+        var link = $('a.c-btn.c-btn--next');
+
+        if (checkbox.prop('checked')) {
+          link.prop('disabled', false);
+          link.css('pointer-events', 'auto');
+          link.css('background-color', '');
+        } else {
+          link.prop('disabled', true);
+          link.css('pointer-events', 'none');
+          link.css('background-color', 'gray');
+        }
+      }
+
+      // 初期状態でのリンクの無効/有効と背景色の設定
+      toggleLink();
+
+      // チェックボックスの状態が変更されたらtoggleLink関数を呼び出す
+      $('#checkbox-1-01').change(function() {
+        toggleLink();
+      });
+
+      // チェックボックスの状態に応じてメッセージの表示/非表示を切り替える関数を定義
+      function toggleMessage() {
+        var checkbox = $('#checkbox-1-01');
+        var message = $('p.c-txt.c-txt--err');
+
+        if (checkbox.prop('checked')) {
+          message.css('color', 'transparent');
+        } else {
+          message.css('color', '');
+        }
+      }
+
+      // 初期状態でのメッセージの表示/非表示を設定
+      toggleMessage();
+
+      // チェックボックスの状態が変更されたらtoggleMessage関数を呼び出す
+      $('#checkbox-1-01').change(function() {
+        toggleMessage();
+      });
+    });
+  </script>
 @endsection
