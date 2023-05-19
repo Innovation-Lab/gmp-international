@@ -7,9 +7,12 @@
     <div class="p-mypage">
       <div class="p-mypage__head">
         <div class="p-index__bar">
-          <div class="p-index__ttl">
-            <p class="c-ttl c-ttl--xl">ALL ITEM</p>
-            <p class="c-ttl">登録済み製品一覧</p>
+          <div class="p-index__ttl p-index__ttl--allItem">
+            <a class="c-btn--img" href="{{ route('mypage.index') }}"><img class="c-btn--arrow" src="{{ asset('img/web/icon/back-arrow.png')}}" alt=""></a>
+            <span>
+              <p class="c-ttl c-ttl--xl">ALL ITEM</p>
+              <p class="c-ttl">登録済み製品一覧</p>
+            </span>
           </div>
           <!-- 追加登録ボタン -->
           <div class="p-index__btn">

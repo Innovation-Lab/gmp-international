@@ -103,7 +103,7 @@
   &__head{
     flex: 0 0 auto;
     @include global.responsive(md) {
-      margin-top: 24px;
+      // margin-top: 24px;
     }
     &__mypage{
       @include global.responsive(md) {

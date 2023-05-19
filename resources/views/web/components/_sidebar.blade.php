@@ -2,7 +2,7 @@
   <div class="l-container">
     <header class="p-sidebar__head">
       <div class="p-sidebar__logo">  
-        <img src="{{ asset('img/web/user/logo/GMP_logo.png')}}" alt="" width="45px">
+        <a href="{{ route('mypage.index') }}" class="c-link"><img src="{{ asset('img/web/user/logo/GMP_logo.png')}}" alt="" style="width: 45px;"></a>
       </div>
     </header>
     <div class="p-sidebar__body">

@@ -12,23 +12,12 @@
         <a href="{{ route('register.terms') }}" class="c-btn c-btn--login">新規会員登録</a>
       </div>
       <div class="p-login__registered">
-        <button class="p-login__registered__btn" data-micromodal-trigger="modal__guide--serial" role="button">登録済みの方はこちら</button>
+        <button class="p-login__registered__btn" data-micromodal-trigger="modal-login" role="button">登録済みの方はこちら</button>
+        <!-- 編集ボタン -->
       </div>
       <div class="p-login__forget">
         <a class="c-btn--text c-btn--text--nv" href="{{route('web.forgot.index')}}">パスワードを忘れた方はこちら</a>
       </div>
-      <a href="{{ route('register.terms') }}" class="c-btn">新規会員登録</a>
-    </div>
-    <div class="p-login__body__auth">
-      {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
-        <input type="email" name="email" placeholder="メールアドレス">
-        <input type="password" name="password" placeholder="パスワード">
-        @foreach ($errors->all() as $error)
-          <div class="error">{{ $error }}</div>
-        @endforeach
-        <input type="submit" name="button" value="ログイン">
-      {!! Form::close() !!}
-      <a href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
     </div>
   </div>
 
@@ -61,14 +50,29 @@
           </div>
         </div>
         <div class="p-login__support">
+          <p class="c-txt">GMPサポートデスク　営業時間：平日10:00〜17:00</p>
+          <div class="p-footer__tel">
+            <div class="p-footer__tel__item">
+              <p class="c-ttl">ベビー用品</p>
+              <a href="tel:0120-178-363" class="c-txt c-txt--tel">0120-178-363</a>
+            </div>
+            <div class="p-footer__tel__item">
+              <p class="c-ttl">ペット用品</p>
+              <a href="tel:0120-178-363" class="c-txt c-txt--tel">0120-98-1511</a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="p-login__support">
           <div class="p-login__txt">
             <p class="c-txt--support">GMPサポートデスク　営業時間：平日10:00〜17:00</p>
             <p class="c-txt--support">ベビー用品0120-178-363｜ペット用品0120-98-1511</p>
           </div>
           <p class="c-txt--copyright">Copyright©2008 GMP International Co., Ltd. All Right Reserved</p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
-  
+{{-- SPログイン --}}
+@include('web.components.modal._modal-login')
+
 @endsection

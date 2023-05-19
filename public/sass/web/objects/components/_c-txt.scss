@@ -83,6 +83,12 @@
   &--gr{
     color: #8c8c8c;
   }
+  &--radio{
+    display: none;
+    @include global.responsive(md) {
+      display: block;
+    }
+  }
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;

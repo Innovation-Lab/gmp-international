@@ -118,7 +118,10 @@
                       <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
                     </div>
                     <div class="p-card__color">
-                      <div class="c-colorBall" style="background: #A3BBB1;"></div>
+                      <div class="c-colorBall" style="background: #A3BBB1;">
+                        {{-- 2色の場合に追加 --}}
+                        <div class="c-colorBall__pallet2" style="background: #fff;"></div>
+                      </div>
                       <p class="c-txt">GRASS GREEN</p>
                     </div>
                   </div>
@@ -127,6 +130,11 @@
                     <div class="p-card__purchase">
                       <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
                       <p class="data c-txt">2023/04/04</p>
+                    </div>
+                    <!-- 購入店舗 -->
+                    <div class="p-card__store">
+                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
+                      <p class="data c-txt">エアバギー代官山店</p>
                     </div>
                     <div class="p-card__serialNum">
                       <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
@@ -173,8 +181,8 @@
             <p class="c-txt" data-ttl="郵便番号">〒102-0094</p>
             <p class="c-txt" data-ttl="住所">東京都千代田区紀尾井町3-12 紀尾井町ビル16F</p>
             <p class="c-txt" data-ttl="電話番号">03-6380-8220</p>
-            <p class="c-txt" data-ttl="カタログの送付">希望する</p>
-            <p class="c-txt" data-ttl="DMの送付">希望する</p>
+            <p class="c-txt c-txt--radio" data-ttl="カタログの送付">希望する</p>
+            <p class="c-txt c-txt--radio" data-ttl="DMの送付">希望する</p>
           </div>
         </div>
         <!-- アカウント情報 -->

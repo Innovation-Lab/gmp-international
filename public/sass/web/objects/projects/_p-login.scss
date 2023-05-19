@@ -41,16 +41,57 @@
     flex-direction: column;
     align-items: center;
     @include global.responsive(md) {
+      margin-bottom: 30px;
       width: 50%;
       padding-right: 56px;
       border-right: 1px solid #E2E2E2;
     }
   }
   &__auth{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     @include global.responsive(md) {
       width: 50%;
       padding-left: 56px;
-      
+    }
+    // SPログインモーダル
+    &--modal{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+      .form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        .login{
+          border: none;
+          color: #fff;
+          margin-top: 24px;
+          background: #C30E2E;
+          border-radius: 35px;
+          // width: 240px;
+          // height: 48px;
+          padding: 16px 0;
+          font-size: 16px;
+          font-weight: 500;
+        }
+        .modal__header{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .c-btn--text{
+        margin-top: 16px;
+      }
+      .modal__header .modal__close:before {
+        content: "";
+      }
     }
     input{
       max-width: 320px;
@@ -74,6 +115,7 @@
       font-size: 16px;
       font-weight: 500;
       border: 1px solid #000000;
+      cursor: pointer;
       @include global.responsive(md) {
         margin-top: 22px;
         height: 60px;
@@ -88,15 +130,11 @@
     justify-content: center;
   }
   &__img{
-    @include global.responsive(md) {
-      margin-bottom: 51px;
-    }
-    @include global.responsive(lg) {
-      margin-bottom: 24px;
-    }
+    flex: auto;
+    display: flex;
     &__ph{
       height: auto;
-      // width: 320px;
+      margin: auto 0;
     }
   }
   &__forget{
@@ -111,8 +149,45 @@
       display: block;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       margin-top: 48px;
+    }
+    @include global.responsive(lg) {
+      display: block;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .c-txt{
+      @include global.responsive(md) {
+        font-size: 14px;
+      }
+      font-size: 11px;
+      color: #8e91a0;
+    }
+    .p-footer__tel{
+      @include global.responsive(md) {
+        margin-top: 8px;
+      }
+      @include global.responsive(lg) {
+        margin-top: 0;
+        margin-left: 16px;
+      }
+    }
+    .p-footer__tel__item{
+      .c-txt{
+        @include global.responsive(md) {
+          font-size: 14px;
+        }
+        font-size: 11px;
+        color: #8e91a0;
+      }
+      .c-txt--tel{
+        color: #222;
+      }
     }
   }
   &__txt{
@@ -123,18 +198,27 @@
       p + p{
         margin-left: 24px;
       }
-
     }
-
   }
   &__brand{
+    @include global.responsive(md) {
+      // display: none;
+    }
     display: flex;
-    li{
-      margin-right: 32px;
+      li{
+        padding-right: 32px;
+      }
+
+    .slick-track{
+      display: flex;
+      align-items: center;
     }
   }
   &__link{
     display: flex;
+    .c-btn--text{
+      margin-top: 8px;
+    }
   }
   &__registered{
     margin-top: 12px;
@@ -144,7 +228,6 @@
       padding: 16px 0;
       font-size: 16px;
       font-weight: 500;
-
 
       background: transparent;
       border-radius: 35px;
@@ -192,7 +275,7 @@
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
       border-radius: 10px;
       padding: 40px 40px 24px;
-      margin-top: 0;
+      margin-top: 32px;
     }
     @include global.responsive(lg) {
       padding: 64px 64px 40px;
@@ -257,7 +340,7 @@
     display: flex;
     justify-content: flex-end;
     &--login{
-      display: none;
+      // display: none;
       @include global.responsive(md) {
         display: block;
       }
