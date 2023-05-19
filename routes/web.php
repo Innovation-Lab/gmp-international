@@ -72,9 +72,9 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
         
         //基本情報編集
-        Route::view('/user', [UserController::class, 'user'])->name('user');
+        Route::get('/user', [UserController::class, 'user'])->name('user');
         //アカウント情報編集
-        Route::view('/account', [UserController::class, 'account'])->name('account');
+        Route::get('/account', [UserController::class, 'account'])->name('account');
     });
 
 });

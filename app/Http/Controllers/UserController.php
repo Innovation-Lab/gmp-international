@@ -54,7 +54,7 @@ class UserController extends Controller
      * 基本情報編集
      * @return View
      */
-    public function edit(): View
+    public function user(): View
     {
         return view('web.mypage.user');
     }
