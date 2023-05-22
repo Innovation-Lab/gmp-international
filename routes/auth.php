@@ -35,7 +35,7 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
 
     // パスワード変更完了画面
-    Route::get('/reset/complete/{user}', [NewPasswordController::class, 'resetComplete'])->name('reset.complete');
+    Route::get('/reset/complete', [NewPasswordController::class, 'resetComplete'])->name('reset.complete');
 });
 
 Route::middleware('auth')->group(function () {
