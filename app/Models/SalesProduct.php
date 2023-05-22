@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SalesProduct extends Model
 {
-    use HasFactory, SoftDeletes, Sortable;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -39,7 +39,7 @@ class SalesProduct extends Model
      */
     public function mShop(): BelongsTo
     {
-        return $this->belongsTo(MShop::class);
+        return $this->belongsTo(MShop::class, 'shop_id');
     }
 
     /**
