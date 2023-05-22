@@ -24,7 +24,7 @@ class StoreAccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|max:10|regex:/^[a-zA-Z0-9]+$/',
             'password_confirmation' => 'required|same:password|min:6|max:10|regex:/^[a-zA-Z0-9]+$/'
         ];
@@ -34,9 +34,8 @@ class StoreAccountRequest extends FormRequest
     {
         return [
             'email' => 'メールアドレス',
-            'tel' => '電話番号',
             'password' => 'パスワード',
-            'password_confirmation' => 'パスワード（確認用）',
+            'password_confirmation' => 'パスワード(確認用)',
         ];
     }
 
@@ -44,7 +43,6 @@ class StoreAccountRequest extends FormRequest
     {
         return [
             'email.unique' => 'すでに使用されているメールアドレスです',
-            'tel.unique' => 'すでに使用されている電話番号です',
             'password.regex' => 'パスワードは半角英数字で入力してください',
             'password.min' => 'パスワードは6文字以上10文字以下で入力してください',
             'password.max' => 'パスワードは6文字以上10文字以下で入力してください',
