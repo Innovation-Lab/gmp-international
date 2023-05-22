@@ -1,0 +1,108 @@
+@use "../../../global" as global;
+@use "../../../global/_components.scss";
+
+/* ! ==================================================
+　Ranking ランキング
+================================================== */
+.p-dashboard {
+  &__ranking {
+    /* ! --------------------------------------------------
+    　List リスト
+    -------------------------------------------------- */
+    &__list {
+      display: grid;
+      gap: 0.5rem;
+      overflow: auto;
+      @include global.responsive(xl) {
+        gap: 1rem;
+      }
+
+      &__item {
+        display: grid;
+        grid:
+          "image text" auto
+          "data data" auto
+          / auto 1fr;
+        gap: 0 0.5rem;
+        align-items: center;
+        position: relative;
+        @include global.responsive(xl) {
+          grid:
+            "image text data" auto
+            / auto 1fr auto;
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          width: calc(100% - 2.5rem);
+          height: 1px;
+          border-top: 1px dotted var(--color_border_1);
+          position: absolute;
+          top: 50%;
+          right: 0;
+          @include global.responsive(xl) {
+            width: 50%;
+          }
+          @include global.responsive(xxl) {
+            width: 64%;
+          }
+        }
+      }
+
+      /* ! ----------
+      　Image イメージ
+      ---------- */
+      &__image {
+        grid-area: image;
+        border-radius: 100%;
+        overflow: hidden;
+        img {
+          width: 2rem;
+          height: 2rem;
+          @include global.responsive(xl) {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+        }
+      }
+
+      /* ! ----------
+      　Text テキスト
+      ---------- */
+      &__text {
+        grid-area: text;
+        display: grid;
+        align-items: baseline;
+        grid-template-columns: auto 1fr;
+        gap: 0.125em 0.5rem;
+        @include global.responsive(xl) {
+          grid-template-columns: 1fr;
+        }
+        .title {
+          @extend .c-text__sm !optional;
+          font-weight: 700;
+          @include global.responsive(xl) {
+          }
+        }
+        .sub {
+          color: var(--color_text_2);
+          @extend .c-text__xs !optional;
+        }
+      }
+      &__data {
+        grid-area: data;
+        .amount {
+          @extend .c-text__md !optional;
+          font-weight: 700;
+          letter-spacing: 0;
+          text-align: right;
+          background-color: #fff;
+          padding: 0 0 0 0.5rem;
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+  }
+}

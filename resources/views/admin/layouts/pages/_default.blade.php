@@ -100,4 +100,11 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
 <script src="{{ asset('js/admin/flatPickr.js') }}"></script>
 --}}
+<script>
+  $('#color_code').on("keydown keyup keypress change click",function(){   
+     let Val = $(this).val(),
+         Tag = $('#color_palet');
+    Tag.val(Val);
+  });
+</script>
 </html>

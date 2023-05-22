@@ -15,7 +15,7 @@ return
         ],
         'masters'=> [
             'label' => 'マスタ管理',
-            'path' => 'admin.masters.index',
+            'path' => 'admin.masters.brand',
         ],
         'staffs'=> [
             'label' => '従業員管理',

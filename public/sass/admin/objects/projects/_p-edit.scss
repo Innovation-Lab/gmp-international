@@ -1,0 +1,104 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Edit 編集ページ
+================================================== */
+.p-edit {
+  display: grid;
+  grid:
+    "main sidebar" auto
+    / 1fr 12%
+  ;
+  gap: 1rem;
+  
+  /* ! --------------------------------------------------
+  　サイドバー
+  -------------------------------------------------- */
+  &__sidebar {
+    grid-area: sidebar;
+    position: relative;
+  }
+
+  /* ! ----------
+  　Nav ナビゲーション
+  ---------- */
+  &__nav {
+    position: sticky;
+    top: 4rem;
+    padding: .5rem 0;
+    &__list {
+      display: grid;
+      li {
+        a {
+          display: flex;
+          align-items: center;
+          height: 2rem;
+          padding: 0 .75rem;
+          scroll-behavior: smooth;
+          @extend .c-text__sm !optional;
+          &::before {
+            content: "・";
+            display: inline-flex;
+            margin: 0 0.25rem 0 0;
+          }
+          &:hover {
+            color: var(--color_primary);
+            background-color: var(--color_background_4);
+          }
+        }
+      }
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　メイン
+  -------------------------------------------------- */
+  &__main {   
+    grid-area: main;
+    border: 1px solid var(--color_border_1);
+    background-color: #fff;
+  }
+  /* ! ----------
+  　Item アイテム
+  ---------- */
+  &__item {
+    display: grid;
+    grid-template-columns: 1.2fr 4fr;
+    & + & {
+      border-top: 1px dotted var(--color_border_0);
+    }
+  }
+
+  @at-root :root {
+    --space_edit: 1.5rem;
+    @include global.responsive(lg) {
+      --space_edit: 2rem;
+    }
+  }
+  /* ! ----------
+  　Head ヘッド
+  ---------- */
+  &__head {
+    background-color: var(--color_background_1);
+    border-right: 1px solid var(--color_border_1);
+    padding: var(--space_edit);
+    position: relative;
+    @include global.responsive(lg) {
+      padding: 2rem;
+    }
+    &__title {
+      @extend .c-text__md !optional;
+      font-weight: 500;
+      position: sticky;
+      top: 4.5rem;
+    }
+  }
+
+  /* ! ----------
+  　Body ボディ
+  ---------- */
+  &__body {
+    padding: var(--space_edit);
+  }
+}

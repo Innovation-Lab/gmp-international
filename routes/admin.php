@@ -59,7 +59,18 @@ Route::group([
             'prefix' => 'masters',
             'as' => 'masters.',
         ], function() {
-            Route::get('/', [MasterController::class, 'index'])->name('index');
+            //ブランドマスタ
+            Route::get('/brand', [MasterController::class, 'brand'])->name('brand');
+            Route::get('/brand/edit', [MasterController::class, 'brandEdit'])->name('brand.edit');
+            //製品マスタ
+            Route::get('/product', [MasterController::class, 'product'])->name('product');
+            Route::get('/product/edit', [MasterController::class, 'productEdit'])->name('product.edit');
+            //店舗マスタ
+            Route::get('/store', [MasterController::class, 'store'])->name('store');
+            Route::get('/store/edit', [MasterController::class, 'storeEdit'])->name('store.edit');
+            //カラーマスタ
+            Route::get('/color', [MasterController::class, 'color'])->name('color');
+            Route::get('/color/edit', [MasterController::class, 'colorEdit'])->name('color.edit');
         });
         
         // アカウント

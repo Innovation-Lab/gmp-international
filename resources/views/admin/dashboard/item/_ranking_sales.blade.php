@@ -8,7 +8,7 @@
     <div class="p-dashboard__content">
       <div class="p-dashboard__ranking__sales">
         <ul class="p-dashboard__ranking__list">
-          @foreach(config('staff.staff') as $key => $val)
+          {{-- @foreach(config('staff.staff') as $key => $val)
           <li class="p-dashboard__ranking__list__item">
             <div class="p-dashboard__ranking__list__image">
               <img src="{{asset('img/admin/sample/profile.png')}}" width="40px" height="40px">
@@ -23,7 +23,7 @@
               </p>
             </div>
           </li>
-          @endforeach
+          @endforeach --}}
         </ul>
       </div>
     </div>

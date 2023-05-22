@@ -199,7 +199,7 @@
           data-micromodal-close
           aria-label="Close this dialog window"
         >戻る</button>
-        <button onclick="window.location='{{ route("admin.auth.login") }}'" class="modal__btn-primary">
+        <button onclick="window.location='" class="modal__btn-primary">
           変更を反映する
         </button>
       </footer>
