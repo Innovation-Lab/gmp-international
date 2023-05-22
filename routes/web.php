@@ -71,10 +71,12 @@ Route::middleware(['auth:web'])->group(function () {
         //製品の入力情報確認
         Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
         
-        //基本情報編集
-        Route::get('/user', [UserController::class, 'user'])->name('user');
         //アカウント情報編集
-        Route::get('/account', [UserController::class, 'account'])->name('account');
+        Route::get('/account/{user}', [UserController::class, 'account'])->name('account');
+        Route::post('/account/{user}', [UserController::class, 'accountUpdate'])->name('account');
+        //基本情報編集
+        Route::get('/user/{user}', [UserController::class, 'user'])->name('user');
+        Route::post('/user/{user}', [UserController::class, 'userUpdate'])->name('user');
     });
 
 });

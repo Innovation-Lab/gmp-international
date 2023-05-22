@@ -173,7 +173,7 @@
             </div>
             <!-- 変更ボタン -->
             <div class="p-info__btn">
-              <a href="{{route('mypage.user')}}" class="c-btn c-btn--rd">変更する</a>
+              <a href="{{route('mypage.user', $user)}}" class="c-btn c-btn--rd">変更する</a>
             </div>
           </div>
           <div class="p-info__txt">
@@ -193,7 +193,7 @@
             </div>
             <!-- 変更ボタン -->
             <div class="p-info__btn">
-              <a href="{{route('mypage.account')}}" class="c-btn c-btn--rd">変更する</a>
+              <a href="{{route('mypage.account', $user)}}" class="c-btn c-btn--rd">変更する</a>
             </div>
           </div>
           <div class="p-info__txt">

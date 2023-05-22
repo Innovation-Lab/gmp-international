@@ -13,7 +13,7 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <form method="POST" action="{{ route('mypage.index') }}" id="accountSubmitForm">
+          <form method="POST" action="{{ route('mypage.account', $user) }}" id="accountSubmitForm">
             @csrf
             <ul class="p-formList">
               <!-- メールアドレス -->
@@ -23,11 +23,11 @@
                     <p class="c-txt">メールアドレス <span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data @error('email') p-formList__data--err @enderror">
-                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email') }}">
+                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email', data_get($user, 'email')) }}">
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   @error('email')
-                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                    <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>
@@ -42,7 +42,7 @@
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   @error('password')
-                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                    <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>
@@ -57,7 +57,7 @@
                   </div>
                   <!-- 入力不備エラーメッセージ -->
                   @error('password_confirmation')
-                    <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
+                    <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>

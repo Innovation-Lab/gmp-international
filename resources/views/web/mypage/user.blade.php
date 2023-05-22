@@ -13,7 +13,7 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <form method="POST" action="{{ route('mypage.index') }}" id="informationSubmitForm">
+          <form method="POST" action="{{ route('mypage.user', $user) }}" id="informationSubmitForm">
             @csrf
             <ul class="p-formList">
               <!-- お名前 -->
@@ -27,7 +27,7 @@
                       <!-- 姓 -->
                       <div class="c-input__item @error('last_name') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name') }}">
+                          <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name', data_get($user, 'last_name')) }}">
                         </div>
                         @error('last_name')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -36,7 +36,7 @@
                       <!-- 名 -->
                       <div class="c-input__item @error('first_name') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name') }}">
+                          <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name', data_get($user, 'first_name')) }}">
                         </div>
                         @error('first_name')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -57,7 +57,7 @@
                       <!-- セイ -->
                       <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana') }}">
+                          <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana', data_get($user, 'last_name_kana')) }}">
                         </div>
                         @error('last_name_kana')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -66,9 +66,9 @@
                       <!-- メイ -->
                       <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana') }}">
+                          <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana', data_get($user, 'first_name_kana')) }}">
                         </div>
-                        @error('last_name_kana')
+                        @error('first_name_kana')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
                         @enderror
                       </div>
@@ -84,7 +84,7 @@
                   </div>
                   <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
                     <div class="c-input c-input--post">
-                      <input id="postcode" placeholder="1500000" maxlength="7" class="required" name="zip_code" type="number" value="{{ old('zip_code') }}">
+                      <input id="postcode" placeholder="1500000" maxlength="7" class="required" name="zip_code" type="number" value="{{ old('zip_code', data_get($user, 'zip_code')) }}">
                     </div>
                     @error('zip_code')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -101,20 +101,20 @@
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
                       <select id="address1" name="prefecture" value="{{ old('prefecture') }}">
-                        <option value="" hidden>都道府県</option>
-                        {{-- @foreach($prefectures as $index => $name)
-                          <option value="{{ $index }}" {{ old('prefecture') == $index ? 'selected' : '' }} >{{ $name }}</option>
-                        @endforeach --}}
+                        <option value="" hidden></option>
+                        @foreach($prefectures as $index => $name)
+                          <option option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                       </select>
                     </div>
                     <div class="c-input">
-                      <input id="address2" placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city') }}">
+                      <input id="address2" placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city', data_get($user, 'address_city')) }}">
                     </div>
                     <div class="c-input">
-                      <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block') }}">
+                      <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block', data_get($user, 'address_block')) }}">
                     </div>
                     <div class="c-input">
-                      <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
+                      <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building', data_get($user, 'address_building')) }}">
                     </div>
                     @error('prefecture')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -128,7 +128,7 @@
                     @error('address_building')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
                     @enderror
-                  </div>                  
+                  </div>
                 </div>
               </li>
               <!-- 電話番号 -->
@@ -139,7 +139,7 @@
                   </div>
                   <div class="p-formList__data @error('tel') p-formList__data--err @enderror">
                     <div class="c-input c-input--tel">
-                      <input placeholder="例）08012345678" class="required" name="tel" type="number" value="{{ old('tel') }}">
+                      <input placeholder="例）08012345678" class="required" name="tel" type="tel" value="{{ old('tel', data_get($user, 'tel')) }}">
                     </div>
                     @error('tel')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -155,9 +155,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-1" name="num_of_inq-1" value="1" checked>
+                      <input type="radio" id="inq1-1" name="is_catalog" value="1" {{ Auth::user()->is_catalog == 1 ? 'checked' : '' }}>
                       <label for="inq1-1">希望する</label>
-                      <input type="radio" id="inq2-1" name="num_of_inq-1" value="2">
+                      <input type="radio" id="inq2-1" name="is_catalog" value="2" {{ Auth::user()->is_catalog == 2 ? 'checked' : '' }}>
                       <label for="inq2-1">希望しない</label>
                     </div>
                   </div>
@@ -171,9 +171,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-2" name="num_of_inq-2" value="1" checked>
+                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
                       <label for="inq1-2">希望する</label>
-                      <input type="radio" id="inq2-2" name="num_of_inq-2" value="2">
+                      <input type="radio" id="inq2-2" name="is_dm" value="2" {{ Auth::user()->is_dm == 2 ? 'checked' : '' }}>
                       <label for="inq2-2">希望しない</label>
                     </div>
                   </div>
