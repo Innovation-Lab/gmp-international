@@ -11,10 +11,10 @@
           <p class="c-txt c-txt--md">{{ $user->full_name }}<span class="c-txt--sm"> 様</span></p>
         </div>
         <ul class="p-dashboard__list">
-          <li class="p-dashboard__item"><a href="{{route('mypage.index')}}" class="c-txt">マイページ</a></li>
-          <li class="p-dashboard__item"><a href="{{route('mypage.product')}}" class="c-txt">登録済み製品一覧</a></li>
-          <li class="p-dashboard__item"><a href="{{route('mypage.user')}}" class="c-txt">ユーザー情報変更</a></li>
-          <li class="p-dashboard__item"><a href="{{route('mypage.account')}}" class="c-txt">アカウント情報変更</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.index', $user)}}" class="c-txt">マイページ</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.product', $user)}}" class="c-txt">登録済み製品一覧</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.user', $user)}}" class="c-txt">ユーザー情報変更</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.account', $user)}}" class="c-txt">アカウント情報変更</a></li>
         </ul>
       </div>
     </div>

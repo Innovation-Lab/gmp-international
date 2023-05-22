@@ -53,7 +53,8 @@ class NewPasswordController extends Controller
                     'password' => Hash::make($request->password),
                     // 'remember_token' => Str::random(60),
                 ])->save();
-
+                \Auth::loginUsingId($user->id);
+                
                 event(new PasswordReset($user));
             }
         );
@@ -65,6 +66,14 @@ class NewPasswordController extends Controller
                     ? redirect()->route('reset.complete')->with('status', __($status))
                     : back()->withInput($request->only('email'))
                             ->withErrors(['email' => __($status)]);
+    }
+
+    /**
+     * Display the password forgot complete view.
+     */
+    public function forgotComplete(): View
+    {
+        return view('web.auth.forgot.complete');
     }
 
     /**

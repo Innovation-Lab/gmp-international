@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreAccountRequest extends FormRequest
+class UpdateAccountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +24,31 @@ class StoreAccountRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|max:10|regex:/^[a-zA-Z0-9]+$/',
-            'password_confirmation' => 'required|same:password|min:6|max:10|regex:/^[a-zA-Z0-9]+$/'
+        $rules = [
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore(auth()->id()),
+            ],
         ];
+
+        if ($this->filled('password') || $this->filled('password_confirmation')) {
+            $rules['password'] = [
+                'required',
+                'min:6',
+                'max:10',
+                'regex:/^[a-zA-Z0-9]+$/',
+            ];
+            $rules['password_confirmation'] = [
+                'required',
+                'same:password',
+                'min:6',
+                'max:10',
+                'regex:/^[a-zA-Z0-9]+$/',
+            ];
+        }
+        return $rules;
     }
 
     public function attributes()
@@ -46,6 +67,8 @@ class StoreAccountRequest extends FormRequest
             'password.regex' => 'パスワードは半角英数字で入力してください',
             'password.min' => 'パスワードは6文字以上10文字以下で入力してください',
             'password.max' => 'パスワードは6文字以上10文字以下で入力してください',
+            'password_confirmation.min' => 'パスワード(確認用)は6文字以上10文字以下で入力してください',
+            'password_confirmation.max' => 'パスワード(確認用)は6文字以上10文字以下で入力してください',
         ];
     }
 }

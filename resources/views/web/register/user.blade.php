@@ -27,8 +27,9 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <form method="POST" action="{{ route('register.store.information') }}" id="informationSubmitForm">
+          <form method="POST" class="h-adr" action="{{ route('register.store.information') }}" id="informationSubmitForm">
             @csrf
+            <span class="p-country-name" style="display:none;">Japan</span>
             <ul class="p-formList">
               <!-- お名前 -->
               <li class="p-formList__item p-formList__item--half">
@@ -98,7 +99,7 @@
                   </div>
                   <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
                     <div class="c-input c-input--post">
-                      <input id="postcode" placeholder="1500000" maxlength="7" class="required" name="zip_code" type="number" value="{{ old('zip_code') }}">
+                      <input id="postcode" placeholder="半角数値7桁" maxlength="7" class="required p-postal-code" name="zip_code" type="text" value="{{ old('zip_code') }}" pattern="[0-9]{7}">
                     </div>
                     @error('zip_code')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -114,7 +115,7 @@
                   </div>
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
-                      <select id="address1" name="prefecture" value="{{ old('prefecture') }}">
+                      <select id="prefecture" name="prefecture" class="p-region" value="">
                         @foreach($prefectures as $index => $name)
                           <option value="" hidden>都道府県</option>
                           <option value="{{ $index }}" {{ old('prefecture') == $index ? 'selected' : '' }} >{{ $name }}</option>
@@ -122,10 +123,10 @@
                       </select>
                     </div>
                     <div class="c-input">
-                      <input id="address2" placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city') }}">
+                      <input id="address2" placeholder="市区町村" class="required p-locality p-street-address " name="address_city" type="text" value="{{ old('address_city') }}">
                     </div>
                     <div class="c-input">
-                      <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block') }}">
+                      <input placeholder="番地" class="required p-extended-address" name="address_block" type="text" value="{{ old('address_block') }}">
                     </div>
                     <div class="c-input">
                       <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
@@ -153,7 +154,7 @@
                   </div>
                   <div class="p-formList__data @error('tel') p-formList__data--err @enderror">
                     <div class="c-input c-input--tel">
-                      <input placeholder="例）08012345678" class="required" name="tel" type="number" value="{{ old('tel') }}">
+                      <input placeholder="例）08012345678" class="required" name="tel" type="tel" value="{{ old('tel') }}">
                     </div>
                     @error('tel')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -169,9 +170,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-1" name="num_of_inq-1" value="1" checked>
+                      <input type="radio" id="inq1-1" name="is_catalog" value="1" checked>
                       <label for="inq1-1">希望する</label>
-                      <input type="radio" id="inq2-1" name="num_of_inq-1" value="2">
+                      <input type="radio" id="inq2-1" name="is_catalog" value="2">
                       <label for="inq2-1">希望しない</label>
                     </div>
                   </div>
@@ -185,9 +186,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-2" name="num_of_inq-2" value="1" checked>
+                      <input type="radio" id="inq1-2" name="is_dm" value="1" checked>
                       <label for="inq1-2">希望する</label>
-                      <input type="radio" id="inq2-2" name="num_of_inq-2" value="2">
+                      <input type="radio" id="inq2-2" name="is_dm" value="2">
                       <label for="inq2-2">希望しない</label>
                     </div>
                   </div>
@@ -206,3 +207,4 @@
     </div>
   </div>
 @endsection
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
