@@ -53,7 +53,8 @@ class NewPasswordController extends Controller
                     'password' => Hash::make($request->password),
                     // 'remember_token' => Str::random(60),
                 ])->save();
-
+                \Auth::loginUsingId($user->id);
+                
                 event(new PasswordReset($user));
             }
         );
