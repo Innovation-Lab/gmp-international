@@ -107,26 +107,25 @@ class RegisterController extends Controller
             'is_catalog' => $params['is_catalog'],
             'is_dm' => $params['is_dm'],
         ]);
-        dd(Session::get('user_info'));
-
-        DB::transaction(function () use ($session, $params) {
-            $user = User::create([
-                'email' => $session['email'],
-                'password' => Hash::make($session['password']),
-                'last_name' => $params['last_name'],
-                'first_name' => $params['first_name'],
-                'last_name_kana' => $params['last_name_kana'],
-                'first_name_kana' => $params['first_name_kana'],
-                'zip_code' => $params['zip_code'],
-                'prefecture' => $params['prefecture'],
-                'address_city' => $params['address_city'],
-                'address_block' => $params['address_block'],
-                'address_building' => $params['address_building'],
-                'tel' => $params['tel'],
-                'is_catalog' => $params['is_catalog'],
-                'is_dm' => $params['is_dm'],
-            ]);
-        });
+//
+//        DB::transaction(function () use ($session, $params) {
+//            $user = User::create([
+//                'email' => $session['email'],
+//                'password' => Hash::make($session['password']),
+//                'last_name' => $params['last_name'],
+//                'first_name' => $params['first_name'],
+//                'last_name_kana' => $params['last_name_kana'],
+//                'first_name_kana' => $params['first_name_kana'],
+//                'zip_code' => $params['zip_code'],
+//                'prefecture' => $params['prefecture'],
+//                'address_city' => $params['address_city'],
+//                'address_block' => $params['address_block'],
+//                'address_building' => $params['address_building'],
+//                'tel' => $params['tel'],
+//                'is_catalog' => $params['is_catalog'],
+//                'is_dm' => $params['is_dm'],
+//            ]);
+//        });
 
         return view('web.register.product');
     }
