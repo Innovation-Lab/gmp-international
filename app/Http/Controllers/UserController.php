@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateAccountRequest;
+use App\Http\Requests\StoreInformationRequest;
 use App\Models\User;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\View\View;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    private $user_repository;
+
+    public function __construct(
+        UserRepositoryInterface $user_repository
+    )
+    {
+        $this->user_repository = $user_repository;
+    }
+
     /**
      * ユーザー一覧
      * @param Request $request
@@ -23,20 +31,22 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        if(Auth::user()->is_catalog == 1 ) {
+        if(Auth::user()->is_catalog == 1) {
             $catalog_request = '希望する';
         } else {
             $catalog_request = '希望しない';
         }
 
-        if(Auth::user()->is_dm == 1 ) {
+        if(Auth::user()->is_dm == 1) {
             $dm_request = '希望する';
         } else {
             $dm_request = '希望しない';
         }
 
         return view('web.mypage.index')->with([
-            'user' => $user, 'catalog_request' => $catalog_request, 'dm_request' => $dm_request,
+            'user' => $user,
+            'catalog_request' => $catalog_request,
+            'dm_request' => $dm_request,
         ]);
 
     }
@@ -71,20 +81,68 @@ class UserController extends Controller
     {
         return view('web.mypage.product.confirm');
     }
-    
+
+    //アカウント情報 編集
+    public function account()
+    {
+        $user = Auth::user();
+        return view('web.mypage.account')->with([
+            'user' => $user,
+        ]);
+    }
+
     /**
-     * 基本情報編集
+     * アカウント情報 更新
+     *
+     * @param User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function accountUpdate(User $user, updateAccountRequest $request)
+    {
+        if ($this->user_repository->accountUpdate($user, $request)) {
+            return redirect()
+                ->route('mypage.index', $user)
+                ->with('status', 'success')
+                ->with('message', '更新が完了しました。');
+        } else {
+            return redirect()
+                ->back()
+                ->with('status', 'failed')
+                ->with('message', '更新に失敗しました。');
+        }
+    }
+
+    /**
+     * 基本情報 編集
      * @return View
      */
     public function user(): View
     {
-        return view('web.mypage.user');
+        $user = Auth::user();
+        $prefectures = config('prefecture');
+
+        return view('web.mypage.user')->with([
+            'user' => $user,
+            'prefectures' => $prefectures,
+        ]);
     }
 
-    //アカウント情報編集
-    public function account()
+    /**
+     * 基本情報 更新
+     * @return View
+     */
+    public function userUpdate(User $user, StoreInformationRequest $request)
     {
-        return view('web.mypage.account');
+        if ($this->user_repository->userUpdate($user, $request)) {
+            return redirect()
+            ->route('mypage.index', $user)
+            ->with('status', 'success')
+            ->with('message', '更新が完了しました。');
+        } else {
+            return redirect()
+                ->back()
+                ->with('status', 'failed')
+                ->with('message', '更新に失敗しました。');
+        }
     }
-
 }
