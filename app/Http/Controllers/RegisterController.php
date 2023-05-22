@@ -39,7 +39,6 @@ class RegisterController extends Controller
      */
     public function storeAccount(StoreAccountRequest $request)
     {
-        // フォームから送信されたデータをセッションに保存する処理
         $email = $request->input('email');
         $password = $request->input('password');
         Session::put('session_account', [
@@ -92,7 +91,9 @@ class RegisterController extends Controller
                 'address_city' => $params['address_city'],
                 'address_block' => $params['address_block'],
                 'address_building' => $params['address_building'],
-                'tel' => $params['tel']
+                'tel' => $params['tel'],
+                'is_catalog' => $params['is_catalog'],
+                'is_dm' => $params['is_dm'],
             ]);
         });
 
