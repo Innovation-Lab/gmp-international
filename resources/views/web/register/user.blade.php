@@ -114,7 +114,7 @@
                   </div>
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
-                      <select id="address1" name="prefecture" value="{{ old('prefecture') }}">
+                      <select id="prefecture" name="prefecture" value="">
                         @foreach($prefectures as $index => $name)
                           <option value="" hidden>都道府県</option>
                           <option value="{{ $index }}" {{ old('prefecture') == $index ? 'selected' : '' }} >{{ $name }}</option>
@@ -153,7 +153,7 @@
                   </div>
                   <div class="p-formList__data @error('tel') p-formList__data--err @enderror">
                     <div class="c-input c-input--tel">
-                      <input placeholder="例）08012345678" class="required" name="tel" type="number" value="{{ old('tel') }}">
+                      <input placeholder="例）08012345678" class="required" name="tel" type="tel" value="{{ old('tel') }}">
                     </div>
                     @error('tel')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -169,9 +169,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-1" name="num_of_inq-1" value="1" checked>
+                      <input type="radio" id="inq1-1" name="is_catalog" value="1" checked>
                       <label for="inq1-1">希望する</label>
-                      <input type="radio" id="inq2-1" name="num_of_inq-1" value="2">
+                      <input type="radio" id="inq2-1" name="is_catalog" value="2">
                       <label for="inq2-1">希望しない</label>
                     </div>
                   </div>
@@ -185,9 +185,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-2" name="num_of_inq-2" value="1" checked>
+                      <input type="radio" id="inq1-2" name="is_dm" value="1" checked>
                       <label for="inq1-2">希望する</label>
-                      <input type="radio" id="inq2-2" name="num_of_inq-2" value="2">
+                      <input type="radio" id="inq2-2" name="is_dm" value="2">
                       <label for="inq2-2">希望しない</label>
                     </div>
                   </div>
