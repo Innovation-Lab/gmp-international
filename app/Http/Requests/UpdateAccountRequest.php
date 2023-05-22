@@ -67,6 +67,8 @@ class UpdateAccountRequest extends FormRequest
             'password.regex' => 'パスワードは半角英数字で入力してください',
             'password.min' => 'パスワードは6文字以上10文字以下で入力してください',
             'password.max' => 'パスワードは6文字以上10文字以下で入力してください',
+            'password_confirmation.min' => 'パスワード(確認用)は6文字以上10文字以下で入力してください',
+            'password_confirmation.max' => 'パスワード(確認用)は6文字以上10文字以下で入力してください',
         ];
     }
 }
