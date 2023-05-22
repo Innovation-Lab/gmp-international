@@ -46,4 +46,35 @@ class UserRepository implements UserRepositoryInterface
     {
 
     }
+    
+    /**
+     * @param array $user
+     * @param array $product
+     * @return mixed
+     */
+    public function createWithProduct(
+        array $user,
+        array $product
+    ): mixed
+    {
+        return  DB::transaction(function () use ($user, $product) {
+            $user = User::create([
+                'email' => data_get($user, 'email'),
+                'password' => \Illuminate\Support\Facades\Hash::make(data_get($user, 'password')),
+                'last_name' => data_get($user, 'last_name'),
+                'first_name' => data_get($user, 'first_name'),
+                'last_name_kana' => data_get($user, 'last_name_kana'),
+                'first_name_kana' => data_get($user, 'first_name_kana'),
+                'zip_code' => data_get($user, 'zip_code'),
+                'prefecture' => data_get($user, 'prefecture'),
+                'address_city' => data_get($user, 'address_city'),
+                'address_block' => data_get($user, 'address_block'),
+                'address_building' => data_get($user, 'address_building'),
+                'tel' => data_get($user, 'tel'),
+                'is_catalog' => data_get($user, 'is_catalog'),
+                'is_dm' => data_get($user, 'is_dm')
+            ]);
+        });
+        
+    }
 }
