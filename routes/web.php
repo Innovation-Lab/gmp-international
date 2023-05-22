@@ -41,6 +41,7 @@ Route::group([
 
     //購入製品登録
     Route::get('/product', [RegisterController::class, 'product'])->name('product');
+    Route::post('/store/product', [RegisterController::class, 'storeProduct'])->name('store.product');
     //入力情報確認
     Route::get('/confirm', [RegisterController::class, 'confirm'])->name('confirm');
     //基本情報登録

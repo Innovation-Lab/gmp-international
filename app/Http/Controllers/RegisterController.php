@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -139,13 +140,34 @@ class RegisterController extends Controller
     }
     
     /**
+     * @param StoreProductRequest $request
+     * @return RedirectResponse
+     */
+    public function storeProduct(StoreProductRequest $request): RedirectResponse
+    {
+        $products = $request->input('products', []);
+        
+        foreach ($products as $key => $product) {
+            Session::put('products['.$key.']', [
+                'm_product_id' => data_get($product, 'm_product_id'),
+                'purchase_date' => data_get($product, 'purchase_date'),
+                'shop_id' => data_get($product, 'shop_id'),
+                'product_code' => data_get($product, 'product_code'),
+                'm_color_id' => data_get($product, 'm_color_id'),
+            ]);
+        }
+        
+        return  redirect()->route('register.confirm');
+    }
+    
+    /**
      * @return Application|Factory|View
      */
     public function confirm(): View|Factory|Application
     {
         return view('web.register.confirm', [
             'user' => Session::get('user_info', []),
-            'product' => Session::get('product', [])
+            'products' => Session::get('products', [])
         ]);
     }
     
@@ -156,7 +178,7 @@ class RegisterController extends Controller
     public function storeVariable(Request $request): RedirectResponse
     {
         $user = Session::get('user_info', []);
-        $product = Session::get('product', []);
+        $product = Session::get('products', []);
         
         if (!$this->userRepository->createWithProduct($user, $product)) {
             return redirect()

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\SalesProduct;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\StoreAccountRequest;
@@ -54,10 +55,10 @@ class UserRepository implements UserRepositoryInterface
      */
     public function createWithProduct(
         array $user,
-        array $product
+        array $products
     ): mixed
     {
-        return  DB::transaction(function () use ($user, $product) {
+        return  DB::transaction(function () use ($user, $products) {
             $user = User::create([
                 'email' => data_get($user, 'email'),
                 'password' => \Illuminate\Support\Facades\Hash::make(data_get($user, 'password')),
@@ -74,6 +75,10 @@ class UserRepository implements UserRepositoryInterface
                 'is_catalog' => data_get($user, 'is_catalog'),
                 'is_dm' => data_get($user, 'is_dm')
             ]);
+            
+            foreach ($products as $product) {
+                SalesProduct::create($product);
+            }
         });
         
     }
