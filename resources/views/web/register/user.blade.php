@@ -28,10 +28,13 @@
       <div class="l-container">
         <div class="p-formPage__body">
           <div class="skip">
-            <a class="c-btn c-btn--text c-btn--text--bk " href="">後で登録する</a>
+            <a class="c-btn c-btn--text c-btn--text--bk " onclick="addHiddenFieldAndSubmit()">
+              後で登録する
+            </a>
           </div>
           <form method="POST" class="h-adr" action="{{ route('register.store.information') }}" id="informationSubmitForm">
             @csrf
+            <input type="hidden" name="is_skip" id="is_skip_input" value="0">
             <span class="p-country-name" style="display:none;">Japan</span>
             <ul class="p-formList">
               <!-- お名前 -->
@@ -211,3 +214,9 @@
   </div>
 @endsection
 <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+<script>
+  function addHiddenFieldAndSubmit() {
+      $("#is_skip_input").val(1);
+      $("#informationSubmitForm").submit();
+  }
+</script>

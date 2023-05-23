@@ -23,17 +23,21 @@ class StoreInformationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'last_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',
-            'first_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',
-            'last_name_kana' => 'required|max:40|regex:/^[ァ-ヶー　]+$/u',
-            'first_name_kana' => 'required|max:40|regex:/^[ァ-ヶー　]+$/u',
-            'zip_code' => 'required|size:7|regex:/^[0-9]+$/',
-            'prefecture' => 'required',
-            'address_city' => 'required|max:100',
-            'address_block' => 'required|max:100',
-            'tel' => 'required|regex:/^[0-9]{10,11}$/',
-        ];
+        $valid = [];
+        if ($this->request->get('is_skip', 0) != 1) {
+            $valid = [
+                'last_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',
+                'first_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',
+                'last_name_kana' => 'required|max:40|regex:/^[ァ-ヶー　]+$/u',
+                'first_name_kana' => 'required|max:40|regex:/^[ァ-ヶー　]+$/u',
+                'zip_code' => 'required|size:7|regex:/^[0-9]+$/',
+                'prefecture' => 'required',
+                'address_city' => 'required|max:100',
+                'address_block' => 'required|max:100',
+                'tel' => 'required|regex:/^[0-9]{10,11}$/',
+            ];
+        }
+        return $valid;
     }
 
     public function attributes()

@@ -13,237 +13,177 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body p-formPage__body--thin">
-          <div class="l-stack">
-            <div class="l-stack__item">
-              <ul class="p-formList p-formList--confirm">
-                <!-- アカウント情報 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__ttl">
-                    <p class="c-ttl">アカウント情報</p>
-                  </div>
-                  <div class="p-formList__content">
-                    <div class="l-stack">
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">メールアドレス</p>
+          <form method="POST" action="{{ route('register.store.variable') }}" id="variableSubmitForm">
+            @csrf
+            <div class="l-stack">
+              <div class="l-stack__item">
+                <ul class="p-formList p-formList--confirm">
+                  <!-- アカウント情報 -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__ttl">
+                      <p class="c-ttl">アカウント情報</p>
+                    </div>
+                    <div class="p-formList__content">
+                      <div class="l-stack">
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">メールアドレス</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($user, 'email') }}</p>
+                          </div>
                         </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">h.koyama@soushin-lab.co.jp</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">パスワード</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">*********</p>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">パスワード</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">*********</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="l-stack__item l-stack__item--line">
+                <ul class="p-formList p-formList--confirm">
+                  <!-- ユーザー情報 -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__ttl">
+                      <p class="c-ttl">ユーザー情報</p>
+                    </div>
+                    <div class="p-formList__content">
+                      <div class="l-stack">
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">お名前</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($user, 'last_name').' '. data_get($user, 'first_name')  }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">フリガナ</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($user, 'last_name_kana').' '. data_get($user, 'first_name_kana')  }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">郵便番号</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ format_zip_code(data_get($user, 'zip_code')) }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">住所</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">
+                              {{ data_get($user, 'prefecture') }}<br>
+                              {{ data_get($user, 'address_city') }} {{ data_get($user, 'address_block') }} {{ data_get($user, 'address_building') }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">電話番号</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ phone_template_format( data_get($user, 'tel') ) }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">カタログの送付</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ \App\Models\User::CATALOG_STATUS[data_get($user, 'is_catalog')] }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">DMの送付</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ \App\Models\User::DM_STATUS[data_get($user, 'is_dm')] }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="l-stack__item l-stack__item--line">
+                <ul class="p-formList p-formList--confirm">
+                  @forelse ($sales_products as $product)
+                  <!-- 購入製品 -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__ttl">
+                      <p class="c-ttl">購入製品</p>
+                      <p class="c-txt">{{ data_get($product, 'm_product_id') ? $products[data_get($product, 'm_product_id')] : '指定なし' }}</p>
+                    </div>
+                    <div class="p-formList__content">
+                      <div class="l-stack">
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">購入日</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ formatYmdSlash(data_get($product, 'purchase_date')) }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">ブランド名</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_brand_id') ? $brands[data_get($product, 'm_brand_id')] : '指定なし' }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">カラー</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != '9999999' ? $colors[data_get($product, 'm_color_id')] : '指定なし' }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">シリアルナンバー</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'product_code', '指定なし') }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">購入店舗</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != '9999999' ? $shops[data_get($product, 'm_shop_id')] : '指定なし' }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  @empty
+                  @endforelse
+                </ul>
+              </div>
             </div>
-            <div class="l-stack__item l-stack__item--line">
-              <ul class="p-formList p-formList--confirm">
-                <!-- ユーザー情報 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__ttl">
-                    <p class="c-ttl">ユーザー情報</p>
-                  </div>
-                  <div class="p-formList__content">
-                    <div class="l-stack">
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">お名前</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">小山 浩行</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">フリガナ</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">コヤマ ヒロユキ</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">郵便番号</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">1020094</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">住所</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">
-                            東京都<br>
-                            千代田区 紀尾井町3-12 紀尾井町ビル16F
-                          </p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">電話番号</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">0363808220</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">カタログの送付</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">希望する</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">DMの送付</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">希望する</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="l-stack__item l-stack__item--line">
-              <ul class="p-formList p-formList--confirm">
-                <!-- 購入製品 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__ttl">
-                    <p class="c-ttl">購入製品</p>
-                    <p class="c-txt">プロダクト1</p>
-                  </div>
-                  <div class="p-formList__content">
-                    <div class="l-stack">
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">購入日</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">2023/04/04</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">ブランド名</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">AIRBUGGY</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">製品名</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">COCO PREMIER FROM BIRTH</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">カラー</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">グリーンティー</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">シリアルナンバー</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">GMP123456789</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">購入店舗</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">エアバギー代官山店</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                {{-- 購入プロダクト2個目から --}}
-                <li class="p-formList__item p-formList__item--productLine" style="display:none;">
-                  <div class="p-formList__ttl">
-                    <p class="c-txt">プロダクト2</p>
-                  </div>
-                  <div class="p-formList__content">
-                    <div class="l-stack">
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">購入日</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">2023/04/04</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">ブランド名</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">AIRBUGGY</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">製品名</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">COCO PREMIER FROM BIRTH</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">カラー</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">グリーンティー</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">シリアルナンバー</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">GMP123456789</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">購入店舗</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">エアバギー代官山店</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+          </form>
         </div>
         <div class="p-formPage__foot">
           <div class="p-btnWrap p-btnWrap--center">
               <a href="{{route('register.product')}}" class="c-btn c-btn--back">修正する</a>
-              <a href="{{route('register.complete')}}" class="c-btn c-btn--next">登録する</a>
+              <button type="submit" form="variableSubmitForm" class="c-btn c-btn--next">登録する</button>
           </div>
         </div>
       </div>

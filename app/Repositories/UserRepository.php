@@ -4,15 +4,27 @@ namespace App\Repositories;
 
 use App\Models\SalesProduct;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Http\StoreAccountRequest;
 use App\Repositories\UserRepositoryInterface;
+use App\Services\SendMailService;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreAccountRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
 {
+    private SendMailService $sendMailService;
+    
+    /**
+     * @param SendMailService $sendMailService
+     */
+    public function __construct(
+        SendMailService $sendMailService
+    ) {
+        $this->sendMailService = $sendMailService;
+    }
+    
     public function search(Request $request)
     {
 
@@ -49,37 +61,58 @@ class UserRepository implements UserRepositoryInterface
     }
     
     /**
-     * @param array $user
-     * @param array $product
-     * @return mixed
+     * @param array $users
+     * @param array $products
+     * @return bool
      */
     public function createWithProduct(
-        array $user,
+        array $users,
         array $products
-    ): mixed
+    ): bool
     {
-        return  DB::transaction(function () use ($user, $products) {
+        
+        DB::beginTransaction();
+        try {
             $user = User::create([
-                'email' => data_get($user, 'email'),
-                'password' => \Illuminate\Support\Facades\Hash::make(data_get($user, 'password')),
-                'last_name' => data_get($user, 'last_name'),
-                'first_name' => data_get($user, 'first_name'),
-                'last_name_kana' => data_get($user, 'last_name_kana'),
-                'first_name_kana' => data_get($user, 'first_name_kana'),
-                'zip_code' => data_get($user, 'zip_code'),
-                'prefecture' => data_get($user, 'prefecture'),
-                'address_city' => data_get($user, 'address_city'),
-                'address_block' => data_get($user, 'address_block'),
-                'address_building' => data_get($user, 'address_building'),
-                'tel' => data_get($user, 'tel'),
-                'is_catalog' => data_get($user, 'is_catalog'),
-                'is_dm' => data_get($user, 'is_dm')
+                'email' => data_get($users, 'email'),
+                'password' => \Illuminate\Support\Facades\Hash::make(data_get($users, 'password')),
+                'last_name' => data_get($users, 'last_name'),
+                'first_name' => data_get($users, 'first_name'),
+                'last_name_kana' => data_get($users, 'last_name_kana'),
+                'first_name_kana' => data_get($users, 'first_name_kana'),
+                'zip_code' => data_get($users, 'zip_code'),
+                'prefecture' => data_get($users, 'prefecture'),
+                'address_city' => data_get($users, 'address_city'),
+                'address_block' => data_get($users, 'address_block'),
+                'address_building' => data_get($users, 'address_building'),
+                'tel' => data_get($users, 'tel'),
+                'is_catalog' => data_get($users, 'is_catalog'),
+                'is_dm' => data_get($users, 'is_dm')
             ]);
             
             foreach ($products as $product) {
-                SalesProduct::create($product);
+                
+                SalesProduct::create([
+                    'm_product_id' => data_get($product, 'm_product_id'),
+                    'user_id' => data_get($user, 'id'),
+                    'purchase_date' => data_get($product, 'purchase_date'),
+                    'm_shop_id' => data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != '9999999' ? data_get($product, 'm_shop_id') : NULL,
+                    'product_code' => data_get($product, 'product_code'),
+                    'm_color_id' => data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != '9999999' ? data_get($product, 'm_color_id') : NULL,
+                ]);
             }
-        });
+            
+            // メールの送信
+            $this->sendMailService->send('registration', $users, 1);
+            
+            DB::commit();
+            Auth::loginUsingId($user->id);
+            
+            return true;
+        } catch (\Exception $e) {dd($e);
+            DB::rollBack();
+        }
         
+        return false;
     }
 }

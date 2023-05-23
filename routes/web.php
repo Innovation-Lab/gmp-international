@@ -48,6 +48,9 @@ Route::group([
     Route::post('/store/variable', [RegisterController::class, 'storeVariable'])->name('store.variable');
     //入力完了画面
     Route::get('/complete', [RegisterController::class, 'complete'])->name('complete');
+    
+    // ajaxマスタ配列取得用
+    Route::get('js-get-array', [RegisterController::class, 'jsGetArray']);
 });
 
 /* ! ==================================================

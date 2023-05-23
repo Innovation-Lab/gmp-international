@@ -20,7 +20,7 @@ class CreateSalesProductsTable extends Migration
             $table->date('purchase_date', 255)->nullable()->comment('購入日');
             $table->date('return_date', 255)->nullable()->comment('返品日');
             $table->unsignedInteger('m_shop_id')->nullable()->comment('店舗名');
-            $table->string('product_code', 255)->unique()->comment('シリアルコード');
+            $table->string('product_code', 255)->nullable()->comment('シリアルコード');
             $table->string('warranty_period', 255)->nullable()->comment('保証期間');
             $table->unsignedInteger('m_color_id')->nullable()->comment('カラーID');
             $table->softDeletes();

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Models\MBrand;
+use App\Models\MColor;
+use App\Models\MProduct;
+use App\Models\MShop;
+use App\Models\SalesProduct;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\SendMailService;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
@@ -109,10 +115,10 @@ class RegisterController extends Controller
      */
     public function storeInformation(StoreInformationRequest $request): RedirectResponse
     {
-        $skip = $request->input('is_skip', 0);
+        $skip = $request->input('is_skip', '0');
         $params = $request->all();
         $account = Session::get('user_info', []);
-        
+
         session()->put('user_info', [
             'email' => data_get($account, 'email'),
             'password' => data_get($account, 'password'),
@@ -131,8 +137,8 @@ class RegisterController extends Controller
         ]);
         
         return match ($skip) {
-            0 => redirect()->route('register.product'),
-            1 => redirect()->route('register.confirm'),
+            '0' => redirect()->route('register.product'),
+            '1' => redirect()->route('register.confirm'),
         };
     }
     
@@ -141,26 +147,23 @@ class RegisterController extends Controller
      */
     public function product(): View|Factory|Application
     {
-        return view('web.register.product');
+        return view('web.register.product', [
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
     }
     
     /**
-     * @param StoreProductRequest $request
+     * @param Request $request
      * @return RedirectResponse
      */
-    public function storeProduct(StoreProductRequest $request): RedirectResponse
+    public function storeProduct(Request $request): RedirectResponse
     {
         $products = $request->input('products', []);
-        
-        foreach ($products as $key => $product) {
-            Session::put('products['.$key.']', [
-                'm_product_id' => data_get($product, 'm_product_id'),
-                'purchase_date' => data_get($product, 'purchase_date'),
-                'shop_id' => data_get($product, 'shop_id'),
-                'product_code' => data_get($product, 'product_code'),
-                'm_color_id' => data_get($product, 'm_color_id'),
-            ]);
-        }
+
+        Session::put('products', $products);
         
         return  redirect()->route('register.confirm');
     }
@@ -172,7 +175,11 @@ class RegisterController extends Controller
     {
         return view('web.register.confirm', [
             'user' => Session::get('user_info', []),
-            'products' => Session::get('products', [])
+            'sales_products' => Session::get('products', []),
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
     }
     
@@ -191,8 +198,8 @@ class RegisterController extends Controller
                 ->with(['error' => 'エラーが発生しました。']);
         }
         
-        // メールの送信
-        $this->sendMailService->send('registration', $user, 1);
+        Session::forget('user_info');
+        Session::forget('products');
         
         return redirect()->route('register.complete');
     }
@@ -203,5 +210,25 @@ class RegisterController extends Controller
     public function complete(): View|Factory|Application
     {
         return view('web.register.complete');
+    }
+    
+    /**
+     * @return JsonResponse
+     */
+    public function jsGetArray(): JsonResponse
+    {
+        $brands = MBrand::query()->pluck('name', 'id')->toArray();
+        $products = MProduct::query()->pluck('name', 'id')->toArray();
+        $colors = MColor::query()->pluck('alphabet_name', 'id')->toArray();
+        $shops = MShop::query()->pluck('name', 'id')->toArray();
+        
+        $array = [
+            'brands' => $brands,
+            'products' => $products,
+            'colors' => $colors,
+            'shops' => $shops,
+        ];
+
+        return response()->json($array);
     }
 }

@@ -27,10 +27,18 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <div class="l-stack l-stack--product">
+          <div class="skip">
+            <a class="c-btn c-btn--text c-btn--text--bk " onclick="addHiddenFieldAndSubmit()">
+              後で登録する
+            </a>
+          </div>
+          <form method="POST" action="{{ route('register.store.product') }}" id="productStoreForm">
+          @csrf
+          <div class="l-stack l-stack--product add_product" id="">
             <div class="l-stack__item">
+              <input type="hidden" name="is_skip" id="is_skip_input" value="0">
               <!-- 登録プロダクト -->
-              <ul class="p-formList">
+              <ul class="p-formList" style="margin-bottom: 40px;">
                 <!-- 購入日 -->
                 <li class="p-formList__item">
                   <div class="p-formList__ttl">
@@ -38,27 +46,28 @@
                   </div>
                   <div class="p-formList__content">
                     <div class="p-formList__label">
-                        <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
+                      <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input id="date" placeholder="0000/00/00" class="required" name="" type="text" value="">
+                        <input id="date" placeholder="0000/00/00" class="required" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
                       </div>
                     </div>
-                    <p style="display: none;" class="c-txt c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</p>
                   </div>
                 </li>
                 <!-- ブランド名 -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
                     <div class="p-formList__label">
-                        <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
+                      <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="pref">
+                        <select name="products[1][m_brand_id]" required="required">
                           <option value="" selected>ブランドを選択してください</option>
-                          <option value="AIRBUGGY">AIRBUGGY</option>
+                          @foreach($brands as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -69,17 +78,18 @@
                 <li class="p-formList__item">
                   <div class="p-formList__content">
                     <div class="p-formList__label">
-                        <p class="c-txt">製品名</p>
+                      <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="pref">
+                        <select name="products[1][m_product_id]" class="required" required="required">
                           <option value="" selected>製品を選択してください</option>
-                          <option value="COCO PREMIER FROM BIRTH">COCO PREMIER FROM BIRTH</option>
+                          @foreach($products as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
-                    <p style="display: none;" class="c-txt c-txt--err">「セイ」を入力してください。<br>※全角カタカナで入力してください。</p>
                   </div>
                 </li>
                 <!-- カラー -->
@@ -91,21 +101,23 @@
                         <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></button>
                       </div>
                     </div>
-                    <div class="p-formList__data">
+                    <div class="p-formList__data parent-element">
                       <div class="c-input c-input--select">
-                        <select name="color">
+                        <select name="products[1][m_color_id]">
                           <option value="" selected>カラーを選択してください</option>
-                          <option value="GRASS GREEN">GRASS GREEN</option>
-                          <option value="other">上記以外のカラー</option>
+                          @foreach($colors as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                          @endforeach
+                          <option value="9999999">上記以外のカラー</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other">
+                      <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）赤" class="required" name="name" type="name" value="">
+                          <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
                         </div>
                       </div>
                     </div>
@@ -121,7 +133,7 @@
                       </div>
                     </div>
                     <div class="p-formList__data">
-                      <input placeholder="例）GMP0123456" class="required" name="name" type="name" value="">
+                      <input placeholder="例）GMP0123456" class="" name="products[1][product_code]" type="text" value="">
                     </div>
                   </div>
                 </li>
@@ -129,175 +141,46 @@
                 <li class="p-formList__item">
                   <div class="p-formList__content">
                     <div class="p-formList__label">
-                      <p class="c-txt">購入店舗</p>
+                      <p class="c-txt">購入店舗 </p>
                       <div class="p-formList__guide">
                         <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
                       </div>
                     </div>
-                    <div class="p-formList__data">
+                    <div class="p-formList__data parent-element">
                       <div class="c-input c-input--select">
-                        <select name="pref">
+                        <select name="products[1][m_shop_id]">
                           <option value="" selected>購入店舗を選択してください</option>
-                          <option value="エアバギー代官山店">エアバギー代官山店</option>
-                          <option value="other">上記以外の店舗</option>
+                          @foreach($shops as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                          @endforeach
+                          <option value="9999999">上記以外の店舗</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other">
+                      <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）アカチャンホンポ○○店" class="required" name="name" type="name" value="">
+                          <input placeholder="例）アカチャンホンポ○○店" class="" name="products[1][other_shop]" type="text" value="{{ old('products[1][other_shop"]') }}">
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
               </ul>
-            </div>
-            {{-- コピー用HTML --}}
-            <div class="l-stack__item l-stack__item--line" style="display:none;">
-              <!-- 登録プロダクト2 -->
-              <ul class="p-formList">
-                <!-- 購入日 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__ttl">
-                    <p class="c-ttl">プロダクト2</p>
-                    <div class="p-btnWrap">
-                      <p class="c-btn c-btn--ico c-btn--ico--remove">削除</p>
-                    </div>
-                  </div>
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                        <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
-                    </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--date">
-                        <input id="date" placeholder="0000/00/00" class="required" name="" type="text" value="">
-                      </div>
-                    </div>
-                    <p style="display: none;" class="c-txt c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</p>
-                  </div>
-                </li>
-                <!-- ブランド名 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                        <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
-                    </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--select">
-                        <select name="pref">
-                          <option value="" selected>ブランドを選択してください</option>
-                          <option value="AIRBUGGY">AIRBUGGY</option>
-                        </select>
-                      </div>
-                    </div>
-                    <p style="display: none;" class="c-txt c-txt--err">ブランドを選択してください。</p>
-                  </div>
-                </li>
-                <!-- 製品名 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                        <p class="c-txt">製品名</p>
-                    </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--select">
-                        <select name="pref">
-                          <option value="" selected>製品を選択してください</option>
-                          <option value="COCO PREMIER FROM BIRTH">COCO PREMIER FROM BIRTH</option>
-                        </select>
-                      </div>
-                    </div>
-                    <p style="display: none;" class="c-txt c-txt--err">「セイ」を入力してください。<br>※全角カタカナで入力してください。</p>
-                  </div>
-                </li>
-                <!-- カラー -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                        <p class="c-txt">カラー</p>
-                        <div class="p-formList__guide">
-                          <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></button>
-                        </div>
-                    </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--select">
-                        <select name="color">
-                          <option value="" selected>カラーを選択してください</option>
-                          <option value="GRASS GREEN">GRASS GREEN</option>
-                          <option value="other">上記以外のカラー</option>
-                        </select>
-                      </div>
-                      <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other">
-                        <div class="p-formList__label">
-                          <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <input placeholder="例）赤" class="required" name="name" type="name" value="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- シリアルナンバー -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">シリアルナンバー</p>
-                      <div class="p-formList__guide">
-                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button>
-                      </div>
-                    </div>
-                    <div class="p-formList__data">
-                      <input placeholder="例）GMP0123456" class="required" name="name" type="name" value="">
-                    </div>
-                  </div>
-                </li>
-                <!-- 購入店舗 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                        <p class="c-txt">購入店舗</p>
-                        <div class="p-formList__guide">
-                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
-                      </div>
-                    </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--select">
-                        <select name="pref">
-                          <option value="" selected>購入店舗を選択してください</option>
-                          <option value="エアバギー代官山店">エアバギー代官山店</option>
-                          <option value="other">上記以外の店舗</option>
-                        </select>
-                      </div>
-                      <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other">
-                        <div class="p-formList__label">
-                          <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <input placeholder="例）アカチャンホンポ○○店" class="required" name="name" type="name" value="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div id="js-product--add" class="l-stack__item">
-              <!-- 登録製品追加 -->
-              <a class="c-btn c-btn--ico c-btn--ico--add">登録製品を追加する</a>
             </div>
           </div>
+          <div id="" class="l-stack__item">
+            <!-- 登録製品追加 -->
+            <a class="c-btn c-btn--ico c-btn--ico--add js-add-more-product" style="margin-top: 30px;">登録製品を追加する</a>
+          </div>
+        </form>
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
-              <a href="{{route('register.info')}}" class="c-btn c-btn--back">戻る</a>
-              <a href="{{route('register.confirm')}}" class="c-btn c-btn--next">登録情報の確認へ</a>
+            <a href="{{route('register.info')}}" class="c-btn c-btn--back">戻る</a>
+            <button type="submit" form="productStoreForm" class="c-btn c-btn--next">登録情報の確認へ</button>
           </div>
         </div>
       </div>
@@ -310,46 +193,249 @@
 
   {{-- 登録製品追加 / 削除 --}}
   <script>
-    //製品の追加とナンバリング
-    $(document).on('click', '#js-product--add', function(){
-      let Tag = $('.l-stack__item.l-stack__item--line').eq(0),
-          Code = Tag.clone(),
-          Num = $('.l-stack--product > .l-stack__item').length -1;
-      $('#js-product--add').before(Code);
-      $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('プロダクト'+Num);
-      $('.l-stack--product > .l-stack__item').eq(Num - 1).css('display','block')
-    });
+      //製品の追加とナンバリング
+      $(document).on('click', '#js-product--add', function(){
+          let Tag = $('.l-stack__item.l-stack__item--line').eq(0),
+              Code = Tag.clone(),
+              Num = $('.l-stack--product > .l-stack__item').length -1;
+          $('#js-product--add').before(Code);
+          $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('プロダクト'+Num);
+          $('.l-stack--product > .l-stack__item').eq(Num - 1).css('display','block')
+      });
   </script>
   <script>
-    //製品の削除とナンバリング
-    $(document).on('click', '.c-btn--ico--remove', function(){
-      $(this).parents('.l-stack__item--line').remove();
-      let Tag = $('.l-stack--product > .l-stack__item'),
-          Num = Tag.length;
-      Tag.each(function(){
-        let This = $(this),
-            Ind = This.index() + 1;
-        This.find('.p-formList__ttl .c-ttl').text('プロダクト'+Ind);
+      //製品の削除とナンバリング
+      $(document).on('click', '.c-btn--ico--remove', function(){
+          $(this).parents('.l-stack__item--line').remove();
+          let Tag = $('.l-stack--product > .l-stack__item'),
+              Num = Tag.length;
+          Tag.each(function(){
+              let This = $(this),
+                  Ind = This.index() + 1;
+              This.find('.p-formList__ttl .c-ttl').text('プロダクト'+Ind);
+          });
       });
-    });
   </script>
   {{-- フォームの表示切り替え --}}
   <script>
-    $('select').on('keydown keyup keypress change click lord',function(){    
-      if($(this).val() == 'other'){
-        $(this).parents('.p-formList__data').find('.p-formList__other').css('display','grid');
-      }else{   
-        $(this).parents('.p-formList__data').find('.p-formList__other').hide();
-      }  
-    }).change();
+      $('select').on('keydown keyup keypress change click lord',function(){
+          if($(this).val() == 'other'){
+              $(this).parents('.p-formList__data').find('.p-formList__other').css('display','grid');
+          }else{
+              $(this).parents('.p-formList__data').find('.p-formList__other').hide();
+          }
+      }).change();
   </script>
   {{-- 日付選択 --}}
   <script>
-    $(function() {
-      $('.c-input--date input').datepicker();
-    });
+      $(function() {
+          $('.c-input--date input').datepicker();
+      });
   </script>
 
+  <script>
+      function addHiddenFieldAndSubmit() {
+          $("#is_skip_input").val(1);
+          $("#productStoreForm").submit();
+      }
+  </script>
 
-  
+  <script>
+      $(document).ready(function() {
+          var formCount = 1;
+
+          otherTextBind();
+
+          function otherTextBind() {
+              $('select').change(function() {
+                  // 選択されたオプションの値を取得
+                  var selectedValue = $(this).val();
+
+                  if (selectedValue === '9999999') {
+                      $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+                  } else {
+                      $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+                  }
+              });
+          }
+
+          var num = formCount + 1;
+          $.ajax({
+              url: '/register/js-get-array',
+              method: 'GET',
+              success: function(response) {
+                  var array = response;
+                  var brands = array.brands;
+                  var products = array.products;
+                  var colors = array.colors;
+                  var shops = array.shops;
+                  console.log(brands)
+                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" required="required">' +
+                      '<option value="" selected>ブランドを選択してください</option>';
+
+                  $.each(brands, function(key, value) {
+                      selectBrandHtml += '<option value="' + key + '">' + value + '</option>';
+                  });
+                  selectBrandHtml += '</select>';
+
+                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" required="required">' +
+                      '<option value="" selected>製品を選択してください</option>';
+
+                  $.each(products, function(key, value) {
+                      selectProductHtml += '<option value="' + key + '">' + value + '</option>';
+                  });
+                  selectProductHtml += '</select>';
+
+                  var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']">' +
+                      '<option value="" selected>カラーを選択してください</option>';
+
+                  $.each(colors, function(key, value) {
+                      selectColorHtml += '<option value="' + key + '">' + value + '</option>';
+                  });
+                  selectColorHtml += '<option value="9999999">上記以外のカラー</option>';
+                  selectColorHtml += '</select>';
+
+                  var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
+                      '<option value="" selected>購入店舗を選択してください</option>';
+
+                  $.each(shops, function(key, value) {
+                      selectShopHtml += '<option value="' + key + '">' + value + '</option>';
+                  });
+                  selectShopHtml += '<option value="9999999">上記以外の店舗</option>';
+                  selectShopHtml += '</select>';
+
+                  function addForm() {
+                      var newForm = '<div class="l-stack__item l-stack__item--line add_product" id="" style="">' +
+                      '<!-- 登録プロダクト追加 -->' +
+                      '<ul class="p-formList">' +
+                      '<!-- 購入日 -->' +
+                      '<li class="p-formList__item">' +
+                      '    <div class="p-formList__ttl"> ' +
+                      '        <p class="c-ttl">プロダクト'+ num +'</p> ' +
+                      '        <div class="p-btnWrap"> ' +
+                      '            <p class="c-btn c-btn--ico c-btn--ico--remove">削除</p> ' +
+                      '        </div> ' +
+                      '    </div> ' +
+                      '    <div class="p-formList__content"> ' +
+                      '        <div class="p-formList__label"> ' +
+                      '            <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p> ' +
+                      '        </div> ' +
+                      '        <div class="p-formList__data"> ' +
+                      '            <div class="c-input c-input--date"> ' +
+                      '                <input id="date" placeholder="0000/00/00" class="required" required="required" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
+                      '            </div> ' +
+                      '        </div> ' +
+                      '    </div> ' +
+                      '</li> ' +
+                      '<!-- ブランド名 --> ' +
+                      '  <li class="p-formList__item"> ' +
+                      '      <div class="p-formList__content"> ' +
+                      '          <div class="p-formList__label"> ' +
+                      '              <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p> ' +
+                      '          </div> ' +
+                      '          <div class="p-formList__data"> ' +
+                      '              <div class="c-input c-input--select"> ' +
+                                        selectBrandHtml +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '      </div> ' +
+                      '  </li> ' +
+                      '<!-- 製品名 --> ' +
+                      '  <li class="p-formList__item"> ' +
+                      '      <div class="p-formList__content"> ' +
+                      '          <div class="p-formList__label"> ' +
+                      '              <p class="c-txt">製品名</p> ' +
+                      '          </div> ' +
+                      '          <div class="p-formList__data"> ' +
+                      '              <div class="c-input c-input--select"> ' +
+                                        selectProductHtml +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '      </div> ' +
+                      '  </li> ' +
+                      '<!-- カラー --> ' +
+                      '  <li class="p-formList__item"> ' +
+                      '      <div class="p-formList__content"> ' +
+                      '          <div class="p-formList__label"> ' +
+                      '              <p class="c-txt">カラー</p> ' +
+                      '              <div class="p-formList__guide"> ' +
+                      '                  <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color open-other-text-input" role="button"></button> ' +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '          <div class="p-formList__data parent-element"> ' +
+                      '              <div class="c-input c-input--select"> ' +
+                                        selectColorHtml +
+                      '              </div> ' +
+                      '            <!-- 上記以外の店舗選択時のフォーム --> ' +
+                      '              <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input"> ' +
+                      '                  <div class="p-formList__label"> ' +
+                      '                      <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p> ' +
+                      '                  </div> ' +
+                      '                  <div class="p-formList__data"> ' +
+                      '                      <input placeholder="例）赤" class="required" name="products['+ num +']['+ 'other_color_name' +']" type="text" value=""> ' +
+                      '                  </div> ' +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '      </div> ' +
+                      '  </li> ' +
+                      '<!-- シリアルナンバー --> ' +
+                      '  <li class="p-formList__item"> ' +
+                      '      <div class="p-formList__content"> ' +
+                      '          <div class="p-formList__label"> ' +
+                      '              <p class="c-txt">シリアルナンバー</p> ' +
+                      '              <div class="p-formList__guide"> ' +
+                      '                  <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button> ' +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '          <div class="p-formList__data"> ' +
+                      '              <input placeholder="例）GMP0123456" class="required" name="products['+ num +']['+ 'product_code' +']" type="text" value=""> ' +
+                      '          </div> ' +
+                      '      </div> ' +
+                      '  </li> ' +
+                      '<!-- 購入店舗 --> ' +
+                      '  <li class="p-formList__item"> ' +
+                      '      <div class="p-formList__content"> ' +
+                      '          <div class="p-formList__label"> ' +
+                      '              <p class="c-txt">購入店舗</p> ' +
+                      '              <div class="p-formList__guide"> ' +
+                      '                  <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button> ' +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '          <div class="p-formList__data parent-element"> ' +
+                      '              <div class="c-input c-input--select"> ' +
+                                        selectShopHtml +
+                      '              </div> ' +
+                      '            <!-- 上記以外の店舗選択時のフォーム --> ' +
+                      '              <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input"> ' +
+                      '                  <div class="p-formList__label"> ' +
+                      '                      <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p> ' +
+                      '                  </div> ' +
+                      '                  <div class="p-formList__data"> ' +
+                      '                      <input placeholder="例）アカチャンホンポ○○店" class="required" name="products['+ num +']['+ 'other_shop' +']" type="text" value=""> ' +
+                      '                  </div> ' +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '      </div> ' +
+                      '  </li> ' +
+                      '</ul>' +
+                      '</div>';
+
+                      $('.add_product').last().after(newForm);
+                      otherTextBind();
+
+                      $('.c-input--date input').each(function(index, elem) {
+                          $(elem).datepicker();
+                      });
+                      formCount++;
+                  }
+
+
+                  $('.js-add-more-product').on('click', function() {
+                      addForm();
+                  });
+              }
+          });
+      });
+  </script>
+
 @endsection

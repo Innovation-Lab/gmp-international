@@ -23,6 +23,7 @@ class StoreProductRequest extends FormRequest
      */
     public function rules()
     {
+        dd($this->request);
         return [
             'm_product_id' => 'required',
             'shop_id' => 'required',
