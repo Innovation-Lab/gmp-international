@@ -178,7 +178,7 @@
                     <div class="c-input c-input--radio">
                       <input type="radio" id="inq1-1" name="is_catalog" value="1" checked>
                       <label for="inq1-1">希望する</label>
-                      <input type="radio" id="inq2-1" name="is_catalog" value="2">
+                      <input type="radio" id="inq2-1" name="is_catalog" value="0">
                       <label for="inq2-1">希望しない</label>
                     </div>
                   </div>
@@ -194,7 +194,7 @@
                     <div class="c-input c-input--radio">
                       <input type="radio" id="inq1-2" name="is_dm" value="1" checked>
                       <label for="inq1-2">希望する</label>
-                      <input type="radio" id="inq2-2" name="is_dm" value="2">
+                      <input type="radio" id="inq2-2" name="is_dm" value="0">
                       <label for="inq2-2">希望しない</label>
                     </div>
                   </div>

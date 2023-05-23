@@ -99,6 +99,8 @@ class UserRepository implements UserRepositoryInterface
                     'm_shop_id' => data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != '9999999' ? data_get($product, 'm_shop_id') : NULL,
                     'product_code' => data_get($product, 'product_code'),
                     'm_color_id' => data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != '9999999' ? data_get($product, 'm_color_id') : NULL,
+                    'other_color_name' => data_get($product, 'other_color_name'),
+                    'other_shop_name' => data_get($product, 'other_shop_name'),
                 ]);
             }
             
@@ -109,7 +111,7 @@ class UserRepository implements UserRepositoryInterface
             Auth::loginUsingId($user->id);
             
             return true;
-        } catch (\Exception $e) {dd($e);
+        } catch (\Exception $e) {
             DB::rollBack();
         }
         

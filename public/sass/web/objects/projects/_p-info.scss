@@ -69,8 +69,14 @@
         }
         .c-txt{
             font-size: 13px;
+            color: #222;
             @include global.responsive(md) {
                 display: flex;
+            }
+            a{
+                color: #222;
+                font-size: 13px;
+                pointer-events: none;
             }
             &:before{
                 content: attr(data-ttl);

@@ -27,6 +27,7 @@
   <script type="text/javascript" src="{{ asset('js/web/slick.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+  <script src="<?php echo e(asset('js/admin/datepicker.js')); ?>"></script>
   <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <script type="text/javascript" src="{{ asset('js/component/js-flashMessage.js') }}"></script>

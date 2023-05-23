@@ -11,9 +11,11 @@
             <div class="p-index__head__inner">
               <h2 class="p-index__head__title">商品管理</h2>
               <div class="p-index__head__action">
-                <a href="" class="c-button">商品を新規追加</a>
-                <a href="" class="c-button__2">CSVインポート</a>
-                <a href="" class="c-button__2">CSVエクスポート</a>
+                <div class="c-buttonWrap">
+                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">製品を新規追加</div>
+                  <a href="" class="c-button__icon c-button__icon--import">登録製品情報CSV入力</a>
+                  <a href="" class="c-button__icon__line c-button__icon--export">登録製品情報CSV出力</a>
+                </div>
               </div>
             </div>
           </div>
@@ -24,8 +26,6 @@
       <div class="wrapper">
         <div class="container">
           <div class="inner">
-            {{-- ---------- タブ ---------- --}}
-            @include('admin.components._tab')
             {{-- ---------- フィルター ---------- --}}
             @include('admin.components._filter')
           </div>

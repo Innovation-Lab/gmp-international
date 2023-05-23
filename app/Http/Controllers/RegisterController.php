@@ -195,7 +195,7 @@ class RegisterController extends Controller
         if (!$this->userRepository->createWithProduct($user, $product)) {
             return redirect()
                 ->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['error' => '同一のシリアルコードが登録されています。']);
         }
         
         Session::forget('user_info');

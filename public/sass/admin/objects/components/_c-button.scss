@@ -138,6 +138,7 @@
       }
     }
     &--export{
+      background: #fff;
       &:before{
         background: url(../img/admin/button/export.png);
       }
@@ -147,5 +148,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 6px;
+    grid-row-gap: 6px;
+    &--dashboard{
+      grid-template-rows: 32px 32px;
+      grid-template-columns: 1fr 1fr;
+      @include global.responsive(xl) {
+        grid-template-rows: 32px;
+        grid-template-columns: 210px 210px 180px 180px;
+      }
+      .c-button{
+        justify-content: center;
+      }
+    }
   }
 }

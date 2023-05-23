@@ -51,22 +51,10 @@
     data: {
       labels: ['1','2','3','4','5','6','7','8','9','10','11','12'],
       datasets: [{
-        label: '合計',
-        data: [1580000,1400000,1850000,1400000,2100000,2300000,1800000,1900000,1700000,null,null,null],
+        label: '',
+        data: [6580,12000,18500,22000,22800,22100,24000,26000,28000,29500,30010,null],
         borderColor: color_1,
         backgroundColor: gradient_1,
-        pointBackgroundColor: "#fff",
-      },{
-        label: 'プラン',
-        data: [1250000,1000000,1580000,1150000,1180000,1250000,1550000,148000,1160000,null,null,null],
-        borderColor: color_2,
-        backgroundColor: gradient_2,
-        pointBackgroundColor: "#fff",
-      },{
-        label: '商品',
-        data: [820000,790000,810000,760000,640000,820000,800000,1000000,600000,null,null,null],
-        borderColor: color_3,
-        backgroundColor: gradient_3,
         pointBackgroundColor: "#fff",
       }]
     },
@@ -76,6 +64,7 @@
       // 凡例 --------------------
       legend: {
           position: 'bottom',
+          display: false,
           labels: {
             fontSize: 12,
             fontFamily: '"Noto Sans JP","Roboto"',
@@ -85,7 +74,6 @@
             boxWidth: 4,                // 大きさ
           }
       },
-
       // スケール --------------------------------------------------
       scales: {
         //横軸 --------------------
@@ -129,10 +117,10 @@
               fontColor: color_text,
               min: 0,
               // max: 10000000,
-              stepSize: 400000,
-              /* 金額をカンマ区切りで表示 */
+              stepSize: 10000,
+              /* 人数をカンマ区切りで表示 */
               callback: function(label, index, labels) {
-                return  '¥' + label.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') ;
+                return  label.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '人';
               }
             },
             // ガイドライン
@@ -151,7 +139,7 @@
         /* 金額をカンマ区切りで表示 */
         callbacks: {
           label: function(tooltipItem, data){
-            return '¥ ' + tooltipItem.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return tooltipItem.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '人';
           }
         }
       },

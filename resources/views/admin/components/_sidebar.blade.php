@@ -4,7 +4,7 @@
     <a href="{{route('admin.home')}}" class="p-sidebar__head__logo">
       <img
         class="normal"
-        src="{{ asset('img/admin/logo/normal.svg')}}"
+        src="{{ asset('img/admin/logo/GMP_logo.png')}}"
         width="160px"
         height="42px"
       >
@@ -32,13 +32,13 @@
         >
           @if(in_array(explode('.', Route::currentRouteName())[1], [explode('.', $val['path'])[1]], TRUE))
             <img
-              src="{{ asset('img/admin/nav/'.$key.'_active.png')}}"
+              src="{{ asset('img/admin/nav/nav--'.$key.'--color.png')}}"
               width="24px"
               height="24px"
             >
           @else
             <img
-              src="{{ asset('img/admin/nav/'.$key.'.png')}}"
+              src="{{ asset('img/admin/nav/nav--'.$key.'.png')}}"
               width="24px"
               height="24px"
             >

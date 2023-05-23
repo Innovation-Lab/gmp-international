@@ -10,8 +10,11 @@
             <div class="p-index__head__inner">
               <h2 class="p-index__head__title">ユーザー管理</h2>
               <div class="p-index__head__action">
-                <div class="c-button" data-micromodal-trigger="modal-users-create">ユーザーを新規追加</div>
-                <a href="" class="c-button__2">CSVエクスポート</a>
+                <div class="c-buttonWrap">
+                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">ユーザーを新規追加</div>
+                  <a href="" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
+                  <a href="" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
+                </div>
               </div>
             </div>
           </div>
@@ -22,8 +25,6 @@
       <div class="wrapper">
         <div class="container">
           <div class="inner">
-            {{-- ---------- タブ ---------- --}}
-            @include('admin.components._tab')
             {{-- ---------- フィルター ---------- --}}
             @include('admin.components._filter')
           </div>

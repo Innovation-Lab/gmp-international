@@ -78,11 +78,11 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
         
         //アカウント情報編集
-        Route::get('/account/{user}', [UserController::class, 'account'])->name('account');
-        Route::post('/account/{user}', [UserController::class, 'accountUpdate'])->name('account');
+        Route::get('/account', [UserController::class, 'account'])->name('account');
+        Route::post('/account', [UserController::class, 'accountUpdate'])->name('account');
         //基本情報編集
-        Route::get('/user/{user}', [UserController::class, 'user'])->name('user');
-        Route::post('/user/{user}', [UserController::class, 'userUpdate'])->name('user');
+        Route::get('/user', [UserController::class, 'user'])->name('user');
+        Route::post('/user', [UserController::class, 'userUpdate'])->name('user');
     });
 
 });
