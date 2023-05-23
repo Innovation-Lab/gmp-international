@@ -109,8 +109,8 @@
                   </div>
                 </div>
                 <div class="p-card__add">
-                  <p class="c-ttl">ADD YOUR ITEM</p>
-                  <p class="c-btn">製品を登録する</p>
+                  <p class="c-ttl--xxl c-ttl--xxl--wh">ADD YOUR ITEM</p>
+                  <p class="c-btn--register">製品を登録する</p>
                 </div>
               </div>
             </li>
@@ -131,8 +131,8 @@
             <p class="c-ttl">会員登録情報</p>
           </div>
         </div>
-        <!-- ユーザー情報 -->
-        <div class="p-info">
+        <!-- ユーザー情報--登録時 -->
+        {{--<div class="p-info">
           <div class="p-info__bar">
             <div class="p-info__ttl">
               <p class="c-ttl">ユーザー情報</p>
@@ -150,7 +150,16 @@
             <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>{{ $user->string_catalog }}</p>
             <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>{{ $user->string_dm }}</p>
           </div>
-        </div>
+        </div>--}}
+        <!-- ユーザー情報--未登録時 -->
+        <a href="">
+          <div class="p-info--notRegister">
+            <div class="p-card__add">
+              <p class="c-ttl--xxl c-ttl--xxl--rd">ADD YOUR INFO</p>
+              <p class="c-btn--register--rd">ユーザー情報を登録する</p>
+            </div>
+          </div>
+        </a>
         <!-- アカウント情報 -->
         <div class="p-info">
           <div class="p-info__bar">

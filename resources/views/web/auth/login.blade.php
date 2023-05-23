@@ -43,8 +43,11 @@
       <div class="p-login__body">
         <div class="p-login__link">
           <div class="p-login__register">
+            <div class="p-login__ttl--2l">
+              <p class="c-ttl"><span>初めて製品を<br>購入された方はこちら</span></p>
+            </div>
             <div class="p-login__img">
-              <img class="p-login__img__ph" src="{{ asset('img/web/product/login_product.png')}}" alt="">
+              <img class="p-login__img__ph" src="{{ asset('img/web/login/login-product.png')}}" alt="">
             </div>
             <a href="{{ route('register.terms') }}" class="c-btn c-btn--login">新規会員登録</a>
           </div>

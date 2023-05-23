@@ -160,13 +160,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin-bottom: 16px;
+    &--2l{
+      margin: 0;
+      text-align: center;
+      .c-ttl{
+        position: relative;
+        ::before{
+          left: -24px;
+          content: "";
+          position: absolute;
+          display: inline-block;
+          background: #000;
+          width: 1px;
+          height: 50px;
+          bottom: -2px;
+          transform: rotate(-30deg);
+        }
+        ::after{
+          right: -20px;
+          content: "";
+          position: absolute;
+          display: inline-block;
+          background: #000;
+          width: 1px;
+          height: 50px;
+          bottom: -2px;
+          transform: rotate(30deg);
+        }
+      } 
+    }
   }
   &__img{
     flex: auto;
     display: flex;
+    width: 280px;
     &__ph{
-      height: auto;
       margin: auto 0;
     }
   }

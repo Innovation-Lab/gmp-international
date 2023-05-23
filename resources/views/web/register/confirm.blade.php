@@ -7,7 +7,7 @@
       <div class="p-formPage__head">
         <div class="l-container">
           <div class="p-formPage__head__ttl">
-            <p class="c-ttl">新規会員登録</p>
+            <p class="c-ttl">登録内容の確認</p>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@
                       </div>
                       <div class="l-stack__item">
                         <div class="p-formList__label">
-                          <p class="c-txt">機種名</p>
+                          <p class="c-txt">製品名</p>
                         </div>
                         <div class="p-formList__data">
                           <p class="c-txt">COCO PREMIER FROM BIRTH</p>
@@ -179,7 +179,7 @@
                   </div>
                 </li>
                 {{-- 購入プロダクト2個目から --}}
-                <li class="p-formList__item p-formList__item--productLine">
+                <li class="p-formList__item p-formList__item--productLine" style="display:none;">
                   <div class="p-formList__ttl">
                     <p class="c-txt">プロダクト2</p>
                   </div>
@@ -203,7 +203,7 @@
                       </div>
                       <div class="l-stack__item">
                         <div class="p-formList__label">
-                          <p class="c-txt">機種名</p>
+                          <p class="c-txt">製品名</p>
                         </div>
                         <div class="p-formList__data">
                           <p class="c-txt">COCO PREMIER FROM BIRTH</p>

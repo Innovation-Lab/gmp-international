@@ -297,7 +297,7 @@
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
               <a href="{{route('register.info')}}" class="c-btn c-btn--back">戻る</a>
-              <a href="{{route('register.confirm')}}" class="c-btn c-btn--next">入力情報の確認へ</a>
+              <a href="{{route('register.confirm')}}" class="c-btn c-btn--next">登録情報の確認へ</a>
           </div>
         </div>
       </div>

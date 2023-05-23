@@ -17,7 +17,7 @@
             <div class="l-stack__item">
               <p class="c-description c-txt--center--md">
                 登録しているメールアドレスを入力してください。<br>
-                パスワード再設定用のリンクをお送りします。
+                パスワード再設定用のメールをお送りします。
               </p>
             </div>
             <div class="l-stack__item">

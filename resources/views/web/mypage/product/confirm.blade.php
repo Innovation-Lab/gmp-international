@@ -44,7 +44,7 @@
                       </div>
                       <div class="l-stack__item">
                         <div class="p-formList__label">
-                          <p class="c-txt">機種名</p>
+                          <p class="c-txt">製品名</p>
                         </div>
                         <div class="p-formList__data">
                           <p class="c-txt">COCO PREMIER FROM BIRTH</p>

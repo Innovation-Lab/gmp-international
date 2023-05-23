@@ -38,14 +38,14 @@
                   </div>
                   <div class="p-formList__data @error('email') p-formList__data--err @enderror">
                     <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email', data_get($user, 'email')) }}">
-                  </div>
-                  <!-- 入力不備エラーメッセージ -->
-                  @error('email')
+                    <!-- 入力不備エラーメッセージ -->
+                    @error('email')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
-                  @enderror
-                  @if(data_get($user, 'password'))
+                    @enderror
+                    @if(data_get($user, 'password'))
                     <p class="c-txt c-txt--err">再度ご入力ください。</p>
-                  @endif
+                    @endif
+                  </div>
                 </div>
               </li>
               <!-- パスワード -->
@@ -56,11 +56,11 @@
                   </div>
                   <div class="p-formList__data @error('password') p-formList__data--err @enderror">
                     <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">
-                  </div>
-                  <!-- 入力不備エラーメッセージ -->
-                  @error('password')
+                    <!-- 入力不備エラーメッセージ -->
+                    @error('password')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
-                  @enderror
+                    @enderror
+                  </div>
                 </div>
               </li>
               <!-- パスワード確認用 -->
@@ -71,11 +71,11 @@
                   </div>
                   <div class="p-formList__data @error('password_confirmation') p-formList__data--err @enderror">
                     <input placeholder="パスワードを再入力してください" class="c-form" name="password_confirmation" type="password" value="">
-                  </div>
-                  <!-- 入力不備エラーメッセージ -->
-                  @error('password_confirmation')
+                    <!-- 入力不備エラーメッセージ -->
+                    @error('password_confirmation')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
-                  @enderror
+                    @enderror
+                  </div>
                 </div>
               </li>
             </ul>

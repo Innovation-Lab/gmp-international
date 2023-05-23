@@ -4,7 +4,7 @@
 .p-info {
     border: solid #eaebea;
     margin-top: 12px;
-    padding: 12px 0;
+    padding: 24px 0;
     border-width: 1px 0 0 0;
     /* PC */
     @include global.responsive(md) {
@@ -20,6 +20,25 @@
         }
         @include global.responsive(xl) {
             margin: 32px 0 0;
+        }
+    }
+    &--notRegister{
+        // position: relative;
+        border: solid #C30E2E;
+        margin-top: 12px;
+        padding: 24px 0;
+        border-width: 1px;
+        .p-card__add{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @include global.responsive(md) {
+            padding: 40px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            border: none;
         }
     }
     &__bar{

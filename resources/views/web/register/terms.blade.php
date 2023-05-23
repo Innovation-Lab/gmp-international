@@ -137,7 +137,9 @@
             <label for="checkbox-1-01">上記の利用規約に同意する</label>
             <!-- 入力不備エラーメッセージ -->
           </div>
-          <p style="text-align: center;" class="c-txt c-txt--err">※登録には利用規約への同意が必要です。</p>
+          <div class="err-txt">
+            <p style="text-align: center;" class="c-txt c-txt--err">※登録には利用規約への同意が必要です。</p>
+          </div>
           <!-- ボタン -->
           <div class="p-btnWrap p-btnWrap--center">
             <a href="{{ route('register.account') }}" class="c-btn c-btn--next" id="register-link">アカウント情報の入力へ</a>

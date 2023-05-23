@@ -5,14 +5,20 @@
   <div class="l-frame__body">
     <div class="p-formPage p-formPage--complete">
       <div class="p-formPage__complete">
-        <div class="p-formPage__complete__img">
+        <!-- <div class="p-formPage__complete__img">
           <img src="{{asset('img/web/complete/sendMail.png')}}">
+        </div> -->
+        <div class="p-formPage__complete__ttl p-formPage__complete__ttl--pc">
+          <p class="c-ttl--xxl">SENT E-MAIL</p>
+        </div>
+        <div class="p-formPage__complete__ttl p-formPage__complete__ttl--sp">
+          <p class="c-ttl--xxl">SENT<br>E-MAIL</p>
         </div>
         <div class="p-formPage__complete__txt">
           <p class="c-ttl c-txt--center">メールの送信が完了しました。</p>
           <p class="c-description c-txt--center">
-            ご登録いただいたメールアドレスに<br>
-            パスワード再設定URLを送りました。
+            ご入力いただいたメールアドレスに<br>
+            パスワード再設定用のメールをお送りしました。
           </p>
         </div>
       </div>

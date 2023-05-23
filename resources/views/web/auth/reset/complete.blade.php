@@ -5,8 +5,11 @@
   <div class="l-frame__body">
     <div class="p-formPage p-formPage--complete">
       <div class="p-formPage__complete">
-        <div class="p-formPage__complete__img">
+        <!-- <div class="p-formPage__complete__img">
           <img src="{{asset('img/web/complete/changePassword.png')}}">
+        </div> -->
+        <div class="p-formPage__complete__ttl">
+          <p class="c-ttl--xxl">PASSWORD<br>CHANGED</p>
         </div>
         <div class="p-formPage__complete__txt">
           <p class="c-ttl c-txt--center">パスワードの変更が完了しました。</p>

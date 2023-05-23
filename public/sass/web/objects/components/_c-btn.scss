@@ -28,6 +28,46 @@
     transition-timing-function: ease-out;
     user-select: none;
     cursor: pointer;
+    &--register{
+        background: #fff;
+        color: #C30E2E;
+        font-size: 14px;
+        // line-height: 14px;
+        font-weight: 500;
+        padding: 4px 24px;
+        border-radius: 30px;
+        margin-top: 8px;
+        @include global.responsive(md) {
+            background: #fff;
+            color: #C30E2E;
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 30px;
+            margin-top: 24px;
+        }
+    }
+    &--register--rd{
+        background: #C30E2E;
+        color: #fff;
+        font-size: 14px;
+        // line-height: 14px;
+        font-weight: 500;
+        padding: 4px 24px;
+        border-radius: 30px;
+        margin-top: 8px;
+        @include global.responsive(md) {
+            background: #C30E2E;
+            color: #fff;
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 30px;
+            margin-top: 24px;
+        }
+    }
     &--img{
         width: 32px;
         margin-right: 14px;
@@ -145,11 +185,11 @@
         background-repeat: no-repeat;
     }
     &--text{
-        // text-decoration: underline;
+        text-decoration: underline;
         color: #8C8C8C;
         padding: 0;
         background: none;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 400;
         &:hover{
             color: darken(#8C8C8C,10%);
