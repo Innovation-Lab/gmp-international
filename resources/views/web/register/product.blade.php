@@ -50,7 +50,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input id="date" placeholder="0000/00/00" class="required add-input--date1" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
+                        <input placeholder="0000/00/00" class="required add-input--date1" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
                       </div>
                     </div>
                   </div>
@@ -327,7 +327,7 @@
                       '        </div> ' +
                       '        <div class="p-formList__data"> ' +
                       '            <div class="c-input c-input--date"> ' +
-                      '                <input id="date" placeholder="0000/00/00" class="required  add-input--date'+ num + '" required="required" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
+                      '                <input placeholder="0000/00/00" class="required  add-input--date'+ num + '" required="required" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
                       '            </div> ' +
                       '        </div> ' +
                       '    </div> ' +
@@ -427,6 +427,16 @@
 
                       $('.add_product').last().after(newForm);
                       otherTextBind();
+
+                      // var dateClass = '.add-input--date' + num;
+
+                      var dateClass = '.add-input--date' + num;
+                      console.log(dateClass);
+                      $(dateClass).datepicker({
+                          onSelect: function(dateText) {
+                              $(this).val(dateText);
+                          }
+                      });
 
                       num++;
                   }
