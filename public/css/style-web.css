@@ -4183,6 +4183,7 @@ input[type=file] + label img {
     flex: auto;
     min-height: 1px;
     overflow: hidden;
+    margin: 0 -8px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -4195,6 +4196,7 @@ input[type=file] + label img {
   .p-card .slick-slide {
     height: 100%;
     min-height: 1px;
+    margin: 0 8px;
   }
 }
 .p-card .slick-slide > div {
@@ -4407,7 +4409,7 @@ input[type=file] + label img {
 }
 .p-card .slick-arrow.slick-next {
   background: url(../img/web/icon/arrow--next.png) no-repeat center;
-  left: 104px;
+  left: 114px;
 }
 .p-card .slick-arrow.slick-next[aria-disabled=true] {
   background: url(../img/web/icon/arrow--next--disabled.png) no-repeat center;
