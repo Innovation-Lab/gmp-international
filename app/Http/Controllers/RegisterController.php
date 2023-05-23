@@ -105,8 +105,9 @@ class RegisterController extends Controller
     public function information(Request $request): View|Factory|Application
     {
         return view('web.register.user',[
-                'prefectures' => config('prefecture')
-            ]);
+                'prefectures' => config('prefecture'),
+                'user' => Session::get('user_info', [])
+        ]);
     }
     
     /**
