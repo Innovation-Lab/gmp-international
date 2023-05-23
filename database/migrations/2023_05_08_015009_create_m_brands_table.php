@@ -15,8 +15,8 @@ class CreateMBrandsTable extends Migration
     {
         Schema::create('m_brands', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50)->comment('ブランド名');
-            $table->string('image_path', 255)->comment('ブランドロゴ');
+            $table->string('name', 50)->nullable()->comment('ブランド名');
+            $table->string('image_path', 255)->nullable()->comment('ブランドロゴ');
             $table->timestamps();
         });
     }

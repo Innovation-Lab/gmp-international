@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('address_block', 255)->comment('番地');
             $table->string('address_building', 255)->nullable()->comment('建物名');
             $table->string('tel', 255)->comment('電話番号');
-            $table->tinyInteger('is_catalog')->nullable()->comment('カタログフラグ');
-            $table->tinyInteger('is_dm')->nullable()->comment('DMフラグ');
+            $table->tinyInteger('is_catalog')->nullable()->default(0)->comment('カタログフラグ');
+            $table->tinyInteger('is_dm')->nullable()->default(0)->comment('DMフラグ');
             $table->text('memo')->nullable()->comment('管理用メモ');
             $table->tinyInteger('seq')->nullable()->comment('表示順');
             $table->softDeletes();
