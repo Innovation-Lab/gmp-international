@@ -12,8 +12,13 @@
     }
     // 製品未登録
     &--notRegister{
+        display: flex;
+        flex: auto;
         position: relative;
         margin-top: 16px;
+        li{
+            flex: auto;
+        }
         .p-card__add{
             position: absolute;
             display: flex;

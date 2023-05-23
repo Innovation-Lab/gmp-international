@@ -25,9 +25,11 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    flex: 0 0 auto;
     @include global.responsive(md) {
       align-items: end;
     }
+    
     .c-ttl{
       line-height: 1.3em;
       font-size: 14px;
@@ -123,6 +125,15 @@
       padding-bottom: 0;
     }
     .l-container{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      a{
+        flex: auto;
+        min-height: 1px;
+        display: flex;
+        
+      }
       @include global.responsive(md) {
         flex: auto;
         min-height: 1px;
@@ -140,9 +151,6 @@
           min-height: 1px;
           display: flex;
           flex-direction: column;
-        }
-        .slick-list{
-          
         }
       }
     }
@@ -176,8 +184,19 @@
       min-width: 1px;
     }
     @include global.responsive(xl) {
-      margin-left: 50px;
+      margin-left: 40px;
       margin-top: 0;
+    }
+    .l-container{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      a{
+        flex: auto;
+        min-height: 1px;
+        display: flex;
+        
+      }
     }
   }
 }

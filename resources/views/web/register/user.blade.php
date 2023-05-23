@@ -6,22 +6,22 @@
     <div class="p-formPage">
       <div class="p-formPage__head">
         <div class="l-container">
-          <div class="p-formPage__head__ttl">
-            <p class="c-ttl">新規会員登録</p>
-          </div>
           <!-- ステップ2 -->
           <div class="p-formPage__step">
             <ul class="p-step">
               <li class="p-step__item p-step__item--complete">
-                <p class="c-txt c-txt--step">アカウント<br>情報の入力</p>
+                <p class="c-txt c-txt--step">STEP1</p>
               </li>
               <li class="p-step__item p-step__item--current">
-                <p class="c-txt c-txt--step">ユーザー<br>情報の入力</p>
+                <p class="c-txt c-txt--step">STEP2</p>
               </li>
               <li class="p-step__item">
-                <p class="c-txt c-txt--step">購入製品<br>登録</p>
+                <p class="c-txt c-txt--step">STEP3</p>
               </li>
             </ul>
+          </div>
+          <div class="p-formPage__head__ttl">
+            <p class="c-ttl">ユーザー情報の入力</p>
           </div>
         </div>
       </div>
