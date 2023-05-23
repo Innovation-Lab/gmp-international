@@ -71,7 +71,7 @@
           </ul>
         @else
           <!-- 製品未登録の場合 -->
-          <a href="">
+          <a href="{{ route('mypage.add') }}">
             <ul class="p-card--notRegister">
               <li>
                 <div class="p-card__item">
