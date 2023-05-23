@@ -20,7 +20,7 @@
               </p>
             </div>
             <div class="l-stack__item">
-              <form method="POST" action="{{ route('password.store') }}" id="accountSubmitForm">
+              <form method="POST" action="{{ route('password.store') }}" id="passwordSubmitForm">
                 @csrf
                 <ul class="p-formList">
                   <!-- メールアドレス -->
@@ -79,8 +79,7 @@
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
-            <button type="submit" class="c-btn c-btn--next" form="accountSubmitForm">登録する</button>
-            {{-- <a class="c-btn c-btn--next"  href="{{ route('web.reset.complete') }}">登録する</a> --}}
+            <button type="submit" class="c-btn c-btn--next" form="passwordSubmitForm">登録する</button>
           </div>
         </div>
       </div>
