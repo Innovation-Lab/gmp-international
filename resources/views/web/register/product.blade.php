@@ -37,12 +37,12 @@
           <div class="l-stack l-stack--product add_product" id="">
             <div class="l-stack__item">
               <input type="hidden" name="is_skip" id="is_skip_input" value="0">
-              <!-- 登録プロダクト -->
+              <!-- 登録製品 -->
               <ul class="p-formList" style="margin-bottom: 40px;">
                 <!-- 購入日 -->
                 <li class="p-formList__item">
                   <div class="p-formList__ttl">
-                    <p class="c-ttl">プロダクト1</p>
+                    <p class="c-ttl">製品1</p>
                   </div>
                   <div class="p-formList__content">
                     <div class="p-formList__label">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input placeholder="0000/00/00" class="required add-input--date1" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
+                        <input placeholder="<?php date_default_timezone_set('UTC'); echo date('Y/m/d'); ?>" class="required add-input--date1" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
                       </div>
                     </div>
                   </div>
@@ -98,7 +98,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">カラー</p>
                       <div class="p-formList__guide">
-                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></button>
+                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
                       </div>
                     </div>
                     <div class="p-formList__data parent-element">
@@ -129,7 +129,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">シリアルナンバー</p>
                       <div class="p-formList__guide">
-                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button>
+                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
                       </div>
                     </div>
                     <div class="p-formList__data">
@@ -143,7 +143,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">購入店舗 </p>
                       <div class="p-formList__guide">
-                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
+                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
                       </div>
                     </div>
                     <div class="p-formList__data parent-element">
@@ -199,7 +199,7 @@
               Code = Tag.clone(),
               Num = $('.l-stack--product > .l-stack__item').length -1;
           $('#js-product--add').before(Code);
-          $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('プロダクト'+Num);
+          $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('製品'+Num);
           $('.l-stack--product > .l-stack__item').eq(Num - 1).css('display','block')
       });
   </script>
@@ -212,7 +212,7 @@
           Tag.each(function(){
               let This = $(this),
                   Ind = This.index() + 1;
-              This.find('.p-formList__ttl .c-ttl').text('プロダクト'+Ind);
+              This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
           });
       });
   </script>
@@ -311,12 +311,12 @@
 
                   function addForm() {
                       var newForm = '<div class="l-stack__item l-stack__item--line add_product" id="" style="">' +
-                      '<!-- 登録プロダクト追加 -->' +
+                      '<!-- 登録製品追加 -->' +
                       '<ul class="p-formList">' +
                       '<!-- 購入日 -->' +
                       '<li class="p-formList__item">' +
                       '    <div class="p-formList__ttl"> ' +
-                      '        <p class="c-ttl">プロダクト'+ num +'</p> ' +
+                      '        <p class="c-ttl">製品'+ num +'</p> ' +
                       '        <div class="p-btnWrap"> ' +
                       '            <p class="c-btn c-btn--ico c-btn--ico--remove">削除</p> ' +
                       '        </div> ' +
@@ -364,7 +364,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">カラー</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color open-other-text-input" role="button"></button> ' +
+                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color open-other-text-input" role="button"></a> ' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data parent-element"> ' +
@@ -389,7 +389,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">シリアルナンバー</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button> ' +
+                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a> ' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data"> ' +
@@ -403,7 +403,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">購入店舗</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button> ' +
+                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></an> ' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data parent-element"> ' +

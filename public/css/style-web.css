@@ -1487,7 +1487,7 @@ input[type=file] + label img {
   width: 50%;
 }
 .c-input--date {
-  width: 30%;
+  width: 150px;
   position: relative;
 }
 .c-input--date::before {

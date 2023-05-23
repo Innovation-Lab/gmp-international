@@ -86,7 +86,7 @@
                   <div class="p-formList__label">
                     <p class="c-txt">シリアルナンバー</p>
                     <div class="p-formList__guide">
-                      <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></button>
+                      <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
                     </div>
                   </div>
                   <div class="p-formList__data">
@@ -100,7 +100,7 @@
                   <div class="p-formList__label">
                     <p class="c-txt">購入店舗</p>
                     <div class="p-formList__guide">
-                      <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
+                      <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
                     </div>
                   </div>
                   <div class="p-formList__data">
