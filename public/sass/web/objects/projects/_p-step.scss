@@ -6,7 +6,7 @@
   justify-content: space-between;
   position: relative;
   margin: 0;
-  padding: 0;
+  padding-top: 24px;
   &__item{
     position: relative;
     justify-content: center;
@@ -17,18 +17,17 @@
     counter-increment: steps;
     ::before{
       content: counter(steps);
-      color: #fff;
+      content: "";
+      background: #c30e2e;
       display: block;
       width: 20px;
       height: 20px;
       margin: 15px auto 8px auto;
-      line-height: 20px;
-      font-size: 12px;
       text-align: center;
       border-radius: 50%;
-      background-color: #8c8c8c;
+      background-color: #E4D6D6;
       @include global.responsive(md) {
-        margin: 15px auto 20px auto;
+        margin: 15px auto 12px auto;
       }
     }
     .c-txt{
@@ -46,19 +45,47 @@
       left: -50%;
       width: calc(100% - 30px);
       height: 2px;
-      background-color: #8c8c8c;
+      background: #E4D6D6;
       transform: translate(16px, 0px);
     }
     &--current{
+      position: relative;
+      // ::after{
+      //   content: "";
+      //     border: 1px solid #c30e2e;
+      //     border-radius: 50px;
+      //     position: relative;
+      //     width: 16px;
+      //     height: 16px;
+      // }
       p{
         color: #c30e2e;
+        // .circle{
+        //   border: 1px solid #c30e2e;
+        //   border-radius: 50px;
+        //   position: relative;
+        //   width: 16px;
+        //   height: 16px;
+        //   ::before{
+        //     content: "";
+        //     position: absolute;
+        //     background: #c30e2e;
+        //     color: #fff;
+        //   }
+        // }
       }
       ::before{
-        background: #c30e2e;
+        content: "";
+        // position: absolute;
+        background: none;
         color: #fff;
+        background-image: url(../img/web/icon/c-point.png);
+        background-size: 20px 20px;
+        // background-position: right center;
+        background-repeat: no-repeat;
       }
       + .p-step__item::after{
-        background: #8c8c8c;
+        background: #E4D6D6;
       }
     }
     &--complete{
@@ -67,9 +94,7 @@
       }
       ::before{
         content: '';
-        background: url(../img/web/icon/step--checked.png)no-repeat center;
-        background-size: contain;
-        color: #fff;
+        background: #c30e2e;
         
       }
       + .p-step__item::after{
