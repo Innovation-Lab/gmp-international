@@ -22,4 +22,8 @@ return
             'path' => 'admin.staffs.index',
         ],
     ],
+    
+    'mail' => [
+        'admin' => env('ADMIN_MAIL_TO')
+    ]
 ];

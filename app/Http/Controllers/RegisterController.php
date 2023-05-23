@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Repositories\UserRepositoryInterface;
+use App\Services\SendMailService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,14 +23,18 @@ use App\Providers\RouteServiceProvider;
 class RegisterController extends Controller
 {
     private UserRepositoryInterface $userRepository;
+    private SendMailService $sendMailService;
     
     /**
      * @param UserRepositoryInterface $userRepository
+     * @param SendMailService $sendMailService
      */
     public function __construct(
-        UserRepositoryInterface $userRepository
+        UserRepositoryInterface $userRepository,
+        SendMailService $sendMailService
     ) {
         $this->userRepository = $userRepository;
+        $this->sendMailService = $sendMailService;
     }
     
     /**
@@ -185,6 +190,9 @@ class RegisterController extends Controller
                 ->back()
                 ->with(['error' => 'エラーが発生しました。']);
         }
+        
+        // メールの送信
+        $this->sendMailService->send('registration', $user, 1);
         
         return redirect()->route('register.complete');
     }
