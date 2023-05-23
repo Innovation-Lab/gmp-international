@@ -50,6 +50,13 @@ $('.p-header__brand').slick({
           infinite: true,
         }
       },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1,
+          variableWidth: true,
+        }
+      },
     ]
   });
 </script>

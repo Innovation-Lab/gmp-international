@@ -401,10 +401,10 @@ label {
 -------------------------------------------------- */
 select {
   padding-right: 1.5rem;
-  background-image: url(../img/admin/form/select.png);
   background-size: 1.5rem 1.5rem;
   background-position: right center;
   background-repeat: no-repeat;
+  color: #222;
 }
 
 /* ! --------------------------------------------------
@@ -1559,7 +1559,7 @@ input[type=file] + label img {
 
 .c-brand {
   height: 24px;
-  width: 100%;
+  width: auto;
 }
 .c-brand--pc {
   height: auto;
@@ -3155,6 +3155,7 @@ input[type=file] + label img {
 }
 .p-header__brand li {
   padding-right: 32px;
+  width: auto !important;
 }
 .p-header__brand .slick-track {
   display: flex;
@@ -4770,11 +4771,17 @@ input[type=file] + label img {
 }
 .p-info__txt .c-txt {
   font-size: 13px;
+  color: #222;
 }
 @media screen and (min-width: 768px) {
   .p-info__txt .c-txt {
     display: flex;
   }
+}
+.p-info__txt .c-txt a {
+  color: #222;
+  font-size: 13px;
+  pointer-events: none;
 }
 .p-info__txt .c-txt:before {
   content: attr(data-ttl);

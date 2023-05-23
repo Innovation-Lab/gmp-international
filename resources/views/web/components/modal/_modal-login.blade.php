@@ -12,11 +12,11 @@
           {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
             <input class="mailbox" type="email" name="email" placeholder="メールアドレス">
             @error('email')
-              <p class="c-txt c-txt--err">{{ $message }}</p>
+              <p class="c-txt c-txt--err" style="display: block; width: 100%; margin: 4px 0 0;">{{ $message }}</p>
             @enderror
             <input class="passbox" type="password" name="password" placeholder="パスワード">
             @error('password')
-              <p class="c-txt c-txt--err">{{ $message }}</p>
+              <p class="c-txt c-txt--err" style="display: block; width: 100%; margin: 4px 0 0;">{{ $message }}</p>
             @enderror
             <input class="login" type="submit" name="button" value="ログイン">
           {!! Form::close() !!}
