@@ -28,7 +28,7 @@
         <a href="{{ route('register.terms') }}" class="c-btn c-btn--login">新規会員登録</a>
       </div>
       <div class="p-login__registered">
-        <button class="p-login__registered__btn" data-micromodal-trigger="modal-login" role="button">登録済みの方はこちら</button>
+        <button class="p-login__registered__btn" onclick="$('#modal-login').show()" role="button">登録済みの方はこちら</button>
         <!-- 編集ボタン -->
       </div>
       <div class="p-login__forget">
