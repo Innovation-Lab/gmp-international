@@ -32,10 +32,6 @@
                       <div class="p-formList__data">
                         <input placeholder="例）gmp-international@sample.com" class="c-form" readonly="readonly" name="email" type="email" value="{{ request()->get('email') }}">
                       </div>
-                      <!-- 入力不備エラーメッセージ -->
-                      @error('email')
-                        <p class="c-txt c-txt--err">{{ $message }}</p>
-                      @enderror
                     </div>
                   </li>
                   <!-- パスワード -->
@@ -46,11 +42,11 @@
                       </div>
                       <div class="p-formList__data">
                         <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">
+                        <!-- 入力不備エラーメッセージ -->
+                        @error('password')
+                          <p class="c-txt c-txt--err">{{ $message }}</p>
+                        @enderror
                       </div>
-                      <!-- 入力不備エラーメッセージ -->
-                      @error('password')
-                        <p class="c-txt c-txt--err">{{ $message }}</p>
-                      @enderror
                     </div>
                   </li>
                   <!-- パスワード確認用 -->

@@ -32,11 +32,11 @@
                       </div>
                       <div class="p-formList__data">
                         <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email') }}">
+                        <!-- 入力不備エラーメッセージ -->
+                        @error('email')
+                          <p class="c-txt c-txt--err">{{ $message }}</p>
+                        @enderror
                       </div>
-                      <!-- 入力不備エラーメッセージ -->
-                      @error('email')
-                        <p style="display: none;" class="c-txt c-txt--err">{{ $message }}</p>
-                      @enderror
                     </div>
                   </li>
                 </ul>
