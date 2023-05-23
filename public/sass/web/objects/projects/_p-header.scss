@@ -27,14 +27,14 @@
     }
   }
   &--form{
-    background: #F5F2E7;
+    background: #F7F4EC;
     display: flex;
     align-items: center;
     justify-content: center;
     @include global.responsive(md) {
-      background: #fff;
+      // background: #fff;
       height: 115px;
-      border-bottom: solid 1px #ccc;
+      // border-bottom: solid 1px #ccc;
     }
     .p-header__logo{
       @include global.responsive(md) {

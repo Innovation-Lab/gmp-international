@@ -19,6 +19,10 @@
   &:before{
     display: none;
   }
+  &--ghost{
+    background: rgba(238, 238, 238, 0.4);
+
+  }
   //2色目
   &__pallet2{
     position: absolute;

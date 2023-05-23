@@ -29,12 +29,12 @@
         <div class="p-formPage__body">
           <div class="l-stack l-stack--product">
             <div class="l-stack__item">
-              <!-- 登録製品1 -->
+              <!-- 登録プロダクト -->
               <ul class="p-formList">
                 <!-- 購入日 -->
                 <li class="p-formList__item">
                   <div class="p-formList__ttl">
-                    <p class="c-ttl">製品1</p>
+                    <p class="c-ttl">プロダクト1</p>
                   </div>
                   <div class="p-formList__content">
                     <div class="p-formList__label">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input id="date" placeholder="2023/05/16" class="required" name="" type="text" value="">
+                        <input id="date" placeholder="0000/00/00" class="required" name="" type="text" value="">
                       </div>
                     </div>
                     <p style="display: none;" class="c-txt c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</p>
@@ -87,6 +87,9 @@
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                       <p class="c-txt">カラー</p>
+                      <div class="p-formList__guide">
+                        <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></button>
+                      </div>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
@@ -153,13 +156,14 @@
                 </li>
               </ul>
             </div>
-            <div class="l-stack__item l-stack__item--line">
-              <!-- 登録製品2 -->
+            {{-- コピー用HTML --}}
+            <div class="l-stack__item l-stack__item--line" style="display:none;">
+              <!-- 登録プロダクト2 -->
               <ul class="p-formList">
                 <!-- 購入日 -->
                 <li class="p-formList__item">
                   <div class="p-formList__ttl">
-                    <p class="c-ttl">製品2</p>
+                    <p class="c-ttl">プロダクト2</p>
                     <div class="p-btnWrap">
                       <p class="c-btn c-btn--ico c-btn--ico--remove">削除</p>
                     </div>
@@ -170,7 +174,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input id="date" placeholder="2023/05/16" class="required" name="" type="text" value="">
+                        <input id="date" placeholder="0000/00/00" class="required" name="" type="text" value="">
                       </div>
                     </div>
                     <p style="display: none;" class="c-txt c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</p>
@@ -215,6 +219,9 @@
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                         <p class="c-txt">カラー</p>
+                        <div class="p-formList__guide">
+                          <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></button>
+                        </div>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
@@ -307,9 +314,10 @@
     $(document).on('click', '#js-product--add', function(){
       let Tag = $('.l-stack__item.l-stack__item--line').eq(0),
           Code = Tag.clone(),
-          Num = $('.l-stack--product > .l-stack__item').length;
+          Num = $('.l-stack--product > .l-stack__item').length -1;
       $('#js-product--add').before(Code);
-      $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('製品'+Num);
+      $('.l-stack--product > .l-stack__item').eq(Num - 1).find('.p-formList__ttl .c-ttl').text('プロダクト'+Num);
+      $('.l-stack--product > .l-stack__item').eq(Num - 1).css('display','block')
     });
   </script>
   <script>
@@ -321,7 +329,7 @@
       Tag.each(function(){
         let This = $(this),
             Ind = This.index() + 1;
-        This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
+        This.find('.p-formList__ttl .c-ttl').text('プロダクト'+Ind);
       });
     });
   </script>

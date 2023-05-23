@@ -150,6 +150,54 @@
             </div>
           </li>
         </ul>
+        <!-- 製品未登録の場合 -->
+        <a href="">
+          <ul class="p-card--notRegister">
+            <li>
+              <div class="p-card__item">
+                <div class="p-card__box">
+                  <div class="p-card__info">
+                    <!-- ブランド・製品名・カラー -->
+                    <div class="p-card__mainData">
+                      <div class="p-card__brand">
+                        <p class="c-txt c-txt--ghost">BRAND</p>
+                      </div>
+                      <div class="p-card__product">
+                        <p class="c-txt c-txt--lg  c-txt--lg--ghost">PRODUCT</p>
+                      </div>
+                      <div class="p-card__color">
+                        <div class="c-colorBall c-colorBall--ghost"></div>
+                        <p class="c-txt c-txt--ghost">COLOR</p>
+                      </div>
+                    </div>
+                    <div class="p-card__subData">
+                      <!-- PURCHASE DATE -->
+                      <div class="p-card__purchase">
+                        <p class="label c-txt c-txt--ghost">PURCHASE DATE</p>
+                      </div>
+                      <!-- STORE -->
+                      <div class="p-card__store">
+                        <p class="label c-txt c-txt--ghost">STORE DATE</p>
+                      </div>
+                      <!-- SERIAL NUMBER -->
+                      <div class="p-card__serialNum">
+                        <p class="label c-txt c-txt--ghost">SERIAL NUMBER</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 製品画像 -->
+                  <div class="p-card__img">
+                    <img src="{{asset('img/web/product/product-ghost.png')}}" width="110px" height="140px">
+                  </div>
+                </div>
+                <div class="p-card__add">
+                  <p class="c-ttl">ADD YOUR ITEM</p>
+                  <p class="c-btn">製品を登録する</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </a>
       </div>
       <!-- 一覧ページボタン -->
       <div class="p-index__btn">

@@ -10,6 +10,136 @@
     p:not(.c-txt--sm--ghost){
         color: #fff;
     }
+    // 製品未登録
+    &--notRegister{
+        position: relative;
+        margin-top: 16px;
+        .p-card__add{
+            position: absolute;
+        }
+        .p-card__item{
+            @include global.responsive(min) {
+                width: 100%;
+            }
+            @include global.responsive(sm) {
+                width: 100%;
+            }
+            @include global.responsive(md) {
+                height: 100%;
+                position: relative;
+                padding: 32px;
+                min-height: 420px;
+            }
+            @include global.responsive(xl) {
+                min-height: auto;
+            }
+        }
+        .p-card__info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .p-card__brand{
+            .c-txt{
+                @include global.responsive(md) {
+                    font-size: 24px;
+                    font-weight: 300;
+                    line-height: 24px;
+                }
+                @include global.responsive(xl) {
+                    font-size: 32px;
+                    line-height: 32px;
+                }
+            }
+        }
+        .p-card__product{
+            .c-txt{
+                @include global.responsive(md) {
+                    font-size: 40px;
+                    width: auto;
+                    margin: 10px 0 0;
+                }
+                @include global.responsive(xl) {
+                    font-size: 55px;
+                }
+            }
+        }
+        .p-card__color{
+            display: flex;
+            align-items: center;
+            @include global.responsive(md) {
+                margin-top: 18px;
+            }
+            .c-colorBall{
+                width: 12px; height: 12px;
+                border-radius: 18px;
+                margin-right: 4px;
+                @include global.responsive(md) {
+                    width: 18px; height: 18px;
+                    border-radius: 18px;
+                    margin-right: 8px;
+                }
+                @include global.responsive(xl) {
+                    width: 18px; height: 18px;
+                }
+            }
+            .c-txt{
+                @include global.responsive(md) {
+                    font-size: 20px;
+                }
+                @include global.responsive(xl) {
+                    font-size: 24px;
+                }
+            }
+        }
+        .p-card__subData{
+            > div{
+                @include global.responsive(md) {
+                    flex-direction: column;
+                }
+                + div{
+                    @include global.responsive(md) {
+                        margin: 8px 0 0;
+                    }
+                }
+                .label{
+                    @include global.responsive(md) {
+                        font-size: 16px;
+                        width: auto;
+                    }
+                    @include global.responsive(xl) {
+                        font-size: 16px;
+                    }
+                }
+                .data{
+                    @include global.responsive(md) {
+                        font-size: 16px;
+                        margin: 6px 0 0;
+                    }
+                    @include global.responsive(xl) {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+        .p-card__img{
+            @include global.responsive(md) {
+                position: absolute;
+                right: 16px;
+                bottom: 16px;
+            }
+            img{
+                @include global.responsive(md) {
+                    width: 140px;
+                    height: auto;
+                }
+                @include global.responsive(md) {
+                    width: 180px;
+                }
+            }
+        }
+    }
+    // 製品登録
     // スライダー
     .slick-list{
         overflow: visible;

@@ -29,10 +29,10 @@
       flex-direction: column;
     }
     &__head{
-      background: #F5F2E7;
+      background: #F7F4EC;
       margin: 0 0 40px;
       @include global.responsive(md) {
-        margin: 80px 0 0;
+        margin: 24px 0 0;
         background: none;
       }
       &__ttl{
@@ -48,7 +48,7 @@
         }
         .c-ttl{
           @include global.responsive(md) {
-            font-size: 32px;
+            font-size: 24px;
           }
           // @include global.responsive(sm) {
           //   font-size: 32px;
@@ -73,6 +73,18 @@
         box-shadow: 0 4px 8px rgba(0,0,0,.08);
         max-width: 800px;
         margin: 40px auto 0;
+      }
+      .skip{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 16px;
+        ::after{
+          content: "";
+          background: url(../img/web/icon/skip-triangle.png) no-repeat center;
+          background-size: contain !important;
+          width: 12px;
+          height: 11px;
+        }
       }
       &--thin{
         @include global.responsive(md) {
@@ -134,7 +146,7 @@
     }
     //完了画面
     &--complete{
-      background: #F5F2E7;
+      background: #F7F4EC;
     }
   }
   //リスト
@@ -164,7 +176,7 @@
     &__content {
       display: grid;
       grid-auto-rows: auto;
-      gap: 0.25rem;
+      gap: 0.5rem;
       @include global.responsive(md) {
         display: flex;
         flex: auto;
@@ -175,7 +187,8 @@
       // color: var(--color_text_button);
       @extend .c-text__xs !optional;
       display: flex;
-      align-items: baseline;
+      align-items: center;
+      justify-content: space-between;
 
       /* ! ----------
       　Optional 任意
@@ -198,7 +211,10 @@
       @include global.responsive(md) {
         flex: 0 0 auto;
         width: 210px;
-        padding: 16px 0 0;
+        // padding: 16px 0 0;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
       }
       .c-txt{
         br{

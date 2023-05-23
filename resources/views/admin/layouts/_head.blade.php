@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/admin/favicon/favicon-16x16.png')}}">
   <link rel="manifest" href="{{asset('img/admin/favicon/site.webmanifest')}}">
   <link rel="mask-icon" href="{{asset('img/admin/favicon/safari-pinned-tab.svg')}}" color="#3959df">
+  <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-TileColor" content="#ff0000">
   <meta name="theme-color" content="#ffffff">
   <title>@yield('title') | {{ config('app.name').'' }}</title>

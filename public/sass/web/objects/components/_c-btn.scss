@@ -145,7 +145,7 @@
         background-repeat: no-repeat;
     }
     &--text{
-        text-decoration: underline;
+        // text-decoration: underline;
         color: #8C8C8C;
         padding: 0;
         background: none;
@@ -158,6 +158,13 @@
         &--nv{
             color: #27305A;
             font-size: 14px;
+        }
+        &--bk{
+            color: #000;
+            // &:hover{
+            //     color: lighten(#000000,30%);
+                
+            // }
         }
     }
     //アイコン

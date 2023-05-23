@@ -123,7 +123,7 @@
                 <li class="p-formList__item">
                   <div class="p-formList__ttl">
                     <p class="c-ttl">購入製品</p>
-                    <p class="c-txt">製品1</p>
+                    <p class="c-txt">プロダクト1</p>
                   </div>
                   <div class="p-formList__content">
                     <div class="l-stack">
@@ -178,10 +178,10 @@
                     </div>
                   </div>
                 </li>
-                {{-- 購入製品2個目から --}}
+                {{-- 購入プロダクト2個目から --}}
                 <li class="p-formList__item p-formList__item--productLine">
                   <div class="p-formList__ttl">
-                    <p class="c-txt">製品2</p>
+                    <p class="c-txt">プロダクト2</p>
                   </div>
                   <div class="p-formList__content">
                     <div class="l-stack">

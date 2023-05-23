@@ -34,7 +34,7 @@
     // height: 400px;
     width: 600px;
     border-radius: 50% 50% 0 0;
-    background: #F5F2E7;
+    background: #F7F4EC;
     z-index: -1;
     bottom: 0;
     left: 50%;
@@ -146,6 +146,6 @@
 
 .body_mypage--home{
   @include global.responsive(md) {
-    background: #F5F2E7;
+    background: #F7F4EC;
   }
 }
