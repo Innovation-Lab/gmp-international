@@ -27,11 +27,11 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <div class="skip">
+          {{--<div class="skip">
             <a class="c-btn c-btn--text c-btn--text--bk " onclick="addHiddenFieldAndSubmit()">
               後で登録する
             </a>
-          </div>
+          </div>--}}
           <form method="POST" action="{{ route('register.store.product') }}" id="productStoreForm">
           @csrf
           <div class="l-stack l-stack--product add_product" id="">

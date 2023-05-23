@@ -36,18 +36,18 @@
         background: none;
       }
       &__ttl{
-        margin-top: 24px;
-        padding-bottom: 32px;
-        // height: 60px;
+        padding: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        // margin-top: 24px;
-        // @include global.responsive(sm) {
-        //   height: auto;
-        // }
+        padding-bottom: 32px;
         @include global.responsive(md) {
           height: auto;
+          padding-bottom: 32px;
+          // height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .c-ttl{
           @include global.responsive(md) {

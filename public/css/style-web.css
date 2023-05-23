@@ -243,6 +243,11 @@ a {
   cursor: pointer;
 }
 
+::-moz-selection {
+  color: #fff;
+  background: #000;
+}
+
 ::selection {
   color: #fff;
   background: #000;
@@ -266,7 +271,9 @@ strong {
   border-radius: 0.25rem;
   border: 1px solid transparent;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   /* ! ----------
   　Small 小さいボタン
   ---------- */
@@ -382,7 +389,8 @@ textarea {
   border-radius: 0.4em;
   background: #f5f5f5;
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
 }
 input:not([type=checkbox], [type=radio]).err,
 select.err,
@@ -392,7 +400,9 @@ textarea.err {
 }
 
 label {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
 
@@ -433,7 +443,9 @@ input[type=radio] {
   padding: 0 1rem;
   border-radius: 0.125rem;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .radio input:checked + label {
   color: var(--color_primary);
@@ -469,6 +481,7 @@ input[type=checkbox]:checked + label:before {
 }
 
 input:-webkit-autofill {
+  -webkit-transition: background-color 5000s ease-in-out 0s !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
@@ -521,7 +534,8 @@ input[type=file] + label:hover::before, input[type=file] + label:hover::after {
 input[type=file] + label img {
   width: 100%;
   aspect-ratio: 1/1;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* ! ----------
@@ -799,6 +813,7 @@ input[type=file] + label img {
 }
 .l-index__head {
   grid-area: head;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -817,6 +832,7 @@ input[type=file] + label img {
 }
 .l-index__foot {
   grid-area: foot;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -863,6 +879,7 @@ input[type=file] + label img {
 }
 .l-detail__head {
   grid-area: head;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -897,6 +914,7 @@ input[type=file] + label img {
 }
 .l-detail__foot {
   grid-area: foot;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1030,9 +1048,23 @@ input[type=file] + label img {
   ---------- */
 }
 .c-loading.is-hide {
-  animation-name: hide-loading;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+  -webkit-animation-name: hide-loading;
+          animation-name: hide-loading;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes hide-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 @keyframes hide-loading {
   0% {
@@ -1199,9 +1231,9 @@ input[type=file] + label img {
   line-height: 26px;
 }
 .c-ttl--xxl {
-  font-size: 32px;
+  font-size: 55px;
   font-weight: 500;
-  line-height: 32px;
+  line-height: 55px;
 }
 .c-ttl--xxl--wh {
   color: #fff;
@@ -1245,7 +1277,9 @@ input[type=file] + label img {
   transition-property: box-shadow, color, background-color;
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
 .c-btn--register {
@@ -2595,7 +2629,8 @@ input[type=file] + label img {
   align-items: center;
   margin: 0 0 1.5rem;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   position: relative;
   border-bottom: 1px solid var(--color_border_1);
   /* ! ----------
@@ -2614,6 +2649,7 @@ input[type=file] + label img {
 }
 .p-detail__sidebar {
   border: 1px solid var(--color_border_1);
+  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
   /* ! ----------
@@ -2648,6 +2684,7 @@ input[type=file] + label img {
 }
 .p-detail__main {
   border: 1px solid var(--color_border_1);
+  position: -webkit-sticky;
   position: sticky;
   /* ! ----------
   　Box ボックス
@@ -2698,7 +2735,9 @@ input[type=file] + label img {
   padding: 1rem;
   border-top: 1px solid var(--color_border_1);
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -2714,7 +2753,8 @@ input[type=file] + label img {
   border-top: 1px solid var(--color_border_1);
   padding: 1.5rem 0;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   position: relative;
 }
 
@@ -2749,6 +2789,7 @@ input[type=file] + label img {
   position: relative;
 }
 .p-edit__nav {
+  position: -webkit-sticky;
   position: sticky;
   top: 4rem;
   padding: 0.5rem 0;
@@ -2806,6 +2847,7 @@ input[type=file] + label img {
 }
 .p-edit__head__title {
   font-weight: 500;
+  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
 }
@@ -2820,6 +2862,7 @@ input[type=file] + label img {
   width: 100%;
   background: #F7F4EC;
   height: 100vh;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   border-right: solid 1px #EAEBEA;
@@ -2984,7 +3027,8 @@ input[type=file] + label img {
   grid-template-columns: 2.5rem 1fr;
 }
 .p-profile__image img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 1rem;
 }
 .is-hide .p-profile__image img {
@@ -3023,7 +3067,8 @@ input[type=file] + label img {
 .p-profileImage__image {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-image: url(../img/admin/profile/noimage.png);
   background-size: cover;
   background-position: center center;
@@ -3505,7 +3550,9 @@ input[type=file] + label img {
   background-position: right center;
   background-repeat: no-repeat;
   border-bottom: 1px solid var(--color_text_button);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
   /* ! ----------
   　Active アクティブ （フィルターが1つ以上適用されている状態）
@@ -3530,6 +3577,8 @@ input[type=file] + label img {
 }
 .p-filterList__content {
   display: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   border: 1px solid var(--color_border_1);
   background-color: #fff;
@@ -3606,10 +3655,13 @@ input[type=file] + label img {
   background: var(--color_background_3);
   padding: 0 1rem;
   height: 3rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 .p-table thead th .item {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
   min-width: max-content;
 }
 .p-table tbody tr[data-href], .p-table tbody tr[data-micromodal-trigger] {
@@ -3636,6 +3688,7 @@ input[type=file] + label img {
 }
 .p-table tfoot td {
   height: 2.5rem;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   transform: translateY(4px);
@@ -3826,7 +3879,8 @@ input[type=file] + label img {
   background-size: 1rem 1rem;
   background-position: top 1rem left 1rem;
   background-repeat: no-repeat;
-  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
   border-radius: 0.5rem;
   box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -3860,30 +3914,56 @@ input[type=file] + label img {
   background-image: url(../img/admin/flash/alert.png);
 }
 .p-flash__item.is-hide, .p-flash__item.auto-hide {
-  animation-name: flash-hide;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  -webkit-animation-name: flash-hide;
+          animation-name: flash-hide;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.is-hide > *, .p-flash__item.auto-hide > * {
-  animation-name: flash-contents-hide;
-  animation-duration: 0.1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  -webkit-animation-name: flash-contents-hide;
+          animation-name: flash-contents-hide;
+  -webkit-animation-duration: 0.1s;
+          animation-duration: 0.1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.auto-hide {
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 .p-flash__item.auto-hide > * {
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 .p-flash__item.is-hide {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 .p-flash__item.is-hide > * {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+@-webkit-keyframes flash-hide {
+  from {
+    opacity: 1;
+    height: auto;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
 }
 @keyframes flash-hide {
   from {
@@ -3897,6 +3977,14 @@ input[type=file] + label img {
     padding-top: 0;
     padding-bottom: 0;
     margin: 0;
+  }
+}
+@-webkit-keyframes flash-contents-hide {
+  from {
+    display: block;
+  }
+  to {
+    display: none;
   }
 }
 @keyframes flash-contents-hide {
@@ -3988,7 +4076,23 @@ input[type=file] + label img {
   opacity: 1;
 }
 .p-flashMessage__list__item.is-active__flashMessage--show {
-  animation: flashMessage--show 0.4s linear forwards, flashMessage--autoHide 0.2s linear 4s forwards;
+  -webkit-animation: flashMessage--show 0.4s linear forwards, flashMessage--autoHide 0.2s linear 4s forwards;
+          animation: flashMessage--show 0.4s linear forwards, flashMessage--autoHide 0.2s linear 4s forwards;
+}
+@-webkit-keyframes flashMessage--show {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+    pointer-events: all;
+  }
 }
 @keyframes flashMessage--show {
   0% {
@@ -4005,6 +4109,16 @@ input[type=file] + label img {
     pointer-events: all;
   }
 }
+@-webkit-keyframes flashMessage--autoHide {
+  from {
+    opacity: 1;
+    pointer-events: all;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 @keyframes flashMessage--autoHide {
   from {
     opacity: 1;
@@ -4016,7 +4130,20 @@ input[type=file] + label img {
   }
 }
 .p-flashMessage__list__item.is-active__flashMessage--remove {
-  animation: flashMessage--hide 0.2s linear forwards;
+  -webkit-animation: flashMessage--hide 0.2s linear forwards;
+          animation: flashMessage--hide 0.2s linear forwards;
+}
+@-webkit-keyframes flashMessage--hide {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+    margin-bottom: -40px;
+    pointer-events: none;
+  }
 }
 @keyframes flashMessage--hide {
   0% {
@@ -4396,13 +4523,13 @@ input[type=file] + label img {
 }
 @media screen and (min-width: 576px) {
   .p-card > li,
-  .p-card .slick-slide li {
+.p-card .slick-slide li {
     padding-right: 16px;
   }
 }
 @media screen and (min-width: 768px) {
   .p-card > li,
-  .p-card .slick-slide li {
+.p-card .slick-slide li {
     padding-right: 0px;
   }
 }
@@ -4927,15 +5054,19 @@ input[type=file] + label img {
   }
 }
 .p-formPage__head__ttl {
-  margin-top: 24px;
-  padding-bottom: 32px;
+  padding: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 32px;
 }
 @media screen and (min-width: 768px) {
   .p-formPage__head__ttl {
     height: auto;
+    padding-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 768px) {
@@ -5426,6 +5557,7 @@ input[type=file] + label img {
 .p-terms__scroll::-webkit-scrollbar {
   width: 10px;
   height: 0;
+  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 .p-terms__scroll::-webkit-scrollbar-track {
@@ -5692,12 +5824,28 @@ input[type=file] + label img {
 /**************************\
   Demo Animation Style
 \**************************/
+@-webkit-keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes mmfadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+@-webkit-keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 @keyframes mmfadeOut {
@@ -5708,12 +5856,28 @@ input[type=file] + label img {
     opacity: 0;
   }
 }
+@-webkit-keyframes mmslideIn {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 @keyframes mmslideIn {
   from {
     transform: translateY(15%);
   }
   to {
     transform: translateY(0);
+  }
+}
+@-webkit-keyframes mmslideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
   }
 }
 @keyframes mmslideOut {
@@ -5775,5 +5939,4 @@ input[type=file] + label img {
 /* ! --------------------------------------------------
 　Libraries ライブラリ
 -------------------------------------------------- */
-
 /*# sourceMappingURL=style-web.css.map */
