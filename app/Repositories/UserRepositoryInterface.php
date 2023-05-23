@@ -13,4 +13,5 @@ interface UserRepositoryInterface
     public function accountUpdate(User $user, Request $request);
     public function userUpdate(User $user, Request $request);
     public function destroy(User $user);
+    public function createWithProduct(array $user, array $products);
 }

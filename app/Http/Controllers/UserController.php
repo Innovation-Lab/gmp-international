@@ -30,23 +30,11 @@ class UserController extends Controller
     public function index(Request $request): View
     {
         $user = Auth::user();
-
-        if(Auth::user()->is_catalog == 1) {
-            $catalog_request = '希望する';
-        } else {
-            $catalog_request = '希望しない';
-        }
-
-        if(Auth::user()->is_dm == 1) {
-            $dm_request = '希望する';
-        } else {
-            $dm_request = '希望しない';
-        }
+        $sales_products = data_get($user, 'salesProducts');
 
         return view('web.mypage.index')->with([
             'user' => $user,
-            'catalog_request' => $catalog_request,
-            'dm_request' => $dm_request,
+            'sales_products' => $sales_products,
         ]);
 
     }
@@ -58,9 +46,11 @@ class UserController extends Controller
     public function product(): View
     {
         $user = Auth::user();
+        $sales_products = data_get($user, 'salesProducts');
         
         return view('web.mypage.product.index')->with([
             'user' => $user,
+            'sales_products' => $sales_products,
         ]);
     }
     
@@ -74,7 +64,7 @@ class UserController extends Controller
     }
     
     /**
-     * 製品追加登録
+     * 製品追加登録 確認
      * @return View
      */
     public function productConfirm(): View
@@ -82,7 +72,10 @@ class UserController extends Controller
         return view('web.mypage.product.confirm');
     }
 
-    //アカウント情報 編集
+    /**
+     * アカウント情報 編集
+     * @return View
+     */
     public function account()
     {
         $user = Auth::user();

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Repositories\UserRepositoryInterface;
+use App\Services\SendMailService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,6 +22,21 @@ use App\Providers\RouteServiceProvider;
 
 class RegisterController extends Controller
 {
+    private UserRepositoryInterface $userRepository;
+    private SendMailService $sendMailService;
+    
+    /**
+     * @param UserRepositoryInterface $userRepository
+     * @param SendMailService $sendMailService
+     */
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+        SendMailService $sendMailService
+    ) {
+        $this->userRepository = $userRepository;
+        $this->sendMailService = $sendMailService;
+    }
+    
     /**
      * @return Application|Factory|View
      */
@@ -87,60 +105,102 @@ class RegisterController extends Controller
     
     /**
      * @param StoreInformationRequest $request
+     * @return RedirectResponse
+     */
+    public function storeInformation(StoreInformationRequest $request): RedirectResponse
+    {
+        $skip = $request->input('is_skip', 0);
+        $params = $request->all();
+        $account = Session::get('user_info', []);
+        
+        session()->put('user_info', [
+            'email' => data_get($account, 'email'),
+            'password' => data_get($account, 'password'),
+            'last_name' => data_get($params, 'last_name'),
+            'first_name' => data_get($params, 'first_name'),
+            'last_name_kana' => data_get($params, 'last_name_kana'),
+            'first_name_kana' => data_get($params, 'first_name_kana'),
+            'zip_code' => data_get($params, 'zip_code'),
+            'prefecture' => data_get($params, 'prefecture'),
+            'address_city' => data_get($params, 'address_city'),
+            'address_block' => data_get($params, 'address_block'),
+            'address_building' => data_get($params, 'address_building'),
+            'tel' => data_get($params, 'tel'),
+            'is_catalog' => data_get($params, 'is_catalog'),
+            'is_dm' => data_get($params, 'is_dm')
+        ]);
+        
+        return match ($skip) {
+            0 => redirect()->route('register.product'),
+            1 => redirect()->route('register.confirm'),
+        };
+    }
+    
+    /**
      * @return Application|Factory|View
      */
-    public function storeInformation(StoreInformationRequest $request)
+    public function product(): View|Factory|Application
     {
-        $params = $request->all();
+        return view('web.register.product');
+    }
+    
+    /**
+     * @param StoreProductRequest $request
+     * @return RedirectResponse
+     */
+    public function storeProduct(StoreProductRequest $request): RedirectResponse
+    {
+        $products = $request->input('products', []);
         
-        session()->push('user_info', [
-            'last_name' => $params['last_name'],
-            'first_name' => $params['first_name'],
-            'last_name_kana' => $params['last_name_kana'],
-            'first_name_kana' => $params['first_name_kana'],
-            'zip_code' => $params['zip_code'],
-            'prefecture' => $params['prefecture'],
-            'address_city' => $params['address_city'],
-            'address_block' => $params['address_block'],
-            'address_building' => $params['address_building'],
-            'tel' => $params['tel'],
-            'is_catalog' => $params['is_catalog'],
-            'is_dm' => $params['is_dm'],
+        foreach ($products as $key => $product) {
+            Session::put('products['.$key.']', [
+                'm_product_id' => data_get($product, 'm_product_id'),
+                'purchase_date' => data_get($product, 'purchase_date'),
+                'shop_id' => data_get($product, 'shop_id'),
+                'product_code' => data_get($product, 'product_code'),
+                'm_color_id' => data_get($product, 'm_color_id'),
+            ]);
+        }
+        
+        return  redirect()->route('register.confirm');
+    }
+    
+    /**
+     * @return Application|Factory|View
+     */
+    public function confirm(): View|Factory|Application
+    {
+        return view('web.register.confirm', [
+            'user' => Session::get('user_info', []),
+            'products' => Session::get('products', [])
         ]);
-//
-//        DB::transaction(function () use ($session, $params) {
-//            $user = User::create([
-//                'email' => $session['email'],
-//                'password' => Hash::make($session['password']),
-//                'last_name' => $params['last_name'],
-//                'first_name' => $params['first_name'],
-//                'last_name_kana' => $params['last_name_kana'],
-//                'first_name_kana' => $params['first_name_kana'],
-//                'zip_code' => $params['zip_code'],
-//                'prefecture' => $params['prefecture'],
-//                'address_city' => $params['address_city'],
-//                'address_block' => $params['address_block'],
-//                'address_building' => $params['address_building'],
-//                'tel' => $params['tel'],
-//                'is_catalog' => $params['is_catalog'],
-//                'is_dm' => $params['is_dm'],
-//            ]);
-//        });
-
-        return view('web.register.product');
     }
-
-    public function product()
+    
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function storeVariable(Request $request): RedirectResponse
     {
-        return view('web.register.product');
+        $user = Session::get('user_info', []);
+        $product = Session::get('products', []);
+        
+        if (!$this->userRepository->createWithProduct($user, $product)) {
+            return redirect()
+                ->back()
+                ->with(['error' => 'エラーが発生しました。']);
+        }
+        
+        // メールの送信
+        $this->sendMailService->send('registration', $user, 1);
+        
+        return redirect()->route('register.complete');
     }
-
-    public function confirm()
-    {
-        return view('web.register.confirm');
-    }
-
-    public function complete()
+    
+    /**
+     * @return Application|Factory|View
+     */
+    public function complete(): View|Factory|Application
     {
         return view('web.register.complete');
     }

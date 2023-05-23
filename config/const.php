@@ -15,11 +15,15 @@ return
         ],
         'masters'=> [
             'label' => 'マスタ管理',
-            'path' => 'admin.masters.index',
+            'path' => 'admin.masters.brand',
         ],
         'staffs'=> [
             'label' => '従業員管理',
             'path' => 'admin.staffs.index',
         ],
     ],
+    
+    'mail' => [
+        'admin' => env('ADMIN_MAIL_TO')
+    ]
 ];

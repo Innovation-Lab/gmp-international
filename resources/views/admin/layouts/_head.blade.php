@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#ffffff">
   <title>@yield('title') | {{ config('app.name').'' }}</title>
   {{-- スタイルシート --}}
-  <link href="{{ asset('css/admin/style-admin.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/style-admin.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   {{-- フォント --}}
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">

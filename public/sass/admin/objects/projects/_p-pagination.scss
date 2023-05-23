@@ -1,0 +1,131 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Pagination ページネーション
+================================================== */
+.p-pagination {
+  width: 100%;
+
+  /* ! --------------------------------------------------
+  　コンテント
+  -------------------------------------------------- */
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* ! --------------------------------------------------
+  　カウント
+  -------------------------------------------------- */
+  // 開始
+  &__count {
+    @extend .c-text__sm !optional;
+    color: var(--color_text_2);
+    display: flex;
+    align-items: center;
+    margin: 0 auto 0 0;
+    &__start {
+    }
+    &__end {
+      &::before {
+        content: "~";
+      }
+    }
+    &__amount {
+      &::before {
+        content: "/";
+        @extend .c-text__xs !optional;
+        display: inline-flex;
+        margin: 0 0.25rem;
+      }
+      &::after {
+        content: "件";
+        @extend .c-text__xs !optional;
+        display: inline-flex;
+        margin: 0 0 0 0.125rem;
+      }
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　ページ
+  -------------------------------------------------- */
+  &__page {
+    color: var(--color_text_2);
+    @extend .c-text__sm !optional;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    // 分子
+    &__numerator {
+      select {
+        width: 5rem;
+        text-align: center;
+      }
+    }
+    // 分母
+    &__denominator {
+      display: flex;
+      align-items: center;
+      &::before {
+        content: "/";
+        @extend .c-text__xs !optional;
+        display: inline-flex;
+        margin: 0 0.25rem 0 0;
+      }
+      &::after {
+        content: "ページ";
+        @extend .c-text__xs !optional;
+        display: inline-flex;
+        margin: 0 0 0 0.125rem;
+      }
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　移動
+  -------------------------------------------------- */
+  &__transition {
+    display: flex;
+  }
+  &__button {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    background-color: #fff;
+    background-image: url(../img/admin/pagination/arrow.png);
+    background-size: 1rem 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid var(--color_border_1);
+    cursor: pointer;
+    position: relative;
+    & + & {
+      margin: 0 0 0 -1px;
+    }
+    &:hover {
+      background-color: var(--color_background_3);
+      border-color: var(--color_primary);
+      z-index: 1;
+    }
+
+    // 戻る
+    &--prev {
+      @extend .p-pagination__button !optional;
+      transform: rotate(180deg);
+    }
+    &--next {
+      @extend .p-pagination__button !optional;
+    }
+
+    // ディスエイブルド
+    &.disabled {
+      background-color: transparent;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
+}

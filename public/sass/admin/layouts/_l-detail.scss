@@ -1,0 +1,100 @@
+@use "../global/" as global;
+@use "../global/_components.scss";
+
+/* ! ----------
+　サイズ定義
+---------- */
+:root {
+  --width_sidebar_detail: 15rem;
+  @include global.responsive(xl) {
+    --width_sidebar_detail: 17.5rem;
+  }
+}
+
+/* ! ==================================================
+　DetailFlame 詳細ページフレーム
+================================================== */
+.l-detail {
+  flex: auto;
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  grid:
+    "head" auto
+    "middle" auto
+    "body" 1fr
+    "foot" auto
+    / 100%;
+
+  /* ! ----------
+  　Head ヘッド
+  ---------- */
+  &__head {
+    grid-area: head;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  /* ! ----------
+  　Middle ミドル
+  ---------- */
+  &__middle {
+    grid-area: middle;
+  }
+
+  /* ! ----------
+  　Body ボディ
+  ---------- */
+  &__body {
+    grid-area: body;
+    padding: 0 0 2.5rem;
+    &__inner {
+      display: grid;
+      // align-items: flex-start;
+      gap: 1.5rem;
+      grid:
+        "sidebar main" auto
+        / auto 1fr;
+
+      /* ! ----------
+      　1カラム
+      ---------- */
+      .single & {
+        grid:
+          "main" auto
+          / 1fr;
+      }
+    }
+  }
+
+  /* ! ----------
+  　Sidebar サイドバー
+  ---------- */
+  &__sidebar {
+    grid-area: sidebar;
+    width: var(--width_sidebar_detail);
+  }
+
+  /* ! ----------
+  　Main メイン
+  ---------- */
+  &__main {
+    grid-area: main;
+
+    // テーブルを入れる場合
+    &--hidden {
+      @extend .l-detail__main !optional;
+      overflow: hidden;
+    }
+  }
+
+  /* ! ----------
+  　Foot フット
+  ---------- */
+  &__foot {
+    grid-area: foot;
+    position: sticky;
+    bottom: 0;
+  }
+}

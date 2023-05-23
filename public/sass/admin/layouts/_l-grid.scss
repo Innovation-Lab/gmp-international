@@ -1,0 +1,112 @@
+@use "../global" as global;
+@use "../global/_components.scss";
+
+
+.collection-steps-header-progress {
+  margin-bottom: 24px;
+}
+.collection-steps-header-progress-step span {
+  font-size: 12px;
+  font-weight: 500;
+  // ↑ タブレットサイズくらいで 最大14pxを指定
+}
+.steps-product-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(10rem, 1fr));
+  // ↑ タブレットサイズくらいで 最大15remを指定
+  gap: 1rem;
+}
+.steps-product-wrapper .product-block {
+   width: 100%;
+}
+// ↓商品名と金額にクラス付与お願いします。
+.steps-product-wrapper .product-block .title {
+  color: #444;
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+.steps-product-wrapper .product-block .price {
+  color: #000;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 8px 0 0;
+}
+.steps-product-wrapper .product-block .thumb .thumb-square img {
+  border-radius: 16%;
+}
+
+
+/* ! ==================================================
+　Grid グリッド分割
+================================================== */
+.l-grid {
+  display: grid;
+
+  /* ! ----------
+  　分割数
+  ---------- */
+  &__1 {
+    @extend .l-grid !optional;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  &__2 {
+    @extend .l-grid !optional;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  &__3 {
+    @extend .l-grid !optional;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  /* ! ----------
+  　分割数 XL
+  ---------- */
+  @include global.responsive(xl) {
+    &__1--xl {
+      grid-template-columns: 1fr;
+    }
+    &__2--xl {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ! ----------
+  　分割数 LG
+  ---------- */
+  @include global.responsive(lg) {
+    &__1--lg {
+      grid-template-columns: 1fr;
+    }
+    &__2--lg {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ! ----------
+    フィット
+  ---------- */
+  &__fit {
+    display: flex;
+    gap: 0.5rem;
+    > * {
+      flex: 1;
+    }
+  }
+  
+  /* ! ----------
+    フィット
+  ---------- */
+
+  /* ! --------------------------------------------------
+  　Gap ギャップ
+  -------------------------------------------------- */
+  &__gap0 {
+    gap: 0;
+  }
+  &__gap1 {
+    gap: 0.5rem;
+  }
+}

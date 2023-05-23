@@ -1,0 +1,16 @@
+@use "../variables/_breakpoints.scss" as breakpoints;
+
+/* ! ==================================================
+　Responsive レスポンシブ
+================================================== */
+@mixin responsive($breakpoint) {
+  @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+    @media screen and #{inspect(map-get(breakpoints.$breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+  // エラー時
+  @else {
+    @error "指定されたブレークポイントは定義されていません。" + "指定できるブレークポイントは次のとおりです。 -> #{map-keys(breakpoints.$breakpoints)}";
+  }
+}

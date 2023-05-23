@@ -1,0 +1,42 @@
+@use "../../global" as global;
+
+/* ! ==================================================
+　Loading ローディング
+================================================== */
+.c-loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  &.is-hide {
+    animation-name: hide-loading;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes hide-loading {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* ! ----------
+  　画像
+  ---------- */
+  img {
+    margin: -2rem 0 1rem;
+  }
+}

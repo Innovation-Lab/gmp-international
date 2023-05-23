@@ -1,0 +1,47 @@
+/* ! ==================================================
+　Global Navigation
+================================================== */
+.p-gnav {
+  display: grid;
+
+  /* ! ----------
+  　Button
+  ---------- */
+  &__button {
+    font-weight: 700;
+    color: var(--color_text_button);
+    letter-spacing: 0.08em;
+    height: 3.5rem;
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 1.5rem;
+    transition: background 0.1s ease;
+    position: relative;
+    &:hover {
+      background-color: var(--color_background_3);
+    }
+    
+    // メニュー非表示時
+    .is-hide & {
+      gap: 0;
+    }
+
+    /* ! ----------
+    　ラベル
+    ---------- */
+    label {
+    }
+    .is-hide & label {
+      display: none;
+    }
+
+    /* ! ----------
+    　Active
+    ---------- */
+    .is-active & {
+      color: var(--color_primary);
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Login ログインページ
+================================================== */
+.p-login {
+  width: 100%;
+  min-width: global.rem(1024px);
+  display: grid;
+  place-items: center;
+  padding: 0 0 2rem;
+
+  .container {
+    max-width: global.rem(1200px);
+    margin: 0 auto;
+  }
+
+  /* ! ----------
+  　ヘッド
+  ---------- */
+  &__head {
+    margin: 0 0 2.5rem;
+  }
+
+  /* ! ----------
+  　ボディ
+  ---------- */
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 5rem;
+    background-color: var(--color_background_3);
+    border-radius: 3.5rem;
+
+    /* ! ----------
+    　テキスト
+    ---------- */
+    &__text {
+      max-width: global.rem(400px);
+      &__head {
+        margin: 0 0 1.5rem;
+        &__title {
+          @extend .c-text__lg !optional;
+        }
+      }
+    }
+
+    input {
+      font-size: 1rem;
+      height: 3.5rem;
+      padding: 0 1rem;
+    }
+    .c-button {
+      font: global.font(400, 16px, 1);
+      width: 100%;
+      height: 3.5rem;
+    }
+    /* ! ----------
+    　画像
+    ---------- */
+    &__image {
+      transform: translateY(-2rem);
+      position: relative;
+      img {
+        max-width: none;
+        width: global.rem(720px);
+        height: global.rem(560px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -50%) scale(0.8);
+        @include global.responsive(xl) {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+  }
+
+  /* ! ----------
+  　フット
+  ---------- */
+  &__foot {
+    @extend .c-text__xxs !optional;
+    margin: 2rem 0 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
