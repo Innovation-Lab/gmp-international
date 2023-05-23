@@ -403,7 +403,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">購入店舗</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></an> ' +
+                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a> ' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data parent-element"> ' +
