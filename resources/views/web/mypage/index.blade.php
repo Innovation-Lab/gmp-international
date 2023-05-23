@@ -19,136 +19,54 @@
         </div>
         <!-- 登録製品複数の場合 -->
         <ul class="p-card">
-          <li>
-            <div class="p-card__item">
-              <div class="p-card__box">
-                <div class="p-card__info">
-                  <!-- ブランド・製品名・カラー -->
-                  <div class="p-card__mainData">
-                    <div class="p-card__brand">
-                      <p class="c-txt">AIR BUGGY</p>
-                    </div>
-                    <div class="p-card__product">
-                      <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
-                    </div>
-                    <div class="p-card__color">
-                      <div class="c-colorBall" style="background: #A3BBB1;">
-                        {{-- 2色の場合に追加 --}}
-                        <div class="c-colorBall__pallet2" style="background: #fff;"></div>
+          @foreach ($sales_products as $sales_product)
+            <li>
+              <div class="p-card__item">
+                <div class="p-card__box">
+                  <div class="p-card__info">
+                    <!-- ブランド・製品名・カラー -->
+                    <div class="p-card__mainData">
+                      <div class="p-card__brand">
+                        <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
                       </div>
-                      <p class="c-txt">GRASS GREEN</p>
-                    </div>
-                  </div>
-                  <div class="p-card__subData">
-                    <!-- 購入日・シリアルナンバー -->
-                    <div class="p-card__purchase">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
-                      <p class="data c-txt">2023/04/04</p>
-                    </div>
-                    <!-- 購入店舗 -->
-                    <div class="p-card__store">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                      <p class="data c-txt">エアバギー代官山店</p>
-                    </div>
-                    <div class="p-card__serialNum">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
-                      <p class="data c-txt">GMP123456789</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- 製品画像 -->
-                <div class="p-card__img">
-                  <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="p-card__item">
-              <div class="p-card__box">
-                <div class="p-card__info">
-                  <!-- ブランド・製品名・カラー -->
-                  <div class="p-card__mainData">
-                    <div class="p-card__brand">
-                      <p class="c-txt">AIR BUGGY</p>
-                    </div>
-                    <div class="p-card__product">
-                      <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
-                    </div>
-                    <div class="p-card__color">
-                      {{-- 画像表示の場合 --}}
-                      <div class="c-colorBall" style="background: url({{asset('img/web/sample/c-color--camo.png')}})"></div>
-                      <p class="c-txt">CAMO PRINT</p>
-                    </div>
-                  </div>
-                  <div class="p-card__subData">
-                    <!-- 購入日・シリアルナンバー -->
-                    <div class="p-card__purchase">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
-                      <p class="data c-txt">2023/04/04</p>
-                    </div>
-                    <!-- 購入店舗 -->
-                    <div class="p-card__store">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                      <p class="data c-txt">エアバギー代官山店</p>
-                    </div>
-                    <div class="p-card__serialNum">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
-                      <p class="data c-txt">GMP123456789</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- 製品画像 -->
-                <div class="p-card__img">
-                  <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="p-card__item">
-              <div class="p-card__box">
-                <div class="p-card__info">
-                  <!-- ブランド・製品名・カラー -->
-                  <div class="p-card__mainData">
-                    <div class="p-card__brand">
-                      <p class="c-txt">AIR BUGGY</p>
-                    </div>
-                    <div class="p-card__product">
-                      <p class="c-txt c-txt--lg">COCO PREMIER FROM BIRTH</p>
-                    </div>
-                    <div class="p-card__color">
-                      <div class="c-colorBall" style="background: #A3BBB1;">
-                        {{-- 2色の場合に追加 --}}
-                        <div class="c-colorBall__pallet2" style="background: #fff;"></div>
+                      <div class="p-card__product">
+                        <p class="c-txt c-txt--lg">{{ $sales_product->mProduct->name }}</p>
                       </div>
-                      <p class="c-txt">GRASS GREEN</p>
+                      <div class="p-card__color">
+                        <div class="c-colorBall" style="background: #A3BBB1;">
+                          {{-- 2色の場合に追加 --}}
+                          <div class="c-colorBall__pallet2" style="background: #fff;"></div>
+                        </div>
+                        <p class="c-txt">
+                          {{ data_get($sales_product, 'mProduct.color')}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="p-card__subData">
+                      <!-- 購入日・シリアルナンバー -->
+                      <div class="p-card__purchase">
+                        <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
+                        <p class="data c-txt">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
+                      </div>
+                      <!-- 購入店舗 -->
+                      <div class="p-card__store">
+                        <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
+                        <p class="data c-txt">{{ data_get($sales_product, 'mShop.name') }}</p>
+                      </div>
+                      <div class="p-card__serialNum">
+                        <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
+                        <p class="data c-txt">{{ data_get($sales_product, 'product_code') }}</p>
+                      </div>
                     </div>
                   </div>
-                  <div class="p-card__subData">
-                    <!-- 購入日・シリアルナンバー -->
-                    <div class="p-card__purchase">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入日</p>
-                      <p class="data c-txt">2023/04/04</p>
-                    </div>
-                    <!-- 購入店舗 -->
-                    <div class="p-card__store">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                      <p class="data c-txt">エアバギー代官山店</p>
-                    </div>
-                    <div class="p-card__serialNum">
-                      <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
-                      <p class="data c-txt">GMP123456789</p>
-                    </div>
+                  <!-- 製品画像 -->
+                  <div class="p-card__img">
+                    <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
                   </div>
-                </div>
-                <!-- 製品画像 -->
-                <div class="p-card__img">
-                  <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
+          @endforeach
         </ul>
       </div>
       <!-- 一覧ページボタン -->

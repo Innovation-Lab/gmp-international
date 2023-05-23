@@ -23,51 +23,52 @@
       <div class="p-mypage__body">
         <!-- 登録製品複数の場合 -->
         <ul class="p-card--list">
-          <?php for($i=0; $i<6; $i++) {	?>
-          <li>
-            <div class="p-card__item p-card__item--list">
-              <div class="p-card__info">
-                <!-- ブランド・製品名・カラー -->
-                <div class="p-card__mainData">
-                  <div class="p-card__brand">
-                    <p class="c-txt">AIR BUGGY</p>
+          
+            @foreach ($sales_products as $sales_product)
+              <li>
+                <div class="p-card__item p-card__item--list">
+                  <div class="p-card__info">
+                    <!-- ブランド・製品名・カラー -->
+                    <div class="p-card__mainData">
+                      <div class="p-card__brand">
+                        <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
+                      </div>
+                      <div class="p-card__product">
+                        <p class="c-txt c-txt--md">{{ $sales_product->mProduct->name }}</p>
+                        <p class="c-txt c-txt--sm">{{ $sales_product->mProduct->name_kana }}</p>
+                      </div>
+                      <div class="p-card__color">
+                        <div class="c-colorBall"></div>
+                        <p class="c-txt">{{ data_get($sales_product, 'mProduct.color')}}</p>
+                      </div>
+                    </div>
+                    <div class="p-card__subData p-card__subData--list">
+                      <!-- 購入日・シリアルナンバー・購入店舗 -->
+                      <div class="p-card__purchase">
+                        <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
+                        <p class="data c-txt">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
+                      </div>
+                      <div class="p-card__serialNum">
+                        <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
+                        <p class="data c-txt">{{ data_get($sales_product, 'product_code') }}</p>
+                      </div>
+                      <div class="p-card__store">
+                        <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
+                        <p class="data c-txt">{{ data_get($sales_product, 'mShop.name') }}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="p-card__product">
-                    <p class="c-txt c-txt--md">COCO PREMIER FROM BIRTH</p>
-                    <p class="c-txt c-txt--sm">ココプレミア フロムバース</p>
+                  <div class="p-card__other">
+                    <!-- 製品画像 -->
+                    <div class="p-card__img">
+                      <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
+                    </div>
+                    <!-- 編集ボタン -->
+                    <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh" data-micromodal-trigger="modal-edit--product" role="button">編集する</button>
+                    </div>
                   </div>
-                  <div class="p-card__color">
-                    <div class="c-colorBall"></div>
-                    <p class="c-txt">GRASS GREEN</p>
-                  </div>
-                </div>
-                <div class="p-card__subData p-card__subData--list">
-                  <!-- 購入日・シリアルナンバー・購入店舗 -->
-                  <div class="p-card__purchase">
-                    <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
-                    <p class="data c-txt">2023/04/04</p>
-                  </div>
-                  <div class="p-card__serialNum">
-                    <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
-                    <p class="data c-txt">GMP123456789</p>
-                  </div>
-                  <div class="p-card__store">
-                    <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                    <p class="data c-txt">エアバギー代官山店</p>
-                  </div>
-                </div>
-              </div>
-              <div class="p-card__other">
-                <!-- 製品画像 -->
-                <div class="p-card__img">
-                  <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
-                </div>
-                <!-- 編集ボタン -->
-                <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh" data-micromodal-trigger="modal-edit--product" role="button">編集する</button>
-                </div>
-              </div>
-          </li>
-          <?php } ?>
+              </li>
+            @endforeach
         </ul>
       </div>
     </div>
