@@ -242,7 +242,7 @@
 
   <script>
       $(document).ready(function() {
-          var formCount = 1;
+          var num = 2;
 
           otherTextBind();
 
@@ -259,7 +259,6 @@
               });
           }
 
-          var num = formCount + 1;
           $.ajax({
               url: '/register/js-get-array',
               method: 'GET',
@@ -426,7 +425,7 @@
                       $('.c-input--date input').each(function(index, elem) {
                           $(elem).datepicker();
                       });
-                      formCount++;
+                      num++;
                   }
 
 
