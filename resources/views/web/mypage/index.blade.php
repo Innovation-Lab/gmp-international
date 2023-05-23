@@ -30,7 +30,7 @@
                         <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
                       </div>
                       <div class="p-card__product">
-                        <p class="c-txt c-txt--lg">{{ $sales_product->mProduct->name }}</p>
+                        <p class="c-txt c-txt--lg">{{ data_get($sales_product, 'mProduct.name') }}</p>
                       </div>
                       <div class="p-card__color">
                         <div class="c-colorBall" style="background: #A3BBB1;">
@@ -95,10 +95,10 @@
             </div>
           </div>
           <div class="p-info__txt">
-            <p class="c-txt" data-ttl="氏名">{{ $user->full_name }}（{{ $user->full_name_kana }}）</p>
-            <p class="c-txt" data-ttl="郵便番号">〒{{ $user->zip_code }}</p>
-            <p class="c-txt" data-ttl="住所">{{ $user->full_address }}</p>
-            <p class="c-txt" data-ttl="電話番号">{{ $user->tel }}</p>
+            <p class="c-txt" data-ttl="氏名">{{ data_get($user, 'full_name') }}（{{ data_get($user, 'full_name_kana') }}）</p>
+            <p class="c-txt" data-ttl="郵便番号">〒{{ data_get($user, 'zip_code') }}</p>
+            <p class="c-txt" data-ttl="住所">{{ data_get($user, 'full_address') }}</p>
+            <p class="c-txt" data-ttl="電話番号">{{ data_get($user, 'formatted_tel') }}</p>
             <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>{{ $catalog_request }}</p>
             <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>{{ $dm_request }}</p>
           </div>
@@ -115,7 +115,7 @@
             </div>
           </div>
           <div class="p-info__txt">
-            <p class="c-txt" data-ttl="メールアドレス">{{ $user->email }}</p>
+            <p class="c-txt" data-ttl="メールアドレス">{{ data_get($user, 'email') }}</p>
             <p class="c-txt" data-ttl="パスワード">パスワードはセキュリティのため非表示</p>
           </div>
         </div>
