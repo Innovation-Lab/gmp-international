@@ -48,7 +48,7 @@
                       <!-- 姓 -->
                       <div class="c-input__item @error('last_name') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name') }}">
+                          <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name', data_get($user, 'last_name')) }}">
                         </div>
                         @error('last_name')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -57,7 +57,7 @@
                       <!-- 名 -->
                       <div class="c-input__item @error('first_name') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name') }}">
+                          <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name', data_get($user, 'first_name')) }}">
                         </div>
                         @error('first_name')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -78,7 +78,7 @@
                       <!-- セイ -->
                       <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana') }}">
+                          <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana', data_get($user, 'last_name_kana')) }}">
                         </div>
                         @error('last_name_kana')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -87,7 +87,7 @@
                       <!-- メイ -->
                       <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
                         <div class="c-input">
-                          <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana') }}">
+                          <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana', data_get($user, 'first_name_kana')) }}">
                         </div>
                         @error('last_name_kana')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -105,7 +105,7 @@
                   </div>
                   <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
                     <div class="c-input c-input--post">
-                      <input id="postcode" placeholder="半角数値7桁" maxlength="7" class="required p-postal-code" name="zip_code" type="text" value="{{ old('zip_code') }}" pattern="[0-9]{7}">
+                      <input id="postcode" placeholder="半角数値7桁" maxlength="7" class="required p-postal-code" name="zip_code" type="text" value="{{ old('zip_code', data_get($user, 'zip_code')) }}" pattern="[0-9]{7}">
                     </div>
                     @error('zip_code')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -121,34 +121,34 @@
                   </div>
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
-                      <select id="prefecture" name="prefecture" class="p-region" value="">
+                      <select id="prefecture" name="prefecture" class="p-region">
                         @foreach($prefectures as $index => $name)
                           <option value="" hidden>都道府県</option>
-                          <option value="{{ $index }}" {{ old('prefecture') == $index ? 'selected' : '' }} >{{ $name }}</option>
+                          <option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
                         @endforeach
                       </select>
+                      @error('prefecture')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="c-input">
-                      <input id="address2" placeholder="市区町村" class="required p-locality p-street-address " name="address_city" type="text" value="{{ old('address_city') }}">
+                      <input id="address2" placeholder="市区町村" class="required p-locality p-street-address " name="address_city" type="text" value="{{ old('address_city', data_get($user, 'address_city')) }}">
+                      @error('address_city')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="c-input">
-                      <input placeholder="番地" class="required p-extended-address" name="address_block" type="text" value="{{ old('address_block') }}">
+                      <input placeholder="番地" class="required p-extended-address" name="address_block" type="text" value="{{ old('address_block', data_get($user, 'address_block')) }}">
+                      @error('address_block')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="c-input">
-                      <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building') }}">
+                      <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building', data_get($user, 'address_building')) }}">
+                      @error('address_building')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
-                    @error('prefecture')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
-                    @error('address_city')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
-                    @error('address_block')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
-                    @error('address_building')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
                   </div>                  
                 </div>
               </li>
