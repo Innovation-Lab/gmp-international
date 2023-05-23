@@ -50,7 +50,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date">
-                        <input id="date" placeholder="0000/00/00" class="required" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
+                        <input id="date" placeholder="0000/00/00" class="required add-input--date1" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
                       </div>
                     </div>
                   </div>
@@ -162,7 +162,7 @@
                           <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）アカチャンホンポ○○店" class="" name="products[1][other_shop]" type="text" value="{{ old('products[1][other_shop"]') }}">
+                          <input placeholder="例）アカチャンホンポ○○店" class="" name="products[1][other_shop_name]" type="text" value="{{ old('products[1][other_shop_name"]') }}">
                         </div>
                       </div>
                     </div>
@@ -229,7 +229,13 @@
   {{-- 日付選択 --}}
   <script>
       $(function() {
-          $('.c-input--date input').datepicker();
+          var dateClass = '.add-input--date' + 1;
+          console.log(dateClass);
+          $(dateClass).datepicker({
+              onSelect: function(dateText) {
+                  $(this).val(dateText);
+              }
+          });
       });
   </script>
 
@@ -321,7 +327,7 @@
                       '        </div> ' +
                       '        <div class="p-formList__data"> ' +
                       '            <div class="c-input c-input--date"> ' +
-                      '                <input id="date" placeholder="0000/00/00" class="required" required="required" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
+                      '                <input id="date" placeholder="0000/00/00" class="required  add-input--date'+ num + '" required="required" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
                       '            </div> ' +
                       '        </div> ' +
                       '    </div> ' +
@@ -343,7 +349,7 @@
                       '  <li class="p-formList__item"> ' +
                       '      <div class="p-formList__content"> ' +
                       '          <div class="p-formList__label"> ' +
-                      '              <p class="c-txt">製品名</p> ' +
+                      '              <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data"> ' +
                       '              <div class="c-input c-input--select"> ' +
@@ -410,7 +416,7 @@
                       '                      <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p> ' +
                       '                  </div> ' +
                       '                  <div class="p-formList__data"> ' +
-                      '                      <input placeholder="例）アカチャンホンポ○○店" class="required" name="products['+ num +']['+ 'other_shop' +']" type="text" value=""> ' +
+                      '                      <input placeholder="例）アカチャンホンポ○○店" class="required" name="products['+ num +']['+ 'other_shop_name' +']" type="text" value=""> ' +
                       '                  </div> ' +
                       '              </div> ' +
                       '          </div> ' +
@@ -422,12 +428,8 @@
                       $('.add_product').last().after(newForm);
                       otherTextBind();
 
-                      $('.c-input--date input').each(function(index, elem) {
-                          $(elem).datepicker();
-                      });
                       num++;
                   }
-
 
                   $('.js-add-more-product').on('click', function() {
                       addForm();
