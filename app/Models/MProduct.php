@@ -33,7 +33,7 @@ class MProduct extends Model
      */
     public function mBrand(): BelongsTo
     {
-        return $this->belongsTo(MBrand::class, 'brand_id');
+        return $this->belongsTo(MBrand::class);
     }
 
     /**
@@ -43,13 +43,13 @@ class MProduct extends Model
     {
         return $this->hasMany(MColor::class);
     }
-
+    
     /**
-     * @return HasOne
+     * @return HasMany
      */
-    public function SalesProduct(): BelongsTo
+    public function SalesProduct(): HasMany
     {
-        return $this->belongsTo(SalesProduct::class);
+        return $this->hasMany(SalesProduct::class);
     }
 
     public function getColorAttribute()

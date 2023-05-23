@@ -97,4 +97,23 @@ class User extends Authenticatable
     {
         return isset(self::CATALOG_STATUS[$this->is_dm]) ? self::CATALOG_STATUS[$this->is_dm] : '希望しない';
     }
+
+    /**
+     * @return string
+     * 電話番号のハイフン表示
+     */
+    public function getFormattedTelAttribute(): string
+    {
+        $tel = $this->attributes['tel'];
+
+        if (strlen($tel) === 10) {
+            $formatted_tel = substr($tel, 0, 2) . '-' . substr($tel, 2, 4) . '-' . substr($tel, 6, 4);
+        } elseif (strlen($tel) === 11) {
+            $formatted_tel = substr($tel, 0, 3) . '-' . substr($tel, 3, 4) . '-' . substr($tel, 7, 4);
+        } elseif (strlen($tel) === 12) {
+            $formatted_tel = substr($tel, 0, 4) . '-' . substr($tel, 4, 4) . '-' . substr($tel, 8, 4);
+        }
+
+        return $formatted_tel;
+    }
 }
