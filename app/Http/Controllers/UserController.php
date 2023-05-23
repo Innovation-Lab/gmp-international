@@ -31,23 +31,9 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $sales_products = data_get($user, 'salesProducts');
-        
-        if(Auth::user()->is_catalog == 1) {
-            $catalog_request = '希望する';
-        } else {
-            $catalog_request = '希望しない';
-        }
-
-        if(Auth::user()->is_dm == 1) {
-            $dm_request = '希望する';
-        } else {
-            $dm_request = '希望しない';
-        }
 
         return view('web.mypage.index')->with([
             'user' => $user,
-            'catalog_request' => $catalog_request,
-            'dm_request' => $dm_request,
             'sales_products' => $sales_products,
         ]);
 

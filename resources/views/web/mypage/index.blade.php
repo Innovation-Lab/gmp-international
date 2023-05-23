@@ -99,8 +99,8 @@
             <p class="c-txt" data-ttl="郵便番号">〒{{ $user->zip_code }}</p>
             <p class="c-txt" data-ttl="住所">{{ $user->full_address }}</p>
             <p class="c-txt" data-ttl="電話番号">{{ $user->tel }}</p>
-            <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>{{ $catalog_request }}</p>
-            <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>{{ $dm_request }}</p>
+            <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>{{ $user->string_catalog }}</p>
+            <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>{{ $user->string_dm }}</p>
           </div>
         </div>
         <!-- アカウント情報 -->

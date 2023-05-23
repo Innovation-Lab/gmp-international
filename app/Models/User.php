@@ -21,15 +21,17 @@ class User extends Authenticatable
     protected $guarded = [
         'id'
     ];
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'remember_token',
+    
+    public const CATALOG_STATUS = [
+        0 => '希望しない',
+        1 => '希望する'
     ];
-
+    
+    public const DM_STATUS = [
+        0 => '希望しない',
+        1 => '希望する'
+    ];
+    
     public function sendPasswordResetNotification($token): void
     {
         $url = url("reset-password/{token}");
@@ -78,5 +80,21 @@ class User extends Authenticatable
     public function getFullAddressAttribute(): string
     {
         return $this->prefecture .' '. $this->address_city .' '. $this->address_block .' '. $this->address_building;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getStringCatalogAttribute(): string
+    {
+        return isset(self::CATALOG_STATUS[$this->is_catalog]) ? self::CATALOG_STATUS[$this->is_catalog] : '希望しない';
+    }
+    
+    /**
+     * @return string
+     */
+    public function getStringDmAttribute(): string
+    {
+        return isset(self::CATALOG_STATUS[$this->is_dm]) ? self::CATALOG_STATUS[$this->is_dm] : '希望しない';
     }
 }
