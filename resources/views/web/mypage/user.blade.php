@@ -1,5 +1,5 @@
 @extends('web.layouts.pages._form')
-@section('title', 'ユーザー情報の編集')
+@section('title', 'ユーザー情報の変更')
 @section('class', 'body_')
 @section('content')
   <div class="l-frame__body">
@@ -7,7 +7,7 @@
       <div class="p-formPage__head">
         <div class="l-container">
           <div class="p-formPage__head__ttl">
-            <p class="c-ttl">ユーザー情報の編集</p>
+            <p class="c-ttl">ユーザー情報の変更</p>
           </div>
         </div>
       </div>

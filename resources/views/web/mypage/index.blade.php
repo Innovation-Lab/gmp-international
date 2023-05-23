@@ -149,7 +149,7 @@
               </div>
             </div>
             <div class="p-info__txt">
-              <p class="c-txt" data-ttl="氏名">{{ data_get($user, 'full_name') }}（{{ data_get($user, 'full_name_kana') }}）</p>
+              <p class="c-txt" data-ttl="お名前">{{ data_get($user, 'full_name') }}（{{ data_get($user, 'full_name_kana') }}）</p>
               <p class="c-txt" data-ttl="郵便番号">〒{{ data_get($user, 'zip_code') }}</p>
               <p class="c-txt" data-ttl="住所">{{ data_get($user, 'full_address') }}</p>
               <p class="c-txt" data-ttl="電話番号">{{ data_get($user, 'formatted_tel') }}</p>
