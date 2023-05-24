@@ -58,19 +58,19 @@ class UserController extends Controller
      * 製品追加登録
      * @return View
      */
-    public function productAdd(): View
-    {
-        return view('web.mypage.product.add');
-    }
+    // public function productAdd(): View
+    // {
+    //     return view('web.mypage.product.add');
+    // }
     
     /**
      * 製品追加登録 確認
      * @return View
      */
-    public function productConfirm(): View
-    {
-        return view('web.mypage.product.confirm');
-    }
+    // public function productConfirm(): View
+    // {
+    //     return view('web.mypage.product.confirm');
+    // }
 
     /**
      * アカウント情報 編集
@@ -90,8 +90,9 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function accountUpdate(User $user, updateAccountRequest $request)
+    public function accountUpdate(updateAccountRequest $request)
     {
+        $user = Auth::user();
         if ($this->user_repository->accountUpdate($user, $request)) {
             return redirect()
                 ->route('mypage.index', $user)
@@ -124,8 +125,9 @@ class UserController extends Controller
      * 基本情報 更新
      * @return View
      */
-    public function userUpdate(User $user, StoreInformationRequest $request)
+    public function userUpdate(StoreInformationRequest $request)
     {
+        $user = Auth::user();
         if ($this->user_repository->userUpdate($user, $request)) {
             return redirect()
             ->route('mypage.index', $user)
