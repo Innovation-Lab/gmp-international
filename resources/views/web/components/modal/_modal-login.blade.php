@@ -10,7 +10,7 @@
       <main class="modal__content" id="modal-1-content">
         <div class="p-login__auth p-login__auth--modal">
           {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
-            <input class="mailbox" type="email" name="email" placeholder="メールアドレス">
+            <input class="mailbox" type="email" name="email" placeholder="メールアドレス" value="{{ old('email') }}">
             <input class="passbox" type="password" name="password" placeholder="パスワード">
             @foreach ($errors->all() as $error)
               <p class="c-txt c-txt--err">{{ $error }}</p>
