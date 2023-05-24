@@ -70,6 +70,9 @@
             <button type="submit" class="c-btn c-btn--next" form="accountSubmitForm">登録する</button>
           </div>
         </div>
+        <div class="p-formPage__btn">
+          <a class="c-btn c-btn--text" href="{{route}}">退会手続きへ</a>
+        </div>
       </div>
     </div>
   </div>

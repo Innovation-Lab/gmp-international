@@ -56,6 +56,9 @@
       width: 50%;
       padding-left: 56px;
     }
+    form{
+      min-width: 300px;
+    }
     .login{
       &:hover{
         background: #e8e8e8;
@@ -89,6 +92,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        min-width: 250px;
       }
       .login{
         margin-top: 16px;

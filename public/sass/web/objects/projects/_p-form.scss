@@ -97,6 +97,12 @@
         }
       }
     }
+    &__btn{
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     //完了画面
     &__complete{
       margin: 120px auto 0;
@@ -360,5 +366,6 @@
         border: none;
       }
     }
+    
   }
 }

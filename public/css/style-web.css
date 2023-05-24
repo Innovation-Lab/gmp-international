@@ -1661,6 +1661,9 @@ input[type=file] + label img {
     padding-left: 56px;
   }
 }
+.p-login__auth form {
+  min-width: 300px;
+}
 .p-login__auth .login:hover {
   background: #e8e8e8;
   transition-property: box-shadow, color, background-color;
@@ -1694,6 +1697,7 @@ input[type=file] + label img {
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-width: 250px;
 }
 .p-login__auth--modal .login {
   margin-top: 16px;
@@ -5114,6 +5118,12 @@ input[type=file] + label img {
     border-radius: 16px;
     padding: 48px;
   }
+}
+.p-formPage__btn {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .p-formPage__complete {
   margin: 120px auto 0;
