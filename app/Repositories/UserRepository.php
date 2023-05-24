@@ -37,14 +37,22 @@ class UserRepository implements UserRepositoryInterface
 
     public function accountUpdate(User $user, Request $request)
     {
-        return DB::transaction(function () use ($user, $request) {
+        DB::beginTransaction();
+        try {
             $data = $request->all();
             $data['password'] = Hash::make($data['password']);
             unset($data['password_confirmation']);
             unset($data['_token']);
             $user->fill($data)->save();
-            return $user;
-        });
+            
+            DB::commit();
+            return true;
+        } catch(\Exception $e) {
+            DB::rollback();
+        }
+
+
+        return false;
     }
 
     public function userUpdate(User $user, Request $request)
