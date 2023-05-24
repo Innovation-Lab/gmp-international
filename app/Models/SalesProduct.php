@@ -39,7 +39,7 @@ class SalesProduct extends Model
      */
     public function mShop(): BelongsTo
     {
-        return $this->belongsTo(MShop::class, 'shop_id');
+        return $this->belongsTo(MShop::class);
     }
 
     /**
