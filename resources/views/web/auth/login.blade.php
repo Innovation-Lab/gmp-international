@@ -56,7 +56,7 @@
               <p class="c-ttl">登録済みの方はこちら</p>
             </div>
             {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
-              <input class="mailbox" type="email" name="email" placeholder="メールアドレス">
+              <input class="mailbox" type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
               @error('email')
                <p class="c-txt c-txt--err">{{ $message }}</p>
               @enderror
