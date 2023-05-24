@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SalesProductController;
 
 require __DIR__.'/auth.php';
 
@@ -69,14 +70,18 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
 
         Route::get('/product', [UserController::class, 'productsList'])->name('index');
-        
+
         //登録済み製品一覧
         Route::get('/product', [UserController::class, 'product'])->name('product');
+
         //製品の追加登録
-        Route::get('/add', [UserController::class, 'productAdd'])->name('add');
+        Route::get('/add', [SalesProductController::class, 'product'])->name('add');
+        Route::post('/add', [SalesProductController::class, 'productAdd'])->name('add');
+
         //製品の入力情報確認
-        Route::get('/confirm', [UserController::class, 'productConfirm'])->name('confirm');
-        
+        Route::get('/confirm', [SalesProductController::class, 'productConfirm'])->name('confirm');
+        Route::post('/store', [SalesProductController::class, 'store'])->name('store');
+
         //アカウント情報編集
         Route::get('/account', [UserController::class, 'account'])->name('account');
         Route::post('/account', [UserController::class, 'accountUpdate'])->name('account');

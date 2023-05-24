@@ -53,24 +53,6 @@ class UserController extends Controller
             'sales_products' => $sales_products,
         ]);
     }
-    
-    /**
-     * 製品追加登録
-     * @return View
-     */
-    public function productAdd(): View
-    {
-        return view('web.mypage.product.add');
-    }
-    
-    /**
-     * 製品追加登録 確認
-     * @return View
-     */
-    public function productConfirm(): View
-    {
-        return view('web.mypage.product.confirm');
-    }
 
     /**
      * アカウント情報 編集

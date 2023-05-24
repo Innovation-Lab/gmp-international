@@ -23,24 +23,26 @@ class StoreProductRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->request);
         return [
+            'purchase_date' => 'required',
+            'm_brand_id' => 'required',
             'm_product_id' => 'required',
-            'shop_id' => 'required',
         ];
     }
     
     public function attributes()
     {
         return [
-            'm_product_id' => '商品',
-            'shop_id' => '店舗',
+            'purchase_date' => '購入日',
+            'm_brand_id' => 'ブランド',
+            'm_product_id' => '製品',
         ];
     }
     
     public function messages()
     {
         return [
+            'purchase_date.required' => '購入日を入力してください。',
             '*.required' => ':attributeを選択してください。',
         ];
     }

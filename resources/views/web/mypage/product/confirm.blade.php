@@ -7,13 +7,12 @@
       <div class="p-formPage__head">
         <div class="l-container">
           <div class="p-formPage__head__ttl">
-            <p class="c-ttl">新規会員登録</p>
+            <p class="c-ttl">製品の追加登録</p>
           </div>
         </div>
       </div>
       <div class="l-container">
         <div class="p-formPage__body p-formPage__body--thin">
-          
           <div class="l-stack">
             <div class="l-stack__item">
               <p class="c-description">
@@ -25,56 +24,59 @@
                 <!-- 購入製品 -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="l-stack">
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">購入日</p>
+                    <form method="POST" action="{{ route('mypage.store') }}" id="salesProductSubmitForm">
+                      @csrf
+                      <div class="l-stack">
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">購入日</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'purchase_date') }}</p>
+                          </div>
                         </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">2023/04/04</p>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">ブランド名</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_brand_id') ? $brands[data_get($product, 'm_brand_id')] : '指定なし' }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">製品名</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_product_id') ? $products[data_get($product, 'm_product_id')] : '指定なし' }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">カラー</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != 'other' ? $colors[data_get($product, 'm_color_id')] : data_get($product, 'other_color_name', '指定なし') }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">シリアルナンバー</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'product_code', '指定なし') }}</p>
+                          </div>
+                        </div>
+                        <div class="l-stack__item">
+                          <div class="p-formList__label">
+                            <p class="c-txt">購入店舗</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <p class="c-txt">{{ data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != 'other' ? $shops[data_get($product, 'm_shop_id')] : data_get($product, 'other_shop_name', '指定なし') }}</p>
+                          </div>
                         </div>
                       </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">ブランド名</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">AIRBUGGY</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">製品名</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">COCO PREMIER FROM BIRTH</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">カラー</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">グリーンティー</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">シリアルナンバー</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">GMP123456789</p>
-                        </div>
-                      </div>
-                      <div class="l-stack__item">
-                        <div class="p-formList__label">
-                          <p class="c-txt">購入店舗</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <p class="c-txt">エアバギー代官山店</p>
-                        </div>
-                      </div>
-                    </div>
+                    </form>
                   </div>
                 </li>
               </ul>
@@ -84,7 +86,7 @@
         <div class="p-formPage__foot">
           <div class="p-btnWrap p-btnWrap--center">
               <a href="{{route('mypage.add')}}" class="c-btn c-btn--back">修正する</a>
-              <a href="{{route('mypage.index')}}" class="c-btn c-btn--next">登録する</a>
+              <button type="submit" form="salesProductSubmitForm" class="c-btn c-btn--next">登録する</button>
           </div>
         </div>
       </div>
