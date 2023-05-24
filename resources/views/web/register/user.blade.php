@@ -131,13 +131,13 @@
                         <div class="c-txt c-txt--err">{{ $message }}</div>
                       @enderror
                     </div>
-                    <div class="c-input">
+                    <div class="c-input p-formList__data @error('address_city') p-formList__data--err @enderror">
                       <input id="address2" placeholder="市区町村" class="required p-locality p-street-address " name="address_city" type="text" value="{{ old('address_city', data_get($user, 'address_city')) }}">
                       @error('address_city')
                         <div class="c-txt c-txt--err">{{ $message }}</div>
                       @enderror
                     </div>
-                    <div class="c-input">
+                    <div class="c-input p-formList__data @error('address_block') p-formList__data--err @enderror">
                       <input placeholder="番地" class="required p-extended-address" name="address_block" type="text" value="{{ old('address_block', data_get($user, 'address_block')) }}">
                       @error('address_block')
                         <div class="c-txt c-txt--err">{{ $message }}</div>

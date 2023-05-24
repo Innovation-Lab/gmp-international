@@ -203,6 +203,20 @@
           $('.l-stack--product > .l-stack__item').eq(Num - 1).css('display','block')
       });
   </script>
+{{--  <script>--}}
+{{--      $(document).ready(function() {--}}
+{{--          $('#productStoreForm').on('submit', function(event) {--}}
+{{--              if (!this.checkValidity()) {--}}
+{{--                  event.preventDefault(); // フォームのデフォルトの送信を防止します--}}
+
+{{--                  var firstInvalidElement = $(this).find(':invalid')[0];--}}
+{{--                  if (firstInvalidElement) {--}}
+{{--                      firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });--}}
+{{--                  }--}}
+{{--              }--}}
+{{--          });--}}
+{{--      });--}}
+{{--  </script>--}}
   <script>
       //製品の削除とナンバリング
       $(document).on('click', '.c-btn--ico--remove', function(){
