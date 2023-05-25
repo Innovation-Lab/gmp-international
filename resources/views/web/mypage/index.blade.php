@@ -41,7 +41,7 @@
                             @endif
                           </div>
                           <p class="c-txt">
-                            {{ data_get($sales_product, 'mColor.alphabet_name', 'カラーは選択されていません。')}}
+                            {{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}
                           </p>
                         </div>
                       </div>

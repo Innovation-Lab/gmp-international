@@ -39,7 +39,7 @@
                       </div>
                       <div class="p-card__color">
                         <div class="c-colorBall"></div>
-                        <p class="c-txt">{{ data_get($sales_product, 'mColor.alphabet_name', 'カラーは選択されていません。')}}</p>
+                        <p class="c-txt">{{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}</p>
                       </div>
                     </div>
                     <div class="p-card__subData p-card__subData--list">

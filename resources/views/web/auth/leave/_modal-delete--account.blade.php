@@ -15,7 +15,11 @@
           <div class="modal__content__foot">
             <div class="p-btnWrap p-btnWrap--center">
               <button class="c-btn c-btn--back" aria-label="Close modal" data-micromodal-close>戻る</button>
-              <a href="" class="c-btn c-btn--accent">削除する</a>
+              <a class="c-btn c-btn--accent"
+                onclick="
+                $(this).prop('disabled', true);
+                $('#withdrawalForm').submit()
+              ">削除する</a>
             </div>
           </div>
         </main>
@@ -23,6 +27,7 @@
     </div>
   </div>
 </div>
+<form method="POST" action="{{ route('mypage.destroy') }}" id="withdrawalForm">@csrf</form>
 
 {{-- 登録製品追加 / 削除 --}}
 <script>
