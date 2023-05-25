@@ -74,7 +74,7 @@
     </div>
     <!-- PCマイページのみ表示 -->
     <footer class="p-footer p-footer--mypage">
-      <p class="c-txt--copyRight">Copyright©2008 GMP International Co., Ltd. All Right Reserved</p>
+      <p class="c-txt--copyRight">Copyright©2023 GMP International Co., Ltd. All Right Reserved</p>
     </footer>
   </div>
 </div>
