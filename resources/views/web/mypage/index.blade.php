@@ -153,8 +153,7 @@
               <p class="c-txt" data-ttl="郵便番号">〒{{ data_get($user, 'zip_code') }}</p>
               <p class="c-txt" data-ttl="住所">{{ data_get($user, 'full_address') }}</p>
               <p class="c-txt" data-ttl="電話番号">{{ data_get($user, 'formatted_tel') }}</p>
-              <p class="c-txt" data-ttl="カタログの送付"><span>カタログの送付を</span>{{ data_get($user, 'string_catalog') }}</p>
-              <p class="c-txt" data-ttl="DMの送付"><span>DMの送付を</span>{{ data_get($user, 'string_dm') }}</p>
+              <p class="c-txt" data-ttl="個人情報の取り扱いについて"><span>個人情報の取り扱いについて</span>{{ data_get($user, 'string_catalog') }}</p>
             </div>
           </div>
         @else

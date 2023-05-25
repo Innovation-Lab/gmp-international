@@ -23,13 +23,13 @@ class User extends Authenticatable
     ];
     
     public const CATALOG_STATUS = [
-        0 => '希望しない',
-        1 => '希望する'
+        0 => '同意しない',
+        1 => '同意する'
     ];
     
     public const DM_STATUS = [
-        0 => '希望しない',
-        1 => '希望する'
+        0 => '同意しない',
+        1 => '同意する'
     ];
     
     public function sendPasswordResetNotification($token): void
@@ -87,7 +87,7 @@ class User extends Authenticatable
      */
     public function getStringCatalogAttribute(): string
     {
-        return isset(self::CATALOG_STATUS[$this->is_catalog]) ? self::CATALOG_STATUS[$this->is_catalog] : '希望しない';
+        return isset(self::CATALOG_STATUS[$this->is_catalog]) ? self::CATALOG_STATUS[$this->is_catalog] : '同意しない';
     }
     
     /**
@@ -95,7 +95,7 @@ class User extends Authenticatable
      */
     public function getStringDmAttribute(): string
     {
-        return isset(self::CATALOG_STATUS[$this->is_dm]) ? self::CATALOG_STATUS[$this->is_dm] : '希望しない';
+        return isset(self::CATALOG_STATUS[$this->is_dm]) ? self::CATALOG_STATUS[$this->is_dm] : '同意しない';
     }
 
     /**

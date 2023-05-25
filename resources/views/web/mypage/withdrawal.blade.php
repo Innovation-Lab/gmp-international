@@ -147,38 +147,6 @@
                   </div>
                 </div>
               </li>
-              <!-- カタログの送付 -->
-              <li class="p-formList__item">
-                <div class="p-formList__content">
-                  <div class="p-formList__label p-formList__label--thin">
-                      <p class="c-txt">カタログの送付 <span class="c-txt c-txt--must">必須</span></p>
-                  </div>
-                  <div class="p-formList__data">
-                    <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-1" name="is_catalog" value="1" {{ Auth::user()->is_catalog == 1 ? 'checked' : '' }}>
-                      <label for="inq1-1">希望する</label>
-                      <input type="radio" id="inq2-1" name="is_catalog" value="0" {{ Auth::user()->is_catalog == 0 ? 'checked' : '' }}>
-                      <label for="inq2-1">希望しない</label>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <!-- DMの送付 -->
-              <li class="p-formList__item">
-                <div class="p-formList__content">
-                  <div class="p-formList__label p-formList__label--thin">
-                      <p class="c-txt">DMの送付 <span class="c-txt c-txt--must">必須</span></p>
-                  </div>
-                  <div class="p-formList__data">
-                    <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
-                      <label for="inq1-2">希望する</label>
-                      <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
-                      <label for="inq2-2">希望しない</label>
-                    </div>
-                  </div>
-                </div>
-              </li>
             </ul>
           </form>
         </div>

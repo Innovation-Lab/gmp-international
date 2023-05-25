@@ -20,7 +20,7 @@
             @enderror
             <input class="login" type="submit" name="button" value="ログイン">
           {!! Form::close() !!}
-          <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
+          <a class="c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
         </div>
       </main>
     </div>
