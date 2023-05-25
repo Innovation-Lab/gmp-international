@@ -34,12 +34,14 @@
                           <p class="c-txt c-txt--lg">{{ data_get($sales_product, 'mProduct.name') }}</p>
                         </div>
                         <div class="p-card__color">
-                          <div class="c-colorBall" style="background: #A3BBB1;">
+                          <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
                             {{-- 2色の場合に追加 --}}
-                            <div class="c-colorBall__pallet2" style="background: #fff;"></div>
+                            @if (data_get($sales_product, 'mColor.second_color'))
+                              <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                            @endif
                           </div>
                           <p class="c-txt">
-                            {{ data_get($sales_product, 'mProduct.color')}}
+                            {{ data_get($sales_product, 'mColor.alphabet_name', 'カラーは選択されていません。')}}
                           </p>
                         </div>
                       </div>
