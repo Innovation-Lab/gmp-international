@@ -64,7 +64,7 @@
                       </div>
                       <div class="p-card__store">
                         <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                        <p class="data c-txt">{{ data_get($sales_product, 'mShop.name') }}</p>
+                        <p class="data c-txt">{{ data_get($sales_product, 'select_shop_name') }}</p>
                       </div>
                     </div>
                   </div>

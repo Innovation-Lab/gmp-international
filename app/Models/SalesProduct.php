@@ -81,4 +81,20 @@ class SalesProduct extends Model
         
         return data_get($this, 'mColor.alphabet_name', 'カラーは選択されていません。');
     }
+    
+    /**
+     * @return array|mixed
+     */
+    public function getSelectShopNameAttribute(): mixed
+    {
+        if (
+            data_get($this, 'other_shop_name') &&
+            (!data_get($this, 'm_shop_id') ||
+            data_get($this, 'm_shop_id') == '9999999')
+        ) {
+            return data_get($this, 'other_shop_name');
+        }
+        
+        return data_get($this, 'mShop.name', '店舗は選択されていません。');
+    }
 }
