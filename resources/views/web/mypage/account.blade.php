@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="p-formPage__btn">
-          <a class="c-btn c-btn--text" href="">退会手続きへ</a>
+          <a class="c-btn c-btn--text" href="{{ route('auth.index') }}">退会手続きへ</a>
         </div>
       </div>
     </div>

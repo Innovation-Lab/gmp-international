@@ -90,11 +90,11 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/user', [UserController::class, 'user'])->name('user');
         Route::post('/user', [UserController::class, 'userUpdate'])->name('user');
 
-
-        //退会の手続き
-        Route::view('/account/index', 'web.auth.leave.index')->name('index');
-        //退会完了
-        Route::view('/account/complete', 'web.auth.leave.complete')->name('complete');
     });
 
 });
+
+//退会の手続き
+Route::view('auth/leave/index', 'web.auth.leave.index')->name('auth.index');
+//退会完了
+Route::view('/account/complete', 'web.auth.leave.complete')->name('auth.complete');

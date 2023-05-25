@@ -288,7 +288,7 @@
       }
       @include global.responsive(md) {
         flex: 0 0 auto;
-        width: 210px;
+        width: 230px;
         // padding: 16px 0 0;
         flex-direction: column;
         align-items: baseline;
@@ -302,11 +302,11 @@
           }
         }
       }
-      &--thin{
-        @include global.responsive(md) {
-          padding: 8px 0 0;
-        }
-      }
+      // &--thin{
+      //   @include global.responsive(md) {
+      //     padding: 8px 0 0;
+      //   }
+      // }
     }
     &__data {
       @extend .c-text__sm !optional;

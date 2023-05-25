@@ -81,7 +81,7 @@
             &:before{
                 content: attr(data-ttl);
                 flex: 0 0 auto;
-                width: 120px;
+                width: 200px;
                 display: none;
                 @include global.responsive(md) {
                     display: block;

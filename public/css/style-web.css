@@ -4183,7 +4183,7 @@ input[type=file] + label img {
 }
 
 .p-card {
-  margin-top: 16px;
+  margin-top: 24px;
 }
 .p-card p:not(.c-txt--sm--ghost) {
   color: #fff;
@@ -4969,7 +4969,7 @@ input[type=file] + label img {
 .p-info__txt .c-txt:before {
   content: attr(data-ttl);
   flex: 0 0 auto;
-  width: 120px;
+  width: 200px;
   display: none;
 }
 @media screen and (min-width: 768px) {
@@ -5310,7 +5310,7 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-formList__label {
     flex: 0 0 auto;
-    width: 210px;
+    width: 230px;
     flex-direction: column;
     align-items: baseline;
     justify-content: center;
@@ -5322,11 +5322,6 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-formList__label .c-txt br {
     display: block;
-  }
-}
-@media screen and (min-width: 768px) {
-  .p-formList__label--thin {
-    padding: 8px 0 0;
   }
 }
 .p-formList__data {

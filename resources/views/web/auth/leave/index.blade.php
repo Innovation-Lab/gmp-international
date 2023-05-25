@@ -49,7 +49,7 @@
           </div>
           <!-- ボタン -->
           <div class="p-btnWrap p-btnWrap--center">
-            <a href="{{route('mypage.index')}}" class="c-btn c-btn--back">戻る</a>
+            <a href="{{route('mypage.account')}}" class="c-btn c-btn--back">戻る</a>
             <!-- <a href="" class="c-btn c-btn--next" id=>退会する</a> -->
             <button class="modalOpen c-btn c-btn--next" data-micromodal-trigger="modal-delete--account" role="button">退会する</button>
           </div>

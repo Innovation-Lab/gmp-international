@@ -15,7 +15,7 @@
           <div class="modal__content__foot">
             <div class="p-btnWrap p-btnWrap--center">
               <button class="c-btn c-btn--back" aria-label="Close modal" data-micromodal-close>戻る</button>
-              <a href="" class="c-btn c-btn--accent">削除する</a>
+              <a href="{{ route('auth.complete') }}" class="c-btn c-btn--accent">削除する</a>
             </div>
           </div>
         </main>
