@@ -90,7 +90,6 @@
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
-                            <option value="other" {{ old('m_color_id') == 'other' ? 'selected' : '' }}>上記以外のカラー</option>
                           </select>
                         </div>
                         <!-- 上記以外のカラー選択時のフォーム -->
@@ -99,7 +98,7 @@
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name') }}">
+                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('m_shop_id') == '9999999' ? old('other_shop_name') : '' }}">
                           </div>
                         </div>
                       </div>
@@ -135,7 +134,6 @@
                             @foreach($shops as $k => $v)
                               <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
-                            <option value="other" {{ old('m_shop_id') == 'other' ? 'selected' : '' }}>上記以外の店舗</option>
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
@@ -144,7 +142,7 @@
                             <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name') }}">
+                            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('m_shop_id') == '9999999' ? old('other_shop_name') : '' }}">
                           </div>
                         </div>
                       </div>
@@ -172,7 +170,7 @@
   {{-- フォームの表示切り替え --}}
   <script>
     $('select').on('keydown keyup keypress change click lord',function(){    
-      if($(this).val() == 'other'){
+      if($(this).val() == '9999999'){
         $(this).parents('.p-formList__data').find('.p-formList__other').css('display','grid');
       }else{   
         $(this).parents('.p-formList__data').find('.p-formList__other').hide();
