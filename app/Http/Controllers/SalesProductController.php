@@ -83,7 +83,7 @@ class SalesProductController extends Controller
 
             return redirect()
                 ->route('mypage.index')
-                ->with('message', '更新が完了しました。');
+                ->with('message', '登録が完了しました。');
 
         } catch (\Exception $e) {
             \DB::rollBack();
