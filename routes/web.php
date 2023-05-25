@@ -85,9 +85,16 @@ Route::middleware(['auth:web'])->group(function () {
         //アカウント情報編集
         Route::get('/account', [UserController::class, 'account'])->name('account');
         Route::post('/account', [UserController::class, 'accountUpdate'])->name('account');
+
         //基本情報編集
         Route::get('/user', [UserController::class, 'user'])->name('user');
         Route::post('/user', [UserController::class, 'userUpdate'])->name('user');
+        
+        //退会の手続き
+        Route::get('/user/withdrawal', [UserController::class, 'withdrawal'])->name('withdrawal');
+        Route::post('/user/destroy', [UserController::class, 'destroy'])->name('destroy');
+        //退会完了
+        Route::get('/user/withdrawal/complete', [UserController::class, 'withdrawalComplete'])->name('withdrawal.complete');
     });
 
 });

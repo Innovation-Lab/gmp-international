@@ -39,7 +39,7 @@
                       </div>
                       <div class="p-card__color">
                         <div class="c-colorBall"></div>
-                        <p class="c-txt">{{ data_get($sales_product, 'mProduct.color')}}</p>
+                        <p class="c-txt">{{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}</p>
                       </div>
                     </div>
                     <div class="p-card__subData p-card__subData--list">
@@ -74,7 +74,7 @@
     </div>
     <!-- PCマイページのみ表示 -->
     <footer class="p-footer p-footer--mypage">
-      <p class="c-txt--copyRight">Copyright©2008 GMP International Co., Ltd. All Right Reserved</p>
+      <p class="c-txt--copyRight">Copyright©2023 GMP International Co., Ltd. All Right Reserved</p>
     </footer>
   </div>
 </div>
