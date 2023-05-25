@@ -2,6 +2,17 @@
 @section('title', 'ホーム')
 @section('class', 'body_')
 @section('content')
+
+<?php
+  if(count($errors->all()) > 0) {
+      $sales_product_id = \Session::get('sales_product_id');
+      $javascriptCode = "$(document).ready(function() {
+        $('.js-remodal-open-$sales_product_id').trigger('click')
+      });";
+      echo "<script>{$javascriptCode}</script>";
+  }
+?>
+
 <div class="l-frame__body">
   <div class="l-container">
     <div class="p-mypage">
@@ -23,7 +34,6 @@
       <div class="p-mypage__body">
         <!-- 登録製品複数の場合 -->
         <ul class="p-card--list">
-          
             @foreach ($sales_products as $sales_product)
               <li>
                 <div class="p-card__item p-card__item--list">
@@ -64,10 +74,14 @@
                       <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
                     </div>
                     <!-- 編集ボタン -->
-                    <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh" data-micromodal-trigger="modal-edit--product" role="button">編集する</button>
+                    <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-edit--product-{{ $sales_product->id }}" role="button">編集する</button>
                     </div>
                   </div>
               </li>
+              {{-- 編集/削除 --}}
+              @include('web.mypage.product._modal-edit--product',[
+                'sales_product' => $sales_product
+              ])
             @endforeach
         </ul>
       </div>
@@ -78,8 +92,6 @@
     </footer>
   </div>
 </div>
-{{-- 編集/削除 --}}
-@include('web.mypage.product._modal-edit--product')
 @include('web.mypage.product._modal-delete--product')
 {{-- 登録ガイド --}}
 @include('web.components.modal._modal-guide--color')

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\MBrand;
+use App\Models\MColor;
+use App\Models\MProduct;
+use App\Models\MShop;
+use App\Models\SalesProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateAccountRequest;
 use App\Http\Requests\StoreInformationRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\View\View;
@@ -47,11 +53,40 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $sales_products = data_get($user, 'salesProducts');
-        
+
         return view('web.mypage.product.index')->with([
             'user' => $user,
             'sales_products' => $sales_products,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
+    }
+
+    /**
+     * 登録済み製品 更新
+     * @return \Illuminate\Http\Response
+     */
+    public function update(SalesProduct $sales_product ,StoreProductRequest $request)
+    {
+        $params = $request->all();
+
+        try {
+            $sales_product->fill($params)->save();
+            \DB::commit();
+
+            return redirect()
+                ->route('mypage.product')
+                ->with('message', '更新が完了しました。');
+
+        } catch (\Exception $e) {
+            \DB::rollBack();
+        }
+
+        return redirect()
+            ->back()
+            ->with('error', 'エラーが発生しました。');
     }
 
     /**

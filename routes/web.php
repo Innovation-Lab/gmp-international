@@ -73,6 +73,7 @@ Route::middleware(['auth:web'])->group(function () {
 
         //登録済み製品一覧
         Route::get('/product', [UserController::class, 'product'])->name('product');
+        Route::post('/update/{sales_product}', [UserController::class, 'update'])->name('update');
 
         //製品の追加登録
         Route::get('/add', [SalesProductController::class, 'product'])->name('add');

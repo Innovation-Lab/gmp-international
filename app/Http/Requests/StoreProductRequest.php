@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Contracts\Validation\Validator;
 
 class StoreProductRequest extends FormRequest
 {
@@ -45,5 +47,14 @@ class StoreProductRequest extends FormRequest
             'purchase_date.required' => '購入日を入力してください。',
             '*.required' => ':attributeを選択してください。',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        \Session::put('sales_product_id', $this->sales_product_id);
+
+        throw (new ValidationException($validator))
+                    ->errorBag($this->errorBag)
+                    ->redirectTo($this->getRedirectUrl());
     }
 }
