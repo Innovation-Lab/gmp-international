@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="p-login__foot">
-            <div class="copyright">Copyright©2008 GMP International Co., Ltd. All Right Reserved</div>
+            <div class="copyright">Copyright©2023 GMP International Co., Ltd. All Right Reserved</div>
           </div>
         </div>
       </div>

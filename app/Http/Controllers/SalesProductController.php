@@ -8,10 +8,11 @@ use App\Models\MColor;
 use App\Models\MProduct;
 use App\Models\MShop;
 use App\Models\SalesProduct;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class SalesProductController extends Controller
 {
@@ -28,16 +29,15 @@ class SalesProductController extends Controller
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
     }
-
+    
     /**
-     * 製品の追加登録 入力送信
-     * @param User $user
-     * @return \Illuminate\Http\Response
+     * @param StoreProductRequest $request
+     * @return RedirectResponse
      */
     public function productAdd(StoreProductRequest $request): RedirectResponse
     {
         $params = $request->all();
-        \Session::put('product', $params);
+        Session::put('product', $params);
         
         return redirect()->route('mypage.confirm');
     }
@@ -48,7 +48,7 @@ class SalesProductController extends Controller
      */
     public function productConfirm(): View
     {
-        $product = \Session::get('product');
+        $product = Session::get('product');
         
         return view('web.mypage.product.confirm')->with([
             'product' => $product,
@@ -64,7 +64,7 @@ class SalesProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = \Session::get('product');
+        $product = Session::get('product');
 
         try {
             SalesProduct::create([
@@ -79,7 +79,7 @@ class SalesProductController extends Controller
             ]);
 
             \DB::commit();
-            \Session::forget('product');
+            Session::forget('product');
 
             return redirect()
                 ->route('mypage.index')

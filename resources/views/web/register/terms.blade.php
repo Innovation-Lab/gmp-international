@@ -15,7 +15,7 @@
         <div class="p-formPage__body">
           <div class="p-terms">
             <div class="p-terms__head">
-              <a class="c-btn c-btn--text" href="{{ route('login') }}">登録済みの方はこちら</a>
+              <a class="c-btn--text" href="{{ route('login') }}">登録済みの方はこちら</a>
               <p class="c-ttl">ユーザー登録システム利用規約</p>
               <p class="c-description">
                 以下の利用規約をよくお読みの上、「上記の利用規約に同意する。」にチェックを入れて「新規登録ページへ」をクリックしてください。<br>

@@ -1209,6 +1209,9 @@ input[type=file] + label img {
     text-align: center;
   }
 }
+.c-txt--center--lg {
+  font-size: 24px;
+}
 .c-txt--gr {
   color: #8c8c8c;
 }
@@ -1224,6 +1227,18 @@ input[type=file] + label img {
 .c-ttl {
   font-size: 16px;
   font-weight: 500;
+}
+.c-ttl--lg {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+}
+@media screen and (min-width: 768px) {
+  .c-ttl--lg {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+  }
 }
 .c-ttl--xl {
   font-size: 26px;
@@ -5216,6 +5231,28 @@ input[type=file] + label img {
 .p-formPage__foot--wide {
   margin: 56px 0 0;
 }
+.p-formPage__foot--delete {
+  margin: 32px 0 0;
+  padding: 32px 0 0;
+  border-top: solid 1px #EAEBEA;
+}
+@media screen and (min-width: 768px) {
+  .p-formPage__foot--delete {
+    border: none;
+    margin: 40px 0 0;
+  }
+}
+.p-formPage__foot--delete .c-input {
+  display: flex;
+  justify-content: center;
+}
+.p-formPage__foot--delete .p-btnWrap {
+  margin-top: 16px;
+}
+.p-formPage__foot--delete .err-txt {
+  margin-top: 12px;
+  padding-left: 12px;
+}
 .p-formPage--complete {
   background: #F7F4EC;
 }
@@ -5655,6 +5692,51 @@ input[type=file] + label img {
   margin: 0 2px 0 0;
 }
 /* ! ==================================================
+　規約同意
+================================================== */
+.p-delete__head .c-ttl {
+  margin: 40px 0 0;
+}
+.p-delete__body {
+  margin: 40px 0 0;
+}
+.p-delete__scroll {
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  border: solid 1px #EAEBEA;
+}
+.p-delete__scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 0;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.p-delete__scroll::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background: #EAEBEA;
+}
+.p-delete__scroll::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: #8C8C8C;
+}
+.p-delete__list {
+  flex: 0 0 auto;
+}
+.p-delete__list__item + .p-delete__list__item {
+  margin-top: 16px;
+}
+.p-delete__list__item b {
+  color: #C30E2E;
+}
+.p-delete__list__item .c-ttl {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  line-height: 1.3em;
+}
+/* ! ==================================================
 　Micromodal マイクロモーダル
 ================================================== */
 /* ! ----------
@@ -5741,6 +5823,9 @@ input[type=file] + label img {
 }
 .modal__header--column {
   flex-direction: column;
+}
+.modal__header--column--mn {
+  margin: 0;
 }
 
 .modal__title {

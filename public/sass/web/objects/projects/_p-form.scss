@@ -197,6 +197,26 @@
       &--wide{
         margin: 56px 0 0;
       }
+      &--delete{
+        margin: 32px 0 0;
+        padding: 32px 0 0;
+        border-top: solid 1px #EAEBEA;
+        @include global.responsive(md) {
+          border: none;
+          margin: 40px 0 0;
+        }
+        .c-input{
+          display: flex;
+          justify-content: center;
+        }
+        .p-btnWrap{
+          margin-top: 16px;
+        }
+        .err-txt{
+          margin-top: 12px;
+          padding-left: 12px;
+        }
+      }
     }
     //確認画面
     &--confirm{

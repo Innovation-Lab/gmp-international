@@ -8,12 +8,15 @@ use App\Models\MColor;
 use App\Models\MProduct;
 use App\Models\MShop;
 use App\Models\SalesProduct;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateAccountRequest;
 use App\Http\Requests\StoreInformationRequest;
 use App\Http\Requests\StoreProductRequest;
-use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
+use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,9 +69,9 @@ class UserController extends Controller
 
     /**
      * 登録済み製品 更新
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(SalesProduct $sales_product ,StoreProductRequest $request)
+    public function update(SalesProduct $sales_product ,StoreProductRequest $request): RedirectResponse
     {
         $params = $request->all();
 
@@ -93,21 +96,21 @@ class UserController extends Controller
      * アカウント情報 編集
      * @return View
      */
-    public function account()
+    public function account(): View
     {
         $user = Auth::user();
         return view('web.mypage.account')->with([
             'user' => $user,
         ]);
     }
-
+    
     /**
      * アカウント情報 更新
      *
-     * @param User $user
-     * @return \Illuminate\Http\Response
+     * @param UpdateAccountRequest $request
+     * @return RedirectResponse
      */
-    public function accountUpdate(updateAccountRequest $request)
+    public function accountUpdate(updateAccountRequest $request): RedirectResponse
     {
         $user = Auth::user();
         if ($this->user_repository->accountUpdate($user, $request)) {
@@ -140,9 +143,9 @@ class UserController extends Controller
 
     /**
      * 基本情報 更新
-     * @return View
+     * @return RedirectResponse
      */
-    public function userUpdate(StoreInformationRequest $request)
+    public function userUpdate(StoreInformationRequest $request): RedirectResponse
     {
         $user = Auth::user();
         if ($this->user_repository->userUpdate($user, $request)) {
@@ -156,5 +159,36 @@ class UserController extends Controller
                 ->with('status', 'failed')
                 ->with('message', '更新に失敗しました。');
         }
+    }
+    
+    /**
+     * @return Application|Factory|\Illuminate\Contracts\View\View
+     */
+    public function withdrawal(): \Illuminate\Contracts\View\View|Factory|Application
+    {
+        return view('web.auth.leave.index');
+    }
+    
+    /**
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function destroy(): Redirector|RedirectResponse|Application
+    {
+        $user = Auth::user();
+        
+        if(!$this->user_repository->destroy($user)) {
+            return redirect()->back()->with(['error' => 'エラーが発生しました。お問い合わせください。']);
+        }
+        
+        return redirect()->route('mypage.withdrawal.complete');
+        
+    }
+    
+    /**
+     * @return Application|Factory|\Illuminate\Contracts\View\View
+     */
+    public function withdrawalComplete(): \Illuminate\Contracts\View\View|Factory|Application
+    {
+        return view('web.auth.leave.complete');
     }
 }

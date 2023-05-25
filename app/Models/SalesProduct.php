@@ -65,4 +65,20 @@ class SalesProduct extends Model
     {
         return $this->belongsTo(MBrand::class);
     }
+    
+    /**
+     * @return array|mixed
+     */
+    public function getSelectColorNameAttribute(): mixed
+    {
+        if (
+            data_get($this, 'other_color_name') &&
+            (!data_get($this, 'm_color_id') ||
+            data_get($this, 'm_color_id') == '9999999')
+        ) {
+            return data_get($this, 'other_color_name');
+        }
+        
+        return data_get($this, 'mColor.alphabet_name', 'カラーは選択されていません。');
+    }
 }

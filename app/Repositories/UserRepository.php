@@ -62,10 +62,18 @@ class UserRepository implements UserRepositoryInterface
         $user->fill($data)->save();
         return $user;
     }
-
-    public function destroy(User $user)
+    
+    /**
+     * @param $user
+     * @return mixed
+     */
+    public function destroy($user): mixed
     {
-
+        return DB::transaction(function () use ($user) {
+            $user->email = $user->email . '@' . date('YmdHis');
+            $user->save();
+            $user->delete();
+        });
     }
     
     /**
