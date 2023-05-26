@@ -12,7 +12,7 @@ class RegisterComplete extends Mailable
 {
     use Queueable, SerializesModels;
     
-    protected string $title = '会員登録が完了しました。';
+    protected string $title = '会員登録が完了しました';
     private array $item;
     
     /**
