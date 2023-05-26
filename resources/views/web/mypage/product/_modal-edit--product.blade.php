@@ -20,7 +20,7 @@
                         <input placeholder="<?php date_default_timezone_set('UTC'); echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}">
                       </div>
                       @error('purchase_date')
-                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                        <div class="c-txt--err">{{ $message }}</div>
                       @enderror
                     </div>
                   </div>
@@ -41,7 +41,7 @@
                         </select>
                       </div>
                       @error('m_brand_id')
-                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                        <div class="c-txt--err">{{ $message }}</div>
                       @enderror
                     </div>
                     <p style="display: none;" class="c-txt c-txt--err">ブランドを選択してください。</p>
@@ -63,7 +63,7 @@
                         </select>
                       </div>
                       @error('m_product_id')
-                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                        <div class="c-txt--err">{{ $message }}</div>
                       @enderror
                     </div>
                   </div>
