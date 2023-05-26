@@ -198,19 +198,19 @@
                 <tr>
                     <td class="responsive" valign="top" style="padding: 0;">
                         <font style="
-                        /* width: 100%;
+                        width: 100%;
                         padding: 20px 30px;
                         text-align: left;
                         display: block;
-                        border-top: 1px solid #E0768E;
-                        border-bottom: 1px solid #E0768E;
+                        border-top: 1px solid #27305A;
+                        border-bottom: 1px solid #27305A;
                         color: #fff;
                         box-sizing: border-box;
                         font-size: 12px;
                         font-weight: bold;
-                        background: #E0768E; */
+                        background: #27305A;
                         ">
-                        <b style="padding: 0 10px 0 0; font-size: 18px;">[GMPインターナショナル] パスワード再設定のお知らせ</b>
+                        <b style="padding: 0 10px 0 0; font-size: 18px;">[GMPインターナショナル]　パスワード再設定のお知らせ</b>
                         </font>
                     </td>
                 </tr>

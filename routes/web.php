@@ -104,4 +104,4 @@ Route::middleware(['auth:web'])->group(function () {
 
 
 //メール確認用
-Route::view('/web/email/user/password-reset', 'web.email.user.password-reset')->name('password-reset');
+Route::view('/web/email/', 'web.email.user.password-reset')->name('password-reset');
