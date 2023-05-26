@@ -2,6 +2,16 @@
 @section('title', 'アカウント情報の変更')
 @section('class', 'body_')
 @section('content')
+
+<?php
+  if(count($errors->get('password')) > 0 || count($errors->get('password_confirmation')) > 0) {
+      $javascriptCode = "$(document).ready(function() {
+        $('.js-target__change-password').css({'display':'block'})
+      });";
+      echo "<script>{$javascriptCode}</script>";
+  }
+?>
+
   <div class="l-frame__body">
     <div class="p-formPage">
       <div class="p-formPage__head">
@@ -13,8 +23,7 @@
       </div>
       <div class="l-container">
         <div class="p-formPage__body">
-          <form method="POST" action="{{ route('mypage.account', $user) }}" id="accountSubmitForm">
-            @csrf
+          {{ Form::open(['route' => ['mypage.account', $user], 'method' => 'POST', 'id' => 'accountSubmitForm']) }}
             <ul class="p-formList">
               <!-- メールアドレス -->
               <li class="p-formList__item">
@@ -24,11 +33,11 @@
                   </div>
                   <div class="p-formList__data @error('email') p-formList__data--err @enderror">
                     <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email', data_get($user, 'email')) }}">
+                    @error('email')
+                      <p class="c-txt c-txt--err">{{ $message }}</p>
+                    @enderror
                   </div>
                   <!-- 入力不備エラーメッセージ -->
-                  @error('email')
-                    <p class="c-txt c-txt--err">{{ $message }}</p>
-                  @enderror
                 </div>
               </li>
               <li class="p-formList__item">
@@ -41,17 +50,23 @@
                     {!! Form::label('change-password', 'パスワードを変更する') !!}
                   </div>
                   <div class="split">
-                    <div class="p-formList__data js-target__change-password" style="display: none;">
+                    <div class="p-formList__data js-target__change-password @error('password') p-formList__data--err @enderror" style="display: none;">
                       <div class="p-formList__label">
                         <p class="c-txt">パスワード（半角英数字6〜10文字）<span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       {!! Form::password('password', ['placeholder' => '例）sample123']) !!}
+                      @error('password')
+                        <p class="c-txt c-txt--err" style="width: 100%">{{ $message }}</p>
+                      @enderror
                     </div>
-                    <div class="p-formList__data js-target__change-password" style="display: none;">
+                    <div class="p-formList__data js-target__change-password @error('password_confirmation') p-formList__data--err @enderror" style="display: none;">
                       <div class="p-formList__label">
                         <p class="c-txt">パスワード確認用 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
-                      {!! Form::password('password-confirm', ['placeholder' => 'パスワードを再入力してください']) !!}
+                      {!! Form::password('password_confirmation', ['placeholder' => 'パスワードを再入力してください']) !!}
+                      @error('password_confirmation')
+                        <p class="c-txt c-txt--err" style="width: 100%">{{ $message }}</p>
+                      @enderror
                     </div>
                   </div>
                 </div>
@@ -98,7 +113,7 @@
                 </div>
               </li> -->
             </ul>
-          </form>
+          {{ Form::close() }}
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
