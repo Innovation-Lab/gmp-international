@@ -112,9 +112,9 @@ class UserRepository implements UserRepositoryInterface
                     'm_product_id' => data_get($product, 'm_product_id'),
                     'user_id' => data_get($user, 'id'),
                     'purchase_date' => data_get($product, 'purchase_date'),
-                    'm_shop_id' => data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != '9999999' ? data_get($product, 'm_shop_id') : NULL,
+                    'm_shop_id' => data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != '9999999' && data_get($product, 'm_shop_id') != 'other' ? data_get($product, 'm_shop_id') : NULL,
                     'product_code' => data_get($product, 'product_code'),
-                    'm_color_id' => data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != '9999999' ? data_get($product, 'm_color_id') : NULL,
+                    'm_color_id' => data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != '9999999' && data_get($product, 'm_color_id') != 'other' ? data_get($product, 'm_color_id') : NULL,
                     'other_color_name' => data_get($product, 'other_color_name'),
                     'other_shop_name' => data_get($product, 'other_shop_name'),
                 ]);

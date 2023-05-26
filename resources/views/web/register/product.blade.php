@@ -56,14 +56,14 @@
                   </div>
                 </li>
                 <!-- ブランド名 -->
-                <li class="p-formList__item">
+                <li class="p-formList__item js-insert-list-brand-1">
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                       <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="products[1][m_brand_id]" required="required">
+                        <select name="products[1][m_brand_id]" required="required" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="1" data-insert="product">
                           <option value="" selected>ブランドを選択してください</option>
                           @foreach($brands as $k => $v)
                             <option value="{{ $k }}">{{ $v }}</option>
@@ -75,14 +75,14 @@
                   </div>
                 </li>
                 <!-- 製品名 -->
-                <li class="p-formList__item">
+                <li class="p-formList__item js-insert-list-product-1" >
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                       <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
-                    <div class="p-formList__data">
+                    <div class="p-formList__data ">
                       <div class="c-input c-input--select">
-                        <select name="products[1][m_product_id]" class="required" required="required">
+                        <select name="products[1][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" required="required" data-loop="1" data-insert="brand">
                           <option value="" selected>製品を選択してください</option>
                           @foreach($products as $k => $v)
                             <option value="{{ $k }}">{{ $v }}</option>
@@ -103,12 +103,12 @@
                     </div>
                     <div class="p-formList__data parent-element">
                       <div class="c-input c-input--select">
-                        <select name="products[1][m_color_id]">
+                        <select name="products[1][m_color_id]" class="js-ty-color">
                           <option value="" selected>カラーを選択してください</option>
                           @foreach($colors as $k => $v)
                             <option value="{{ $k }}">{{ $v }}</option>
                           @endforeach
-                          <option value="9999999">上記以外のカラー</option>
+                          <option value="other">上記以外のカラー</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
@@ -133,7 +133,7 @@
                       </div>
                     </div>
                     <div class="p-formList__data">
-                      <input placeholder="例）GMP0123456" class="" name="products[1][product_code]" type="text" value="">
+                      <input placeholder="例）GMP0123456" class="js-serial-1" name="products[1][product_code]" type="text" value="" data-loop="1" onchange="searchSerial($(this).data('loop'), $(this).val());">
                     </div>
                   </div>
                 </li>
@@ -153,7 +153,7 @@
                           @foreach($shops as $k => $v)
                             <option value="{{ $k }}">{{ $v }}</option>
                           @endforeach
-                          <option value="9999999">上記以外の店舗</option>
+                          <option value="other">上記以外の店舗</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
@@ -203,20 +203,7 @@
           $('.l-stack--product > .l-stack__item').eq(Num - 1).css('display','block')
       });
   </script>
-{{--  <script>--}}
-{{--      $(document).ready(function() {--}}
-{{--          $('#productStoreForm').on('submit', function(event) {--}}
-{{--              if (!this.checkValidity()) {--}}
-{{--                  event.preventDefault(); // フォームのデフォルトの送信を防止します--}}
 
-{{--                  var firstInvalidElement = $(this).find(':invalid')[0];--}}
-{{--                  if (firstInvalidElement) {--}}
-{{--                      firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });--}}
-{{--                  }--}}
-{{--              }--}}
-{{--          });--}}
-{{--      });--}}
-{{--  </script>--}}
   <script>
       //製品の削除とナンバリング
       $(document).on('click', '.c-btn--ico--remove', function(){
@@ -271,7 +258,7 @@
                   // 選択されたオプションの値を取得
                   var selectedValue = $(this).val();
 
-                  if (selectedValue === '9999999') {
+                  if (selectedValue === 'other') {
                       $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
                   } else {
                       $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
@@ -289,29 +276,29 @@
                   var colors = array.colors;
                   var shops = array.shops;
                   console.log(brands)
-                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" required="required">' +
-                      '<option value="" selected>ブランドを選択してください</option>';
+                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" required="required" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
+                    '<option value="" selected>ブランドを選択してください</option>';
 
                   $.each(brands, function(key, value) {
                       selectBrandHtml += '<option value="' + key + '">' + value + '</option>';
                   });
                   selectBrandHtml += '</select>';
 
-                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" required="required">' +
-                      '<option value="" selected>製品を選択してください</option>';
+                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" required="required" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
+                    '<option value="" selected>製品を選択してください</option>';
 
                   $.each(products, function(key, value) {
                       selectProductHtml += '<option value="' + key + '">' + value + '</option>';
                   });
                   selectProductHtml += '</select>';
 
-                  var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']">' +
+                  var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'">' +
                       '<option value="" selected>カラーを選択してください</option>';
 
                   $.each(colors, function(key, value) {
                       selectColorHtml += '<option value="' + key + '">' + value + '</option>';
                   });
-                  selectColorHtml += '<option value="9999999">上記以外のカラー</option>';
+                  selectColorHtml += '<option value="other">上記以外のカラー</option>';
                   selectColorHtml += '</select>';
 
                   var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
@@ -320,7 +307,7 @@
                   $.each(shops, function(key, value) {
                       selectShopHtml += '<option value="' + key + '">' + value + '</option>';
                   });
-                  selectShopHtml += '<option value="9999999">上記以外の店舗</option>';
+                  selectShopHtml += '<option value="other">上記以外の店舗</option>';
                   selectShopHtml += '</select>';
 
                   function addForm() {
@@ -347,7 +334,7 @@
                       '    </div> ' +
                       '</li> ' +
                       '<!-- ブランド名 --> ' +
-                      '  <li class="p-formList__item"> ' +
+                      '  <li class="p-formList__item js-insert-list-brand-'+ num +'"> ' +
                       '      <div class="p-formList__content"> ' +
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p> ' +
@@ -360,7 +347,7 @@
                       '      </div> ' +
                       '  </li> ' +
                       '<!-- 製品名 --> ' +
-                      '  <li class="p-formList__item"> ' +
+                      '  <li class="p-formList__item js-insert-list-product-'+ num +'"> ' +
                       '      <div class="p-formList__content"> ' +
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p> ' +
@@ -373,7 +360,7 @@
                       '      </div> ' +
                       '  </li> ' +
                       '<!-- カラー --> ' +
-                      '  <li class="p-formList__item"> ' +
+                      '  <li class="p-formList__item js-insert-list-color-'+ num +'"> ' +
                       '      <div class="p-formList__content"> ' +
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">カラー</p> ' +
@@ -407,7 +394,7 @@
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data"> ' +
-                      '              <input placeholder="例）GMP0123456" class="required" name="products['+ num +']['+ 'product_code' +']" type="text" value=""> ' +
+                      '              <input placeholder="例）GMP0123456" class="required js-serial-'+ num +'" name="products['+ num +']['+ 'product_code' +']" type="text" value="" data-loop="'+ num +'" onchange="searchSerial( $(this).data(\'loop\'), $(this).val());" > ' +
                       '          </div> ' +
                       '      </div> ' +
                       '  </li> ' +
@@ -461,6 +448,58 @@
               }
           });
       });
+  </script>
+
+  {{-- 紐付け配列の取得 --}}
+  <script>
+      // 共通処理
+      function getTyArray(
+          key,
+          value = '',
+          loop = '',
+          insert = ''
+      ) {
+        $.get({
+            url: '/register/js-get-tying-array',
+            data: {
+                'key_name': key,
+                'id': value,
+                'loop': loop,
+            },
+            success: function (response) {
+                console.log(response);
+                let place = '.js-insert-list-' + insert + '-' + loop;
+                console.log(place);
+                $(place).empty().append(response);
+
+            }
+        });
+      }
+  </script>
+
+  {{-- シリアルナンバーの判定 --}}
+  <script>
+      // 共通処理
+      function searchSerial(
+          loop,
+          code = '',
+      ) {
+          $.get({
+              url: '/register/js-search-serial',
+              data: {
+                  'code': code,
+                  'loop': loop,
+              },
+              success: function (response) {
+                  if (response) {
+                      let place = '.js-serial-'+ loop;
+                      console.log(place);
+                      $(place).val('');
+                      alert('既に使われているシリアルコードですので登録できません。');
+                  }
+              }
+          });
+      }
   </script>
 
 @endsection

@@ -160,7 +160,7 @@
                   </div>
                   <div class="p-formList__data @error('tel') p-formList__data--err @enderror">
                     <div class="c-input c-input--tel">
-                      <input placeholder="例）08012345678" class="required" name="tel" type="tel" value="{{ old('tel') }}">
+                      <input placeholder="例）08012345678" class="required" name="tel" type="tel" value="{{ old('tel', data_get($user, 'tel')) }}">
                     </div>
                     @error('tel')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -176,9 +176,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
+                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', (data_get($user, 'is_dm')) == 1) || !data_get($user, 'is_dm') ? 'checked' : '' }}>
                       <label for="inq1-2">同意する</label>
-                      <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
+                      <input type="radio" id="inq2-2" name="is_dm" value="0" {{ old('is_dm', data_get($user, 'is_dm')) == 0 ? 'checked' : '' }}>
                       <label for="inq2-2">同意しない</label>
                     </div>
                   </div>

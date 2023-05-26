@@ -11,12 +11,14 @@ use App\Models\SalesProduct;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\SendMailService;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -231,5 +233,56 @@ class RegisterController extends Controller
         ];
 
         return response()->json($array);
+    }
+    
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetTyingArray(Request $request): Response|Application|ResponseFactory
+    {
+
+        $key = $request->input('key_name');
+        $id = $request->input('id');
+        $loop_num = $request->input('loop');
+   
+        switch ($key) {
+            case 'brand':
+                $items = MProduct::query()->where('m_brand_id', $id)->pluck('name', 'id');
+                $view = view('web.register._ajax_select_product_list', [
+                    'items' => $items,
+                    'checkVal' => false,
+                    'loop_num' => $loop_num
+                ])->render();
+                break;
+            case 'product':
+                $product = MProduct::find($id);
+                $color_array = explode(',', $product->color_array);
+                $items = MBrand::query()->pluck('name', 'id');
+                $view = view('web.register._ajax_select_brand_list', [
+                    'items' => $items,
+                    'checkVal' => $product->m_brand_id,
+                    'loop_num' => $loop_num
+                ])->render();
+                break;
+            default:
+                $view = NULL;
+        }
+
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+    
+    
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function jsSearchSerial(Request $request): JsonResponse
+    {
+        $search = SalesProduct::where('product_code', $request->get('code'))->count();
+        $result = $search > 0;
+        
+        return response()->json($result);
     }
 }

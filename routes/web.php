@@ -50,8 +50,10 @@ Route::group([
     //入力完了画面
     Route::get('/complete', [RegisterController::class, 'complete'])->name('complete');
     
-    // ajaxマスタ配列取得用
+    // ajax
     Route::get('js-get-array', [RegisterController::class, 'jsGetArray']);
+    Route::get('js-get-tying-array', [RegisterController::class, 'jsGetTyingArray']);
+    Route::get('js-search-serial', [RegisterController::class, 'jsSearchSerial']);
 });
 
 /* ! ==================================================
