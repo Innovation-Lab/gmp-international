@@ -77,6 +77,9 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/product', [UserController::class, 'product'])->name('product');
         Route::post('/update/{sales_product}', [UserController::class, 'update'])->name('update');
 
+        //登録済み製品の削除
+        Route::post('/delete/{sales_product}', [UserController::class, 'productDelete'])->name('product.delete');
+
         //製品の追加登録
         Route::get('/add', [SalesProductController::class, 'product'])->name('add');
         Route::post('/add', [SalesProductController::class, 'productAdd'])->name('add');

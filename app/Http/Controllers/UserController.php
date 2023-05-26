@@ -93,6 +93,25 @@ class UserController extends Controller
     }
 
     /**
+     * 登録済み製品 削除
+     * @return RedirectResponse
+     */
+    public function productDelete(SalesProduct $sales_product ,Request $request): RedirectResponse
+    {
+        \DB::beginTransaction();
+        try {
+            $sales_product->delete();
+            \DB::commit();
+            return redirect()
+                ->route('mypage.product')
+                ->with('message', '製品の削除が完了しました。');
+
+        } catch (\Exception $e) {
+            \DB::rollBack();
+        }
+    }
+
+    /**
      * アカウント情報 編集
      * @return View
      */

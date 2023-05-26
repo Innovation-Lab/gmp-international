@@ -1,4 +1,4 @@
-<div class="modal micromodal-slide" id="modal-delete--product" aria-hidden="true">
+<div class="modal micromodal-slide" id="modal-delete--product-{{ $sales_product->id }}" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1">
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <div class="modal__box">
@@ -6,44 +6,47 @@
           <h2 class="modal__title c-txt--center" id="modal-1-title">
             注意事項
           </h2>
-          <p class="modal__description c-txt--center">
+          <p class="modal__description c-txt--center" style="color: black">
             この操作は<b>取り消すことができません。</b><br />
             本当に削除しますか？
           </p>
         </header>
-        <main class="modal__content" id="modal-1-content">
-          <div class="modal__content__body">
-            <div class="p-deleteProduct">
-              <div class="p-deleteProduct__img">
-                <img src="{{asset('img/web/user/sample/product_sample.png')}}">
-              </div>
-              <div class="p-deleteProduct__txt">
-                <p class="name">COCO DOUBLE EX FROM BIRTH</p>
-                <div class="info">
-                  <!-- 購入日・シリアルナンバー・購入店舗 -->
-                  <div class="p-card__purchase">
-                    <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
-                    <p class="data c-txt">2023/04/04</p>
-                  </div>
-                  <div class="p-card__serialNum">
-                    <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
-                    <p class="data c-txt">GMP123456789</p>
-                  </div>
-                  <div class="p-card__store">
-                    <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                    <p class="data c-txt">エアバギー代官山店</p>
+        <form method="POST" action="{{ route('mypage.product.delete', $sales_product) }}" id="salesProductDeleteSubmitForm-{{ $sales_product->id }}">
+          @csrf
+          <main class="modal__content" id="modal-1-content">
+            <div class="modal__content__body">
+              <div class="p-deleteProduct">
+                <div class="p-deleteProduct__img">
+                  <img src="{{asset('img/web/user/sample/product_sample.png')}}">
+                </div>
+                <div class="p-deleteProduct__txt">
+                  <p class="name" style="color: black">{{ data_get($sales_product, 'mProduct.name') }}</p>
+                  <div class="info">
+                    <!-- 購入日・シリアルナンバー・購入店舗 -->
+                    <div class="p-card__purchase">
+                      <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
+                      <p class="data c-txt" style="color: black">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
+                    </div>
+                    <div class="p-card__serialNum">
+                      <p class="label c-txt--sm c-txt--sm--ghost" style="color: black">シリアルNo.</p>
+                      <p class="data c-txt" style="color: black">{{ data_get($sales_product, 'product_code') }}</p>
+                    </div>
+                    <div class="p-card__store">
+                      <p class="label c-txt--sm c-txt--sm--ghost" style="color: black">購入店舗</p>
+                      <p class="data c-txt" style="color: black">{{ data_get($sales_product, 'mShop.name') }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="modal__content__foot">
-            <div class="p-btnWrap p-btnWrap--center">
-              <button class="c-btn c-btn--back" aria-label="Close modal" data-micromodal-close>戻る</button>
-              <a href="{{route('mypage.product')}}" class="c-btn c-btn--accent">削除する</a>
+            <div class="modal__content__foot">
+              <div class="p-btnWrap p-btnWrap--center">
+                <button class="c-btn c-btn--back" aria-label="Close modal" data-micromodal-close>戻る</button>
+                <button type="submit" form="salesProductDeleteSubmitForm-{{ $sales_product->id }}" class="c-btn c-btn--accent">削除する</button>
+              </div>
             </div>
-          </div>
-        </main>
+          </main>
+        </form>
       </div>
     </div>
   </div>
