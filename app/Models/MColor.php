@@ -17,4 +17,5 @@ class MColor extends Model
     protected $guarded = [
         'id'
     ];
+    
 }
