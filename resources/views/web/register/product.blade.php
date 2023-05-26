@@ -204,19 +204,6 @@
       });
   </script>
 
-  <script>
-      //製品の削除とナンバリング
-      $(document).on('click', '.c-btn--ico--remove', function(){
-          $(this).parents('.l-stack__item--line').remove();
-          let Tag = $('.l-stack--product > .l-stack__item'),
-              Num = Tag.length;
-          Tag.each(function(){
-              let This = $(this),
-                  Ind = This.index() + 1;
-              This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
-          });
-      });
-  </script>
   {{-- フォームの表示切り替え --}}
   <script>
       $('select').on('keydown keyup keypress change click lord',function(){
@@ -250,6 +237,18 @@
   <script>
       $(document).ready(function() {
           var num = 2;
+
+          $(document).on('click', '.c-btn--ico--remove', function(){
+              num = num - 1;
+              $(this).parents('.l-stack__item--line').remove();
+              let Tag = $('.l-stack--product > .l-stack__item'),
+                  Num = Tag.length;
+              Tag.each(function(){
+                  let This = $(this),
+                      Ind = This.index() + 1;
+                  This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
+              });
+          });
 
           otherTextBind();
 
