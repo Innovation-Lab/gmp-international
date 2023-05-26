@@ -18,10 +18,10 @@
                     <div class="p-formList__data">
                       <div class="c-input c-input--date" style="width: 100%">
                         <input placeholder="<?php date_default_timezone_set('UTC'); echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}">
-                        @error('purchase_date')
-                          <div class="c-txt c-txt--err">{{ $message }}</div>
-                        @enderror
                       </div>
+                      @error('purchase_date')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                   </div>
                 </li>
@@ -39,10 +39,10 @@
                             <option value="{{ $k }}" {{ old('m_brand_id', $sales_product->mProduct->mBrand->id) == $k ? 'selected' : '' }}>{{ $v }}</option>
                           @endforeach
                         </select>
-                        @error('m_brand_id')
-                          <div class="c-txt c-txt--err">{{ $message }}</div>
-                        @enderror
                       </div>
+                      @error('m_brand_id')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                     <p style="display: none;" class="c-txt c-txt--err">ブランドを選択してください。</p>
                   </div>
@@ -61,10 +61,10 @@
                             <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                           @endforeach
                         </select>
-                        @error('m_product_id')
-                          <div class="c-txt c-txt--err">{{ $message }}</div>
-                        @enderror
                       </div>
+                      @error('m_product_id')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                   </div>
                 </li>
