@@ -165,6 +165,7 @@ class RegisterController extends Controller
     public function storeProduct(Request $request): RedirectResponse
     {
         $products = $request->input('products', []);
+        dd($products);
 
         Session::put('products', $products);
         
@@ -244,7 +245,7 @@ class RegisterController extends Controller
 
         $key = $request->input('key_name');
         $id = $request->input('id');
-        $loop = $request->input('loop');
+        $loop_num = $request->input('loop');
    
         switch ($key) {
             case 'brand':
@@ -252,7 +253,7 @@ class RegisterController extends Controller
                 $view = view('web.register._ajax_select_product_list', [
                     'items' => $items,
                     'checkVal' => false,
-                    'loop' => $loop
+                    'loop_num' => $loop_num
                 ])->render();
                 break;
             case 'product':
@@ -262,7 +263,7 @@ class RegisterController extends Controller
                 $view = view('web.register._ajax_select_brand_list', [
                     'items' => $items,
                     'checkVal' => $product->m_brand_id,
-                    'loop' => $loop
+                    'loop_num' => $loop_num
                 ])->render();
                 break;
             default:

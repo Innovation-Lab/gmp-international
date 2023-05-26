@@ -4,7 +4,7 @@
     </div>
     <div class="p-formList__data">
         <div class="c-input c-input--select">
-            <select name="products[1][m_brand_id]" required="required" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" required="required" data-loop="{{ $loop }}" data-insert="product">
+            <select name="products[{{ $loop_num }}][m_brand_id]" required="required" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" required="required" data-loop="{{ $loop_num }}" data-insert="product">
                 <option value="" selected>ブランドを選択してください</option>
                 @foreach($items as $k => $v)
                     <option value="{{ $k }}" @if($checkVal == $k) selected @endif>{{ $v }}</option>
