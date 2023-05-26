@@ -64,7 +64,7 @@
                         @enderror
                       </div>
                       <!-- メイ -->
-                      <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
+                      <div class="c-input__item @error('first_name_kana') c-input__item--err @enderror">
                         <div class="c-input">
                           <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana', data_get($user, 'first_name_kana')) }}">
                         </div>
@@ -107,27 +107,21 @@
                         @endforeach
                       </select>
                     </div>
-                    <div class="c-input">
+                    <div class="c-input p-formList__data @error('address_city') p-formList__data--err @enderror">
                       <input id="address2" placeholder="市区町村" class="required" name="address_city" type="text" value="{{ old('address_city', data_get($user, 'address_city')) }}">
+                      @error('address_city')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
-                    <div class="c-input">
+                    <div class="c-input p-formList__data @error('address_block') p-formList__data--err @enderror"">
                       <input placeholder="番地" class="required" name="address_block" type="text" value="{{ old('address_block', data_get($user, 'address_block')) }}">
+                      @error('address_block')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="c-input">
                       <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building', data_get($user, 'address_building')) }}">
                     </div>
-                    @error('prefecture')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
-                    @error('address_city')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
-                    @error('address_block')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
-                    @error('address_building')
-                      <div class="c-txt c-txt--err">{{ $message }}</div>
-                    @enderror
                   </div>
                 </div>
               </li>
