@@ -32,7 +32,7 @@
                     <p class="c-txt">メールアドレス <span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data @error('email') p-formList__data--err @enderror">
-                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email', data_get($user, 'email')) }}">
+                    <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ data_get($user, 'email', old('email')) }}">
                     @error('email')
                       <p class="c-txt c-txt--err">{{ $message }}</p>
                     @enderror
