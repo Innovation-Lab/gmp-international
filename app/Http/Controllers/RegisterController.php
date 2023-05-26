@@ -165,7 +165,6 @@ class RegisterController extends Controller
     public function storeProduct(Request $request): RedirectResponse
     {
         $products = $request->input('products', []);
-        dd($products);
 
         Session::put('products', $products);
         
