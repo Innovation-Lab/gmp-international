@@ -98,7 +98,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">カラー</p>
                       <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
+                        <a class="p-formList__guide__btn" onclick="$('#modal__guide--color').show()" role="button"></a>
                       </div>
                     </div>
                     <div class="p-formList__data parent-element">
@@ -129,7 +129,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">シリアルナンバー</p>
                       <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                        <a class="p-formList__guide__btn" onclick="$('#modal__guide--serial').show()" role="button"></a>
                       </div>
                     </div>
                     <div class="p-formList__data">
@@ -143,7 +143,7 @@
                     <div class="p-formList__label">
                       <p class="c-txt">購入店舗 </p>
                       <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
+                        <a class="p-formList__guide__btn" onclick="$('#modal__guide--shop').show()" role="button"></a>
                       </div>
                     </div>
                     <div class="p-formList__data parent-element">
@@ -248,6 +248,10 @@
                       Ind = This.index() + 1;
                   This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
               });
+          });
+
+          $('.modal__close').on('click', function(){
+              $('.modal').hide();
           });
 
           otherTextBind();
@@ -371,7 +375,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">カラー</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color open-other-text-input" role="button"></a> ' +
+                      '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--color\').show()" role="button"></a> ' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data parent-element"> ' +
@@ -396,7 +400,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">シリアルナンバー</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a> ' +
+                      '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial\').show()" role="button"></a> ' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data"> ' +
@@ -410,7 +414,7 @@
                       '          <div class="p-formList__label"> ' +
                       '              <p class="c-txt">購入店舗</p> ' +
                       '              <div class="p-formList__guide"> ' +
-                      '                  <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a> ' +
+                      '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--shop\').show()" role="button"></a>' +
                       '              </div> ' +
                       '          </div> ' +
                       '          <div class="p-formList__data parent-element"> ' +
@@ -438,11 +442,15 @@
                       // var dateClass = '.add-input--date' + num;
 
                       var dateClass = '.add-input--date' + num;
-                      console.log(dateClass);
+
                       $(dateClass).datepicker({
                           onSelect: function(dateText) {
                               $(this).val(dateText);
                           }
+                      });
+
+                      $('.modal__close').on('click', function(){
+                          $('.modal').hide();
                       });
 
                       num++;
