@@ -43,6 +43,7 @@ class UserRepository implements UserRepositoryInterface
             $data['password'] = Hash::make($data['password']);
             unset($data['password_confirmation']);
             unset($data['_token']);
+            unset($data['change-password']);
             $user->fill($data)->save();
             
             DB::commit();

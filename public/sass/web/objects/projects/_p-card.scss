@@ -201,7 +201,7 @@
                     .c-txt{
                         @include global.responsive(md) {
                             font-size: 24px;
-                            font-weight: 300;
+                            font-weight: 500;
                             line-height: 24px;
                         }
                         @include global.responsive(xl) {
@@ -483,8 +483,19 @@
         
     }
     &__purchase{
+        @include global.responsive(xl) {
+            width: 130px;
+        }
     }
     &__serialNum{
+        @include global.responsive(xl) {
+            width: 160px;
+        }
+    }
+    &__store{
+        @include global.responsive(xl) {
+            width: 180px;
+        }
     }
     &__img{
         // width: 120px;
@@ -517,15 +528,18 @@
                 width: 100%;
             }
         } 
-        p:not(.c-txt--sm--ghost){
+        .c-txt{
             color: #fff;
         }
+        // p:not(.c-txt--sm--ghost){
+        //     color: #fff;
+        // }
         .p-card{    
             &__item{
                 flex: auto;
                 min-width: 1px;
                 @include global.responsive(md) {
-                    padding-left: 160px;
+                    padding-left: 100px;
                     position: relative;
                     min-height: 104px;
                 }
@@ -616,7 +630,7 @@
                     position: absolute;
                     left: 24px;
                     top: 8px;
-                    width: 110px;
+                    // width: 110px;
                     height: calc(100% - 16px);
                     align-items: center;
                     justify-content: center;

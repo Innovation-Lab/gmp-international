@@ -260,6 +260,15 @@
         flex: auto;
         min-width: 1px;
       }
+      .split{
+        div + div {
+          margin-top: 32px;
+        }
+        @include global.responsive(md) {
+          width: 100%
+          
+        }
+      }
     }
     &__label {
       // color: var(--color_text_button);
@@ -308,7 +317,17 @@
       //   }
       // }
     }
-    &__data {
+    &__data{
+      .c-txt{
+        margin-top: 16px;  
+        @include global.responsive(md) {
+          margin-top: 0;
+          width: 300px;
+        }
+      }
+      label{
+        width: 165px;
+      }
       @extend .c-text__sm !optional;
 
       /* ! ----------
@@ -325,6 +344,36 @@
       @include global.responsive(md) {
         flex: auto;
         min-width: 1px;
+      }
+    }
+    &__data--ac{
+      .c-txt{
+        margin-top: 16px;  
+        @include global.responsive(md) {
+          margin-top: 0;
+          width: 300px;
+        }
+      }
+      label{
+        width: 165px;
+      }
+      @extend .c-text__sm !optional;
+
+      /* ! ----------
+      　Error エラー
+      ---------- */
+      .error {
+        @extend .c-text__xxs !optional;
+        color: var(--color_alert);
+        background-color: var(--color_alert_background);
+        padding: 0.5em 1em;
+        border-radius: 2px;
+        margin: 2px 0 0;
+      }
+      @include global.responsive(md) {
+        flex: auto;
+        min-width: 1px;
+        width: 352px;
       }
     }
     //確認画面

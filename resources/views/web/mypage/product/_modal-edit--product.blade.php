@@ -73,6 +73,9 @@
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                       <p class="c-txt">カラー</p>
+                      <div class="p-formList__guide">
+                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
+                      </div>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
