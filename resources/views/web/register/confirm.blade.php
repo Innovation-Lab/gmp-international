@@ -175,10 +175,17 @@
         <div class="p-formPage__foot">
           <div class="p-btnWrap p-btnWrap--center">
               <a href="{{route('register.product')}}" class="c-btn c-btn--back">修正する</a>
-              <button type="submit" form="variableSubmitForm" class="c-btn c-btn--next">登録する</button>
+              <button onclick="blockDoubleClick()" id="submitRegisterForm" class="c-btn c-btn--next">登録する</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 @endsection
+<script>
+  function blockDoubleClick()
+  {
+      $('#submitRegisterForm').prop('disabled', true);
+      $('#variableSubmitForm').submit();
+  }
+</script>
