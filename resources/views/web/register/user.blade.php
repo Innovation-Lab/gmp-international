@@ -89,7 +89,7 @@
                         <div class="c-input">
                           <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana', data_get($user, 'first_name_kana')) }}">
                         </div>
-                        @error('last_name_kana')
+                        @error('first_name_kana')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
                         @enderror
                       </div>

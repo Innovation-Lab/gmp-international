@@ -82,6 +82,9 @@
               @include('web.mypage.product._modal-edit--product',[
                 'sales_product' => $sales_product
               ])
+              @include('web.mypage.product._modal-delete--product', [
+                'sales_product' => $sales_product
+              ])
             @endforeach
         </ul>
       </div>
@@ -92,7 +95,6 @@
     </footer>
   </div>
 </div>
-@include('web.mypage.product._modal-delete--product')
 {{-- 登録ガイド --}}
 @include('web.components.modal._modal-guide--color')
 @include('web.components.modal._modal-guide--serial')
