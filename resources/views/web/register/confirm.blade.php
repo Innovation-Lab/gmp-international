@@ -143,7 +143,7 @@
                             <p class="c-txt">カラー</p>
                           </div>
                           <div class="p-formList__data">
-                            <p class="c-txt">{{ data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != '9999999' ? $colors[data_get($product, 'm_color_id')] : data_get($product, 'other_color_name', '指定なし') }}</p>
+                            <p class="c-txt">{{ data_get($product, 'm_color_id') && data_get($product, 'm_color_id') != 'other' ? $colors[data_get($product, 'm_color_id')] : data_get($product, 'other_color_name', '指定なし') }}</p>
                           </div>
                         </div>
                         <div class="l-stack__item">
@@ -159,7 +159,7 @@
                             <p class="c-txt">購入店舗</p>
                           </div>
                           <div class="p-formList__data">
-                            <p class="c-txt">{{ data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != '9999999' ? $shops[data_get($product, 'm_shop_id')] : data_get($product, 'other_shop_name', '指定なし') }}</p>
+                            <p class="c-txt">{{ data_get($product, 'm_shop_id') && data_get($product, 'm_shop_id') != 'other' ? $shops[data_get($product, 'm_shop_id')] : data_get($product, 'other_shop_name', '指定なし') }}</p>
                           </div>
                         </div>
                       </div>

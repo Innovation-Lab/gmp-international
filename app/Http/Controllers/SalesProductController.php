@@ -22,7 +22,10 @@ class SalesProductController extends Controller
      */
     public function product(): View
     {
+        $sales_products = \Auth::user()->salesProducts;
+
         return view('web.mypage.product.add')->with([
+            'sales_products' => $sales_products,
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),

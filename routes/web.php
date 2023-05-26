@@ -50,8 +50,10 @@ Route::group([
     //入力完了画面
     Route::get('/complete', [RegisterController::class, 'complete'])->name('complete');
     
-    // ajaxマスタ配列取得用
+    // ajax
     Route::get('js-get-array', [RegisterController::class, 'jsGetArray']);
+    Route::get('js-get-tying-array', [RegisterController::class, 'jsGetTyingArray']);
+    Route::get('js-search-serial', [RegisterController::class, 'jsSearchSerial']);
 });
 
 /* ! ==================================================
@@ -74,6 +76,9 @@ Route::middleware(['auth:web'])->group(function () {
         //登録済み製品一覧
         Route::get('/product', [UserController::class, 'product'])->name('product');
         Route::post('/update/{sales_product}', [UserController::class, 'update'])->name('update');
+
+        //登録済み製品の削除
+        Route::post('/delete/{sales_product}', [UserController::class, 'productDelete'])->name('product.delete');
 
         //製品の追加登録
         Route::get('/add', [SalesProductController::class, 'product'])->name('add');

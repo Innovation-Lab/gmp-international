@@ -155,7 +155,11 @@
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
+            @if(count($sales_products) > 0)
               <a href="{{route('mypage.product')}}" class="c-btn c-btn--back">戻る</a>
+            @else
+              <a href="{{route('mypage.index')}}" class="c-btn c-btn--back">戻る</a>
+            @endif
               <button type="submit" class="c-btn c-btn--next" form="productAddSubmitForm">確認する</button>
           </div>
         </div>

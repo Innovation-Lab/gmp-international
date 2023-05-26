@@ -151,7 +151,7 @@
               <button type="submit" class="c-btn c-btn--accent" form="SalesProductSubmitForm-{{ $sales_product->id }}">登録する</button>
             </div>
             <div class="p-btnWrap p-btnWrap--center">
-              <button class="c-btn c-btn--text" data-micromodal-trigger="modal-delete--product" role="button">削除する</button>
+              <button class="c-btn c-btn--text" data-micromodal-trigger="modal-delete--product-{{ $sales_product->id }}" role="button">削除する</button>
             </div>
           </div>
         </main>

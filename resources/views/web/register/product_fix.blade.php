@@ -34,143 +34,145 @@
           </div>--}}
           <form method="POST" action="{{ route('register.store.product') }}" id="productStoreForm">
           @csrf
-          <div class="l-stack l-stack--product add_product" id="">
-            <div class="l-stack__item">
-              <input type="hidden" name="is_skip" id="is_skip_input" value="0">
-              <!-- 登録製品 -->
-              <ul class="p-formList" style="margin-bottom: 40px;">
-                <!-- 購入日 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__ttl">
-                    <p class="c-ttl">製品1</p>
-                  </div>
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
+          @foreach($sales_products as $count => $sales_product)
+            <div class="l-stack l-stack--product add_product" id="">
+              <div class="l-stack__item">
+                <input type="hidden" name="is_skip" id="is_skip_input" value="0">
+                <!-- 登録製品 -->
+                <ul class="p-formList" style="margin-bottom: 40px;">
+                  <!-- 購入日 -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__ttl">
+                      <p class="c-ttl">製品{{ $count }}</p>
                     </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--date">
-                        <input placeholder="<?php date_default_timezone_set('UTC'); echo date('Y/m/d'); ?>" class="required add-input--date1" required="required" name="products[1][purchase_date]" type="text" value="{{ old('products[1][purchase_date"]') }}">
+                    <div class="p-formList__content">
+                      <div class="p-formList__label">
+                        <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- ブランド名 -->
-                <li class="p-formList__item js-insert-list-brand-1">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
-                    </div>
-                    <div class="p-formList__data">
-                      <div class="c-input c-input--select">
-                        <select name="products[1][m_brand_id]" required="required" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="1" data-insert="product">
-                          <option value="" selected>ブランドを選択してください</option>
-                          @foreach($brands as $k => $v)
-                            <option value="{{ $k }}">{{ $v }}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                    </div>
-                    <p style="display: none;" class="c-txt c-txt--err">ブランドを選択してください。</p>
-                  </div>
-                </li>
-                <!-- 製品名 -->
-                <li class="p-formList__item js-insert-list-product-1" >
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
-                    </div>
-                    <div class="p-formList__data ">
-                      <div class="c-input c-input--select">
-                        <select name="products[1][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" required="required" data-loop="1" data-insert="brand">
-                          <option value="" selected>製品を選択してください</option>
-                          @foreach($products as $k => $v)
-                            <option value="{{ $k }}">{{ $v }}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- カラー -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">カラー</p>
-                      <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
-                      </div>
-                    </div>
-                    <div class="p-formList__data parent-element">
-                      <div class="c-input c-input--select">
-                        <select name="products[1][m_color_id]" class="js-ty-color">
-                          <option value="" selected>カラーを選択してください</option>
-                          @foreach($colors as $k => $v)
-                            <option value="{{ $k }}">{{ $v }}</option>
-                          @endforeach
-                          <option value="other">上記以外のカラー</option>
-                        </select>
-                      </div>
-                      <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
-                        <div class="p-formList__label">
-                          <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
-                        </div>
-                        <div class="p-formList__data">
-                          <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
+                      <div class="p-formList__data">
+                        <div class="c-input c-input--date">
+                          <input placeholder="<?php echo date('Y/m/d'); ?>" class="required add-input--date1" required="required" name="products[{{ $count }}][purchase_date]" type="text" value="{{ data_get($sales_product, 'purchase_date') }}">
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-                <!-- シリアルナンバー -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">シリアルナンバー</p>
-                      <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                  </li>
+                  <!-- ブランド名 -->
+                  <li class="p-formList__item js-insert-list-brand-1">
+                    <div class="p-formList__content">
+                      <div class="p-formList__label">
+                        <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
-                    </div>
-                    <div class="p-formList__data">
-                      <input placeholder="例）GMP0123456" class="js-serial-1" name="products[1][product_code]" type="text" value="" data-loop="1" onchange="searchSerial($(this).data('loop'), $(this).val());">
-                    </div>
-                  </div>
-                </li>
-                <!-- 購入店舗 -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">購入店舗 </p>
-                      <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
-                      </div>
-                    </div>
-                    <div class="p-formList__data parent-element">
-                      <div class="c-input c-input--select">
-                        <select name="products[1][m_shop_id]">
-                          <option value="" selected>購入店舗を選択してください</option>
-                          @foreach($shops as $k => $v)
-                            <option value="{{ $k }}">{{ $v }}</option>
-                          @endforeach
-                          <option value="other">上記以外の店舗</option>
-                        </select>
-                      </div>
-                      <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
-                        <div class="p-formList__label">
-                          <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
+                      <div class="p-formList__data">
+                        <div class="c-input c-input--select">
+                          <select name="products[{{ $count }}][m_brand_id]" required="required" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="1" data-insert="product">
+                            <option value="" selected>ブランドを選択してください</option>
+                            @foreach($brands as $k => $v)
+                              <option value="{{ $k }}" @if(data_get($sales_product, 'm_brand_id') == $k) selected @endif>{{ $v }}</option>
+                            @endforeach
+                          </select>
                         </div>
-                        <div class="p-formList__data">
-                          <input placeholder="例）アカチャンホンポ○○店" class="" name="products[1][other_shop_name]" type="text" value="{{ old('products[1][other_shop_name"]') }}">
+                      </div>
+                      <p style="display: none;" class="c-txt c-txt--err">ブランドを選択してください。</p>
+                    </div>
+                  </li>
+                  <!-- 製品名 -->
+                  <li class="p-formList__item js-insert-list-product-1" >
+                    <div class="p-formList__content">
+                      <div class="p-formList__label">
+                        <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
+                      </div>
+                      <div class="p-formList__data ">
+                        <div class="c-input c-input--select">
+                          <select name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" required="required" data-loop="1" data-insert="brand">
+                            <option value="" selected>製品を選択してください</option>
+                            @foreach($products as $k => $v)
+                              <option value="{{ $k }}" @if(data_get($sales_product, 'm_product_id') == $k) selected @endif>{{ $v }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                  </li>
+                  <!-- カラー -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__content">
+                      <div class="p-formList__label">
+                        <p class="c-txt">カラー</p>
+                        <div class="p-formList__guide">
+                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
+                        </div>
+                      </div>
+                      <div class="p-formList__data parent-element">
+                        <div class="c-input c-input--select">
+                          <select name="products[{{ $count }}][m_color_id]" class="js-ty-color">
+                            <option value="" selected>カラーを選択してください</option>
+                            @foreach($colors as $k => $v)
+                              <option value="{{ $k }}" @if(data_get($sales_product, 'm_color_id') == $k) selected @endif>{{ $v }}</option>
+                            @endforeach
+                            <option value="other">上記以外のカラー</option>
+                          </select>
+                        </div>
+                        <!-- 上記以外の店舗選択時のフォーム -->
+                        <div style="@if(data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                          <div class="p-formList__label">
+                            <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <input placeholder="例）赤" class="" name="products[{{ $count }}][other_color_name]" type="text" value="{{ data_get($sales_product, 'other_color_name') }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- シリアルナンバー -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__content">
+                      <div class="p-formList__label">
+                        <p class="c-txt">シリアルナンバー</p>
+                        <div class="p-formList__guide">
+                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                        </div>
+                      </div>
+                      <div class="p-formList__data">
+                        <input placeholder="例）GMP0123456" class="js-serial-1" name="products[{{ $count }}][product_code]" type="text" value="{{ data_get($sales_product, 'product_code') }}" data-loop="1" onchange="searchSerial($(this).data('loop'), $(this).val());">
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 購入店舗 -->
+                  <li class="p-formList__item">
+                    <div class="p-formList__content">
+                      <div class="p-formList__label">
+                        <p class="c-txt">購入店舗 </p>
+                        <div class="p-formList__guide">
+                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
+                        </div>
+                      </div>
+                      <div class="p-formList__data parent-element">
+                        <div class="c-input c-input--select">
+                          <select name="products[{{ $count }}][m_shop_id]">
+                            <option value="" selected>購入店舗を選択してください</option>
+                            @foreach($shops as $k => $v)
+                              <option value="{{ $k }}" @if(data_get($sales_product, 'm_shop_id') == $k) selected @endif>{{ $v }}</option>
+                            @endforeach
+                            <option value="other">上記以外の店舗</option>
+                          </select>
+                        </div>
+                        <!-- 上記以外の店舗選択時のフォーム -->
+                        <div style="@if(data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                          <div class="p-formList__label">
+                            <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
+                          </div>
+                          <div class="p-formList__data">
+                            <input placeholder="例）アカチャンホンポ○○店" class="" name="products[{{ $count }}][other_shop_name]" type="text" value="{{ data_get($sales_product, 'other_shop_name') }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+            @endforeach
           <div id="" class="l-stack__item">
             <!-- 登録製品追加 -->
             <a class="c-btn c-btn--ico c-btn--ico--add js-add-more-product" style="margin-top: 30px;">登録製品を追加する</a>
@@ -249,7 +251,7 @@
 
   <script>
       $(document).ready(function() {
-          var num = 2;
+          var num = {{ count($sales_products) + 1 }};
 
           otherTextBind();
 

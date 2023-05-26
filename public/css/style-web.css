@@ -2273,13 +2273,16 @@ input[type=file] + label img {
   margin-left: 4px;
 }
 .p-dashboard__list {
-  margin-top: 24px;
+  margin-top: 32px;
 }
-.p-dashboard__item a {
+.p-dashboard__item a:hover {
   color: #444;
 }
 .p-dashboard__item + .p-dashboard__item {
-  margin-top: 16px;
+  margin-top: 24px;
+}
+.p-dashboard__item:hover a {
+  color: #444;
 }
 .p-dashboard__head {
   border-bottom: 1px solid var(--color_border_1);
