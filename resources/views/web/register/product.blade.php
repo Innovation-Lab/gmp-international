@@ -298,6 +298,7 @@
                   $.each(colors, function(key, value) {
                       selectColorHtml += '<option value="' + key + '">' + value + '</option>';
                   });
+                  selectColorHtml += '<option value="other">上記以外のカラー</option>';
                   selectColorHtml += '</select>';
 
                   var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
@@ -306,6 +307,7 @@
                   $.each(shops, function(key, value) {
                       selectShopHtml += '<option value="' + key + '">' + value + '</option>';
                   });
+                  selectShopHtml += '<option value="other">上記以外の店舗</option>';
                   selectShopHtml += '</select>';
 
                   function addForm() {
