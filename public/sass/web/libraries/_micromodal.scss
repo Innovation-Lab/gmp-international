@@ -163,7 +163,12 @@
         padding: 0;
         width: auto;
         .c-txt{
-          font-size: 12px;
+          font-size: 14px;
+          color: #000;
+          &--must{
+            color: #C30E2E;
+
+          }
         }
       }
     }

@@ -439,7 +439,7 @@ input[type=radio] {
 .radio label {
   color: var(--color_form_button);
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 0 1rem;
   border-radius: 0.125rem;
   cursor: pointer;
@@ -462,10 +462,9 @@ input[type=checkbox] {
 }
 
 input[type=checkbox] + label {
-  font-size: 16px;
   color: #222;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 input[type=checkbox] + label:before {
   content: "";
@@ -4401,7 +4400,7 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-card .slick-slide li .p-card__brand .c-txt {
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 24px;
   }
 }
@@ -4723,6 +4722,21 @@ input[type=file] + label img {
   line-height: 1.3em;
   font-size: 13px;
 }
+@media screen and (min-width: 1280px) {
+  .p-card__purchase {
+    width: 130px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .p-card__serialNum {
+    width: 160px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .p-card__store {
+    width: 180px;
+  }
+}
 .p-card__img {
   display: flex;
   align-items: flex-end;
@@ -4757,7 +4771,7 @@ input[type=file] + label img {
     width: 100%;
   }
 }
-.p-card--list p:not(.c-txt--sm--ghost) {
+.p-card--list .c-txt {
   color: #fff;
 }
 .p-card--list .p-card__item {
@@ -4766,7 +4780,7 @@ input[type=file] + label img {
 }
 @media screen and (min-width: 768px) {
   .p-card--list .p-card__item {
-    padding-left: 160px;
+    padding-left: 100px;
     position: relative;
     min-height: 104px;
   }
@@ -4865,7 +4879,6 @@ input[type=file] + label img {
     position: absolute;
     left: 24px;
     top: 8px;
-    width: 110px;
     height: calc(100% - 16px);
     align-items: center;
     justify-content: center;
@@ -5285,6 +5298,14 @@ input[type=file] + label img {
     min-width: 1px;
   }
 }
+.p-formList__content .split div + div {
+  margin-top: 32px;
+}
+@media screen and (min-width: 768px) {
+  .p-formList__content .split {
+    width: 100%;
+  }
+}
 .p-formList__label {
   display: flex;
   align-items: center;
@@ -5329,6 +5350,18 @@ input[type=file] + label img {
   　Error エラー
   ---------- */
 }
+.p-formList__data .c-txt {
+  margin-top: 16px;
+}
+@media screen and (min-width: 768px) {
+  .p-formList__data .c-txt {
+    margin-top: 0;
+    width: 300px;
+  }
+}
+.p-formList__data label {
+  width: 165px;
+}
 .p-formList__data .error {
   color: var(--color_alert);
   background-color: var(--color_alert_background);
@@ -5340,6 +5373,37 @@ input[type=file] + label img {
   .p-formList__data {
     flex: auto;
     min-width: 1px;
+  }
+}
+.p-formList__data--ac {
+  /* ! ----------
+  　Error エラー
+  ---------- */
+}
+.p-formList__data--ac .c-txt {
+  margin-top: 16px;
+}
+@media screen and (min-width: 768px) {
+  .p-formList__data--ac .c-txt {
+    margin-top: 0;
+    width: 300px;
+  }
+}
+.p-formList__data--ac label {
+  width: 165px;
+}
+.p-formList__data--ac .error {
+  color: var(--color_alert);
+  background-color: var(--color_alert_background);
+  padding: 0.5em 1em;
+  border-radius: 2px;
+  margin: 2px 0 0;
+}
+@media screen and (min-width: 768px) {
+  .p-formList__data--ac {
+    flex: auto;
+    min-width: 1px;
+    width: 352px;
   }
 }
 .p-formList--confirm .p-formList__ttl {
@@ -5390,6 +5454,19 @@ input[type=file] + label img {
 
 .p-formList {
   width: 100%;
+}
+.p-formList .js-target__change-password {
+  margin-top: 16px;
+}
+@media screen and (min-width: 768px) {
+  .p-formList .js-target__change-password {
+    display: flex;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.p-formList .js-target__change-password input {
+  margin-top: 8px;
 }
 .p-formList--add {
   margin-top: 40px;
@@ -5888,7 +5965,11 @@ input[type=file] + label img {
   width: auto;
 }
 .modal__content__body .p-formList__label .c-txt {
-  font-size: 12px;
+  font-size: 14px;
+  color: #000;
+}
+.modal__content__body .p-formList__label .c-txt--must {
+  color: #C30E2E;
 }
 .modal__content__foot {
   margin: 1.5rem 0 0;

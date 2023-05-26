@@ -63,7 +63,7 @@ input[type="radio"] {
     color: var(--color_form_button);
     @extend .c-text__sm !optional;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-end;
     padding: 0 1rem;
     border-radius: 0.125rem;
     cursor: pointer;
@@ -85,10 +85,10 @@ input[type="checkbox"] {
 }
 input[type="checkbox"] {
   & + label {
-    font-size: 16px;
+    // font-size: 16px;
     color: #222;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     &:before{
       content: '';
       width: 20px;

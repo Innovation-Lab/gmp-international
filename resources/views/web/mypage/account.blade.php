@@ -31,7 +31,43 @@
                   @enderror
                 </div>
               </li>
-              <!-- パスワード -->
+              <li class="p-formList__item">
+                <div class="p-formList__content">
+                  <!-- <div class="p-formList__label">
+                    <p class="c-txt">パスワード <span class="c-txt c-txt--must">必須</span></p>
+                  </div> -->
+                  <div class="p-formList__data--ac c-txt">
+                    {!! Form::checkbox('change-password', 'value', false, ['id' => 'change-password','onclick' => 'checkChangePassword()']) !!}
+                    {!! Form::label('change-password', 'パスワードを変更する') !!}
+                  </div>
+                  <div class="split">
+                    <div class="p-formList__data js-target__change-password" style="display: none;">
+                      <div class="p-formList__label">
+                        <p class="c-txt">パスワード（半角英数字6〜10文字）<span class="c-txt c-txt--must">必須</span></p>
+                      </div>
+                      {!! Form::password('password', ['placeholder' => '例）sample123']) !!}
+                    </div>
+                    <div class="p-formList__data js-target__change-password" style="display: none;">
+                      <div class="p-formList__label">
+                        <p class="c-txt">パスワード確認用 <span class="c-txt c-txt--must">必須</span></p>
+                      </div>
+                      {!! Form::password('password-confirm', ['placeholder' => 'パスワードを再入力してください']) !!}
+                    </div>
+                  </div>
+                </div>
+              </li>
+              {{-- パスワード変更 表示/非表示 --}}
+              <script>
+                function checkChangePassword(){
+                  radio = document.getElementsByName('change-password')
+                  if(radio[0].checked) {
+                    $('.js-target__change-password').css({'display':'block'});
+                  }else{
+                    $('.js-target__change-password').css({'display':'none'});
+                  }
+                }
+              </script>  
+              <!-- {{--パスワード--}}
               <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
@@ -40,13 +76,13 @@
                   <div class="p-formList__data @error('password') p-formList__data--err @enderror">
                     <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">
                   </div>
-                  <!-- 入力不備エラーメッセージ -->
+                  {{--入力不備エラーメッセージ--}}
                   @error('password')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
               </li>
-              <!-- パスワード確認用 -->
+              {{--パスワード確認用--}}
               <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
@@ -55,12 +91,12 @@
                   <div class="p-formList__data @error('password_confirmation') p-formList__data--err @enderror">
                     <input placeholder="パスワードを再入力してください" class="c-form" name="password_confirmation" type="password" value="">
                   </div>
-                  <!-- 入力不備エラーメッセージ -->
+                  {{--入力不備エラーメッセージ--}}
                   @error('password_confirmation')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
                   @enderror
                 </div>
-              </li>
+              </li> -->
             </ul>
           </form>
         </div>
