@@ -172,7 +172,7 @@
               <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label p-formList__label--thin">
-                      <p class="c-txt">個人情報の取り扱いについて <span class="c-txt c-txt--must">必須</span></p>
+                      <p class="c-txt">個人情報の取り扱いについて</p>
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">

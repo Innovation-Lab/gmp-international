@@ -35,7 +35,7 @@
           <form method="POST" action="{{ route('register.store.product') }}" id="productStoreForm">
           @csrf
           @foreach($sales_products as $count => $sales_product)
-            <div class="l-stack l-stack--product add_product" id="">
+            <div class="l-stack l-stack--product @if($count > 1) l-stack__item--line @endif add_product" id="">
               <div class="l-stack__item">
                 <input type="hidden" name="is_skip" id="is_skip_input" value="0">
                 <!-- 登録製品 -->
@@ -44,6 +44,11 @@
                   <li class="p-formList__item">
                     <div class="p-formList__ttl">
                       <p class="c-ttl">製品{{ $count }}</p>
+                      @if($count > 1)
+                        <div class="p-btnWrap">
+                          <p class="c-btn c-btn--ico c-btn--ico--remove">削除</p>
+                        </div>
+                      @endif
                     </div>
                     <div class="p-formList__content">
                       <div class="p-formList__label">
@@ -113,7 +118,7 @@
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
-                        <div style="@if(data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(!data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
@@ -158,7 +163,7 @@
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
-                        <div style="@if(data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(!data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                           </div>
@@ -172,7 +177,7 @@
                 </ul>
               </div>
             </div>
-            @endforeach
+          @endforeach
           <div id="" class="l-stack__item">
             <!-- 登録製品追加 -->
             <a class="c-btn c-btn--ico c-btn--ico--add js-add-more-product" style="margin-top: 30px;">登録製品を追加する</a>
@@ -206,19 +211,6 @@
       });
   </script>
 
-  <script>
-      //製品の削除とナンバリング
-      $(document).on('click', '.c-btn--ico--remove', function(){
-          $(this).parents('.l-stack__item--line').remove();
-          let Tag = $('.l-stack--product > .l-stack__item'),
-              Num = Tag.length;
-          Tag.each(function(){
-              let This = $(this),
-                  Ind = This.index() + 1;
-              This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
-          });
-      });
-  </script>
   {{-- フォームの表示切り替え --}}
   <script>
       $('select').on('keydown keyup keypress change click lord',function(){
@@ -252,6 +244,18 @@
   <script>
       $(document).ready(function() {
           var num = {{ count($sales_products) + 1 }};
+          //製品の削除とナンバリング
+          $(document).on('click', '.c-btn--ico--remove', function(){
+              num = num - 1;
+              $(this).parents('.l-stack__item--line').remove();
+              let Tag = $('.l-stack--product > .l-stack__item'),
+                  Num = Tag.length;
+              Tag.each(function(){
+                  let This = $(this),
+                      Ind = This.index() + 1;
+                  This.find('.p-formList__ttl .c-ttl').text('製品'+Ind);
+              });
+          });
 
           otherTextBind();
 

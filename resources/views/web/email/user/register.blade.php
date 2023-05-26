@@ -228,7 +228,7 @@
               <br>
               会員登録が完了しました。<br>
               こちらの<a class="" href="{{ route('mypage.index') }}">マイページ</a>からご利用ください。
-              
+
             </font>
             <br><br>
           </td>
