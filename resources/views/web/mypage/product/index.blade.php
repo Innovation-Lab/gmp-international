@@ -48,7 +48,11 @@
                         <p class="c-txt c-txt--sm">{{ $sales_product->mProduct->name_kana }}</p>
                       </div>
                       <div class="p-card__color">
-                        <div class="c-colorBall"></div>
+                        <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                          @if (data_get($sales_product, 'mColor.second_color'))
+                            <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                          @endif
+                        </div>
                         <p class="c-txt">{{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}</p>
                       </div>
                     </div>
@@ -60,7 +64,7 @@
                       </div>
                       <div class="p-card__serialNum">
                         <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
-                        <p class="data c-txt">{{ data_get($sales_product, 'product_code') }}</p>
+                        <p class="data c-txt">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
                       </div>
                       <div class="p-card__store">
                         <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>

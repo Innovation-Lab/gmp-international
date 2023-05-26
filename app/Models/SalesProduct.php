@@ -79,7 +79,7 @@ class SalesProduct extends Model
             return data_get($this, 'other_color_name');
         }
         
-        return data_get($this, 'mColor.alphabet_name', 'カラーは選択されていません。');
+        return data_get($this, 'mColor.alphabet_name', '未登録');
     }
     
     /**
@@ -95,6 +95,6 @@ class SalesProduct extends Model
             return data_get($this, 'other_shop_name');
         }
         
-        return data_get($this, 'mShop.name', '店舗は選択されていません。');
+        return data_get($this, 'mShop.name', '未登録');
     }
 }

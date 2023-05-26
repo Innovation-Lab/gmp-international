@@ -41,7 +41,7 @@
                             @endif
                           </div>
                           <p class="c-txt">
-                            {{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}
+                            {{ data_get($sales_product, 'select_color_name', '未登録')}}
                           </p>
                         </div>
                       </div>
@@ -54,11 +54,11 @@
                         <!-- 購入店舗 -->
                         <div class="p-card__store">
                           <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                          <p class="data c-txt">{{ data_get($sales_product, 'mShop.name') }}</p>
+                          <p class="data c-txt">{{ data_get($sales_product, 'mShop.name', '未登録') }}</p>
                         </div>
                         <div class="p-card__serialNum">
                           <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
-                          <p class="data c-txt">{{ data_get($sales_product, 'product_code') }}</p>
+                          <p class="data c-txt">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
                         </div>
                       </div>
                     </div>
