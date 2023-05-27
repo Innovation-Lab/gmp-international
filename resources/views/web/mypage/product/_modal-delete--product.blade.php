@@ -29,11 +29,11 @@
                     </div>
                     <div class="p-card__serialNum">
                       <p class="label c-txt--sm c-txt--sm--ghost" style="color: black">シリアルNo.</p>
-                      <p class="data c-txt" style="color: black">{{ data_get($sales_product, 'product_code') }}</p>
+                      <p class="data c-txt" style="color: black">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
                     </div>
                     <div class="p-card__store">
                       <p class="label c-txt--sm c-txt--sm--ghost" style="color: black">購入店舗</p>
-                      <p class="data c-txt" style="color: black">{{ data_get($sales_product, 'mShop.name') }}</p>
+                      <p class="data c-txt" style="color: black">{{ data_get($sales_product, 'mShop.name', data_get($sales_product, 'other_shop_name', '未登録')) }}</p>
                     </div>
                   </div>
                 </div>
@@ -85,10 +85,4 @@
       $(this).parents('.p-formList__data').find('.p-formList__other').hide();
     }  
   }).change();
-</script>
-{{-- 日付選択 --}}
-<script>
-  $(function() {
-    $('.c-input--date input').datepicker();
-  });
 </script>

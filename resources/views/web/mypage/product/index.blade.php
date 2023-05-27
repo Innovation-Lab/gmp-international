@@ -103,5 +103,26 @@
 @include('web.components.modal._modal-guide--color')
 @include('web.components.modal._modal-guide--serial')
 @include('web.components.modal._modal-guide--shop')
+<script>
+    $(function() {
+        $('select').change(function() {
+            // 選択されたオプションの値を取得
+            var selectedValue = $(this).val();
+
+            if (selectedValue === 'other') {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+            } else {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+            }
+        });
+    });
+</script>
+<script>
+    $(function() {
+        $('.c-input--date input').each(function(index, elem) {
+            $(this).datepicker();
+        })
+    });
+</script>
 
 @endsection

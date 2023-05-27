@@ -27,7 +27,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--date" style="width: 100%;">
-                          <input id="date" placeholder="<?php date_default_timezone_set('UTC'); echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date') }}">
+                          <input id="date" placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date') }}">
                         </div>
                         @error('purchase_date')
                         <div class="c-txt c-txt--err">{{ $message }}</div>

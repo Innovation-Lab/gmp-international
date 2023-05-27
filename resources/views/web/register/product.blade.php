@@ -439,8 +439,6 @@
                       $('.add_product').last().after(newForm);
                       otherTextBind();
 
-                      // var dateClass = '.add-input--date' + num;
-
                       var dateClass = '.add-input--date' + num;
 
                       $(dateClass).datepicker({

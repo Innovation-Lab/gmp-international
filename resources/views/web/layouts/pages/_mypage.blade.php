@@ -19,10 +19,6 @@
     </div>
 
     {{-- ---------- スクリプト ---------- --}}
-    {{-- jQuery読み込み --}}
-    <script src="{{ asset('js/admin/library/jquery-3.5.1.min.js') }}"></script>
-    {{-- モーダル --}}
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script>
       MicroModal.init({
         disableScroll: true,
@@ -43,4 +39,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
     <script src="{{ asset('js/admin/flatPickr.js') }}"></script>
     --}}
+    {{-- 日付選択 --}}
+  </body>
 </html>

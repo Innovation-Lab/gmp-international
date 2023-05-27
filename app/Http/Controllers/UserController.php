@@ -66,17 +66,29 @@ class UserController extends Controller
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
     }
-
+    
     /**
      * 登録済み製品 更新
+     * @param SalesProduct $sales_product
+     * @param StoreProductRequest $request
      * @return RedirectResponse
      */
-    public function update(SalesProduct $sales_product ,StoreProductRequest $request): RedirectResponse
+    public function update(SalesProduct $sales_product , StoreProductRequest $request): RedirectResponse
     {
         $params = $request->all();
 
         try {
-            $sales_product->fill($params)->save();
+            $sales_product->update([
+                'm_product_id' => data_get($params, 'm_product_id'),
+                'user_id' => \Auth::user()->id,
+                'purchase_date' => data_get($params, 'purchase_date'),
+                'm_shop_id' => data_get($params, 'm_shop_id') && data_get($params, 'm_shop_id') != 'other' ? data_get($params, 'm_shop_id') : NULL,
+                'product_code' => data_get($params, 'product_code'),
+                'm_color_id' => data_get($params, 'm_color_id') && data_get($params, 'm_color_id') != 'other' ? data_get($params, 'm_color_id') : NULL,
+                'other_color_name' => data_get($params, 'other_color_name'),
+                'other_shop_name' => data_get($params, 'other_shop_name'),
+            ]);
+            
             \DB::commit();
 
             return redirect()
@@ -91,9 +103,11 @@ class UserController extends Controller
             ->back()
             ->with('error', 'エラーが発生しました。');
     }
-
+    
     /**
      * 登録済み製品 削除
+     * @param SalesProduct $sales_product
+     * @param Request $request
      * @return RedirectResponse
      */
     public function productDelete(SalesProduct $sales_product ,Request $request): RedirectResponse
