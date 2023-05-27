@@ -81,37 +81,7 @@
                     $('.js-target__change-password').css({'display':'none'});
                   }
                 }
-              </script>  
-              <!-- {{--パスワード--}}
-              <li class="p-formList__item">
-                <div class="p-formList__content">
-                  <div class="p-formList__label">
-                    <p class="c-txt">パスワード<br />(半角英数字6〜10文字)</p>
-                  </div>
-                  <div class="p-formList__data @error('password') p-formList__data--err @enderror">
-                    <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">
-                  </div>
-                  {{--入力不備エラーメッセージ--}}
-                  @error('password')
-                    <p class="c-txt c-txt--err">{{ $message }}</p>
-                  @enderror
-                </div>
-              </li>
-              {{--パスワード確認用--}}
-              <li class="p-formList__item">
-                <div class="p-formList__content">
-                  <div class="p-formList__label">
-                    <p class="c-txt">パスワード(確認用)</p>
-                  </div>
-                  <div class="p-formList__data @error('password_confirmation') p-formList__data--err @enderror">
-                    <input placeholder="パスワードを再入力してください" class="c-form" name="password_confirmation" type="password" value="">
-                  </div>
-                  {{--入力不備エラーメッセージ--}}
-                  @error('password_confirmation')
-                    <p class="c-txt c-txt--err">{{ $message }}</p>
-                  @enderror
-                </div>
-              </li> -->
+              </script>
             </ul>
           {{ Form::close() }}
         </div>
