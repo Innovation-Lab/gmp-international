@@ -50,11 +50,14 @@
                     {!! Form::label('change-password', 'パスワードを変更する') !!}
                   </div>
                   <div class="split">
-                    <div class="p-formList__data js-target__change-password @error('password') p-formList__data--err @enderror" style="display: none;">
+                    <div class="p-formList__data js-target__change-password
+                      @error('password') p-formList__data--err @enderror
+                      @error('password_confirmation') @if($message == 'パスワード(確認用)とパスワードには同じ値を入力してください。') p-formList__data--err @endif @enderror
+                    "  style="display: none;">
                       <div class="p-formList__label">
                         <p class="c-txt">パスワード（半角英数字6〜10文字）<span class="c-txt c-txt--must">必須</span></p>
                       </div>
-                      {!! Form::password('password', ['placeholder' => '例）sample123']) !!}
+                      {!! Form::password('password', ['placeholder' => '例）sample123', 'autocomplete' => 'off']) !!}
                       @error('password')
                         <p class="c-txt c-txt--err" style="width: 100%">{{ $message }}</p>
                       @enderror

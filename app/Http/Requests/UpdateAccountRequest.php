@@ -33,7 +33,7 @@ class UpdateAccountRequest extends FormRequest
             ],
         ];
 
-        if ($this->filled('password') && $this->filled('password_confirmation')) {
+        if ($this->filled('password') || $this->filled('password_confirmation')) {
             $rules['password'] = [
                 'required',
                 'min:6',
