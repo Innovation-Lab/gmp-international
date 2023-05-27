@@ -22,6 +22,8 @@ require __DIR__.'/auth.php';
 
 //パスワード再設定
 Route::view('/reset', 'web.auth.reset.index')->name('web.reset.index');
+//退会完了
+Route::view('/withdrawal/complete', 'web.auth.leave.complete');
 
 
 /* ! ==================================================
@@ -103,7 +105,6 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('/user/withdrawal', [UserController::class, 'withdrawal'])->name('withdrawal');
         Route::post('/user/destroy', [UserController::class, 'destroy'])->name('destroy');
         //退会完了
-        Route::get('/user/withdrawal/complete', [UserController::class, 'withdrawalComplete'])->name('withdrawal.complete');
     });
 
 });

@@ -194,20 +194,9 @@ class UserController extends Controller
     public function destroy(): Redirector|RedirectResponse|Application
     {
         $user = Auth::user();
+        $this->user_repository->destroy($user);
         
-        if(!$this->user_repository->destroy($user)) {
-            return redirect()->back()->with(['error' => 'エラーが発生しました。お問い合わせください。']);
-        }
-        
-        return redirect()->route('mypage.withdrawal.complete');
-        
+        return redirect('withdrawal/complete');
     }
     
-    /**
-     * @return Application|Factory|\Illuminate\Contracts\View\View
-     */
-    public function withdrawalComplete(): \Illuminate\Contracts\View\View|Factory|Application
-    {
-        return view('web.auth.leave.complete');
-    }
 }
