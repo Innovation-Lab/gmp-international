@@ -75,10 +75,17 @@
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
-            <button type="submit" class="c-btn c-btn--next" form="passwordSubmitForm">登録する</button>
+            <button onclick="blockNewPassDoubleClick()" id="submitPasswordForm" class="c-btn c-btn--next">登録する</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+      function blockNewPassDoubleClick()
+      {
+          $('#submitPasswordForm').prop('disabled', true);
+          $('#passwordSubmitForm').submit();
+      }
+  </script>
 @endsection

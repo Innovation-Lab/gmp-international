@@ -47,11 +47,18 @@
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
             <a href="{{ route('login') }}" class="c-btn c-btn--back">戻る</a>
-            <button type="submit" class="c-btn c-btn--next" form="accountSubmitForm">送信する</button>
+            <button onclick="blockPostLinkDoubleClick()" id="PostNewLinkButton" class="c-btn c-btn--next" >送信する</button>
             {{-- <a class="c-btn c-btn--next"  href="{{ route('web.forgot.complete') }}">送信する</a> --}}
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+      function blockPostLinkDoubleClick()
+      {
+          $('#PostNewLinkButton').prop('disabled', true);
+          $('#accountSubmitForm').submit();
+      }
+  </script>
 @endsection
