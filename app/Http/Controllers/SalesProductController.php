@@ -8,9 +8,13 @@ use App\Models\MColor;
 use App\Models\MProduct;
 use App\Models\MShop;
 use App\Models\SalesProduct;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -97,5 +101,52 @@ class SalesProductController extends Controller
         return redirect()
             ->back()
             ->with('error', 'エラーが発生しました。');
+    }
+    
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetTyingArray(Request $request): Response|Application|ResponseFactory
+    {
+        $key = $request->input('key_name');
+        $id = $request->input('id');
+        
+        switch ($key) {
+            case 'brand':
+                $items = MProduct::query()->where('m_brand_id', $id)->pluck('name', 'id');
+                $view = view('web.mypage.product._ajax_select_product_list', [
+                    'items' => $items,
+                    'checkVal' => false,
+                ])->render();
+                break;
+            case 'product':
+                $product = MProduct::find($id);
+                $color_array = explode(',', $product->color_array);
+                $items = MBrand::query()->pluck('name', 'id');
+                $view = view('web.mypage.product._ajax_select_brand_list', [
+                    'items' => $items,
+                    'checkVal' => $product->m_brand_id,
+                ])->render();
+                break;
+            default:
+                $view = NULL;
+        }
+        
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+    
+    
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function jsSearchSerial(Request $request): JsonResponse
+    {
+        $search = SalesProduct::where('product_code', $request->get('code'))->count();
+        $result = $search > 0;
+        
+        return response()->json($result);
     }
 }

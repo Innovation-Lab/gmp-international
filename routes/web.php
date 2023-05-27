@@ -83,7 +83,10 @@ Route::middleware(['auth:web'])->group(function () {
         //製品の追加登録
         Route::get('/add', [SalesProductController::class, 'product'])->name('add');
         Route::post('/add', [SalesProductController::class, 'productAdd'])->name('add');
-
+        
+        Route::get('/js-get-tying-array', [SalesProductController::class, 'jsGetTyingArray']);
+        Route::get('/js-search-serial', [SalesProductController::class, 'jsSearchSerial']);
+        
         //製品の入力情報確認
         Route::get('/confirm', [SalesProductController::class, 'productConfirm'])->name('confirm');
         Route::post('/store', [SalesProductController::class, 'store'])->name('store');

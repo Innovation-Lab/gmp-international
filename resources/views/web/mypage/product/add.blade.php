@@ -36,14 +36,14 @@
                     </div>
                   </li>
                   <!-- ブランド名 -->
-                  <li class="p-formList__item">
+                  <li class="p-formList__item js-insert-list-brand">
                     <div class="p-formList__content">
                       <div class="p-formList__label">
                           <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select value="{{ old('m_brand_id') }}" name="m_brand_id">
+                          <select name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
                               <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -57,14 +57,14 @@
                     </div>
                   </li>
                   <!-- 製品名 -->
-                  <li class="p-formList__item">
+                  <li class="p-formList__item js-insert-list-product">
                     <div class="p-formList__content">
                       <div class="p-formList__label">
                           <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select value="{{ old('m_product_id') }}"name="m_product_id">
+                          <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'));" data-insert="brand">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" {{ old('m_product_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -118,7 +118,7 @@
                         </div>
                       </div>
                       <div class="p-formList__data">
-                        <input placeholder="例）GMP0123456" class="required" name="product_code" type="name" value="{{ old('product_code') }}">
+                        <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="name" value="{{ old('product_code') }}" onchange="searchSerial($(this).val());">
                       </div>
                     </div>
                   </li>
@@ -196,5 +196,49 @@
             }
         });
     }
+  </script>
+
+  <script>
+      // 共通処理
+      function getTyArray(
+          key,
+          value = '',
+          insert = ''
+      ) {
+          $.get({
+              url: '/mypage/js-get-tying-array',
+              data: {
+                  'key_name': key,
+                  'id': value,
+              },
+              success: function (response) {
+                  console.log(response);
+                  let place = '.js-insert-list-' + insert;
+                  console.log(place);
+                  $(place).empty().append(response);
+
+              }
+          });
+      }
+  </script>
+  <script>
+      // 共通処理
+      function searchSerial(
+          code = ''
+      ) {
+          $.get({
+              url: '/register/js-search-serial',
+              data: {
+                  'code': code,
+              },
+              success: function (response) {
+                  if (response) {
+                      let place = '.js-serial';
+                      $(place).val('');
+                      alert('既に使われているシリアルコードですので登録できません。');
+                  }
+              }
+          });
+      }
   </script>
 @endsection
