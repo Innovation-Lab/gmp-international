@@ -6,7 +6,7 @@
     {{-- ローディング --}}
     <div class="c-loading" id="js-target__loading">
       <img src="{{asset('img/admin/loading/icon.gif')}}" width="72px" height="72px">
-      <p style="font-size:1rem;" font-weight: 700;>Now Loading</p>
+      <p style="font-size:1rem; font-weight: 700;">Now Loading</p>
     </div>
 
     {{-- 開発用チートシート --}}
@@ -54,4 +54,5 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
     <script src="{{ asset('js/admin/flatPickr.js') }}"></script>
     --}}
+  </body>
 </html>
