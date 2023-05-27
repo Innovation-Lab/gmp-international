@@ -86,17 +86,18 @@
                           <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
                         </div>
                       </div>
-                      <div class="p-formList__data">
+                      <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
                           <select name="m_color_id">
                             <option value="" selected>カラーを選択してください</option>
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
+                            <option value="other">上記以外のカラー</option>
                           </select>
                         </div>
                         <!-- 上記以外のカラー選択時のフォーム -->
-                        <div style="display:none;" class="p-formList__content p-formList__other">
+                        <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
@@ -130,17 +131,18 @@
                           <button class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></button>
                         </div>
                       </div>
-                      <div class="p-formList__data">
+                      <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
                           <select name="m_shop_id">
                             <option value="" selected>購入店舗を選択してください</option>
                             @foreach($shops as $k => $v)
                               <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
+                            <option value="other">上記以外の店舗</option>
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
-                        <div style="display:none;" class="p-formList__content p-formList__other">
+                        <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                           </div>
@@ -173,22 +175,26 @@
   @include('web.components.modal._modal-guide--color')
   @include('web.components.modal._modal-guide--serial')
   @include('web.components.modal._modal-guide--shop')
-  
-  {{-- フォームの表示切り替え --}}
-  <script>
-    $('select').on('keydown keyup keypress change click lord',function(){    
-      if($(this).val() == '9999999'){
-        $(this).parents('.p-formList__data').find('.p-formList__other').css('display','grid');
-      }else{   
-        $(this).parents('.p-formList__data').find('.p-formList__other').hide();
-      }  
-    }).change();
-  </script>
+
 
   {{-- 日付選択 --}}
   <script>
     $(function() {
       $('.c-input--date input').datepicker();
+      otherTextBind();
     });
+
+    function otherTextBind() {
+        $('select').change(function() {
+            // 選択されたオプションの値を取得
+            var selectedValue = $(this).val();
+
+            if (selectedValue === 'other') {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+            } else {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+            }
+        });
+    }
   </script>
 @endsection

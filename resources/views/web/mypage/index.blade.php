@@ -54,7 +54,7 @@
                         <!-- 購入店舗 -->
                         <div class="p-card__store">
                           <p class="label c-txt c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                          <p class="data c-txt">{{ data_get($sales_product, 'mShop.name', '未登録') }}</p>
+                          <p class="data c-txt">{{ data_get($sales_product, 'mShop.name', data_get($sales_product, 'other_shop_name', '未登録')) }}</p>
                         </div>
                         <div class="p-card__serialNum">
                           <p class="label c-txt c-txt--sm c-txt--sm--ghost">シリアルナンバー</p>
