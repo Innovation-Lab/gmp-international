@@ -329,6 +329,13 @@
                   selectShopHtml += '<option value="other">上記以外の店舗</option>';
                   selectShopHtml += '</select>';
 
+                  var today = new Date();
+                  var year = today.getFullYear();
+                  var month = String(today.getMonth() + 1).padStart(2, '0');
+                  var day = String(today.getDate()).padStart(2, '0');
+
+                  var formattedDate = year + '/' + month + '/' + day;
+
                   function addForm() {
                       var newForm = '<div class="l-stack__item l-stack__item--line add_product" id="" style="">' +
                       '<!-- 登録製品追加 -->' +
@@ -347,7 +354,7 @@
                       '        </div> ' +
                       '        <div class="p-formList__data"> ' +
                       '            <div class="c-input c-input--date"> ' +
-                      '                <input placeholder="0000/00/00" class="required  add-input--date'+ num + '" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
+                      '                <input placeholder="'+ formattedDate +'" class="required add-input--date'+ num + '" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
                       '            </div> ' +
                       '        </div> ' +
                       '    </div> ' +
