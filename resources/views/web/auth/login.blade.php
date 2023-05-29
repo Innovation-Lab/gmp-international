@@ -5,7 +5,11 @@
   $userAgent = request()->header('User-Agent');
     if (isMobile($userAgent) && count($errors->all()) > 0) {
         $javascriptCode = "$(document).ready(function() {
-          $('#modal-login').show()
+            if (window.innerWidth <= 1024) { // タブレットサイズ以下の場合
+                $('#modal-login').show();
+            } else { // PCサイズの場合
+                // PC向けの表示処理を行う
+            }
         });";
         echo "<script>{$javascriptCode}</script>";
     }
