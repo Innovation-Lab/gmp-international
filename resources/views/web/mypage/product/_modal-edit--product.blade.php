@@ -17,7 +17,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--date" style="width: 100%">
-                        <input placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}">
+                        <input placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}" style=" @error('purchase_date') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                       </div>
                       @error('purchase_date')
                         <div class="c-txt--err">{{ $message }}</div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="m_brand_id">
+                        <select name="m_brand_id" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                           <option value="" selected>ブランドを選択してください</option>
                           @foreach($brands as $k => $v)
                             <option value="{{ $k }}" {{ old('m_brand_id', $sales_product->mProduct->mBrand->id) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="m_product_id">
+                        <select name="m_product_id" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                           <option value="" selected>製品を選択してください</option>
                           @foreach($products as $k => $v)
                             <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>

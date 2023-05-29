@@ -117,4 +117,12 @@ class User extends Authenticatable
 
         return $formatted_tel;
     }
+    
+    /**
+     * @return bool
+     */
+    public function hasProduct(): bool
+    {
+        return $this->salesProducts->count() > 0;
+    }
 }
