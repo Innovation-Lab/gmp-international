@@ -29,6 +29,8 @@
                       <div class="p-card__mainData">
                         <div class="p-card__brand">
                           <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
+                          <!-- 編集ボタン -->
+                          <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh c-btn--ghost--wh--mypage js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-edit--product-{{ $sales_product->id }}" role="button">編集する</button>
                         </div>
                         <div class="p-card__product">
                           <p class="c-txt c-txt--lg">{{ data_get($sales_product, 'mProduct.name') }}</p>
@@ -63,7 +65,7 @@
                       </div>
                     </div>
                     <!-- 製品画像 -->
-                    <div class="p-card__img">
+                    <div class="p-card__img p-card__img--top">
                       <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
                     </div>
                   </div>
@@ -114,7 +116,7 @@
                   </div>
                   <div class="p-card__add">
                     <p class="c-ttl--xxl c-ttl--xxl--wh">ADD YOUR ITEM</p>
-                    <p class="c-btn--register">製品を登録する</p>
+                    <p class="c-btn--register--rd">製品を登録する</p>
                   </div>
                 </div>
               </li>

@@ -100,7 +100,7 @@
                         </div>
                         <div class="l-stack__item">
                           <div class="p-formList__label">
-                            <p class="c-txt">個人情報の取り扱いについて</p>
+                            <p class="c-txt">個人情報の<br>取り扱いについて</p>
                           </div>
                           <div class="p-formList__data">
                             <p class="c-txt">{{ \App\Models\User::DM_STATUS[data_get($user, 'is_dm')] }}</p>

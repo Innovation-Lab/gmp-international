@@ -76,7 +76,7 @@
                 <!-- カラー -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--modal">
                       <p class="c-txt">カラー</p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
@@ -107,7 +107,7 @@
                 <!-- シリアルナンバー -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--modal">
                       <p class="c-txt">シリアルナンバー</p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
@@ -121,7 +121,7 @@
                 <!-- 購入店舗 -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--modal">
                       <p class="c-txt">購入店舗</p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
