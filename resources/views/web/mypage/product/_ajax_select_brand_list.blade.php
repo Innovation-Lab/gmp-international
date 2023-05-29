@@ -12,7 +12,7 @@
       </select>
     </div>
     @error('m_brand_id')
-    <div class="c-txt c-txt--err">{{ $message }}</div>
+      <div class="c-txt c-txt--err">{{ $message }}</div>
     @enderror
   </div>
 </div>

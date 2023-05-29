@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MultiStoreProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\MBrand;
 use App\Models\MColor;
@@ -171,10 +172,10 @@ class RegisterController extends Controller
     }
     
     /**
-     * @param Request $request
+     * @param MultiStoreProductRequest $request
      * @return RedirectResponse
      */
-    public function storeProduct(Request $request): RedirectResponse
+    public function storeProduct(MultiStoreProductRequest $request): RedirectResponse
     {
         $products = $request->input('products', []);
 

@@ -56,45 +56,54 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--date">
-                          <input placeholder="<?php echo date('Y/m/d'); ?>" class="required add-input--date1" required="required" name="products[{{ $count }}][purchase_date]" type="text" value="{{ data_get($sales_product, 'purchase_date') }}">
+                          <input placeholder="<?php echo date('Y/m/d'); ?>" class="required add-input--date1"  name="products[{{ $count }}][purchase_date]" type="text" value="{{ data_get($sales_product, 'purchase_date') }}">
                         </div>
+                        @error('products.'.$count.'.purchase_date')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </li>
                   <!-- ブランド名 -->
-                  <li class="p-formList__item js-insert-list-brand-1">
+                  <li class="p-formList__item js-insert-list-brand-{{ $count }}">
                     <div class="p-formList__content">
                       <div class="p-formList__label">
                         <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_brand_id]" required="required" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="1" data-insert="product">
+                          <select name="products[{{ $count }}][m_brand_id]" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="product">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_brand_id') == $k) selected @endif>{{ $v }}</option>
                             @endforeach
                           </select>
                         </div>
+                        @error('products.'.$count.'.m_brand_id')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
                       </div>
                       <p style="display: none;" class="c-txt c-txt--err">ブランドを選択してください。</p>
                     </div>
                   </li>
                   <!-- 製品名 -->
-                  <li class="p-formList__item js-insert-list-product-1" >
+                  <li class="p-formList__item js-insert-list-product-{{ $count }}" >
                     <div class="p-formList__content">
                       <div class="p-formList__label">
                         <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data ">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" required="required" data-loop="1" data-insert="brand">
+                          <select name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="brand">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_product_id') == $k) selected @endif>{{ $v }}</option>
                             @endforeach
                           </select>
                         </div>
+                        @error('products.'.$count.'.m_product_id')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </li>
@@ -286,7 +295,7 @@
                   var colors = array.colors;
                   var shops = array.shops;
                   console.log(brands)
-                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" required="required" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
+                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
                     '<option value="" selected>ブランドを選択してください</option>';
 
                   $.each(brands, function(key, value) {
@@ -294,7 +303,7 @@
                   });
                   selectBrandHtml += '</select>';
 
-                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" required="required" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
+                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
                     '<option value="" selected>製品を選択してください</option>';
 
                   $.each(products, function(key, value) {
@@ -338,7 +347,7 @@
                       '        </div> ' +
                       '        <div class="p-formList__data"> ' +
                       '            <div class="c-input c-input--date"> ' +
-                      '                <input placeholder="0000/00/00" class="required  add-input--date'+ num + '" required="required" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
+                      '                <input placeholder="0000/00/00" class="required  add-input--date'+ num + '" name="products['+ num +']['+ 'purchase_date' +']" type="text" value=""> ' +
                       '            </div> ' +
                       '        </div> ' +
                       '    </div> ' +
