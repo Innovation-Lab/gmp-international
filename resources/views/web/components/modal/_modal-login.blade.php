@@ -10,11 +10,15 @@
       <main class="modal__content" id="modal-1-content">
         <div class="p-login__auth p-login__auth--modal">
           {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
-            <input class="mailbox" type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
+            <input class="mailbox" type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス"
+             style=" @error('email') background: #FFE0E6; border: #C30E2E 1px solid; @enderror"
+            >
             @error('email')
               <p class="c-txt c-txt--err" style="display: block; width: 100%; margin: 4px 0 0;">{{ $message }}</p>
             @enderror
-            <input class="passbox" type="password" name="password" placeholder="パスワード">
+            <input class="passbox" type="password" name="password" placeholder="パスワード"
+             style=" @error('password') background: #FFE0E6; border: #C30E2E 1px solid; @enderror"
+            >
             @error('password')
               <p class="c-txt c-txt--err" style="display: block; width: 100%; margin: 4px 0 0;">{{ $message }}</p>
             @enderror
