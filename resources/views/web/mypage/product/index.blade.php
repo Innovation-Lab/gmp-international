@@ -58,15 +58,15 @@
                     </div>
                     <div class="p-card__subData p-card__subData--list">
                       <!-- 購入日・シリアルナンバー・購入店舗 -->
-                      <div class="p-card__purchase">
+                      <div class="p-card__purchase p-card__purchase--all">
                         <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
                         <p class="data c-txt">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
                       </div>
-                      <div class="p-card__serialNum">
+                      <div class="p-card__serialNum p-card__serialNum--all">
                         <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
                         <p class="data c-txt">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
                       </div>
-                      <div class="p-card__store">
+                      <div class="p-card__store p-card__store--all">
                         <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
                         <p class="data c-txt">{{ data_get($sales_product, 'select_shop_name') }}</p>
                       </div>

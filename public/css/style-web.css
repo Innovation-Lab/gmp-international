@@ -4726,17 +4726,17 @@ input[type=file] + label img {
   font-size: 13px;
 }
 @media screen and (min-width: 1280px) {
-  .p-card__purchase {
+  .p-card__purchase--all {
     width: 130px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .p-card__serialNum {
+  .p-card__serialNum--all {
     width: 160px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .p-card__store {
+  .p-card__store--all {
     width: 180px;
   }
 }
@@ -5362,9 +5362,6 @@ input[type=file] + label img {
     width: 300px;
   }
 }
-.p-formList__data label {
-  width: 165px;
-}
 .p-formList__data .error {
   color: var(--color_alert);
   background-color: var(--color_alert_background);
@@ -5769,6 +5766,9 @@ input[type=file] + label img {
 /* ! ==================================================
 　規約同意
 ================================================== */
+.p-delete .Product__txt .p-card__purchase {
+  width: 100%;
+}
 .p-delete__head .c-ttl {
   margin: 40px 0 0;
 }

@@ -483,18 +483,24 @@
         
     }
     &__purchase{
-        @include global.responsive(xl) {
-            width: 130px;
+        &--all{
+            @include global.responsive(xl) {
+                width: 130px;
+            }
         }
     }
     &__serialNum{
-        @include global.responsive(xl) {
-            width: 160px;
+        &--all{
+            @include global.responsive(xl) {
+                width: 160px;
+            }
         }
     }
     &__store{
-        @include global.responsive(xl) {
-            width: 180px;
+        &--all{
+            @include global.responsive(xl) {
+                width: 180px;
+            }
         }
     }
     &__img{

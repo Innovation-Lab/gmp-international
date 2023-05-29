@@ -3,6 +3,11 @@
     <div class="modal__container modal__container--thin modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <div class="modal__box">
         <main class="modal__content" id="modal-1-content">
+          <header class="modal__header modal__header--column">
+            <h2 class="modal__title c-txt--center" id="modal-1-title">
+              登録製品編集
+            </h2>
+          </header>
           <div class="modal__content__body">
             <!-- 登録製品 -->
             <form method="POST" action="{{ route('mypage.update', $sales_product) }}" id="SalesProductSubmitForm-{{ $sales_product->id }}">
