@@ -5909,6 +5909,25 @@ input[type=file] + label img {
   font-weight: 600;
   line-height: 1.25;
 }
+.modal__title--sub {
+  font-size: 16px;
+  padding: 1.5rem 0;
+  border-top: 1px solid #E2E2E2;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+.modal__title--sub .product {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+.modal__title--sub .desc {
+  color: #8c8c8c;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 8px;
+}
 
 .modal__description {
   margin: 1rem 0 0;
@@ -5951,11 +5970,29 @@ input[type=file] + label img {
   flex: 0 0 auto;
   padding: 0 32px;
 }
+.modal__content__head--serial {
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .modal__content__body {
   flex: auto;
   min-height: 1px;
   overflow: auto;
   padding: 0 32px;
+}
+.modal__content__body--serial {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal__content__body img {
+  height: 180px;
+  width: auto;
 }
 .modal__content__body .p-formList__item + .p-formList__item {
   margin-top: 16px;
