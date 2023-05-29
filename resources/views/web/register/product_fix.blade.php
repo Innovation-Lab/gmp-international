@@ -56,7 +56,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--date">
-                          <input placeholder="<?php echo date('Y/m/d'); ?>" class="required add-input--date1"  name="products[{{ $count }}][purchase_date]" type="text" value="{{ data_get($sales_product, 'purchase_date') }}">
+                          <input placeholder="<?php echo date('Y/m/d'); ?>" class="required add-input--date1"  name="products[{{ $count }}][purchase_date]" type="text" value="{{ data_get($sales_product, 'purchase_date') }}" style=" @error('products.'.$count.'.purchase_date') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                         </div>
                         @error('products.'.$count.'.purchase_date')
                           <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -72,7 +72,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_brand_id]" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="product">
+                          <select name="products[{{ $count }}][m_brand_id]" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="product" style=" @error('products.'.$count.'.m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_brand_id') == $k) selected @endif>{{ $v }}</option>
@@ -94,7 +94,7 @@
                       </div>
                       <div class="p-formList__data ">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="brand">
+                          <select name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="brand" style=" @error('products.'.$count.'.m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_product_id') == $k) selected @endif>{{ $v }}</option>
