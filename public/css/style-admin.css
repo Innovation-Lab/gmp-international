@@ -244,6 +244,11 @@ a {
   cursor: pointer;
 }
 
+::-moz-selection {
+  color: #fff;
+  background: #000;
+}
+
 ::selection {
   color: #fff;
   background: #000;
@@ -310,7 +315,9 @@ small {
   border-radius: 0.25rem;
   border: 1px solid transparent;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   /* ! ----------
   　Small 小さいボタン
   ---------- */
@@ -504,11 +511,14 @@ textarea {
   border-radius: 0.25em;
   background-color: var(--color_form_background);
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
 }
 
 label {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
 
@@ -517,7 +527,6 @@ label {
 -------------------------------------------------- */
 select {
   padding-right: 1.5rem;
-  background-image: url(../img/admin/form/select.png);
   background-size: 1.5rem 1.5rem;
   background-position: right center;
   background-repeat: no-repeat;
@@ -549,7 +558,9 @@ input[type=radio] {
   padding: 0 1rem;
   border-radius: 0.125rem;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .radio input:checked + label {
   color: var(--color_primary);
@@ -585,6 +596,7 @@ input[type=checkbox]:checked + label {
 }
 
 input:-webkit-autofill {
+  -webkit-transition: background-color 5000s ease-in-out 0s !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
@@ -640,7 +652,8 @@ input[type=file] + label:hover::after {
 input[type=file] + label img {
   width: 100%;
   aspect-ratio: 1/1;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 input[type=file] + label.logo {
   aspect-ratio: 1/0.24;
@@ -654,7 +667,8 @@ input[type=file] + label.logo:after {
   opacity: 1;
 }
 input[type=file] + label.logo img {
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 input[type=file] + label.colorPattern {
   width: 56px;
@@ -691,6 +705,7 @@ input[type=file] + label.colorPattern {
 　Frames 全体フレーム
 ================================================== */
 .l-frame {
+  background: #fff;
   flex: auto;
   min-width: 0;
   display: grid;
@@ -846,6 +861,7 @@ input[type=file] + label.colorPattern {
 }
 .l-index__head {
   grid-area: head;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -864,6 +880,7 @@ input[type=file] + label.colorPattern {
 }
 .l-index__foot {
   grid-area: foot;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -910,6 +927,7 @@ input[type=file] + label.colorPattern {
 }
 .l-detail__head {
   grid-area: head;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -944,6 +962,7 @@ input[type=file] + label.colorPattern {
 }
 .l-detail__foot {
   grid-area: foot;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1042,9 +1061,23 @@ input[type=file] + label.colorPattern {
   ---------- */
 }
 .c-loading.is-hide {
-  animation-name: hide-loading;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+  -webkit-animation-name: hide-loading;
+          animation-name: hide-loading;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes hide-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 @keyframes hide-loading {
   0% {
@@ -1554,7 +1587,8 @@ input[type=file] + label.colorPattern {
   align-items: center;
   margin: 0 0 1.5rem;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   border-bottom: 1px solid var(--color_border_1);
   position: relative;
   /* ! ----------
@@ -1607,7 +1641,8 @@ input[type=file] + label.colorPattern {
   align-items: center;
   margin: 0 0 1.5rem;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   position: relative;
   border-bottom: 1px solid var(--color_border_1);
   /* ! ----------
@@ -1626,6 +1661,7 @@ input[type=file] + label.colorPattern {
 }
 .p-detail__sidebar {
   border: 1px solid var(--color_border_1);
+  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
   /* ! ----------
@@ -1660,6 +1696,7 @@ input[type=file] + label.colorPattern {
 }
 .p-detail__main {
   border: 1px solid var(--color_border_1);
+  position: -webkit-sticky;
   position: sticky;
   /* ! ----------
   　Box ボックス
@@ -1710,7 +1747,9 @@ input[type=file] + label.colorPattern {
   padding: 1rem;
   border-top: 1px solid var(--color_border_1);
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1726,7 +1765,8 @@ input[type=file] + label.colorPattern {
   border-top: 1px solid var(--color_border_1);
   padding: 1.5rem 0;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   position: relative;
 }
 
@@ -1761,6 +1801,7 @@ input[type=file] + label.colorPattern {
   position: relative;
 }
 .p-edit__nav {
+  position: -webkit-sticky;
   position: sticky;
   top: 4rem;
   padding: 0.5rem 0;
@@ -1818,6 +1859,7 @@ input[type=file] + label.colorPattern {
 }
 .p-edit__head__title {
   font-weight: 500;
+  position: -webkit-sticky;
   position: sticky;
   top: 4.5rem;
 }
@@ -1835,6 +1877,7 @@ input[type=file] + label.colorPattern {
   background-color: var(--color_background_1);
   border-right: 1px solid var(--color_border_1);
   height: 100vh;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   /* ! --------------------------------------------------
@@ -1914,6 +1957,7 @@ input[type=file] + label.colorPattern {
   place-items: center;
   border-top: 1px solid var(--color_border_1);
   padding: 0 1rem;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
 }
@@ -1971,7 +2015,8 @@ input[type=file] + label.colorPattern {
   grid-template-columns: 2.5rem 1fr;
 }
 .p-profile__image img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 1rem;
 }
 .is-hide .p-profile__image img {
@@ -2010,7 +2055,8 @@ input[type=file] + label.colorPattern {
 .p-profileImage__image {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-image: url(../img/admin/profile/noimage.png);
   background-size: cover;
   background-position: center center;
@@ -2272,7 +2318,9 @@ input[type=file] + label.colorPattern {
   background-position: right center;
   background-repeat: no-repeat;
   border-bottom: 1px solid var(--color_text_button);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   cursor: pointer;
   /* ! ----------
   　Active アクティブ （フィルターが1つ以上適用されている状態）
@@ -2297,6 +2345,8 @@ input[type=file] + label.colorPattern {
 }
 .p-filterList__content {
   display: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   border: 1px solid var(--color_border_1);
   background-color: #fff;
@@ -2377,10 +2427,13 @@ input[type=file] + label.colorPattern {
   background: #EAEBEA;
   padding: 0 1rem;
   height: 3rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 .p-table thead th .item {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
   min-width: max-content;
 }
 .p-table tbody tr[data-href], .p-table tbody tr[data-micromodal-trigger] {
@@ -2411,6 +2464,7 @@ input[type=file] + label.colorPattern {
 }
 .p-table tfoot td {
   height: 2.5rem;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   transform: translateY(4px);
@@ -2601,7 +2655,8 @@ input[type=file] + label.colorPattern {
   background-size: 1rem 1rem;
   background-position: top 1rem left 1rem;
   background-repeat: no-repeat;
-  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
   border-radius: 0.5rem;
   box-shadow: 0px 8px 24px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -2635,30 +2690,56 @@ input[type=file] + label.colorPattern {
   background-image: url(../img/admin/flash/alert.png);
 }
 .p-flash__item.is-hide, .p-flash__item.auto-hide {
-  animation-name: flash-hide;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  -webkit-animation-name: flash-hide;
+          animation-name: flash-hide;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.is-hide > *, .p-flash__item.auto-hide > * {
-  animation-name: flash-contents-hide;
-  animation-duration: 0.1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  -webkit-animation-name: flash-contents-hide;
+          animation-name: flash-contents-hide;
+  -webkit-animation-duration: 0.1s;
+          animation-duration: 0.1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   transition: opacity 0.1s, height 0.1s;
 }
 .p-flash__item.auto-hide {
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 .p-flash__item.auto-hide > * {
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 .p-flash__item.is-hide {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 .p-flash__item.is-hide > * {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+@-webkit-keyframes flash-hide {
+  from {
+    opacity: 1;
+    height: auto;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
 }
 @keyframes flash-hide {
   from {
@@ -2672,6 +2753,14 @@ input[type=file] + label.colorPattern {
     padding-top: 0;
     padding-bottom: 0;
     margin: 0;
+  }
+}
+@-webkit-keyframes flash-contents-hide {
+  from {
+    display: block;
+  }
+  to {
+    display: none;
   }
 }
 @keyframes flash-contents-hide {
@@ -2853,7 +2942,9 @@ input[type=file] + label.colorPattern {
   background: transparent;
   border: 0;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   margin: 0 -0.25rem 0 0.5rem;
 }
 .modal__close:hover {
@@ -2883,12 +2974,28 @@ input[type=file] + label.colorPattern {
 /**************************\
   Demo Animation Style
 \**************************/
+@-webkit-keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes mmfadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+@-webkit-keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 @keyframes mmfadeOut {
@@ -2899,12 +3006,28 @@ input[type=file] + label.colorPattern {
     opacity: 0;
   }
 }
+@-webkit-keyframes mmslideIn {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 @keyframes mmslideIn {
   from {
     transform: translateY(15%);
   }
   to {
     transform: translateY(0);
+  }
+}
+@-webkit-keyframes mmslideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
   }
 }
 @keyframes mmslideOut {
@@ -2960,5 +3083,4 @@ input[type=file] + label.colorPattern {
 /* ! --------------------------------------------------
 　Libraries ライブラリ
 -------------------------------------------------- */
-
 /*# sourceMappingURL=style-admin.css.map */

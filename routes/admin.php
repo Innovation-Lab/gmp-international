@@ -40,7 +40,9 @@ Route::group([
             'as' => 'users.',
         ], function() {
             Route::get('/', [UserController::class, 'index'])->name('index');
-            Route::get('/detail', [UserController::class, 'index'])->name('detail');
+            Route::get('/detail', [UserController::class, 'detail'])->name('detail');
+            Route::get('detail/edit', [UserController::class, 'edit'])->name('edit');
+            // Route::get('/detail/userEdit', [ProductController::class, 'userEdit'])->name('userEdit');
         });
         
         // 商品管理
@@ -82,5 +84,9 @@ Route::group([
             Route::get('/', [AdminController::class, 'index'])->name('index');
         });
     });
+
+    
 });
 
+//ユーザー情報詳細
+Route::view('/admin/userShow', 'admin.users.detail.index')->name('admin-users');

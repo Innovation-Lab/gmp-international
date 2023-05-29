@@ -1,63 +1,26 @@
 <div class="p-detail__sidebar">
   {{-- ---------- ボックス（サイドバー） ---------- --}}
   <div class="p-detail__sidebar__box">
-    <div class="p-detail__sidebar__box__body">
-      <div class="p-profileImage">
-        <div class="p-profileImage__image circle" data-micromodal-trigger="modal-profile-photo">
-          <img src="{{asset('img/admin/sample/user_profile.png')}}">
-        </div>
-        <div class="p-profileImage__text">
-          <h4 class="p-profileImage__text__title center">
-            <strong>田中 由梨恵</strong>
-            <span>タナカ ユリエ</span>
-          </h4>
-        </div>
-      </div>
-      {{-- ---------- リスト ---------- --}}
-      <ul class="p-list" style="margin-top: 1rem;">
-        @foreach([
-          '会員番号' => '<p class="focus">000012345678</p>',
-        ] as $key => $val)
-        <li class="p-list__item">
-          <div class="p-list__label">
-            {!! $key !!}
-          </div>
-          <div class="p-list__data">
-            {!! $val !!}
-          </div>
-        </li>
-        @endforeach
-      </ul>
-    </div>
-  </div>
-  {{-- ---------- ボックス（サイドバー） ---------- --}}
-  <div class="p-detail__sidebar__box">
     <div class="p-detail__sidebar__box__head">
       <h3 class="p-detail__sidebar__box__head__title">
-        契約中のプラン
+        ユーザー情報
       </h3>
-      <div class="c-status__plan-basic"></div>
-    </div>
-  </div>
-  {{-- ---------- ボックス（サイドバー） ---------- --}}
-  <div class="p-detail__sidebar__box">
-    <div class="p-detail__sidebar__box__head">
-      <h3 class="p-detail__sidebar__box__head__title">
-        基本情報
-      </h3>
+      <a href="" class="c-button__2">編集</a>
     </div>
     <div class="p-detail__sidebar__box__body">
       {{-- ---------- リスト ---------- --}}
       <ul class="p-list">
         @foreach([
-          '性別' => '女性',
-          '生年月日' => '2022/03/03（24歳）',
-          '電話番号' => '09012345678',
-          'メールアドレス' => 'sample@example.com',
+          '会員番号' => 'No.000000123456',
+          '名前（フリガナ）' => '山田　太郎（ヤマダ　タロウ）',
+          '電話番号' => '080-1234-5678',
+          'メールアドレス' => 'gmp@sample.com',
           '住所' => '
           〒 1530001<br>
-          東京都渋谷区渋谷123<br>
-          渋谷マンション102',
+          東京都千代田区紀尾井町1-1-1<br>
+          紀尾井町ビル16F',
+          '個人情報の取り扱いについて' => '同意する',
+          'アカウント作成日時' => '2023/04/04　10:12',
         ] as $key => $val)
         <li class="p-list__item">
           <div class="p-list__label">
@@ -66,31 +29,12 @@
           <div class="p-list__data">
             {!! $val !!}
           </div>
-        </li>
-        @endforeach
-      </ul>
-    </div>
-  </div>
-  {{-- ---------- ボックス（サイドバー） ---------- --}}
-  <div class="p-detail__sidebar__box">
-    <div class="p-detail__sidebar__box__body">
-      {{-- ---------- リスト ---------- --}}
-      <ul class="p-list p-list--2">
-        @foreach([
-          '会員登録日1' => '2022/03/03',
-          '会員登録日2' => '2022/03/03',
-          '会員登録日3' => '2022/03/03',
-          '会員登録日4' => '2022/03/03',
-        ] as $key => $val)
-        <li class="p-list__item">
-          <div class="p-list__label">
-            {!! $key !!}
-          </div>
-          <div class="p-list__data">
-            {!! $val !!}
+          @endforeach
+          <div class="p-list__memo">
+            <p class="p-list__label">管理メモ</p>
+            <div class="p-list__memo__area"></div>
           </div>
         </li>
-        @endforeach
       </ul>
     </div>
   </div>
