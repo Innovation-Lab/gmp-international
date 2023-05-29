@@ -30,7 +30,7 @@
                         <div class="p-card__brand">
                           <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
                           <!-- 編集ボタン -->
-                          <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh c-btn--ghost--wh--mypage js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-edit--product-{{ $sales_product->id }}" role="button">編集する</button>
+                          <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh c-btn--ghost--wh--mypage js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-top--product-{{ $sales_product->id }}" role="button">編集する</button>
                         </div>
                         <div class="p-card__product">
                           <p class="c-txt c-txt--lg">{{ data_get($sales_product, 'mProduct.name') }}</p>
@@ -71,6 +71,9 @@
                   </div>
                 </div>
               </li>
+              @include('web.mypage._modal-top--product',[
+                'sales_product' => $sales_product
+              ])
             @endforeach
           </ul>
         @else

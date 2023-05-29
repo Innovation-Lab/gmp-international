@@ -44,6 +44,10 @@ class UserController extends Controller
         return view('web.mypage.index')->with([
             'user' => $user,
             'sales_products' => $sales_products,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
 
     }
@@ -117,12 +121,17 @@ class UserController extends Controller
             $sales_product->delete();
             \DB::commit();
             return redirect()
-                ->route('mypage.product')
+                ->route('mypage.index')
                 ->with('message', '製品の削除が完了しました。');
 
         } catch (\Exception $e) {
             \DB::rollBack();
         }
+        
+        return redirect()
+            ->back()
+            ->with('error', 'エラーが発生しました。');
+        
     }
 
     /**
