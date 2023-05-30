@@ -15,12 +15,12 @@
           </p>
         </header>
         <main class="modal__content modal__content--serial" id="modal-1-content">
-          <div class="modal__content__head">
+          <!-- <div class="modal__content__head">
             <h3 class="modal__title modal__title--sub" id="modal-1-title">
               3輪ベビーカー・カート<br>
-              <div class="product">・AirBuggy COCOシリーズ<br>・AirBuggy PET DOMEシリーズ</div>
+              <div class="product">AirBuggy COCOシリーズ<br>AirBuggy PET DOMEシリーズ</div>
             </h3>
-          </div>
+          </div> -->
           <div class="modal__content__body modal__content__body--serial">
             <img src="{{asset('img/web/sample/guide--serial--coco.png')}}">
             <p class="modal__description">
@@ -50,13 +50,13 @@
           </p>
         </header>
         <main class="modal__content modal__content--serial" id="modal-1-content">
-          <div class="modal__content__head">
+          <!-- <div class="modal__content__head">
             <h3 class="modal__title modal__title--sub" id="modal-1-title">
               BOX型3輪ペットカート<br>
-              <div class="product">・AirBuggy PET CUBEシリーズ（TWINKLE・NEST）</div>
+              <div class="product">AirBuggy PET CUBEシリーズ（TWINKLE・NEST）</div>
               <div class="desc">※Air Buggy for Dog CARRIAGEは前輪ステップの裏側に貼付しております。</div>
             </h3>
-          </div>
+          </div> -->
           <div class="modal__content__body modal__content__body--serial">
             <img src="{{asset('img/web/sample/guide--serial--cube.png')}}">
             <p class="modal__description">
@@ -86,12 +86,12 @@
           </p>
         </header>
         <main class="modal__content modal__content--serial" id="modal-1-content">
-          <div class="modal__content__head">
+          <!-- <div class="modal__content__head">
             <h3 class="modal__title modal__title--sub" id="modal-1-title">
               ショッピングカート・ペットカート<br>
-              <div class="product">・gowalkerシリーズ（For shopping・For pet）</div>
+              <div class="product">対象製品：gowalkerシリーズ（For shopping・For pet）</div>
             </h3>
-          </div>
+          </div> -->
           <div class="modal__content__body modal__content__body--serial">
             <img src="{{asset('img/web/sample/guide--serial--gowalker.png')}}">
             <p class="modal__description">

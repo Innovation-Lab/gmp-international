@@ -5372,7 +5372,6 @@ input[type=file] + label img {
   ---------- */
 }
 .p-formList__label--modal {
-  flex-direction: row;
   justify-content: space-between;
 }
 .optional::after {
@@ -5393,9 +5392,19 @@ input[type=file] + label img {
   .p-formList__label {
     flex: 0 0 auto;
     width: 230px;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 768px) {
+  .p-formList__label--pass {
+    width: 300px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .p-formList__label--guide {
     flex-direction: column;
     align-items: baseline;
-    justify-content: space-between;
   }
 }
 .p-formList__label .c-txt br {
@@ -6042,7 +6051,7 @@ input[type=file] + label img {
   padding: 0 32px;
 }
 .modal__content__body--serial {
-  padding: 0;
+  padding: 0 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
