@@ -142,7 +142,7 @@
                 </div>
               </li>
               {{--個人情報の取り扱いについて--}}
-              <li class="p-formList__item" style="display: none;">
+              <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label p-formList__label--thin">
                     <p class="c-txt"></p>
