@@ -207,7 +207,6 @@
   <script>
       $(function() {
           var dateClass = '.add-input--date' + 1;
-          console.log(dateClass);
           $(dateClass).datepicker({
               onSelect: function(dateText) {
                   $(this).val(dateText);
@@ -267,7 +266,6 @@
                   var products = array.products;
                   var colors = array.colors;
                   var shops = array.shops;
-                  console.log(brands)
                   var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
                     '<option value="" selected>ブランドを選択してください</option>';
 
@@ -470,6 +468,7 @@
                     'id': value,
                 },
                 success: function (response) {
+                    console.log(response != 'undefined' && response != null && response != '');
                     if(response != 'undefined' && response != null && response != '') {
                       let insert ='      <div class="p-formList__content"> ' +
                       '          <div class="p-formList__label p-formList__label--guide"> ' +
@@ -517,7 +516,6 @@
               success: function (response) {
                   if (response) {
                       let place = '.js-serial-'+ loop;
-                      console.log(place);
                       $(place).val('');
                       alert('既に使われているシリアルコードですので登録できません。');
                   }

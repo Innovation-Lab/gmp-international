@@ -137,7 +137,7 @@ class RegisterController extends Controller
             'address_building' => data_get($params, 'address_building'),
             'tel' => data_get($params, 'tel'),
             'is_catalog' => data_get($params, 'is_catalog'),
-            'is_dm' => data_get($params, 'is_dm')
+            'is_dm' => data_get($params, 'is_dm', 0)
         ]);
         
         return match ($skip) {
