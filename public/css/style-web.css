@@ -1599,7 +1599,6 @@ input[type=file] + label img {
 .c-input--radio {
   display: flex;
   flex-wrap: wrap;
-  margin: -8px;
 }
 .c-input--radio input[type=radio] + label {
   display: flex;
