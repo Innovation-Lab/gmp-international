@@ -43,9 +43,6 @@
                     @error('email')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
                     @enderror
-                    @if(data_get($user, 'password'))
-                    <p class="c-txt c-txt--err">再度ご入力ください。</p>
-                    @endif
                   </div>
                 </div>
               </li>
@@ -58,12 +55,16 @@
                   <div class="p-formList__data
                    @error('password') p-formList__data--err @enderror
                    @error('password_confirmation') @if($message == 'パスワード(確認用)とパスワードには同じ値を入力してください。') p-formList__data--err @endif @enderror
+                   @if(data_get($user, 'password')) p-formList__data--err @endif
                   ">
                     <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">
                     <!-- 入力不備エラーメッセージ -->
                     @error('password')
                     <p class="c-txt c-txt--err">{{ $message }}</p>
                     @enderror
+                    @if(data_get($user, 'password'))
+                      <p class="c-txt c-txt--err">再度ご入力ください。</p>
+                    @endif
                   </div>
                 </div>
               </li>
@@ -73,7 +74,9 @@
                   <div class="p-formList__label">
                     <p class="c-txt">パスワード(確認用) <span class="c-txt c-txt--must">必須</span></p>
                   </div>
-                  <div class="p-formList__data @error('password_confirmation') p-formList__data--err @enderror">
+                  <div class="p-formList__data @error('password_confirmation') p-formList__data--err @enderror
+                   @if(data_get($user, 'password')) p-formList__data--err @endif
+                  ">
                     <input placeholder="パスワードを再入力してください" class="c-form" name="password_confirmation" type="password" value="">
                     <!-- 入力不備エラーメッセージ -->
                     @error('password_confirmation')

@@ -31,7 +31,9 @@
                         <p class="c-txt">メールアドレス <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
-                        <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email') }}">
+                        <input placeholder="例）gmp-international@sample.com" class="c-form" name="email" type="email" value="{{ old('email') }}"
+                          style=" @error('email') background: #FFE0E6; border: #C30E2E 1px solid; @enderror"
+                        >
                         <!-- 入力不備エラーメッセージ -->
                         @error('email')
                           <p class="c-txt c-txt--err">{{ $message }}</p>

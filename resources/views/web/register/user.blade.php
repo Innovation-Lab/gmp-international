@@ -127,10 +127,10 @@
                           <option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
                         @endforeach
                       </select>
-                      @error('prefecture')
-                        <div class="c-txt c-txt--err">{{ $message }}</div>
-                      @enderror
                     </div>
+                      @error('prefecture')
+                        <div class="c-txt c-txt--err" style="margin-bottom: 7px">{{ $message }}</div>
+                      @enderror
                     <div class="c-input p-formList__data @error('address_city') p-formList__data--err @enderror">
                       <input id="address2" placeholder="市区町村" class="required p-locality p-street-address " name="address_city" type="text" value="{{ old('address_city', data_get($user, 'address_city')) }}">
                       @error('address_city')
