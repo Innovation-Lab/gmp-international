@@ -181,9 +181,10 @@ class UserController extends Controller
             'prefectures' => $prefectures,
         ]);
     }
-
+    
     /**
      * 基本情報 更新
+     * @param StoreInformationRequest $request
      * @return RedirectResponse
      */
     public function userUpdate(StoreInformationRequest $request): RedirectResponse
