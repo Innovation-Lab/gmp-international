@@ -95,7 +95,7 @@
                 <!-- カラー -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--guide">
                       <p class="c-txt">カラー</p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" onclick="$('#modal__guide--color').show()" role="button"></a>
@@ -129,7 +129,7 @@
                 <!-- 購入店舗 -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--guide">
                       <p class="c-txt">購入店舗 </p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" onclick="$('#modal__guide--shop').show()" role="button"></a>
@@ -361,7 +361,7 @@
                       '<!-- カラー --> ' +
                       '  <li class="p-formList__item js-insert-list-color-'+ num +'"> ' +
                       '      <div class="p-formList__content"> ' +
-                      '          <div class="p-formList__label"> ' +
+                      '          <div class="p-formList__label p-formList__label--guide"> ' +
                       '              <p class="c-txt">カラー</p> ' +
                       '              <div class="p-formList__guide"> ' +
                       '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--color\').show()" role="button"></a> ' +
@@ -389,7 +389,7 @@
                       '<!-- 購入店舗 --> ' +
                       '  <li class="p-formList__item"> ' +
                       '      <div class="p-formList__content"> ' +
-                      '          <div class="p-formList__label"> ' +
+                      '          <div class="p-formList__label p-formList__label--guide"> ' +
                       '              <p class="c-txt">購入店舗</p> ' +
                       '              <div class="p-formList__guide"> ' +
                       '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--shop\').show()" role="button"></a>' +
@@ -457,9 +457,7 @@
                 'loop': loop,
             },
             success: function (response) {
-                console.log(response);
                 let place = '.js-insert-list-' + insert + '-' + loop;
-                console.log(place);
                 $(place).empty().append(response);
 
             }
@@ -472,9 +470,9 @@
                     'id': value,
                 },
                 success: function (response) {
-                    if(!undefined && !null) {
+                    if(response != 'undefined' && response != null && response != '') {
                       let insert ='      <div class="p-formList__content"> ' +
-                      '          <div class="p-formList__label"> ' +
+                      '          <div class="p-formList__label p-formList__label--guide"> ' +
                       '              <p class="c-txt">シリアルナンバー</p> ' +
                       '              <div class="p-formList__guide"> ' +
                       '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
@@ -485,13 +483,19 @@
                       '          </div> ' +
                       '      </div> ';
 
-                      console.log(insert);
                       let place = '.js-insert-guide-click-' + loop;
-                      console.log(place);
                       $(place).empty().append(insert);
+                    } else {
+                        let place = '.js-insert-guide-click-' + loop;
+                        $(place).empty();
                     }
 
+                },
+                error: function(xhr, status, error) {
+                    let place = '.js-insert-guide-click-' + loop;
+                    $(place).empty();
                 }
+
             });
         }
       }

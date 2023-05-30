@@ -80,7 +80,7 @@
                   <!-- カラー -->
                   <li class="p-formList__item">
                     <div class="p-formList__content">
-                      <div class="p-formList__label">
+                      <div class="p-formList__label p-formList__label--guide">
                         <p class="c-txt">カラー</p>
                         <div class="p-formList__guide">
                           <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
@@ -112,10 +112,11 @@
                   <li class="p-formList__item js-insert-guide-click">
                     @if (old('product_code'))
                       <div class="p-formList__content">
-                        <div class="p-formList__label">
-                          <p class="c-txt">シリアルナンバー</p>
-                          <div class="p-formList__guide">
-                            <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                        <div class="p-formList__content">
+                          <div class="p-formList__label p-formList__label--guide">
+                            <p class="c-txt">シリアルナンバー</p>
+                            <div class="p-formList__guide">
+                              <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
                           </div>
                         </div>
                         <div class="p-formList__data">
@@ -127,7 +128,7 @@
                   <!-- 購入店舗 -->
                   <li class="p-formList__item">
                     <div class="p-formList__content">
-                      <div class="p-formList__label">
+                      <div class="p-formList__label p-formList__label--guide">
                         <p class="c-txt">購入店舗</p>
                         <div class="p-formList__guide">
                           <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
@@ -231,7 +232,7 @@
                   success: function (response) {
                       if(!undefined && !null) {
                           let insert ='      <div class="p-formList__content"> ' +
-                              '          <div class="p-formList__label"> ' +
+                              '          <div class="p-formList__label p-formList__label--guide"> ' +
                               '              <p class="c-txt">シリアルナンバー</p> ' +
                               '              <div class="p-formList__guide"> ' +
                               '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +

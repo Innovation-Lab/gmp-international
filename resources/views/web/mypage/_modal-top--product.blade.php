@@ -111,7 +111,7 @@
                       <div class="p-formList__label p-formList__label--modal">
                         <p class="c-txt">シリアルナンバー</p>
                         <div class="p-formList__guide">
-                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial-{{ data_get($sales_product, 'mProduct.serial_guide_type') }}" role="button"></a>
                         </div>
                       </div>
                       <div class="p-formList__data">

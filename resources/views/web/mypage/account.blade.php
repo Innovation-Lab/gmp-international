@@ -54,7 +54,7 @@
                       @error('password') p-formList__data--err @enderror
                       @error('password_confirmation') @if($message == 'パスワード(確認用)とパスワードには同じ値を入力してください。') p-formList__data--err @endif @enderror
                     "  style="display: none;">
-                      <div class="p-formList__label">
+                      <div class="p-formList__label p-formList__label--pass">
                         <p class="c-txt">パスワード（半角英数字6〜10文字）<span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       {!! Form::password('password', ['placeholder' => '例）sample123', 'autocomplete' => 'off']) !!}
@@ -63,7 +63,7 @@
                       @enderror
                     </div>
                     <div class="p-formList__data js-target__change-password @error('password_confirmation') p-formList__data--err @enderror" style="display: none;">
-                      <div class="p-formList__label">
+                      <div class="p-formList__label p-formList__label--pass">
                         <p class="c-txt">パスワード確認用 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       {!! Form::password('password_confirmation', ['placeholder' => 'パスワードを再入力してください']) !!}

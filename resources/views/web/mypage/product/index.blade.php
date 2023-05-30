@@ -176,7 +176,7 @@
                     'id': value,
                 },
                 success: function (response) {
-                    if(!undefined && !null) {
+                    if(response != 'undefined' && response != null && response != '') {
                         let insert ='      <div class="p-formList__content"> ' +
                             '          <div class="p-formList__label"> ' +
                             '              <p class="c-txt">シリアルナンバー</p> ' +
@@ -193,7 +193,9 @@
                         let place = '.js-insert-guide-click' + '-' + product_id;
                         console.log(place);
                         $(place).empty().append(insert);
-
+                    } else {
+                        let place = '.js-insert-guide-click-' + product_id;
+                        $(place).empty()
                     }
                 }
             });
