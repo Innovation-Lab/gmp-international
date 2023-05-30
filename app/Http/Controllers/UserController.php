@@ -44,6 +44,10 @@ class UserController extends Controller
         return view('web.mypage.index')->with([
             'user' => $user,
             'sales_products' => $sales_products,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
 
     }
@@ -76,7 +80,7 @@ class UserController extends Controller
     public function update(SalesProduct $sales_product , StoreProductRequest $request): RedirectResponse
     {
         $params = $request->all();
-
+        
         try {
             $sales_product->update([
                 'm_product_id' => data_get($params, 'm_product_id'),
@@ -91,8 +95,7 @@ class UserController extends Controller
             
             \DB::commit();
 
-            return redirect()
-                ->route('mypage.product')
+            return redirect($request->headers->get('referer'))
                 ->with('message', '更新が完了しました。');
 
         } catch (\Exception $e) {
@@ -178,9 +181,10 @@ class UserController extends Controller
             'prefectures' => $prefectures,
         ]);
     }
-
+    
     /**
      * 基本情報 更新
+     * @param StoreInformationRequest $request
      * @return RedirectResponse
      */
     public function userUpdate(StoreInformationRequest $request): RedirectResponse

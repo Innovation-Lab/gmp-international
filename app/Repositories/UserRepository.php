@@ -59,6 +59,9 @@ class UserRepository implements UserRepositoryInterface
     public function userUpdate(User $user, Request $request)
     {
         $data = $request->all();
+        if (!isset($data['is_dm'])) {
+            $data['is_dm'] = 0;
+        }
         unset($data['_token']);
         $user->fill($data)->save();
         return $user;

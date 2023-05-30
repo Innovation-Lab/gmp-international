@@ -95,7 +95,7 @@
                 <!-- カラー -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--guide">
                       <p class="c-txt">カラー</p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" onclick="$('#modal__guide--color').show()" role="button"></a>
@@ -124,23 +124,12 @@
                   </div>
                 </li>
                 <!-- シリアルナンバー -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label">
-                      <p class="c-txt">シリアルナンバー</p>
-                      <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" onclick="$('#modal__guide--serial').show()" role="button"></a>
-                      </div>
-                    </div>
-                    <div class="p-formList__data">
-                      <input placeholder="例）GMP0123456" class="js-serial-1" name="products[1][product_code]" type="text" value="" data-loop="1" onchange="searchSerial($(this).data('loop'), $(this).val());">
-                    </div>
-                  </div>
+                <li class="p-formList__item js-insert-guide-click-1">
                 </li>
                 <!-- 購入店舗 -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
-                    <div class="p-formList__label">
+                    <div class="p-formList__label p-formList__label--guide">
                       <p class="c-txt">購入店舗 </p>
                       <div class="p-formList__guide">
                         <a class="p-formList__guide__btn" onclick="$('#modal__guide--shop').show()" role="button"></a>
@@ -372,7 +361,7 @@
                       '<!-- カラー --> ' +
                       '  <li class="p-formList__item js-insert-list-color-'+ num +'"> ' +
                       '      <div class="p-formList__content"> ' +
-                      '          <div class="p-formList__label"> ' +
+                      '          <div class="p-formList__label p-formList__label--guide"> ' +
                       '              <p class="c-txt">カラー</p> ' +
                       '              <div class="p-formList__guide"> ' +
                       '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--color\').show()" role="button"></a> ' +
@@ -395,23 +384,12 @@
                       '      </div> ' +
                       '  </li> ' +
                       '<!-- シリアルナンバー --> ' +
-                      '  <li class="p-formList__item"> ' +
-                      '      <div class="p-formList__content"> ' +
-                      '          <div class="p-formList__label"> ' +
-                      '              <p class="c-txt">シリアルナンバー</p> ' +
-                      '              <div class="p-formList__guide"> ' +
-                      '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial\').show()" role="button"></a> ' +
-                      '              </div> ' +
-                      '          </div> ' +
-                      '          <div class="p-formList__data"> ' +
-                      '              <input placeholder="例）GMP0123456" class="required js-serial-'+ num +'" name="products['+ num +']['+ 'product_code' +']" type="text" value="" data-loop="'+ num +'" onchange="searchSerial( $(this).data(\'loop\'), $(this).val());" > ' +
-                      '          </div> ' +
-                      '      </div> ' +
+                      '  <li class="p-formList__item js-insert-guide-click-'+ num +'"> ' +
                       '  </li> ' +
                       '<!-- 購入店舗 --> ' +
                       '  <li class="p-formList__item"> ' +
                       '      <div class="p-formList__content"> ' +
-                      '          <div class="p-formList__label"> ' +
+                      '          <div class="p-formList__label p-formList__label--guide"> ' +
                       '              <p class="c-txt">購入店舗</p> ' +
                       '              <div class="p-formList__guide"> ' +
                       '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--shop\').show()" role="button"></a>' +
@@ -469,7 +447,7 @@
           key,
           value = '',
           loop = '',
-          insert = ''
+          insert = '',
       ) {
         $.get({
             url: '/register/js-get-tying-array',
@@ -479,13 +457,47 @@
                 'loop': loop,
             },
             success: function (response) {
-                console.log(response);
                 let place = '.js-insert-list-' + insert + '-' + loop;
-                console.log(place);
                 $(place).empty().append(response);
 
             }
         });
+
+        if (key == 'product') {
+            $.get({
+                url: '/register/js-get-serial-guide-type',
+                data: {
+                    'id': value,
+                },
+                success: function (response) {
+                    if(response != 'undefined' && response != null && response != '') {
+                      let insert ='      <div class="p-formList__content"> ' +
+                      '          <div class="p-formList__label p-formList__label--guide"> ' +
+                      '              <p class="c-txt">シリアルナンバー</p> ' +
+                      '              <div class="p-formList__guide"> ' +
+                      '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                      '              </div> ' +
+                      '          </div> ' +
+                      '          <div class="p-formList__data"> ' +
+                      '              <input placeholder="例）GMP0123456" class="required js-serial-'+ loop +'" name="products['+ loop +']['+ 'product_code' +']" type="text" value="" data-loop="'+ loop +'" onchange="searchSerial( $(this).data(\'loop\'), $(this).val());" > ' +
+                      '          </div> ' +
+                      '      </div> ';
+
+                      let place = '.js-insert-guide-click-' + loop;
+                      $(place).empty().append(insert);
+                    } else {
+                        let place = '.js-insert-guide-click-' + loop;
+                        $(place).empty();
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    let place = '.js-insert-guide-click-' + loop;
+                    $(place).empty();
+                }
+
+            });
+        }
       }
   </script>
 

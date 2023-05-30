@@ -56,6 +56,7 @@ Route::group([
     Route::get('js-get-array', [RegisterController::class, 'jsGetArray']);
     Route::get('js-get-tying-array', [RegisterController::class, 'jsGetTyingArray']);
     Route::get('js-search-serial', [RegisterController::class, 'jsSearchSerial']);
+    Route::get('/js-get-serial-guide-type', [RegisterController::class, 'jsGetSerialGuideType']);
 });
 
 /* ! ==================================================
@@ -88,6 +89,7 @@ Route::middleware(['auth:web'])->group(function () {
         
         Route::get('/js-get-tying-array', [SalesProductController::class, 'jsGetTyingArray']);
         Route::get('/js-search-serial', [SalesProductController::class, 'jsSearchSerial']);
+        Route::get('/js-get-serial-guide-type', [SalesProductController::class, 'jsGetSerialGuideType']);
         
         //製品の入力情報確認
         Route::get('/confirm', [SalesProductController::class, 'productConfirm'])->name('confirm');

@@ -29,6 +29,8 @@
                       <div class="p-card__mainData">
                         <div class="p-card__brand">
                           <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
+                          <!-- 編集ボタン -->
+                          <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh c-btn--ghost--wh--mypage js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-top--product-{{ $sales_product->id }}" role="button">編集する</button>
                         </div>
                         <div class="p-card__product">
                           <p class="c-txt c-txt--lg">{{ data_get($sales_product, 'mProduct.name') }}</p>
@@ -63,7 +65,7 @@
                       </div>
                     </div>
                     <!-- 製品画像 -->
-                    <div class="p-card__img">
+                    <div class="p-card__img p-card__img--top">
                       <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
                     </div>
                   </div>
@@ -114,7 +116,7 @@
                   </div>
                   <div class="p-card__add">
                     <p class="c-ttl--xxl c-ttl--xxl--wh">ADD YOUR ITEM</p>
-                    <p class="c-btn--register">製品を登録する</p>
+                    <p class="c-btn--register--rd">製品を登録する</p>
                   </div>
                 </div>
               </li>
@@ -155,7 +157,7 @@
               <p class="c-txt" data-ttl="郵便番号">〒{{ data_get($user, 'zip_code') }}</p>
               <p class="c-txt" data-ttl="住所">{{ data_get($user, 'full_address') }}</p>
               <p class="c-txt" data-ttl="電話番号">{{ data_get($user, 'formatted_tel') }}</p>
-              <p class="c-txt" data-ttl="個人情報の取り扱いについて"><span>個人情報の取り扱いについて</span>{{ data_get($user, 'string_catalog') }}</p>
+              <p class="c-txt" data-ttl="情報を受け取る"><span>情報を受け取る</span>{{ data_get($user, 'string_dm') }}</p>
             </div>
           </div>
         @else
@@ -193,6 +195,14 @@
     <p class="c-txt--copyRight">Copyright©2023 GMP International Co., Ltd. All Right Reserved</p>
   </footer>
 </div>
+@foreach ($sales_products as $sales_product)
+  @include('web.mypage._modal-top--product',[
+    'sales_product' => $sales_product
+  ])
+@endforeach
+@include('web.components.modal._modal-guide--color')
+@include('web.components.modal._modal-guide--serial')
+@include('web.components.modal._modal-guide--shop')
 <script>
   $('.p-card').slick({
     dots: true,
@@ -247,5 +257,106 @@
       $('.p-card .slick-arrow.slick-next').css('left',Pos+'px');
     }
   });
+</script>
+<script>
+    $(function() {
+        $('.c-input--date input').each(function(index, elem) {
+            $(this).datepicker();
+        })
+    });
+</script>
+
+{{-- 日付選択 --}}
+<script>
+    $(function() {
+        otherTextBind();
+    });
+
+    function otherTextBind() {
+        $('select').change(function() {
+            // 選択されたオプションの値を取得
+            var selectedValue = $(this).val();
+
+            if (selectedValue === 'other') {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+            } else {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+            }
+        });
+    }
+</script>
+
+<script>
+    // 共通処理
+    function getTyArray(
+        key,
+        value = '',
+        insert = '',
+        product_id = ''
+    ) {
+        $.get({
+            url: '/mypage/js-get-tying-array',
+            data: {
+                'key_name': key,
+                'id': value,
+            },
+            success: function (response) {
+                let place = '.js-insert-list-' + insert + '-' + product_id;
+                console.log(place);
+                $(place).empty().append(response);
+
+            }
+        });
+
+        if (key == 'product') {
+            $.get({
+                url: '/mypage/js-get-serial-guide-type',
+                data: {
+                    'id': value,
+                },
+                success: function (response) {
+                    if(response != 'undefined' && response != null && response != '') {
+                        let insert ='      <div class="p-formList__content"> ' +
+                            '          <div class="p-formList__label"> ' +
+                            '              <p class="c-txt">シリアルナンバー</p> ' +
+                            '              <div class="p-formList__guide"> ' +
+                            '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                            '              </div> ' +
+                            '          </div> ' +
+                            '          <div class="p-formList__data"> ' +
+                            '              <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchSerial($(this).val());" > ' +
+                            '          </div> ' +
+                            '      </div> ';
+                        let place = '.js-insert-guide-click' + '-' + product_id;
+                        console.log(place);
+                        $(place).empty().append(insert);
+                    } else {
+                        let place = '.js-insert-guide-click-' + product_id;
+                        $(place).empty()
+                    }
+                }
+            });
+        }
+    }
+</script>
+<script>
+    // 共通処理
+    function searchSerial(
+        code = ''
+    ) {
+        $.get({
+            url: '/register/js-search-serial',
+            data: {
+                'code': code,
+            },
+            success: function (response) {
+                if (response) {
+                    let place = '.js-serial';
+                    $(place).val('');
+                    alert('既に使われているシリアルコードですので登録できません。');
+                }
+            }
+        });
+    }
 </script>
 @endsection

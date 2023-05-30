@@ -118,6 +118,7 @@ class SalesProductController extends Controller
                 $view = view('web.mypage.product._ajax_select_product_list', [
                     'items' => $items,
                     'checkVal' => false,
+                    'id' => $id
                 ])->render();
                 break;
             case 'product':
@@ -127,6 +128,7 @@ class SalesProductController extends Controller
                 $view = view('web.mypage.product._ajax_select_brand_list', [
                     'items' => $items,
                     'checkVal' => $product->m_brand_id,
+                    'id' => $id
                 ])->render();
                 break;
             default:
@@ -146,6 +148,18 @@ class SalesProductController extends Controller
     {
         $search = SalesProduct::where('product_code', $request->get('code'))->count();
         $result = $search > 0;
+        
+        return response()->json($result);
+    }
+    
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function jsGetSerialGuideType(Request $request): JsonResponse
+    {
+        $search = MProduct::find($request->get('id'));
+        $result = data_get($search, 'serial_guide_type');
         
         return response()->json($result);
     }

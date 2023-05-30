@@ -270,12 +270,16 @@
         }
       }
     }
-    &__label {
+    &__label{
       // color: var(--color_text_button);
       @extend .c-text__xs !optional;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      &--modal{
+        // flex-direction: row;
+        justify-content: space-between;
+      }
 
       /* ! ----------
       　Optional 任意
@@ -298,10 +302,20 @@
       @include global.responsive(md) {
         flex: 0 0 auto;
         width: 230px;
-        // padding: 16px 0 0;
-        flex-direction: column;
-        align-items: baseline;
-        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &--pass{
+        @include global.responsive(md) {
+          width: 300px;
+
+        }
+      }
+      &--guide{
+        @include global.responsive(md) {
+          flex-direction: column;
+          align-items: baseline;
+        }
       }
       .c-txt{
         br{
@@ -325,9 +339,9 @@
           width: 300px;
         }
       }
-      label{
-        width: 165px;
-      }
+      // label{
+      //   width: 165px;
+      // }
       @extend .c-text__sm !optional;
 
       /* ! ----------

@@ -58,15 +58,15 @@
                     </div>
                     <div class="p-card__subData p-card__subData--list">
                       <!-- 購入日・シリアルナンバー・購入店舗 -->
-                      <div class="p-card__purchase">
+                      <div class="p-card__purchase p-card__purchase--all">
                         <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
                         <p class="data c-txt">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
                       </div>
-                      <div class="p-card__serialNum">
+                      <div class="p-card__serialNum p-card__serialNum--all">
                         <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
                         <p class="data c-txt">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
                       </div>
-                      <div class="p-card__store">
+                      <div class="p-card__store p-card__store--all">
                         <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
                         <p class="data c-txt">{{ data_get($sales_product, 'select_shop_name') }}</p>
                       </div>
@@ -123,6 +123,104 @@
             $(this).datepicker();
         })
     });
+</script>
+
+
+{{-- 日付選択 --}}
+<script>
+    $(function() {
+        otherTextBind();
+    });
+
+    function otherTextBind() {
+        $('select').change(function() {
+            // 選択されたオプションの値を取得
+            var selectedValue = $(this).val();
+
+            if (selectedValue === 'other') {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+            } else {
+                $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+            }
+        });
+    }
+</script>
+
+<script>
+    // 共通処理
+    function getTyArray(
+        key,
+        value = '',
+        insert = '',
+        product_id = ''
+    ) {
+        $.get({
+            url: '/mypage/js-get-tying-array',
+            data: {
+                'key_name': key,
+                'id': value,
+            },
+            success: function (response) {
+                console.log(response);
+                let place = '.js-insert-list-' + insert + '-' + product_id;
+                console.log(place);
+                $(place).empty().append(response);
+
+            }
+        });
+
+        if (key == 'product') {
+            $.get({
+                url: '/mypage/js-get-serial-guide-type',
+                data: {
+                    'id': value,
+                },
+                success: function (response) {
+                    if(response != 'undefined' && response != null && response != '') {
+                        let insert ='      <div class="p-formList__content"> ' +
+                            '          <div class="p-formList__label"> ' +
+                            '              <p class="c-txt">シリアルナンバー</p> ' +
+                            '              <div class="p-formList__guide"> ' +
+                            '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                            '              </div> ' +
+                            '          </div> ' +
+                            '          <div class="p-formList__data"> ' +
+                            '              <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchSerial($(this).val());" > ' +
+                            '          </div> ' +
+                            '      </div> ';
+
+                        console.log(insert);
+                        let place = '.js-insert-guide-click' + '-' + product_id;
+                        console.log(place);
+                        $(place).empty().append(insert);
+                    } else {
+                        let place = '.js-insert-guide-click-' + product_id;
+                        $(place).empty()
+                    }
+                }
+            });
+        }
+    }
+</script>
+<script>
+    // 共通処理
+    function searchSerial(
+        code = ''
+    ) {
+        $.get({
+            url: '/register/js-search-serial',
+            data: {
+                'code': code,
+            },
+            success: function (response) {
+                if (response) {
+                    let place = '.js-serial';
+                    $(place).val('');
+                    alert('既に使われているシリアルコードですので登録できません。');
+                }
+            }
+        });
+    }
 </script>
 
 @endsection

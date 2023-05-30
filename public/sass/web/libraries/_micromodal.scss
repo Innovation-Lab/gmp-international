@@ -102,6 +102,26 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.25;
+  &--sub{
+    font-size: 16px;
+    padding: 1.5rem 0;
+    border-top: 1px solid #E2E2E2;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    // text-align: left;
+    .product{
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .desc{
+      color: #8c8c8c;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 8px;
+    }
+  }
 }
 .modal__description{
   margin: 1rem 0 0;
@@ -144,12 +164,30 @@
   &__head{
     flex: 0 0 auto;
     padding: 0 32px;
+    &--serial{
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
   &__body{
     flex: auto;
     min-height: 1px;
     overflow: auto;
     padding: 0 32px;
+    &--serial{
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    img{
+      height: 180px;
+      width: auto;
+    }
     .p-formList{
       &__item{
         + .p-formList__item{
