@@ -172,14 +172,12 @@
               <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label p-formList__label--thin">
-                      <p class="c-txt">個人情報の取り扱いについて</p>
+                      <p class="c-txt"></p>
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', (data_get($user, 'is_dm')) == 1) || !data_get($user, 'is_dm') ? 'checked' : '' }}>
-                      <label for="inq1-2">同意する</label>
-                      <input type="radio" id="inq2-2" name="is_dm" value="0" {{ old('is_dm', data_get($user, 'is_dm')) == 0 ? 'checked' : '' }}>
-                      <label for="inq2-2">同意しない</label>
+                      <input type="checkbox" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', (data_get($user, 'is_dm')) == 1) || !data_get($user, 'is_dm') ? 'checked' : '' }}>
+                      <label for="inq1-2" style="width: auto;">情報の受け取りに同意する</label>
                     </div>
                   </div>
                 </div>

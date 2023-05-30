@@ -100,10 +100,10 @@
                         </div>
                         <div class="l-stack__item">
                           <div class="p-formList__label">
-                            <p class="c-txt">個人情報の取り扱いについて</p>
+                            <p class="c-txt">情報の受け取り</p>
                           </div>
                           <div class="p-formList__data">
-                            <p class="c-txt">{{ \App\Models\User::DM_STATUS[data_get($user, 'is_dm')] }}</p>
+                            <p class="c-txt">{{ data_get($user, 'is_dm') ? \App\Models\User::DM_STATUS[data_get($user, 'is_dm')] : '同意しない' }}</p>
                           </div>
                         </div>
                       </div>

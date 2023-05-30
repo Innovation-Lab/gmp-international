@@ -298,4 +298,17 @@ class RegisterController extends Controller
         
         return response()->json($result);
     }
+    
+    
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function jsGetSerialGuideType(Request $request): JsonResponse
+    {
+        $search = MProduct::find($request->get('id'));
+        $result = data_get($search, 'serial_guide_type');
+        
+        return response()->json($result);
+    }
 }
