@@ -26,7 +26,7 @@
                   <!-- メールアドレス -->
                   <li class="p-formList__item">
                     <div class="p-formList__content">
-                      <div class="p-formList__label">
+                      <div class="p-formList__label p-formList__label--mail">
                         <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">

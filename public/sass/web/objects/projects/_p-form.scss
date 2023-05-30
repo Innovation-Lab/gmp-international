@@ -109,37 +109,58 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      @include global.responsive(md) {
-      
-      }
       &__img{
         position: absolute;
         &--airbuggy{
-          width: 45px;
-          bottom: 44px;
-          right: 10px;
+          width: 30px;
+          bottom: 25px;
+          right: 67px;
+          @include global.responsive(md) {
+            width: 45px;
+            bottom: 42px;
+            right: 117px;
+          }
         }
         &--britax{
-          width: 45px;
-          bottom: 45px;
-          right: 118px;
+          width: 25px;
+          bottom: 25px;
+          right: 102px;
+          @include global.responsive(md) {
+            width: 39px;
+            bottom: 42px;
+            right: 177px;
+          }
         }
         &--dogcart{
-          width: 45px;
-          bottom: 44px;
-          right: 187px;
+          width: 27px;
+          bottom: 25px;
+          right: 6px;
+          @include global.responsive(md) {
+            width: 42px;
+            bottom: 42px;
+            right: 10px;
+          }
         }
         &--maxicosi{
-          width: 45px;
-          bottom: 36px;
-          right: 17px;
+          width: 20px;
+          bottom: 23px;
+          right: 41px;
+          @include global.responsive(md) {
+            width: 35px;
+            bottom: 39px;
+            right: 69px;
+          }
         }
         &--veer{
-          width: 70px;
-          bottom: 44px;
-          right: 211px;
+          width: 45px;
+          bottom: 25px;
+          right: 135px;
+          @include global.responsive(md) {
+            width: 70px;
+            bottom: 44px;
+            right: 234px;
+          }
         }
-
       }
       &__ttl{
         position: relative;
@@ -227,6 +248,7 @@
       background: #F7F4EC;
     }
   }
+
   //リスト
   &List {
     // display: grid;
@@ -305,6 +327,11 @@
         align-items: center;
         justify-content: space-between;
       }
+      &--mail{
+        @include global.responsive(md) {
+          width: 180px;
+        }
+      }
       &--pass{
         @include global.responsive(md) {
           width: 300px;
@@ -362,7 +389,7 @@
     }
     &__data--ac{
       .c-txt{
-        margin-top: 16px;  
+        // margin-top: 16px;  
         @include global.responsive(md) {
           margin-top: 0;
           width: 300px;
@@ -449,6 +476,5 @@
         border: none;
       }
     }
-    
   }
 }

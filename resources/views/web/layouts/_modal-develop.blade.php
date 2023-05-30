@@ -14,7 +14,7 @@
         "md":  min-width: 768px<br>
         "lg":  min-width: 992px<br>
         "xl":  min-width: 1200px<br>
-        "xxl": min-width: 1400px
+        "xxl": min-width: 1366px
       </main>
       <footer class="modal__footer">
         <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">閉じる</button>
