@@ -31,14 +31,14 @@
                   </div>
                 </li>
                 <!-- ブランド名 -->
-                <li class="p-formList__item">
+                <li class="p-formList__item js-insert-list-brand-{{ $sales_product->id }}">
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                         <p class="c-txt">ブランド名 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="m_brand_id" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                        <select name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'), {{ $sales_product->id }});" data-insert="product" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                           <option value="" selected>ブランドを選択してください</option>
                           @foreach($brands as $k => $v)
                             <option value="{{ $k }}" {{ old('m_brand_id', $sales_product->mProduct->mBrand->id) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -53,14 +53,14 @@
                   </div>
                 </li>
                 <!-- 製品名 -->
-                <li class="p-formList__item">
+                <li class="p-formList__item js-insert-list-product-{{ $sales_product->id }}">
                   <div class="p-formList__content">
                     <div class="p-formList__label">
                         <p class="c-txt">製品名 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="m_product_id" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                        <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'), {{ $sales_product->id }});" data-insert="brand" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                           <option value="" selected>製品を選択してください</option>
                           @foreach($products as $k => $v)
                             <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -74,7 +74,7 @@
                   </div>
                 </li>
                 <!-- カラー -->
-                <li class="p-formList__item">
+                <li class="p-formList__item ">
                   <div class="p-formList__content">
                     <div class="p-formList__label p-formList__label--modal">
                       <p class="c-txt">カラー</p>
@@ -98,25 +98,27 @@
                           <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'm_color_id') != '9999999' ? '' : data_get($sales_product, 'other_color_name')) }}">
+                          <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'm_color_id') != 'other' ? '' : data_get($sales_product, 'other_color_name')) }}">
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
                 <!-- シリアルナンバー -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label p-formList__label--modal">
-                      <p class="c-txt">シリアルナンバー</p>
-                      <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                <li class="p-formList__item js-insert-guide-click-{{ $sales_product->id }}">
+                  @if (data_get($sales_product, 'product_code'))
+                    <div class="p-formList__content">
+                      <div class="p-formList__label p-formList__label--modal">
+                        <p class="c-txt">シリアルナンバー</p>
+                        <div class="p-formList__guide">
+                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                        </div>
+                      </div>
+                      <div class="p-formList__data">
+                        <input placeholder="例）GMP0123456" class="required" name="product_code" type="name" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}">
                       </div>
                     </div>
-                    <div class="p-formList__data">
-                      <input placeholder="例）GMP0123456" class="required" name="product_code" type="name" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}">
-                    </div>
-                  </div>
+                  @endif
                 </li>
                 <!-- 購入店舗 -->
                 <li class="p-formList__item">
@@ -138,12 +140,12 @@
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="display:none;" class="p-formList__content p-formList__other">
+                      <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name', data_get($sales_product, 'm_shop_id') != '9999999' ? '' : data_get($sales_product, 'other_shop_name')) }}">
+                          <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name', data_get($sales_product, 'm_shop_id') != 'other' ? '' : data_get($sales_product, 'other_shop_name')) }}">
                         </div>
                       </div>
                     </div>

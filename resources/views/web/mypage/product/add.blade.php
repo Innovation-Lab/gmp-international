@@ -184,40 +184,13 @@
     $(function() {
       $('.c-input--date input').datepicker();
       otherTextBind();
-
-        $.get({
-            url: '/mypage/js-get-serial-guide-type',
-            data: {
-                'id': {{ old('product_code', '') }},
-            },
-            success: function (response) {
-                if(!undefined && !null) {
-                    let insert ='      <div class="p-formList__content"> ' +
-                        '          <div class="p-formList__label"> ' +
-                        '              <p class="c-txt">シリアルナンバー</p> ' +
-                        '              <div class="p-formList__guide"> ' +
-                        '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
-                        '              </div> ' +
-                        '          </div> ' +
-                        '          <div class="p-formList__data"> ' +
-                        '              <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchSerial($(this).val());" > ' +
-                        '          </div> ' +
-                        '      </div> ';
-
-                    console.log(insert);
-                    let place = '.js-insert-guide-click';
-                    console.log(place);
-                    $(place).empty().append(insert);
-                }
-            }
-        });
     });
 
     function otherTextBind() {
         $('select').change(function() {
             // 選択されたオプションの値を取得
             var selectedValue = $(this).val();
-
+            console.log(selectedValue);
             if (selectedValue === 'other') {
                 $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
             } else {
