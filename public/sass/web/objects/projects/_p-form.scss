@@ -360,7 +360,7 @@
     }
     &__data{
       .c-txt{
-        margin-top: 16px;  
+        // margin-top: 16px;  
         @include global.responsive(md) {
           margin-top: 0;
           width: 300px;
@@ -389,7 +389,7 @@
     }
     &__data--ac{
       .c-txt{
-        // margin-top: 16px;  
+        margin-top: 16px;  
         @include global.responsive(md) {
           margin-top: 0;
           width: 300px;
