@@ -21,6 +21,12 @@ class MProduct extends Model
     protected $guarded = [
         'id'
     ];
+    
+    public const GUIDE = [
+        1 => 'coco', // COCOシリーズ
+        2 => 'cube', // CUBEシリーズ
+        3 => 'gowalker', // gowalkerシリーズ
+    ];
 
     /*
     |--------------------------------------------------------------------------

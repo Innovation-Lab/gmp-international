@@ -1,7 +1,7 @@
 <div class="modal micromodal-slide" id="modal__guide--serial-coco" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1">
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-      <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      <button class="modal__close" aria-label="Close modal" onclick="$('#modal__guide--serial-coco').hide()"></button>
       {{--3輪ベビーカー・カート用--}}
       <div class="modal__box">
         <header class="modal__header modal__header--column">
@@ -36,7 +36,7 @@
 <div class="modal micromodal-slide" id="modal__guide--serial-cube" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1">
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-      <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      <button class="modal__close" aria-label="Close modal" onclick="$('#modal__guide--serial-cube').hide()"></button>
       {{--BOX型3輪ペットカート--}}
       <div class="modal__box">
         <header class="modal__header modal__header--column">
@@ -72,7 +72,7 @@
 <div class="modal micromodal-slide" id="modal__guide--serial-gowalker" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1">
     <div class="modal__container modal__container--min" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-      <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      <button class="modal__close" aria-label="Close modal" onclick="$('#modal__guide--serial-gowalker').hide()"></button>
       {{--ショッピングカート・ペットカート--}}
       <div class="modal__box">
         <header class="modal__header modal__header--column">

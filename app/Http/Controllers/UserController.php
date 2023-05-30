@@ -80,7 +80,7 @@ class UserController extends Controller
     public function update(SalesProduct $sales_product , StoreProductRequest $request): RedirectResponse
     {
         $params = $request->all();
-
+        
         try {
             $sales_product->update([
                 'm_product_id' => data_get($params, 'm_product_id'),
@@ -95,8 +95,7 @@ class UserController extends Controller
             
             \DB::commit();
 
-            return redirect()
-                ->route('mypage.product')
+            return redirect($request->headers->get('referer'))
                 ->with('message', '更新が完了しました。');
 
         } catch (\Exception $e) {

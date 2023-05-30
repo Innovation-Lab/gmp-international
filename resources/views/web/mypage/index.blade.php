@@ -71,9 +71,6 @@
                   </div>
                 </div>
               </li>
-              @include('web.mypage._modal-top--product',[
-                'sales_product' => $sales_product
-              ])
             @endforeach
           </ul>
         @else
@@ -198,6 +195,14 @@
     <p class="c-txt--copyRight">Copyright©2023 GMP International Co., Ltd. All Right Reserved</p>
   </footer>
 </div>
+@foreach ($sales_products as $sales_product)
+  @include('web.mypage._modal-top--product',[
+    'sales_product' => $sales_product
+  ])
+@endforeach
+@include('web.components.modal._modal-guide--color')
+@include('web.components.modal._modal-guide--serial')
+@include('web.components.modal._modal-guide--shop')
 <script>
   $('.p-card').slick({
     dots: true,
@@ -252,5 +257,12 @@
       $('.p-card .slick-arrow.slick-next').css('left',Pos+'px');
     }
   });
+</script>
+<script>
+    $(function() {
+        $('.c-input--date input').each(function(index, elem) {
+            $(this).datepicker();
+        })
+    });
 </script>
 @endsection

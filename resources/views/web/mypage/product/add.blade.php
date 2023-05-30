@@ -109,18 +109,20 @@
                     </div>
                   </li>
                   <!-- シリアルナンバー -->
-                  <li class="p-formList__item">
-                    <div class="p-formList__content">
-                      <div class="p-formList__label">
-                        <p class="c-txt">シリアルナンバー</p>
-                        <div class="p-formList__guide">
-                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                  <li class="p-formList__item js-insert-guide-click">
+                    @if (old('product_code'))
+                      <div class="p-formList__content">
+                        <div class="p-formList__label">
+                          <p class="c-txt">シリアルナンバー</p>
+                          <div class="p-formList__guide">
+                            <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial" role="button"></a>
+                          </div>
+                        </div>
+                        <div class="p-formList__data">
+                          <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="name" value="{{ old('product_code') }}" onchange="searchSerial($(this).val());">
                         </div>
                       </div>
-                      <div class="p-formList__data">
-                        <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="name" value="{{ old('product_code') }}" onchange="searchSerial($(this).val());">
-                      </div>
-                    </div>
+                    @endif
                   </li>
                   <!-- 購入店舗 -->
                   <li class="p-formList__item">
@@ -182,6 +184,33 @@
     $(function() {
       $('.c-input--date input').datepicker();
       otherTextBind();
+
+        $.get({
+            url: '/mypage/js-get-serial-guide-type',
+            data: {
+                'id': {{ old('product_code', '') }},
+            },
+            success: function (response) {
+                if(!undefined && !null) {
+                    let insert ='      <div class="p-formList__content"> ' +
+                        '          <div class="p-formList__label"> ' +
+                        '              <p class="c-txt">シリアルナンバー</p> ' +
+                        '              <div class="p-formList__guide"> ' +
+                        '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                        '              </div> ' +
+                        '          </div> ' +
+                        '          <div class="p-formList__data"> ' +
+                        '              <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchSerial($(this).val());" > ' +
+                        '          </div> ' +
+                        '      </div> ';
+
+                    console.log(insert);
+                    let place = '.js-insert-guide-click';
+                    console.log(place);
+                    $(place).empty().append(insert);
+                }
+            }
+        });
     });
 
     function otherTextBind() {
@@ -219,6 +248,36 @@
 
               }
           });
+
+          if (key == 'product') {
+              $.get({
+                  url: '/mypage/js-get-serial-guide-type',
+                  data: {
+                      'id': value,
+                  },
+                  success: function (response) {
+                      if(!undefined && !null) {
+                          let insert ='      <div class="p-formList__content"> ' +
+                              '          <div class="p-formList__label"> ' +
+                              '              <p class="c-txt">シリアルナンバー</p> ' +
+                              '              <div class="p-formList__guide"> ' +
+                              '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                              '              </div> ' +
+                              '          </div> ' +
+                              '          <div class="p-formList__data"> ' +
+                              '              <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchSerial($(this).val());" > ' +
+                              '          </div> ' +
+                              '      </div> ';
+
+                          console.log(insert);
+                          let place = '.js-insert-guide-click';
+                          console.log(place);
+                          $(place).empty().append(insert);
+
+                      }
+                  }
+              });
+          }
       }
   </script>
   <script>
