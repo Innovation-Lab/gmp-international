@@ -178,6 +178,12 @@
                 border-color: darken(#fff,20%);
 
             }
+            &--mypage{
+                @include global.responsive(md) {
+                    height: 32px;
+                    min-width: 88px;
+                }
+            }
         }
     }
     &--icon{

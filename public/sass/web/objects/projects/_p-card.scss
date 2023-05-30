@@ -29,6 +29,7 @@
             transform: translate(-50%, -50%);
         }
         .p-card__item{
+            background: #b5b5b5;
             @include global.responsive(min) {
                 width: 100%;
             }
@@ -139,15 +140,13 @@
                 right: 16px;
                 bottom: 16px;
             }
-            img{
-                @include global.responsive(md) {
-                    width: 140px;
-                    height: auto;
-                }
-                @include global.responsive(md) {
-                    width: 180px;
-                }
-            }
+            // @include global.responsive(md) {
+            //     width: 140px;
+            //     height: auto;
+            // }
+            // @include global.responsive(md) {
+            //     width: 180px;
+            // }
         }
     }
     // 製品登録
@@ -282,12 +281,41 @@
                     }
                 }
                 &__img{
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: right;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    // display: flex;
+                    // align-items: flex-end;
+                    // justify-content: right;
                     @include global.responsive(md) {
                         position: absolute;
                         right: 16px;
                         bottom: 16px;
-                    }
+                    }   
                     img{
+                        @include global.responsive(md) {
+                            width: 140px;
+                            height: auto;
+                        }
+                        @include global.responsive(md) {
+                            width: 180px;
+                        }
+                    }
+                }
+                &__img--top{
+                    @include global.responsive(md) {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                    }   
+                    img{
+                        @include global.responsive(sm) {
+                            height: 120px;
+                            width: auto;
+                        }
                         @include global.responsive(md) {
                             width: 140px;
                             height: auto;
@@ -317,6 +345,12 @@
                     @include global.responsive(md) {
                         display: block;
                     }
+                }
+                &__other{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: relative;
                 }
             }
         }
@@ -428,13 +462,19 @@
         justify-content: space-between;
         flex: auto;
         min-width: 1px;
+        position: relative;
     }
     &__info{
         flex: auto;
         min-width: 1px;
     }
     &__mainData{}
-    &__brand{}
+    &__brand{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+    }
     &__product{}
     &__color{
         display: flex;
@@ -483,30 +523,34 @@
         
     }
     &__purchase{
-        @include global.responsive(xl) {
-            width: 130px;
+        &--all{
+            @include global.responsive(xl) {
+                width: 130px;
+            }
         }
     }
     &__serialNum{
-        @include global.responsive(xl) {
-            width: 160px;
+        &--all{
+            @include global.responsive(xl) {
+                width: 160px;
+            }
         }
     }
     &__store{
-        @include global.responsive(xl) {
-            width: 180px;
+        &--all{
+            @include global.responsive(xl) {
+                width: 180px;
+            }
         }
-    }
-    &__img{
-        // width: 120px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: right;
     }
     &__other{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        position: relative;
+        @include global.responsive(md) {
+            position: static;
+        }
     }
     //一覧ページ
     &--list{
@@ -623,6 +667,7 @@
             &__other{
                 @include global.responsive(md) {
                     margin: 0 0 0 24px;
+                    position: static;
                 }
             }
             &__img{
@@ -630,8 +675,8 @@
                     position: absolute;
                     left: 24px;
                     top: 8px;
-                    // width: 110px;
                     height: calc(100% - 16px);
+                    display: flex;
                     align-items: center;
                     justify-content: center;
                 }
@@ -640,6 +685,7 @@
                         max-width: 100%;
                         height: auto;
                         max-height: 100%;
+                        position: relative;
                     }
                 }
             }

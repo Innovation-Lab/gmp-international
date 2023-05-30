@@ -1245,9 +1245,16 @@ input[type=file] + label img {
   line-height: 26px;
 }
 .c-ttl--xxl {
-  font-size: 55px;
+  font-size: 32px;
   font-weight: 500;
-  line-height: 55px;
+  line-height: 32px;
+}
+@media screen and (min-width: 768px) {
+  .c-ttl--xxl {
+    font-size: 55px;
+    font-weight: 500;
+    line-height: 55px;
+  }
 }
 .c-ttl--xxl--wh {
   color: #fff;
@@ -1450,6 +1457,12 @@ input[type=file] + label img {
 .c-btn--ghost--wh:hover {
   color: #cccccc;
   border-color: #cccccc;
+}
+@media screen and (min-width: 768px) {
+  .c-btn--ghost--wh--mypage {
+    height: 32px;
+    min-width: 88px;
+  }
 }
 .c-btn--icon {
   background-image: url(../img/web/user/register/add.png);
@@ -4208,6 +4221,9 @@ input[type=file] + label img {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.p-card--notRegister .p-card__item {
+  background: #b5b5b5;
+}
 @media screen and (min-width: 374px) {
   .p-card--notRegister .p-card__item {
     width: 100%;
@@ -4337,17 +4353,6 @@ input[type=file] + label img {
     position: absolute;
     right: 16px;
     bottom: 16px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .p-card--notRegister .p-card__img img {
-    width: 140px;
-    height: auto;
-  }
-}
-@media screen and (min-width: 768px) {
-  .p-card--notRegister .p-card__img img {
-    width: 180px;
   }
 }
 .p-card .slick-list {
@@ -4497,6 +4502,14 @@ input[type=file] + label img {
     font-size: 18px;
   }
 }
+.p-card .slick-slide li .p-card__img {
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 @media screen and (min-width: 768px) {
   .p-card .slick-slide li .p-card__img {
     position: absolute;
@@ -4512,6 +4525,30 @@ input[type=file] + label img {
 }
 @media screen and (min-width: 768px) {
   .p-card .slick-slide li .p-card__img img {
+    width: 180px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .p-card .slick-slide li .p-card__img--top {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+@media screen and (min-width: 576px) {
+  .p-card .slick-slide li .p-card__img--top img {
+    height: 120px;
+    width: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .p-card .slick-slide li .p-card__img--top img {
+    width: 140px;
+    height: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .p-card .slick-slide li .p-card__img--top img {
     width: 180px;
   }
 }
@@ -4539,6 +4576,12 @@ input[type=file] + label img {
   .p-card .slick-slide li .p-card__store {
     display: block;
   }
+}
+.p-card .slick-slide li .p-card__other {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
 .p-card > li,
 .p-card .slick-slide li {
@@ -4670,10 +4713,17 @@ input[type=file] + label img {
   justify-content: space-between;
   flex: auto;
   min-width: 1px;
+  position: relative;
 }
 .p-card__info {
   flex: auto;
   min-width: 1px;
+}
+.p-card__brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .p-card__color {
   display: flex;
@@ -4726,29 +4776,30 @@ input[type=file] + label img {
   font-size: 13px;
 }
 @media screen and (min-width: 1280px) {
-  .p-card__purchase {
+  .p-card__purchase--all {
     width: 130px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .p-card__serialNum {
+  .p-card__serialNum--all {
     width: 160px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .p-card__store {
+  .p-card__store--all {
     width: 180px;
   }
-}
-.p-card__img {
-  display: flex;
-  align-items: flex-end;
-  justify-content: right;
 }
 .p-card__other {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .p-card__other {
+    position: static;
+  }
 }
 .p-card--list {
   display: flex;
@@ -4875,6 +4926,7 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-card--list .p-card__other {
     margin: 0 0 0 24px;
+    position: static;
   }
 }
 @media screen and (min-width: 768px) {
@@ -4883,6 +4935,7 @@ input[type=file] + label img {
     left: 24px;
     top: 8px;
     height: calc(100% - 16px);
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -4892,6 +4945,7 @@ input[type=file] + label img {
     max-width: 100%;
     height: auto;
     max-height: 100%;
+    position: relative;
   }
 }
 
@@ -5317,6 +5371,10 @@ input[type=file] + label img {
   　Optional 任意
   ---------- */
 }
+.p-formList__label--modal {
+  flex-direction: row;
+  justify-content: space-between;
+}
 .optional::after {
   color: var(--color_form_ps);
   font: 700 0.625rem / 1 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -5337,7 +5395,7 @@ input[type=file] + label img {
     width: 230px;
     flex-direction: column;
     align-items: baseline;
-    justify-content: center;
+    justify-content: space-between;
   }
 }
 .p-formList__label .c-txt br {
@@ -5361,9 +5419,6 @@ input[type=file] + label img {
     margin-top: 0;
     width: 300px;
   }
-}
-.p-formList__data label {
-  width: 165px;
 }
 .p-formList__data .error {
   color: var(--color_alert);
@@ -5769,6 +5824,9 @@ input[type=file] + label img {
 /* ! ==================================================
 　規約同意
 ================================================== */
+.p-delete .Product__txt .p-card__purchase {
+  width: 100%;
+}
 .p-delete__head .c-ttl {
   margin: 40px 0 0;
 }
