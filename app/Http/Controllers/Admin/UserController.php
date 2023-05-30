@@ -45,7 +45,7 @@ class UserController extends Controller
 
     public function edit(): View
     {
-        return view('admin.users.detail.edit');
+        return view('admin.users.edit.index');
     }
 
     // public function userEdit(): View

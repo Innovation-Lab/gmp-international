@@ -89,9 +89,25 @@
                               </div>
                             </li>
                           </ul>
-                        </div>
-                        <div class="l-grid__item">
+                          {{--個人情報の取り扱いについて--}}
+                          <div class="p-detail__main__box__head" style="margin-top: 3rem;">
+                            <h3 class="p-detail__main__box__head__title">
+                              個人情報の取り扱いについて
+                            </h3>
+                          </div>
                           <ul class="p-formList">
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__data">
+                                  <div class="c-input c-input--radio">
+                                    <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
+                                    <label for="inq1-2">同意する</label>
+                                    <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
+                                    <label for="inq2-2">同意しない</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
                             <li class="p-formList__item">
                               <div class="l-grid__2 l-grid__gap1">
                                 <div class="l-grid__item">
@@ -146,52 +162,21 @@
                                 </div>
                               </div>
                             </li>
+                          </ul>
+                          <ul class="p-formList">
                             <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
-                                  パスワード
+                                  管理メモ
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data memo">
                                   {!! Form::text('room', 'マンション名・部屋番号など', ['placeholder' => '例）渋谷マンション1201']) !!}
                                 </div>
                               </div>
                             </li>
                           </ul>
                         </div>
-                        {{--個人情報の取り扱いについて--}}
-                        <div class="l-grid__item">
-                          <div class="p-detail__main__box__head" {{--style="margin-top: 3rem;"--}}>
-                            <h3 class="p-detail__main__box__head__title">
-                              個人情報の取り扱いについて
-                            </h3>
-                          </div>
-                          <ul class="p-formList">
-                            <li class="p-formList__item">
-                              <div class="p-formList__content">
-                                <div class="p-formList__data">
-                                  <div class="c-input c-input--radio">
-                                    <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
-                                    <label for="inq1-2">同意する</label>
-                                    <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
-                                    <label for="inq2-2">同意しない</label>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
                         </div>
-                        <ul class="p-formList">
-                          <li class="p-formList__item">
-                            <div class="p-formList__content">
-                              <div class="p-formList__label">
-                                管理メモ
-                              </div>
-                              <div class="p-formList__content__data">
-                                <textarea placeholder="修正対応や報告事項を記載してください。"></textarea>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
                       </div>
                     </form>
                   </div>
