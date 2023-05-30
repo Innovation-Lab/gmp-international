@@ -176,7 +176,7 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="checkbox" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', (data_get($user, 'is_dm')) == 1) || !data_get($user, 'is_dm') ? 'checked' : '' }}>
+                      <input type="checkbox" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', data_get($user, 'is_dm')) == 1 ? 'checked' : '' }}>
                       <label for="inq1-2" style="width: auto;">情報の受け取りに同意する</label>
                     </div>
                   </div>
