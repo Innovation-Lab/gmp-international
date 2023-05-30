@@ -6,6 +6,11 @@
     margin-bottom: 60px;
 }
 .p-card {
+    &__img{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
     margin-top: 24px;
     p:not(.c-txt--sm--ghost){
         color: #fff;
@@ -250,6 +255,7 @@
                     }
                 }
                 &__subData{
+                    width: 50%;
                     > div{
                         @include global.responsive(md) {
                             flex-direction: column;
@@ -433,7 +439,7 @@
         }
     }
     &__item{
-        min-height: 210px;
+        min-height: 235px;
         background: #c30e2e;
         border-radius: 10px;
         padding: 20px 16px;
@@ -594,7 +600,7 @@
                 @include global.responsive(md) {
                     
                 }
-                @include global.responsive(xl) {
+                @include global.responsive(xxl) {
                     flex-direction: row;
                 }
             }
@@ -624,7 +630,7 @@
                     padding: 0;
                     margin: 12px 0 0;
                 }
-                @include global.responsive(xl) {
+                @include global.responsive(xxl) {
                     padding: 0 0 0 16px;
                     margin: 0 0 0 auto;
                 }

@@ -117,7 +117,7 @@
                   <!-- 購入製品 -->
                   <li class="p-formList__item">
                     <div class="p-formList__ttl">
-                      <p class="c-ttl">購入製品</p>
+                      <p class="c-ttl">製品</p>
                       <p class="c-txt">{{ data_get($product, 'm_product_id') ? $products[data_get($product, 'm_product_id')] : '指定なし' }}</p>
                     </div>
                     <div class="p-formList__content">

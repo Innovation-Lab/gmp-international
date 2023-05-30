@@ -9,10 +9,26 @@
         <div class="p-formPage__complete__ttl">
           <p class="c-ttl--xxl">COMPLETE</p>
           {{--airbuggy--}}
-          <div class="p-formPage__complete__img p-formPage__complete__img--airbuggy" {{--style="display: none;"--}}>
+          <div class="p-formPage__complete__img p-formPage__complete__img--airbuggy">
             <img src="{{asset('img/web/complete/product-airbuggy.png')}}">
           </div>
           {{--britax--}}
+          <div class="p-formPage__complete__img p-formPage__complete__img--britax">
+            <img src="{{asset('img/web/complete/product-britax.png')}}">
+          </div>
+          {{--dogcart--}}
+          <div class="p-formPage__complete__img p-formPage__complete__img--dogcart">
+            <img src="{{asset('img/web/complete/product-dogcart.png')}}">
+          </div>
+          {{--maxicosi--}}
+          <div class="p-formPage__complete__img p-formPage__complete__img--maxicosi">
+            <img src="{{asset('img/web/complete/product-maxicosi.png')}}">
+          </div>
+          {{--veer--}}
+          <div class="p-formPage__complete__img p-formPage__complete__img--veer">
+            <img src="{{asset('img/web/complete/product-veer.png')}}">
+          </div>
+          <!-- {{--britax--}}
           <div class="p-formPage__complete__img p-formPage__complete__img--britax" style="display: none;">
             <img src="{{asset('img/web/complete/product-britax.png')}}">
           </div>
@@ -27,7 +43,7 @@
           {{--veer--}}
           <div class="p-formPage__complete__img p-formPage__complete__img--veer" style="display: none;">
             <img src="{{asset('img/web/complete/product-veer.png')}}">
-          </div>
+          </div> -->
         </div>
         <div class="p-formPage__complete__txt">
           <p class="c-ttl c-txt--center">会員情報を登録完了しました。</p>
