@@ -41,7 +41,11 @@
 @include('admin.layouts._modal-develop')
 
 {{-- ページフレーム --}}
-<div class="l-frame" id="js-target__gnavSwitch">
+  @if(Route::current()->getName() == 'admin.users.detail')
+    <div class="l-frame white" id="js-target__gnavSwitch">
+  @else
+    <div class="l-frame" id="js-target__gnavSwitch">
+  @endif
   <aside class="l-frame__sidebar">
     @include('admin.components._sidebar')
   </aside>

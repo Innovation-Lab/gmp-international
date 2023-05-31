@@ -5,100 +5,182 @@
 　Edit 編集ページ
 ================================================== */
 .p-edit {
-  display: grid;
-  grid:
-    "main sidebar" auto
-    / 1fr 12%
-  ;
-  gap: 1rem;
-  
+  width: 100%;
+  display: flex;
+
   /* ! --------------------------------------------------
-  　サイドバー
+  　Head ヘッド
   -------------------------------------------------- */
-  &__sidebar {
-    grid-area: sidebar;
+  &__head {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    margin: 0 0 2.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
     position: relative;
+    border-bottom: 1px solid var(--color_border_1);
+
+    /* ! ----------
+    　Inner インナー
+    ---------- */
+    &__inner {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ! ----------
+    　Action アクション
+    ---------- */
+    &__action {
+      margin: 0 0 0 auto;
+    }
   }
 
-  /* ! ----------
-  　Nav ナビゲーション
-  ---------- */
-  &__nav {
-    position: sticky;
-    top: 4rem;
-    padding: .5rem 0;
-    &__list {
-      display: grid;
-      li {
-        a {
-          display: flex;
-          align-items: center;
-          height: 2rem;
-          padding: 0 .75rem;
-          scroll-behavior: smooth;
+  /* ! --------------------------------------------------
+  　Sidebar サイドバー
+  -------------------------------------------------- */
+  &__sidebar {
+    border: 1px solid var(--color_border_1);
+    height: 100%;
+    // position: sticky;
+    // top: 4.5rem;
+
+    /* ! ----------
+    　Box ボックス
+    ---------- */
+    &__box {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      & + & {
+        border-top: 1px solid var(--color_border_1);
+      }
+
+      /* ! ----------
+      　Head ヘッド
+      ---------- */
+      &__head {
+        flex:  0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 1.5rem;
+
+        // タイトル
+        &__title {
           @extend .c-text__sm !optional;
-          &::before {
-            content: "・";
-            display: inline-flex;
-            margin: 0 0.25rem 0 0;
-          }
-          &:hover {
-            color: var(--color_primary);
-            background-color: var(--color_background_4);
-          }
+          font-weight: 700;
+        }
+      }
+
+      /* ! ----------
+      　Body ボディ
+      ---------- */
+      &__body {
+        flex: auto;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 1.5rem 1.5rem;
+        .p-detail__sidebar__box__head + & {
+          padding-top: 0;
         }
       }
     }
   }
 
   /* ! --------------------------------------------------
-  　メイン
+  　Main メイン
   -------------------------------------------------- */
-  &__main {   
-    grid-area: main;
+  &__main {
+    background: #fff;
     border: 1px solid var(--color_border_1);
-    background-color: #fff;
-  }
-  /* ! ----------
-  　Item アイテム
-  ---------- */
-  &__item {
-    display: grid;
-    grid-template-columns: 1.2fr 4fr;
-    & + & {
-      border-top: 1px dotted var(--color_border_0);
+    position: sticky;
+
+    /* ! ----------
+    　Box ボックス
+    ---------- */
+    &__box {
+      display: grid;
+      grid:
+        "head" auto
+        "wrapper" 1fr
+        "table" auto
+        "foot" auto
+        / 100%;
+
+      /* ! ----------
+      　Head ヘッド
+      ---------- */
+      &__head {
+        grid-area: head;
+        margin: 0 0 1.5rem;
+        // タイトル
+        &__title {
+          @extend .c-text__md !optional;
+          font-weight: 500;
+        }
+      }
+
+      & + & {
+        border-top: 1px solid var(--color_border_1);
+      }
+
+      /* ! ----------
+      　Wrapper ラッパー
+      ---------- */
+      &__wrapper {
+        grid-area: wrapper;
+        padding: 2rem 2.5rem;
+      }
+
+      /* ! ----------
+      　Body ボディ
+      ---------- */
+      &__body {
+        padding: 2rem 2.5rem;
+        .p-detail__main__box__head + & {
+          padding-top: 0;
+        }
+      }
+
+      /* ! ----------
+      　Foot フット
+      ---------- */
+      &__foot {
+        grid-area: foot;
+        text-align: right;
+        padding: 1rem;
+        border-top: 1px solid var(--color_border_1);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(2px);
+        position: sticky;
+        bottom: 0;
+      }
+
+      /* ! ----------
+      　Table テーブル
+      ---------- */
+      &__table {
+        grid-area: table;
+        .p-detail__main__box__head + & {
+          padding-top: 0;
+        }
+      }
     }
   }
 
-  @at-root :root {
-    --space_edit: 1.5rem;
-    @include global.responsive(lg) {
-      --space_edit: 2rem;
-    }
-  }
-  /* ! ----------
-  　Head ヘッド
-  ---------- */
-  &__head {
-    background-color: var(--color_background_1);
-    border-right: 1px solid var(--color_border_1);
-    padding: var(--space_edit);
+  /* ! --------------------------------------------------
+  　Foot フット
+  -------------------------------------------------- */
+  &__foot {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid var(--color_border_1);
+    padding: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
     position: relative;
-    @include global.responsive(lg) {
-      padding: 2rem;
-    }
-    &__title {
-      @extend .c-text__md !optional;
-      font-weight: 500;
-      position: sticky;
-      top: 4.5rem;
-    }
-  }
-
-  /* ! ----------
-  　Body ボディ
-  ---------- */
-  &__body {
-    padding: var(--space_edit);
   }
 }

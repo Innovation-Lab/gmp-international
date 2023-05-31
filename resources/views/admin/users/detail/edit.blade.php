@@ -10,7 +10,7 @@
     <div class="l-detail__body">
       <div class="wrapper">
         <div class="container">
-          <div class="l-detail__body__inner">
+          <div class="l-detail__body__inner ">
             {{-- メイン --}}
             <div class="l-detail__main">
               <div class="p-detail__main">

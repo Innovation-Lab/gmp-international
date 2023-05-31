@@ -66,7 +66,7 @@
                 <tbody>
                   @for ($i = 0; $i < 30; $i++)
                   <!-- 1人 -->
-                  <tr data-href="">
+                  <tr data-href="{{ route('admin.users.detail') }}">
                     <td class="item">
                       山田 太郎
                       <span>ヤマダ タロウ</span>

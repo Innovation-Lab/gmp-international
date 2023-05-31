@@ -81,6 +81,9 @@
       &__body {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        @media screen and (max-width:1240px) {
+          grid-template-columns: 1fr;
+        }
         gap: 8px;
         &__list {
           display: grid;
@@ -89,10 +92,16 @@
           // labelの幅auto
           &.auto {
             grid-template-columns: auto 1fr;
+            @media screen and (max-width:1240px) {
+              grid-template-columns: 70px 1fr;
+            }
           }
           // grid-column: 1/3;
           &.large {
             grid-column: 1/3;
+            @media screen and (max-width:1240px) {
+              grid-column: auto;
+            }
           }
         }
       }

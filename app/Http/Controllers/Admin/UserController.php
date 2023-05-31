@@ -43,7 +43,7 @@ class UserController extends Controller
         return view('admin.users.detail.index');
     }
 
-    public function edit(): View
+    public function editUser(): View
     {
         return view('admin.users.edit.index');
     }

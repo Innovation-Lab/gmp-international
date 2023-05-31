@@ -281,11 +281,11 @@ strong {
   font: 500 1.25rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__md, .p-profileImage__text__title, .p-edit__head__title, .p-detail__main__box__head__title, .p-dashboard__ranking__list__data .amount {
+.c-text__md, .p-profileImage__text__title, .p-edit__main__box__head__title, .p-detail__main__box__head__title, .p-dashboard__ranking__list__data .amount {
   font: 500 1rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__sm, .p-formList__data, .p-flash__item .title, .p-menuList__button, .p-pagination__count, .p-pagination__page, .p-table tbody td, .p-filterList__label, .p-tabList__label, .p-product__data, .p-list__label, .p-list__data, .p-edit__nav__list li a, .p-detail__sidebar__box__head__title, .p-dashboard__ranking__list__text .title, .p-dashboard__head__title, .l-frame.is-hide, .radio label, input[type=checkbox] + label, input[type=file] + label::after, .c-button, .c-button__2, .c-button__line, .c-button__reset, .c-button__alert, .c-button__disabled, .c-button__icon, .c-button__icon__line, .modal__btn, .modal__btn-primary, .modal__btn-alert {
+.c-text__sm, .p-formList__data, .p-flash__item .title, .p-menuList__button, .p-pagination__count, .p-pagination__page, .p-table tbody td, .p-filterList__label, .p-tabList__label, .p-product__data, .p-list__label, .p-list__data, .p-edit__sidebar__box__head__title, .p-detail__sidebar__box__head__title, .p-dashboard__ranking__list__text .title, .p-dashboard__head__title, .l-frame.is-hide, .radio label, input[type=checkbox] + label, input[type=file] + label::after, .c-button, .c-button__2, .c-button__line, .c-button__reset, .c-button__alert, .c-button__disabled, .c-button__icon, .c-button__icon__line, .modal__btn, .modal__btn-primary, .modal__btn-alert {
   font: 500 0.875rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
@@ -541,6 +541,34 @@ small {
   background-clip: padding-box;
 }
 
+.c-input {
+  position: relative;
+}
+.c-input--tel {
+  width: 50%;
+}
+.c-input--radio {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+}
+.c-input--radio input[type=radio] + label {
+  display: flex;
+  align-items: center;
+  padding: 13px 8px;
+}
+.c-input--radio input[type=radio] + label:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin: 0 8px 0 0;
+  background: url(../img/admin/form/radio.png) no-repeat center;
+  background-size: contain !important;
+}
+.c-input--radio input[type=radio]:checked + label:before {
+  background: url(../img/admin/form/radio--checked.png) no-repeat center;
+}
+
 /* ! ==================================================
 　Components コンポーネント
 ================================================== */
@@ -552,6 +580,9 @@ small {
 ---------- */
 /* ! ----------
 　Scroll スクロール
+---------- */
+/* ! ----------
+　Input インプット
 ---------- */
 /* ! ==================================================
 　Form フォーム
@@ -740,6 +771,16 @@ input[type=file] + label.colorPattern {
   color: var(--color_form_placeholder);
 }
 
+textarea {
+  font-size: rem(14px);
+  line-height: 1.3;
+  width: 100%;
+  resize: none;
+  padding: 0.5rem;
+  height: auto;
+  min-height: 5.5em;
+}
+
 /* ! ----------
 　サイズ定義
 ---------- */
@@ -756,7 +797,7 @@ input[type=file] + label.colorPattern {
 　Frames 全体フレーム
 ================================================== */
 .l-frame {
-  background: #fff;
+  background: var(--gray-background1);
   flex: auto;
   min-width: 0;
   display: grid;
@@ -773,6 +814,9 @@ input[type=file] + label.colorPattern {
 }
 .l-frame.is-hide {
   --width_sidebar: 4.5rem;
+}
+.l-frame.white {
+  background: #fff;
 }
 .l-frame.edit {
   grid: "main" 1fr/100%;
@@ -886,6 +930,9 @@ input[type=file] + label.colorPattern {
 .l-grid__gap1 {
   gap: 0.5rem;
 }
+.l-grid__gap2 {
+  gap: 1rem;
+}
 
 /* ! ==================================================
 　IndexFlame 一覧ページフレーム
@@ -995,7 +1042,7 @@ input[type=file] + label.colorPattern {
   　1カラム
   ---------- */
 }
-.single .l-detail__body__inner {
+.l-detail__body__inner.single {
   grid: "main" auto/1fr;
 }
 .l-detail__sidebar {
@@ -1009,6 +1056,86 @@ input[type=file] + label.colorPattern {
   overflow: hidden;
 }
 .l-detail__foot {
+  grid-area: foot;
+  position: sticky;
+  bottom: 0;
+}
+
+/* ! ----------
+　サイズ定義
+---------- */
+:root {
+  --width_sidebar_detail: 15rem;
+}
+@media screen and (min-width: 1200px) {
+  :root {
+    --width_sidebar_detail: 17.5rem;
+  }
+}
+
+/* ! ==================================================
+　DetailFlame 編集ページフレーム
+================================================== */
+.l-edit {
+  flex: auto;
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  grid: "head" auto "middle" auto "body" 1fr "foot" auto/100%;
+  /* ! ----------
+  　Head ヘッド
+  ---------- */
+  /* ! ----------
+  　Middle ミドル
+  ---------- */
+  /* ! ----------
+  　Body ボディ
+  ---------- */
+  /* ! ----------
+  　Sidebar サイドバー
+  ---------- */
+  /* ! ----------
+  　Main メイン
+  ---------- */
+  /* ! ----------
+  　Foot フット
+  ---------- */
+}
+.l-edit__head {
+  grid-area: head;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.l-edit__middle {
+  grid-area: middle;
+}
+.l-edit__body {
+  grid-area: body;
+  padding: 0 0 2.5rem;
+}
+.l-edit__body__inner {
+  display: grid;
+  gap: 2.5rem;
+  grid: "sidebar main" auto/minmax(auto, 37.3%) 1fr;
+  /* ! ----------
+  　1カラム
+  ---------- */
+}
+.l-edit__body__inner.single {
+  grid: "main" auto/1fr;
+}
+.l-edit__sidebar {
+  grid-area: sidebar;
+  width: auto;
+}
+.l-edit__main {
+  grid-area: main;
+}
+.l-edit__main--hidden {
+  overflow: hidden;
+}
+.l-edit__foot {
   grid-area: foot;
   position: sticky;
   bottom: 0;
@@ -1733,6 +1860,7 @@ input[type=file] + label.colorPattern {
 }
 .p-detail__sidebar__box__head + .p-detail__sidebar__box__body {
   padding-top: 0;
+  padding: 0;
 }
 .p-detail__main {
   border: 1px solid var(--color_border_1);
@@ -1837,21 +1965,55 @@ input[type=file] + label.colorPattern {
 　Edit 編集ページ
 ================================================== */
 .p-edit {
-  display: grid;
-  grid: "main sidebar" auto/1fr 12%;
-  gap: 1rem;
+  width: 100%;
+  display: flex;
   /* ! --------------------------------------------------
-  　サイドバー
+  　Head ヘッド
   -------------------------------------------------- */
-  /* ! ----------
-  　Nav ナビゲーション
-  ---------- */
   /* ! --------------------------------------------------
-  　メイン
+  　Sidebar サイドバー
   -------------------------------------------------- */
+  /* ! --------------------------------------------------
+  　Main メイン
+  -------------------------------------------------- */
+  /* ! --------------------------------------------------
+  　Foot フット
+  -------------------------------------------------- */
+}
+.p-edit__head {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  margin: 0 0 2.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  position: relative;
+  border-bottom: 1px solid var(--color_border_1);
   /* ! ----------
-  　Item アイテム
+  　Inner インナー
   ---------- */
+  /* ! ----------
+  　Action アクション
+  ---------- */
+}
+.p-edit__head__inner {
+  display: flex;
+  align-items: center;
+}
+.p-edit__head__action {
+  margin: 0 0 0 auto;
+}
+.p-edit__sidebar {
+  border: 1px solid var(--color_border_1);
+  height: 100%;
+  /* ! ----------
+  　Box ボックス
+  ---------- */
+}
+.p-edit__sidebar__box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   /* ! ----------
   　Head ヘッド
   ---------- */
@@ -1859,73 +2021,100 @@ input[type=file] + label.colorPattern {
   　Body ボディ
   ---------- */
 }
-.p-edit__sidebar {
-  grid-area: sidebar;
-  position: relative;
+.p-edit__sidebar__box + .p-edit__sidebar__box {
+  border-top: 1px solid var(--color_border_1);
 }
-.p-edit__nav {
-  position: sticky;
-  top: 4rem;
-  padding: 0.5rem 0;
-}
-.p-edit__nav__list {
-  display: grid;
-}
-.p-edit__nav__list li a {
+.p-edit__sidebar__box__head {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
-  height: 2rem;
-  padding: 0 0.75rem;
-  scroll-behavior: smooth;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem;
 }
-.p-edit__nav__list li a::before {
-  content: "・";
-  display: inline-flex;
-  margin: 0 0.25rem 0 0;
+.p-edit__sidebar__box__head__title {
+  font-weight: 700;
 }
-.p-edit__nav__list li a:hover {
-  color: var(--color_primary);
-  background-color: var(--color_background_4);
+.p-edit__sidebar__box__body {
+  flex: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem;
+}
+.p-detail__sidebar__box__head + .p-edit__sidebar__box__body {
+  padding-top: 0;
 }
 .p-edit__main {
-  grid-area: main;
+  background: #fff;
   border: 1px solid var(--color_border_1);
-  background-color: #fff;
-}
-.p-edit__item {
-  display: grid;
-  grid-template-columns: 1.2fr 4fr;
-}
-.p-edit__item + .p-edit__item {
-  border-top: 1px dotted var(--color_border_0);
-}
-:root {
-  --space_edit: 1.5rem;
-}
-@media screen and (min-width: 992px) {
-  :root {
-    --space_edit: 2rem;
-  }
-}
-
-.p-edit__head {
-  background-color: var(--color_background_1);
-  border-right: 1px solid var(--color_border_1);
-  padding: var(--space_edit);
-  position: relative;
-}
-@media screen and (min-width: 992px) {
-  .p-edit__head {
-    padding: 2rem;
-  }
-}
-.p-edit__head__title {
-  font-weight: 500;
   position: sticky;
-  top: 4.5rem;
+  /* ! ----------
+  　Box ボックス
+  ---------- */
 }
-.p-edit__body {
-  padding: var(--space_edit);
+.p-edit__main__box {
+  display: grid;
+  grid: "head" auto "wrapper" 1fr "table" auto "foot" auto/100%;
+  /* ! ----------
+  　Head ヘッド
+  ---------- */
+  /* ! ----------
+  　Wrapper ラッパー
+  ---------- */
+  /* ! ----------
+  　Body ボディ
+  ---------- */
+  /* ! ----------
+  　Foot フット
+  ---------- */
+  /* ! ----------
+  　Table テーブル
+  ---------- */
+}
+.p-edit__main__box__head {
+  grid-area: head;
+  margin: 0 0 1.5rem;
+}
+.p-edit__main__box__head__title {
+  font-weight: 500;
+}
+.p-edit__main__box + .p-edit__main__box {
+  border-top: 1px solid var(--color_border_1);
+}
+.p-edit__main__box__wrapper {
+  grid-area: wrapper;
+  padding: 2rem 2.5rem;
+}
+.p-edit__main__box__body {
+  padding: 2rem 2.5rem;
+}
+.p-detail__main__box__head + .p-edit__main__box__body {
+  padding-top: 0;
+}
+.p-edit__main__box__foot {
+  grid-area: foot;
+  text-align: right;
+  padding: 1rem;
+  border-top: 1px solid var(--color_border_1);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  position: sticky;
+  bottom: 0;
+}
+.p-edit__main__box__table {
+  grid-area: table;
+}
+.p-detail__main__box__head + .p-edit__main__box__table {
+  padding-top: 0;
+}
+.p-edit__foot {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--color_border_1);
+  padding: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  position: relative;
 }
 
 /* ! ==================================================
@@ -2328,6 +2517,11 @@ input[type=file] + label.colorPattern {
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+@media screen and (max-width: 1240px) {
+  .p-product--list .p-product__item__body {
+    grid-template-columns: 1fr;
+  }
+}
 .p-product--list .p-product__item__body__list {
   display: grid;
   grid-template-columns: 70px 1fr;
@@ -2336,8 +2530,18 @@ input[type=file] + label.colorPattern {
 .p-product--list .p-product__item__body__list.auto {
   grid-template-columns: auto 1fr;
 }
+@media screen and (max-width: 1240px) {
+  .p-product--list .p-product__item__body__list.auto {
+    grid-template-columns: 70px 1fr;
+  }
+}
 .p-product--list .p-product__item__body__list.large {
   grid-column: 1/3;
+}
+@media screen and (max-width: 1240px) {
+  .p-product--list .p-product__item__body__list.large {
+    grid-column: auto;
+  }
 }
 .p-product--list .p-product__item__ttl .item:first-child {
   font-size: 14px;
@@ -2944,7 +3148,7 @@ input[type=file] + label.colorPattern {
 .p-formList {
   display: grid;
   grid-auto-rows: auto;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 .p-formList__content {
   display: grid;
