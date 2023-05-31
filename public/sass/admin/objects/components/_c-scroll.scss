@@ -4,16 +4,22 @@
 　Scroll スクロールバー
 ================================================== */
 .c-scroll {
+  overflow: auto;
   &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    // width: 8px;
+    // height: 8px;
+    width: 9px;
+    background: var(--gray-1);
   }
   &::-webkit-scrollbar-track {
-    border-radius: 2px;
-    background: var(--color_background_4);
+    background: var(--gray-1);
+    margin-top: 1px;
+    margin-bottom: 1px;
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
     background: var(--color_text_1);
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    background-clip: padding-box;
   }
 }

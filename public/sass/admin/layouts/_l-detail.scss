@@ -52,10 +52,10 @@
     &__inner {
       display: grid;
       // align-items: flex-start;
-      gap: 1.5rem;
+      gap: 2.5rem;
       grid:
         "sidebar main" auto
-        / auto 1fr;
+        /  minmax(auto, 37.3%) 1fr;
 
       /* ! ----------
       　1カラム
@@ -73,7 +73,7 @@
   ---------- */
   &__sidebar {
     grid-area: sidebar;
-    width: var(--width_sidebar_detail);
+    width: auto;
   }
 
   /* ! ----------

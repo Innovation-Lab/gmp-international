@@ -23,15 +23,15 @@
     max-width: global.rem(1280px);
   }
   // 詳細ページ
-  .p-detail & {
-    max-width: global.rem(1440px);
+  // .p-detail & {
+  //   max-width: global.rem(1440px);
 
-    // 編集ページ
-    .edit & {
-      max-width: global.rem(1080px);
-      margin: 0 auto;
-    }
-  }
+  //   // 編集ページ
+  //   .edit & {
+  //     max-width: global.rem(1080px);
+  //     margin: 0 auto;
+  //   }
+  // }
 }
 
 /* ! ----------
@@ -61,7 +61,7 @@ body {
 // ダッシュボード・編集ページ
 .body_dashboard .l-frame__main,
 .body_edit .l-frame__main {
-  background-color: var(--color_background_3);
+  background-color: var(--gray-background1);
 }
 
 /* ! --------------------------------------------------
@@ -103,4 +103,26 @@ a {
 }
 strong {
   font-weight: 700;
+}
+
+/* ! --------------------------------------------------
+　Icon アイコン
+-------------------------------------------------- */
+.svg-defs {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  positoin: fixed;
+  bottom: 0;
+}
+/* SVGアイコンクラス */
+.icon {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  /* baselineより垂直方向にちょっとだけ下げる */
+  top: 0.125em;
 }
