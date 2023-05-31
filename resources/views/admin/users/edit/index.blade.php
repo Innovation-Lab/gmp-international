@@ -33,7 +33,7 @@
                                     姓
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('last-name', '田中', ['placeholder' => '例）山田']) !!}
+                                    {!! Form::text('last-name', '山田', ['placeholder' => '例）山田']) !!}
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
@@ -41,7 +41,7 @@
                                     名
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('first-name', '由梨恵', ['placeholder' => '例）太郎']) !!}
+                                    {!! Form::text('first-name', '太郎', ['placeholder' => '例）太郎']) !!}
                                   </div>
                                 </div>
                               </div>
@@ -53,7 +53,7 @@
                                     セイ
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('sei', 'タナカ', ['placeholder' => '例）ヤマダ']) !!}
+                                    {!! Form::text('sei', 'ヤマダ', ['placeholder' => '例）ヤマダ']) !!}
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
@@ -61,7 +61,7 @@
                                     メイ
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('mei', 'ユリエ', ['placeholder' => '例）タロウ']) !!}
+                                    {!! Form::text('mei', 'タロウ', ['placeholder' => '例）タロウ']) !!}
                                   </div>
                                 </div>
                               </div>

@@ -1,0 +1,50 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　product リスト
+================================================== */
+.p-product {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 1.5rem;
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  &__item {
+    display: flex;
+  }
+  &__item {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 0.125rem;
+  }
+  &__content {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 0.125rem;
+  }
+
+  /* ! ----------
+  　Label ラベル
+  ---------- */
+  &__label {
+    color: var(--color_text_button);
+    @extend .c-text__xs !optional;
+    display: flex;
+    justify-content: space-between;
+    a,
+    [data-micromodal-trigger] {
+      @extend .c-text__xs !optional;
+      color: var(--color_text_button);
+      text-decoration: underline;
+      font-weight: 500;
+      &:hover {
+        color: var(--color_primary);
+      }
+    }
+  }
+  &__data {
+    @extend .c-text__sm !optional;
+  }
+}
