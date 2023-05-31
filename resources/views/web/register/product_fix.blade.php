@@ -21,7 +21,7 @@
             </ul>
           </div>
           <div class="p-formPage__head__ttl">
-            <p class="c-ttl">購入製品の登録</p>
+            <p class="c-ttl">購入製品の登録1</p>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_brand_id]" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="product" style=" @error('products.'.$count.'.m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <select onchange="changeColor(this)" name="products[{{ $count }}][m_brand_id]" class="js-ty-brand" onchange="getTyArray('brand', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="product" style=" @error('products.'.$count.'.m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_brand_id') == $k) selected @endif>{{ $v }}</option>
@@ -94,7 +94,7 @@
                       </div>
                       <div class="p-formList__data ">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="brand" style=" @error('products.'.$count.'.m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <select onchange="changeColor(this)" name="products[{{ $count }}][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="{{ $count }}" data-insert="brand" style=" @error('products.'.$count.'.m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_product_id') == $k) selected @endif>{{ $v }}</option>
@@ -118,7 +118,7 @@
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_color_id]" class="js-ty-color">
+                          <select onchange="changeColor(this)" name="products[{{ $count }}][m_color_id]" class="js-ty-color">
                             <option value="" selected>カラーを選択してください</option>
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_color_id') == $k) selected @endif>{{ $v }}</option>
@@ -170,7 +170,7 @@
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="products[{{ $count }}][m_shop_id]">
+                          <select onchange="changeColor(this)" name="products[{{ $count }}][m_shop_id]">
                             <option value="" selected>購入店舗を選択してください</option>
                             @foreach($shops as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_shop_id') == $k) selected @endif>{{ $v }}</option>
@@ -302,7 +302,7 @@
                   var colors = array.colors;
                   var shops = array.shops;
                   console.log(brands)
-                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
+                  var selectBrandHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
                     '<option value="" selected>ブランドを選択してください</option>';
 
                   $.each(brands, function(key, value) {
@@ -310,7 +310,7 @@
                   });
                   selectBrandHtml += '</select>';
 
-                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
+                  var selectProductHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
                     '<option value="" selected>製品を選択してください</option>';
 
                   $.each(products, function(key, value) {
@@ -318,7 +318,7 @@
                   });
                   selectProductHtml += '</select>';
 
-                  var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'">' +
+                  var selectColorHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'">' +
                       '<option value="" selected>カラーを選択してください</option>';
 
                   $.each(colors, function(key, value) {
@@ -327,7 +327,7 @@
                   selectColorHtml += '<option value="other">上記以外のカラー</option>';
                   selectColorHtml += '</select>';
 
-                  var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
+                  var selectShopHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_shop_id' +']">' +
                       '<option value="" selected>購入店舗を選択してください</option>';
 
                   $.each(shops, function(key, value) {
@@ -559,6 +559,15 @@
               }
           });
       }
+  </script>
+  <script>
+    function changeColor(hoge){
+      if( hoge.value == 0 ){
+        hoge.style.color = '';
+      }else{
+        hoge.style.color = '#000';
+      }
+    }
   </script>
 
 @endsection

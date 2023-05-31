@@ -121,7 +121,7 @@
                   </div>
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
-                      <select id="prefecture" name="prefecture" class="p-region">
+                      <select onchange="changeColor(this)" id="prefecture" name="prefecture" class="p-region">
                         @foreach($prefectures as $index => $name)
                           <option value="" hidden>都道府県</option>
                           <option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
@@ -194,11 +194,45 @@
       </div>
     </div>
   </div>
+  <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+  <script>
+    function addHiddenFieldAndSubmit() {
+        $("#is_skip_input").val(1);
+        $("#informationSubmitForm").submit();
+    }
+  </script>
+
+  <script>
+    function changeColor(hoge){
+      if( hoge.value == 0 ){
+        hoge.style.color = '';
+      }else{
+        hoge.style.color = '#000';
+      }
+    }
+  </script>
+  <script>
+    //郵便番号入力が発火
+    $('#postcode').on('change keydown keyup click keypress', function(){
+      $(this).delay(100).queue(function(next){ //遅延処理
+        if($(this).val() == ''){ 
+          //番号が記入されていない場合↓
+          $('#prefecture').val(''); //初期値
+          $('#prefecture').css('color','#acb1c3');
+        }else{ 
+          //番号が記入されている場合↓
+          if( $('#prefecture').val() == ''){
+            //都道府県がヒットしていない
+            $('#prefecture').val(''); //初期値
+            $('#prefecture').css('color','#acb1c3');
+          }else{
+            //都道府県がヒットしている
+            $('#prefecture').css('color','#000');
+          }
+        }
+      next();
+      });
+    });
+  </script>
 @endsection
-<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
-<script>
-  function addHiddenFieldAndSubmit() {
-      $("#is_skip_input").val(1);
-      $("#informationSubmitForm").submit();
-  }
-</script>
+

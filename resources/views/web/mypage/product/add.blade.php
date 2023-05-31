@@ -43,7 +43,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <select onchange="changeColor(this)" name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
                               <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -64,7 +64,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'));" data-insert="brand" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <select onchange="changeColor(this)" name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'));" data-insert="brand" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" {{ old('m_product_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -88,7 +88,7 @@
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="m_color_id">
+                          <select onchange="changeColor(this)" name="m_color_id">
                             <option value="" selected>カラーを選択してください</option>
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -136,7 +136,7 @@
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="m_shop_id">
+                          <select onchange="changeColor(this)" name="m_shop_id">
                             <option value="" selected>購入店舗を選択してください</option>
                             @foreach($shops as $k => $v)
                               <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -273,5 +273,14 @@
               }
           });
       }
+  </script>
+  <script>
+    function changeColor(hoge){
+      if( hoge.value == 0 ){
+        hoge.style.color = '';
+      }else{
+        hoge.style.color = '#000';
+      }
+    }
   </script>
 @endsection

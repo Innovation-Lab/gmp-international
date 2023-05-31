@@ -44,6 +44,66 @@
         e.stopPropagation();
       })
     </script>
+    {{--<script>
+      // 'initial'クラスが付いている要素を全て取得
+      const select = $(".initial");
+      // is-emptyクラスを付与
+      select.addClass("is-empty");
+
+      // selectのoptionを切り替え時
+      select.on("change", function () {
+        // option選択時
+        if ($(this).val() !== "") {
+          // is-emptyクラスを削除
+          $(this).removeClass("is-empty");
+        } 
+        // placeholder選択時
+        else {
+          // is-emptyクラスを付与
+          $(this).addClass("is-empty");
+        }
+        $('select.initial').each(function(){
+          if ($(this).val() !== "") {
+            $(this).removeClass("is-empty");
+          } 
+          else {
+            $(this).addClass("is-empty");
+          }
+        });
+      });
+
+      $('select.initial').each(function(){
+        if ($(this).val() !== "") {
+          $(this).removeClass("is-empty");
+        } 
+        else {
+          $(this).addClass("is-empty");
+        }
+      });
+
+      $(document).on('click', '.js-add-more-product', function(){
+        $('select.initial').each(function(){
+          if ($(this).val() !== "") {
+            $(this).removeClass("is-empty");
+          } 
+          else {
+            $(this).addClass("is-empty");
+          }
+        });
+      });
+    </script>--}}
+    <!-- <script>
+      function changeColor(hoge){
+        if( hoge.value == 0 ){
+          hoge.style.color = '';
+        }else{
+          hoge.style.color = '#000';
+        }
+      }
+    </script> -->
+
+
+
     {{--
     <!-- Flatpickr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

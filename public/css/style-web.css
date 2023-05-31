@@ -391,6 +391,7 @@ textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
+  color: #222;
 }
 input:not([type=checkbox], [type=radio]).err,
 select.err,
@@ -414,7 +415,14 @@ select {
   background-size: 1.5rem 1.5rem;
   background-position: right center;
   background-repeat: no-repeat;
-  color: #222;
+}
+
+select {
+  color: var(--color_form_placeholder);
+}
+
+.change {
+  color: #000;
 }
 
 /* ! --------------------------------------------------

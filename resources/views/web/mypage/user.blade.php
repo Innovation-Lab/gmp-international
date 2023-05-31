@@ -100,7 +100,7 @@
                   </div>
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
-                      <select id="address1" name="prefecture" value="{{ old('prefecture') }}">
+                      <select id="address1" name="prefecture" value="{{ old('prefecture') }}" class="change">
                         <option value="" hidden></option>
                         @foreach($prefectures as $index => $name)
                           <option option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }}>{{ $name }}</option>
