@@ -34,62 +34,62 @@
       <div class="p-mypage__body">
         <!-- 登録製品複数の場合 -->
         <ul class="p-card--list">
-            @foreach ($sales_products as $sales_product)
-              <li>
-                <div class="p-card__item p-card__item--list">
-                  <div class="p-card__info">
-                    <!-- ブランド・製品名・カラー -->
-                    <div class="p-card__mainData">
-                      <div class="p-card__brand">
-                        <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
-                      </div>
-                      <div class="p-card__product">
-                        <p class="c-txt c-txt--md">{{ $sales_product->mProduct->name }}</p>
-                        <p class="c-txt c-txt--sm">{{ $sales_product->mProduct->name_kana }}</p>
-                      </div>
-                      <div class="p-card__color">
-                        <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
-                          @if (data_get($sales_product, 'mColor.second_color'))
-                            <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
-                          @endif
-                        </div>
-                        <p class="c-txt">{{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}</p>
-                      </div>
-                    </div>
-                    <div class="p-card__subData p-card__subData--list">
-                      <!-- 購入日・シリアルナンバー・購入店舗 -->
-                      <div class="p-card__purchase p-card__purchase--all">
-                        <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
-                        <p class="data c-txt">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
-                      </div>
-                      <div class="p-card__serialNum p-card__serialNum--all">
-                        <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
-                        <p class="data c-txt">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
-                      </div>
-                      <div class="p-card__store p-card__store--all">
-                        <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                        <p class="data c-txt">{{ data_get($sales_product, 'select_shop_name') }}</p>
-                      </div>
-                    </div>
+          @foreach ($sales_products as $sales_product)
+          <li>
+            <div class="p-card__item p-card__item--list">
+              <div class="p-card__info">
+                <!-- ブランド・製品名・カラー -->
+                <div class="p-card__mainData">
+                  <div class="p-card__brand">
+                    <p class="c-txt">{{ data_get($sales_product, 'mProduct.mBrand.name') }}</p>
                   </div>
-                  <div class="p-card__other">
-                    <!-- 製品画像 -->
-                    <div class="p-card__img">
-                      <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
-                    </div>
-                    <!-- 編集ボタン -->
-                    <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-edit--product-{{ $sales_product->id }}" role="button">編集する</button>
-                    </div>
+                  <div class="p-card__product">
+                    <p class="c-txt c-txt--md">{{ $sales_product->mProduct->name }}</p>
+                    <p class="c-txt c-txt--sm">{{ $sales_product->mProduct->name_kana }}</p>
                   </div>
-              </li>
-              {{-- 編集/削除 --}}
-              @include('web.mypage.product._modal-edit--product',[
-                'sales_product' => $sales_product
-              ])
-              @include('web.mypage.product._modal-delete--product', [
-                'sales_product' => $sales_product
-              ])
-            @endforeach
+                  <div class="p-card__color">
+                    <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                      @if (data_get($sales_product, 'mColor.second_color'))
+                        <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                      @endif
+                    </div>
+                    <p class="c-txt">{{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}</p>
+                  </div>
+                </div>
+                <div class="p-card__subData p-card__subData--list">
+                  <!-- 購入日・シリアルナンバー・購入店舗 -->
+                  <div class="p-card__purchase p-card__purchase--all">
+                    <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
+                    <p class="data c-txt">{{ date('Y/m/d', strtotime(data_get($sales_product, 'purchase_date'))) }}</p>
+                  </div>
+                  <div class="p-card__serialNum p-card__serialNum--all">
+                    <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
+                    <p class="data c-txt">{{ data_get($sales_product, 'product_code', '未登録') }}</p>
+                  </div>
+                  <div class="p-card__store p-card__store--all">
+                    <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
+                    <p class="data c-txt">{{ data_get($sales_product, 'select_shop_name') }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-card__other">
+                <!-- 製品画像 -->
+                <div class="p-card__img">
+                  <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
+                </div>
+                <!-- 編集ボタン -->
+                <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-edit--product-{{ $sales_product->id }}" role="button">編集する</button>
+                </div>
+              </div>
+          </li>
+          {{-- 編集/削除 --}}
+          @include('web.mypage.product._modal-edit--product',[
+            'sales_product' => $sales_product
+          ])
+          @include('web.mypage.product._modal-delete--product', [
+            'sales_product' => $sales_product
+          ])
+          @endforeach
         </ul>
       </div>
     </div>

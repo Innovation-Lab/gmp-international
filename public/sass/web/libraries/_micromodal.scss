@@ -14,20 +14,27 @@
 .modal {
   position: relative;
   z-index: 10;
+  + .modal{
+    .modal__overlay{
+      z-index: 2;
+    }
+  }
 }
 
 .modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  max-height: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 24px;
   flex-direction: column;
+  height: 100vh;
+  z-index: 1;
 }
 
 .modal__container {

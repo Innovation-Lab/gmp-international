@@ -637,7 +637,11 @@ input[type=file] + label img {
 }
 .l-frame--mypage .l-frame__main {
   max-width: 100%;
-  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .l-frame--mypage .l-frame__main {
+    overflow: hidden;
+  }
 }
 @media screen and (min-width: 768px) {
   .l-frame--mypage .l-frame__body {
@@ -5467,9 +5471,6 @@ input[type=file] + label img {
   　Error エラー
   ---------- */
 }
-.p-formList__data .c-txt {
-  margin-top: 16px;
-}
 @media screen and (min-width: 768px) {
   .p-formList__data .c-txt {
     margin-top: 0;
@@ -5493,6 +5494,9 @@ input[type=file] + label img {
   /* ! ----------
   　Error エラー
   ---------- */
+}
+.p-formList__data--ac .c-txt {
+  margin-top: 16px;
 }
 @media screen and (min-width: 768px) {
   .p-formList__data--ac .c-txt {
@@ -5936,19 +5940,24 @@ input[type=file] + label img {
   position: relative;
   z-index: 10;
 }
+.modal + .modal .modal__overlay {
+  z-index: 2;
+}
 
 .modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  max-height: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 24px;
   flex-direction: column;
+  height: 100vh;
+  z-index: 1;
 }
 
 .modal__container {

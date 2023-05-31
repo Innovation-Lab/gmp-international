@@ -12,8 +12,8 @@
             <!-- 登録製品 -->
             <form method="POST" action="{{ route('mypage.update', $sales_product) }}" id="SalesProductSubmitForm-{{ $sales_product->id }}">
               @csrf
+              <input type="hidden" name="sales_product_id" value="{{ $sales_product->id }}">
               <ul class="p-formList">
-                <input type="hidden" name="sales_product_id" value="{{ $sales_product->id }}">
                 <!-- 購入日 -->
                 <li class="p-formList__item">
                   <div class="p-formList__content">
@@ -168,4 +168,5 @@
     </div>
   </div>
 </div>
-{{-- フォームの表示切り替え --}}
+{{-- 削除モーダル --}}
+@include('web.mypage.product._modal-delete--product')
