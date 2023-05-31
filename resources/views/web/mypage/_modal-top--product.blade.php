@@ -106,7 +106,7 @@
                 </li>
                 <!-- シリアルナンバー -->
                 <li class="p-formList__item js-insert-guide-click-{{ $sales_product->id }}">
-                  @if (data_get($sales_product, 'product_code'))
+                  @if ($sales_product->hasSerialSpace())
                     <div class="p-formList__content">
                       <div class="p-formList__label p-formList__label--modal">
                         <p class="c-txt">シリアルナンバー</p>

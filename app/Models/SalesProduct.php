@@ -97,4 +97,13 @@ class SalesProduct extends Model
         
         return data_get($this, 'mShop.name', '未登録');
     }
+    
+    /**
+     * @return bool
+     */
+    public function hasSerialSpace(): bool
+    {
+        return data_get($this, 'product_code') || !empty(data_get($this, 'mProduct.serial_guide_type'));
+    }
+    
 }
