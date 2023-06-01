@@ -24,7 +24,7 @@
                     <h3 class="p-detail__sidebar__box__head__title">
                       登録製品情報
                     </h3>
-                    <a href="" class="c-textButton__icon c-textButton--gray">
+                    <a href="{{route('admin.users.create-products')}}" class="c-textButton__icon c-textButton--gray">
                       <svg class="icon"><use href="#add"/></svg>
                       登録製品を追加する
                     </a>

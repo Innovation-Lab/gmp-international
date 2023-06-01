@@ -41,6 +41,10 @@ class UserController extends Controller
     {
         return view('admin.users.create.index');
     }
+    public function createProducts(): View
+    {
+        return view('admin.users.create.products');
+    }
 
     public function detail(): View
     {

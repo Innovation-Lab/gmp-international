@@ -2,7 +2,11 @@
   <div class="wrapper">
     <div class="container">
       <div class="p-detail__head__inner">
-        <a href="{{route('admin.users.index')}}" class="c-button__2">戻る</a>
+        @if(Route::current()->getName() == 'admin.users.create')
+          <a href="{{route('admin.users.index')}}" class="c-button__2">戻る</a>
+        @else
+          <a href="{{route('admin.users.detail')}}" class="c-button__2">戻る</a>
+        @endif
       </div>
     </div>
   </div>

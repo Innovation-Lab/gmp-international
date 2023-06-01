@@ -10,13 +10,16 @@
   font-weight: 500;
   letter-spacing: 0.04em;
   display: inline-flex;
+  background-color: transparent;
+  border: none;
+  padding: 0;
   transition-property: box-shadow, color, background-color;
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
   cursor: pointer;
   user-select: none;
   &:hover {
-    text-decoration: underline;
+    // text-decoration: underline;
     color: var(--color_primary_dark);
   }
   /* ! --------------------------------------------------

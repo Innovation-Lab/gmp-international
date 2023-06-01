@@ -17,12 +17,13 @@
                 {{-- ---------- ボックス（メインエリア） ---------- --}}
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
-                    <div class="p-edit__main__box__head">
-                      <h3 class="p-edit__main__box__head__title">
-                        ユーザー情報
-                      </h3>
-                    </div>
+                    {{-- フォーム --}}
                     <form action="" class="p-form">
+                      <div class="p-edit__main__box__head">
+                        <h3 class="p-edit__main__box__head__title">
+                        ユーザー情報
+                        </h3>
+                      </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
                         <div class="l-grid__item">
                           <ul class="p-formList">
@@ -94,7 +95,7 @@
                                   新着情報、お得情報
                                 </div>
                                 <div class="p-formList__data">
-                                  <div class="c-input c-input--radio">
+                                  <div class="radio">
                                     <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
                                     <label for="inq1-2">同意する</label>
                                     <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
@@ -167,7 +168,7 @@
                                   パスワード<small>（半角英数字6~10文字）</small>
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('room', 'gmp0001', ['placeholder' => '例）gmp0001']) !!}
+                                  {!! Form::text('password', 'gmp0001', ['placeholder' => '例）gmp0001']) !!}
                                 </div>
                               </div>
                             </li>

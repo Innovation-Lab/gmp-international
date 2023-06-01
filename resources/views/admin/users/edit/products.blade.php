@@ -17,12 +17,13 @@
                 {{-- ---------- ボックス（メインエリア） ---------- --}}
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
-                    <div class="p-edit__main__box__head">
-                      <h3 class="p-edit__main__box__head__title">
-                      登録製品情報
-                      </h3>
-                    </div>
+                    {{-- フォーム --}}
                     <form action="" class="p-form">
+                      <div class="p-edit__main__box__head">
+                        <h3 class="p-edit__main__box__head__title">
+                        登録製品情報
+                        </h3>
+                      </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
                         <div class="l-grid__item">
                           <ul class="p-formList">
@@ -42,7 +43,7 @@
                                   ブランド名
                                 </div>
                                 <div class="p-formList__data">
-                                  <select name="brand">
+                                  <select name="brand" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     <option value="brand1" selected>AIRBUGGY</option>
                                     <option value="brand2">AIRBUGGY1</option>
@@ -57,7 +58,7 @@
                                   製品名
                                 </div>
                                 <div class="p-formList__data">
-                                  <select name="brand">
+                                  <select name="product" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     <option value="product1" selected>COCO PREMIER FROM BIRTH</option>
                                     <option value="product2">OCO PREMIER FROM BIRTH 1</option>
@@ -76,7 +77,7 @@
                                   カラー
                                 </div>
                                 <div class="p-formList__data">
-                                  <select name="color">
+                                  <select name="color" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     <option value="color1" selected>Red</option>
                                     <option value="color2">Blue</option>
@@ -91,7 +92,7 @@
                                   シリアルナンバー
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('serial-number', 'GMP123456789', ['placeholder' => '例）GMP123456789']) !!}
+                                  {!! Form::text('serial_number', 'GMP123456789', ['placeholder' => '例）GMP123456789']) !!}
                                 </div>
                               </div>
                             </li>
@@ -101,7 +102,7 @@
                                   購入店舗
                                 </div>
                                 <div class="p-formList__data">
-                                  <select name="store">
+                                  <select name="store" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     <option value="store1" selected>エアバギー代官山店</option>
                                     <option value="store2">エアバギー渋谷店</option>

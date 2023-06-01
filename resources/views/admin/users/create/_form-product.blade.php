@@ -1,8 +1,14 @@
-<div class="p-edit__main__box__head">
-  <h3 class="p-edit__main__box__head__title">
+<div class="p-create__main__box__head">
+  <h3 class="p-create__main__box__head__title">
   登録製品情報
   </h3>
 </div>
+@if(Route::current()->getName() == 'admin.users.create-products')
+<div class="p-form__title">
+  <p>製品1</p>
+</div>
+@else
+@endif
 <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
   <div class="l-grid__item">
     <ul class="p-formList">
@@ -12,7 +18,7 @@
             購入日
           </div>
           <div class="p-formList__data">
-            <input type="date" name="purchase_date" placeholder="0000/00/00">
+            {!! Form::date('purchase_date', null, ['placeholder' => '0000/00/00']) !!}
           </div>
         </div>
       </li>
@@ -22,7 +28,7 @@
             ブランド名
           </div>
           <div class="p-formList__data">
-            <select name="brand">
+            <select name="brand" class="select2">
               <option value="" hidden>選択してください</option>
               <option value="brand1">AIRBUGGY</option>
               <option value="brand2">AIRBUGGY1</option>
@@ -37,7 +43,7 @@
             製品名
           </div>
           <div class="p-formList__data">
-            <select name="brand">
+            <select name="brand" class="select2">
               <option value="" hidden>選択してください</option>
               <option value="product1">COCO PREMIER FROM BIRTH</option>
               <option value="product2">OCO PREMIER FROM BIRTH 1</option>
@@ -56,7 +62,7 @@
             カラー
           </div>
           <div class="p-formList__data">
-            <select name="color">
+            <select name="color" class="select2">
               <option value="" hidden>選択してください</option>
               <option value="color1">Red</option>
               <option value="color2">Blue</option>
@@ -71,7 +77,7 @@
             シリアルナンバー
           </div>
           <div class="p-formList__data">
-            <input type="text" name="serial-number" placeholder="例）GMP123456789">
+            {!! Form::text('serial_number', null, ['placeholder' => '例）GMP123456789']) !!}
           </div>
         </div>
       </li>
@@ -81,7 +87,7 @@
             購入店舗
           </div>
           <div class="p-formList__data">
-            <select name="store">
+            <select name="store" class="select2">
               <option value="" hidden>選択してください</option>
               <option value="store1">エアバギー代官山店</option>
               <option value="store2">エアバギー渋谷店</option>

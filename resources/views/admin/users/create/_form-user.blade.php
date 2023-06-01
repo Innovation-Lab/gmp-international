@@ -1,5 +1,5 @@
-<div class="p-edit__main__box__head">
-  <h3 class="p-edit__main__box__head__title">
+<div class="p-create__main__box__head">
+  <h3 class="p-create__main__box__head__title">
   ユーザー情報
   </h3>
 </div>
@@ -13,7 +13,7 @@
               姓
             </div>
             <div class="p-formList__data">
-              <input type="text" name="last-name" placeholder="例）山田">
+              {!! Form::text('last-name', null, ['placeholder' => '例）山田']) !!}
             </div>
           </div>
           <div class="p-formList__content">
@@ -21,7 +21,7 @@
               名
             </div>
             <div class="p-formList__data">
-              <input type="text" name="first-name" placeholder="例）太郎">
+              {!! Form::text('first-name', null, ['placeholder' => '例）太郎']) !!}
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
               セイ
             </div>
             <div class="p-formList__data">
-              <input type="text" name="sei" placeholder="例）ヤマダ">
+              {!! Form::text('sei', null, ['placeholder' => '例）ヤマダ']) !!}
             </div>
           </div>
           <div class="p-formList__content">
@@ -41,7 +41,7 @@
               メイ
             </div>
             <div class="p-formList__data">
-              <input type="text" name="mei" placeholder="例）タロウ">
+              {!! Form::text('mei', null, ['placeholder' => '例）タロウ']) !!}
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
             メールアドレス
           </div>
           <div class="p-formList__data">
-            <input type="email" name="email" placeholder="例）sample@example.com">
+            {!! Form::email('email', null, ['placeholder' => '例）sample@example.com']) !!}
           </div>
         </div>
       </li>
@@ -62,7 +62,7 @@
             電話番号
           </div>
           <div class="p-formList__data">
-            <input type="tel" name="tel" placeholder="例）09012345678">
+            {!! Form::tel('telephone', null, ['placeholder' => '例）09012345678']) !!}
           </div>
         </div>
       </li>
@@ -72,10 +72,10 @@
             新着情報、お得情報
           </div>
           <div class="p-formList__data">
-            <div class="c-input c-input--radio">
-              <input type="radio" id="inq1-2" name="is_dm" value="1" checked>
+            <div class="radio">
+              <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
               <label for="inq1-2">同意する</label>
-              <input type="radio" id="inq2-2" name="is_dm" value="0">
+              <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
               <label for="inq2-2">同意しない</label>
             </div>
           </div>
@@ -93,7 +93,7 @@
                 郵便番号
               </div>
               <div class="p-formList__data">
-                <input type="number" name="zip" placeholder="例）1230000">
+                {!! Form::number('zip', null, ['placeholder' => '例）1230000']) !!}
               </div>
             </div>
           </div>
@@ -103,13 +103,17 @@
                 都道府県
               </div>
               <div class="p-formList__data">
-                <select name="prefectures">
-                  <option value="" hidden>選択してください</option>
-                  <option value="tokyo">東京都</option>
-                  <option value="kanagawa">神奈川県</option>
-                  <option value="saitama">埼玉県</option>
-                  <option value="chiba">千葉県</option>
-                </select>
+                {!!
+                  Form::select('prefectures', 
+                    [
+                    'tokyo' => '東京都',
+                    'kanagawa' => '神奈川県',
+                    'saitama' => '埼玉県',
+                    'chiba' => '千葉県',
+                    ],
+                    'tokyo', ['placeholder' => '都道府県を選択']
+                  )
+                !!}
               </div>
             </div>
           </div>
@@ -121,7 +125,7 @@
             市区町村
           </div>
           <div class="p-formList__data">
-            <input type="text" name="city" placeholder="例）渋谷区渋谷1-2-3">
+            {!! Form::text('city', null, ['placeholder' => '例）渋谷区渋谷1-2-3']) !!}
           </div>
         </div>
       </li>
@@ -131,7 +135,7 @@
             マンション名・部屋番号など
           </div>
           <div class="p-formList__data">
-            <input type="text" name="room" placeholder="例）渋谷マンション1201">
+            {!! Form::text('room', null, ['placeholder' => '例）渋谷マンション1201']) !!}
           </div>
         </div>
       </li>
@@ -141,7 +145,7 @@
             パスワード<small>（半角英数字6~10文字）</small>
           </div>
           <div class="p-formList__data">
-            <input type="password" name="password" placeholder="例）gmp0001">
+            {!! Form::password('password', null, ['placeholder' => '例）gmp0001']) !!}
           </div>
         </div>
       </li>
