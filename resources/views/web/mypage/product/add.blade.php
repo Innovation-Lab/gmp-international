@@ -102,7 +102,7 @@
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'm_color_id') != 'other' ? '' : data_get($sales_product, 'other_color_name')) }}">
+                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'other_color_name')) }}">
                           </div>
                         </div>
                       </div>
@@ -150,7 +150,7 @@
                             <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name', data_get($sales_product, 'm_shop_id') != 'other' ? '' : data_get($sales_product, 'other_shop_name')) }}">
+                            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name', data_get($sales_product, 'other_shop_name') ) }}">
                           </div>
                         </div>
                       </div>
