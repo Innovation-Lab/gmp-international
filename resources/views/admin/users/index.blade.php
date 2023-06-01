@@ -79,10 +79,12 @@
                       <span>〒123-4567</span>
                       東京都 千代田区 紀尾井町1-1-1 紀尾井町ビル16F
                     </td>
-                    <td class="item">
-                      <!-- <div class="c-status__plan-standard"></div> -->
-                      <span>AIRBUGGY</span>
-                      COCO PREMIER FROM BIRTH
+                    <td class="item" style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; ">
+                      <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="28px" height="30px">
+                      <div style="display: flex; flex-direction: column; ">
+                        <span>AIRBUGGY</span>
+                        COCO PREMIER FROM BIRTH
+                      </div>
                     </td>
                     <td class="item">
                       <span>
