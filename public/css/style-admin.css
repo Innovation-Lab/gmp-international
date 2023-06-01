@@ -569,6 +569,24 @@ small {
   background: url(../img/admin/form/radio--checked.png) no-repeat center;
 }
 
+.c-div, :where(.c-div--sm, .c-div--md, .c-div--lg, .c-div--xl) {
+  width: 100%;
+  border-top: 1px solid var(--gray-1);
+  margin: 8px 0;
+}
+.c-div--sm {
+  margin: 4px 0;
+}
+.c-div--md {
+  margin: 16px 0;
+}
+.c-div--lg {
+  margin: 24px 0;
+}
+.c-div--xl {
+  margin: 40px 0;
+}
+
 /* ! ==================================================
 　Components コンポーネント
 ================================================== */

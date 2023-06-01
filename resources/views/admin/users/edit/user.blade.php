@@ -164,10 +164,10 @@
                             <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
-                                  パスワード
+                                  パスワード<small>（半角英数字6~10文字）</small>
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('room', 'マンション名・部屋番号など', ['placeholder' => '例）渋谷マンション1201']) !!}
+                                  {!! Form::text('room', 'gmp0001', ['placeholder' => '例）gmp0001']) !!}
                                 </div>
                               </div>
                             </li>

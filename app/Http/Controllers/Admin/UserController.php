@@ -37,6 +37,10 @@ class UserController extends Controller
 
     //     return view('admin.users.detail', compact('user'));
     // }
+    public function create(): View
+    {
+        return view('admin.users.create.index');
+    }
 
     public function detail(): View
     {

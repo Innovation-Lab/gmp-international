@@ -11,7 +11,7 @@
               <h2 class="p-index__head__title">ユーザー管理</h2>
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
-                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">ユーザーを新規追加</div>
+                  <a href="{{route('admin.users.create')}}" class="c-button__2">ユーザーを新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
                   <a href="" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
                 </div>
