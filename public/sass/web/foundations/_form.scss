@@ -20,6 +20,7 @@ textarea {
   // background-color: var(--color_form_background);
   -webkit-appearance: none;
   appearance: none;
+  color: #222;
   &.err{
     background: #FFE0E6;
     border: #C30E2E 1px solid;
@@ -39,7 +40,12 @@ select {
   background-size: 1.5rem 1.5rem;
   background-position: right center;
   background-repeat: no-repeat;
-  color: #222;
+}
+select{
+  color: var(--color_form_placeholder);
+}
+.change{
+  color: #000;
 }
 
 /* ! --------------------------------------------------

@@ -183,15 +183,28 @@
   {{-- 日付選択 --}}
   <script>
     $(function() {
-      $('.c-input--date input').datepicker();
-      otherTextBind();
+        $('.c-input--date input').datepicker();
+        otherTextBind();
+
+        $('select').each(function(index, elem) {
+            if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                $(elem).css('color', '#000');
+            }else{
+                $(elem).css('color', '');
+            }
+        })
     });
 
     function otherTextBind() {
         $('select').change(function() {
             // 選択されたオプションの値を取得
             var selectedValue = $(this).val();
-            console.log(selectedValue);
+            if( selectedValue != 0 && selectedValue != '' && selectedValue != undefined ){
+                $(this).css('color', '#000');
+            }else{
+                $(this).css('color', '');
+            }
+
             if (selectedValue === 'other') {
                 $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
             } else {
@@ -215,10 +228,10 @@
                   'id': value,
               },
               success: function (response) {
-                  console.log(response);
                   let place = '.js-insert-list-' + insert;
-                  console.log(place);
                   $(place).empty().append(response);
+
+                  otherTextBind();
 
               }
           });
@@ -243,9 +256,7 @@
                               '          </div> ' +
                               '      </div> ';
 
-                          console.log(insert);
                           let place = '.js-insert-guide-click';
-                          console.log(place);
                           $(place).empty().append(insert);
 
                       }

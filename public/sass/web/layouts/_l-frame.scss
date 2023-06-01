@@ -71,7 +71,9 @@
       }
       &__main{
         max-width: 100%;
-        overflow: hidden;
+        @include global.responsive(md) {
+          overflow: hidden;
+        }
       }
       &__body{
         @include global.responsive(md) {

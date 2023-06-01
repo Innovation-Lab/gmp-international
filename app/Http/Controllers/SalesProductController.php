@@ -41,7 +41,7 @@ class SalesProductController extends Controller
      * @param StoreProductRequest $request
      * @return RedirectResponse
      */
-    public function productAdd(StoreProductRequest $request): RedirectResponse
+    public function productAdd(storeproductrequest $request): RedirectResponse
     {
         $params = $request->all();
         Session::put('product', $params);

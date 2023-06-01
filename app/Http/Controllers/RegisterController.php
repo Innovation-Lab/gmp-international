@@ -152,7 +152,7 @@ class RegisterController extends Controller
     public function product(): View|Factory|Application
     {
         $sales_products = Session::get('products', []);
-        
+
         if (count($sales_products) > 0) {
             return view('web.register.product_fix', [
                 'sales_products' => $sales_products,

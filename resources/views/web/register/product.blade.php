@@ -175,6 +175,7 @@
       </div>
     </div>
   </div>
+  
   {{-- モーダル --}}
   @include('web.components.modal._modal-guide--color')
   @include('web.components.modal._modal-guide--serial')
@@ -206,6 +207,14 @@
   {{-- 日付選択 --}}
   <script>
       $(function() {
+          $('select').each(function(index, elem) {
+              if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                  $(elem).css('color', '#000');
+              }else{
+                  $(elem).css('color', '');
+              }
+          });
+
           var dateClass = '.add-input--date' + 1;
           $(dateClass).datepicker({
               onSelect: function(dateText) {
@@ -248,6 +257,12 @@
               $('select').change(function() {
                   // 選択されたオプションの値を取得
                   var selectedValue = $(this).val();
+
+                  if( selectedValue != 0 && selectedValue != '' && selectedValue != undefined ){
+                      $(this).css('color', '#000');
+                  }else{
+                      $(this).css('color', '');
+                  }
 
                   if (selectedValue === 'other') {
                       $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
@@ -413,6 +428,7 @@
                       '</div>';
 
                       $('.add_product').last().after(newForm);
+
                       otherTextBind();
 
                       var dateClass = '.add-input--date' + num;
@@ -457,7 +473,13 @@
             success: function (response) {
                 let place = '.js-insert-list-' + insert + '-' + loop;
                 $(place).empty().append(response);
-
+                $('select').each(function(index, elem) {
+                    if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                        $(elem).css('color', '#000');
+                    }else{
+                        $(elem).css('color', '');
+                    }
+                })
             }
         });
 
@@ -468,7 +490,6 @@
                     'id': value,
                 },
                 success: function (response) {
-                    console.log(response != 'undefined' && response != null && response != '');
                     if(response != 'undefined' && response != null && response != '') {
                       let insert ='      <div class="p-formList__content"> ' +
                       '          <div class="p-formList__label p-formList__label--guide"> ' +

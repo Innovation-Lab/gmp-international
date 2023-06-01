@@ -279,10 +279,26 @@
 
           otherTextBind();
 
+          $('select').each(function(index, elem) {
+              if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                  $(elem).css('color', '#000');
+              }else{
+                  $(elem).css('color', '');
+              }
+          })
+
           function otherTextBind() {
               $('select').change(function() {
                   // 選択されたオプションの値を取得
                   var selectedValue = $(this).val();
+
+                  $('select').each(function(index, elem) {
+                      if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                          $(elem).css('color', '#000');
+                      }else{
+                          $(elem).css('color', '');
+                      }
+                  })
 
                   if (selectedValue === 'other') {
                       $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
@@ -302,7 +318,7 @@
                   var colors = array.colors;
                   var shops = array.shops;
                   console.log(brands)
-                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
+                  var selectBrandHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
                     '<option value="" selected>ブランドを選択してください</option>';
 
                   $.each(brands, function(key, value) {
@@ -310,7 +326,7 @@
                   });
                   selectBrandHtml += '</select>';
 
-                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
+                  var selectProductHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
                     '<option value="" selected>製品を選択してください</option>';
 
                   $.each(products, function(key, value) {
@@ -318,7 +334,7 @@
                   });
                   selectProductHtml += '</select>';
 
-                  var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'">' +
+                  var selectColorHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'">' +
                       '<option value="" selected>カラーを選択してください</option>';
 
                   $.each(colors, function(key, value) {
@@ -327,7 +343,7 @@
                   selectColorHtml += '<option value="other">上記以外のカラー</option>';
                   selectColorHtml += '</select>';
 
-                  var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
+                  var selectShopHtml = '<select onchange="changeColor(this)"name="products['+ num +']['+ 'm_shop_id' +']">' +
                       '<option value="" selected>購入店舗を選択してください</option>';
 
                   $.each(shops, function(key, value) {
@@ -497,7 +513,13 @@
                 let place = '.js-insert-list-' + insert + '-' + loop;
                 console.log(place);
                 $(place).empty().append(response);
-
+                $('select').each(function(index, elem) {
+                    if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                        $(elem).css('color', '#000');
+                    }else{
+                        $(elem).css('color', '');
+                    }
+                })
             }
         });
 
@@ -559,6 +581,15 @@
               }
           });
       }
+  </script>
+  <script>
+    function changeColor(hoge){
+      if( hoge.value == 0 ){
+        hoge.style.color = '';
+      }else{
+        hoge.style.color = '#000';
+      }
+    }
   </script>
 
 @endsection

@@ -2,6 +2,17 @@
 @section('title', 'マイページ')
 @section('class', 'body_mypage--home')
 @section('content')
+
+<?php
+  if(count($errors->all()) > 0) {
+      $sales_product_id = \Session::get('sales_product_id');
+      $javascriptCode = "$(document).ready(function() {
+      $('.js-remodal-open-$sales_product_id').trigger('click')
+    });";
+      echo "<script>{$javascriptCode}</script>";
+  }
+?>
+
 <div class="l-frame__body">
   <div class="p-index">
     <div class="p-index__head">
@@ -263,6 +274,14 @@
         $('.c-input--date input').each(function(index, elem) {
             $(this).datepicker();
         })
+
+        $('select').each(function(index, elem) {
+            if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                $(elem).css('color', '#000');
+            }else{
+                $(elem).css('color', '');
+            }
+        })
     });
 </script>
 
@@ -276,6 +295,12 @@
         $('select').change(function() {
             // 選択されたオプションの値を取得
             var selectedValue = $(this).val();
+
+            if( selectedValue != 0 && selectedValue != '' && selectedValue != undefined ){
+                $(this).css('color', '#000');
+            }else{
+                $(this).css('color', '');
+            }
 
             if (selectedValue === 'other') {
                 $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
@@ -302,8 +327,8 @@
             },
             success: function (response) {
                 let place = '.js-insert-list-' + insert + '-' + product_id;
-                console.log(place);
                 $(place).empty().append(response);
+                otherTextBind();
 
             }
         });
@@ -328,7 +353,6 @@
                             '          </div> ' +
                             '      </div> ';
                         let place = '.js-insert-guide-click' + '-' + product_id;
-                        console.log(place);
                         $(place).empty().append(insert);
                     } else {
                         let place = '.js-insert-guide-click-' + product_id;
