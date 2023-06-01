@@ -288,21 +288,21 @@
 {{-- 日付選択 --}}
 <script>
     $(function() {
-        otherTextBind();
+        othertextbind();
     });
 
-    function otherTextBind() {
+    function othertextbind() {
         $('select').change(function() {
             // 選択されたオプションの値を取得
-            var selectedValue = $(this).val();
+            var selectedvalue = $(this).val();
 
-            if( selectedValue != 0 && selectedValue != '' && selectedValue != undefined ){
+            if( selectedvalue != 0 && selectedvalue != '' && selectedvalue != undefined ){
                 $(this).css('color', '#000');
             }else{
                 $(this).css('color', '');
             }
 
-            if (selectedValue === 'other') {
+            if (selectedvalue === 'other') {
                 $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
             } else {
                 $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
@@ -324,11 +324,21 @@
             data: {
                 'key_name': key,
                 'id': value,
+                'sales_id': product_id,
             },
             success: function (response) {
                 let place = '.js-insert-list-' + insert + '-' + product_id;
                 $(place).empty().append(response);
-                otherTextBind();
+
+                othertextbind();
+
+                $('select').each(function(index, elem) {
+                    if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                        $(elem).css('color', '#000');
+                    }else{
+                        $(elem).css('color', '');
+                    }
+                })
 
             }
         });
@@ -341,15 +351,15 @@
                 },
                 success: function (response) {
                     if(response != 'undefined' && response != null && response != '') {
-                        let insert ='      <div class="p-formList__content"> ' +
-                            '          <div class="p-formList__label"> ' +
+                        let insert ='      <div class="p-formlist__content"> ' +
+                            '          <div class="p-formlist__label"> ' +
                             '              <p class="c-txt">シリアルナンバー</p> ' +
-                            '              <div class="p-formList__guide"> ' +
-                            '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                            '              <div class="p-formlist__guide"> ' +
+                            '                  <a class="p-formlist__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
                             '              </div> ' +
                             '          </div> ' +
-                            '          <div class="p-formList__data"> ' +
-                            '              <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchSerial($(this).val());" > ' +
+                            '          <div class="p-formlist__data"> ' +
+                            '              <input placeholder="例）gmp0123456" class="required js-serial" name="product_code" type="text" value="" onchange="searchserial($(this).val());" > ' +
                             '          </div> ' +
                             '      </div> ';
                         let place = '.js-insert-guide-click' + '-' + product_id;
@@ -365,7 +375,7 @@
 </script>
 <script>
     // 共通処理
-    function searchSerial(
+    function searchserial(
         code = ''
     ) {
         $.get({

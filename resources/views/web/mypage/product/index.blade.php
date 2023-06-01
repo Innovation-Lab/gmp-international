@@ -144,7 +144,6 @@
         $('select').change(function() {
             // 選択されたオプションの値を取得
             var selectedValue = $(this).val();
-            console.log(selectedValue);
             if( selectedValue != 0 && selectedValue != '' && selectedValue != undefined ){
                 $(this).css('color', '#000');
             }else{
@@ -173,12 +172,21 @@
             data: {
                 'key_name': key,
                 'id': value,
+                'sales_id': product_id,
             },
             success: function (response) {
                 let place = '.js-insert-list-' + insert + '-' + product_id;
                 $(place).empty().append(response);
 
                 otherTextBind();
+
+                $('select').each(function(index, elem) {
+                    if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                        $(elem).css('color', '#000');
+                    }else{
+                        $(elem).css('color', '');
+                    }
+                })
             }
         });
 

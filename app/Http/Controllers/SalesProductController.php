@@ -111,6 +111,7 @@ class SalesProductController extends Controller
     {
         $key = $request->input('key_name');
         $id = $request->input('id');
+        $sales_id = $request->input('sales_id');
         
         switch ($key) {
             case 'brand':
@@ -118,7 +119,8 @@ class SalesProductController extends Controller
                 $view = view('web.mypage.product._ajax_select_product_list', [
                     'items' => $items,
                     'checkVal' => false,
-                    'id' => $id
+                    'id' => $id,
+                    'sales_id' => $sales_id
                 ])->render();
                 break;
             case 'product':
@@ -128,7 +130,8 @@ class SalesProductController extends Controller
                 $view = view('web.mypage.product._ajax_select_brand_list', [
                     'items' => $items,
                     'checkVal' => $product->m_brand_id,
-                    'id' => $id
+                    'id' => $id,
+                    'sales_id' => $sales_id
                 ])->render();
                 break;
             default:
