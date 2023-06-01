@@ -89,9 +89,10 @@
                       エアバギー代々木公園本店
                     </td>
                     <td class="item">
+
                       <div>
                         <span class="status">登録済み</span>
-                        <span class="status">未登録</span>
+                        <!-- <span class="status">未登録</span> -->
                       </div>
                     </td>
                   </tr>

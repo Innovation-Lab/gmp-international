@@ -50,6 +50,11 @@
     grid-area: body;
     padding: 0 0 2.5rem;
     &__inner {
+      &--full{
+        display: grid;
+        gap: 1.5rem;
+        grid: none;
+      }
       display: grid;
       // align-items: flex-start;
       gap: 2.5rem;

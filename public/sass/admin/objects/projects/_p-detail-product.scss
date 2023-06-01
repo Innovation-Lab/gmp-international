@@ -1,0 +1,41 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Detail 詳細ページ（ユーザー管理詳細）
+================================================== */
+.p-detail--product {
+  .p-detail {
+    &__sidebar {
+      &__box {
+        &__head {
+          padding: 0 0 24px 0;
+          &__title {
+            font-size: 18px;
+            @extend .c-text__weight--500 !optional;
+          }
+        }
+      }
+    }
+    &__main {
+      height: 100%;
+       &__box {
+        height: 100%;
+         &__body {
+          background: #F2F4F6;
+          padding: 8px;
+         }
+       }
+    }
+  }
+  .l-detail {
+    &__body {
+      height: calc(100vh - 120px);
+      .wrapper,
+      .container,
+      &__inner {
+        height: 100%;
+      }
+    }
+  }
+}

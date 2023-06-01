@@ -67,4 +67,53 @@
       border: 1px solid #ccc;
     }
   }
+  &__data{
+
+  }
+  &__head{
+    margin: 0 0 1.5rem;
+    &--center{
+      margin: 0;
+    }
+  }
+  &__left{
+    width: 200px;
+  }
+  &__img{
+    border: 1px solid #8c8c8c;
+    padding: 40px;
+  }
+  &__status{
+    padding: 16px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    &--registered{
+      border: 1px solid var(--color_primary);
+      background-color: #EAF4FF;
+      .status{
+        color: var(--color_primary);
+      }
+    }
+    &--notregistered{
+      border: 1px solid #8c8c8c;
+      background-color: #EAEBEA;
+      .status{
+        color: #8c8c8c;
+      }
+    }
+  }
+  
+  &--product{
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+
+  }
+  &--user{
+    .p-list__item{
+      gap: 3.25rem;
+    }
+  }
 }
