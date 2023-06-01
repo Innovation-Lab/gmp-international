@@ -21,7 +21,7 @@
             </ul>
           </div>
           <div class="p-formPage__head__ttl">
-            <p class="c-ttl">購入製品の登録1</p>
+            <p class="c-ttl">購入製品の登録</p>
           </div>
         </div>
       </div>

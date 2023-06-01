@@ -5946,7 +5946,7 @@ input[type=file] + label img {
 
 .modal {
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 .modal + .modal .modal__overlay {
   z-index: 2;
