@@ -27,7 +27,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--date" style="width: 100%;">
-                          <input id="date" placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date') }}" style=" @error('purchase_date') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <input id="date" placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}" style=" @error('purchase_date') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                         </div>
                         @error('purchase_date')
                         <div class="c-txt c-txt--err">{{ $message }}</div>
@@ -46,7 +46,7 @@
                           <select name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
-                              <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+                              <option value="{{ $k }}" {{ old('m_brand_id', data_get($sales_product, 'm_brand_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
                           </select>
                         </div>
@@ -67,7 +67,7 @@
                           <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'));" data-insert="brand" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
-                              <option value="{{ $k }}" {{ old('m_product_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+                              <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
                           </select>
                         </div>
@@ -91,18 +91,18 @@
                           <select name="m_color_id">
                             <option value="" selected>カラーを選択してください</option>
                             @foreach($colors as $k => $v)
-                              <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+                              <option value="{{ $k }}" {{ old('m_color_id', data_get($sales_product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
-                            <option value="other">上記以外のカラー</option>
+                            <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other') selected @endif>上記以外のカラー</option>
                           </select>
                         </div>
                         <!-- 上記以外のカラー選択時のフォーム -->
-                        <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('m_shop_id') == '9999999' ? old('other_shop_name') : '' }}">
+                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'm_color_id') != 'other' ? '' : data_get($sales_product, 'other_color_name')) }}">
                           </div>
                         </div>
                       </div>
@@ -120,7 +120,7 @@
                           </div>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="name" value="{{ old('product_code') }}" onchange="searchSerial($(this).val());">
+                          <input placeholder="例）GMP0123456" class="required js-serial" name="product_code" type="name" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}" onchange="searchSerial($(this).val());">
                         </div>
                       </div>
                     @endif
@@ -139,18 +139,18 @@
                           <select name="m_shop_id">
                             <option value="" selected>購入店舗を選択してください</option>
                             @foreach($shops as $k => $v)
-                              <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+                              <option value="{{ $k }}" {{ old('m_shop_id', data_get($sales_product, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
-                            <option value="other">上記以外の店舗</option>
+                            <option value="other" @if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other') selected @endif>上記以外の店舗</option>
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
-                        <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other' || data_get($sales_product, 'other_shop_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('m_shop_id') == '9999999' ? old('other_shop_name') : '' }}">
+                            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name', data_get($sales_product, 'm_shop_id') != 'other' ? '' : data_get($sales_product, 'other_shop_name')) }}">
                           </div>
                         </div>
                       </div>
@@ -163,7 +163,7 @@
         </div>
         <div class="p-formPage__foot p-formPage__foot--wide">
           <div class="p-btnWrap p-btnWrap--center">
-            @if(count($sales_products) > 0)
+            @if(count(\Auth::user()->salesProducts) > 0)
               <a href="{{route('mypage.product')}}" class="c-btn c-btn--back">戻る</a>
             @else
               <a href="{{route('mypage.index')}}" class="c-btn c-btn--back">戻る</a>

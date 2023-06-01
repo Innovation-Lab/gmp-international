@@ -81,6 +81,7 @@ class UserController extends Controller
     {
         $params = $request->all();
         
+        \DB::beginTransaction();
         try {
             $sales_product->update([
                 'm_product_id' => data_get($params, 'm_product_id'),
@@ -92,7 +93,7 @@ class UserController extends Controller
                 'other_color_name' => data_get($params, 'other_color_name'),
                 'other_shop_name' => data_get($params, 'other_shop_name'),
             ]);
-            
+
             \DB::commit();
 
             return redirect($request->headers->get('referer'))
