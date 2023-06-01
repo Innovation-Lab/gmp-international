@@ -8,7 +8,7 @@
       @include('admin.users.detail._head')
     </div>
     <div class="l-edit__body">
-      <div class="wrapper" style="max-width: 800px;">
+      <div class="wrapper u-max--800">
         <div class="container">
           <div class="l-edit__body__inner single">
             {{-- メイン --}}
