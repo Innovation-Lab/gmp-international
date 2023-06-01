@@ -22,7 +22,7 @@ textarea {
 }
 label {
   user-select: none;
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 /* ! --------------------------------------------------
@@ -37,6 +37,7 @@ select {
 }
 // Select2
 .select2 {
+  width: 100% !important;
   & + .select2-container {
     height: 2rem;
   }

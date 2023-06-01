@@ -71,6 +71,17 @@
     }
     &__data {
       @extend .c-text__sm !optional;
+      display: flex;
+      gap: 8px;
+
+      &.w-348 {
+        max-width: 348px
+      }
+
+      .unit {
+        display: flex;
+        align-items: center
+      }
 
       /* ! ----------
       　Error エラー

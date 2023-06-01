@@ -42,7 +42,7 @@
     @extend .c-button !optional;
     color: var(--gray-2);
     background-color: #fff;
-    border-color: var(--color_border_4);
+    border-color: var(--gray-1);
 
     /* ! ----------
     　ホバー
@@ -163,5 +163,15 @@
         justify-content: center;
       }
     }
+  }
+   /* ! --------------------------------------------------
+  　Search 検索する
+  -------------------------------------------------- */
+  &__search {
+    @extend .c-button__2 !optional;
+    height: 26px;
+    white-space: nowrap;
+    color: #000;
+    padding: 0 8px;
   }
 }

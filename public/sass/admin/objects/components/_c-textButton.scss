@@ -30,10 +30,23 @@
     display: inline-flex;
     gap: 8px;
   }
+  /* ! --------------------------------------------------
+  　Color  カラー
+  -------------------------------------------------- */
+  // グレー
   &--gray  {
     color: var(--gray-2);
     &:hover {
       color: var(--gray-2-dark);
     }
+  }
+  /* ! --------------------------------------------------
+  　絞り込み
+  -------------------------------------------------- */
+  &__search {
+    @extend .c-textButton !optional;
+    text-decoration: underline;
+   font-weight: 700;
+    line-height: 20px;
   }
 }

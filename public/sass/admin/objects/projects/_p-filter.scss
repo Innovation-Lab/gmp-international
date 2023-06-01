@@ -36,6 +36,13 @@
     // アイテム
     &__item {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & + .p-filterList__item {
+        border-left: 1px solid var(--gray-1);
+        padding-left: 1rem;
+      }
     }
 
     /* ! --------------------------------------------------
@@ -116,6 +123,19 @@
       ---------- */
       .is-active + & {
         display: block;
+      }
+    }
+    /* ! --------------------------------------------------
+    　Keyword キーワード検索
+    -------------------------------------------------- */
+    &__keyword {
+      display: flex;
+      gap: 8px;
+      input {
+        border-radius: 4px;
+        height: 26px;
+        max-width: 200px;
+        width: 100%;
       }
     }
   }

@@ -186,6 +186,15 @@
     // 新しい要素をボタンの前に挿入
     parentElement.insertBefore(newElement, addButton);
 
+    // Select2の初期化
+    const selectElements = newElement.querySelectorAll("select.select2");
+    selectElements.forEach((selectElement) => {
+      // Select2の初期化処理を実行
+      $(selectElement).select2({
+        placeholder: '選択してください'
+      });
+    });
+
     // ×マークをクリックしたら要素を削除する
     const deleteIcon = newElement.querySelector(".delete");
     deleteIcon.addEventListener("click", function() {

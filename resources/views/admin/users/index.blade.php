@@ -80,16 +80,7 @@
                       東京都 千代田区 紀尾井町1-1-1 紀尾井町ビル16F
                     </td>
                     <td class="item">
-                      <div class="u-align u-align--nowrap u-gap--4">
-                        <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="28px" height="30px">
-                        <div class="u-align--vl">
-                          <span>AIRBUGGY</span>
-                          <div class="u-align--both u-align--nowrap">
-                            COCO PREMIER FROM BIRTH
-                            <span class="number">+3</span>
-                          </div>
-                        </div>
-                      </div>
+                      <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">AIRBUGGY<br>COCO PREMIER FROM BIRTH<span class="number">+3</span></span>
                     </td>
                     <td class="item">
                       <span>
@@ -141,7 +132,7 @@
   </div>
 </div>
 {{-- ユーザー新規追加 --}}
-@include('admin.users._modal-users-create')
+@include('admin.users._modal-users-fillter')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {
