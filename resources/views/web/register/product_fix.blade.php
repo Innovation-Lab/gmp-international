@@ -123,11 +123,11 @@
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_color_id') == $k) selected @endif>{{ $v }}</option>
                             @endforeach
-                            <option value="other">上記以外のカラー</option>
+                            <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) selected @endif>上記以外のカラー</option>
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
-                        <div style="@if(!data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
@@ -175,11 +175,11 @@
                             @foreach($shops as $k => $v)
                               <option value="{{ $k }}" @if(data_get($sales_product, 'm_shop_id') == $k) selected @endif>{{ $v }}</option>
                             @endforeach
-                            <option value="other">上記以外の店舗</option>
+                            <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) selected @endif>上記以外の店舗</option>
                           </select>
                         </div>
                         <!-- 上記以外の店舗選択時のフォーム -->
-                        <div style="@if(!data_get($sales_product, 'other_color_name')) display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                           </div>

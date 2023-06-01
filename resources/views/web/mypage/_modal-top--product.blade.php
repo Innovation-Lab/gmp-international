@@ -93,7 +93,7 @@
                         </select>
                       </div>
                       <!-- 上記以外のカラー選択時のフォーム -->
-                      <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                      <div style="Z@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                         </div>
