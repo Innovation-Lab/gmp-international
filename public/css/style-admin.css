@@ -2790,9 +2790,6 @@ textarea {
   　テーブルボディ
   ---------- */
   /* ! ----------
-  　テーブルボディ
-  ---------- */
-  /* ! ----------
   　テーブルフット
   ---------- */
 }
@@ -2843,6 +2840,18 @@ textarea {
 .p-table tbody td .c-colorBall {
   margin: auto;
   display: block;
+}
+.p-table tbody td .number {
+  background-color: #E0E2F3;
+  color: var(--color_primary);
+  border-radius: 2px;
+  padding: 0 2px;
+  font-size: 11px;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
 }
 .p-table tfoot td {
   height: 2.5rem;
@@ -3283,6 +3292,35 @@ textarea {
 }
 .u-max--800 {
   width: min(800px, 100%);
+}
+
+.u-align, :where(.u-align--nowrap, .u-align--vl, .u-align--both, .u-align--full, .u-align--hlc, .u-align--vlc) {
+  display: inline-flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.u-align--nowrap {
+  flex-wrap: nowrap;
+}
+.u-align--hlc {
+  flex-direction: row;
+  align-items: center;
+}
+.u-align--vl {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.u-align--vlc {
+  flex-direction: column;
+  align-items: center;
+}
+.u-align--both {
+  align-items: center;
+  justify-content: center;
+}
+.u-align--btw {
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* ! ==================================================

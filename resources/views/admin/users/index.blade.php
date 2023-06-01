@@ -82,7 +82,10 @@
                     <td class="item">
                       <!-- <div class="c-status__plan-standard"></div> -->
                       <span>AIRBUGGY</span>
-                      COCO PREMIER FROM BIRTH
+                      <div class="u-align--both u-align--nowrap">
+                        COCO PREMIER FROM BIRTH
+                        <span class="number">+3</span>
+                      </div>
                     </td>
                     <td class="item">
                       <span>
