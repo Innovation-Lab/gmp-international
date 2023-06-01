@@ -279,11 +279,11 @@ input[type="file"] + label {
 // }
 // テキストエリア
 textarea {
-  font-size: rem(14px);
+  font-size: 14px;
   line-height: 1.3;
   width: 100%;
   resize: none;
   padding: 0.5rem;
   height: auto;
-  min-height: 5.5em;
+  min-height: 5.5rem;
 }

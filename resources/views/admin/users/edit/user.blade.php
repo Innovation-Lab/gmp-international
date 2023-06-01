@@ -5,7 +5,7 @@
   <div class="l-edit">
     <div class="l-edit__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.users.detail._head')
+      @include('admin.users.edit._head')
     </div>
     <div class="l-edit__body">
       <div class="wrapper u-max--800">
@@ -23,7 +23,7 @@
                       </h3>
                     </div>
                     <form action="" class="p-form">
-                      <div class="l-grid__1 l-grid__2--xl" style="gap: 1.5rem 2.5rem;">
+                      <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
                         <div class="l-grid__item">
                           <ul class="p-formList">
                             <li class="p-formList__item">
@@ -181,7 +181,7 @@
                                   管理メモ
                                 </div>
                                 <div class="p-formList__content__data">
-                                  <textarea placeholder="修正対応や報告事項を記載してください。"></textarea>
+                                  <textarea placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
                                 </div>
                               </div>
                             </li>
