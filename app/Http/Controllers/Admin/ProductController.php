@@ -22,13 +22,18 @@ class ProductController extends Controller
             'products' => []
         ]);
     }
-    
-    /**
-     * @param MProduct $product
-     * @return Application|Factory|View
-     */
-    public function detail(MProduct $product): View|Factory|Application
+
+    public function detail(): View
     {
-        return view('admin.products.detail', compact('product'));
+        return view('admin.products.detail.index');
     }
+    
+    // /**
+    //  * @param MProduct $product
+    //  * @return Application|Factory|View
+    //  */
+    // public function detail(MProduct $product): View|Factory|Application
+    // {
+    //     return view('admin.products.detail', compact('product'));
+    // }
 }
