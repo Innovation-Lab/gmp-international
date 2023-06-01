@@ -231,7 +231,13 @@
                   let place = '.js-insert-list-' + insert;
                   $(place).empty().append(response);
 
-                  otherTextBind();
+                  $('select').each(function(index, elem) {
+                      if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                          $(elem).css('color', '#000');
+                      }else{
+                          $(elem).css('color', '');
+                      }
+                  })
 
               }
           });
