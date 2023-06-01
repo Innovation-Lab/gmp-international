@@ -42,6 +42,7 @@ Route::group([
             Route::get('/', [UserController::class, 'index'])->name('index');
             Route::get('/detail', [UserController::class, 'detail'])->name('detail');
             Route::get('/edit-user', [UserController::class, 'editUser'])->name('edit-user');
+            Route::get('/edit-products', [UserController::class, 'editProducts'])->name('edit-products');
             // Route::get('/detail/userEdit', [ProductController::class, 'userEdit'])->name('userEdit');
         });
         
