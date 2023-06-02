@@ -78,6 +78,10 @@
         &__title {
           @extend .c-text__sm !optional;
           font-weight: 700;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
 
@@ -127,6 +131,10 @@
         &__title {
           @extend .c-text__md !optional;
           font-weight: 500;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
 

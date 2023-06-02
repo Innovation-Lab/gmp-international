@@ -32,8 +32,8 @@
                       </div>
                       <div class="p-list__right">
                         <div class="p-list__head">
-                          <h3 class="p-detail__sidebar__box__head__title">登録製品情報</p>
-                          <a href="{{route('admin.products.detail.edit-product')}}" class="c-button__2">編集</a>
+                          <h3 class="p-detail__main__box__head__title">登録製品情報</p>
+                          <a href="{{route('admin.products.edit-products')}}" class="c-button__2">編集</a>
                         </div>
                         <ul class="p-list">
                           @foreach([
@@ -70,12 +70,12 @@
                   <div class="p-detail__full__box__wrapper">
                     {{-- ---------- 未登録 ---------- --}}
                     <div class="p-list__head p-list__head--center" style="display: none;">
-                      <h3 class="p-detail__sidebar__box__head__title center">ユーザー情報は登録されていません</p>
+                      <h3 class="p-detail__main__box__head__title center">ユーザー情報は登録されていません</p>
                     </div>
                     {{-- ---------- 登録済み ---------- --}}
                     <div class="p-list__head">
-                      <h3 class="p-detail__sidebar__box__head__title">登録ユーザー情報</p>
-                      <a href="{{route('admin.products.detail.edit-product')}}" class="c-button__2">登録ユーザーへ</a>
+                      <h3 class="p-detail__main__box__head__title">登録ユーザー情報</p>
+                      <a href="{{route('admin.users.detail')}}" class="c-button__2">登録ユーザーへ</a>
                     </div>
                     <ul class="p-list p-list--user">
                       @foreach([

@@ -27,6 +27,11 @@ class ProductController extends Controller
     {
         return view('admin.products.detail.index');
     }
+
+    public function edit(): View
+    {
+        return view('admin.products.detail.edit.index');
+    }
     
     // /**
     //  * @param MProduct $product

@@ -19,7 +19,7 @@
                   <div class="p-edit__main__box__wrapper">
                     <div class="p-edit__main__box__head">
                       <h3 class="p-edit__main__box__head__title">
-                        ユーザー情報
+                      登録製品情報編集
                       </h3>
                     </div>
                     <form action="" class="p-form">
@@ -27,52 +27,12 @@
                         <div class="l-grid__item">
                           <ul class="p-formList">
                             <li class="p-formList__item">
-                              <div class="l-grid__2 l-grid__gap2">
-                                <div class="p-formList__content">
-                                  <div class="p-formList__label">
-                                    姓
-                                  </div>
-                                  <div class="p-formList__data">
-                                    {!! Form::text('last-name', '山田', ['placeholder' => '例）山田']) !!}
-                                  </div>
-                                </div>
-                                <div class="p-formList__content">
-                                  <div class="p-formList__label">
-                                    名
-                                  </div>
-                                  <div class="p-formList__data">
-                                    {!! Form::text('first-name', '太郎', ['placeholder' => '例）太郎']) !!}
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="p-formList__item">
-                              <div class="l-grid__2 l-grid__gap2">
-                                <div class="p-formList__content">
-                                  <div class="p-formList__label">
-                                    セイ
-                                  </div>
-                                  <div class="p-formList__data">
-                                    {!! Form::text('sei', 'ヤマダ', ['placeholder' => '例）ヤマダ']) !!}
-                                  </div>
-                                </div>
-                                <div class="p-formList__content">
-                                  <div class="p-formList__label">
-                                    メイ
-                                  </div>
-                                  <div class="p-formList__data">
-                                    {!! Form::text('mei', 'タロウ', ['placeholder' => '例）タロウ']) !!}
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
-                                  メールアドレス
+                                  購入日
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::email('email', 'sample@example.com', ['placeholder' => '例）sample@example.com']) !!}
+                                  {!! Form::date('purchase-date', '2023/04/04', ['placeholder' => '0000/00/00']) !!}
                                 </div>
                               </div>
                             </li>
@@ -80,10 +40,10 @@
                               <div class="p-formList__content">
                                 <!-- <div class="p-formList__label optional"> -->
                                 <div class="p-formList__label">
-                                  電話番号
+                                  ブランド名
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::tel('telephone', '09012345678', ['placeholder' => '例）09012345678']) !!}
+                                  {!! Form::tel('telephone', 'AIRBUGGY', ['placeholder' => '0000/00/00']) !!}
                                 </div>
                                 <!-- <small>ハイフンなしで入力してください</small> -->
                               </div>

@@ -11,7 +11,12 @@
         &__head {
           padding: 0 0 24px 0;
           &__title {
+            display: flex;
             font-size: 18px;
+            align-items: center;
+            justify-content: space-between;
+            // padding: 1.5rem 1.5rem;
+            padding: 0;
             @extend .c-text__weight--500 !optional;
           }
         }

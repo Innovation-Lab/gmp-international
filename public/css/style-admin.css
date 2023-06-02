@@ -1897,6 +1897,9 @@ textarea {
 }
 .p-detail__sidebar__box__head__title {
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .p-detail__sidebar__box__body {
   flex: auto;
@@ -1942,6 +1945,9 @@ textarea {
 }
 .p-detail__main__box__head__title {
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .p-detail__main__box + .p-detail__main__box {
   border-top: 1px solid var(--color_border_1);
@@ -2027,7 +2033,11 @@ textarea {
   padding: 0 0 24px 0;
 }
 .p-detail--product .p-detail__sidebar__box__head__title {
+  display: flex;
   font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
 }
 .p-detail--product .p-detail__main {
   height: 100%;

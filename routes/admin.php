@@ -54,6 +54,7 @@ Route::group([
         ], function() {
             Route::get('/', [ProductController::class, 'index'])->name('index');
             Route::get('/detail', [ProductController::class, 'detail'])->name('detail');
+            Route::get('/edit', [ProductController::class, 'edit'])->name('edit-products');
         });
         
         // マスタ
