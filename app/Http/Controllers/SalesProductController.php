@@ -27,6 +27,7 @@ class SalesProductController extends Controller
     public function product(): View
     {
         $sales_product = Session::get('product', []);
+        $back = url()->previous();
 
         return view('web.mypage.product.add')->with([
             'sales_product' => $sales_product,
@@ -34,6 +35,7 @@ class SalesProductController extends Controller
             'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+            'back' => $back
         ]);
     }
     

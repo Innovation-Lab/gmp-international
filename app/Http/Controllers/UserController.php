@@ -17,6 +17,7 @@ use App\Http\Requests\StoreInformationRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,7 @@ class UserController extends Controller
      */
     public function index(Request $request): View
     {
+        Session::forget('product');
         $user = Auth::user();
         $sales_products = data_get($user, 'salesProducts');
 
@@ -58,6 +60,7 @@ class UserController extends Controller
      */
     public function product(): View
     {
+        Session::forget('product');
         $user = Auth::user();
         $sales_products = data_get($user, 'salesProducts');
 
