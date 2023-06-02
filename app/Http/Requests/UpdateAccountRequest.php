@@ -38,14 +38,14 @@ class UpdateAccountRequest extends FormRequest
                 'required',
                 'min:6',
                 'max:100',
-                'regex:/^[a-zA-Z0-9]+$/',
+                'regex:/^[a-zA-Z0-9_-]+$',
             ];
             $rules['password_confirmation'] = [
                 'required',
                 'same:password',
                 'min:6',
                 'max:100',
-                'regex:/^[a-zA-Z0-9]+$/',
+                'regex:/^[a-zA-Z0-9_-]+$',
             ];
         }
         return $rules;
