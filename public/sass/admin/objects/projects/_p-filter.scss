@@ -36,6 +36,13 @@
     // アイテム
     &__item {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & + .p-filterList__item {
+        border-left: 1px solid var(--gray-1);
+        padding-left: 1rem;
+      }
     }
 
     /* ! --------------------------------------------------
@@ -49,8 +56,8 @@
       height: 2rem;
       padding: 0 2rem 0 0.5rem;
       background-image: url(../img/admin/form/select.png);
-      background-size: 1.5rem 1.5rem;
-      background-position: right center;
+      // background-size: 1.5rem 1.5rem;
+      background-position: right 8px center;
       background-repeat: no-repeat;
       border-bottom: 1px solid var(--color_text_button);
       user-select: none;
@@ -116,6 +123,19 @@
       ---------- */
       .is-active + & {
         display: block;
+      }
+    }
+    /* ! --------------------------------------------------
+    　Keyword キーワード検索
+    -------------------------------------------------- */
+    &__keyword {
+      display: flex;
+      gap: 8px;
+      input {
+        border-radius: 4px;
+        height: 26px;
+        max-width: 200px;
+        width: 100%;
       }
     }
   }

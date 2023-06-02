@@ -7,11 +7,26 @@
 .p-form {
   width: 100%;
 
+
+   /* ! ----------
+  　タイトル
+  ---------- */
+  &__title { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 32px 0;
+    & > p {
+      @extend .c-text__sm !optional;
+
+    }
+  }
+
   /* ! ----------
   　注意書き
   ---------- */
   small {
-    color: var(--color_form_ps);
+    color: var(--gray-2);
     @extend .c-text__xxs !optional;
   }
 
@@ -21,7 +36,7 @@
   &List {
     display: grid;
     grid-auto-rows: auto;
-    gap: 1rem;
+    gap: 1.5rem;
     &__item {
     }
     &__content {
@@ -56,6 +71,17 @@
     }
     &__data {
       @extend .c-text__sm !optional;
+      display: flex;
+      gap: 8px;
+
+      &.w-348 {
+        max-width: 348px
+      }
+
+      .unit {
+        display: flex;
+        align-items: center
+      }
 
       /* ! ----------
       　Error エラー

@@ -18,10 +18,6 @@
       ]
     ] as $key => $val)
     <li class="p-tabList__item">
-      <a
-        href="{{ route($val['path'])}}"
-        class="p-tabList__label {{ in_array(explode('.', Route::currentRouteName())[3], [explode('.', $val['path'])[3]], TRUE) ? 'is-active' : '' }}"
-      >
         {{$val['label']}}
         @if($val['alert'])
           <span class="alert">

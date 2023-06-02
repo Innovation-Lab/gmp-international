@@ -1,0 +1,32 @@
+@use "../../global" as global;
+
+.u-gap {
+  @for $i from 1 through 10 {
+    $num: $i * 4;
+    &--#{$num} {
+      gap: #{$num}px;
+    }
+  }
+  @for $i from 1 through 10 {
+    $num: $i * 4;
+    &--0-#{$num} {
+      gap: 0 #{$num}px;
+    }
+  }
+}
+@include global.responsive(md) {
+  @for $i from 1 through 12 {
+    $num: $i * 4;
+    [class*="u-gap"][data-gap-md="#{$num}"] {
+      gap: #{$num}px;
+    }
+  }
+}
+@include global.responsive(sm)  {
+  @for $i from 1 through 12 {
+    $num: $i * 4;
+    [class*="u-gap"][data-gap-sm="#{$num}"] {
+      gap: #{$num}px;
+    }
+  }
+}

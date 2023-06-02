@@ -31,21 +31,48 @@ class UserController extends Controller
      * @param $id
      * @return Application|Factory|View
      */
-    public function detail($id): View|Factory|Application
-    {
-        $user = User::find($id);
+    // public function detail($id): View|Factory|Application
+    // {
+    //     $user = User::find($id);
 
-        return view('admin.users.detail', compact('user'));
-    }
-    
-    /**
-     * @param User $user
-     * @return Application|Factory|View
-     */
-    public function edit(User $user): View|Factory|Application
+    //     return view('admin.users.detail', compact('user'));
+    // }
+    public function create(): View
     {
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.create.index');
     }
+    public function createProducts(): View
+    {
+        return view('admin.users.create.products');
+    }
+
+    public function detail(): View
+    {
+        return view('admin.users.detail.index');
+    }
+
+    public function editUser(): View
+    {
+        return view('admin.users.edit.user');
+    }
+    public function editProducts(): View
+    {
+        return view('admin.users.edit.products');
+    }
+
+    // public function userEdit(): View
+    // {
+    //     return view('admin.users.detail.edit.userEdit');
+    // }
+    
+    // /**
+    //  * @param User $user
+    //  * @return Application|Factory|View
+    //  */
+    // public function edit(User $user): View|Factory|Application
+    // {
+    //     return view('admin.users.edit', compact('user'));
+    // }
     
     /**
      * @param Request $request

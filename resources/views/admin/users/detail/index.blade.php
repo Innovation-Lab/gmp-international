@@ -1,7 +1,7 @@
 @extends('admin.layouts.pages._default')
 @section('title', 'ユーザー管理')
 @section('content')
-<div class="p-detail">
+<div class="p-detail p-detail--user noBorder">
   <div class="l-detail">
     <div class="l-detail__head">
       {{-- 詳細ヘッド --}}
@@ -24,74 +24,78 @@
                     <h3 class="p-detail__sidebar__box__head__title">
                       登録製品情報
                     </h3>
-                    <a href="" class="c-button__2">登録製品を追加する</a>
+                    <a href="{{route('admin.users.create-products')}}" class="c-textButton__icon c-textButton--gray">
+                      <svg class="icon"><use href="#add"/></svg>
+                      登録製品を追加する
+                    </a>
                   </div>
                   <div class="p-detail__main__box__body">
-                    {{-- ---------- リスト ---------- --}}
-                    <ul class="p-list">
-                      @for($list = 0; $list < 10; $list++)
-                      @foreach([
-                        '購入日' => '2023/04/04',
-                        'シリアルNo.' => 'GMP123456789',
-                        '購入店舗' => 'エアバギー代々木公園本店',
-                        '保証期間' => '12ヶ月',
-                        '管理メモ' => '2024/04/04　タイヤ交換',
-                      ] as $key => $val)
-                      <li class="p-list__item">
-                        <div class="p-list__ttl"></div>
-                        <div class="p-list__label">
-                          {!! $key !!}
-                        </div>
-                        <div class="p-list__data">
-                          {!! $val !!}
-                        </div>
-                        @endforeach
+                    <div class="p-productScroll c-scroll">
+                      <ul class="p-product p-product--list">
+                        @for($list = 0; $list < 10; $list++)
+                        <li class="p-product__item">
+                          <div class="p-product__item__left">
+                            <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
+                          </div>
+                          <div class="p-product__item__right">
+                            <div class="p-product__item__head">
+                              <div class="p-product__item__ttl">
+                                <div class="item">AIRBUGGY</div>
+                                <div class="item">COCO PREMIER FROM BIRTH</div>
+                              </div>
+                              <div class="p-product__item__other">
+                                <a href="{{route('admin.users.edit-products')}}" class="c-textButton">編集</a>
+                                <div class="color">BLOSSOM</div>
+                              </div>
+                            </div>
+                            <ul class="p-product__item__body">
+                              <li class="p-product__item__body__list">
+                                <div class="p-product__label">
+                                  シリアルNo.
+                                </div>
+                                <div class="p-product__data">
+                                  GMP123456789
+                                </div>
+                              </li>
+                              <li class="p-product__item__body__list auto">
+                                <div class="p-product__label">
+                                  購入日
+                                </div>
+                                <div class="p-product__data">
+                                  2023/04/04
+                                </div>
+                              </li>
+                              <li class="p-product__item__body__list">
+                                <div class="p-product__label">
+                                  保証期間
+                                </div>
+                                <div class="p-product__data">
+                                  12ヶ月
+                                </div>
+                              </li>
+                              <li class="p-product__item__body__list large">
+                                <div class="p-product__label">
+                                  購入店舗
+                                </div>
+                                <div class="p-product__data">
+                                  エアバギー代々木公園本店
+                                </div>
+                              </li>
+                              <li class="p-product__item__body__list large">
+                                <div class="p-product__label">
+                                  管理メモ
+                                </div>
+                                <div class="p-product__data">
+                                  2024/04/04　タイヤ交換
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
                         @endfor
-                      </li>
-                    </ul>
-              <li>
-                <div class="p-card__item p-card__item--list">
-                  <div class="p-card__info">
-                  {{--ブランド・製品名・カラー--}}
-                    <div class="p-card__mainData">
-                      <div class="p-card__brand">
-                        <p class="c-txt">AIR BUGGY</p>
-                      </div>
-                      <div class="p-card__product">
-                        <p class="c-txt c-txt--md">COCO BRAKE EX FROM BIRTH</p>
-                        <p class="c-txt c-txt--sm">ココブレーキEX フロムバース</p>
-                      </div>
-                      <div class="p-card__color">
-                        <div class="c-colorBall"></div>
-                        <p class="c-txt">BLOSSOM</p>
-                      </div>
+                      </ul>
+                      {{-- ---------- リスト ---------- --}}
                     </div>
-                    <div class="p-card__subData p-card__subData--list">
-                      {{--購入日・シリアルナンバー・購入店舗--}}
-                      <div class="p-card__purchase">
-                        <p class="label c-txt--sm c-txt--sm--ghost">購入日</p>
-                        <p class="data c-txt">2023/05/24</p>
-                      </div>
-                      <div class="p-card__serialNum">
-                        <p class="label c-txt--sm c-txt--sm--ghost">シリアルNo.</p>
-                        <p class="data c-txt">GMP111111111</p>
-                      </div>
-                      <div class="p-card__store">
-                        <p class="label c-txt--sm c-txt--sm--ghost">購入店舗</p>
-                        <p class="data c-txt">エアバギー名古屋店</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="p-card__other">
-                    {{--製品画像--}}
-                    <div class="p-card__img">
-                      <img src="http://localhost:8100/img/web/user/sample/product_sample.png" width="60px" height="75px">
-                    </div>
-                    {{--編集ボタン--}}
-                    <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh" data-micromodal-trigger="modal-edit--product" role="button">編集する</button>
-                    </div>
-                  </div>
-              </li>
                   </div>
                 </div>
               </div>

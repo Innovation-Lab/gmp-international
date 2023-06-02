@@ -111,13 +111,27 @@
         margin: auto;
         display: block;
       }
-    }
-  }
 
-  /* ! ----------
-  　テーブルボディ
-  ---------- */
-  tbody {
+      // 登録製品
+      .products {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left;
+        padding-left: 36px;
+      }
+      .number {
+        background-color: #E0E2F3;
+        color: var(--color_primary);
+        border-radius: 2px;
+        padding: 0 3px;
+        font-size: 11px;
+        line-height: 1.2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 6px;
+      }
+    }
   }
 
   /* ! ----------

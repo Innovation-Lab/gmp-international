@@ -29,8 +29,14 @@
 // Index 一覧ページ
 @use "admin/layouts/_l-index.scss";
 
+// Create 新規追加ページ
+@use "admin/layouts/_l-create.scss";
+
 // Detail 詳細ページ
 @use "admin/layouts/_l-detail.scss";
+
+// Detail 編集ページ
+@use "admin/layouts/_l-edit.scss";
 
 /* ! --------------------------------------------------
 　Components コンポーネント
@@ -64,8 +70,12 @@
 // Index 一覧ページ
 @use "admin/objects/projects/_p-index.scss";
 
+// Create 新規追加ページ
+@use "admin/objects/projects/_p-create.scss";
+
 // Detail 詳細ページ
 @use "admin/objects/projects/_p-detail.scss";
+@use "admin/objects/projects/_p-detail-user.scss";
 
 // Edit 編集ページ
 @use "admin/objects/projects/_p-edit.scss";
@@ -87,6 +97,10 @@
 ---------- */
 // List リスト
 @use "admin/objects/projects/_p-list.scss";
+
+// Product プロダクト
+@use "admin/objects/projects/_p-product.scss";
+
 
 // Data データ（料金リスト）
 @use "admin/objects/projects/_p-data.scss";
@@ -118,6 +132,22 @@
 // Form フォーム
 @use "admin/objects/projects/_p-form.scss";
 @use "admin/objects/projects/_p-inputColor.scss";
+
+/* ! --------------------------------------------------
+　Utility ユーティリティ
+-------------------------------------------------- */
+// Maxwidth 
+@use "admin/objects/utility/_max.scss";
+
+// Align
+@use "admin/objects/utility/_align.scss";
+
+// Margin
+@use "admin/objects/utility/_margin.scss";
+
+// Gap
+@use "admin/objects/utility/_gap.scss";
+
 
 /* ! --------------------------------------------------
 　Libraries ライブラリ

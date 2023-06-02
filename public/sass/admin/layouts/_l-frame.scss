@@ -15,7 +15,7 @@
 　Frames 全体フレーム
 ================================================== */
 .l-frame {
-  background: #fff;
+  background: var(--gray-background1);
   flex: auto;
   min-width: 0;
   display: grid;
@@ -26,6 +26,11 @@
   &.is-hide {
     --width_sidebar: 4.5rem;
     @extend .c-text__sm !optional;
+  }
+
+  // 背景シロ
+  &.white {
+    background: #fff;
   }
 
   /* ! ----------

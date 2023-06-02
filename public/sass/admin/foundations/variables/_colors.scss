@@ -3,9 +3,9 @@
 ================================================== */
 :root {
   //Primary Base
-  --h: 228;
-  --s: 72%;
-  --l: 55%;
+  --h: 234;
+  --s: 46%;
+  --l: 50%;
 
   // Pimary プライマリ
   --color_primary: hsl(var(--h), var(--s), var(--l));
@@ -39,6 +39,7 @@
   --color_text_3: hsl(var(--h), var(--s-text), calc(var(--l-text) + 40%));
   --color_text_button: hsl(var(--h), var(--s-text), calc(var(--l-text) + 32%));
 
+
   // Border
   --color_border_0: hsl(var(--h), 16%, 94%);
   --color_border_1: hsl(var(--h), 16%, 88%);
@@ -58,4 +59,10 @@
   --color_alert: hsl(337, 72%, 55%);
   --color_alert_dark: hsl(337, 72%, 40%);
   --color_alert_background: hsla(337, 72%, 55%, 0.1);
+
+  // Gray
+  --gray-1: hsl(0, 0%, 80%); //#ccc
+  --gray-2: hsl(0, 0%, 55%); //#8C8C8C
+  --gray-2-dark: hsl(0, 0%, 30%);
+  --gray-background1: hsl(0, 0%, 96%); //F6F6F6
 }
