@@ -791,7 +791,8 @@ input[type=file] + label img {
   object-fit: cover;
 }
 input[type=file] + label.logo {
-  aspect-ratio: 1/0.24;
+  aspect-ratio: 1/0.65;
+  max-width: 200px;
 }
 input[type=file] + label.logo:before {
   opacity: 0.8;

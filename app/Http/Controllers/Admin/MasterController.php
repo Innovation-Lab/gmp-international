@@ -26,6 +26,11 @@ class MasterController extends Controller
         return view('admin.masters.brand.edit.index', [
         ]);
     }
+    public function brandCreate(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.brand.create.index', [
+        ]);
+    }
 
     //製品マスタ
     public function product(Request $request): View|Factory|Application
