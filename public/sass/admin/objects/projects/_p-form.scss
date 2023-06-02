@@ -6,6 +6,9 @@
 ================================================== */
 .p-form {
   width: 100%;
+  &.min {
+    max-width: 320px;
+  }
 
 
    /* ! ----------
@@ -43,6 +46,9 @@
       display: grid;
       grid-auto-rows: auto;
       gap: 0.25rem;
+      & + .js-target__change-password {
+        margin-top: 10px
+      }
     }
     &__label {
       // color: var(--color_text_button);
@@ -73,6 +79,9 @@
       @extend .c-text__sm !optional;
       display: flex;
       gap: 8px;
+      & + & {
+        margin-top: 8px;
+      }
 
       &.w-348 {
         max-width: 348px

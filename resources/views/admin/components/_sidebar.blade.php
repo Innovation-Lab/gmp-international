@@ -52,19 +52,36 @@
     </div>
   </aside>
   <div class="p-sidebar__foot">
+    {{-- 管理者一覧へ/ログアウト --}}
+    <div class="p-staffMenu">
+      <ul>  
+        <li><a href="{{route('admin.staffs.index')}}" class="staff">管理者一覧へ</a></li>
+        <li><a href="" class="logout">ログアウト</a></li>
+      </ul>
+    </div>
     {{-- プロフィール --}}
-    <div class="p-profile" data-micromodal-trigger="modal-account-menu">
-      <div class="p-profile__image">
-        <img
-          src="{{ asset('img/admin/sample/profile.png')}}"
-          width="48px"
-          height="48px"
-        >
-      </div>
-      <div class="p-profile__text">
-        <p class="p-profile__text__title">田中 直人</p>
-        <div class="p-profile__text__sub">
-          h.tajima@soushin-lab.co.jp
+    @php
+      $currentRoute = Route::current()->getName();
+      $isAdminStaffsPage = strpos($currentRoute, 'admin.staffs') !== false;
+    @endphp
+    @if($isAdminStaffsPage)
+      <div class="p-profileWrap active">
+    @else
+      <div class="p-profileWrap">
+    @endif 
+      <div class="p-profile">
+        <div class="p-profile__image">
+          <img
+            src="{{ asset('img/admin/sample/profile.png')}}"
+            width="48px"
+            height="48px"
+          >
+        </div>
+        <div class="p-profile__text">
+          <p class="p-profile__text__title">田中 直人</p>
+          <div class="p-profile__text__sub">
+            h.tajima@soushin-lab.co.jp
+          </div>
         </div>
       </div>
     </div>

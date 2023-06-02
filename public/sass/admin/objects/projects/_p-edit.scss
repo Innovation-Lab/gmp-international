@@ -102,6 +102,7 @@
     　Box ボックス
     ---------- */
     &__box {
+      min-height: 600px;
       display: grid;
       grid:
         "head" auto
