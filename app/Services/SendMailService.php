@@ -3,12 +3,11 @@
 
 namespace App\Services;
 
+use App\Mail\User\ProductRegisterComplete;
 use App\Mail\User\RegisterComplete;
-use Carbon\Carbon;
+use App\Mail\User\WithdrawalComplete;
 use Illuminate\Mail\SentMessage;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Hash;
 
 class SendMailService
 {
@@ -30,13 +29,13 @@ class SendMailService
     
     /**
      * @param string $action
-     * @param array $items
+     * @param $items
      * @param int $mail_type
      * @return SentMessage|null
      */
     public function send(
         string $action,
-        array  $items,
+        $items,
         int    $mail_type = 1,
     ): ?SentMessage
     {
@@ -44,9 +43,11 @@ class SendMailService
             'registration' => Mail::to(data_get($items, 'email'))
                 ->send(new RegisterComplete($items)),
             
-            '???' => '__',
+            'product_registration' => Mail::to(data_get(\Auth::user(), 'email'))
+                ->send(new ProductRegisterComplete(\Auth::user())),
             
-            '??????' => '___',
+            'withdrawal' => Mail::to(data_get($items, 'email'))
+                ->send(new WithdrawalComplete($items)),
         };
     }
 }

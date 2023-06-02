@@ -8,6 +8,7 @@ use App\Models\MColor;
 use App\Models\MProduct;
 use App\Models\MShop;
 use App\Models\SalesProduct;
+use App\Services\SendMailService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -23,13 +24,16 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    private $user_repository;
-
+    private UserRepositoryInterface $user_repository;
+    private SendMailService $sendMailService;
+    
     public function __construct(
-        UserRepositoryInterface $user_repository
+        UserRepositoryInterface $user_repository,
+        SendMailService $sendMailService
     )
     {
         $this->user_repository = $user_repository;
+        $this->sendMailService = $sendMailService;
     }
 
     /**
@@ -221,8 +225,11 @@ class UserController extends Controller
     public function destroy(): Redirector|RedirectResponse|Application
     {
         $user = Auth::user();
+        $params = ['email' => data_get($user, 'email'), 'last_name' => data_get($user, 'last_name'), 'first_name' => data_get($user, 'first_name')];
         $this->user_repository->destroy($user);
         
+        // メールの送信
+        $this->sendMailService->send('withdrawal', $params, 1);
         return redirect('withdrawal/complete');
     }
     

@@ -8,6 +8,7 @@ use App\Models\MColor;
 use App\Models\MProduct;
 use App\Models\MShop;
 use App\Models\SalesProduct;
+use App\Services\SendMailService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
@@ -20,6 +21,16 @@ use Illuminate\View\View;
 
 class SalesProductController extends Controller
 {
+    private SendMailService $sendMailService;
+    
+    /**
+     * @param SendMailService $sendMailService
+     */
+    public function __construct(
+        SendMailService $sendMailService
+    ) {
+        $this->sendMailService = $sendMailService;
+    }
     /**
      * 製品の追加登録 入力画面
      * @return View
@@ -88,6 +99,8 @@ class SalesProductController extends Controller
             ]);
 
             \DB::commit();
+            // メールの送信
+            $this->sendMailService->send('product_registration', [], 1);
             Session::forget('product');
 
             return redirect()
