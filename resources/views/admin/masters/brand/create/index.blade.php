@@ -1,23 +1,22 @@
 @extends('admin.layouts.pages._default')
 @section('title', 'ユーザー管理')
-@section('class', 'body_edit')
 @section('content')
-<div class="p-edit">
-  <div class="l-edit">
-    <div class="l-edit__head">
+<div class="p-create">
+  <div class="l-create">
+    <div class="l-create__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.masters.brand.edit._head')
+      @include('admin.masters.brand.create._head')
     </div>
-    <div class="l-edit__body">
+    <div class="l-create__body">
       <div class="wrapper u-max--560">
         <div class="container">
-          <div class="l-edit__body__inner single">
+          <div class="l-create__body__inner single">
             {{-- メイン --}}
-            <div class="l-edit__main">
-              <div class="p-edit__main">
+            <div class="l-create__main">
+              <div class="p-create__main">
                 {{-- ---------- ボックス（メインエリア） ---------- --}}
-                <div class="p-edit__main__box">
-                  <div class="p-edit__main__box__wrapper">
+                <div class="p-create__main__box">
+                  <div class="p-create__main__box__wrapper">
                     {{-- フォーム --}}
                     <form action="" class="p-form min">
                       <div class="l-grid__1">
@@ -51,9 +50,9 @@
                       </div>
                     </form>
                   </div>
-                  <div class="p-edit__main__box__foot">
-                    <button class="c-button__reset">変更をリセット</button>
-                    <button class="c-button">変更を反映する</button>
+                  <div class="p-create__main__box__foot">
+                    <a href="{{route('admin.masters.brand')}}" class="c-button__reset">戻る</a>
+                    <button class="c-button">この内容で登録する</button>
                 </div>
               </div>
             </div>
