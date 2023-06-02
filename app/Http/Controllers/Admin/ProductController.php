@@ -16,6 +16,16 @@ class ProductController extends Controller
      * @param Request $request
      * @return Application|Factory|View
      */
+
+     public function create(): View
+    {
+        return view('admin.products.create.index');
+    }
+    public function createProducts(): View
+    {
+        return view('admin.products.create.products');
+    }
+
     public function index(Request $request): View|Factory|Application
     {
         return view('admin.products.index', [
@@ -30,7 +40,7 @@ class ProductController extends Controller
 
     public function edit(): View
     {
-        return view('admin.products.detail.edit.index');
+        return view('admin.products.edit.index');
     }
     
     // /**

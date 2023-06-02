@@ -916,7 +916,7 @@ textarea {
 /* ! ==================================================
 　Grid グリッド分割
 ================================================== */
-.l-grid, .l-grid__3, .l-grid__2, .l-grid__1 {
+.l-grid, .l-grid__4, .l-grid__3, .l-grid__2, .l-grid__1 {
   display: grid;
   /* ! ----------
   　分割数
@@ -948,6 +948,10 @@ textarea {
 .l-grid__3 {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2.5rem;
+}
+.l-grid__4 {
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 @media screen and (min-width: 1200px) {
   .l-grid__1--xl {
@@ -2841,6 +2845,9 @@ textarea {
   border: 1px solid #8c8c8c;
   padding: 40px;
 }
+.p-list__img--store {
+  padding: 0;
+}
 .p-list__status {
   padding: 16px;
   margin-top: 8px;
@@ -3312,17 +3319,36 @@ textarea {
   margin-left: 6px;
 }
 .p-table tbody td .status {
-  color: #fff;
   background-color: #E0E2F3;
   color: var(--color_primary);
   border-radius: 2px;
   padding: 0 3px;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-left: 6px;
+}
+.p-table tbody td .status--yet {
+  background-color: #E0E2F3;
+  border-radius: 0;
+  color: var(--color_primary);
+  padding: 6px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-table tbody td .status--not {
+  background-color: #EAEBEA;
+  border-radius: 0;
+  color: #8c8c8c;
+  padding: 6px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .p-table tfoot td {
   height: 2.5rem;

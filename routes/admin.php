@@ -48,13 +48,14 @@ Route::group([
             // Route::get('/detail/userEdit', [ProductController::class, 'userEdit'])->name('userEdit');
         });
         
-        // 商品管理
+        // 登録製品管理
         Route::group([
             'namespace' => 'Product',
             'prefix' => 'product',
             'as' => 'products.',
         ], function() {
             Route::get('/', [ProductController::class, 'index'])->name('index');
+            Route::get('/create-products', [UserController::class, 'createProducts'])->name('create-products');
             Route::get('/detail', [ProductController::class, 'detail'])->name('detail');
             Route::get('/edit', [ProductController::class, 'edit'])->name('edit-products');
         });
@@ -74,6 +75,7 @@ Route::group([
             //店舗マスタ
             Route::get('/store', [MasterController::class, 'store'])->name('store');
             Route::get('/store/edit', [MasterController::class, 'storeEdit'])->name('store.edit');
+            Route::get('/store/detail', [MasterController::class, 'storeDetail'])->name('store.detail');
             //カラーマスタ
             Route::get('/color', [MasterController::class, 'color'])->name('color');
             Route::get('/color/edit', [MasterController::class, 'colorEdit'])->name('color.edit');

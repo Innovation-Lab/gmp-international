@@ -11,7 +11,7 @@
               <h2 class="p-index__head__title">登録製品管理</h2>
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
-                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">製品を追加登録</div>
+                  <a href="{{route('admin.products.create-products')}}" class="c-button__2">製品を追加登録</a>
                   <a href="" class="c-button__icon c-button__icon--import">登録製品情報CSV入力</a>
                   <a href="" class="c-button__icon__line c-button__icon--export">登録製品情報CSV出力</a>
                 </div>
@@ -26,7 +26,7 @@
         <div class="container">
           <div class="inner">
             {{-- ---------- フィルター ---------- --}}
-            @include('admin.components._filter')
+            @include('admin.components._filter-product')
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
                 <tbody>
                   @for ($i = 0; $i < 30; $i++)
                   <!-- 1人 -->
-                  <tr data-href="">
+                  <tr data-href="{{ route('admin.products.detail') }}">
                     <td class="item">
                       AIRBUGGY
                     </td>
@@ -82,17 +82,16 @@
                     </td>
                     <td class="item">
                       <!-- <div class="u-align--both u-align--nowrap"> -->
-                        <a href="user">山田 太郎</a>
+                        <a data-href="{{ route('admin.users.detail') }}" style="text-decoration: underline; color: var(--color_primary);">山田 太郎</a>
                       <!-- </div> -->
                     </td>
                     <td class="item">
                       エアバギー代々木公園本店
                     </td>
                     <td class="item">
-
                       <div>
-                        <span class="status">登録済み</span>
-                        <!-- <span class="status">未登録</span> -->
+                        <span class="status status--yet">登録済み</span>
+                        <span class="status status--not" style="display: none;">未登録</span>
                       </div>
                     </td>
                   </tr>

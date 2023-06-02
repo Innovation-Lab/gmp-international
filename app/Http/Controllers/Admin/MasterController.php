@@ -45,11 +45,17 @@ class MasterController extends Controller
         return view('admin.masters.store.index', [
         ]);
     }
-    public function storeEdit(Request $request): View|Factory|Application
+    public function storeDetail(Request $request): View|Factory|Application
     {
-        return view('admin.masters.store.edit.index', [
+        return view('admin.masters.store.detail.index', [
         ]);
     }
+    public function storeEdit(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.store.detail.edit.index', [
+        ]);
+    }
+    
 
     //カラーマスタ
     public function color(Request $request): View|Factory|Application

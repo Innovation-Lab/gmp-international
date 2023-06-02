@@ -3,7 +3,7 @@
   登録製品の追加
   </h3>
 </div>
-@if(Route::current()->getName() == 'admin.users.create-products')
+@if(Route::current()->getName() == 'admin.products.create-products')
 <div class="p-form__title">
   <p>製品1</p>
 </div>
@@ -52,6 +52,16 @@
           </div>
         </div>
       </li>
+      <li class="p-formList__item">
+        <div class="p-formList__content">
+          <div class="p-formList__label">
+            登録番号
+          </div>
+          <div class="p-formList__data">
+            {!! Form::text('register_number', 'AB01-097M-HIUA', ['placeholder' => '例）AB01097MHIUA']) !!}
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
   <div class="l-grid__item">
@@ -92,6 +102,20 @@
               <option value="store1">エアバギー代官山店</option>
               <option value="store2">エアバギー渋谷店</option>
               <option value="store3">エアバギー新宿店</option>
+            </select>
+          </div>
+        </div>
+      </li>
+      <li class="p-formList__item">
+        <div class="p-formList__content">
+          <div class="p-formList__label">
+            ステータス
+          </div>
+          <div class="p-formList__data">
+            <select name="store" class="select2">
+              <option value="" hidden>選択してください</option>
+              <option value="store1">登録済み</option>
+              <option value="store2">未登録</option>
             </select>
           </div>
         </div>

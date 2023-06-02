@@ -132,17 +132,36 @@
         margin-left: 6px;
       }
       .status {
-        color: #fff;
         background-color: #E0E2F3;
         color: var(--color_primary);
         border-radius: 2px;
         padding: 0 3px;
-        font-size: 11px;
+        font-size: 12px;
         line-height: 1.2;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         margin-left: 6px;
+        &--yet{
+          background-color: #E0E2F3;
+          border-radius: 0;
+          color: var(--color_primary);
+          padding: 6px;
+          font-size: 12px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &--not{
+          background-color: #EAEBEA;
+          border-radius: 0;
+          color: #8c8c8c;
+          padding: 6px;
+          font-size: 12px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
     }
   }

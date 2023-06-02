@@ -63,7 +63,7 @@
                 <tbody>
                   @for ($i = 0; $i < 8; $i++)
                   <!-- 1人 -->
-                  <tr data-href="">
+                  <tr data-href="{{ route('admin.masters.store.detail') }}">
                     <td class="item">
                       エアバギー代々木公園本店
                     </td>

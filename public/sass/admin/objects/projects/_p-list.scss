@@ -82,6 +82,9 @@
   &__img{
     border: 1px solid #8c8c8c;
     padding: 40px;
+    &--store{
+      padding: 0;
+    }
   }
   &__status{
     padding: 16px;

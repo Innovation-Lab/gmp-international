@@ -39,7 +39,7 @@
                           @foreach([
                             'ブランド名' => 'AIRBUGGY',
                             '製品名' => 'COCO BRAKE EX FROM BIRTH',
-                            'カラー' => 'ブロッサム',
+                            'カラー' => 'BLOSSOM',
                             '購入日' => '2023/04/04',
                             '購入店舗' => 'エアバギー代々木公園本店',
                             'シリアルNo.' => 'GMP123456789',
@@ -67,11 +67,13 @@
               <div class="p-detail__full">
                 {{-- ---------- 登録ユーザー情報 ---------- --}}
                 <div class="p-detail__full__box">
-                  <div class="p-detail__full__box__wrapper">
+                  <div class="p-detail__full__box__wrapper" style="display: none;">
                     {{-- ---------- 未登録 ---------- --}}
-                    <div class="p-list__head p-list__head--center" style="display: none;">
+                    <div class="p-list__head p-list__head--center">
                       <h3 class="p-detail__main__box__head__title center">ユーザー情報は登録されていません</p>
                     </div>
+                  </div>
+                  <div class="p-detail__full__box__wrapper">
                     {{-- ---------- 登録済み ---------- --}}
                     <div class="p-list__head">
                       <h3 class="p-detail__main__box__head__title">登録ユーザー情報</p>
