@@ -151,3 +151,19 @@
     }
   }
 }
+/* ! ==================================================
+　Profile ラップ
+================================================== */
+.p-profile {
+  &Wrap {
+    height: 6rem;
+    display: grid;
+    place-items: center;
+    border-top: 1px solid var(--color_border_1);
+    padding: 0 1rem;
+    cursor: pointer;
+    &.active {
+      background-color: #EAF4FF;
+    }
+  }
+}

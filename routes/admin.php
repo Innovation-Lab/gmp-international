@@ -86,6 +86,8 @@ Route::group([
             'as' => 'staffs.',
         ], function() {
             Route::get('/', [AdminController::class, 'index'])->name('index');
+            Route::get('/create', [AdminController::class, 'create'])->name('create');
+            Route::get('/edit', [AdminController::class, 'edit'])->name('edit');
         });
     });
 
