@@ -44,8 +44,8 @@ class StoreAccountRequest extends FormRequest
         return [
             'email.unique' => 'すでに使用されているメールアドレスです',
             'password.regex' => 'パスワードは半角英数字で入力してください',
-            'password.min' => 'パスワードは6文字以上10文字以下で入力してください',
-            'password.max' => 'パスワードは6文字以上10文字以下で入力してください',
+            'password.min' => 'パスワードは6文字以上で入力してください',
+            'password.max' => 'パスワードは6文字以上で入力してください',
         ];
     }
 }
