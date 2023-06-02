@@ -165,5 +165,8 @@
     &.active {
       background-color: #EAF4FF;
     }
+    &:hover {
+      background-color: var(--color_background_3);
+    }
   }
 }

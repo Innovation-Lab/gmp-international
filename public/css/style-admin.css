@@ -2093,6 +2093,7 @@ textarea {
   ---------- */
 }
 .p-create__main__box {
+  min-height: 600px;
   display: grid;
   grid: "head" auto "wrapper" 1fr "table" auto "foot" auto/100%;
   /* ! ----------
@@ -2486,6 +2487,7 @@ textarea {
   ---------- */
 }
 .p-edit__main__box {
+  min-height: 600px;
   display: grid;
   grid: "head" auto "wrapper" 1fr "table" auto "foot" auto/100%;
   /* ! ----------
@@ -2825,6 +2827,9 @@ textarea {
 }
 .p-profileWrap.active {
   background-color: #EAF4FF;
+}
+.p-profileWrap:hover {
+  background-color: var(--color_background_3);
 }
 
 /* ! ==================================================
@@ -3276,7 +3281,6 @@ textarea {
   font-size: 0.875rem;
   flex: auto;
   min-width: 0;
-  background-color: #fff;
   overflow: auto;
   /* ! ----------
   　カラム
@@ -3336,6 +3340,7 @@ textarea {
   padding: 0 1rem;
   height: 4rem;
   border-bottom: 1px solid var(--color_border_1);
+  background-color: #fff;
 }
 .p-table tbody td > span {
   color: var(--color_text_2);
