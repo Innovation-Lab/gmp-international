@@ -11,7 +11,7 @@
               <h2 class="p-index__head__title">ユーザー管理</h2>
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
-                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">ユーザーを新規追加</div>
+                  <a href="{{route('admin.users.create')}}" class="c-button__2">ユーザーを新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
                   <a href="" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
                 </div>
@@ -80,12 +80,7 @@
                       東京都 千代田区 紀尾井町1-1-1 紀尾井町ビル16F
                     </td>
                     <td class="item">
-                      <!-- <div class="c-status__plan-standard"></div> -->
-                      <span>AIRBUGGY</span>
-                      <div class="u-align--both u-align--nowrap">
-                        COCO PREMIER FROM BIRTH
-                        <span class="number">+3</span>
-                      </div>
+                      <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">AIRBUGGY<br>COCO PREMIER FROM BIRTH<span class="number">+3</span></span>
                     </td>
                     <td class="item">
                       <span>
@@ -137,7 +132,7 @@
   </div>
 </div>
 {{-- ユーザー新規追加 --}}
-@include('admin.users._modal-users-create')
+@include('admin.users._modal-users-fillter')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

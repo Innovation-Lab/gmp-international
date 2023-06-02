@@ -40,6 +40,8 @@ Route::group([
             'as' => 'users.',
         ], function() {
             Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/create', [UserController::class, 'create'])->name('create');
+            Route::get('/create-products', [UserController::class, 'createProducts'])->name('create-products');
             Route::get('/detail', [UserController::class, 'detail'])->name('detail');
             Route::get('/edit-user', [UserController::class, 'editUser'])->name('edit-user');
             Route::get('/edit-products', [UserController::class, 'editProducts'])->name('edit-products');

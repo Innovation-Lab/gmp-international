@@ -1,0 +1,22 @@
+@use "../../global/" as global;
+
+.c-div {
+  width: 100%;
+  border-top: 1px solid var(--gray-1);
+  margin: 8px 0;
+  :where(&--sm, &--md, &--lg, &--xl) {
+    @extend .c-div;
+  }
+  &--sm {
+    margin: 4px 0;
+  }
+  &--md {
+    margin: 16px 0;
+  }
+  &--lg {
+    margin: 24px 0;
+  }
+  &--xl {
+    margin: 40px 0;
+  }
+}

@@ -5,7 +5,7 @@
   <div class="l-edit">
     <div class="l-edit__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.users.detail._head')
+      @include('admin.users.edit._head')
     </div>
     <div class="l-edit__body">
       <div class="wrapper u-max--800">
@@ -17,13 +17,14 @@
                 {{-- ---------- ボックス（メインエリア） ---------- --}}
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
-                    <div class="p-edit__main__box__head">
-                      <h3 class="p-edit__main__box__head__title">
-                        ユーザー情報
-                      </h3>
-                    </div>
+                    {{-- フォーム --}}
                     <form action="" class="p-form">
-                      <div class="l-grid__1 l-grid__2--xl" style="gap: 1.5rem 2.5rem;">
+                      <div class="p-edit__main__box__head">
+                        <h3 class="p-edit__main__box__head__title">
+                        ユーザー情報
+                        </h3>
+                      </div>
+                      <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
                         <div class="l-grid__item">
                           <ul class="p-formList">
                             <li class="p-formList__item">
@@ -94,7 +95,7 @@
                                   新着情報、お得情報
                                 </div>
                                 <div class="p-formList__data">
-                                  <div class="c-input c-input--radio">
+                                  <div class="radio">
                                     <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
                                     <label for="inq1-2">同意する</label>
                                     <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
@@ -164,10 +165,10 @@
                             <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
-                                  パスワード
+                                  パスワード<small>（半角英数字6~10文字）</small>
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('room', 'マンション名・部屋番号など', ['placeholder' => '例）渋谷マンション1201']) !!}
+                                  {!! Form::text('password', 'gmp0001', ['placeholder' => '例）gmp0001']) !!}
                                 </div>
                               </div>
                             </li>
@@ -181,7 +182,7 @@
                                   管理メモ
                                 </div>
                                 <div class="p-formList__content__data">
-                                  <textarea placeholder="修正対応や報告事項を記載してください。"></textarea>
+                                  <textarea placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
                                 </div>
                               </div>
                             </li>

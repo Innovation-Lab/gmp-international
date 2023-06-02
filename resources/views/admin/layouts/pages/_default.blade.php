@@ -85,6 +85,11 @@
 <script src="{{ asset('js/admin/dataHref.js') }}"></script>
 {{-- フィルター --}}
 <script src="{{ asset('js/admin/filter.js') }}"></script>
+<script src="{{ asset('js/admin/flatPickr.js') }}"></script>
+{{-- Select2 --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script src="{{ asset('js/admin/select2.js') }}"></script>
 {{-- モーダル --}}
 <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 <script>

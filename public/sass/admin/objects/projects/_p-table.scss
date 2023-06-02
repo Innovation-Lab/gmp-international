@@ -111,6 +111,14 @@
         margin: auto;
         display: block;
       }
+
+      // 登録製品
+      .products {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left;
+        padding-left: 36px;
+      }
       .number {
         background-color: #E0E2F3;
         // color: var(--color_primary);
@@ -128,7 +136,7 @@
         background-color: #E0E2F3;
         color: var(--color_primary);
         border-radius: 2px;
-        padding: 0 2px;
+        padding: 0 3px;
         font-size: 11px;
         line-height: 1.2;
         display: inline-flex;
