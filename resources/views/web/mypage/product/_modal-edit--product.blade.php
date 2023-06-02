@@ -115,7 +115,7 @@
                         </div>
                       </div>
                       <div class="p-formList__data">
-                        <input placeholder="例）GMP0123456" class="required" name="product_code" type="text" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}">
+                        <input placeholder="例）GMP0123456" class="required" name="product_code" type="text" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}" onchange="searchserial($(this).val());">
                       </div>
                     </div>
                   @endif

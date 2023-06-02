@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Validator;
 
@@ -25,6 +26,9 @@ class StoreProductRequest extends FormRequest
      */
     public function rules()
     {
+        $params = $this->request->all();
+        Session::put('product', $params);
+        
         return [
             'purchase_date' => 'required',
             'm_brand_id' => 'required',
