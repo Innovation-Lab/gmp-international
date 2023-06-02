@@ -93,12 +93,12 @@
                         </select>
                       </div>
                       <!-- 上記以外のカラー選択時のフォーム -->
-                      <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                      <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || (!data_get($sales_product, 'm_color_id') && data_get($sales_product, 'other_color_name'))) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'other_color_name')) }}">
+                          <input placeholder="例）赤" class="required" name="other_color_name" type="text" value="{{ old('other_color_name', data_get($sales_product, 'other_color_name')) }}">
                         </div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@
                         </div>
                       </div>
                       <div class="p-formList__data">
-                        <input placeholder="例）GMP0123456" class="required" name="product_code" type="name" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}">
+                        <input placeholder="例）GMP0123456" class="required" name="product_code" type="text" value="{{ old('product_code', data_get($sales_product, 'product_code')) }}">
                       </div>
                     </div>
                   @endif
@@ -140,12 +140,12 @@
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
-                      <div style="@if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other' || data_get($sales_product, 'other_shop_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                      <div style="@if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other' || (!data_get($sales_product, 'm_shop_id') && data_get($sales_product, 'other_shop_name'))) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="name" value="{{ old('other_shop_name', data_get($sales_product, 'other_shop_name') ) }}">
+                          <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="{{ old('other_shop_name', data_get($sales_product, 'other_shop_name') ) }}">
                         </div>
                       </div>
                     </div>
