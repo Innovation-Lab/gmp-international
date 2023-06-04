@@ -15,7 +15,7 @@
   &__image {
     img {
       object-fit: cover;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
 
       // 非表示
       .is-hide & {

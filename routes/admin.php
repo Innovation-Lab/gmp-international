@@ -72,14 +72,18 @@ Route::group([
             Route::get('/brand/create', [MasterController::class, 'brandCreate'])->name('brand.create');
             //製品マスタ
             Route::get('/product', [MasterController::class, 'product'])->name('product');
+            Route::get('/product/detail', [MasterController::class, 'productDetail'])->name('product.detail');
             Route::get('/product/edit', [MasterController::class, 'productEdit'])->name('product.edit');
+            Route::get('/product/create', [MasterController::class, 'productCreate'])->name('product.create');
             //店舗マスタ
             Route::get('/store', [MasterController::class, 'store'])->name('store');
             Route::get('/store/edit', [MasterController::class, 'storeEdit'])->name('store.edit');
             Route::get('/store/detail', [MasterController::class, 'storeDetail'])->name('store.detail');
+            Route::get('/store/create', [MasterController::class, 'storeCreate'])->name('store.create');
             //カラーマスタ
             Route::get('/color', [MasterController::class, 'color'])->name('color');
             Route::get('/color/edit', [MasterController::class, 'colorEdit'])->name('color.edit');
+            Route::get('/color/create', [MasterController::class, 'colorCreate'])->name('color.create');
         });
         
         // アカウント

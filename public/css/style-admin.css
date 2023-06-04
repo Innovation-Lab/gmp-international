@@ -129,6 +129,7 @@ img {
   --gray-2: hsl(0, 0%, 55%);
   --gray-2-dark: hsl(0, 0%, 30%);
   --gray-background1: hsl(0, 0%, 96%);
+  --gray-background2: hsl(120, 2%, 92%);
 }
 
 /* ! ==================================================
@@ -290,7 +291,7 @@ strong {
   font: 500 1rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
-.c-text__sm, .p-form__title > p, .p-formList__data, .p-flash__item .title, .p-menuList__button, .p-pagination__count, .p-pagination__page, .p-table tbody td, .p-filterList__label, .p-tabList__label, .p-product__data, .p-list__label, .p-list__data, .p-edit__sidebar__box__head__title, .p-detail__sidebar__box__head__title, .p-create__sidebar__box__head__title, .p-dashboard__ranking__list__text .title, .p-dashboard__head__title, .l-frame.is-hide, input[type=checkbox] + label, input[type=file] + label::after, .c-button, .c-button__2, .c-button__line, .c-button__reset, .c-button__alert, .c-button__disabled, .c-button__icon, .c-button__icon__line, .c-button__search, .modal__btn, .modal__btn-primary, .modal__btn-alert {
+.c-text__sm, .p-form__title > p, .p-formList__data, .p-flash__item .title, .p-menuList__button, .p-pagination__count, .p-pagination__page, .p-table tbody td, .p-filterList__label, .p-tabList__label, .p-product__data, .p-list__label, .p-list__data, .p-edit__sidebar__box__head__title, .p-detail__sidebar__box__head__title, .p-create__sidebar__box__head__title, .p-dashboard__ranking__list__text .title, .p-dashboard__head__title, .l-frame.is-hide, input[type=file] + label::after, .c-button, .c-button__2, .c-button__line, .c-button__reset, .c-button__alert, .c-button__disabled, .c-button__icon, .c-button__icon__line, .c-button__search, .modal__btn, .modal__btn-primary, .p-staffMenu ul .p-staffMenu__item a, .modal__btn-alert {
   font: 500 0.875rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
@@ -328,7 +329,7 @@ small {
 /* ! ==================================================
 　Button ボタン
 ================================================== */
-.c-button, .modal__btn-primary, .c-button__icon, .c-button__icon__line, .c-button__disabled, .c-button__alert, .modal__btn-alert, .c-button__reset, .c-button__line, .c-button__2, .modal__btn, .c-button__search {
+.c-button, .modal__btn-primary, .p-staffMenu ul .p-staffMenu__item a, .c-button__icon, .c-button__icon__line, .c-button__disabled, .c-button__alert, .modal__btn-alert, .c-button__reset, .c-button__line, .c-button__2, .modal__btn, .c-button__search {
   color: #fff;
   line-height: 1;
   display: inline-grid;
@@ -373,11 +374,11 @@ small {
   　Search 検索する
   -------------------------------------------------- */
 }
-.c-button.small, .small.modal__btn-primary, .small.c-button__icon, .small.c-button__icon__line, .small.c-button__disabled, .small.c-button__alert, .small.modal__btn-alert, .small.c-button__reset, .small.c-button__line, .small.c-button__2, .small.modal__btn, .small.c-button__search {
+.c-button.small, .small.modal__btn-primary, .p-staffMenu ul .p-staffMenu__item a.small, .small.c-button__icon, .small.c-button__icon__line, .small.c-button__disabled, .small.c-button__alert, .small.modal__btn-alert, .small.c-button__reset, .small.c-button__line, .small.c-button__2, .small.modal__btn, .small.c-button__search {
   font-size: 0.8125rem;
   height: 1.5rem;
 }
-.c-button:hover, .modal__btn-primary:hover, .c-button__icon:hover, .c-button__icon__line:hover, .c-button__disabled:hover, .c-button__alert:hover, .modal__btn-alert:hover, .c-button__reset:hover, .c-button__line:hover, .c-button__2:hover, .modal__btn:hover, .c-button__search:hover {
+.c-button:hover, .modal__btn-primary:hover, .p-staffMenu ul .p-staffMenu__item a:hover, .c-button__icon:hover, .c-button__icon__line:hover, .c-button__disabled:hover, .c-button__alert:hover, .modal__btn-alert:hover, .c-button__reset:hover, .c-button__line:hover, .c-button__2:hover, .modal__btn:hover, .c-button__search:hover {
   background-color: var(--color_primary_dark);
 }
 .c-button__2, .modal__btn, .c-button__search {
@@ -471,7 +472,7 @@ small {
     grid-template-columns: 210px 210px 180px 180px;
   }
 }
-.c-buttonWrap--dashboard .c-button, .c-buttonWrap--dashboard .modal__btn-primary, .c-buttonWrap--dashboard .c-button__2, .c-buttonWrap--dashboard .modal__btn, .c-buttonWrap--dashboard .c-button__search, .c-buttonWrap--dashboard .c-button__line, .c-buttonWrap--dashboard .c-button__reset, .c-buttonWrap--dashboard .c-button__alert, .c-buttonWrap--dashboard .modal__btn-alert, .c-buttonWrap--dashboard .c-button__disabled, .c-buttonWrap--dashboard .c-button__icon, .c-buttonWrap--dashboard .c-button__icon__line {
+.c-buttonWrap--dashboard .c-button, .c-buttonWrap--dashboard .modal__btn-primary, .c-buttonWrap--dashboard .p-staffMenu ul .p-staffMenu__item a, .p-staffMenu ul .p-staffMenu__item .c-buttonWrap--dashboard a, .c-buttonWrap--dashboard .c-button__2, .c-buttonWrap--dashboard .modal__btn, .c-buttonWrap--dashboard .c-button__search, .c-buttonWrap--dashboard .c-button__line, .c-buttonWrap--dashboard .c-button__reset, .c-buttonWrap--dashboard .c-button__alert, .c-buttonWrap--dashboard .modal__btn-alert, .c-buttonWrap--dashboard .c-button__disabled, .c-buttonWrap--dashboard .c-button__icon, .c-buttonWrap--dashboard .c-button__icon__line {
   justify-content: center;
 }
 .c-button__search {
@@ -590,6 +591,28 @@ small {
   margin: 40px 0;
 }
 
+.c-image {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.c-image:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 100%;
+}
+.c-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  -o-object-fit: cover;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* ! ==================================================
 　Components コンポーネント
 ================================================== */
@@ -604,6 +627,9 @@ small {
 ---------- */
 /* ! ----------
 　Div
+---------- */
+/* ! ----------
+　Image 画像
 ---------- */
 /* ! ==================================================
 　Form フォーム
@@ -699,28 +725,27 @@ input[type=checkbox] {
   position: absolute;
 }
 
-input[type=checkbox] + label {
-  color: var(--color_form_button);
-  display: inline-flex;
-  height: 2rem;
+.checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+}
+.checkbox input[type=checkbox] + label {
+  display: flex;
   align-items: center;
-  padding: 0 0 0 1.75rem;
-  background-image: url(../img/admin/form/checkbox.png);
-  background-size: 1.5rem 1.5rem;
-  background-position: left center;
-  background-repeat: no-repeat;
+  padding: 13px 8px;
+  color: var(--gray-2);
 }
-input[type=checkbox] + label:hover {
-  color: var(--color_text_1);
+.checkbox input[type=checkbox] + label::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin: 0 8px 0 0;
+  background: url(../img/admin/form/checkbox.svg) no-repeat center;
+  background-size: contain !important;
 }
-input[type=checkbox]:checked + label {
-  color: var(--color_primary);
-  background-image: url(../img/admin/form/checkbox-checked.png);
-}
-
-input:-webkit-autofill {
-  -webkit-transition: background-color 5000s ease-in-out 0s !important;
-  transition: background-color 5000s ease-in-out 0s !important;
+.checkbox input[type=checkbox]:checked + label:before {
+  background: url(../img/admin/form/checkbox-checked.svg) no-repeat center;
 }
 
 /* ! --------------------------------------------------
@@ -779,7 +804,8 @@ input[type=file] + label img {
      object-fit: cover;
 }
 input[type=file] + label.logo {
-  aspect-ratio: 1/0.24;
+  aspect-ratio: 1/0.65;
+  max-width: 200px;
 }
 input[type=file] + label.logo:before {
   opacity: 0.8;
@@ -792,6 +818,33 @@ input[type=file] + label.logo:after {
 input[type=file] + label.logo img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+input[type=file] + label.icon {
+  max-width: 80px;
+  height: 80px;
+}
+input[type=file] + label.icon:before {
+  opacity: 0.8;
+  background: #1F266F;
+  z-index: 1;
+}
+input[type=file] + label.icon:after {
+  content: "追加する";
+  opacity: 1;
+  white-space: nowrap;
+  z-index: 2;
+}
+input[type=file] + label.icon .c-image {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+input[type=file] + label.icon img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+input[type=file] + label.icon--edit::after {
+  content: "変更する";
 }
 input[type=file] + label.colorPattern {
   width: 56px;
@@ -1289,6 +1342,49 @@ textarea {
   bottom: 0;
 }
 
+/* ------------------------------
+ *
+ * tab
+ * タブ
+ *
+ ------------------------------ */
+.f-tab {
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  padding: 2px;
+  border: 1px solid var(--gray-2);
+  border-radius: 4px;
+}
+.f-tab label:has(input[type=radio]) {
+  color: var(--gray-2);
+  text-align: center;
+  border-color: transparent;
+  background-image: none;
+  padding-block: 5px;
+  padding-inline: 5px;
+}
+.f-tab label:has(input[type=radio]:checked) {
+  color: var(--color_primary);
+  border-color: var(--color_plan3_background);
+  background-color: var(--color_plan3_background);
+  z-index: 1;
+}
+.f-tab label {
+  flex: auto;
+  width: auto;
+  position: relative;
+}
+.f-tab label {
+  border-radius: 4px !important;
+}
+.f-tab > * + * {
+  margin-left: -1px;
+}
+.f-tab + .f-tab {
+  margin: 4px 0 0;
+}
+
 /* ! ----------
 ステータスカラー
 ---------- */
@@ -1309,7 +1405,7 @@ textarea {
 　Status ステータス表示
 ================================================== */
 .c-status, .c-status__auth-general, .c-status__auth-admin, .c-status__plan-professional, .c-status__plan-standard, .c-status__plan-basic, .c-status__plan-free {
-  font: 700 0.75rem / 1 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font: 500 0.75rem / 1 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   display: inline-flex;
   height: 1.5rem;
   align-items: center;
@@ -1317,6 +1413,9 @@ textarea {
   border-radius: 0.125rem;
   /* ! ----------
   　ステータスの種類と色
+  ---------- */
+  /* ! ----------
+  　権限（個別ステータス）
   ---------- */
 }
 .c-status__plan-free {
@@ -1348,18 +1447,25 @@ textarea {
   content: "プロフェッショナル";
 }
 .c-status__auth-admin {
-  color: var(--color_plan3);
+  color: var(--color_primary);
   background-color: var(--color_plan3_background);
 }
 .c-status__auth-admin::before {
   content: "管理者";
 }
 .c-status__auth-general {
-  color: var(--color_plan4);
-  background-color: var(--color_plan4_background);
+  color: var(--gray-2);
+  background-color: var(--gray-background2);
 }
 .c-status__auth-general::before {
   content: "一般";
+}
+.c-status__auth-admin, .c-status__auth-general {
+  min-width: 70px;
+  height: 2rem;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 0.25rem;
 }
 
 /* ! ==================================================
@@ -1907,7 +2013,7 @@ textarea {
   height: 5rem;
   display: flex;
   align-items: center;
-  margin: 0 0 1.5rem;
+  margin: 0 0 2.5rem;
   background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
@@ -2032,6 +2138,7 @@ textarea {
   ---------- */
 }
 .p-create__main__box {
+  min-height: 600px;
   display: grid;
   grid: "head" auto "wrapper" 1fr "table" auto "foot" auto/100%;
   /* ! ----------
@@ -2268,6 +2375,9 @@ textarea {
   background: #fff;
   border: 1px solid var(--color_border_1);
 }
+.p-detail__full--single {
+  border: none;
+}
 .p-detail__full__box__wrapper {
   padding: 2rem 2.5rem;
   background: #fff;
@@ -2435,6 +2545,7 @@ textarea {
   ---------- */
 }
 .p-edit__main__box {
+  min-height: 600px;
   display: grid;
   grid: "head" auto "wrapper" 1fr "table" auto "foot" auto/100%;
   /* ! ----------
@@ -2587,11 +2698,6 @@ textarea {
 }
 .p-sidebar__foot {
   grid-area: foot;
-  height: 6rem;
-  display: grid;
-  place-items: center;
-  border-top: 1px solid var(--color_border_1);
-  padding: 0 1rem;
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
@@ -2652,7 +2758,7 @@ textarea {
 .p-profile__image img {
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 .is-hide .p-profile__image img {
   height: 2.5rem;
@@ -2771,6 +2877,24 @@ textarea {
 }
 .p-profileImage__text__title > * + * {
   margin: 0.5em 0 0;
+}
+
+/* ! ==================================================
+　Profile ラップ
+================================================== */
+.p-profileWrap {
+  height: 6rem;
+  display: grid;
+  place-items: center;
+  border-top: 1px solid var(--color_border_1);
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.p-profileWrap.active {
+  background-color: #EAF4FF;
+}
+.p-profileWrap:hover {
+  background-color: var(--color_background_3);
 }
 
 /* ! ==================================================
@@ -3229,7 +3353,6 @@ textarea {
   font-size: 0.875rem;
   flex: auto;
   min-width: 0;
-  background-color: #fff;
   overflow: auto;
   /* ! ----------
   　カラム
@@ -3292,6 +3415,7 @@ textarea {
   padding: 0 1rem;
   height: 4rem;
   border-bottom: 1px solid var(--color_border_1);
+  background-color: #fff;
 }
 .p-table tbody td > span {
   color: var(--color_text_2);
@@ -3349,6 +3473,9 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+.p-table tbody td img {
+  border-radius: 5px;
 }
 .p-table tfoot td {
   height: 2.5rem;
@@ -3673,6 +3800,38 @@ textarea {
 }
 
 /* ! ==================================================
+　Staff Menu スタッフメニュー
+================================================== */
+.p-staffMenu ul .p-staffMenu__item {
+  background-color: #fff;
+  border-top: 1px solid var(--gray-1);
+  border-bottom: 1px solid var(--gray-1);
+  display: grid;
+  place-items: center;
+}
+.p-staffMenu ul .p-staffMenu__item + li {
+  border-top: none;
+}
+.p-staffMenu ul .p-staffMenu__item:last-child {
+  border-bottom: 0;
+}
+.p-staffMenu ul .p-staffMenu__item a {
+  width: 100%;
+  padding: 1rem;
+  height: auto;
+  background-color: transparent;
+}
+.p-staffMenu ul .p-staffMenu__item a:hover {
+  background-color: var(--gray-background1);
+}
+.p-staffMenu ul .p-staffMenu__item a.staff {
+  color: #000;
+}
+.p-staffMenu ul .p-staffMenu__item a.logout {
+  color: var(--gray-2);
+}
+
+/* ! ==================================================
 　Form フォーム
 ================================================== */
 .p-form {
@@ -3686,6 +3845,9 @@ textarea {
   /* ! --------------------------------------------------
   　List リスト
   -------------------------------------------------- */
+}
+.p-form.min {
+  max-width: 320px;
 }
 .p-form__title {
   display: flex;
@@ -3701,10 +3863,21 @@ textarea {
   grid-auto-rows: auto;
   gap: 1.5rem;
 }
+.p-formList__colorSet__type {
+  display: grid;
+  gap: 1rem;
+}
+.p-formList__colorSet__type__item {
+  display: grid;
+  gap: 0.25rem;
+}
 .p-formList__content {
   display: grid;
   grid-auto-rows: auto;
   gap: 0.25rem;
+}
+.p-formList__content + .js-target__change-password {
+  margin-top: 10px;
 }
 .p-formList__label {
   display: flex;
@@ -3733,6 +3906,9 @@ textarea {
   /* ! ----------
   　Error エラー
   ---------- */
+}
+.p-formList__data + .p-formList__data {
+  margin-top: 8px;
 }
 .p-formList__data.w-348 {
   max-width: 348px;
@@ -3872,6 +4048,9 @@ textarea {
 .u-align--btw {
   justify-content: space-between;
   align-items: center;
+}
+.u-align--end {
+  align-items: flex-end;
 }
 
 .u-m--0 {
@@ -4936,6 +5115,9 @@ textarea {
 -------------------------------------------------- */
 /* ! --------------------------------------------------
 　Layouts レイアウト
+-------------------------------------------------- */
+/* ! --------------------------------------------------
+　Form フォーム
 -------------------------------------------------- */
 /* ! --------------------------------------------------
 　Components コンポーネント

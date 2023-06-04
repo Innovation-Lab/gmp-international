@@ -55,8 +55,8 @@
     {{-- 管理者一覧へ/ログアウト --}}
     <div class="p-staffMenu">
       <ul>  
-        <li><a href="{{route('admin.staffs.index')}}" class="staff">管理者一覧へ</a></li>
-        <li><a href="" class="logout">ログアウト</a></li>
+        <li class="p-staffMenu__item"><a href="{{route('admin.staffs.index')}}" class="staff">管理者一覧へ</a></li>
+        <li class="p-staffMenu__item"><a href="" class="logout">ログアウト</a></li>
       </ul>
     </div>
     {{-- プロフィール --}}

@@ -43,6 +43,16 @@ class MasterController extends Controller
         return view('admin.masters.product.edit.index', [
         ]);
     }
+    public function productDetail(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.product.detail.index', [
+        ]);
+    }
+    public function productCreate(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.product.create.index', [
+        ]);
+    }
 
     //店舗マスタ
     public function store(Request $request): View|Factory|Application
@@ -57,7 +67,12 @@ class MasterController extends Controller
     }
     public function storeEdit(Request $request): View|Factory|Application
     {
-        return view('admin.masters.store.detail.edit.index', [
+        return view('admin.masters.store.edit.index', [
+        ]);
+    }
+    public function storeCreate(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.store.create.index', [
         ]);
     }
     
@@ -73,4 +88,10 @@ class MasterController extends Controller
         return view('admin.masters.color.edit.index', [
         ]);
     }
+    public function colorCreate(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.color.create.index', [
+        ]);
+    }
+
 }

@@ -1,12 +1,12 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'カラー編集')
+@section('title', 'カラー新規追加')
 @section('class', 'body_edit')
 @section('content')
 <div class="p-edit">
   <div class="l-edit">
     <div class="l-edit__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.masters.color.edit._head')
+      @include('admin.masters.color.create._head')
     </div>
     <div class="l-edit__body">
       <div class="wrapper u-max--560">
@@ -62,7 +62,7 @@
                                                 <input type="color" id="color_palet" name="color_palet" placeholder="" value="">
                                               </div>
                                               <div class="p-inputColor__code">
-                                                <input type="text" id="color_code" name="color_code" placeholder="#FFD3D3" value="#FFD3D3">
+                                                <input type="text" id="color_code" name="color_code" placeholder="例）#ffffff" value="">
                                               </div>
                                             </div>
                                           </div>
@@ -73,7 +73,7 @@
                                                 <input type="color" id="color_palet" name="color_palet" placeholder="" value="">
                                               </div>
                                               <div class="p-inputColor__code">
-                                                <input type="text" id="color_code" name="color_code" placeholder="#FFD3D3" value="#FFD3D3">
+                                                <input type="text" id="color_code" name="color_code" placeholder="例）#ffffff" value="">
                                               </div>
                                             </div>
                                             <div class="p-inputColor">
@@ -81,7 +81,7 @@
                                                 <input type="color" id="color_palet" name="color_palet" placeholder="" value="">
                                               </div>
                                               <div class="p-inputColor__code">
-                                                <input type="text" id="color_code" name="color_code" placeholder="#FFD3D3" value="#FFD3D3">
+                                                <input type="text" id="color_code" name="color_code" placeholder="例）#ffffff" value="">
                                               </div>
                                             </div>
                                           </div>
@@ -123,9 +123,9 @@
                         </div>
                       </div>
                     </div>
-                    <div class="p-edit__main__box__foot">
-                        <button class="c-button__reset">変更をリセット</button>
-                        <button class="c-button">変更を反映する</button>
+                    <div class="p-create__main__box__foot">
+                      <a href="{{route('admin.masters.color')}}" class="c-button">戻る</a>
+                      <button class="c-button">この内容で登録する</button>
                     </div>
                   </form>
                 </div>
@@ -133,17 +133,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="l-edit__foot">
-          <div class="p-edit__foot">
-            <div class="wrapper">
-              <div class="container">
-                <div class="inner" style="text-align: right;">
-                  <button class="c-button">変更内容を保存する</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
               <h2 class="p-index__head__title">マスタ管理</h2>
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
-                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">製品を新規追加</div>
+                  <a href="{{route('admin.masters.product.create')}}" class="c-button__2">製品を新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">製品情報CSV入力</a>
                   <a href="" class="c-button__icon__line c-button__icon--export">製品情報CSV出力</a>
                 </div>
@@ -63,7 +63,7 @@
                 <tbody>
                   @for ($i = 0; $i < 44; $i++)
                   <!-- 1人 -->
-                  <tr data-href="">
+                  <tr data-href="{{ route('admin.masters.product.detail') }}">
                     <td class="item">
                       COCO BRAKE EX FROM BIRTH ココブレーキEX フロムバース
                     </td>

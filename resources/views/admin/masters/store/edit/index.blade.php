@@ -5,7 +5,7 @@
   <div class="l-edit">
     <div class="l-edit__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.masters.store.detail.edit._head')
+      @include('admin.masters.store.edit._head')
     </div>
     <div class="l-edit__body">
       <div class="wrapper u-max--800">

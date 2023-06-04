@@ -192,6 +192,9 @@
   &__full {
     background: #fff;
     border: 1px solid var(--color_border_1);
+    &--single{
+      border: none;
+    }
 
     &__box{
 
