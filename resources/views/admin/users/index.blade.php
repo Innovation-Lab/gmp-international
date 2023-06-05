@@ -85,7 +85,7 @@
                         {{ data_get($user,'first_product') ? data_get($user,'first_product.mBrand.name') : '' }}<br>
                         {{ data_get($user,'first_product') ? data_get($user,'first_product.name') : '' }}
                         @if($user->other_product_count > 0)
-                          <span class="number">{{ data_get($user,'first_product') ? '+' . data_get($user,'other_product_count') : '' }}</span>
+                          <span class="number">{{ data_get($user,'other_product_count') > 1 ? '+' . data_get($user,'other_product_count') : '' }}</span>
                         @endif
                       </span>
                     </td>

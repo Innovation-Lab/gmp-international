@@ -132,20 +132,21 @@ class User extends Authenticatable
     {
         return $this->salesProducts->count();
     }
-
-     /**
+    
+    /**
+     * @return int
      * その他の登録製品
      */
-    public function getOtherProductCountAttribute()
+    public function getOtherProductCountAttribute(): int
     {
         return $this->salesProducts->count() -1;
     }
-
+    
     /**
-     * @return string
+     * @return array|mixed
      * 各ユーザーが最初に登録した製品
      */
-    public function getFirstProductAttribute()
+    public function getFirstProductAttribute(): mixed
     {
         $sales_product = $this->salesProducts
             ->sortBy('created_at')
