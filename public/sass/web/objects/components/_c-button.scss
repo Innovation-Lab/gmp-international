@@ -32,19 +32,13 @@
   &:hover {
     background-color: var(--color_primary_dark);
   }
-  // &[disabled] {
-  //   color: #333;
-  //   background-color: #eee;
-  //   border-color: #eee;
-  //   pointer-events: none;
-  // }
 
   /* ! --------------------------------------------------
   　Secondary
   -------------------------------------------------- */
   &__2 {
     @extend .c-button !optional;
-    color: var(--color_text_2);
+    color: var(--color_text_1);
     background-color: #fff;
     border-color: var(--color_border_1);
 

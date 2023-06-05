@@ -39,6 +39,12 @@
 @use "admin/layouts/_l-edit.scss";
 
 /* ! --------------------------------------------------
+　Form フォーム
+-------------------------------------------------- */
+// Tab タブ
+@use "admin/form/_tab.scss";
+
+/* ! --------------------------------------------------
 　Components コンポーネント
 -------------------------------------------------- */
 // Status ステータス表示
@@ -76,6 +82,7 @@
 // Detail 詳細ページ
 @use "admin/objects/projects/_p-detail.scss";
 @use "admin/objects/projects/_p-detail-user.scss";
+@use "admin/objects/projects/_p-detail-product.scss";
 
 // Edit 編集ページ
 @use "admin/objects/projects/_p-edit.scss";
@@ -125,6 +132,9 @@
 
 // Flash Message フラッシュメッセージ
 @use "admin/objects/projects/_p-flash.scss";
+
+// Staff Menu 管理者メニュー
+@use "admin/objects/projects/_p-staffMenu.scss";
 
 /* ! ----------
 　Others その他

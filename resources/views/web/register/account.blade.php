@@ -50,7 +50,7 @@
               <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
-                    <p class="c-txt">パスワード<br />(半角英数字6文字以上) <span class="c-txt c-txt--must">必須</span></p>
+                    <p class="c-txt">パスワード<br />(半角英数字6文字〜) <span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data
                    @error('password') p-formList__data--err @enderror

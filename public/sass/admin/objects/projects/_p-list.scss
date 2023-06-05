@@ -6,7 +6,6 @@
 ================================================== */
 .p-list {
   --p-list__border: #EAEBEA;
-
   display: grid;
   grid-auto-rows: auto;
   gap: 12px;
@@ -23,6 +22,7 @@
     gap: 0.125rem;
     padding-top: 12px;
     border-top: 1px solid var(--p-list__border);
+    align-items: baseline;
   }
   &__content {
     display: grid;
@@ -34,7 +34,7 @@
   　Label ラベル
   ---------- */
   &__label {
-    color: var(--color_text_4);
+    color: var(--color_text_3);
     @extend .c-text__sm !optional;
     font-size: 13px;
     display: flex;
@@ -59,12 +59,87 @@
       font-size: 12px
     }
   }
+  .color{
+    padding: 4px 8px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+  }
+  .ball{
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #E0B8AC;
+    margin: 0 4px 0 0;
+    box-shadow: 0 0 1px rgb(0, 0, 0);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
   &__memo {
     &__area {
       max-height: 108px;
       min-height: 108px;
       padding: 8px;
       border: 1px solid #ccc;
+    }
+  }
+  &__data{
+
+  }
+  &__head{
+    margin: 0 0 1.5rem;
+    &--center{
+      margin: 0;
+    }
+  }
+  &__left{
+    width: 200px;
+  }
+  &__img{
+    border: 1px solid #8c8c8c;
+    padding: 40px;
+    &--store{
+      padding: 0;
+    }
+  }
+  &__status{
+    padding: 16px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    &--registered{
+      border: 1px solid var(--color_primary);
+      background-color: #EAF4FF;
+      .status{
+        color: var(--color_primary);
+      }
+    }
+    &--notregistered{
+      border: 1px solid #8c8c8c;
+      background-color: #EAEBEA;
+      .status{
+        color: #8c8c8c;
+      }
+    }
+  }
+  
+  &--product{
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+
+  }
+  &--user{
+    .p-list__item{
+      gap: 3.25rem;
     }
   }
 }

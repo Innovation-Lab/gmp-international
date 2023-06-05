@@ -1,6 +1,6 @@
 <div class="p-create__main__box__head">
   <h3 class="p-create__main__box__head__title">
-  登録製品情報
+  登録製品の追加
   </h3>
 </div>
 @if(Route::current()->getName() == 'admin.users.create-products')
@@ -46,8 +46,8 @@
             <select name="brand" class="select2">
               <option value="" hidden>選択してください</option>
               <option value="product1">COCO PREMIER FROM BIRTH</option>
-              <option value="product2">OCO PREMIER FROM BIRTH 1</option>
-              <option value="product3">OCO PREMIER FROM BIRTH 2</option>
+              <option value="product2">COCO PREMIER FROM BIRTH 1</option>
+              <option value="product3">COCO PREMIER FROM BIRTH 2</option>
             </select>
           </div>
         </div>

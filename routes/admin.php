@@ -48,14 +48,16 @@ Route::group([
             // Route::get('/detail/userEdit', [ProductController::class, 'userEdit'])->name('userEdit');
         });
         
-        // 商品管理
+        // 登録製品管理
         Route::group([
             'namespace' => 'Product',
             'prefix' => 'product',
             'as' => 'products.',
         ], function() {
             Route::get('/', [ProductController::class, 'index'])->name('index');
+            Route::get('/create-products', [UserController::class, 'createProducts'])->name('create-products');
             Route::get('/detail', [ProductController::class, 'detail'])->name('detail');
+            Route::get('/edit', [ProductController::class, 'edit'])->name('edit-products');
         });
         
         // マスタ
@@ -67,15 +69,21 @@ Route::group([
             //ブランドマスタ
             Route::get('/brand', [MasterController::class, 'brand'])->name('brand');
             Route::get('/brand/edit', [MasterController::class, 'brandEdit'])->name('brand.edit');
+            Route::get('/brand/create', [MasterController::class, 'brandCreate'])->name('brand.create');
             //製品マスタ
             Route::get('/product', [MasterController::class, 'product'])->name('product');
+            Route::get('/product/detail', [MasterController::class, 'productDetail'])->name('product.detail');
             Route::get('/product/edit', [MasterController::class, 'productEdit'])->name('product.edit');
+            Route::get('/product/create', [MasterController::class, 'productCreate'])->name('product.create');
             //店舗マスタ
             Route::get('/store', [MasterController::class, 'store'])->name('store');
             Route::get('/store/edit', [MasterController::class, 'storeEdit'])->name('store.edit');
+            Route::get('/store/detail', [MasterController::class, 'storeDetail'])->name('store.detail');
+            Route::get('/store/create', [MasterController::class, 'storeCreate'])->name('store.create');
             //カラーマスタ
             Route::get('/color', [MasterController::class, 'color'])->name('color');
             Route::get('/color/edit', [MasterController::class, 'colorEdit'])->name('color.edit');
+            Route::get('/color/create', [MasterController::class, 'colorCreate'])->name('color.create');
         });
         
         // アカウント
@@ -85,6 +93,8 @@ Route::group([
             'as' => 'staffs.',
         ], function() {
             Route::get('/', [AdminController::class, 'index'])->name('index');
+            Route::get('/create', [AdminController::class, 'create'])->name('create');
+            Route::get('/edit', [AdminController::class, 'edit'])->name('edit');
         });
     });
 

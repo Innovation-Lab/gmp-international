@@ -24,4 +24,13 @@ class AdminController extends Controller
             'admins' => Admin::all()
         ]);
     }
+
+    public function create(): View
+    {
+        return view('admin.staffs.create.index');
+    }
+    public function edit(): View
+    {
+        return view('admin.staffs.edit.index');
+    }
 }

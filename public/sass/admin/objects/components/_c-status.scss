@@ -24,7 +24,7 @@
 　Status ステータス表示
 ================================================== */
 .c-status {
-  font: global.font(700, 12px, 1);
+  font: global.font(500, 12px, 1);
   display: inline-flex;
   height: 1.5rem;
   align-items: center;
@@ -63,13 +63,13 @@
     ---------- */
     auth-admin: (
       管理者,
-      --color_plan3,
+      --color_primary,
       --color_plan3_background,
     ),
     auth-general: (
       一般,
-      --color_plan4,
-      --color_plan4_background,
+      --gray-2,
+      --gray-background2,
     ),
   );
   @each $key, $val in $status {
@@ -81,5 +81,16 @@
         content: "#{nth($val, 1)}";
       }
     }
+  }
+  /* ! ----------
+  　権限（個別ステータス）
+  ---------- */
+  &__auth-admin,
+  &__auth-general {
+    min-width: 70px;
+    height: 2rem;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 0.25rem;
   }
 }

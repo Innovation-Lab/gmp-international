@@ -15,7 +15,7 @@
   &__image {
     img {
       object-fit: cover;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
 
       // 非表示
       .is-hide & {
@@ -142,12 +142,31 @@
         @extend .c-text__md !optional;
         span {
           @extend .c-text__xs !optional;
-          color: var(--color_text_2);
+          color: var(--color_text_3);
         }
         > * + * {
           margin: 0.5em 0 0;
         }
       }
+    }
+  }
+}
+/* ! ==================================================
+　Profile ラップ
+================================================== */
+.p-profile {
+  &Wrap {
+    height: 6rem;
+    display: grid;
+    place-items: center;
+    border-top: 1px solid var(--color_border_1);
+    padding: 0 1rem;
+    cursor: pointer;
+    &.active {
+      background-color: #EAF4FF;
+    }
+    &:hover {
+      background-color: var(--color_background_3);
     }
   }
 }

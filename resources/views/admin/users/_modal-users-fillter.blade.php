@@ -46,7 +46,7 @@
                     メールアドレス
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::email('email', null, ['placeholder' => '例）gmp-international@sample.com']) !!}
+                    {!! Form::email('email', null, ['placeholder' => '例）sample@example.com']) !!}
                   </div>
                 </div>
               </div>

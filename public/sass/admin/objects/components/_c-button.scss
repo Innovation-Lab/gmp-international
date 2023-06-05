@@ -148,8 +148,9 @@
     }
   }
   &Wrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    align-items: center;
+    // grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 6px;
     grid-row-gap: 6px;
     &--dashboard{

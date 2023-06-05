@@ -1,71 +1,62 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', 'ブランド情報の編集')
 @section('class', 'body_edit')
 @section('content')
-<div class="p-detail">
-  <div class="l-detail">
-    <div class="l-detail__head">
+<div class="p-edit">
+  <div class="l-edit">
+    <div class="l-edit__head">
       {{-- 詳細ヘッド --}}
       @include('admin.masters.brand.edit._head')
     </div>
-    <div class="l-detail__body single">
-      <div class="wrapper">
+    <div class="l-edit__body">
+      <div class="wrapper u-max--560">
         <div class="container">
-          <div class="l-detail__body__inner">
+          <div class="l-edit__body__inner single">
             {{-- メイン --}}
-            <div class="l-detail__main">
-              {{-- 編集エリア --}}
-              <form action="" class="p-form">
-                <div class="p-edit">
-                  <div class="p-edit__main" style="max-width: 520px;">
-                    {{-- -------------------- 編集項目 -------------------- --}}
-                    <div class="p-edit__item" id="edit_1" style="display: block;">
-                      <div class="p-edit__body">
-                        <div class="l-grid__1">
-                          <div class="l-grid__item">
-                            <ul class="p-formList" style="max-width: 320px;">
-                              <li class="p-formList__item">
-                                <div class="p-formList__content">
-                                  <div class="p-formList__label">
-                                    ブランドロゴ
-                                  </div>
-                                  <div class="p-formList__data">
-                                    <input type="file" id="brand_logo" name="brand_logo" value="">
-                                    <label for="brand_logo" class="logo">
-                                      <img src="{{asset('img/admin/brand/airbuggy.svg')}}">
-                                    </label>
-                                  </div>
+            <div class="l-edit__main">
+              <div class="p-edit__main">
+                {{-- ---------- ボックス（メインエリア） ---------- --}}
+                <div class="p-edit__main__box">
+                  <div class="p-edit__main__box__wrapper">
+                    {{-- フォーム --}}
+                    <form action="" class="p-form min">
+                      <div class="l-grid__1">
+                        <div class="l-grid__item">
+                          <ul class="p-formList u-max--320">
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  ブランドロゴ
                                 </div>
-                              </li>
-                              <li class="p-formList__item">
-                                <div class="p-formList__content">
-                                  <div class="p-formList__label">
-                                    ブランド名
-                                  </div>
-                                  <div class="p-formList__data">
-                                    <input type="text" id="brand_name" name="brand_name" placeholder="AIRBUGGY" value="AIRBUGGY">
-                                  </div>
+                                <div class="p-formList__data">
+                                  <input type="file" id="brand_logo" name="brand_logo" value="">
+                                  <label for="brand_logo" class="logo">
+                                    <img src="{{asset('img/admin/brand/airbuggy.svg')}}">
+                                  </label>
                                 </div>
-                              </li>
-                            </ul>
-                          </div>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  ブランド名
+                                </div>
+                                <div class="p-formList__data u-max--240">
+                                  <input type="text" id="brand_name" name="brand_name" placeholder="AIRBUGGY" value="AIRBUGGY">
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                    </div>
+                    </form>
+                  </div>
+                  <div class="p-edit__main__box__foot">
+                    <button class="c-button__reset">変更をリセット</button>
+                    <button class="c-button">変更を反映する</button>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="l-detail__foot">
-      <div class="p-detail__foot">
-        <div class="wrapper">
-          <div class="container">
-            <div class="inner" style="text-align: right;">
-              <button class="c-button">変更内容を保存する</button>
+              </div>
             </div>
           </div>
         </div>

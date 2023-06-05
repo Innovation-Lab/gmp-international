@@ -1,0 +1,51 @@
+/* ------------------------------
+ *
+ * tab
+ * タブ
+ *
+ ------------------------------ */
+ .f-tab {
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  padding: 2px;
+  border: 1px solid var(--gray-2);
+  border-radius: 4px;
+  // ラジオ
+  label:has(input[type="radio"]) {
+    color: var(--gray-2);
+    text-align: center;
+    border-color: transparent;
+    background-image: none;
+    padding-block: 5px;
+    padding-inline: 5px;
+  }
+  label:has(input[type="radio"]:checked) {
+    color: var(--color_primary);
+    border-color: var( --color_plan3_background);
+    background-color: var( --color_plan3_background);
+    z-index: 1;
+  }
+  label {
+    flex: auto;
+    width: auto;
+    position: relative;
+    & {
+      border-radius: 4px !important;
+    }
+    // &:first-of-type {
+    //   border-top-left-radius:4px !important;
+    //   border-bottom-left-radius: 4px !important;
+    // }
+    // &:last-of-type {
+    //   border-top-right-radius: 4px !important;
+    //   border-bottom-right-radius: 4px !important;
+    // }
+  }
+  & > * + * {
+    margin-left: -1px;
+  }
+  & + & {
+    margin: 4px 0 0;
+  }
+}

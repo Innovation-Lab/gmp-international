@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', '店舗マスタ')
 @section('content')
 <div class="p-index">
   <div class="l-index l-index--gray">
@@ -11,7 +11,7 @@
               <h2 class="p-index__head__title">マスタ管理</h2>
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
-                  <div class="c-button__2" data-micromodal-trigger="modal-users-create">店舗を新規追加</div>
+                  <a href="{{route('admin.masters.store.create')}}" class="c-button__2">店舗を新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">店舗情報CSV入力</a>
                   <a href="" class="c-button__icon__line c-button__icon--export">店舗情報CSV出力</a>
                 </div>
@@ -63,7 +63,7 @@
                 <tbody>
                   @for ($i = 0; $i < 8; $i++)
                   <!-- 1人 -->
-                  <tr data-href="">
+                  <tr data-href="{{ route('admin.masters.store.detail') }}">
                     <td class="item">
                       エアバギー代々木公園本店
                     </td>

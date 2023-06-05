@@ -139,8 +139,6 @@
     </div>
   </div>
 </div>
-{{-- ユーザー新規追加 --}}
-@include('admin.users._modal-users-fillter')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

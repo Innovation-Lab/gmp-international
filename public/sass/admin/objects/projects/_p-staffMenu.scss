@@ -1,0 +1,39 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Staff Menu スタッフメニュー
+================================================== */
+.p-staffMenu {
+  ul {
+    .p-staffMenu__item {
+      background-color: #fff;
+      border-top: 1px solid var(--gray-1);
+      border-bottom: 1px solid var(--gray-1);
+      display: grid;
+      place-items: center;
+      & + li {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+      a {
+        @extend .c-button !optional;
+        width: 100%;
+        padding: 1rem;
+        height: auto;
+        background-color: transparent;
+        &:hover {
+          background-color: var(--gray-background1);
+        }
+        &.staff {
+          color: #000;
+        }
+        &.logout {
+          color: var(--gray-2);
+        }
+      }
+    }
+  }
+}

@@ -60,6 +60,14 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2.5rem;
   }
+  &__4 {
+    @extend .l-grid !optional;
+    grid-template-columns: 1fr 1fr ;
+    gap: 1rem;
+    .p-formList__data{
+      margin-top: 0;
+    }
+  }
 
   /* ! ----------
   　分割数 XL
