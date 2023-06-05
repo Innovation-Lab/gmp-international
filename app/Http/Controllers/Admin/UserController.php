@@ -10,20 +10,42 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\MBrand;
+use App\Models\MProduct;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Carbon;
 
 class UserController extends Controller
 {
+    /**
+     * @var UserRepositoryInterface
+     */
+    private UserRepositoryInterface $userRepository;
+
     /**
      * ユーザー一覧
      *
      * @param Request $request
      * @return Application|Factory|View
      */
+
+    /**
+     * @param UserRepositoryInterface $userRepository
+     */
+
+     public function __construct(
+        UserRepositoryInterface $userRepository,
+    ) {
+        $this->userRepository = $userRepository;
+    }
+
     public function index(Request $request): View|Factory|Application
     {
+
         return view('admin.users.index', [
-            'users' => User::all()
+            'users' => $this->userRepository->search($request)->orderByDesc('id')->paginate(20),
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
         ]);
     }
     

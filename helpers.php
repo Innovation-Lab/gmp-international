@@ -114,3 +114,16 @@ function formatYmdSlash($date): ?string
     
     return null;
 }
+
+/**
+ * @param $date
+ * @return string|null
+ */
+function formatHiSlash($date): ?string
+{
+    if ($date) {
+        return date('H:i', strtotime($date));
+    }
+    
+    return null;
+}

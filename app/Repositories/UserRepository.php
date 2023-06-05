@@ -25,9 +25,17 @@ class UserRepository implements UserRepositoryInterface
         $this->sendMailService = $sendMailService;
     }
     
-    public function search(Request $request)
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function search(Request $request): mixed
     {
-
+        return User::query()
+            ->filter($request)
+            ->keyword($request)
+            ->whereNotNull('password')
+            ->whereNull('deleted_at');
     }
 
     public function store(User $user, Request $request)

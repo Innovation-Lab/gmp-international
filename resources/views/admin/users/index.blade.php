@@ -64,32 +64,38 @@
                   </th>
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 30; $i++)
-                  <!-- 1人 -->
+                @foreach($users as $user)
                   <tr data-href="{{ route('admin.users.detail') }}">
                     <td class="item">
-                      山田 太郎
-                      <span>ヤマダ タロウ</span>
+                      {{ data_get($user, 'full_name') }}
+                      <span>{{ data_get($user, 'full_name_kana') }}</span>
                     </td>
                     <td class="item">
-                      090-0001-0002
-                      <span>user@sample.com</span>
+                      {{ data_get($user, 'formatted_tel') }}
+                      <span>{{ data_get($user, 'email') }}</span>
                     </td>
                     <td class="item">
-                      <span>〒123-4567</span>
-                      東京都 千代田区 紀尾井町1-1-1 紀尾井町ビル16F
+                      <span>〒{{ format_zip_code(data_get($user, 'zip_code')) }}</span>
+                      {{ data_get($user, 'full_address') }}
                     </td>
                     <td class="item">
-                      <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">AIRBUGGY<br>COCO PREMIER FROM BIRTH<span class="number">+3</span></span>
+                      @if(count($user->salesProducts) > 0)
+                        <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">
+                      @endif
+                        {{ data_get($user,'first_product') ? data_get($user,'first_product.mBrand.name') : '' }}<br>
+                        {{ data_get($user,'first_product') ? data_get($user,'first_product.name') : '' }}
+                        @if($user->other_product_count > 0)
+                          <span class="number">{{ data_get($user,'first_product') ? '+' . data_get($user,'other_product_count') : '' }}</span>
+                        @endif
+                      </span>
                     </td>
                     <td class="item">
                       <span>
-                        2023/04/04<br>
-                        10:12
+                        {{ formatYmdSlash(data_get($user, 'created_at')) }}<br>{{ formatHiSlash(data_get($user, 'created_at')) }}
                       </span>
                     </td>
                   </tr>
-                  @endfor
+                @endforeach
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
@@ -123,7 +129,9 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              @include('admin.components._pagination')
+              @include('admin.components._pagination', [
+                  'paginate' => $users
+              ])
             </div>
           </div>
         </div>

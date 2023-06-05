@@ -9,7 +9,7 @@
       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
       <main class="modal__content" id="modal-1-content">
         {{-- フォーム --}}
-        {!! Form::open(['class' => 'p-form']) !!}
+        {!! Form::open(['method' => 'GET', 'route' => 'admin.users.index', 'class' => 'p-form', 'id' => 'submitSearchForm']) !!}
           <ul class="p-formList u-gap--16">
             <li class="p-formList__item">
               <div class="l-grid__2 l-grid__gap3">
@@ -18,7 +18,7 @@
                     名前
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::text('name', '', ['placeholder' => '例）小山浩行']) !!}
+                    {!! Form::text('name', null, ['placeholder' => '例）山田太郎']) !!}
                   </div>
                 </div>
                 <div class="p-formList__content">
@@ -26,7 +26,7 @@
                     フリガナ
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::text('kana', '', ['placeholder' => '例）コヤマヒロユキ']) !!}
+                    {!! Form::text('kana', null, ['placeholder' => '例）ヤマダタロウ']) !!}
                   </div>
                 </div>
               </div>
@@ -46,7 +46,7 @@
                     メールアドレス
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::email('email', null, ['placeholder' => '例）h.koyama@soushin-lab.co.jp']) !!}
+                    {!! Form::email('email', null, ['placeholder' => '例）gmp-international@sample.com']) !!}
                   </div>
                 </div>
               </div>
@@ -74,9 +74,9 @@
                     購入日
                   </div>
                   <div class="p-formList__data w-348">
-                    {!! Form::date('purchase_date1', '', ['placeholder' => '0000/00/00']) !!}
+                    {!! Form::date('purchase_date_form', '', ['placeholder' => '0000/00/00']) !!}
                     <span class="unit">〜</span>
-                    {!! Form::tel('purchase_date2', '', ['placeholder' => '0000/00/00']) !!}
+                    {!! Form::date('purchase_date_to', '', ['placeholder' => '0000/00/00']) !!}
                   </div>
                 </div>
               </div>
@@ -88,11 +88,11 @@
                     ブランド名
                   </div>
                   <div class="p-formList__data w-348">
-                    <select name="brand" class="select2">
-                      <option value="" hidden>選択してください</option>
-                      <option value="brand1">AIRBUGGY</option>
-                      <option value="brand2">AIRBUGGY1</option>
-                      <option value="brand3">AIRBUGGY2</option>
+                    <select name="m_brand_id" class="select2">
+                      <option value="">選択してください</option>
+                      @foreach($brands as $k => $v)
+                        <option value="{{ $k }}" {{ old('m_brand_id')}}>{{ $v }}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
@@ -105,11 +105,11 @@
                     製品名
                   </div>
                   <div class="p-formList__data w-348">
-                    <select name="brand" class="select2">
-                      <option value="" hidden>選択してください</option>
-                      <option value="product1">COCO PREMIER FROM BIRTH</option>
-                      <option value="product2">OCO PREMIER FROM BIRTH 1</option>
-                      <option value="product3">OCO PREMIER FROM BIRTH 2</option>
+                    <select name="m_product_id" class="select2">
+                      <option value="" >選択してください</option>
+                      @foreach($products as $k => $v)
+                        <option value="{{ $k }}" {{ old('m_product_id')}}>{{ $v }}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
@@ -123,10 +123,10 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="radio">
-                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
-                      <label for="inq1-2">同意する</label>
-                      <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
-                      <label for="inq2-2">同意しない</label>
+                      <input type="radio" id="inq1-2" name="is_dm" value="1">
+                      <label for="inq1-2">受け取る</label>
+                      <input type="radio" id="inq2-2" name="is_dm" value="0">
+                      <label for="inq2-2">受け取らない</label>
                     </div>
                   </div>
                 </div>
@@ -137,7 +137,7 @@
       </main>
       <footer class="modal__footer">
         <button class="modal__btn" data-micromodal-close>戻る</button>
-        <button  class="modal__btn-primary">絞り込む</button>
+        <button type="submit" form="submitSearchForm" class="modal__btn-primary">絞り込む</button>
       </footer>
     </div>
   </div>
