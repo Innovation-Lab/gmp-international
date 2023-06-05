@@ -12,7 +12,7 @@ class ProductRegisterComplete extends Mailable
     
     use Queueable, SerializesModels;
     
-    protected string $title = '新規製品の登録を受け付けました';
+    protected string $title = '製品の登録を受け付けました';
     private User $user;
     
     /**

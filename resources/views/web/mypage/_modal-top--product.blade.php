@@ -145,7 +145,7 @@
                           <p class="c-txt">「上記以外の店舗」を選択した方はこちら</p>
                         </div>
                         <div class="p-formList__data">
-                          <input placeholder="例）赤" class="required" name="other_color_name" type="text" value="{{ old('other_color_name', data_get($sales_product, 'other_color_name')) }}">
+                          <input placeholder="例）赤" class="required" name="other_shop_name" type="text" value="{{ old('other_shop_name', data_get($sales_product, 'other_shop_name')) }}">
                         </div>
                       </div>
                     </div>

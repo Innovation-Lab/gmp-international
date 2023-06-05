@@ -210,7 +210,7 @@
                         font-weight: bold;
                         background: #27305A;
                         ">
-              <b style="padding: 0 10px 0 0; font-size: 18px;">[GMPインターナショナル]　新規製品登録のお知らせ</b>
+              <b style="padding: 0 10px 0 0; font-size: 18px;">[GMPインターナショナル]　製品登録のお知らせ</b>
             </font>
           </td>
         </tr>
