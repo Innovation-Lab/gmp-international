@@ -82,7 +82,7 @@
                     </td>
                     <td class="item">
                       <!-- <div class="u-align--both u-align--nowrap"> -->
-                        <a data-href="{{ route('admin.users.detail') }}" style="text-decoration: underline; color: var(--color_primary);">山田 太郎</a>
+                        <a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>
                       <!-- </div> -->
                     </td>
                     <td class="item">
@@ -137,8 +137,6 @@
     </div>
   </div>
 </div>
-{{-- ユーザー新規追加 --}}
-@include('admin.users._modal-users-create')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

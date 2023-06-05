@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', 'ブランドを新規追加')
 @section('content')
 <div class="p-create">
   <div class="l-create">
@@ -30,7 +30,7 @@
                                 <div class="p-formList__data">
                                   <input type="file" id="brand_logo" name="brand_logo" value="">
                                   <label for="brand_logo" class="logo">
-                                    <img src="{{asset('img/admin/brand/airbuggy.svg')}}">
+                                    <!-- <img src="{{asset('img/admin/brand/airbuggy.svg')}}"> -->
                                   </label>
                                 </div>
                               </div>

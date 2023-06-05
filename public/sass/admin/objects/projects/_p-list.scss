@@ -6,7 +6,6 @@
 ================================================== */
 .p-list {
   --p-list__border: #EAEBEA;
-
   display: grid;
   grid-auto-rows: auto;
   gap: 12px;
@@ -23,6 +22,7 @@
     gap: 0.125rem;
     padding-top: 12px;
     border-top: 1px solid var(--p-list__border);
+    align-items: baseline;
   }
   &__content {
     display: grid;
@@ -34,7 +34,7 @@
   　Label ラベル
   ---------- */
   &__label {
-    color: var(--color_text_4);
+    color: var(--color_text_3);
     @extend .c-text__sm !optional;
     font-size: 13px;
     display: flex;
@@ -58,6 +58,29 @@
     span {
       font-size: 12px
     }
+  }
+  .color{
+    padding: 4px 8px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+  }
+  .ball{
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #E0B8AC;
+    margin: 0 4px 0 0;
+    box-shadow: 0 0 1px rgb(0, 0, 0);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
   }
   &__memo {
     &__area {

@@ -18,7 +18,7 @@
                     名前
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::text('name', '', ['placeholder' => '例）小山浩行']) !!}
+                    {!! Form::text('name', '', ['placeholder' => '例）山田太郎']) !!}
                   </div>
                 </div>
                 <div class="p-formList__content">
@@ -26,7 +26,7 @@
                     フリガナ
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::text('kana', '', ['placeholder' => '例）コヤマヒロユキ']) !!}
+                    {!! Form::text('kana', '', ['placeholder' => '例）ヤマダタロウ']) !!}
                   </div>
                 </div>
               </div>
@@ -46,7 +46,7 @@
                     メールアドレス
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::email('email', null, ['placeholder' => '例）h.koyama@soushin-lab.co.jp']) !!}
+                    {!! Form::email('email', null, ['placeholder' => '例）sample@example.com']) !!}
                   </div>
                 </div>
               </div>

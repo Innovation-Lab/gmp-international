@@ -132,7 +132,7 @@
                                       <div class="p-formList__data">
                                         {!! Form::time('prefectures', '10:00', ['placeholder' => '例）10:00']) !!}
                                       </div>
-                                      <div class="p-formList__data">
+                                      <div class="p-formList__data store">
                                         {!! Form::time('prefectures', '19:00', ['placeholder' => '例）19:00']) !!}
                                       </div>
                                     </div>
@@ -161,7 +161,7 @@
                                       <div class="p-formList__data">
                                         {!! Form::time('prefectures', '10:00', ['placeholder' => '例）11:00']) !!}
                                       </div>
-                                      <div class="p-formList__data">
+                                      <div class="p-formList__data store">
                                         {!! Form::time('prefectures', '20:00', ['placeholder' => '例）20:00']) !!}
                                       </div>
                                     </div>

@@ -178,7 +178,6 @@ input[type="file"] + label {
   &:hover::after {
     opacity: 1;
   }
-
   // 画像
   img {
     width: 100%;
@@ -189,6 +188,7 @@ input[type="file"] + label {
   &.logo{
     aspect-ratio: 1/0.65;
     max-width: 200px;
+    padding: 16px;
     &:before{
       opacity: .8;
       background: #1F266F;
@@ -196,6 +196,58 @@ input[type="file"] + label {
     &:after{
       content: 'ロゴを選択';
       opacity: 1;
+    }
+    img{
+      object-fit: contain;
+    }
+  }
+  //店舗
+  &.store{
+    aspect-ratio: 1/0.65;
+    max-width: 200px;
+    &:before{
+      opacity: .8;
+      background: #1F266F;
+    }
+    &:after{
+      content: '店舗画像を選択';
+      opacity: 1;
+      white-space: nowrap;
+    }
+    img{
+      object-fit: contain;
+    }
+  }
+  //製品
+  &.product{
+    aspect-ratio: 1/0.65;
+    max-width: 200px;
+    padding: 16px;
+    &:before{
+      opacity: .8;
+      background: #1F266F;
+    }
+    &:after{
+      content: '製品画像を選択';
+      opacity: 1;
+      white-space: nowrap;
+    }
+    img{
+      object-fit: contain;
+    }
+  }
+  //カラーパターン
+  &.colorPattern{
+    aspect-ratio: 1/0.65;
+    max-width: 200px;
+    &:before{
+      opacity: .8;
+      background: #1F266F;
+    }
+    &:after{
+      content: 'パターンを選択';
+      opacity: 1;
+      white-space: nowrap;
     }
     img{
       object-fit: contain;
@@ -233,7 +285,9 @@ input[type="file"] + label {
   }
   //カラーパターン
   &.colorPattern{
-    width: 56px;
+    // width: 56px;
+    height: 60px;
+    width: 130px;
   }
 }
 

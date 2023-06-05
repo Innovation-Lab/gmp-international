@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', '登録製品情報')
 @section('content')
 <div class="p-edit">
   <div class="l-edit">

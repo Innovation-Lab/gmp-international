@@ -89,7 +89,7 @@
                                           <div class="p-formList__colorSet__type__item">
                                             <input type="file" id="color_pattern" name="color_pattern" value="color_pattern">
                                             <label for="color_pattern" class="colorPattern">
-                                              <img src="{{asset('img/admin/brand/airbuggy.svg')}}">
+                                              <!-- <img src="{{asset('img/admin/brand/airbuggy.svg')}}"> -->
                                             </label>
                                           </div>                                 
                                         </div>
@@ -124,7 +124,7 @@
                       </div>
                     </div>
                     <div class="p-create__main__box__foot">
-                      <a href="{{route('admin.masters.color')}}" class="c-button">戻る</a>
+                      <a href="{{route('admin.masters.color')}}" class="c-button__reset">戻る</a>
                       <button class="c-button">この内容で登録する</button>
                     </div>
                   </form>
@@ -137,8 +137,6 @@
     </div>
   </div>
 </div>
-{{-- ユーザー写真 --}}
-@include('admin.users._modal-users-photo')
 <script>
     // 色を選択するたびに、色を表示するイベントを登録（changeイベント）
     document.getElementById('color_palet').addEventListener("input", showColor);

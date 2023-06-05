@@ -103,13 +103,23 @@
       border-bottom: 1px solid var(--color_border_1);
       background-color: #fff;
       > span {
-        color: var(--color_text_2);
+        color: var(--color_text_3);
         @extend .c-text__xs !optional;
         display: block;
       }
       .c-colorBall{
         margin: auto;
         display: block;
+      }
+      .user-link{
+        text-decoration: underline;
+        font-weight: 700;
+        line-height: 20px;
+        text-decoration: underline; 
+        color: var(--color_primary);
+        &a:hover {
+          color: var(--color_primary_dark);
+        }        
       }
 
       // 登録製品
@@ -118,10 +128,10 @@
         background-size: contain;
         background-position: left;
         padding-left: 36px;
+        color: var(--color_text_1);
       }
       .number {
         background-color: #E0E2F3;
-        // color: var(--color_primary);
         border-radius: 2px;
         padding: 0 2px;
         font-size: 11px;
@@ -181,7 +191,7 @@
       bottom: 0;
       transform: translateY(4px);
       .data {
-        color: var(--color_text_2);
+        color: var(--color_text_3);
         display: flex;
         flex-direction: column;
         height: 2rem;

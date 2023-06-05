@@ -137,8 +137,6 @@
     </div>
   </div>
 </div>
-{{-- ユーザー新規追加 --}}
-@include('users._modal-users-create')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

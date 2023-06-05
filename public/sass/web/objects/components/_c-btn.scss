@@ -5,13 +5,8 @@
 　Button ボタン
 ================================================== */
 .c-btn {
-    // --black: hsl(349 87% 41%);
-    // &:hover{
-    //     background: #000000c4;
-    // }
     color: #fff;
     background: #000;
-    // background: var( --black);
     font-size: 12px;
     font-weight: 500;
     text-align: center;
@@ -32,7 +27,6 @@
         background: #fff;
         color: #C30E2E;
         font-size: 14px;
-        // line-height: 14px;
         font-weight: 500;
         padding: 4px 24px;
         border-radius: 30px;

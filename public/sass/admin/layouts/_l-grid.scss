@@ -64,6 +64,9 @@
     @extend .l-grid !optional;
     grid-template-columns: 1fr 1fr ;
     gap: 1rem;
+    .p-formList__data{
+      margin-top: 0;
+    }
   }
 
   /* ! ----------

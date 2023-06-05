@@ -72,8 +72,8 @@
                       <span>ヤマダ タロウ</span>
                     </td>
                     <td class="item">
-                      090-0001-0002
-                      <span>user@sample.com</span>
+                      090-0001-0002<br>
+                      user@sample.com
                     </td>
                     <td class="item">
                       <span>〒123-4567</span>
@@ -83,10 +83,8 @@
                       <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">AIRBUGGY<br>COCO PREMIER FROM BIRTH<span class="number">+3</span></span>
                     </td>
                     <td class="item">
-                      <span>
-                        2023/04/04<br>
-                        10:12
-                      </span>
+                      2023/04/04<br>
+                      10:12
                     </td>
                   </tr>
                   @endfor
@@ -131,8 +129,6 @@
     </div>
   </div>
 </div>
-{{-- ユーザー新規追加 --}}
-@include('admin.users._modal-users-fillter')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

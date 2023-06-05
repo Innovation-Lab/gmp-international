@@ -89,7 +89,7 @@
                                           <div class="p-formList__colorSet__type__item">
                                             <input type="file" id="color_pattern" name="color_pattern" value="color_pattern">
                                             <label for="color_pattern" class="colorPattern">
-                                              <img src="{{asset('img/admin/brand/airbuggy.svg')}}">
+                                              <!-- <img src="{{asset('img/admin/brand/airbuggy.svg')}}"> -->
                                             </label>
                                           </div>                                 
                                         </div>

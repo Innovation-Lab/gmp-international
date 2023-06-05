@@ -66,8 +66,8 @@
                         <img src="{{asset('/img/admin/sample/profile.png')}}" width="40" height="40" alt="">
                       </td>
                       <td class="item">
-                        小山　浩行
-                        <span>コヤマ　ヒロユキ</span>
+                        山田　太郎
+                        <span>ヤマダ　タロウ</span>
                       </td>
                       <td class="item">
                         エアバギー代官山店
@@ -79,7 +79,7 @@
                         <!-- <div class="c-status__auth-general"></div> -->
                       </td>
                       <td class="item">
-                        h.koyama@soushin-lab.co.jp
+                        sample@example.com
                       </td>
                       <td class="item">
                         2023/04/04<br>

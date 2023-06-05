@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', '店舗マスタ')
 @section('content')
 <div class="p-index">
   <div class="l-index l-index--gray">

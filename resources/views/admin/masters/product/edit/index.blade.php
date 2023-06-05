@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="p-formList__data">
                                   <input type="file" id="brand_logo" name="brand_logo" value="">
-                                  <label for="brand_logo" class="logo">
+                                  <label for="brand_logo" class="product">
                                   <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="">
                                   </label>
                                 </div>

@@ -33,7 +33,6 @@
                           @foreach([
                             'ブランド名' => 'AIRBUGGY',
                             '製品名' => 'COCO BRAKE EX FROM BIRTH',
-                            'カラー登録数' => 'BLOSSOM',
                             ] as $key => $val)
                           <li class="p-list__item">
                             <div class="p-list__label">
@@ -43,6 +42,14 @@
                               {!! $val !!}
                             </div>
                             @endforeach
+                          </li>
+                          <li class="p-list__item">
+                            <div class="p-list__label">
+                              カラー登録数
+                            </div>
+                            <div class="p-list__data color">
+                              <div class="ball"></div>ブロッサム
+                            </div>
                           </li>
                         </ul>
                       </div>
