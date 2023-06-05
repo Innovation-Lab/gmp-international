@@ -89,7 +89,7 @@
                           @foreach($colors as $k => $v)
                             <option value="{{ $k }}" {{ old('m_color_id', data_get($sales_product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                           @endforeach
-                          <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other') selected @endif>上記以外のカラー</option>
+                          <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || (empty(data_get($sales_product, 'm_color_id')) && !empty(data_get($sales_product, 'other_color_name')) ) ) selected @endif>上記以外のカラー</option>
                         </select>
                       </div>
                       <!-- 上記以外のカラー選択時のフォーム -->
@@ -111,7 +111,7 @@
                       <div class="p-formList__label p-formList__label--modal">
                         <p class="c-txt">シリアルナンバー</p>
                         <div class="p-formList__guide">
-                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--serial-{{ data_get($sales_product, 'mProduct.serial_guide_type') }}" role="button"></a>
+                          <a class="p-formList__guide__btn" onclick="$('#modal__guide--serial-{{ data_get($sales_product, 'mProduct.serial_guide_type') }}').show()" role="button"></a>
                         </div>
                       </div>
                       <div class="p-formList__data">
@@ -136,7 +136,7 @@
                           @foreach($shops as $k => $v)
                             <option value="{{ $k }}" {{ old('m_shop_id', data_get($sales_product, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                           @endforeach
-                          <option value="other" @if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other') selected @endif>上記以外の店舗</option>
+                          <option value="other" @if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other'|| (empty(data_get($sales_product, 'm_shop_id')) && !empty(data_get($sales_product, 'other_shop_name')) )) selected @endif>上記以外の店舗</option>
                         </select>
                       </div>
                       <!-- 上記以外の店舗選択時のフォーム -->
