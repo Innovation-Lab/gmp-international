@@ -7,6 +7,8 @@
   if(count($errors->get('password')) > 0 || count($errors->get('password_confirmation')) > 0) {
       $javascriptCode = "$(document).ready(function() {
         $('.js-target__change-password').css({'display':'block'})
+        $('#formPassword').prop('required', true);
+        $('#formPasswordConfirm').prop('required', true);
       });";
       echo "<script>{$javascriptCode}</script>";
   }
@@ -46,7 +48,7 @@
                     <p class="c-txt">パスワード <span class="c-txt c-txt--must">必須</span></p>
                   </div> -->
                   <div class="p-formList__data--ac c-txt">
-                    {!! Form::checkbox('change-password', 'value', false, ['id' => 'change-password','onclick' => 'checkChangePassword()']) !!}
+                    {!! Form::checkbox('change-password', '1', false, ['id' => 'change-password','onclick' => 'checkChangePassword()']) !!}
                     {!! Form::label('change-password', 'パスワードを変更する') !!}
                   </div>
                   <div class="split">
@@ -55,9 +57,9 @@
                       @error('password_confirmation') @if($message == 'パスワード(確認用)とパスワードには同じ値を入力してください。') p-formList__data--err @endif @enderror
                     "  style="display: none;">
                       <div class="p-formList__label p-formList__label--pass">
-                        <p class="c-txt">パスワード（半角英数字6〜10文字）<span class="c-txt c-txt--must">必須</span></p>
+                        <p class="c-txt">パスワード（半角英数字6文字以上）<span class="c-txt c-txt--must">必須</span></p>
                       </div>
-                      {!! Form::password('password', ['placeholder' => '例）sample123', 'autocomplete' => 'off']) !!}
+                      {!! Form::password('password', ['placeholder' => '例）sample123', 'autocomplete' => 'off', 'id' => 'formPassword']) !!}
                       @error('password')
                         <p class="c-txt c-txt--err" style="width: 100%">{{ $message }}</p>
                       @enderror
@@ -66,7 +68,7 @@
                       <div class="p-formList__label p-formList__label--pass">
                         <p class="c-txt">パスワード確認用 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
-                      {!! Form::password('password_confirmation', ['placeholder' => 'パスワードを再入力してください']) !!}
+                      {!! Form::password('password_confirmation', ['placeholder' => 'パスワードを再入力してください', 'id' => 'formPasswordConfirm']) !!}
                       @error('password_confirmation')
                         <p class="c-txt c-txt--err" style="width: 100%">{{ $message }}</p>
                       @enderror
@@ -80,8 +82,14 @@
                   radio = document.getElementsByName('change-password')
                   if(radio[0].checked) {
                     $('.js-target__change-password').css({'display':'block'});
+                      $('input[name="password"]').prop('required', true);
+                      $('input[name="password_confirmation"]').prop('required', true);
                   }else{
                     $('.js-target__change-password').css({'display':'none'});
+                      $('input[name="password"]').prop('required', false);
+                      $('input[name="password"]').val('');
+                      $('input[name="password_confirmation"]').prop('required', false);
+                      $('input[name="password_confirmation"]').val('');
                   }
                 }
               </script>

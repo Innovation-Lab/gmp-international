@@ -54,11 +54,8 @@ class SalesProductController extends Controller
      * @param StoreProductRequest $request
      * @return RedirectResponse
      */
-    public function productAdd(storeproductrequest $request): RedirectResponse
+    public function productAdd(StoreProductrequest $request): RedirectResponse
     {
-        $params = $request->all();
-        Session::put('product', $params);
-        
         return redirect()->route('mypage.confirm');
     }
     
