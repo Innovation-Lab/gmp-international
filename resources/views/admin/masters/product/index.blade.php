@@ -118,4 +118,6 @@
     </div>
   </div>
 </div>
+{{-- 製品マスタ絞り込み検索モーダル --}}
+@include('admin.masters.product._modal-products-fillter')
 @endsection

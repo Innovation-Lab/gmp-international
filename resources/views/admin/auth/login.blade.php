@@ -25,7 +25,7 @@
                   <ul class="p-formList">
                     <li class="p-formList__item">
                       <div class="p-formList__content">
-                        <div class="p-formList__data">
+                        <div class="p-formList__data p-formList__data--login">
                           {!! Form::email('email', null, ['placeholder' => 'メールアドレス']) !!}
                           @error('email')
                             <div class="error">{{ $message }}</div>
@@ -35,7 +35,7 @@
                     </li>
                     <li class="p-formList__item">
                       <div class="p-formList__content">
-                        <div class="p-formList__data">
+                        <div class="p-formList__data p-formList__data--login">
                           {!! Form::password('password', ['placeholder' => 'パスワード']) !!}
                           {{-- <div class="error">メールアドレスとパスワードが一致しません</div> --}}
                           @error('password')

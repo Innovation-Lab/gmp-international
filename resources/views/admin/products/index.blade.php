@@ -137,6 +137,8 @@
     </div>
   </div>
 </div>
+{{-- 登録製品管理絞り込み検索モーダル --}}
+@include('admin.products._modal-products-fillter')
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {
