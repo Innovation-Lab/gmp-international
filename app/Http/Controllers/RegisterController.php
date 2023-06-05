@@ -120,25 +120,6 @@ class RegisterController extends Controller
     public function storeInformation(StoreInformationRequest $request): RedirectResponse
     {
         $skip = $request->input('is_skip', '0');
-        $params = $request->all();
-        $account = Session::get('user_info', []);
-
-        session()->put('user_info', [
-            'email' => data_get($account, 'email'),
-            'password' => data_get($account, 'password'),
-            'last_name' => data_get($params, 'last_name'),
-            'first_name' => data_get($params, 'first_name'),
-            'last_name_kana' => data_get($params, 'last_name_kana'),
-            'first_name_kana' => data_get($params, 'first_name_kana'),
-            'zip_code' => data_get($params, 'zip_code'),
-            'prefecture' => data_get($params, 'prefecture'),
-            'address_city' => data_get($params, 'address_city'),
-            'address_block' => data_get($params, 'address_block'),
-            'address_building' => data_get($params, 'address_building'),
-            'tel' => data_get($params, 'tel'),
-            'is_catalog' => data_get($params, 'is_catalog'),
-            'is_dm' => data_get($params, 'is_dm', 0)
-        ]);
         
         return match ($skip) {
             '0' => redirect()->route('register.product'),

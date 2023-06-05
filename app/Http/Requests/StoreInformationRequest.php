@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Session;
 
 class StoreInformationRequest extends FormRequest
 {
@@ -24,6 +25,25 @@ class StoreInformationRequest extends FormRequest
     public function rules()
     {
         $valid = [];
+        $params = $this->request->all();
+        $account = Session::get('user_info', []);
+        session()->put('user_info', [
+            'email' => data_get($account, 'email'),
+            'password' => data_get($account, 'password'),
+            'last_name' => data_get($params, 'last_name'),
+            'first_name' => data_get($params, 'first_name'),
+            'last_name_kana' => data_get($params, 'last_name_kana'),
+            'first_name_kana' => data_get($params, 'first_name_kana'),
+            'zip_code' => data_get($params, 'zip_code'),
+            'prefecture' => data_get($params, 'prefecture'),
+            'address_city' => data_get($params, 'address_city'),
+            'address_block' => data_get($params, 'address_block'),
+            'address_building' => data_get($params, 'address_building'),
+            'tel' => data_get($params, 'tel'),
+            'is_catalog' => data_get($params, 'is_catalog'),
+            'is_dm' => data_get($params, 'is_dm', 0)
+        ]);
+        
         if ($this->request->get('is_skip', 0) != 1) {
             $valid = [
                 'last_name' => 'required|max:40|regex:/^[ぁ-んァ-ヶ一-龯０-９Ａ-Ｚａ-ｚ]+$/u',

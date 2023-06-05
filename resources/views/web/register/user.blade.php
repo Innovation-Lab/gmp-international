@@ -121,9 +121,9 @@
                   </div>
                   <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
                     <div class="c-input c-input--select c-input--prefectures">
-                      <select onchange="changeColor(this)" id="prefecture" name="prefecture" class="p-region">
+                      <select id="prefecture" name="prefecture" class="p-region">
+                        <option value="" hidden>都道府県</option>
                         @foreach($prefectures as $index => $name)
-                          <option value="" hidden>都道府県</option>
                           <option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
                         @endforeach
                       </select>
@@ -176,7 +176,7 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="c-input c-input--radio">
-                      <input type="checkbox" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', data_get($user, 'is_dm', 0)) == 1 ? 'checked' : '' }}>
+                      <input type="checkbox" id="inq1-2" name="is_dm" value="1" {{ config('const.FORM_DM_STATUS')[old('is_dm', data_get($user, 'is_dm', 1))] }}>
                       <label for="inq1-2" style="width: auto;">新着情報、お得情報を受け取る</label>
                     </div>
                   </div>

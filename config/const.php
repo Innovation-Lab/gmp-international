@@ -29,5 +29,11 @@ return
     
     'mail' => [
         'admin' => env('ADMIN_MAIL_TO')
+    ],
+    
+    
+    'FORM_DM_STATUS' => [
+        0 => '',
+        1 => 'checked'
     ]
 ];
