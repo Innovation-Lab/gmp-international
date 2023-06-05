@@ -172,8 +172,12 @@ class User extends Authenticatable
                     $query->where(function ($query) use ($search_word) {
                         $query->where('users.last_name', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.first_name', 'LIKE', '%' . $search_word . '%')
+                            ->whereRaw("CONCAT(users.first_name, ' ', users.last_name) LIKE '%" . $search_word . "%'")
+                            ->orWhereRaw("REPLACE(CONCAT(users.last_name, users.first_name), ' ', '') LIKE ?", ["%{$search_word}%"])
                             ->orWhere('users.last_name_kana', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.first_name_kana', 'LIKE', '%' . $search_word . '%')
+                            ->whereRaw("CONCAT(users.last_name_kana, ' ', users.first_name_kana) LIKE '%" . $search_word . "%'")
+                            ->orWhereRaw("REPLACE(CONCAT(users.last_name_kana, users.first_name_kana), ' ', '') LIKE ?", ["%{$search_word}%"])
                             ->orWhere('users.zip_code', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.prefecture', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.address_city', 'LIKE', '%' . $search_word . '%')
