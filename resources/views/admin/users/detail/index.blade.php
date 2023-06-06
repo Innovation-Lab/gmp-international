@@ -44,7 +44,8 @@
                                 <div class="item">COCO PREMIER FROM BIRTH</div>
                               </div>
                               <div class="p-product__item__other">
-                                <a href="{{route('admin.users.edit-products')}}" class="c-textButton">編集</a>
+                                <!-- <a href="{{route('admin.users.edit-products')}}" class="c-textButton">編集</a> -->
+                                <a href="{{route('admin.users.edit-products')}}" class="c-button">編集</a>
                                 <div class="color">BLOSSOM</div>
                               </div>
                             </div>

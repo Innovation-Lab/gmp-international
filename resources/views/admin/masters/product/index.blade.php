@@ -38,7 +38,7 @@
         <div class="container">
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
-            <div class="p-table">
+            <div class="p-table p-table--product">
               <table>
                 <colgroup>
                   <col width=400>

@@ -15,6 +15,7 @@
         登録製品情報
       </h3>
       <a href="{{route('admin.users.edit-user')}}" class="c-button__2">編集</a>
+      <a href="{{route('admin.users.edit-user')}}" class="c-button">編集</a>
     </div>
     <div class="p-detail__sidebar__box__body">
       {{-- ---------- リスト ---------- --}}

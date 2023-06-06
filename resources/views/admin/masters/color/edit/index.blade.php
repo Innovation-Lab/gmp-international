@@ -36,7 +36,7 @@
                                         <div class="p-formList__colorSet">
                                           <div class="p-formList__colorSet__type">
                                             <div class="radio">
-                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="colorSet_type_single">
+                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="colorSet_type_single" checked>
                                               <label for="colorSet_type_single">1色</label>
                                               <input type="radio" id="colorSet_type_double" name="colorSet_type" value="colorSet_type_double">
                                               <label for="colorSet_type_double">2色</label>
@@ -165,4 +165,24 @@
       eleShowColor.value = color;
     }
 </script>
+
+<script>
+  // カラータイプのラジオボタンが変更された時の処理
+  $('input[name="colorSet_type"]').on('change', function() {
+  var selectedType = $(this).val();
+
+  // 全てのカラータイプの要素を非表示にする
+  $('.p-formList__colorSet__type__item').hide();
+
+  // 選択されたカラータイプに応じて対応する要素を表示する
+  if (selectedType === 'colorSet_type_single') {
+    $('.p-formList__colorSet__type__item:nth-child(1)').show();
+  } else if (selectedType === 'colorSet_type_double') {
+    $('.p-formList__colorSet__type__item:nth-child(2)').show();
+  } else if (selectedType === 'colorSet_type_mix') {
+    $('.p-formList__colorSet__type__item:nth-child(3)').show();
+  }
+});
+</script>
+
 @endsection
