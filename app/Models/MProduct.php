@@ -77,4 +77,13 @@ class MProduct extends Model
 
         return $alphabet_name;
     }
+    
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function isCheckGuide($id): bool
+    {
+        return isset(self::find($id)->serial_guide_type) && self::find($id)->serial_guide_type;
+    }
 }

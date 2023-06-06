@@ -141,9 +141,10 @@
                   <!-- シリアルナンバー -->
                   @php
                     $guide_modal = '#modal__guide--serial-'. data_get($sales_product, 'mProduct.serial_guide_type');
+                    $mProduct = new \App\Models\MProduct();
                   @endphp
                   <li class="p-formList__item js-insert-guide-click-{{ $count }}">
-                    @if (data_get($sales_product, 'product_code'))
+                    @if (data_get($sales_product, 'product_code') || $mProduct->isCheckGuide(data_get($sales_product, 'm_product_id')))
                       <div class="p-formList__content">
                         <div class="p-formList__label p-formList__label--guide">
                           <p class="c-txt">シリアルナンバー</p>
