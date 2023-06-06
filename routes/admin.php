@@ -23,13 +23,10 @@ Route::group([
         Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     });
-     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::group(['middleware' => 'auth:admin'], function () {
         // ダッシュボード
-        /**
-         * todo ダッシュボードページを作成してください。
-         */
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::get('/chartUserRegister', [HomeController::class, 'chartUserRegister']);
         Route::get('/home', [HomeController::class, 'index'])->name('index');

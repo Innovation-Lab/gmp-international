@@ -46,6 +46,7 @@ class UserController extends Controller
             'users' => $this->userRepository->search($request)->orderByDesc('id')->paginate(20),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'request' => $request,
         ]);
     }
     

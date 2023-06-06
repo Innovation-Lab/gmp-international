@@ -18,7 +18,7 @@
                     名前
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::text('name', null, ['placeholder' => '例）山田太郎']) !!}
+                    {!! Form::text('name', $request['name'] ? $request['name'] : '', ['placeholder' => '例）山田太郎']) !!}
                   </div>
                 </div>
                 <div class="p-formList__content">
@@ -26,7 +26,7 @@
                     フリガナ
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::text('kana', null, ['placeholder' => '例）ヤマダタロウ']) !!}
+                    {!! Form::text('kana', $request['kana'] ? $request['kana'] : '', ['placeholder' => '例）ヤマダタロウ']) !!}
                   </div>
                 </div>
               </div>
@@ -38,7 +38,7 @@
                     電話番号
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::tel('tel', '', ['placeholder' => '例）08012345678']) !!}
+                    {!! Form::tel('tel', $request['tel'] ? $request['tel'] : '', ['placeholder' => '例）08012345678']) !!}
                   </div>
                 </div>
                 <div class="p-formList__content">
@@ -46,7 +46,7 @@
                     メールアドレス
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::email('email', null, ['placeholder' => '例）sample@example.com']) !!}
+                    {!! Form::email('email', $request['email'] ? $request['email'] : '', ['placeholder' => '例）sample@example.com']) !!}
                   </div>
                 </div>
               </div>
@@ -74,9 +74,9 @@
                     購入日
                   </div>
                   <div class="p-formList__data w-348">
-                    {!! Form::date('purchase_date_form', '', ['placeholder' => '0000/00/00']) !!}
+                    {!! Form::date('purchase_date_from', $request['purchase_date_from'] ? $request['purchase_date_from'] : '', ['placeholder' => '0000/00/00']) !!}
                     <span class="unit">〜</span>
-                    {!! Form::date('purchase_date_to', '', ['placeholder' => '0000/00/00']) !!}
+                    {!! Form::date('purchase_date_to', $request['purchase_date_to'] ? $request['purchase_date_to'] : '', ['placeholder' => '0000/00/00']) !!}
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@
                     <select name="m_brand_id" class="select2">
                       <option value="">選択してください</option>
                       @foreach($brands as $k => $v)
-                        <option value="{{ $k }}" {{ old('m_brand_id')}}>{{ $v }}</option>
+                        <option value="{{ $k }}" {{ $request['m_brand_id'] == $k ? 'selected' : '' }}>{{ $v }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -108,7 +108,7 @@
                     <select name="m_product_id" class="select2">
                       <option value="" >選択してください</option>
                       @foreach($products as $k => $v)
-                        <option value="{{ $k }}" {{ old('m_product_id')}}>{{ $v }}</option>
+                        <option value="{{ $k }}" {{ $request['m_product_id'] == $k ? 'selected' : '' }}>{{ $v }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -123,9 +123,9 @@
                   </div>
                   <div class="p-formList__data">
                     <div class="radio">
-                      <input type="radio" id="inq1-2" name="is_dm" value="1">
+                      <input type="radio" id="inq1-2" name="is_dm" value="1" {{ $request['is_dm'] == "1" ? 'checked' : '' }}>
                       <label for="inq1-2">受け取る</label>
-                      <input type="radio" id="inq2-2" name="is_dm" value="0">
+                      <input type="radio" id="inq2-2" name="is_dm" value="0" {{ $request['is_dm'] == "0" ? 'checked' : '' }}>
                       <label for="inq2-2">受け取らない</label>
                     </div>
                   </div>
