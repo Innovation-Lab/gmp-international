@@ -12,20 +12,6 @@
               <h2 class="p-index__head__title">
                 ダッシュボード
               </h2>
-              <div class="p-index__head__action">
-                {{-- フォーム --}}
-                {!! Form::open(['class' => 'p-form']) !!}
-                  {!!
-                    Form::select('analysis-period', 
-                      [
-                      'analysis-period-this-month' => '月次',
-                      'analysis-period-last-month' => '全期間',
-                      ],
-                      'analysis-period-this-month', ['placeholder' => '選択']
-                    )
-                  !!}
-                {!! Form::close() !!}
-              </div>
             </div>
           </div>
         </div>
@@ -91,7 +77,7 @@
   </div>
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<script src="{{ asset('js/admin/chart-dashboard.js') }}"></script>
+{{--<script src="{{ asset('js/admin/chart-dashboard.js') }}"></script>--}}
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

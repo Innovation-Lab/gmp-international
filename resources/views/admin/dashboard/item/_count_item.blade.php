@@ -9,7 +9,7 @@
       製品登録総数
     </div>
     <div class="c-text__xl c-color__secondary" style="margin: 0.2em 0;">
-      320,000
+      {{ number_format($sales_count) }}
       <span class="c-text__sm c-text__weight--800 c-color__secondary">個</span>
     </div>
     <small>

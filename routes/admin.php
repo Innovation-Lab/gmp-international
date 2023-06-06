@@ -31,6 +31,7 @@ Route::group([
          * todo ダッシュボードページを作成してください。
          */
         Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::get('/chartUserRegister', [HomeController::class, 'chartUserRegister']);
         Route::get('/home', [HomeController::class, 'index'])->name('index');
         
         // ユーザー
