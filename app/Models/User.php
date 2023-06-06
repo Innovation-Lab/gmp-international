@@ -255,9 +255,9 @@ class User extends Authenticatable
             });
         }
 
-        if ($request->filled('purchase_date_form')) {
+        if ($request->filled('purchase_date_from')) {
             $query->whereHas('salesProducts', function ($subQuery) use ($request) {
-                $subQuery->whereDate('purchase_date', '>=', $request->input('purchase_date_form'));
+                $subQuery->whereDate('purchase_date', '>=', $request->input('purchase_date_from'));
             });
 
         }
