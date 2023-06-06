@@ -56,7 +56,7 @@
     <div class="p-staffMenu">
       <ul>  
         <li class="p-staffMenu__item"><a href="{{route('admin.staffs.index')}}" class="staff">管理者一覧へ</a></li>
-        <li class="p-staffMenu__item"><a href="" class="logout">ログアウト</a></li>
+        <li class="p-staffMenu__item"><a onclick="window.location='{{ route("admin.logout") }}'" class="logout">ログアウト</a></li>
       </ul>
     </div>
     {{-- プロフィール --}}

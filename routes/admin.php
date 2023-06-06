@@ -23,7 +23,7 @@ Route::group([
         Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     });
-    // Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::group(['middleware' => 'auth:admin'], function () {
         // ダッシュボード
