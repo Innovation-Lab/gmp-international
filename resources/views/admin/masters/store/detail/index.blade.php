@@ -27,7 +27,8 @@
                       <div class="p-list__right">
                         <div class="p-list__head">
                           <h3 class="p-detail__main__box__head__title">店舗情報</p>
-                          <a href="{{route('admin.masters.store.edit')}}" class="c-button__2">編集</a>
+                          <!-- <a href="{{route('admin.masters.store.edit')}}" class="c-button__2">編集</a> -->
+                          <a href="{{route('admin.masters.store.edit')}}" class="c-button">編集</a>
                         </div>
                         <ul class="p-list">
                           @foreach([

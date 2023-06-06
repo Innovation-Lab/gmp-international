@@ -4,26 +4,26 @@
       各製品登録数
     </h3>
   </div>
-  <div class="p-dashboard__body" style="height: 520px;">
+  <div class="p-dashboard__body" style="height: 560px;">
     <div class="p-dashboard__content">
       <div class="p-dashboard__ranking__sales">
         <ul class="p-dashboard__ranking__list">
-          @for($i = 0; $i < 10; $i++)
+          @foreach($sales_product_ranks as $product)
           <li class="p-dashboard__ranking__list__item">
             <div class="p-dashboard__ranking__list__image">
               <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="40px" height="40px">
             </div>
             <div class="p-dashboard__ranking__list__text">
-              <p class="title">COCO PREMIER FROM BIRTH</p>
-              <p class="sub">ココプレミア フロムバース</p>
+              <p class="title">{{ data_get($product, 'name', '---') }}</p>
+              <p class="sub">{{ data_get($product, 'name_kana', '---') }}</p>
             </div>
             <div class="p-dashboard__ranking__list__data">
               <p class="amount">
-                12,340
+                {{ number_format(data_get($product, 'member_count')) }}
               </p>
             </div>
           </li>
-          @endfor
+          @endforeach
           {{-- @foreach(config('staff.staff') as $key => $val)
           <li class="p-dashboard__ranking__list__item">
             <div class="p-dashboard__ranking__list__image">

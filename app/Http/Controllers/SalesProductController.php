@@ -60,7 +60,6 @@ class SalesProductController extends Controller
     }
     
     /**
-     * 製品の追加登録 確認画面
      * @return View
      */
     public function productConfirm(): View
@@ -75,11 +74,12 @@ class SalesProductController extends Controller
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
     }
-
+    
     /**
-     * 製品の追加登録 保存
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $product = Session::get('product');
 

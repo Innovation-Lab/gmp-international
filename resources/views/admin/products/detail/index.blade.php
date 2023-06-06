@@ -33,7 +33,8 @@
                       <div class="p-list__right">
                         <div class="p-list__head">
                           <h3 class="p-detail__main__box__head__title">登録製品情報</p>
-                          <a href="{{route('admin.products.edit-products')}}" class="c-button__2">編集</a>
+                          <!-- <a href="{{route('admin.products.edit-products')}}" class="c-button__2">編集</a> -->
+                          <a href="{{route('admin.products.edit-products')}}" class="c-button">編集</a>
                         </div>
                         <ul class="p-list">
                           @foreach([

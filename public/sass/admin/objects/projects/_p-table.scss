@@ -10,6 +10,7 @@
   flex: auto;
   min-width: 0;
   overflow: auto;
+  background: #fff;
 
   /* ! ----------
   　カラム
@@ -30,25 +31,11 @@
   -------------------------------------------------- */
   table {
     width: 100%;
-    // table-layout: fixed;
     text-indent: initial;
     border-spacing: 0;
     min-width: 100%;
     width: 1px;
-
-    // display: grid;
-    // border-collapse: collapse;
-    // overflow: auto;
-    // min-width: 100%;
-    // gap: 0.5rem 0;
-    // grid-template-columns: repeat(5, minmax(max-content, 1fr));
   }
-  // thead,
-  // tbody,
-  // tfoot,
-  // tr {
-  //   display: contents;
-  // }
 
   /* ! ----------
   　テーブルヘッド

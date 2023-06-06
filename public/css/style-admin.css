@@ -1138,6 +1138,9 @@ textarea {
 .l-index__body .p-table {
   height: calc(100vh - 16.5rem);
 }
+.l-index__body .p-table--product {
+  height: calc(100vh - 20rem);
+}
 .nofilter .l-index__body .p-table {
   height: calc(100vh - 13rem);
 }
@@ -3450,6 +3453,7 @@ textarea {
   flex: auto;
   min-width: 0;
   overflow: auto;
+  background: #fff;
   /* ! ----------
   　カラム
   ---------- */
@@ -4027,12 +4031,15 @@ textarea {
 .p-formList__data.store {
   margin-top: 0;
 }
+.p-formList__data--login {
+  display: block;
+}
 .p-formList__data .error {
   color: var(--color_alert);
   background-color: var(--color_alert_background);
   padding: 0.5em 1em;
   border-radius: 2px;
-  margin: 2px 0 0;
+  margin-top: 8px;
 }
 
 /* ! ==================================================
@@ -5069,6 +5076,9 @@ textarea {
 }
 .modal__container.lg {
   max-width: 576px;
+}
+.modal__container.md {
+  max-width: 410px;
 }
 .modal__container.sm {
   max-width: 316px;

@@ -37,7 +37,10 @@
     grid-area: body;
     .p-table {
       height: calc(100vh - 16.5rem);
-
+      //製品マスタのみ
+      &--product{
+        height: calc(100vh - 20rem);
+      }
       // フィルターがない場合
       .nofilter & {
         height: calc(100vh - 13rem);

@@ -9,7 +9,7 @@
       ユーザー総数
     </div>
     <div class="c-text__xl c-color__primary_dark" style="margin: 0.2em 0;">
-      73,000
+      {{ number_format($summary_count) }}
       <span class="c-text__sm c-text__weight--800 c-color__primary_dark">人</span>
     </div>
     <small>
