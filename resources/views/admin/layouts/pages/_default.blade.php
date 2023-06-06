@@ -33,11 +33,6 @@
 ])
 @endcomponent
 --}}
-
-{{-- 開発用チートシート --}}
-<div class="develop" data-micromodal-trigger="modal-develop">
-  <img src="{{asset('img/admin/develop/icon.svg')}}" width="24px" height="24px">
-</div>
 @include('admin.layouts._modal-develop')
 
 {{-- ページフレーム --}}
