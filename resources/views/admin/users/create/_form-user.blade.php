@@ -1,6 +1,6 @@
 <div class="p-create__main__box__head">
   <h3 class="p-create__main__box__head__title">
-  ユーザー情報
+  ユーザー情報新規追加
   </h3>
 </div>
 <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -111,7 +111,7 @@
                     'saitama' => '埼玉県',
                     'chiba' => '千葉県',
                     ],
-                    'tokyo', ['placeholder' => '都道府県を選択']
+                    '', ['placeholder' => '都道府県を選択']
                   )
                 !!}
               </div>

@@ -36,7 +36,7 @@
                                         <div class="p-formList__colorSet">
                                           <div class="p-formList__colorSet__type">
                                             <div class="radio">
-                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="colorSet_type_single">
+                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="colorSet_type_single" checked>
                                               <label for="colorSet_type_single">1色</label>
                                               <input type="radio" id="colorSet_type_double" name="colorSet_type" value="colorSet_type_double">
                                               <label for="colorSet_type_double">2色</label>

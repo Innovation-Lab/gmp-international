@@ -38,7 +38,7 @@
         <div class="container">
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
-            <div class="p-table">
+            <div class="p-table p-table--product">
               <table>
                 <colgroup>
                   <col width=400>
@@ -118,4 +118,6 @@
     </div>
   </div>
 </div>
+{{-- 製品マスタ絞り込み検索モーダル --}}
+@include('admin.masters.product._modal-products-fillter')
 @endsection

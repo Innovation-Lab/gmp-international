@@ -100,7 +100,9 @@
       &.store{
         margin-top: 0
       }
-
+      &--login{
+        display: block;
+      }
       /* ! ----------
       　Error エラー
       ---------- */
@@ -110,7 +112,7 @@
         background-color: var(--color_alert_background);
         padding: 0.5em 1em;
         border-radius: 2px;
-        margin: 2px 0 0;
+        margin-top: 8px;
       }
     }
   }

@@ -229,7 +229,7 @@
                                 電話番号
                               </div>
                               <div class="p-formList__data">
-                                {!! Form::tel('telephone', '09012345678', ['placeholder' => '例）09012345678']) !!}
+                                {!! Form::tel('telephone', '090-1234-5678', ['placeholder' => '例）09012345678']) !!}
                               </div>
                               <small>ハイフンなしで入力してください</small>
                             </div>
