@@ -21,11 +21,6 @@ class HomeController extends Controller
      */
     public function index(Request $request): View
     {
-        // 集計期間
-        $today = date('Y-m-d');
-        $startOfYear = Carbon::parse($today)->startOfYear()->format('Y-m-d');
-        $endOfYear = Carbon::parse($today)->endOfYear()->format('Y-m-d');
-        
         $userQuery = User::query();
         $salesProductQuery = SalesProduct::query();
         
@@ -41,8 +36,6 @@ class HomeController extends Controller
             ->get();
 
         return view('admin.home', [
-            'startOfYear' => $startOfYear,
-            'endOfYear' => $endOfYear,
             'summary_count' => (clone$userQuery)->count(),
             'sales_count' => (clone$salesProductQuery)->count(),
             'sales_product_ranks' => $salesCountsBySelectPer,
@@ -57,21 +50,18 @@ class HomeController extends Controller
     {
         if($request->get('period') == 'month' || !$request->get('period')) {
             $month = $request->get('month', date('Y-m'));
-            $year = date('Y', strtotime($month));
             $start_at = Carbon::parse(date("Y-m-d", strtotime("first day of {$month}")));
             $end_at = Carbon::parse(date("Y-m-d", strtotime("last day of {$month}")))->addDay()->subSecond(1);
-            $start_at_prev = Carbon::parse($start_at)->subMonths(1);
             $period_key = 0;
         } elseif($request->get('period') == 'year') {
             $start_at = Carbon::today()->subYear();
             $end_at = Carbon::today()->addDay()->subSecond(1);
-            $start_at_prev = Carbon::today()->subYears(2);
             $period_key = 12;
         }
         
         $userQuery = User::query();
-
         $graph = [];
+        
         if($request->get('period') == 'year') {
             $stop = $end_at->diffInMonths($start_at) - 1;
             for ($i=0; $stop >= $i; $i++) {
