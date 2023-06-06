@@ -130,7 +130,8 @@
             <div class="p-index__foot">
               {{-- ページネーション --}}
               @include('admin.components._pagination', [
-                  'paginate' => $users
+                  'paginate' => $users,
+                  'prefix' => 'users'
               ])
             </div>
           </div>
