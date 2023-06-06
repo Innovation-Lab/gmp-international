@@ -129,7 +129,9 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              @include('admin.components._pagination')
+              @include('admin.components._pagination', [
+                  'paginate' => $products
+              ])
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MProduct;
+use App\Models\SalesProduct;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -29,7 +30,7 @@ class ProductController extends Controller
     public function index(Request $request): View|Factory|Application
     {
         return view('admin.products.index', [
-            'products' => []
+            'products' => SalesProduct::query()->paginate(20)
         ]);
     }
 
