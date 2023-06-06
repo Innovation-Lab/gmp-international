@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->leftJoin('m_products', 'm_products.id', 'sales_products.m_product_id')
             ->leftJoin('m_brands', 'm_brands.id', 'm_products.m_brand_id')
             ->groupBy('sales_products.m_product_id')
-            ->orderBy('member_count')
+            ->orderBy('member_count', 'DESC')
             ->get();
 
         return view('admin.home', [
