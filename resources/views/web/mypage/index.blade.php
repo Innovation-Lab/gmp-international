@@ -24,9 +24,11 @@
             <p class="c-ttl">登録済み製品</p>
           </div>
           <!-- 追加登録ボタン -->
-          <div class="p-index__btn">
-            <a href="{{route('mypage.add')}}" class="c-btn c-btn--ghost c-btn--ghost--rd c-btn--innerIco  c-btn--innerIco--add">製品の追加登録</a>
-          </div>
+          @if(count(data_get($user, 'salesProducts')) > 0)
+            <div class="p-index__btn">
+              <a href="{{route('mypage.add')}}" class="c-btn c-btn--ghost c-btn--ghost--rd c-btn--innerIco  c-btn--innerIco--add">製品の追加登録</a>
+            </div>
+          @endif
         </div>
         <!-- 登録製品複数の場合 -->
         @if(count($sales_products) > 0)
