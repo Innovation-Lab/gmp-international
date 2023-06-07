@@ -65,7 +65,7 @@
                 </thead>
                 <tbody>
                 @foreach($users as $user)
-                  <tr data-href="{{ route('admin.users.detail') }}">
+                  <tr data-href="{{ route('admin.users.detail', $user) }}">
                     <td class="item">
                       {{ data_get($user, 'full_name') }}
                       <span>{{ data_get($user, 'full_name_kana') }}</span>

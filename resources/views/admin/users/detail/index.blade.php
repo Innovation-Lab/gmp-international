@@ -5,7 +5,7 @@
   <div class="l-detail">
     <div class="l-detail__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.users.detail._head')
+      @include('admin.users.detail._head', $user)
     </div>
     <div class="l-detail__body">
       <div class="wrapper">
@@ -13,7 +13,7 @@
           <div class="l-detail__body__inner">
             {{-- サイドバー --}}
             <div class="l-detail__sidebar">
-              @include('admin.users.detail._sidebar')
+              @include('admin.users.detail._sidebar', $user)
             </div>
             {{-- メイン --}}
             <div class="l-detail__main">
@@ -29,24 +29,28 @@
                       登録製品を追加する
                     </a>
                   </div>
-                  <div class="p-detail__main__box__body">
-                    <div class="p-productScroll c-scroll">
-                      <ul class="p-product p-product--list">
-                        @for($list = 0; $list < 10; $list++)
-                        <li class="p-product__item">
-                          <div class="p-product__item__left">
-                            <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
-                          </div>
-                          <div class="p-product__item__right">
-                            <div class="p-product__item__head">
-                              <div class="p-product__item__ttl">
-                                <div class="item">AIRBUGGY</div>
-                                <div class="item">COCO PREMIER FROM BIRTH</div>
+                  @foreach($sales_products as $sales_product)
+                    <div class="p-detail__main__box__body">
+                      <div class="p-productScroll c-scroll">
+                        <ul class="p-product p-product--list">
+                          <li class="p-product__item">
+                            <div class="p-product__item__left">
+                              <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
+                            </div>
+                            <div class="p-product__item__right">
+                              <div class="p-product__item__head">
+                                <div class="p-product__item__ttl">
+                                  <div class="item">{{ data_get($sales_product,'mProduct.mBrand.name') }}</div>
+                                  <div class="item">{{ data_get($sales_product,'mProduct.name') }}</div>
+                                </div>
+                                <div class="p-product__item__other">
+                                  <!-- <a href="
+                                    {{-- {{route('admin.users.edit-products')}} --}}
+                                    " class="c-textButton">編集</a> -->
+                                  <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
+                                <div class="color">
+                                {{ data_get($sales_product,'mColor.alphabet_name') }}
                               </div>
-                              <div class="p-product__item__other">
-                                <!-- <a href="{{route('admin.users.edit-products')}}" class="c-textButton">編集</a> -->
-                                <a href="{{route('admin.users.edit-products')}}" class="c-button">編集</a>
-                                <div class="color">BLOSSOM</div>
                               </div>
                             </div>
                             <ul class="p-product__item__body">
@@ -55,7 +59,7 @@
                                   シリアルNo.
                                 </div>
                                 <div class="p-product__data">
-                                  GMP123456789
+                                  {{ data_get($sales_product, 'product_code') }}
                                 </div>
                               </li>
                               <li class="p-product__item__body__list auto">
@@ -63,7 +67,7 @@
                                   購入日
                                 </div>
                                 <div class="p-product__data">
-                                  2023/04/04
+                                  {{ formatYmdSlash(data_get($sales_product, 'purchase_date')) }}
                                 </div>
                               </li>
                               <li class="p-product__item__body__list">
@@ -71,7 +75,7 @@
                                   保証期間
                                 </div>
                                 <div class="p-product__data">
-                                  12ヶ月
+                                  {{ data_get($sales_product, 'warranty_period') }}
                                 </div>
                               </li>
                               <li class="p-product__item__body__list large">
@@ -79,7 +83,7 @@
                                   購入店舗
                                 </div>
                                 <div class="p-product__data">
-                                  エアバギー代々木公園本店
+                                  {{ data_get($sales_product, 'select_shop_name') }}
                                 </div>
                               </li>
                               <li class="p-product__item__body__list large">
@@ -87,17 +91,17 @@
                                   管理メモ
                                 </div>
                                 <div class="p-product__data">
-                                  2024/04/04　タイヤ交換
+                                  {{ data_get($user, 'memo') }}
                                 </div>
                               </li>
                             </ul>
                           </div>
                         </li>
-                        @endfor
-                      </ul>
-                      {{-- ---------- リスト ---------- --}}
+                        </ul>
+                        {{-- ---------- リスト ---------- --}}
+                      </div>
                     </div>
-                  </div>
+                  @endforeach
                 </div>
               </div>
             </div>

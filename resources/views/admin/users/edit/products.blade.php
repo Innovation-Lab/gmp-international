@@ -33,7 +33,7 @@
                                   購入日
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::input('date', 'purchase_date', '2023-04-04', ['placeholder' => '0000/00/00']) !!}
+                                  {!! Form::input('date', 'purchase_date', data_get($sales_product, 'purchase_date'), ['placeholder' => '0000/00/00']) !!}
                                 </div>
                               </div>
                             </li>
@@ -43,11 +43,11 @@
                                   ブランド名
                                 </div>
                                 <div class="p-formList__data">
-                                  <select name="brand" class="select2">
+                                  <select name="m_brand_id" class="select2">
                                     <option value="" hidden>選択してください</option>
-                                    <option value="brand1" selected>AIRBUGGY</option>
-                                    <option value="brand2">AIRBUGGY1</option>
-                                    <option value="brand3">AIRBUGGY2</option>
+                                    @foreach($brands as $k => $v)
+                                    <option value="{{ $k }}" {{ old('m_brand_id', data_get($sales_product, 'mProduct.mBrand.id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
+                                    @endforeach
                                   </select>
                                 </div>
                               </div>
@@ -60,9 +60,9 @@
                                 <div class="p-formList__data">
                                   <select name="product" class="select2">
                                     <option value="" hidden>選択してください</option>
-                                    <option value="product1" selected>COCO PREMIER FROM BIRTH</option>
-                                    <option value="product2">OCO PREMIER FROM BIRTH 1</option>
-                                    <option value="product3">OCO PREMIER FROM BIRTH 2</option>
+                                    @foreach($products as $k => $v)
+                                    <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
+                                    @endforeach
                                   </select>
                                 </div>
                               </div>
@@ -121,7 +121,7 @@
                                   管理メモ
                                 </div>
                                 <div class="p-formList__content__data">
-                                  <textarea placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
+                                  <textarea name="memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
                                 </div>
                               </div>
                             </li>

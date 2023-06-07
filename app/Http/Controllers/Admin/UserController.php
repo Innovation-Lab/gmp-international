@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\MBrand;
 use App\Models\MProduct;
+use App\Models\MColor;
+use App\Models\MShop;
+use App\Models\SalesProduct;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Carbon;
 
@@ -64,23 +67,42 @@ class UserController extends Controller
     {
         return view('admin.users.create.index');
     }
+
     public function createProducts(): View
     {
         return view('admin.users.create.products');
     }
 
-    public function detail(): View
+    public function detail(User $user): View
     {
-        return view('admin.users.detail.index');
+        $sales_products = data_get($user, 'salesProducts');
+
+        return view('admin.users.detail.index')->with([
+            'user' => $user,
+            'sales_products' => $sales_products,
+        ]);
     }
 
-    public function editUser(): View
+    public function editUser(User $user): View
     {
-        return view('admin.users.edit.user');
+        $prefectures = config('prefecture');
+
+        return view('admin.users.edit.user')->with([
+            'user' => $user,
+            'prefectures' => $prefectures,
+        ]);
     }
-    public function editProducts(): View
+
+    public function editProducts(User $user, SalesProduct $sales_product): View
     {
-        return view('admin.users.edit.products');
+        return view('admin.users.edit.products')->with([
+            'user' => $user,
+            'sales_product' => $sales_product,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
     }
 
     // public function userEdit(): View

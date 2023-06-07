@@ -43,9 +43,9 @@ Route::group([
             Route::get('/', [UserController::class, 'index'])->name('index');
             Route::get('/create', [UserController::class, 'create'])->name('create');
             Route::get('/create-products', [UserController::class, 'createProducts'])->name('create-products');
-            Route::get('/detail', [UserController::class, 'detail'])->name('detail');
-            Route::get('/edit-user', [UserController::class, 'editUser'])->name('edit-user');
-            Route::get('/edit-products', [UserController::class, 'editProducts'])->name('edit-products');
+            Route::get('/detail/{user}', [UserController::class, 'detail'])->name('detail');
+            Route::get('/edit-user/{user}', [UserController::class, 'editUser'])->name('edit-user');
+            Route::get('/edit-products/{sales_product}', [UserController::class, 'editProducts'])->name('edit-products');
             // Route::get('/detail/userEdit', [ProductController::class, 'userEdit'])->name('userEdit');
         });
         

@@ -5,7 +5,7 @@
   <div class="l-edit">
     <div class="l-edit__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.users.edit._head')
+      @include('admin.users.edit._head', $user)
     </div>
     <div class="l-edit__body">
       <div class="wrapper u-max--800">
@@ -18,7 +18,7 @@
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form">
+                    <form method="POST" action="{{ route('admin.') }}" class="p-form" id="informationSubmitForm">
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
                         ユーザー情報
@@ -34,7 +34,7 @@
                                     姓
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('last-name', '山田', ['placeholder' => '例）山田']) !!}
+                                    {!! Form::text('last_name', old('last_name', data_get($user, 'last_name')), ['placeholder' => '例）山田']) !!}
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
@@ -42,7 +42,7 @@
                                     名
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('first-name', '太郎', ['placeholder' => '例）太郎']) !!}
+                                    {!! Form::text('first_name', old('first_name', data_get($user, 'first_name')), ['placeholder' => '例）太郎']) !!}
                                   </div>
                                 </div>
                               </div>
@@ -54,7 +54,7 @@
                                     セイ
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('sei', 'ヤマダ', ['placeholder' => '例）ヤマダ']) !!}
+                                    {!! Form::text('last_name_kana', old('last_name_kana', data_get($user, 'last_name_kana')), ['placeholder' => '例）ヤマダ']) !!}
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
@@ -62,7 +62,7 @@
                                     メイ
                                   </div>
                                   <div class="p-formList__data">
-                                    {!! Form::text('mei', 'タロウ', ['placeholder' => '例）タロウ']) !!}
+                                    {!! Form::text('first_name_kana', old('first_name_kana', data_get($user, 'first_name_kana')), ['placeholder' => '例）タロウ']) !!}
                                   </div>
                                 </div>
                               </div>
@@ -73,7 +73,7 @@
                                   メールアドレス
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::email('email', 'sample@example.com', ['placeholder' => '例）sample@example.com']) !!}
+                                  {!! Form::email('email', old('email', data_get($user, 'email')), ['placeholder' => '例）sample@example.com']) !!}
                                 </div>
                               </div>
                             </li>
@@ -84,7 +84,7 @@
                                   電話番号
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::tel('telephone', '090-1234-5678', ['placeholder' => '例）09012345678']) !!}
+                                  {!! Form::tel('tel', old('tel', data_get($user, 'tel')), ['placeholder' => '例）09012345678']) !!}
                                 </div>
                                 <!-- <small>ハイフンなしで入力してください</small> -->
                               </div>
@@ -96,9 +96,9 @@
                                 </div>
                                 <div class="p-formList__data">
                                   <div class="radio">
-                                    <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
+                                    <input type="radio" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', data_get($user, 'is_dm')) == 1 ? 'checked' : '' }}>
                                     <label for="inq1-2">同意する</label>
-                                    <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
+                                    <input type="radio" id="inq2-2" name="is_dm" value="0" {{ old('is_dm', data_get($user, 'is_dm')) == 0 ? 'checked' : '' }}>
                                     <label for="inq2-2">同意しない</label>
                                   </div>
                                 </div>
@@ -116,7 +116,7 @@
                                       郵便番号
                                     </div>
                                     <div class="p-formList__data">
-                                      {!! Form::number('zip', '1230000', ['placeholder' => '例）1230000']) !!}
+                                      {!! Form::number('zip_code', old('zip_code', data_get($user, 'zip_code')), ['placeholder' => '例）1230000']) !!}
                                     </div>
                                   </div>
                                 </div>
@@ -126,17 +126,7 @@
                                       都道府県
                                     </div>
                                     <div class="p-formList__data">
-                                      {!!
-                                        Form::select('prefectures', 
-                                          [
-                                          'tokyo' => '東京都',
-                                          'kanagawa' => '神奈川県',
-                                          'saitama' => '埼玉県',
-                                          'chiba' => '千葉県',
-                                          ],
-                                          'tokyo', ['placeholder' => '都道府県を選択']
-                                        )
-                                      !!}
+                                      {!! Form::select('prefectures', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
                                     </div>
                                   </div>
                                 </div>
@@ -148,7 +138,17 @@
                                   市区町村
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('city', '渋谷区渋谷123', ['placeholder' => '例）渋谷区渋谷1-2-3']) !!}
+                                  {!! Form::text('address_city', old('address_city', data_get($user, 'address_city')), ['placeholder' => '例）渋谷区']) !!}
+                                </div>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  番地
+                                </div>
+                                <div class="p-formList__data">
+                                  {!! Form::text('address_block', old('address_block', data_get($user, 'address_block')), ['placeholder' => '例）渋谷1-2-3']) !!}
                                 </div>
                               </div>
                             </li>
@@ -158,7 +158,7 @@
                                   マンション名・部屋番号など
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('room', 'マンション名・部屋番号など', ['placeholder' => '例）渋谷マンション1201']) !!}
+                                  {!! Form::text('address_building', old('address_building', data_get($user, 'address_building')), ['placeholder' => '例）渋谷マンション1201']) !!}
                                 </div>
                               </div>
                             </li>
@@ -168,7 +168,7 @@
                                   パスワード<small>（半角英数字6~10文字）</small>
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('password', 'gmp0001', ['placeholder' => '例）gmp0001']) !!}
+                                  {!! Form::password('password', ['placeholder' => '例）gmp0001']) !!}
                                 </div>
                               </div>
                             </li>
@@ -182,7 +182,7 @@
                                   管理メモ
                                 </div>
                                 <div class="p-formList__content__data">
-                                  <textarea placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
+                                  <textarea name="memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
                                 </div>
                               </div>
                             </li>
@@ -192,8 +192,8 @@
                     </form>
                   </div>
                   <div class="p-edit__main__box__foot">
-                    <button class="c-button__reset">変更をリセット</button>
-                    <button class="c-button">変更を反映する</button>
+                    <a href="{{ url()->current() }}" class="c-button__reset">変更をリセット</a>
+                    <button type="submit" form="informationSubmitForm" class="c-button">変更を反映する</button>
                 </div>
               </div>
             </div>

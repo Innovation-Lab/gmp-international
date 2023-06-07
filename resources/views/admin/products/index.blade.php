@@ -82,7 +82,7 @@
                     </td>
                     <td class="item">
                       <!-- <div class="u-align--both u-align--nowrap"> -->
-                        <a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>
+                        <a data-href="{{ route('admin.users.detail', $user) }}" class="user-link">山田 太郎</a>
                       <!-- </div> -->
                     </td>
                     <td class="item">
