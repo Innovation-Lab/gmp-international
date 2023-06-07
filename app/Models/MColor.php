@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MColor extends Model
 {
-    use HasFactory;
+    use HasFactory, GetImageTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -30,5 +31,13 @@ class MColor extends Model
         }
         
         return $pick;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getMainImageUrlAttribute(): string
+    {
+        return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
     }
 }
