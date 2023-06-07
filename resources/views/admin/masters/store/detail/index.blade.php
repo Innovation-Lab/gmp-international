@@ -26,7 +26,7 @@
                       </div>
                       <div class="p-list__right">
                         <div class="p-list__head">
-                          <h3 class="p-detail__main__box__head__title">店舗情報</p>
+                          <h3 class="p-detail__main__box__head__title">店舗情報</h3>
                           <a href="{{route('admin.masters.store.edit', $shop)}}" class="c-button">編集</a>
                         </div>
                         <ul class="p-list">

@@ -121,7 +121,7 @@
                                 </div>
                               </div>
                             </li>
-                            <li class="p-formList__item">
+                            {{--<li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
                                   ステータス
@@ -134,7 +134,7 @@
                                   </select>
                                 </div>
                               </div>
-                            </li>
+                            </li>--}}
                           </ul>
                         </div>
                         <div class="l-grid__item" style="grid-column: 1/3;">

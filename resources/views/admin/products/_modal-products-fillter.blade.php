@@ -45,7 +45,7 @@
               </div>
             </div>
           </li>
-          <li class="p-formList__item">
+          <!-- <li class="p-formList__item">
             <div class="l-grid__1 l-grid__gap1">
               <div class="p-formList__content">
                 <div class="p-formList__label">
@@ -60,8 +60,8 @@
                 </div>
               </div>
             </div>
-          </li>
-          <li class="p-formList__item">
+          </li> -->
+          {{--<li class="p-formList__item">
             <div class="l-grid__1 l-grid__gap1">
               <div class="p-formList__content">
                 <div class="p-formList__label">
@@ -76,7 +76,7 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li>--}}
           <!-- <li class="p-formList__item">
             <select multiple="multiple">
               <option value="1">COCO PREMIER FROM BIRTH</option>
@@ -85,7 +85,7 @@
             </select>
           </li> -->
               <!-- Multiple Select -->
-          <li class="p-formList__item">
+          <!-- <li class="p-formList__item">
             <select multiple="multiple">
               <option value="1">1月</option>
               <option value="2">2月</option>
@@ -115,7 +115,7 @@
           <option value="10">10月</option>
           <option value="11">11月</option>
           <option value="12">12月</option>
-          </select>
+          </select> -->
         {!! Form::close() !!}
       </main>
       <footer class="modal__footer">
