@@ -65,27 +65,29 @@
                   </th>
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 12; $i++)
+                  @forelse($brands as $brand)
                   <!-- 1人 -->
                   <tr>
                     <td class="item">
-                      <img src="{{asset('img/admin/brand/airbuggy.svg')}}" alt="ブランドロゴ" height=16>
+                      <img src="{{ data_get($brand, 'main_image_url') }}" alt="ブランドロゴ" height=16>
                     </td>
                     <td class="item">
-                      AIRBUGGY
+                      {{ data_get($brand, 'name') }}
                     </td>
                     <td class="item">
-                      25
+                      {{ count(data_get($brand, 'mProducts')) }}
                     </td>
                     <td class="item">
                     </td>
                     <td class="item">
                       <div class="c-buttonWrap">
-                        <a href="{{route('admin.masters.brand.edit')}}" class="c-button">編集</a>
+                        <a href="{{route('admin.masters.brand.edit', $brand)}}" class="c-button">編集</a>
                       </div>
                     </td>
                   </tr>
-                  @endfor
+                  @empty
+                    <tr><td style="border-bottom: none;">データはありません。</td></tr>
+                  @endforelse
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
@@ -119,7 +121,10 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              @include('admin.masters.brand._pagination')
+              {{-- ページネーション --}}
+              @include('admin.components._pagination', [
+                  'paginate' => $brands,
+              ])
             </div>
           </div>
         </div>

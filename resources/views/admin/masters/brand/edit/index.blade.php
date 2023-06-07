@@ -2,6 +2,15 @@
 @section('title', 'ブランド情報の編集')
 @section('class', 'body_edit')
 @section('content')
+<style>
+    input[type=file] + label.clear_fake:before {
+        opacity: 0;
+    }
+    input[type=file] + label.clear_fake:after {
+        content: "";
+        opacity: 0;
+    }
+</style>
 <div class="p-edit">
   <div class="l-edit">
     <div class="l-edit__head">
@@ -19,7 +28,8 @@
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form min">
+                    {!! Form::open(['method' => 'POST', 'route' => 'admin.masters.brand.updateOrCreate', 'class' => 'p-form min', 'id' => 'updateBrandForm', 'files' => true]) !!}
+                      <input type="hidden" name="id" value="{{ $brand->id }}">
                       <div class="l-grid__1">
                         <div class="l-grid__item">
                           <ul class="p-formList u-max--320">
@@ -29,10 +39,31 @@
                                   ブランドロゴ
                                 </div>
                                 <div class="p-formList__data">
-                                  <input type="file" id="brand_logo" name="brand_logo" value="">
-                                  <label for="brand_logo" class="logo">
-                                    <img src="{{asset('img/admin/brand/airbuggy.svg')}}">
+                                  <input
+                                    id="brand_logo"
+                                    type="file"
+                                    name="image_path"
+                                    class="file_img_preview"
+                                    accept="image/jpeg,image/png,.svg"
+                                    onchange="
+                                      const [file] = $(this).prop('files');
+                                      if(file){
+                                        changeFilePreview(file);
+                                      }
+                                    "
+                                  >
+                                  <label for="brand_logo" class="logo @if(data_get($brand, 'image_path')) clear_fake @endif">
+                                    <img
+                                      id="image_preview_form"
+                                      src="{{ data_get($brand, 'main_image_url') }}"
+                                    >
                                   </label>
+                                  <script>
+                                      function changeFilePreview(file) {
+                                          $('#image_preview_form').attr('src', URL.createObjectURL(file));
+                                          $('.logo').addClass('clear_fake')
+                                      }
+                                  </script>
                                 </div>
                               </div>
                             </li>
@@ -42,18 +73,18 @@
                                   ブランド名
                                 </div>
                                 <div class="p-formList__data u-max--240">
-                                  <input type="text" id="brand_name" name="brand_name" placeholder="AIRBUGGY" value="AIRBUGGY">
+                                  <input type="text" id="brand_name" name="name" placeholder="AIRBUGGY" value="{{ old('name', data_get($brand, 'name')) }}">
                                 </div>
                               </div>
                             </li>
                           </ul>
                         </div>
                       </div>
-                    </form>
+                    {!! Form::close() !!}
                   </div>
                   <div class="p-edit__main__box__foot">
-                    <button class="c-button__reset">変更をリセット</button>
-                    <button class="c-button">変更を反映する</button>
+                    <button onclick="window.location='{{ request()->url() }}'" class="c-button__reset">変更をリセット</button>
+                    <button form="updateBrandForm" class="c-button">変更を反映する</button>
                   </div>
                 </div>
               </div>

@@ -4,28 +4,69 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\MBrand;
+use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MasterController extends Controller
 {
+    private MasterRepositoryInterface $masterRepository;
+    
+    /**
+     * @param MasterRepositoryInterface $masterRepository
+     */
+    public function __construct(
+        MasterRepositoryInterface $masterRepository
+    ) {
+        $this->masterRepository = $masterRepository;
+    }
     /**
      * @param Request $request
      * @return View|Factory|Application
      */
-    //ブランドマスタ
     public function brand(Request $request): View|Factory|Application
     {
         return view('admin.masters.brand.index', [
+            'brands' => MBrand::query()->paginate(20)
         ]);
     }
-    public function brandEdit(Request $request): View|Factory|Application
+    
+    /**
+     * @param MBrand $brand
+     * @return View|Factory|Application
+     */
+    public function brandEdit(MBrand $brand): View|Factory|Application
     {
         return view('admin.masters.brand.edit.index', [
+            'brand' => $brand
         ]);
     }
+    
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function brandUpdateOrCreate(Request $request): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $this->masterRepository->updateOrCreate_brand($request);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['error' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.brand')
+            ->with(['success' => '登録しました。']);
+    }
+    
     public function brandCreate(Request $request): View|Factory|Application
     {
         return view('admin.masters.brand.create.index', [

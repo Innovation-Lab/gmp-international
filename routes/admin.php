@@ -66,7 +66,8 @@ Route::group([
         ], function() {
             //ブランドマスタ
             Route::get('/brand', [MasterController::class, 'brand'])->name('brand');
-            Route::get('/brand/edit', [MasterController::class, 'brandEdit'])->name('brand.edit');
+            Route::get('/brand/edit/{brand}', [MasterController::class, 'brandEdit'])->name('brand.edit');
+            Route::post('/brand/updateOrCreate', [MasterController::class, 'brandUpdateOrCreate'])->name('brand.updateOrCreate');
             Route::get('/brand/create', [MasterController::class, 'brandCreate'])->name('brand.create');
             //製品マスタ
             Route::get('/product', [MasterController::class, 'product'])->name('product');

@@ -131,7 +131,6 @@
               {{-- ページネーション --}}
               @include('admin.components._pagination', [
                   'paginate' => $users,
-                  'prefix' => 'users'
               ])
             </div>
           </div>

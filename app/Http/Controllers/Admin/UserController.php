@@ -41,7 +41,6 @@ class UserController extends Controller
 
     public function index(Request $request): View|Factory|Application
     {
-
         return view('admin.users.index', [
             'users' => $this->userRepository->search($request)->orderByDesc('id')->paginate(20),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
