@@ -18,7 +18,8 @@
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form method="POST" action="{{ route('admin.') }}" class="p-form" id="informationSubmitForm">
+                    {!! Form::open(['method' => 'POST', 'route' => ['admin.users.update-user', $user], 'class' => 'p-form', 'id' => 'informationSubmitForm']) !!}
+                    {!! Form::hidden('id', data_get($user, 'id')) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
                         ユーザー情報
@@ -35,6 +36,9 @@
                                   </div>
                                   <div class="p-formList__data">
                                     {!! Form::text('last_name', old('last_name', data_get($user, 'last_name')), ['placeholder' => '例）山田']) !!}
+                                    @error('last_name')
+                                    <div class="error">{{ $message }}</div>
+                                    @enderror
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
@@ -43,6 +47,9 @@
                                   </div>
                                   <div class="p-formList__data">
                                     {!! Form::text('first_name', old('first_name', data_get($user, 'first_name')), ['placeholder' => '例）太郎']) !!}
+                                    @error('first_name')
+                                      <div class="error">{{ $message }}</p>
+                                    @enderror
                                   </div>
                                 </div>
                               </div>
@@ -55,6 +62,9 @@
                                   </div>
                                   <div class="p-formList__data">
                                     {!! Form::text('last_name_kana', old('last_name_kana', data_get($user, 'last_name_kana')), ['placeholder' => '例）ヤマダ']) !!}
+                                    @error('last_name_kana')
+                                      <div class="error">{{ $message }}</p>
+                                    @enderror
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
@@ -63,6 +73,9 @@
                                   </div>
                                   <div class="p-formList__data">
                                     {!! Form::text('first_name_kana', old('first_name_kana', data_get($user, 'first_name_kana')), ['placeholder' => '例）タロウ']) !!}
+                                    @error('first_name_kana')
+                                      <div class="error">{{ $message }}</p>
+                                    @enderror
                                   </div>
                                 </div>
                               </div>
@@ -73,7 +86,10 @@
                                   メールアドレス
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::email('email', old('email', data_get($user, 'email')), ['placeholder' => '例）sample@example.com']) !!}
+                                  {!! Form::email('email', data_get($user, 'email', old('email')), ['placeholder' => '例）sample@example.com']) !!}
+                                  @error('email')
+                                    <div class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -85,8 +101,10 @@
                                 </div>
                                 <div class="p-formList__data">
                                   {!! Form::tel('tel', old('tel', data_get($user, 'tel')), ['placeholder' => '例）09012345678']) !!}
+                                  @error('tel')
+                                    <div class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
-                                <!-- <small>ハイフンなしで入力してください</small> -->
                               </div>
                             </li>
                             <li class="p-formList__item">
@@ -117,6 +135,9 @@
                                     </div>
                                     <div class="p-formList__data">
                                       {!! Form::number('zip_code', old('zip_code', data_get($user, 'zip_code')), ['placeholder' => '例）1230000']) !!}
+                                      @error('zip_code')
+                                        <div class="error">{{ $message }}</p>
+                                      @enderror
                                     </div>
                                   </div>
                                 </div>
@@ -126,7 +147,10 @@
                                       都道府県
                                     </div>
                                     <div class="p-formList__data">
-                                      {!! Form::select('prefectures', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
+                                      {!! Form::select('prefecture', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
+                                      @error('prefecture')
+                                        <div class="error">{{ $message }}</p>
+                                      @enderror
                                     </div>
                                   </div>
                                 </div>
@@ -139,6 +163,9 @@
                                 </div>
                                 <div class="p-formList__data">
                                   {!! Form::text('address_city', old('address_city', data_get($user, 'address_city')), ['placeholder' => '例）渋谷区']) !!}
+                                  @error('address_city')
+                                    <div class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -149,6 +176,9 @@
                                 </div>
                                 <div class="p-formList__data">
                                   {!! Form::text('address_block', old('address_block', data_get($user, 'address_block')), ['placeholder' => '例）渋谷1-2-3']) !!}
+                                  @error('address_block')
+                                    <div class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -182,14 +212,14 @@
                                   管理メモ
                                 </div>
                                 <div class="p-formList__content__data">
-                                  <textarea name="memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
+                                  <textarea name="memo" value="{{ old('memo', data_get($user, 'memo')) }}" placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
                                 </div>
                               </div>
                             </li>
                           </ul>
                         </div>
                       </div>
-                    </form>
+                    {!! Form::close() !!}
                   </div>
                   <div class="p-edit__main__box__foot">
                     <a href="{{ url()->current() }}" class="c-button__reset">変更をリセット</a>

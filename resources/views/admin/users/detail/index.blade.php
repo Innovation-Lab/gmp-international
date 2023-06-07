@@ -24,7 +24,7 @@
                     <h3 class="p-detail__sidebar__box__head__title">
                       登録製品情報
                     </h3>
-                    <a href="{{route('admin.users.create-products')}}" class="c-textButton__icon c-textButton--gray">
+                    <a href="{{ route('admin.users.create-products', $user) }}" class="c-textButton__icon c-textButton--gray">
                       <svg class="icon"><use href="#add"/></svg>
                       登録製品を追加する
                     </a>
@@ -91,7 +91,7 @@
                                   管理メモ
                                 </div>
                                 <div class="p-product__data">
-                                  {{ data_get($user, 'memo') }}
+                                  {{ data_get($sales_product, 'memo') }}
                                 </div>
                               </li>
                             </ul>

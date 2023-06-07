@@ -34,7 +34,7 @@
       </ul>
       <div class="p-list__memo">
         <p class="p-list__label">管理メモ</p>
-        <textarea class="p-list__memo__area c-scroll" name="memo"></textarea>
+        <div class="p-list__memo__area c-scroll">{{ data_get($user, 'memo') }}</div>
       </div>
     </div>
   </div>

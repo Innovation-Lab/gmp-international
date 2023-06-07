@@ -5,7 +5,9 @@
   <div class="l-create">
     <div class="l-create__head">
       {{-- 詳細ヘッド --}}
-      @include('admin.users.create._head')
+      @include('admin.users.create._head', [
+        'user' => $user,
+      ])
     </div>
     <div class="l-create__body">
       <div class="wrapper u-max--800">
@@ -27,7 +29,7 @@
                     </form>
                   </div>
                   <div class="p-create__main__box__foot">
-                    <a href="{{route('admin.users.detail')}}" class="c-button__reset">戻る</a>
+                    <a href="{{route('admin.users.detail', $user)}}" class="c-button__reset">戻る</a>
                     <button class="c-button">この内容で登録する</button>
                   </div>
                 </div>
