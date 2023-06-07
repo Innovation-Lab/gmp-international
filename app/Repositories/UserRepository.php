@@ -56,23 +56,37 @@ class UserRepository implements UserRepositoryInterface
             
             DB::commit();
             return true;
+            
         } catch(\Exception $e) {
             DB::rollback();
         }
-
 
         return false;
     }
 
     public function userUpdate(User $user, Request $request)
     {
-        $data = $request->all();
-        if (!isset($data['is_dm'])) {
-            $data['is_dm'] = 0;
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+
+            if (!isset($data['is_dm'])) {
+                $data['is_dm'] = 0;
+            }
+            unset($data['_token']);
+            
+            if (isset($data['password'])) {
+                $data['password'] = Hash::make($data['password']);
+            } else {
+                unset($data['password']);
+            }
+            $user->update($data);
+            DB::commit();
+            return $user;
+
+        } catch(\Exception $e) {
+            DB::rollback();
         }
-        unset($data['_token']);
-        $user->fill($data)->save();
-        return $user;
     }
     
     /**

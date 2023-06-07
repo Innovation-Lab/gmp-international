@@ -9,9 +9,14 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\AdminUserUpdateRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\User;
 use App\Models\MBrand;
 use App\Models\MProduct;
+use App\Models\MColor;
+use App\Models\MShop;
+use App\Models\SalesProduct;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Carbon;
 
@@ -63,23 +68,99 @@ class UserController extends Controller
     {
         return view('admin.users.create.index');
     }
-    public function createProducts(): View
-    {
-        return view('admin.users.create.products');
+
+    public function createProducts(User $user): View
+    {  
+        return view('admin.users.create.products')->with([
+            'user' => $user,
+        ]);
     }
 
-    public function detail(): View
+    public function detail(User $user): View
     {
-        return view('admin.users.detail.index');
+        $sales_products = data_get($user, 'salesProducts');
+
+        return view('admin.users.detail.index')->with([
+            'user' => $user,
+            'sales_products' => $sales_products,
+        ]);
     }
 
-    public function editUser(): View
+    public function editUser(User $user): View
     {
-        return view('admin.users.edit.user');
+        $prefectures = config('prefecture');
+
+        return view('admin.users.edit.user')->with([
+            'user' => $user,
+            'prefectures' => $prefectures,
+        ]);
     }
-    public function editProducts(): View
+
+    /**
+     * 基本情報 更新
+     * @param AdminUserUpdateRequest $request
+     * @return RedirectResponse
+     */
+    public function updateUser(User $user, AdminUserUpdateRequest $request)
     {
-        return view('admin.users.edit.products');
+        if ($this->userRepository->userUpdate($user, $request)) {
+            return redirect()
+            ->route('admin.users.detail', $user)
+            ->with('status', 'success')
+            ->with('message', '更新が完了しました。');
+        } else {
+            return redirect()
+                ->back()
+                ->with('status', 'failed')
+                ->with('message', '更新に失敗しました。');
+        }
+    }
+
+    public function editProducts(User $user, SalesProduct $sales_product): View
+    {
+        return view('admin.users.edit.products')->with([
+            'user' => $user,
+            'sales_product' => $sales_product,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
+    }
+
+    /**
+     * 購入製品情報 更新
+     * @param StoreProductRequest $request
+     * @return RedirectResponse
+     */
+    public function updateProducts(SalesProduct $sales_product, StoreProductRequest $request)
+    {
+        $params = $request->all();
+
+        \DB::beginTransaction();
+        try {
+            $sales_product->update([
+                'purchase_date' => data_get($params, 'purchase_date'),
+                'm_brand_id' => data_get($params, 'm_brand_id'),
+                'm_product_id' => data_get($params, 'm_product_id'),
+                'm_color_id' => data_get($params, 'm_color_id'),
+                'product_code' => data_get($params, 'product_code'),
+                'm_shop_id' => data_get($params, 'm_shop_id'),
+                'memo' => data_get($params, 'memo'),
+            ]);
+
+            \DB::commit();
+
+            return redirect($request->headers->get('referer'))
+                ->with('message', '更新が完了しました。');
+
+        } catch(\Exception $e) {
+            \DB::rollback();
+        }
+
+        return redirect()
+            ->back()
+            ->with('error', 'エラーが発生しました。');
     }
 
     // public function userEdit(): View
