@@ -37,6 +37,17 @@ class MasterController extends Controller
     }
     
     /**
+     * @param Request $request
+     * @return View|Factory|Application
+     */
+    public function brandCreate(Request $request): View|Factory|Application
+    {
+        return view('admin.masters.brand.edit.index', [
+            'brand' => new MBrand()
+        ]);
+    }
+    
+    /**
      * @param MBrand $brand
      * @return View|Factory|Application
      */
@@ -65,12 +76,6 @@ class MasterController extends Controller
         
         return redirect()->route('admin.masters.brand')
             ->with(['success' => '登録しました。']);
-    }
-    
-    public function brandCreate(Request $request): View|Factory|Application
-    {
-        return view('admin.masters.brand.create.index', [
-        ]);
     }
 
     //製品マスタ

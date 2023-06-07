@@ -29,7 +29,7 @@
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
                     {!! Form::open(['method' => 'POST', 'route' => 'admin.masters.brand.updateOrCreate', 'class' => 'p-form min', 'id' => 'updateBrandForm', 'files' => true]) !!}
-                      <input type="hidden" name="id" value="{{ $brand->id }}">
+                      <input type="hidden" name="id" value="{{ data_get($brand, 'id') }}">
                       <div class="l-grid__1">
                         <div class="l-grid__item">
                           <ul class="p-formList u-max--320">
