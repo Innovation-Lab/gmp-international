@@ -50,7 +50,7 @@ class MShop extends Model
     public function getMainImageUrlAttribute(): string
     {
         if (!data_get($this, 'image_path')) {
-            return asset('img/admin/noimage/store.png');
+            return asset('img/admin/noImage/store.png');
         } else {
             return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
         }

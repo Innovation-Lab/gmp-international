@@ -41,7 +41,7 @@ class MBrand extends Model
     public function getMainImageUrlAttribute(): string
     {
         if (!data_get($this, 'image_path')) {
-            return asset('img/admin/noimage/brand.png');
+            return asset('img/admin/noImage/brand.png');
         } else {
             return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
         }
