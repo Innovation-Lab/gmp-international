@@ -59,38 +59,34 @@
                   </th>
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 3; $i++)
+                  @foreach ($admins as $admin)
                     <!-- 1人 -->
                     <tr>
                       <td>
-                        <img src="{{asset('/img/admin/sample/profile.png')}}" width="40" height="40" alt="">
+                        <img src="{{ data_get($admin, 'main_image_url') }}" width="40" height="40" alt="">
                       </td>
                       <td class="item">
-                        山田　太郎
-                        <span>ヤマダ　タロウ</span>
+                        {{ data_get($admin, 'full_name') }}
+                        <span>{{ data_get($admin, 'full_name_kana') }}</span>
                       </td>
                       <td class="item">
-                        エアバギー代官山店
+                        {{ data_get($admin, 'mShop.name') }}
                       </td>
                       <td class="item">
-                        <!-- ↓↓管理者↓↓ -->
-                        <div class="c-status__auth-admin"></div>
-                        <!--  ↓↓一般↓↓ -->
-                        <!-- <div class="c-status__auth-general"></div> -->
+                        <div class="c-status__auth-{{ data_get($admin, 'authority_class') }}"></div>
                       </td>
                       <td class="item">
-                        sample@example.com
+                        {{ data_get($admin, 'email') }}
                       </td>
                       <td class="item">
-                        2023/04/04<br>
-                        14:10
+                        {{ formatYmdSlash(data_get($admin, 'created_at')) }}<br>{{ formatHiSlash(data_get($admin, 'created_at')) }}
                       </td>
                       <td class="item">
-                        <a href="{{route('admin.staffs.edit')}}" class="c-button">編集</a>
+                        <a href="{{route('admin.staffs.edit', $admin)}}" class="c-button">編集</a>
                         <button class="c-button__2">削除</button>
                       </td>
                     </tr>
-                  @endfor
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -99,7 +95,7 @@
             <div class="p-index__foot">
               {{-- ページネーション --}}
               @include('admin.components._pagination', [
-                  'paginate' => $admins
+                  'paginate' => $admins,
               ])
               </a>
             </div>

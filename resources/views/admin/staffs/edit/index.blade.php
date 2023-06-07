@@ -19,13 +19,13 @@
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form min">
+                    {!! Form::open(['method' => 'POST', 'route' => 'admin.staffs.updateOrCreate', 'class' => 'p-form min', 'id' => 'updateStaffForm', 'files' => true]) !!}
                       @include('admin.staffs.edit._form')
-                    </form>
+                    {!! Form::close() !!}
                   </div>
                   <div class="p-edit__main__box__foot">
                     <button class="c-button__reset">変更をリセット</button>
-                    <button class="c-button">変更を反映する</button>
+                    <button form="updateStaffForm" class="c-button">変更を反映する</button>
                 </div>
               </div>
             </div>

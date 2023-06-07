@@ -99,7 +99,9 @@ Route::group([
         ], function() {
             Route::get('/', [AdminController::class, 'index'])->name('index');
             Route::get('/create', [AdminController::class, 'create'])->name('create');
-            Route::get('/edit', [AdminController::class, 'edit'])->name('edit');
+            Route::get('/edit/{user}', [AdminController::class, 'edit'])->name('edit');
+            Route::post('/delete/{user}', [AdminController::class, 'delete'])->name('delete');
+            Route::post('/updateOrCreate', [AdminController::class, 'updateOrCreate'])->name('updateOrCreate');
         });
     });
 

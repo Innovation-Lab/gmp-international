@@ -1,3 +1,12 @@
+<style>
+    input[type=file] + label.clear_fake:before {
+        opacity: 0;
+    }
+    input[type=file] + label.clear_fake:after {
+        content: "";
+        opacity: 0;
+    }
+</style>
 <div class="l-grid__1" style="gap: 1.5rem 2rem;">
   <div class="l-grid__item">
     <ul class="p-formList">
@@ -5,10 +14,31 @@
         <div class="l-grid__2 l-grid__gap2 u-align--end">
           <div class="p-formList__content">
             <div class="p-formList__data">
-              <input type="file" id="staff_icon" name="staff_icon" value="">
-              <label for="staff_icon" class="icon icon--edit">
-                <div class="c-image" style="background-image: url(/img/admin/sample/profile.png);"></div>
+              <input
+                id="staff_icon"
+                type="file"
+                name="image_path"
+                class="file_img_preview"
+                accept="image/jpeg,image/png,.svg"
+                onchange="
+                  const [file] = $(this).prop('files');
+                  if(file){
+                    changeFilePreview(file);
+                  }
+                "
+              >
+              <label for="staff_icon" class="icon icon--edit @if(data_get($admin, 'image_path')) clear_fake @endif">
+                <img
+                  id="image_preview_form"
+                  src="{{ data_get($admin, 'main_image_url') }}"
+                >
               </label>
+              <script>
+                  function changeFilePreview(file) {
+                      $('#image_preview_form').attr('src', URL.createObjectURL(file));
+                      $('.icon').addClass('clear_fake')
+                  }
+              </script>
             </div>
           </div>
           <div class="p-formList__content">
@@ -18,11 +48,11 @@
             <div class="p-formList__data">
               <div class="f-tab">
                 <label for="inq1-2">
-                  <input type="radio" id="inq1-2" name="is_dm" value="1" {{ Auth::user()->is_dm == 1 ? 'checked' : '' }}>
+                  <input type="radio" id="inq1-2" name="authority" value="2" {{ data_get($admin, 'authority', 1) == 2 ? 'checked' : '' }}>
                   一般
                 </label>
                 <label for="inq2-2">
-                  <input type="radio" id="inq2-2" name="is_dm" value="0" {{ Auth::user()->is_dm == 0 ? 'checked' : '' }}>
+                  <input type="radio" id="inq2-2" name="authority" value="1" {{ data_get($admin, 'authority', 1) == 1 ? 'checked' : '' }}>
                   管理者
                 </label>
               </div>
@@ -37,7 +67,7 @@
               姓
             </div>
             <div class="p-formList__data">
-              {!! Form::text('last-name', '山田', ['placeholder' => '例）山田']) !!}
+              {!! Form::text('last-name', old('last_name', data_get($admin, 'last_name')), ['placeholder' => '例）山田']) !!}
             </div>
           </div>
           <div class="p-formList__content">
@@ -45,7 +75,7 @@
               名
             </div>
             <div class="p-formList__data">
-              {!! Form::text('first-name', '太郎', ['placeholder' => '例）太郎']) !!}
+              {!! Form::text('first-name', old('first_name', data_get($admin, 'first_name')), ['placeholder' => '例）太郎']) !!}
             </div>
           </div>
         </div>
@@ -57,7 +87,7 @@
               セイ
             </div>
             <div class="p-formList__data">
-              {!! Form::text('sei', 'ヤマダ', ['placeholder' => '例）ヤマダ']) !!}
+              {!! Form::text('sei', old('last_name_kana', data_get($admin, 'last_name_kana')), ['placeholder' => '例）ヤマダ']) !!}
             </div>
           </div>
           <div class="p-formList__content">
@@ -65,7 +95,7 @@
               メイ
             </div>
             <div class="p-formList__data">
-              {!! Form::text('mei', 'タロウ', ['placeholder' => '例）タロウ']) !!}
+              {!! Form::text('mei', old('last_name_kana', data_get($admin, 'last_name_kana')), ['placeholder' => '例）タロウ']) !!}
             </div>
           </div>
         </div>
@@ -76,11 +106,11 @@
             所属店舗
           </div>
           <div class="p-formList__data">
-            <select name="store" class="select2">
-              <option value="" hidden>選択してください</option>
-              <option value="store1" selected>エアバギー代官山店</option>
-              <option value="store2">エアバギー渋谷店</option>
-              <option value="store3">エアバギー新宿店</option>
+            <select name="m_shop_id" class="select2">
+              <option value="" hidden>所属店舗を選択してください</option>
+              @foreach($shops as $k => $v)
+                <option value="{{ $k }}" {{ old('m_shop_id', data_get($admin, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
             </select>
           </div>
         </div>
@@ -91,7 +121,7 @@
             メールアドレス
           </div>
           <div class="p-formList__data">
-            {!! Form::email('email', 'sample@example.com', ['placeholder' => '例）sample@example.com']) !!}
+            {!! Form::email('email', old('email', data_get($admin, 'email')), ['placeholder' => '例）sample@example.com']) !!}
           </div>
         </div>
       </li>
