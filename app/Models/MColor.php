@@ -38,6 +38,10 @@ class MColor extends Model
      */
     public function getMainImageUrlAttribute(): string
     {
-        return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
+        if (!data_get($this, 'image_path')) {
+            return asset('img/admin/noImage/brand.png');
+        } else {
+            return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
+        }
     }
 }
