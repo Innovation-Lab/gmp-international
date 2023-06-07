@@ -32,7 +32,7 @@
                         <ul class="p-list">
                           @foreach([
                             '店舗名' => data_get($shop, 'name'),
-                            '電話番号' => '03-5465-7580',
+                            '電話番号' => data_get($shop, 'tel'),
                             '住所' => 
                             '〒 '.format_zip_code(data_get($shop, 'zip_code')).'<br>
                             '.data_get($shop, 'full_address'),
