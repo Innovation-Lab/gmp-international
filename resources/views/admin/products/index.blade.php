@@ -51,20 +51,26 @@
                     <div class="item">ブランド名</div>
                   </th>
                   <th>
-                    <div class="item">登録番号</div>
+                    <div class="item">製品名</div>
                   </th>
                   <th>
                     <div class="item">カラー</div>
                   </th>
                   <th>
-                    <div class="item">購入者</div>
+                    <div class="item">シリアルナンバー</div>
                   </th>
                   <th>
                     <div class="item">購入店舗</div>
                   </th>
                   <th>
-                    <div class="item">ステータス</div>
+                    <div class="item">購入者</div>
                   </th>
+                  {{--<th>
+                    <div class="item">ステータス</div>
+                  </th>--}}
+                  {{--<th>
+                    <div class="item">登録番号</div>
+                  </th>--}}
                 </thead>
                 <tbody>
                   @for ($i = 0; $i < 30; $i++)
@@ -74,26 +80,31 @@
                       AIRBUGGY
                     </td>
                     <td class="item">
-                      AB01-097M-HIUA
+                      COCO PREMIER FROM BIRTH
                     </td>
                     <td class="item">
                       <span>グラスグリーン</span>
                       GRASS
                     </td>
                     <td class="item">
-                      <!-- <div class="u-align--both u-align--nowrap"> -->
-                        <a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>
-                      <!-- </div> -->
+                      GMP 123456789
                     </td>
                     <td class="item">
                       エアバギー代々木公園本店
                     </td>
                     <td class="item">
+                      {{--<a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>--}}
+                      山田 太郎
+                    </td>
+                    {{--<td class="item">
                       <div>
                         <span class="status status--yet">登録済み</span>
                         <span class="status status--not" style="display: none;">未登録</span>
                       </div>
-                    </td>
+                    </td>--}}
+                    {{--<td class="item">
+                      AB01-097M-HIUA
+                    </td>--}}
                   </tr>
                   @endfor
                 </tbody>
