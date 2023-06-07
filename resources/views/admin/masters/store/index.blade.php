@@ -61,25 +61,27 @@
                   </th>
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 8; $i++)
+                  @forelse ($shops as $shop)
                   <!-- 1人 -->
-                  <tr data-href="{{ route('admin.masters.store.detail') }}">
-                    <td class="item">
-                      エアバギー代々木公園本店
-                    </td>
-                    <td class="item">
-                      〒151-0063<br />
-                      東京都 渋谷区富ヶ谷1-16-1 ラクール代々木公園1F
-                    </td>
-                    <td class="item">
-                      03-5465-7580
-                    </td>
-                    <td class="item">
-                      11:00〜19:00<br />
-                      <small>(定休日:木曜)</small>
-                    </td>
-                  </tr>
-                  @endfor
+                    <tr data-href="{{ route('admin.masters.store.detail', $shop) }}">
+                      <td class="item">
+                        {{ data_get($shop, 'name') }}
+                      </td>
+                      <td class="item">
+                        〒{{ format_zip_code(data_get($shop, 'zip_code')) }}<br />
+                        {{ data_get($shop, 'full_address') }}
+                      </td>
+                      <td class="item">
+                        {{ phone_template_format(data_get($shop, 'tel')) }}
+                      </td>
+                      <td class="item">
+                        {{ data_get($shop, 'week_business_hour')  }}<br />
+                        <small>{{ data_get($shop, 'week_business_hour_memo') ? '('.data_get($shop, 'week_business_hour_memo').')' : '' }}</small>
+                      </td>
+                    </tr>
+                  @empty
+                    <tr><td style="border-bottom: none;">データはありません。</td></tr>
+                  @endforelse
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
@@ -113,7 +115,9 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              @include('admin.masters.store._pagination')
+              @include('admin.components._pagination', [
+                  'paginate' => $shops,
+              ])
             </div>
           </div>
         </div>

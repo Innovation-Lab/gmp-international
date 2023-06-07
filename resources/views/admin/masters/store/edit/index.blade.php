@@ -18,7 +18,9 @@
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form">
+                    {!! Form::open(['method' => 'POST', 'route' => 'admin.masters.store.updateOrCreate', 'class' => 'p-form h-adr', 'id' => 'updateShopForm', 'files' => true]) !!}
+                    <span class="p-country-name" style="display:none;">Japan</span>
+                    {!! Form::hidden('id', data_get($shop, 'id')) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
                         店舗情報編集
@@ -30,10 +32,30 @@
                             <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__data" style="width: 220px;">
-                                  <input type="file" id="store_img" name="store_img" value="">
-                                  <label for="product_img" class="">
-                                    <img src="{{asset('img/admin/store/airbuggy-yoyogipark.png')}}">
+                                  <input
+                                    id="store_img"
+                                    type="file"
+                                    name="image_path"
+                                    class="file_img_preview"
+                                    accept="image/jpeg,image/png,.svg"
+                                    onchange="
+                                      const [file] = $(this).prop('files');
+                                      if(file){
+                                        changeFilePreview(file);
+                                      }
+                                    "
+                                  >
+                                  <label for="store_img" class=" @if(data_get($shop, 'image_path')) clear_fake @endif">
+                                    <img
+                                      id="image_preview_form"
+                                      src="{{ data_get($shop, 'main_image_url') }}"
+                                    >
                                   </label>
+                                  <script>
+                                      function changeFilePreview(file) {
+                                          $('#image_preview_form').attr('src', URL.createObjectURL(file));
+                                      }
+                                  </script>
                                 </div>
                               </div>
                             </li>
@@ -47,7 +69,7 @@
                                   店舗名
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('store-name', 'エアバギー代々木公園本店', ['placeholder' => '例）エアバギー○○店']) !!}
+                                  {!! Form::text('name', old('name', data_get($shop, 'name')), ['placeholder' => '例）エアバギー○○店']) !!}
                                 </div>
                               </div>
                             </li>
@@ -55,12 +77,11 @@
                               <div class="p-formList__content">
                                 <!-- <div class="p-formList__label optional"> -->
                                 <div class="p-formList__label">
-                                  電話番号
+                                  電話番号<small>（ハイフンなしで入力してください）</small>
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::tel('telephone', '090-1234-5678', ['placeholder' => '例）09012345678']) !!}
+                                  {!! Form::tel('tel',  old('tel', data_get($shop, 'tel')), ['placeholder' => '例）09012345678']) !!}
                                 </div>
-                                <!-- <small>ハイフンなしで入力してください</small> -->
                               </div>
                             </li>
                             <li class="p-formList__item">
@@ -71,7 +92,7 @@
                                       郵便番号
                                     </div>
                                     <div class="p-formList__data">
-                                      {!! Form::number('zip', '1230000', ['placeholder' => '例）1230000']) !!}
+                                      {!! Form::number('zip_code',  old('zip_code', data_get($shop, 'zip_code')), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
                                     </div>
                                   </div>
                                 </div>
@@ -81,17 +102,12 @@
                                       都道府県
                                     </div>
                                     <div class="p-formList__data">
-                                      {!!
-                                        Form::select('prefectures', 
-                                          [
-                                          'tokyo' => '東京都',
-                                          'kanagawa' => '神奈川県',
-                                          'saitama' => '埼玉県',
-                                          'chiba' => '千葉県',
-                                          ],
-                                          'tokyo', ['placeholder' => '都道府県を選択']
-                                        )
-                                      !!}
+                                      <select id="prefecture" name="prefecture" class="p-region">
+                                        <option value="" hidden>都道府県</option>
+                                        @foreach($prefectures as $index => $name)
+                                          <option value="{{ $index }}" {{ old('prefecture', data_get($shop, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                 </div>
@@ -103,7 +119,7 @@
                                   市区町村
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('city', '渋谷区渋谷123', ['placeholder' => '例）渋谷区渋谷1-2-3']) !!}
+                                  {!! Form::text('address_city_block',  old('address_city_block', data_get($shop, 'address_city_block')), ['class' => 'p-locality p-street-address p-extended-address', 'placeholder' => '例）渋谷区渋谷1-2-3']) !!}
                                 </div>
                               </div>
                             </li>
@@ -113,7 +129,7 @@
                                   建物名など
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('room', 'ラクール代々木公園1F', ['placeholder' => '例）代々木公園ビル1F']) !!}
+                                  {!! Form::text('address_building',  old('address_building', data_get($shop, 'address_building')), ['placeholder' => '例）代々木公園ビル1F']) !!}
                                 </div>
                               </div>
                             </li>
@@ -130,10 +146,10 @@
                                     </div>
                                     <div class="l-grid__4">
                                       <div class="p-formList__data">
-                                        {!! Form::time('prefectures', '10:00', ['placeholder' => '例）10:00']) !!}
+                                        {!! Form::time('open_time_of_week', old('open_time_of_week', data_get($shop, 'week_business_hour') ? data_get($shop, 'week_business_work_array')[0]: ''), ['placeholder' => '例）10:00']) !!}
                                       </div>
                                       <div class="p-formList__data store">
-                                        {!! Form::time('prefectures', '19:00', ['placeholder' => '例）19:00']) !!}
+                                        {!! Form::time('close_time_of_week', old('close_time_of_week', data_get($shop, 'week_business_hour') ? data_get($shop, 'week_business_work_array')[1]: ''), ['placeholder' => '例）19:00']) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -146,7 +162,7 @@
                                   営業時間1備考
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('hour', '（定休日：木曜）', ['placeholder' => '例）定休日：○曜日']) !!}
+                                  {!! Form::text('week_business_hour_memo',  old('week_business_hour_memo', data_get($shop, 'week_business_hour_memo')), ['placeholder' => '例）定休日：○曜日']) !!}
                                 </div>
                               </div>
                             </li>
@@ -159,10 +175,10 @@
                                     </div>
                                     <div class="l-grid__4">
                                       <div class="p-formList__data">
-                                        {!! Form::time('prefectures', '10:00', ['placeholder' => '例）11:00']) !!}
+                                        {!! Form::time('open_time_of_holiday', old('open_time_of_holiday', data_get($shop, 'holiday_business_hour') ? data_get($shop, 'holiday_business_work_array')[0]: ''), ['placeholder' => '例）10:00']) !!}
                                       </div>
                                       <div class="p-formList__data store">
-                                        {!! Form::time('prefectures', '20:00', ['placeholder' => '例）20:00']) !!}
+                                        {!! Form::time('close_time_of_holiday', old('close_time_of_holiday', data_get($shop, 'holiday_business_hour') ? data_get($shop, 'holiday_business_work_array')[1]: ''), ['placeholder' => '例）19:00']) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -175,18 +191,18 @@
                                   営業時間2備考
                                 </div>
                                 <div class="p-formList__data">
-                                  {!! Form::text('hour', '（土日祝）', ['placeholder' => '例）定休日：○曜日']) !!}
+                                  {!! Form::text('holiday_business_hour_memo',  old('holiday_business_hour_memo', data_get($shop, 'holiday_business_hour_memo')), ['placeholder' => '例）定休日：○曜日']) !!}
                                 </div>
                               </div>
                             </li>
                           </ul>
                         </div>
                       </div>
-                    </form>
+                    {!! Form::close() !!}
                   </div>
                   <div class="p-edit__main__box__foot">
-                    <button class="c-button__reset">変更をリセット</button>
-                    <button class="c-button">変更を反映する</button>
+                    <button onclick="window.location='{{ request()->url() }}'" class="c-button__reset">変更をリセット</button>
+                    <button form="updateShopForm" class="c-button">変更を反映する</button>
                 </div>
               </div>
             </div>
@@ -213,6 +229,7 @@
   //   table.css('grid-template-columns','repeat(' + thLength + ', minmax(max-content, 1fr))')
   // })();
 </script>
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 @endsection
 
                               

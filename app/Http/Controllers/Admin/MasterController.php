@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\MBrand;
+use App\Models\MShop;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -99,27 +100,66 @@ class MasterController extends Controller
         return view('admin.masters.product.create.index', [
         ]);
     }
-
-    //店舗マスタ
+    
+    /**
+     * @param Request $request
+     * @return View|Factory|Application
+     */
     public function store(Request $request): View|Factory|Application
     {
         return view('admin.masters.store.index', [
+            'shops' => MShop::query()->paginate(20)
         ]);
     }
-    public function storeDetail(Request $request): View|Factory|Application
+    
+    /**
+     * @param MShop $shop
+     * @return View|Factory|Application
+     */
+    public function storeDetail(MShop $shop): View|Factory|Application
     {
         return view('admin.masters.store.detail.index', [
+            'shop' => $shop
         ]);
     }
-    public function storeEdit(Request $request): View|Factory|Application
+    
+    /**
+     * @param MShop $shop
+     * @return View|Factory|Application
+     */
+    public function storeEdit(MShop $shop): View|Factory|Application
     {
         return view('admin.masters.store.edit.index', [
+            'shop' => $shop,
+            'prefectures' => config('prefecture')
         ]);
     }
     public function storeCreate(Request $request): View|Factory|Application
     {
-        return view('admin.masters.store.create.index', [
+        return view('admin.masters.store.edit.index', [
+            'shop' => new MShop(),
+            'prefectures' => config('prefecture')
         ]);
+    }
+    
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function storeUpdateOrCreate(Request $request): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $this->masterRepository->updateOrCreate_shop($request);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['error' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.store')
+            ->with(['success' => '登録しました。']);
     }
     
 

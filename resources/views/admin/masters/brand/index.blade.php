@@ -121,7 +121,6 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              {{-- ページネーション --}}
               @include('admin.components._pagination', [
                   'paginate' => $brands,
               ])

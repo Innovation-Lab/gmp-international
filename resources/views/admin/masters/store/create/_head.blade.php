@@ -5,7 +5,7 @@
         @if(Route::current()->getName() == 'admin.master.store.create')
           <a href="{{route('admin.store.index')}}" class="c-button__2">戻る</a>
         @else
-          <a href="{{route('admin.masters.store.detail')}}" class="c-button__2">戻る</a>
+          <a onclick="window.location.back();" class="c-button__2">戻る</a>
         @endif
       </div>
     </div>

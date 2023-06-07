@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\MBrand;
+use App\Models\MShop;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,16 @@ class MasterRepository implements MasterRepositoryInterface
     
     public function UpdateOrCreate_shop(Request $request)
     {
-        // TODO: Implement UpdateOrCreate_shop() method.
+        $params = $this->arrayShapeShop($request);
+   
+        // 画像の登録
+        if ($request->file('image_path')) {
+            $file = $request->file('image_path');
+            $path = Storage::disk('s3')->put('shops', $file);
+            $params['image_path'] = $path;
+        }
+        
+        return MShop::updateOrCreate(['id'=> $request->input('id')], $params);
     }
     
     
@@ -55,6 +65,30 @@ class MasterRepository implements MasterRepositoryInterface
         return [
             'image_path' => '',
             'name' => $request->input('name')
+        ];
+    }
+    
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function arrayShapeShop(Request $request): array
+    {
+        $week_business_hour = $request->get('open_time_of_week'). '〜' .$request->get('close_time_of_week');
+        $holiday_business_hour = $request->get('open_time_of_holiday'). '〜' .$request->get('close_time_of_holiday');
+
+        return [
+            'image_path' => '',
+            'name' => $request->input('name'),
+            'tel' => $request->input('tel'),
+            'zip_code' => $request->input('zip_code'),
+            'prefecture' => $request->input('prefecture'),
+            'address_city_block' => $request->input('address_city_block'),
+            'address_building' => $request->input('address_building'),
+            'week_business_hour' => $week_business_hour != '〜' ? $week_business_hour : NULL,
+            'week_business_hour_memo' => $request->input('week_business_hour_memo'),
+            'holiday_business_hour' => $holiday_business_hour != '〜' ? $holiday_business_hour : NULL,
+            'holiday_business_hour_memo' => $request->input('holiday_business_hour_memo'),
         ];
     }
 }
