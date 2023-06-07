@@ -2,6 +2,15 @@
 @section('title', 'カラー編集')
 @section('class', 'body_edit')
 @section('content')
+<style>
+    input[type=file] + label.clear_fake:before {
+        opacity: 0;
+    }
+    input[type=file] + label.clear_fake:after {
+        content: "";
+        opacity: 0;
+    }
+</style>
 <div class="p-edit">
   <div class="l-edit">
     <div class="l-edit__head">
@@ -19,7 +28,8 @@
                 <div class="p-edit__main__box">
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form min">
+                    {!! Form::open(['method' => 'POST', 'route' => 'admin.masters.color.updateOrCreate', 'class' => 'p-form min', 'id' => 'updateColorForm', 'files' => true]) !!}
+                      <input type="hidden" name="id" value="{{ data_get($color, 'id') }}">
                       <div class="l-grid__1">
                         {{-- -------------------- 編集項目 -------------------- --}}
                         <div class="p-edit__item" id="edit_1" style="display: block;">
@@ -36,11 +46,11 @@
                                         <div class="p-formList__colorSet">
                                           <div class="p-formList__colorSet__type">
                                             <div class="radio">
-                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="colorSet_type_single" checked>
+                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="single" @if( data_get($color, 'type_color_picker') == 'single' ) checked @endif>
                                               <label for="colorSet_type_single">1色</label>
-                                              <input type="radio" id="colorSet_type_double" name="colorSet_type" value="colorSet_type_double">
+                                              <input type="radio" id="colorSet_type_double" name="colorSet_type" value="double" @if( data_get($color, 'type_color_picker') == 'double' ) checked @endif>
                                               <label for="colorSet_type_double">2色</label>
-                                              <input type="radio" id="colorSet_type_mix" name="colorSet_type" value="colorSet_type_mix">
+                                              <input type="radio" id="colorSet_type_mix" name="colorSet_type" value="mix" @if( data_get($color, 'type_color_picker') == 'mix' ) checked @endif>
                                               <label for="colorSet_type_mix">パターン</label>
                                             </div>
                                           </div>
@@ -56,41 +66,64 @@
                                       <div class="p-formList__data">
                                         <div class="p-formList__colorSet__type">
                                           <!-- 1色 -->
-                                          <div class="p-formList__colorSet__type__item">
+                                          <div class="p-formList__colorSet__type__item js_prop_single" style="display:none;">
                                             <div class="p-inputColor">
                                               <div class="p-inputColor__palet">
-                                                <input type="color" id="color_palet" name="color_palet" placeholder="" value="">
+                                                <input type="color" class="color_palet" name="" placeholder="" value="{{ old('color', data_get($color, 'color')) }}">
                                               </div>
                                               <div class="p-inputColor__code">
-                                                <input type="text" id="color_code" name="color_code" placeholder="#FFD3D3" value="#FFD3D3">
+                                                <input type="text" class="color_code" name="color" placeholder="#FFD3D3" value="{{ old('color', data_get($color, 'color')) }}" @if( data_get($color, 'type_color_picker') != 'single' ) disabled @endif>
                                               </div>
                                             </div>
                                           </div>
                                           <!-- 2色 -->
-                                          <div class="p-formList__colorSet__type__item">
+                                          <div class="p-formList__colorSet__type__item js_prop_double" style="display:none;">
                                             <div class="p-inputColor">
                                               <div class="p-inputColor__palet">
-                                                <input type="color" id="color_palet" name="color_palet" placeholder="" value="">
+                                                <input type="color" class="color_palet" name="" placeholder="" value="{{ old('color', data_get($color, 'color')) }}">
                                               </div>
                                               <div class="p-inputColor__code">
-                                                <input type="text" id="color_code" name="color_code" placeholder="#FFD3D3" value="#FFD3D3">
+                                                <input type="text" class="color_code" name="color" placeholder="#FFD3D3" value="{{ old('color', data_get($color, 'color')) }}" @if( data_get($color, 'type_color_picker') != 'double' ) disabled @endif>
                                               </div>
                                             </div>
                                             <div class="p-inputColor">
                                               <div class="p-inputColor__palet">
-                                                <input type="color" id="color_palet" name="color_palet" placeholder="" value="">
+                                                <input type="color" class="color_palet" name="" placeholder="" value="{{ old('second_color', data_get($color, 'second_color')) }}">
                                               </div>
                                               <div class="p-inputColor__code">
-                                                <input type="text" id="color_code" name="color_code" placeholder="#FFD3D3" value="#FFD3D3">
+                                                <input type="text" class="color_code" name="second_color" placeholder="#FFD3D3" value="{{ old('second_color', data_get($color, 'second_color')) }}" @if( data_get($color, 'type_color_picker') != 'double' ) disabled @endif>
                                               </div>
                                             </div>
                                           </div>
                                           <!-- パターン -->
-                                          <div class="p-formList__colorSet__type__item">
-                                            <input type="file" id="color_pattern" name="color_pattern" value="color_pattern">
-                                            <label for="color_pattern" class="colorPattern">
-                                              <!-- <img src="{{asset('img/admin/brand/airbuggy.svg')}}"> -->
+                                          <div class="p-formList__colorSet__type__item js_prop_mix" style="display:none;">
+                                            <input
+                                              id="color_pattern"
+                                              type="file"
+                                              name="image_path"
+                                              class="file_img_preview"
+                                              accept="image/jpeg,image/png,.svg"
+                                              @if( data_get($color, 'type_color_picker') != 'mix' ) disabled @endif
+                                              style="opacity: 0"
+                                              onchange="
+                                                const [file] = $(this).prop('files');
+                                                if(file){
+                                                  changeFilePreview(file);
+                                                }
+                                              "
+                                            >
+                                            <label for="color_pattern" class="colorPattern @if(data_get($color, 'image_path')) clear_fake @endif">
+                                              <img
+                                                id="image_preview_form"
+                                                src="{{ data_get($color, 'main_image_url') }}"
+                                              >
                                             </label>
+                                            <script>
+                                                function changeFilePreview(file) {
+                                                    $('#image_preview_form').attr('src', URL.createObjectURL(file));
+                                                    $('.colorPattern').addClass('clear_fake')
+                                                }
+                                            </script>
                                           </div>                                 
                                         </div>
                                       </div>
@@ -102,7 +135,7 @@
                                         カラー名
                                       </div>
                                       <div class="p-formList__data">
-                                        <input type="text" id="color_name" name="color_name" placeholder="ブロッサム" value="ブロッサム">
+                                        <input type="text" id="color_name" name="name" placeholder="ブロッサム" value="{{ data_get($color, 'name') }}">
                                       </div>
                                     </div>
                                   </li>
@@ -112,7 +145,7 @@
                                         カラー名(英字)
                                       </div>
                                       <div class="p-formList__data">
-                                        <input type="text" id="color_name_" name="color_name" placeholder="BLOSSOM" value="BLOSSOM">
+                                        <input type="text" id="color_name_" name="alphabet_name" placeholder="BLOSSOM" value="{{ data_get($color, 'alphabet_name') }}">
                                       </div>
                                     </div>
                                   </li>
@@ -125,9 +158,9 @@
                     </div>
                     <div class="p-edit__main__box__foot">
                         <button class="c-button__reset">変更をリセット</button>
-                        <button class="c-button">変更を反映する</button>
+                        <button type="submit" class="c-button">変更を反映する</button>
                     </div>
-                  </form>
+                  {!! Form::close() !!}
                 </div>
               </div>
             </div>
@@ -151,38 +184,60 @@
 {{-- ユーザー写真 --}}
 @include('admin.users._modal-users-photo')
 <script>
-    // 色を選択するたびに、色を表示するイベントを登録（changeイベント）
-    document.getElementById('color_palet').addEventListener("input", showColor);
-    // 色の選択が確定した後に、メッセージを表示する処理を登録（changeイベント）
-    document.getElementById('color_palet').addEventListener("change", function(){});
-    // 色を表示するタグを変数に入れる
-    const eleShowColor = document.getElementById('color_code');
-    // 選択した色とカラーコードを表示する
-    function showColor(){
-      // 選択した色を取得
-      let color = document.getElementById('color_palet').value;
-      // 選択したカラーコードを表示
-      eleShowColor.value = color;
+    $('.color_palet').each(function(index, elem) {
+        $(elem).on('input', function() {
+            showColor(index);
+        })
+        $(elem).on('change', function() {
+            showColor(index);
+        })
+    })
+
+    $('.color_code').each(function(index, elem) {
+        $(elem).on('input', function() {
+            showPalletColor(index);
+        })
+        $(elem).on('change', function() {
+            showPalletColor(index);
+        })
+    })
+
+    function showColor(index) {
+        // 選択した色を取得
+        let color = $('.color_palet').eq(index).val();
+        // 選択したカラーコードを表示
+        $('.color_code').eq(index).val(color);
+    }
+
+    function showPalletColor(index) {
+        // 選択した色を取得
+        let color = $('.color_code').eq(index).val();
+        // 選択したカラーコードを表示
+        $('.color_palet').eq(index).val(color);
     }
 </script>
 
 <script>
-  // カラータイプのラジオボタンが変更された時の処理
-  $('input[name="colorSet_type"]').on('change', function() {
-  var selectedType = $(this).val();
+    $(window).on('load',function(){
+        setPicker();
+    });
 
-  // 全てのカラータイプの要素を非表示にする
-  $('.p-formList__colorSet__type__item').hide();
+    $('input[name="colorSet_type"]').each(function(index, elem) {
+        $(elem).on('change', function() {
+            setPicker();
+        })
+    })
 
-  // 選択されたカラータイプに応じて対応する要素を表示する
-  if (selectedType === 'colorSet_type_single') {
-    $('.p-formList__colorSet__type__item:nth-child(1)').show();
-  } else if (selectedType === 'colorSet_type_double') {
-    $('.p-formList__colorSet__type__item:nth-child(2)').show();
-  } else if (selectedType === 'colorSet_type_mix') {
-    $('.p-formList__colorSet__type__item:nth-child(3)').show();
-  }
-});
+    function setPicker() {
+        let all = $('.p-formList__colorSet__type__item');
+        all.hide();
+        all.find('input').prop('disabled', true);
+
+        var checkedValue = $('input[name="colorSet_type"]:checked').val();
+        var insert = '.js_prop_'+ checkedValue;
+        $(insert).show();
+        $(insert).find('input').prop('disabled', false);
+    }
 </script>
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\MBrand;
+use App\Models\MColor;
 use App\Models\MShop;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Http\Request;
@@ -33,7 +34,16 @@ class MasterRepository implements MasterRepositoryInterface
     
     public function UpdateOrCreate_color(Request $request)
     {
-        // TODO: Implement UpdateOrCreate_color() method.
+        $params = $this->arrayShapeColor($request);
+        
+        // 画像の登録
+        if ($request->file('image_path')) {
+            $file = $request->file('image_path');
+            $path = Storage::disk('s3')->put('colors', $file);
+            $params['image_path'] = $path;
+        }
+
+        return MColor::updateOrCreate(['id'=> $request->input('id')], $params);
     }
     
     public function UpdateOrCreate_product(Request $request)
@@ -41,7 +51,11 @@ class MasterRepository implements MasterRepositoryInterface
         // TODO: Implement UpdateOrCreate_product() method.
     }
     
-    public function UpdateOrCreate_shop(Request $request)
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function UpdateOrCreate_shop(Request $request): mixed
     {
         $params = $this->arrayShapeShop($request);
    
@@ -90,5 +104,29 @@ class MasterRepository implements MasterRepositoryInterface
             'holiday_business_hour' => $holiday_business_hour != '〜' ? $holiday_business_hour : NULL,
             'holiday_business_hour_memo' => $request->input('holiday_business_hour_memo'),
         ];
+    }
+    
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function arrayShapeColor(Request $request): array
+    {
+        return match ($request->input('colorSet_type')) {
+            'single' => [
+                'name' => $request->input('name'),
+                'alphabet_name' => $request->input('alphabet_name'),
+                'color' => $request->input('color'),
+                'second_color' => NULL,
+                'image_path' => NULL,
+            ],
+            default => [
+                'name' => $request->input('name'),
+                'alphabet_name' => $request->input('alphabet_name'),
+                'color' => $request->input('color'),
+                'second_color' => $request->input('second_color'),
+                'image_path' => NULL,
+            ],
+        };
     }
 }

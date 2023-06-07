@@ -18,4 +18,17 @@ class MColor extends Model
         'id'
     ];
     
+    /**
+     * @return string
+     */
+    public function getTypeColorPickerAttribute(): string
+    {
+        if(data_get($this, 'image_path')){
+            $pick = 'mix';
+        } else {
+            $pick = data_get($this, 'color') && data_get($this, 'second_color') ? 'double' : 'single';
+        }
+        
+        return $pick;
+    }
 }

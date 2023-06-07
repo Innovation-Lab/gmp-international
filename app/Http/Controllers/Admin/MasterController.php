@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\MBrand;
+use App\Models\MColor;
 use App\Models\MShop;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
@@ -162,22 +163,48 @@ class MasterController extends Controller
             ->with(['success' => '登録しました。']);
     }
     
-
-    //カラーマスタ
+    
+    /**
+     * @param Request $request
+     * @return View|Factory|Application
+     */
     public function color(Request $request): View|Factory|Application
     {
         return view('admin.masters.color.index', [
+            'colors' => MColor::query()->paginate(20)
         ]);
     }
-    public function colorEdit(Request $request): View|Factory|Application
+    public function colorEdit(MColor $color): View|Factory|Application
     {
         return view('admin.masters.color.edit.index', [
+            'color' => $color
         ]);
     }
     public function colorCreate(Request $request): View|Factory|Application
     {
-        return view('admin.masters.color.create.index', [
+        return view('admin.masters.color.edit.index', [
+            'color' => new MColor()
         ]);
+    }
+    
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function colorUpdateOrCreate(Request $request): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $this->masterRepository->updateOrCreate_color($request);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['error' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.color')
+            ->with(['success' => '登録しました。']);
     }
 
 }

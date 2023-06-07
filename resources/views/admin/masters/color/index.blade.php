@@ -69,34 +69,37 @@
                   </th>
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 12; $i++)
+                  @forelse ($colors as $color)
                   <!-- 1人 -->
                   <tr>
                     <td class="item">
                       {{-- 2色の場合に追加 --}}
-                      <div class="c-colorBall" style="background: #A3BBB1;">
-                        <div class="c-colorBall__pallet2" style="background: #fff;"></div>
+                      <div class="c-colorBall" style="background: {{ data_get($color, 'color', '#fff')}};">
+                        @if (data_get($color, 'second_color'))
+                          <div class="c-colorBall__pallet2" style="background: {{ data_get($color, 'second_color', '#fff') }};"></div>
+                        @endif
                       </div>
                       <!-- {{-- 画像表示の場合 --}}
                       <div class="c-colorBall" style="background: url({{asset('img/web/sample/c-color--camo.png')}})"></div> -->
                     </td>
                     <td class="item">
-                      ブロッサム
+                      {{ data_get($color, 'name') }}
                     </td>
                     <td class="item">
-                      BLOSSOM
+                      {{ data_get($color, 'alphabet_name') }}
                     </td>
                     <td class="item">
-                      #FFD3D3 
+                      {{ data_get($color, 'color', '#fff') }} {{ data_get($color, 'second_color') ? '/ '.data_get($color, 'second_color') : '' }}
                     </td>
                     <td class="item"></td>
                     <td class="item">
                       <div class="p-btnWrap">
-                        <a href="{{route('admin.masters.color.edit')}}" class="c-button">編集</a>
+                        <a href="{{route('admin.masters.color.edit', $color)}}" class="c-button">編集</a>
                       </div>
                     </td>
                   </tr>
-                  @endfor
+                  @empty
+                  @endforelse
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
@@ -130,7 +133,9 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              @include('admin.masters.color._pagination')
+              @include('admin.components._pagination', [
+                  'paginate' => $colors,
+              ])
             </div>
           </div>
         </div>

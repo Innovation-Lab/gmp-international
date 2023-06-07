@@ -84,8 +84,9 @@ Route::group([
             
             //カラーマスタ
             Route::get('/color', [MasterController::class, 'color'])->name('color');
-            Route::get('/color/edit', [MasterController::class, 'colorEdit'])->name('color.edit');
+            Route::get('/color/edit/{color}', [MasterController::class, 'colorEdit'])->name('color.edit');
             Route::get('/color/create', [MasterController::class, 'colorCreate'])->name('color.create');
+            Route::post('/color/updateOrCreate', [MasterController::class, 'colorUpdateOrCreate'])->name('color.updateOrCreate');
         });
         
         // アカウント
