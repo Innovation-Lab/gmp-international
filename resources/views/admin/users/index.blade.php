@@ -37,6 +37,8 @@
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
+              {{--検索結果なしデザイン--}}
+              <div class="noResult" style="display: none;">検索結果がありません。</div>
               <table>
                 <colgroup>
                   <col>

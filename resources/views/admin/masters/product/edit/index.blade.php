@@ -26,22 +26,9 @@
                             <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
-                                  製品画像
-                                </div>
-                                <div class="p-formList__data">
-                                  <input type="file" id="brand_logo" name="brand_logo" value="">
-                                  <label for="brand_logo" class="product">
-                                  <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="">
-                                  </label>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="p-formList__item">
-                              <div class="p-formList__content">
-                                <div class="p-formList__label">
                                   ブランド名
                                 </div>
-                                <div class="p-formList__data  u-max--240">
+                                <div class="p-formList__data  u-max--360">
                                   <select name="brand" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     <option value="brand1" selected>AIRBUGGY</option>
@@ -56,7 +43,7 @@
                                 <div class="p-formList__label">
                                   製品名
                                 </div>
-                                <div class="p-formList__data u-max--240">
+                                <div class="p-formList__data u-max--360">
                                   <select name="product" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     <option value="product1" selected>COCO PREMIER FROM BIRTH</option>
@@ -71,13 +58,25 @@
                                 <div class="p-formList__label">
                                   カラー
                                 </div>
-                                <div class="p-formList__data  u-max--240">
-                                  <select name="color" class="select2">
+                                <div class="p-formList__data  u-max--360">
+                                  <select name="color" class="select2" multiple>
                                     <option value="" hidden>選択してください</option>
-                                    <option value="color1" selected>Red</option>
+                                    <option value="color1">Red</option>
+                                    <option value="color2">Blue</option>
+                                    <option value="color3">Green</option>
+                                    <option value="color1">Red</option>
+                                    <option value="color2">Blue</option>
+                                    <option value="color3">Green</option>
+                                    <option value="color1">Red</option>
                                     <option value="color2">Blue</option>
                                     <option value="color3">Green</option>
                                   </select>
+                                </div>
+                                <div class="p-formList__label color">
+                                  BLOSSOM
+                                </div>
+                                <div class="p-formList__data  u-max--360">
+                                  <input type="text" placeholder="URLを入力">
                                 </div>
                               </div>
                             </li>

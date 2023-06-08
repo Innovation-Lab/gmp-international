@@ -51,7 +51,7 @@
                 </div>
               </div>
             </li>
-            <li class="p-formList__item">
+            {{--<li class="p-formList__item">
               <div class="l-grid__1 l-grid__gap1">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
@@ -66,7 +66,7 @@
                   </div>
                 </div>
               </div>
-            </li>
+            </li>--}}
             <li class="p-formList__item">
               <div class="l-grid__1 l-grid__gap1">
                 <div class="p-formList__content">

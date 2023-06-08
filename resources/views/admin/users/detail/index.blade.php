@@ -30,6 +30,8 @@
                     </a>
                   </div>
                   <div class="p-detail__main__box__body">
+                    {{--登録製品なしデザイン--}}
+                    <div class="noProduct" style="display: none;">登録されている製品はありません。</div>
                     <div class="p-productScroll c-scroll">
                       <ul class="p-product p-product--list">
                         @for($list = 0; $list < 10; $list++)

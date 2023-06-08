@@ -19,7 +19,8 @@
     display: grid;
     grid-template-columns: 130px 1fr;
     grid-auto-rows: auto;
-    gap: 0.125rem;
+    // gap: 0.125rem;
+    gap: 1rem;
     padding-top: 12px;
     border-top: 1px solid var(--p-list__border);
     align-items: baseline;
