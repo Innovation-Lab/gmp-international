@@ -83,9 +83,18 @@
                       </td>
                       <td class="item">
                         <a href="{{route('admin.staffs.edit', $admin)}}" class="c-button">編集</a>
-                        <button class="c-button__2">削除</button>
+                        @can('delete', $admin)
+                          <button onclick="
+                              if(confirm('本当に削除してよろしいですか？')) {
+                                $('#deleteAdminAccountForm{{ $admin->id }}').submit();
+                              }
+                            " class="c-button__2">
+                            削除
+                          </button>
+                        @endif
                       </td>
                     </tr>
+                    <form method="POST" action="{{ route('admin.staffs.delete', $admin) }}" id="deleteAdminAccountForm{{ $admin->id }}">@csrf</form>
                   @endforeach
                 </tbody>
               </table>

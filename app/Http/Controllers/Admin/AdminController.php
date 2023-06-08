@@ -71,7 +71,7 @@ class AdminController extends Controller
             }
             
             Admin::updateOrCreate(['id'=> $request->input('id')], $params);
-        } catch (\Exception $e) {dd($e);
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
                 ->with(['error' => 'エラーが発生しました。']);
@@ -84,7 +84,20 @@ class AdminController extends Controller
     
     public function delete(Admin $admin)
     {
-    
+        DB::beginTransaction();
+        try {
+            $admin->email = $admin->email . '@' . date('YmdHis');
+            $admin->save();
+            $admin->delete();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['error' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.staffs.index')
+            ->with(['success' => '登録しました。']);
     }
     
     /**

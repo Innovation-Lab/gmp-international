@@ -6,13 +6,14 @@ use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use App\Notifications\Admin\Auth\ResetPasswordNotification;
 
 class Admin extends Authenticatable
 {
-    use HasFactory, GetImageTrait;
+    use HasFactory, GetImageTrait, SoftDeletes;
 
     protected $guarded = [
         'id'
