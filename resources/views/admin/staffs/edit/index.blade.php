@@ -20,6 +20,7 @@
                   <div class="p-edit__main__box__wrapper">
                     {{-- フォーム --}}
                     {!! Form::open(['method' => 'POST', 'route' => 'admin.staffs.updateOrCreate', 'class' => 'p-form min', 'id' => 'updateStaffForm', 'files' => true]) !!}
+                    {!! Form::hidden('id', data_get($admin, 'id')) !!}
                       @include('admin.staffs.edit._form')
                     {!! Form::close() !!}
                   </div>
