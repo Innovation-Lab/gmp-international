@@ -72,15 +72,15 @@
       <div class="p-profile">
         <div class="p-profile__image">
           <img
-            src="{{ asset('img/admin/sample/profile.png')}}"
+            src="{{ data_get(Auth::user(), 'main_image_url') }}"
             width="48px"
             height="48px"
           >
         </div>
         <div class="p-profile__text">
-          <p class="p-profile__text__title">田中 直人</p>
+          <p class="p-profile__text__title">{{ Auth::user()->full_name }}</p>
           <div class="p-profile__text__sub">
-            h.tajima@soushin-lab.co.jp
+            {{ Auth::user()->email }}
           </div>
         </div>
       </div>
