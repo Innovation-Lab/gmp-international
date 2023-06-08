@@ -44,13 +44,32 @@
                                   製品名
                                 </div>
                                 <div class="p-formList__data u-max--360">
-                                  <select name="product" class="select2">
+                                  <input placeholder="例）COCO PREMIER FROM BIRTH" name="product" type="text">
+                                </div>
+                              </div>
+                            </li>
+                          <ul class="p-formList u-max--320">
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  カラー
+                                </div>
+                                <div class="p-formList__data  u-max--360">
+                                  <select name="color" class="select2">
                                     <option value="" hidden>選択してください</option>
-                                    <option value="product1" selected>COCO PREMIER FROM BIRTH</option>
-                                    <option value="product2">COCO PREMIER FROM BIRTH 1</option>
-                                    <option value="product3">COCO PREMIER FROM BIRTH 2</option>
+                                    <option value="color1" selected>BLOSSOM</option>
+                                    <option value="color2">Blue</option>
+                                    <option value="color3">Green</option>
                                   </select>
                                 </div>
+                                <div class="p-formList__data  u-max--360">
+                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
+                                </div>
+                              </div>
+                              <div class="p-formList__btn">
+                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
+                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
+                                </button>
                               </div>
                             </li>
                             <li class="p-formList__item">
@@ -59,25 +78,76 @@
                                   カラー
                                 </div>
                                 <div class="p-formList__data  u-max--360">
-                                  <select name="color" class="select2" multiple>
+                                  <select name="color" class="select2">
                                     <option value="" hidden>選択してください</option>
-                                    <option value="color1">Red</option>
-                                    <option value="color2">Blue</option>
-                                    <option value="color3">Green</option>
-                                    <option value="color1">Red</option>
-                                    <option value="color2">Blue</option>
-                                    <option value="color3">Green</option>
-                                    <option value="color1">Red</option>
+                                    <option value="color1" selected>BLOSSOM</option>
                                     <option value="color2">Blue</option>
                                     <option value="color3">Green</option>
                                   </select>
                                 </div>
-                                <div class="p-formList__label color">
-                                  BLOSSOM
+                                <div class="p-formList__data  u-max--360">
+                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
+                                </div>
+                              </div>
+                              <div class="p-formList__btn">
+                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
+                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
+                                </button>
+                                <button class="c-textButton__icon c-textButton--gray delete">
+                                  <svg class="icon"><use href="#delete"/></svg>削除
+                                </button>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  カラー
                                 </div>
                                 <div class="p-formList__data  u-max--360">
-                                  <input type="text" placeholder="URLを入力">
+                                  <select name="color" class="select2">
+                                    <option value="" hidden>選択してください</option>
+                                    <option value="color1" selected>BLOSSOM</option>
+                                    <option value="color2">Blue</option>
+                                    <option value="color3">Green</option>
+                                  </select>
                                 </div>
+                                <div class="p-formList__data  u-max--360">
+                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
+                                </div>
+                              </div>
+                              <div class="p-formList__btn">
+                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
+                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
+                                </button>
+                                <button class="c-textButton__icon c-textButton--gray delete">
+                                  <svg class="icon"><use href="#delete"/></svg>削除
+                                </button>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  カラー
+                                </div>
+                                <div class="p-formList__data  u-max--360">
+                                  <select name="color" class="select2">
+                                    <option value="" hidden>選択してください</option>
+                                    <option value="color1" selected>BLOSSOM</option>
+                                    <option value="color2">Blue</option>
+                                    <option value="color3">Green</option>
+                                  </select>
+                                </div>
+                                <div class="p-formList__data  u-max--360">
+                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
+                                </div>
+                              </div>
+                              <div class="p-formList__btn">
+                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
+                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
+                                </button>
+                                <button class="c-textButton__icon c-textButton--gray delete">
+                                  <svg class="icon"><use href="#delete"/></svg>削除
+                                </button>
                               </div>
                             </li>
                           </ul>
