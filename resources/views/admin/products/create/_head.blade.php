@@ -2,11 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <div class="p-detail__head__inner">
-        @if(Route::current()->getName() == 'admin.products.create')
-          <a href="{{route('admin.users.index')}}" class="c-button__2">戻る</a>
-        @else
-          <a onclick="window.location.back();" class="c-button__2">戻る</a>
-        @endif
+          <a onclick="window.history.back();" class="c-button__2">戻る</a>
       </div>
     </div>
   </div>
