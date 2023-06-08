@@ -18,6 +18,7 @@ use App\Models\MColor;
 use App\Models\MShop;
 use App\Models\SalesProduct;
 use App\Repositories\UserRepositoryInterface;
+use Exception;
 use Illuminate\Support\Carbon;
 
 class UserController extends Controller
@@ -66,14 +67,54 @@ class UserController extends Controller
     // }
     public function create(): View
     {
-        return view('admin.users.create.index');
+        return view('admin.users.create.index')->with([
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
     }
 
     public function createProducts(User $user): View
-    {  
+    {
         return view('admin.users.create.products')->with([
             'user' => $user,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
+    }
+
+    public function storeProducts(StoreProductRequest $request, User $user)
+    {
+        $params = $request->all();
+
+        \DB::beginTransaction();
+        try{
+            SalesProduct::create([
+                'm_product_id' => data_get($params, 'm_product_id'),
+                'user_id' => data_get($user, 'id'),
+                'purchase_date' => data_get($params, 'purchase_date'),
+                'm_shop_id' => data_get($params, 'm_shop_id') && data_get($params, 'm_shop_id') != 'other' ? data_get($params, 'm_shop_id') : NULL,
+                'product_code' => data_get($params, 'product_code'),
+                'm_color_id' => data_get($params, 'm_color_id') && data_get($params, 'm_color_id') != 'other' ? data_get($params, 'm_color_id') : NULL,
+                'other_color_name' => data_get($params, 'other_color_name'),
+                'other_shop_name' => data_get($params, 'other_shop_name'),
+            ]);
+
+            \DB::commit();
+
+            return redirect()
+                ->route('admin.users.detail', $user)
+                ->with('message', '登録が完了しました。');
+        } catch (\Exception $e) {
+            \DB::rollback();
+
+            return redirect()
+                ->back()
+                ->with('error', 'エラーが発生しました。');;
+        }
     }
 
     public function detail(User $user): View
