@@ -3,12 +3,12 @@
   登録製品の追加
   </h3>
 </div>
-@if(Route::current()->getName() == 'admin.products.create-products')
+{{-- @if(Route::current()->getName() == 'admin.products.create-products') --}}
 <div class="p-form__title">
   <p>製品1</p>
 </div>
-@else
-@endif
+{{-- @else
+@endif --}}
 <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
   <div class="l-grid__item">
     <ul class="p-formList">
