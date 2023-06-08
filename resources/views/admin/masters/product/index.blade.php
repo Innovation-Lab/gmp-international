@@ -40,13 +40,17 @@
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table p-table--product">
               <table>
-                <colgroup>
+                <!-- <colgroup>
+                  <col width=50>
                   <col width=400>
                   <col width=200>
                   <col width=80>
                   <col>
-                </colgroup>
+                </colgroup> -->
                 <thead>
+                  <th>
+                    <div class="item">製品画像</div>
+                  </th>
                   <th>
                     <div class="item">製品名</div>
                   </th>
@@ -56,14 +60,14 @@
                   <th>
                     <div class="item">カラー登録数</div>
                   </th>
-                  <th>
-                    <div class="item"></div>
-                  </th>
                 </thead>
                 <tbody>
                   @for ($i = 0; $i < 44; $i++)
                   <!-- 1人 -->
                   <tr data-href="{{ route('admin.masters.product.detail') }}">
+                    <td class="item">
+                      <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="" style="height: 40px;">
+                    </td>
                     <td class="item">
                       COCO BRAKE EX FROM BIRTH ココブレーキEX フロムバース
                     </td>
@@ -72,8 +76,6 @@
                     </td>
                     <td class="item">
                       8
-                    </td>
-                    <td class="item">
                     </td>
                   </tr>
                   @endfor

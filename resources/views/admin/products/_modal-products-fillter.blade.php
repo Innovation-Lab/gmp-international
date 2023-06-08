@@ -18,7 +18,7 @@
                   ブランド名
                 </div>
                 <div class="p-formList__data w-348">
-                  <select name="brand" class="select2">
+                  <select name="brand" class="select2" multiple>
                     <option value="" hidden>選択してください</option>
                     <option value="brand1">AIRBUGGY</option>
                     <option value="brand2">AIRBUGGY1</option>
@@ -35,7 +35,7 @@
                   製品名
                 </div>
                 <div class="p-formList__data w-348">
-                  <select name="brand" class="select2">
+                  <select name="brand" class="select2" multiple>
                     <option value="" hidden>選択してください</option>
                     <option value="product1">COCO PREMIER FROM BIRTH</option>
                     <option value="product2">COCO PREMIER FROM BIRTH 1</option>
@@ -45,6 +45,39 @@
               </div>
             </div>
           </li>
+          <li class="p-formList__item">
+              <div class="l-grid__1 l-grid__gap1">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                    店舗名
+                  </div>
+                  <div class="p-formList__data w-348">
+                    <select name="brand" class="select2" multiple>
+                      <option value="" >選択してください</option>
+                      <option value="store1">エアバギー代々木公園本店</option>
+                      <option value="store2">エアバギー代官山店</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <li class="p-formList__item">
+              <div class="l-grid__1 l-grid__gap1">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                    カラー
+                  </div>
+                  <div class="p-formList__data w-348">
+                    <select name="brand" class="select2" multiple>
+                      <option value="" >選択してください</option>
+                      <option value="color1">ブロッサム</option>
+                      <option value="color2">グラスグリーン</option>
+                      <option value="color3">レッド</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </li>
           <!-- <li class="p-formList__item">
             <div class="l-grid__1 l-grid__gap1">
               <div class="p-formList__content">
