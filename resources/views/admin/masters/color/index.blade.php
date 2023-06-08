@@ -84,7 +84,6 @@
                           @endif
                         </div>
                       @endif
-
                     </td>
                     <td class="item">
                       {{ data_get($color, 'name') }}

@@ -4,9 +4,9 @@
   </h3>
 </div>
 @if(Route::current()->getName() == 'admin.users.create-products')
-<div class="p-form__title">
+{{-- <div class="p-form__title">
   <p>製品1</p>
-</div>
+</div> --}}
 @else
 @endif
 <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -17,8 +17,11 @@
           <div class="p-formList__label">
             購入日
           </div>
-          <div class="p-formList__data">
-            {!! Form::date('purchase_date', null, ['placeholder' => '0000/00/00']) !!}
+          <div class="p-formList__data" style="display: block;">
+            {!! Form::date('purchase_date', old('purchase_date'), ['placeholder' => '0000/00/00']) !!}
+            @error('purchase_date')
+            <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -27,13 +30,16 @@
           <div class="p-formList__label">
             ブランド名
           </div>
-          <div class="p-formList__data">
-            <select name="brand" class="select2">
+          <div class="p-formList__data" style="display: block;">
+            <select name="m_brand_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="brand1">AIRBUGGY</option>
-              <option value="brand2">AIRBUGGY1</option>
-              <option value="brand3">AIRBUGGY2</option>
+              @foreach ($brands as $k => $v)
+                <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
             </select>
+            @error('m_brand_id')
+            <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -42,13 +48,16 @@
           <div class="p-formList__label">
             製品名
           </div>
-          <div class="p-formList__data">
-            <select name="brand" class="select2">
+          <div class="p-formList__data" style="display: block;">
+            <select name="m_product_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="product1">COCO PREMIER FROM BIRTH</option>
-              <option value="product2">COCO PREMIER FROM BIRTH 1</option>
-              <option value="product3">COCO PREMIER FROM BIRTH 2</option>
+              @foreach ($products as $k => $v)
+                <option value="{{ $k }}" {{ old('m_product_id')  == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
             </select>
+            @error('m_product_id')
+            <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -62,12 +71,22 @@
             カラー
           </div>
           <div class="p-formList__data">
-            <select name="color" class="select2">
+            <select name="m_color_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="color1">Red</option>
-              <option value="color2">Blue</option>
-              <option value="color3">Green</option>
+              @foreach ($colors as $k => $v)
+                  <option value="{{ $k }}" {{ old('m_color_id')  == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
+              <option value="other" @if(old('m_color_id') == 'other') selected @endif>上記以外のカラー</option>
             </select>
+          </div>
+        </div>
+      </li>
+      <!-- 上記以外のカラー選択時のフォーム -->
+      <li class="p-formList__item" style="display:none;">
+        <div class="p-formList__content p-formList__other open-other-text-input">
+          <div class="p-formList__label">上記以外のカラー</div>
+          <div class="p-formList__data">
+            <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
           </div>
         </div>
       </li>
@@ -77,7 +96,7 @@
             シリアルナンバー
           </div>
           <div class="p-formList__data">
-            {!! Form::text('serial_number', null, ['placeholder' => '例）GMP123456789']) !!}
+            {!! Form::text('product_code', old('product_code'), ['placeholder' => '例）GMP123456789']) !!}
           </div>
         </div>
       </li>
@@ -87,12 +106,21 @@
             購入店舗
           </div>
           <div class="p-formList__data">
-            <select name="store" class="select2">
+            <select name="m_shop_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="store1">エアバギー代官山店</option>
-              <option value="store2">エアバギー渋谷店</option>
-              <option value="store3">エアバギー新宿店</option>
+              @foreach ($shops as $k => $v)
+                  <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
             </select>
+          </div>
+        </div>
+      </li>
+      <!-- 上記以外の店舗選択時のフォーム -->
+      <li class="p-formList__item" style="display:none;">
+        <div class="p-formList__content p-formList__other open-other-text-input">
+          <div class="p-formList__label">上記以外の店舗</div>
+          <div class="p-formList__data">
+            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="">
           </div>
         </div>
       </li>
@@ -106,7 +134,7 @@
             管理メモ
           </div>
           <div class="p-formList__content__data">
-            <textarea placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
+            <textarea name="memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll">{{ old('memo') }}</textarea>
           </div>
         </div>
       </li>

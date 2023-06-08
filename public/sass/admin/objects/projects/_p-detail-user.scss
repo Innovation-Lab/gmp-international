@@ -24,6 +24,13 @@
          &__body {
           background: #F2F4F6;
           padding: 8px;
+          .noProduct{
+            color: var(--color_text_3);
+            font-size: 13px;
+            display: flex;
+            align-items: baseline;
+            padding: 16px;
+          }
          }
        }
     }

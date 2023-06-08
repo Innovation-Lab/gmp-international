@@ -20,17 +20,17 @@
                 <div class="p-create__main__box">
                   <div class="p-create__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form" id="product">
-                      @include('admin.users.create._form-product')
+                    {{ Form::open(['method' => 'POST', 'route' => ['admin.users.store-products', $user], 'class' => 'p-form', 'id' => 'submitProductForm']) }}
+                      @include('admin.users.create._form-product', ['user' => $user])
                       <button class="c-textButton__icon c-textButton--gray u-mt--24">
-                        <svg class="icon"><use href="#add"/></svg>
+                        {{-- <svg class="icon"><use href="#add"/></svg>
                         登録製品を追加する
-                      </button>
-                    </form>
+                      </button> --}}
+                    {{ Form::close() }}
                   </div>
                   <div class="p-create__main__box__foot">
                     <a href="{{route('admin.users.detail', $user)}}" class="c-button__reset">戻る</a>
-                    <button class="c-button">この内容で登録する</button>
+                    <button type="submit" form="submitProductForm" class="c-button">この内容で登録する</button>
                   </div>
                 </div>
               </div>

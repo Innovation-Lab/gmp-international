@@ -37,6 +37,8 @@
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
+              {{--検索結果なしデザイン--}}
+              <div class="noResult" style="display: none;">検索結果がありません。</div>
               <table>
                 <colgroup>
                   <col>
@@ -79,6 +81,8 @@
                       {{ data_get($user, 'full_address') }}
                     </td>
                     <td class="item">
+                        {{--登録製品なしデザイン--}}
+                        <div class="noProducts" style="display: none;">登録されている製品はありません</div>
                       @if(count($user->salesProducts) > 0)
                         <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">
                       @endif

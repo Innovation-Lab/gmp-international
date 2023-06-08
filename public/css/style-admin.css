@@ -406,6 +406,7 @@ small {
   color: var(--color_primary);
   background-color: #fff;
   border-color: var(--color_border_1);
+  letter-spacing: 0rem;
   /* ! ----------
   　ホバー
   ---------- */
@@ -684,6 +685,16 @@ select {
 .select2 + .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 30px;
 }
+.select2 .select2-container {
+  margin-top: 0;
+}
+.select2 .select2-search__field {
+  margin-top: 0;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+  display: block;
+}
 
 /* ! --------------------------------------------------
 　Radio ラジオボタン
@@ -809,7 +820,7 @@ input[type=file] + label.logo {
   padding: 16px;
 }
 input[type=file] + label.logo:before {
-  opacity: 1;
+  opacity: 0.8;
   background: #1F266F;
 }
 input[type=file] + label.logo:after {
@@ -860,7 +871,7 @@ input[type=file] + label.colorPattern {
   max-width: 200px;
 }
 input[type=file] + label.colorPattern:before {
-  opacity: 1;
+  opacity: 0.8;
   background: #1F266F;
 }
 input[type=file] + label.colorPattern:after {
@@ -2472,6 +2483,13 @@ textarea {
   background: #F2F4F6;
   padding: 8px;
 }
+.p-detail--user .p-detail__main__box__body .noProduct {
+  color: var(--color_text_3);
+  font-size: 13px;
+  display: flex;
+  align-items: baseline;
+  padding: 16px;
+}
 .p-detail--user .l-detail__body {
   height: calc(100vh - 120px);
 }
@@ -2979,7 +2997,7 @@ textarea {
   display: grid;
   grid-template-columns: 130px 1fr;
   grid-auto-rows: auto;
-  gap: 0.125rem;
+  gap: 1rem;
   padding-top: 12px;
   border-top: 1px solid var(--p-list__border);
   align-items: baseline;
@@ -3473,6 +3491,14 @@ textarea {
   　テーブルフット
   ---------- */
 }
+.p-table .noResult {
+  color: var(--color_text_3);
+  font-size: 13px;
+  display: flex;
+  align-items: baseline;
+  padding: 16px;
+  background: #F2F4F6;
+}
 .p-table table {
   width: 100%;
   text-indent: initial;
@@ -3584,6 +3610,10 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+.p-table tbody td .noProducts {
+  color: var(--color_text_3);
+  display: block;
 }
 .p-table tfoot td {
   height: 2.5rem;
@@ -3956,6 +3986,7 @@ textarea {
 }
 .p-form.min {
   max-width: 320px;
+  max-width: 340px;
 }
 .p-form__title {
   display: flex;

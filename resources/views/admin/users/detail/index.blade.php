@@ -29,9 +29,13 @@
                       登録製品を追加する
                     </a>
                   </div>
-                  @foreach($sales_products as $sales_product)
-                    <div class="p-detail__main__box__body">
-                      <div class="p-productScroll c-scroll">
+                  <div class="p-detail__main__box__body">
+                    {{--登録製品なしデザイン--}}
+                    @if($sales_products->count() <= 0)
+                      <div class="noProduct" style="">登録されている製品はありません。</div>
+                    @endif
+                    <div class="p-productScroll c-scroll">
+                      @foreach($sales_products as $sales_product)
                         <ul class="p-product p-product--list">
                           <li class="p-product__item">
                             <div class="p-product__item__left">
@@ -98,10 +102,10 @@
                           </div>
                         </li>
                         </ul>
+                      @endforeach
                         {{-- ---------- リスト ---------- --}}
                       </div>
                     </div>
-                  @endforeach
                 </div>
               </div>
             </div>

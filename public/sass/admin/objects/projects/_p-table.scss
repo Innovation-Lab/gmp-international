@@ -12,6 +12,16 @@
   overflow: auto;
   background: #fff;
 
+  //検索結果なし
+  .noResult{
+    color: var(--color_text_3);
+    font-size: 13px;
+    display: flex;
+    align-items: baseline;
+    padding: 16px;
+    background: #F2F4F6;
+  }
+
   /* ! ----------
   　カラム
   ---------- */
@@ -164,6 +174,12 @@
       // アイコン
       img {
         // border-radius: 5px;
+      }
+
+      //登録製品なしデザイン
+      .noProducts{
+        color: var(--color_text_3);
+        display: block;
       }
     }
   }
