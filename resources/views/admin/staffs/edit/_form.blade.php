@@ -200,7 +200,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
         </li>
       @else
         <li class="p-formList__item">
-          <div class="p-formList__content js-target__change-password u-mt--10">
+          <div class="p-formList__content u-mt--10">
             <div class="p-formList__label">
               パスワード<small>（半角英数字6〜10文字）</small>
             </div>
