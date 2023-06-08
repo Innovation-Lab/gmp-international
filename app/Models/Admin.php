@@ -34,7 +34,7 @@ class Admin extends Authenticatable
      */
     public function mShop(): BelongsTo
     {
-        return $this->belongsTo(Mshop::class);
+        return $this->belongsTo(MShop::class);
     }
     
     /**
