@@ -73,18 +73,12 @@
                   <!-- 1人 -->
                   <tr>
                     <td class="item">
-                      @if (data_get($color, 'image_path'))
-                        {{-- 画像表示の場合 --}}
-                        <div class="c-colorBall" style="background: url({{ data_get($color, 'main_image_url') }})"></div>
-                      @else
-                        {{-- 2色の場合に追加 --}}
-                        <div class="c-colorBall" style="background: {{ data_get($color, 'color', '#fff')}};">
-                          @if (data_get($color, 'second_color'))
-                            <div class="c-colorBall__pallet2" style="background: {{ data_get($color, 'second_color', '#fff') }};"></div>
-                          @endif
-                        </div>
-                      @endif
-
+                      {{-- 画像表示の場合 --}}
+                      <div class="c-colorBall" style="display: none;"></div>
+                      <div class="c-colorBall" style="background: #fff;">
+                          {{-- 2色の場合に追加 --}}
+                          <div class="c-colorBall__pallet2" style="background: #000;"></div>
+                      </div>
                     </td>
                     <td class="item">
                       {{ data_get($color, 'name') }}
