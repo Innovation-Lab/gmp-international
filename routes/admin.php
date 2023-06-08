@@ -39,7 +39,7 @@ Route::group([
         ], function() {
             Route::get('/', [UserController::class, 'index'])->name('index');
             Route::get('/create', [UserController::class, 'create'])->name('create');
-            Route::get('/create-products/{user}', [UserController::class, 'createProducts'])->name('create-products');
+            Route::get('/create/products/{user}', [UserController::class, 'createProducts'])->name('create-products');
             Route::post('/store-products/{user}', [UserController::class, 'storeProducts'])->name('store-products');
             Route::get('/detail/{user}', [UserController::class, 'detail'])->name('detail');
             Route::get('/edit-user/{user}', [UserController::class, 'editUser'])->name('edit-user');
@@ -56,7 +56,8 @@ Route::group([
             'as' => 'products.',
         ], function() {
             Route::get('/', [ProductController::class, 'index'])->name('index');
-            Route::get('/create-products', [UserController::class, 'createProducts'])->name('create-products');
+            Route::get('/create', [ProductController::class, 'createProduct'])->name('create');
+            Route::post('/store', [ProductController::class, 'storeProduct'])->name('store');
             Route::get('/detail', [ProductController::class, 'detail'])->name('detail');
             Route::get('/edit', [ProductController::class, 'edit'])->name('edit-products');
         });

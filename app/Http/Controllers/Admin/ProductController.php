@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
         return view('admin.products.create.index');
     }
-    public function createProducts(): View
+    public function createProduct(): View
     {
         return view('admin.products.create.products');
     }
