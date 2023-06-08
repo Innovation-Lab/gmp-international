@@ -52,7 +52,7 @@
           </div>
         </div>
       </li>
-      <li class="p-formList__item">
+      {{--<li class="p-formList__item">
         <div class="p-formList__content">
           <div class="p-formList__label">
             登録番号
@@ -61,7 +61,7 @@
             {!! Form::text('register_number', 'AB01-097M-HIUA', ['placeholder' => '例）AB01097MHIUA']) !!}
           </div>
         </div>
-      </li>
+      </li>--}}
     </ul>
   </div>
   <div class="l-grid__item">
@@ -78,6 +78,15 @@
               <option value="color2">Blue</option>
               <option value="color3">Green</option>
             </select>
+          </div>
+        </div>
+      </li>
+      <!-- 上記以外のカラー選択時のフォーム -->
+      <li class="p-formList__item" style="display:none;">
+        <div class="p-formList__content p-formList__other open-other-text-input">
+          <div class="p-formList__label">上記以外のカラー</div>
+          <div class="p-formList__data">
+            <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
           </div>
         </div>
       </li>
@@ -103,6 +112,15 @@
               <option value="store2">エアバギー渋谷店</option>
               <option value="store3">エアバギー新宿店</option>
             </select>
+          </div>
+        </div>
+      </li>
+      <!-- 上記以外の店舗選択時のフォーム -->
+      <li class="p-formList__item" style="display:none;">
+        <div class="p-formList__content p-formList__other open-other-text-input">
+          <div class="p-formList__label">上記以外の店舗</div>
+          <div class="p-formList__data">
+            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="">
           </div>
         </div>
       </li>

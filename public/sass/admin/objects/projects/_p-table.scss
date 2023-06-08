@@ -175,6 +175,12 @@
       img {
         // border-radius: 5px;
       }
+
+      //登録製品なしデザイン
+      .noProducts{
+        color: var(--color_text_3);
+        display: block;
+      }
     }
   }
 

@@ -820,7 +820,7 @@ input[type=file] + label.logo {
   padding: 16px;
 }
 input[type=file] + label.logo:before {
-  opacity: 1;
+  opacity: 0.8;
   background: #1F266F;
 }
 input[type=file] + label.logo:after {
@@ -871,7 +871,7 @@ input[type=file] + label.colorPattern {
   max-width: 200px;
 }
 input[type=file] + label.colorPattern:before {
-  opacity: 1;
+  opacity: 0.8;
   background: #1F266F;
 }
 input[type=file] + label.colorPattern:after {
@@ -3611,6 +3611,10 @@ textarea {
   align-items: center;
   justify-content: center;
 }
+.p-table tbody td .noProducts {
+  color: var(--color_text_3);
+  display: block;
+}
 .p-table tfoot td {
   height: 2.5rem;
   position: -webkit-sticky;
@@ -3982,6 +3986,7 @@ textarea {
 }
 .p-form.min {
   max-width: 320px;
+  max-width: 340px;
 }
 .p-form__title {
   display: flex;

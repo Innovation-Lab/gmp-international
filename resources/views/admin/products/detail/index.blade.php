@@ -44,7 +44,7 @@
                             '購入日' => '2023/04/04',
                             '購入店舗' => 'エアバギー代々木公園本店',
                             'シリアルNo.' => 'GMP123456789',
-                            '登録番号' => 'AB01-097M-HIUA',
+                            {{--'登録番号' => 'AB01-097M-HIUA',--}}
                             '管理メモ' => '2024/04/04　タイヤ交換',
                             ] as $key => $val)
                           <li class="p-list__item">
@@ -78,7 +78,7 @@
                     {{-- ---------- 登録済み ---------- --}}
                     <div class="p-list__head">
                       <h3 class="p-detail__main__box__head__title">登録ユーザー情報</p>
-                      <a href="{{route('admin.users.detail')}}" class="c-button__2">登録ユーザーへ</a>
+                      <a href="{{route('admin.products.detail')}}" class="c-button__2">登録ユーザーへ</a>
                     </div>
                     <ul class="p-list p-list--user">
                       @foreach([

@@ -23,7 +23,7 @@
         @foreach([
           '製品名' => 'COCO BRAKE EX FROM BIRTH',
           'ブランド名' => 'AIRBUGGY',
-          '登録番号' => 'AB01-097M-HIUA',
+          {{--'登録番号' => 'AB01-097M-HIUA',--}}
           'カラー' => 'BLOSSOM',
           '購入店舗' => '',
         ] as $key => $val)
