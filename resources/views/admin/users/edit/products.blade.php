@@ -86,6 +86,15 @@
                                 </div>
                               </div>
                             </li>
+                            <!-- 上記以外のカラー選択時のフォーム -->
+                            <li class="p-formList__item" style="display:none;">
+                              <div class="p-formList__content p-formList__other open-other-text-input">
+                                <div class="p-formList__label">上記以外のカラー</div>
+                                <div class="p-formList__data">
+                                  <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
+                                </div>
+                              </div>
+                            </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
                                 <div class="p-formList__label">
@@ -108,6 +117,15 @@
                                     <option value="{{ $k }}" {{ old('m_shop_id', data_get($sales_product, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
                                   </select>
+                                </div>
+                              </div>
+                            </li>
+                            <!-- 上記以外の店舗選択時のフォーム -->
+                            <li class="p-formList__item" style="display:none;">
+                              <div class="p-formList__content p-formList__other open-other-text-input">
+                                <div class="p-formList__label">上記以外の店舗</div>
+                                <div class="p-formList__data">
+                                  <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="">
                                 </div>
                               </div>
                             </li>
