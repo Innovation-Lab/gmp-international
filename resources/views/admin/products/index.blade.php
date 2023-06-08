@@ -11,7 +11,7 @@
               <h2 class="p-index__head__title">登録製品管理</h2>
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
-                  <a href="{{route('admin.products.create-products')}}" class="c-button__2">製品を追加登録</a>
+                  <a href="{{route('admin.products.create')}}" class="c-button__2">製品を追加登録</a>
                   <a href="" class="c-button__icon c-button__icon--import">登録製品情報CSV入力</a>
                   <a href="" class="c-button__icon__line c-button__icon--export">登録製品情報CSV出力</a>
                 </div>
