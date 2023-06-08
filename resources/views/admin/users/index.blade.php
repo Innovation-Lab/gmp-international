@@ -81,16 +81,16 @@
                       {{ data_get($user, 'full_address') }}
                     </td>
                     <td class="item">
-                        {{--登録製品なしデザイン--}}
-                        <div class="noProducts" style="display: none;">登録されている製品はありません</div>
                       @if(count($user->salesProducts) > 0)
                         <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">
-                      @endif
-                        {{ data_get($user,'first_product') ? data_get($user,'first_product.mBrand.name') : '' }}<br>
-                        {{ data_get($user,'first_product') ? data_get($user,'first_product.name') : '' }}
-                        @if($user->other_product_count > 0)
+                          {{ data_get($user,'first_product') ? data_get($user,'first_product.mBrand.name') : '' }}<br>
+                          {{ data_get($user,'first_product') ? data_get($user,'first_product.name') : '' }}
+                          @if($user->other_product_count > 0)
                           <span class="number">{{ data_get($user,'other_product_count') > 1 ? '+' . data_get($user,'other_product_count') : '' }}</span>
-                        @endif
+                          @endif
+                      @else
+                        <div class="noProducts">登録されている製品はありません</div>
+                      @endif
                       </span>
                     </td>
                     <td class="item">
