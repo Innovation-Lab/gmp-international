@@ -302,7 +302,7 @@
         // flex-direction: row;
         justify-content: space-between;
       }
-
+      
       /* ! ----------
       　Optional 任意
       ---------- */
@@ -335,7 +335,7 @@
       &--pass{
         @include global.responsive(md) {
           width: 300px;
-
+          
         }
       }
       &--guide{
@@ -352,126 +352,131 @@
           }
         }
       }
+      &--password{
+        @include global.responsive(md) {
+          width: 160px
+        }
+      }
       // &--thin{
-      //   @include global.responsive(md) {
-      //     padding: 8px 0 0;
-      //   }
-      // }
-    }
-    &__data{
-      .c-txt{
-        // margin-top: 16px;  
-        @include global.responsive(md) {
-          margin-top: 0;
-          width: 300px;
+        //   @include global.responsive(md) {
+          //     padding: 8px 0 0;
+          //   }
+          // }
         }
-      }
-      // label{
-      //   width: 165px;
-      // }
-      @extend .c-text__sm !optional;
-
-      /* ! ----------
-      　Error エラー
-      ---------- */
-      .error {
-        @extend .c-text__xxs !optional;
-        color: var(--color_alert);
-        background-color: var(--color_alert_background);
-        padding: 0.5em 1em;
-        border-radius: 2px;
-        margin: 2px 0 0;
-      }
-      @include global.responsive(md) {
-        flex: auto;
-        min-width: 1px;
-      }
-    }
-    &__data--ac{
-      .c-txt{
-        margin-top: 16px;  
-        @include global.responsive(md) {
-          margin-top: 0;
-          width: 300px;
-        }
-      }
-      label{
-        width: 165px;
-      }
-      @extend .c-text__sm !optional;
-
-      /* ! ----------
-      　Error エラー
-      ---------- */
-      .error {
-        @extend .c-text__xxs !optional;
-        color: var(--color_alert);
-        background-color: var(--color_alert_background);
-        padding: 0.5em 1em;
-        border-radius: 2px;
-        margin: 2px 0 0;
-      }
-      @include global.responsive(md) {
-        flex: auto;
-        min-width: 1px;
-        width: 352px;
-      }
-    }
-    //確認画面
-    &--confirm{
-      .p-formList{
-        &__item{
-
-        }
-        &__ttl{
-          display: block;
+        &__data{
           .c-txt{
-            margin: 1rem 0 0;
+            // margin-top: 16px;  
+            @include global.responsive(md) {
+              margin-top: 0;
+              width: 300px;
+            }
           }
-        }
-        &__content{
-          .l-stack{
-            &__item{
-              display: flex;
-              + .l-stack__item{
-                margin: .75rem 0 0;
+          // label{
+            //   width: 165px;
+            // }
+            @extend .c-text__sm !optional;
+            
+            /* ! ----------
+            Error エラー
+            ---------- */
+            .error {
+              @extend .c-text__xxs !optional;
+              color: var(--color_alert);
+              background-color: var(--color_alert_background);
+              padding: 0.5em 1em;
+              border-radius: 2px;
+              margin: 2px 0 0;
+            }
+            @include global.responsive(md) {
+              flex: auto;
+              min-width: 1px;
+            }
+          }
+          &__data--ac{
+            .c-txt{
+              margin-top: 16px;  
+              @include global.responsive(md) {
+                margin-top: 0;
+                width: 300px;
+              }
+            }
+            label{
+              width: 165px;
+            }
+            @extend .c-text__sm !optional;
+            
+            /* ! ----------
+            Error エラー
+            ---------- */
+            .error {
+              @extend .c-text__xxs !optional;
+              color: var(--color_alert);
+              background-color: var(--color_alert_background);
+              padding: 0.5em 1em;
+              border-radius: 2px;
+              margin: 2px 0 0;
+            }
+            @include global.responsive(md) {
+              flex: auto;
+              min-width: 1px;
+              width: 352px;
+            }
+          }
+          //確認画面
+          &--confirm{
+            .p-formList{
+              &__item{
+                
+              }
+              &__ttl{
+                display: block;
+                .c-txt{
+                  margin: 1rem 0 0;
+                }
+              }
+              &__content{
+                .l-stack{
+                  &__item{
+                    display: flex;
+                    + .l-stack__item{
+                      margin: .75rem 0 0;
+                    }
+                  }
+                }
+              }
+              
+              &__label{
+                flex: 0 0 auto;
+                width: 140px;
+                padding: 0;
+                @include global.responsive(sm) {
+                  width: 160px;
+                }
+                .c-txt{
+                  color: #8C8C8C;
+                  letter-spacing: 0;
+                }
+              }
+              &__data{
+                flex: auto;
+                min-width: 1px;
+                .c-txt{
+                  letter-spacing: 0;
+                }
               }
             }
           }
         }
-        
-        &__label{
-          flex: 0 0 auto;
-          width: 140px;
-          padding: 0;
-          @include global.responsive(sm) {
-            width: 160px;
-          }
-          .c-txt{
-            color: #8C8C8C;
-            letter-spacing: 0;
-          }
-        }
-        &__data{
-          flex: auto;
-          min-width: 1px;
-          .c-txt{
-            letter-spacing: 0;
-          }
-        }
       }
-    }
-  }
-}
-
-//確認画面
-.body_confirm{
-  .p-formPage{
-    &__foot{
-      margin: 2rem 0 0;
-      padding: 2rem 0 0;
-      border-top: solid 1px #EAEBEA;
-      @include global.responsive(md) {
+      
+      //確認画面
+      .body_confirm{
+        .p-formPage{
+          &__foot{
+            margin: 2rem 0 0;
+            padding: 2rem 0 0;
+            border-top: solid 1px #EAEBEA;
+            @include global.responsive(md) {
         padding: 0;
         border: none;
       }

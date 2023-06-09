@@ -10,7 +10,7 @@
           <p class="c-ttl--lg c-txt--center">退会が完了しました。</p>
           <p class="c-description c-txt--center">サービスのご利用ありがとうございました。</p>
           <div class="p-btnWrap p-btnWrap--center">
-            <a class="c-btn c-btn--accent" href="/">トップへ</a>
+            <a class="c-btn c-btn--accent" href="/">トップへ戻る</a>
           </div>
         </div>
       </div>

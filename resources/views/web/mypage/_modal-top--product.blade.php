@@ -21,7 +21,7 @@
                         <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
                     </div>
                     <div class="p-formList__data">
-                      <div class="c-input c-input--date" style="width: 100%">
+                      <div class="c-input c-input--date">
                         <input placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}" style=" @error('purchase_date') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                       </div>
                       @error('purchase_date')

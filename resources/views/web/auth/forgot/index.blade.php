@@ -1,5 +1,5 @@
 @extends('web.layouts.pages._form')
-@section('title', 'アカウント情報の入力')
+@section('title', 'パスワード再設定')
 @section('class', 'body_')
 @section('content')
   <div class="l-frame__body">
@@ -27,7 +27,7 @@
                   <!-- メールアドレス -->
                   <li class="p-formList__item">
                     <div class="p-formList__content">
-                      <div class="p-formList__label">
+                      <div class="p-formList__label p-formList__label--password">
                         <p class="c-txt">メールアドレス <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">

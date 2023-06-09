@@ -12,10 +12,10 @@
         </div>
       </div>
       <div class="l-container">
-        <div class="p-formPage__body p-formPage__body--thin">
+        <div class="p-formPage__body">
           <div class="l-stack">
             <div class="l-stack__item">
-              <p class="c-description c-txt--center--md">
+              <p class="c-ttl c-txt--center">
                 新しいパスワードを設定してください。
               </p>
             </div>
@@ -26,7 +26,7 @@
                   <!-- メールアドレス -->
                   <li class="p-formList__item">
                     <div class="p-formList__content">
-                      <div class="p-formList__label p-formList__label--mail">
+                      <div class="p-formList__label">
                         <p class="c-txt">メールアドレス　<span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
@@ -38,7 +38,7 @@
                   <li class="p-formList__item">
                     <div class="p-formList__content">
                       <div class="p-formList__label">
-                        <p class="c-txt">パスワード（半角英数字6文字〜） <span class="c-txt c-txt--must">必須</span></p>
+                        <p class="c-txt">パスワード<br>(半角英数字6文字〜) <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
                         <input placeholder="例）sample123" class="c-form" name="password" type="password" value="">

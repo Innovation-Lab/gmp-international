@@ -1,5 +1,5 @@
 @extends('web.layouts.pages._form')
-@section('title', 'ユーザー情報の入力')
+@section('title', '購入製品の登録')
 @section('class', 'body_')
 @section('content')
   <div class="l-frame__body">

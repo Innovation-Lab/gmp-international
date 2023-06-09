@@ -60,23 +60,23 @@
               <p class="c-ttl">登録済みの方はこちら</p>
             </div>
             {!! Form::open(['method' => 'POST', 'route' => 'login']) !!}
-              <div class="p-formList__data @error('email') p-formList__data--err @enderror">
-                <input class="mailbox" type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
-                @error('email')
-                 <p class="c-txt c-txt--err">{{ $message }}</p>
-                @enderror
-              </div>
-              <div class="p-formList__data @error('password') p-formList__data--err @enderror">
-                <input class="passbox"type="password" name="password" placeholder="パスワード">
-                @error('password')
-                  <p class="c-txt c-txt--err">{{ $message }}</p>
-                @enderror
-              </div>
-              <input class="login" type="submit" name="button" value="ログイン">
-             {!! Form::close() !!}
-            <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
+            <div class="p-formList__data @error('email') p-formList__data--err @enderror">
+              <input class="mailbox" type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
+              @error('email')
+                <p class="c-txt c-txt--err">{{ $message }}</p>
+              @enderror
+            </div>
+            <div class="p-formList__data @error('password') p-formList__data--err @enderror">
+              <input class="passbox"type="password" name="password" placeholder="パスワード">
+              @error('password')
+                <p class="c-txt c-txt--err">{{ $message }}</p>
+              @enderror
+            </div>
+            <input class="login" type="submit" name="button" value="ログイン">
+            {!! Form::close() !!}
           </div>
         </div>
+        <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
         <div class="p-login__support">
           <p class="c-txt">GMPサポートデスク　営業時間：平日10:00〜17:00</p>
           <div class="p-footer__tel">
