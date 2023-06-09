@@ -71,6 +71,16 @@ class MProduct extends Model
     }
     
     /**
+     * @return mixed
+     */
+    public function getFirstColorUrlAttribute(): mixed
+    {
+        return ColorUrl::query()->where('m_product_id', $this->id)
+            ->orderBy('id', 'ASC')
+            ->first();
+    }
+    
+    /**
      * @return string
      */
     public function getColorAttribute(): string
