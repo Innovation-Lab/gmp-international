@@ -79,6 +79,7 @@ Route::group([
             Route::get('/product/edit/{product}', [MasterController::class, 'productEdit'])->name('product.edit');
             Route::get('/product/create', [MasterController::class, 'productCreate'])->name('product.create');
             Route::post('/product/updateOrCreate', [MasterController::class, 'productUpdateOrCreate'])->name('product.updateOrCreate');
+            Route::post('/product/color/delete', [MasterController::class, 'productColorDelete'])->name('product.color.delete');
             //店舗マスタ
             Route::get('/store', [MasterController::class, 'store'])->name('store');
             Route::get('/store/detail/{shop}', [MasterController::class, 'storeDetail'])->name('store.detail');

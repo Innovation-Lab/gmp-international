@@ -58,7 +58,10 @@ class MasterRepository implements MasterRepositoryInterface
                 if (count($params['color_url']) > 0) {
                     foreach ($params['color_url'] as $color) {
                         $color['m_product_id'] = $product->id;
-                        ColorUrl::updateOrCreate(['id'=> data_get($color, 'id')], $color);
+           
+                        ColorUrl::updateOrCreate([
+                            'id' => data_get($color, 'id')
+                        ], $color);
                     }
                 }
             }
@@ -154,6 +157,7 @@ class MasterRepository implements MasterRepositoryInterface
             ],
             'color_url' => []
         ];
+
         $color_array = [];
         if(isset($request->get('color')['edit'])) {
             foreach($request->get('color')['edit'] as $key => $value) {
@@ -163,6 +167,9 @@ class MasterRepository implements MasterRepositoryInterface
                 }
                 if (isset($value['url'])) {
                     $params['color_url'][$key]['url'] = $value['url'];
+                }
+                if (isset($value['id'])) {
+                    $params['color_url'][$key]['id'] = $value['id'];
                 }
             }
         }
@@ -183,5 +190,30 @@ class MasterRepository implements MasterRepositoryInterface
         $params['product']['color_array'] = $result;
         
         return $params;
+    }
+    
+    /**
+     * @param Request $request
+     * @return int
+     */
+    public function deleteColor(Request $request): int
+    {
+        $product = MProduct::find($request->get('product_id'));
+        
+        $numbers = explode(",", data_get($product, 'color_array'));
+        
+        $index = array_search($request->get('product_id'), $numbers);
+        if ($index !== false) {
+            unset($numbers[$index]);
+        }
+        
+        $result = implode(",", $numbers);
+        
+        ColorUrl::query()->where('m_product_id', $request->get('product_id'))
+            ->where('m_color_id', $request->get('color_id'))
+            ->delete();
+        
+        return MProduct::query()->where('id', $request->get('product_id'))
+            ->update(['color_array' => $result]);
     }
 }

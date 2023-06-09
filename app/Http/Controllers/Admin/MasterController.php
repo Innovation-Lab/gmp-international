@@ -16,6 +16,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class MasterController extends Controller
     ) {
         $this->masterRepository = $masterRepository;
     }
+    
     /**
      * @param Request $request
      * @return View|Factory|Application
@@ -121,6 +123,7 @@ class MasterController extends Controller
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
         ]);
     }
+    
     public function productCreate(Request $request): View|Factory|Application
     {
         return view('admin.masters.product.create.index', [
@@ -136,7 +139,7 @@ class MasterController extends Controller
         DB::beginTransaction();
         try {
             $this->masterRepository->updateOrCreate_product($request);
-        } catch (\Exception $e) {dd($e);
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
                 ->with(['error' => 'エラーが発生しました。']);
@@ -145,6 +148,26 @@ class MasterController extends Controller
         
         return redirect()->route('admin.masters.product')
             ->with(['success' => '登録しました。']);
+    }
+    
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function productColorDelete(Request $request): JsonResponse
+    {
+        DB::beginTransaction();
+        try {
+            $this->masterRepository->deleteColor($request);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json($e->getMessage());
+        }
+        DB::commit();
+        
+        return response()->json([
+            'message' => '削除成功'
+        ], 200);
     }
     
     /**
