@@ -1,5 +1,5 @@
 @extends('web.layouts.pages._form')
-@section('title', 'メール送信完了')
+@section('title', 'パスワードの変更完了')
 @section('class', 'body_complete')
 @section('content')
   <div class="l-frame__body">

@@ -42,10 +42,15 @@
     flex-direction: column;
     align-items: center;
     @include global.responsive(md) {
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
       width: 50%;
       padding-right: 56px;
       border-right: 1px solid #E2E2E2;
+    }
+    @include global.responsive(md) {
+      .c-btn{
+        margin-top: 24px;
+      }
     }
   }
   &__auth{
@@ -53,7 +58,7 @@
     flex-direction: column;
     align-items: flex-end;
     @include global.responsive(md) {
-      width: 50%;
+      // width: 50%;
       padding-left: 56px;
     }
     form{
@@ -167,7 +172,8 @@
     text-align: center;
     margin-bottom: 16px;
     &--2l{
-      margin: 0;
+      // margin: 0;
+      margin-top: auto;
       text-align: center;
       .c-ttl{
         position: relative;
@@ -197,11 +203,12 @@
     }
   }
   &__img{
-    flex: auto;
-    display: flex;
-    width: 280px;
+    margin-top: 24px;
+    // flex: auto;
+    // display: flex;
+    // width: 280px;
     &__ph{
-      margin: auto 0;
+      // margin: auto 0;
     }
   }
   &__forget{
@@ -283,9 +290,7 @@
   }
   &__link{
     display: flex;
-    .c-btn--text{
-      margin-top: 8px;
-    }
+    justify-content: center;
   }
   &__registered{
     margin-top: 12px;
@@ -347,12 +352,12 @@
     @include global.responsive(lg) {
       padding: 64px 64px 40px;
     }
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
-    // align-items: center;
-    // padding: 5rem;
-    // background-color: var(--color_background_3);
-    // border-radius: 3.5rem;
+    .c-btn--text{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
 
     /* ! ----------
     　テキスト

@@ -442,7 +442,7 @@
         min-height: 235px;
         background: #c30e2e;
         border-radius: 10px;
-        padding: 20px 16px;
+        padding: 24px;
         max-width: 100%;
         width: 330px;
         display: flex;
@@ -516,7 +516,7 @@
             }
             .label{
                 flex: 0 0 auto;
-                width: 120px;
+                // width: 120px;
                 line-height: 1.3em;
             }
             .data{
@@ -524,6 +524,19 @@
                 min-width: 1px;
                 line-height: 1.3em;
                 font-size: 13px;
+                // width: 190px;
+                // white-space: nowrap;
+                // overflow: hidden;
+                // text-overflow: ellipsis;
+                @include global.responsive(min) {
+                    // width: 140px;
+                }
+                @include global.responsive(xs) {
+                    // width: 230px;
+                }
+                @include global.responsive(md) {
+                    // width: 140px;
+                }
             }
         }
         
@@ -531,21 +544,21 @@
     &__purchase{
         &--all{
             @include global.responsive(xl) {
-                width: 130px;
+                // width: 130px;
             }
         }
     }
     &__serialNum{
         &--all{
             @include global.responsive(xl) {
-                width: 160px;
+                // width: 160px;
             }
         }
     }
     &__store{
         &--all{
             @include global.responsive(xl) {
-                width: 180px;
+                max-width: 180px;
             }
         }
     }
@@ -581,9 +594,6 @@
         .c-txt{
             color: #fff;
         }
-        // p:not(.c-txt--sm--ghost){
-        //     color: #fff;
-        // }
         .p-card{    
             &__item{
                 flex: auto;
@@ -609,6 +619,7 @@
             }
             &__mainData{
                 flex: 0 0 auto;
+                max-width: 360px;
             }
             &__brand p,
             &__product .c-txt--sm{
@@ -619,6 +630,23 @@
                     @include global.responsive(md) {
                         font-size: 22px;
                         line-height: 24px;
+                    }
+                }
+            }
+            &__store{
+                .data{
+                    width: 190px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    @include global.responsive(lg) {
+                        width: 100%;
+                        white-space: unset;
+                    }
+                }
+                &--all{
+                    @include global.responsive(xl) {
+                        max-width: 300px;
                     }
                 }
             }
@@ -633,11 +661,14 @@
                 @include global.responsive(xxl) {
                     padding: 0 0 0 16px;
                     margin: 0 0 0 auto;
+                    flex: auto;
+                    max-width: 460px;
+                    min-width: 1px;
                 }
                 > div{
                     flex-direction: column;
                     flex-wrap: wrap;
-                    @include global.responsive(min) {
+                    @include global.responsive(xs) {
                         flex-direction: row;
                     }
                     @include global.responsive(md) {
@@ -648,7 +679,10 @@
                         min-height: 48px;
                     }
                     @include global.responsive(xl) {
-                        padding: 0 24px;
+                        // padding: 0 24px;
+                        // width: auto;
+                        // flex: auto;
+                        // min-width: 1px;
                     }
                     + div{
                         border-left: none !important;
@@ -657,15 +691,16 @@
                     .label{
                         width: 80px;
                         @include global.responsive(md) {
-                            width: auto;
                             line-height: 1.2em;
                         }
                     }
                     .data{
-                        @include global.responsive(md) {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                        // @include global.responsive(md) {
+                        //     display: flex;
+                        //     align-items: center;
+                        // }
+                        @include global.responsive(lg) {
+
                         }
                     }
                 }
@@ -706,9 +741,6 @@
                     flex-direction: inherit;
                     min-height: 24px;
                     align-items: center;
-                    .data{
-                        justify-content: flex-end;
-                    }
                 }
                 > div{
                     padding: 0;
@@ -739,7 +771,7 @@
             }
             @include global.responsive(xl) {
                 div{
-                    width: auto;
+                    // width: auto;
                 }
             }
             @include global.responsive(xxl) {
