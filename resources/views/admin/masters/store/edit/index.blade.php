@@ -68,8 +68,11 @@
                                 <div class="p-formList__label">
                                   店舗名
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   {!! Form::text('name', old('name', data_get($shop, 'name')), ['placeholder' => '例）エアバギー○○店']) !!}
+                                  @error('name')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>

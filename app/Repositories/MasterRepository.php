@@ -77,7 +77,6 @@ class MasterRepository implements MasterRepositoryInterface
     private function arrayShapeBrand(Request $request): array
     {
         return [
-            'image_path' => '',
             'name' => $request->input('name')
         ];
     }
@@ -92,7 +91,6 @@ class MasterRepository implements MasterRepositoryInterface
         $holiday_business_hour = $request->get('open_time_of_holiday'). '〜' .$request->get('close_time_of_holiday');
 
         return [
-            'image_path' => '',
             'name' => $request->input('name'),
             'tel' => $request->input('tel'),
             'zip_code' => $request->input('zip_code'),
@@ -118,14 +116,12 @@ class MasterRepository implements MasterRepositoryInterface
                 'alphabet_name' => $request->input('alphabet_name'),
                 'color' => $request->input('color'),
                 'second_color' => NULL,
-                'image_path' => NULL,
             ],
             default => [
                 'name' => $request->input('name'),
                 'alphabet_name' => $request->input('alphabet_name'),
                 'color' => $request->input('color'),
                 'second_color' => $request->input('second_color'),
-                'image_path' => NULL,
             ],
         };
     }

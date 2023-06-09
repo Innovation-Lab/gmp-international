@@ -820,7 +820,7 @@ input[type=file] + label.logo {
   padding: 16px;
 }
 input[type=file] + label.logo:before {
-  opacity: 0.8;
+  opacity: 1;
   background: #1F266F;
 }
 input[type=file] + label.logo:after {
@@ -871,7 +871,7 @@ input[type=file] + label.colorPattern {
   max-width: 200px;
 }
 input[type=file] + label.colorPattern:before {
-  opacity: 0.8;
+  opacity: 1;
   background: #1F266F;
 }
 input[type=file] + label.colorPattern:after {

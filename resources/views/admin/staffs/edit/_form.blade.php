@@ -204,7 +204,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
             <div class="p-formList__label">
               パスワード<small>（半角英数字6〜10文字）</small>
             </div>
-            <div class="p-formList__data" style="display: block;" style="display: block;">
+            <div class="p-formList__data" style="display: block;">
               {!! Form::password('password', null, ['placeholder' => '例）gmp123456']) !!}
               @error('password')
                 <p class="error">{{ $message }}</p>

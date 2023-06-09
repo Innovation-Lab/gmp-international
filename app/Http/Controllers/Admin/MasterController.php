@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBrandRequest;
+use App\Http\Requests\StoreColorRequest;
+use App\Http\Requests\StoreShopRequest;
 use App\Models\Admin;
 use App\Models\MBrand;
 use App\Models\MColor;
@@ -61,10 +64,10 @@ class MasterController extends Controller
     }
     
     /**
-     * @param Request $request
+     * @param StoreBrandRequest $request
      * @return RedirectResponse
      */
-    public function brandUpdateOrCreate(Request $request): RedirectResponse
+    public function brandUpdateOrCreate(StoreBrandRequest $request): RedirectResponse
     {
         DB::beginTransaction();
         try {
@@ -144,10 +147,10 @@ class MasterController extends Controller
     }
     
     /**
-     * @param Request $request
+     * @param StoreShopRequest $request
      * @return RedirectResponse
      */
-    public function storeUpdateOrCreate(Request $request): RedirectResponse
+    public function storeUpdateOrCreate(StoreShopRequest $request): RedirectResponse
     {
         DB::beginTransaction();
         try {
@@ -188,10 +191,10 @@ class MasterController extends Controller
     }
     
     /**
-     * @param Request $request
+     * @param StoreColorRequest $request
      * @return RedirectResponse
      */
-    public function colorUpdateOrCreate(Request $request): RedirectResponse
+    public function colorUpdateOrCreate(StoreColorRequest $request): RedirectResponse
     {
         DB::beginTransaction();
         try {

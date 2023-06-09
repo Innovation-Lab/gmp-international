@@ -134,8 +134,11 @@
                                       <div class="p-formList__label">
                                         カラー名
                                       </div>
-                                      <div class="p-formList__data">
+                                      <div class="p-formList__data" style="display: block;">
                                         <input type="text" id="color_name" name="name" placeholder="ブロッサム" value="{{ data_get($color, 'name') }}">
+                                        @error('name')
+                                        <p class="error">{{ $message }}</p>
+                                        @enderror
                                       </div>
                                     </div>
                                   </li>
@@ -144,8 +147,11 @@
                                       <div class="p-formList__label">
                                         カラー名(英字)
                                       </div>
-                                      <div class="p-formList__data">
+                                      <div class="p-formList__data" style="display: block;">
                                         <input type="text" id="color_name_" name="alphabet_name" placeholder="BLOSSOM" value="{{ data_get($color, 'alphabet_name') }}">
+                                        @error('alphabet_name')
+                                        <p class="error">{{ $message }}</p>
+                                        @enderror
                                       </div>
                                     </div>
                                   </li>

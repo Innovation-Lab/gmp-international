@@ -38,7 +38,7 @@
                                 <div class="p-formList__label">
                                   ブランドロゴ
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   <input
                                     id="brand_logo"
                                     type="file"
@@ -58,6 +58,9 @@
                                       src="{{ data_get($brand, 'main_image_url') }}"
                                     >
                                   </label>
+                                  @error('image_path')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                   <script>
                                       function changeFilePreview(file) {
                                           $('#image_preview_form').attr('src', URL.createObjectURL(file));
@@ -72,8 +75,11 @@
                                 <div class="p-formList__label">
                                   ブランド名
                                 </div>
-                                <div class="p-formList__data u-max--240">
+                                <div class="p-formList__data u-max--240" style="display: block;">
                                   <input type="text" id="brand_name" name="name" placeholder="AIRBUGGY" value="{{ old('name', data_get($brand, 'name')) }}">
+                                  @error('name')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
