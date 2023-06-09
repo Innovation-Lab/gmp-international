@@ -38,7 +38,9 @@
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
               {{--検索結果なしデザイン--}}
-              <div class="noResult" style="display: none;">検索結果がありません。</div>
+              @if($products->count() == 0)
+                <div class="noResult">検索結果がありません。</div>
+              @endif
               <table>
                 <colgroup>
                   <col>
