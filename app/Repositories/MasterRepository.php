@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Models\ColorUrl;
 use App\Models\MBrand;
 use App\Models\MColor;
+use App\Models\MProduct;
 use App\Models\MShop;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Http\Request;
@@ -48,7 +50,19 @@ class MasterRepository implements MasterRepositoryInterface
     
     public function UpdateOrCreate_product(Request $request)
     {
-        // TODO: Implement UpdateOrCreate_product() method.
+        return DB::transaction(function() use($request){
+            $params = $this->arrayShapeProduct($request);
+            
+            if($product = MProduct::updateOrCreate(['id'=> $request->input('id')], $params['product'])) {
+        
+                if (count($params['color_url']) > 0) {
+                    foreach ($params['color_url'] as $color) {
+                        $color['m_product_id'] = $product->id;
+                        ColorUrl::updateOrCreate(['id'=> data_get($color, 'id')], $color);
+                    }
+                }
+            }
+        });
     }
     
     /**
@@ -124,5 +138,50 @@ class MasterRepository implements MasterRepositoryInterface
                 'second_color' => $request->input('second_color'),
             ],
         };
+    }
+    
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function arrayShapeProduct(Request $request): array
+    {
+        $params = [
+            'product' => [
+                'm_brand_id' => $request->input('m_brand_id'),
+                'name' => $request->input('name'),
+                'name_kana' => $request->input('name_kana'),
+            ],
+            'color_url' => []
+        ];
+        $color_array = [];
+        if(isset($request->get('color')['edit'])) {
+            foreach($request->get('color')['edit'] as $key => $value) {
+                if (isset($value['m_color_id']) && !in_array($value['m_color_id'], $color_array)) {
+                    $color_array[] = $value['m_color_id'];
+                    $params['color_url'][$key]['m_color_id'] = $value['m_color_id'];
+                }
+                if (isset($value['url'])) {
+                    $params['color_url'][$key]['url'] = $value['url'];
+                }
+            }
+        }
+
+        if(isset($request->get('color')['add'])) {
+            foreach($request->get('color')['add'] as $key => $value) {
+                if (isset($value['m_color_id']) && !in_array($value['m_color_id'], $color_array)) {
+                    $color_array[] = $value['m_color_id'];
+                    $params['color_url'][$key]['m_color_id'] = $value['m_color_id'];
+                }
+                if (isset($value['url'])) {
+                    $params['color_url'][$key]['url'] = $value['url'];
+                }
+            }
+        }
+        
+        $result = implode(",", $color_array);
+        $params['product']['color_array'] = $result;
+        
+        return $params;
     }
 }
