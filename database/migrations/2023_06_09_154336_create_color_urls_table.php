@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('color_urls', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('m_product_id')->nullable()->comment('製品ID');
             $table->unsignedInteger('m_color_id')->nullable()->comment('カラーID');
             $table->text('url')->nullable()->comment('画像URL');
             $table->timestamps();
             
+            $table->foreign('m_product_id')->references('id')->on('m_products');
             $table->foreign('m_color_id')->references('id')->on('m_colors');
         });
     }

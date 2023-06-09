@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\MColor;
 
@@ -57,6 +58,16 @@ class MProduct extends Model
     public function SalesProduct(): HasMany
     {
         return $this->hasMany(SalesProduct::class);
+    }
+    
+    /**
+     * @param $color_id
+     */
+    public function getColorUrl($color_id)
+    {
+        return $this->hasOne(ColorUrl::class)
+            ->where('m_color_id', $color_id)
+            ->first();
     }
     
     /**

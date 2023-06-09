@@ -129,6 +129,26 @@ class MasterController extends Controller
     
     /**
      * @param Request $request
+     * @return RedirectResponse
+     */
+    public function productUpdateOrCreate(Request $request): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $this->masterRepository->updateOrCreate_product($request);
+        } catch (\Exception $e) {dd($e);
+            DB::rollback();
+            return redirect()->back()
+                ->with(['error' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.product')
+            ->with(['success' => '登録しました。']);
+    }
+    
+    /**
+     * @param Request $request
      * @return Builder
      */
     private function searchProduct(Request $request): Builder
