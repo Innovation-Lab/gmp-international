@@ -202,7 +202,7 @@ class MasterRepository implements MasterRepositoryInterface
         
         $numbers = explode(",", data_get($product, 'color_array'));
         
-        $index = array_search($request->get('product_id'), $numbers);
+        $index = array_search($request->get('color_id'), $numbers);
         if ($index !== false) {
             unset($numbers[$index]);
         }
