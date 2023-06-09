@@ -75,8 +75,8 @@ Route::group([
             Route::post('/brand/updateOrCreate', [MasterController::class, 'brandUpdateOrCreate'])->name('brand.updateOrCreate');
             //製品マスタ
             Route::get('/product', [MasterController::class, 'product'])->name('product');
-            Route::get('/product/detail', [MasterController::class, 'productDetail'])->name('product.detail');
-            Route::get('/product/edit', [MasterController::class, 'productEdit'])->name('product.edit');
+            Route::get('/product/detail/{product}', [MasterController::class, 'productDetail'])->name('product.detail');
+            Route::get('/product/edit/{product}', [MasterController::class, 'productEdit'])->name('product.edit');
             Route::get('/product/create', [MasterController::class, 'productCreate'])->name('product.create');
             Route::post('/product/updateOrCreate', [MasterController::class, 'productUpdateOrCreate'])->name('product.updateOrCreate');
             //店舗マスタ

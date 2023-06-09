@@ -21,19 +21,18 @@
                     <div class="p-list--product">
                       <div class="p-list__left" style="display: flex; align-items: center;">
                         <!-- <div class="p-list__img" style="width: 200px;"> -->
-                          <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="">
+                          <img class="" src="{{ data_get($product, 'main_image_url') }}" alt="">
                         <!-- </div> -->
                       </div>
                       <div class="p-list__right">
-                        <div class="p-list__head">
-                          <h3 class="p-detail__main__box__head__title">製品情報</p>
-                          <!-- <a href="{{route('admin.masters.product.edit')}}" class="c-button__2">編集</a> -->
-                          <a href="{{route('admin.masters.product.edit')}}" class="c-button">編集</a>
+                        <div class="p-list__head" style="display: flex; justify-content: space-between">
+                          <h3 class="p-detail__main__box__head__title">製品情報</h3>
+                          <a href="{{route('admin.masters.product.edit', $product)}}" class="c-button">編集</a>
                         </div>
                         <ul class="p-list">
                           @foreach([
-                            'ブランド名' => 'AIRBUGGY',
-                            '製品名' => 'COCO BRAKE EX FROM BIRTH',
+                            'ブランド名' => data_get($product, 'mBrand.name'),
+                            '製品名' => data_get($product, 'name').' '.data_get($product, 'name_kana'),
                             ] as $key => $val)
                           <li class="p-list__item">
                             <div class="p-list__label">
@@ -48,8 +47,24 @@
                             <div class="p-list__label">
                               カラー登録数
                             </div>
-                            <div class="p-list__data color">
-                              <div class="ball"></div>ブロッサム
+                            <div style="display: flex;">
+                              @foreach(data_get($product, 'color_ball_with_name') as $color)
+                                @if (data_get($color, 'image_path'))
+                                  {{-- 画像表示の場合 --}}
+                                  <div class="p-list__data color" style="margin-right: 10px;">
+                                    <div class="c-colorBall ball" style="background: url({{ \Storage::disk('s3')->temporaryUrl(data_get($color, 'image_path'), \Carbon\Carbon::now()->addMinute(10)) }})"></div>{{ data_get($color, 'name') }}
+                                  </div>
+                                @else
+                                  {{-- 2色の場合に追加 --}}
+                                  <div class="p-list__data color" style="margin-right: 10px;">
+                                    <div class="c-colorBall ball" style="background: {{ data_get($color, 'color', '#fff')}};">
+                                      @if (data_get($color, 'second_color'))
+                                        <div class="c-colorBall__pallet2" style="background: {{ data_get($color, 'second_color', '#fff') }};"></div>
+                                      @endif
+                                    </div>{{ data_get($color, 'name') }}
+                                  </div>
+                                @endif
+                              @endforeach
                             </div>
                           </li>
                         </ul>

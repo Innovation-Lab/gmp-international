@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +12,7 @@ use App\Models\MColor;
 
 class MProduct extends Model
 {
-    use HasFactory;
+    use HasFactory, GetImageTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -57,8 +58,11 @@ class MProduct extends Model
     {
         return $this->hasMany(SalesProduct::class);
     }
-
-    public function getColorAttribute()
+    
+    /**
+     * @return string
+     */
+    public function getColorAttribute(): string
     {
         $color_array = $this->color_array;
         $colors = explode(',', $color_array);
@@ -79,6 +83,44 @@ class MProduct extends Model
     }
     
     /**
+     * @return array
+     */
+    public function getColorBallWithNameAttribute(): array
+    {
+        $color_array = $this->color_array;
+        $colors = explode(',', $color_array);
+        
+        $ballWithName = [];
+        
+        if (count($colors) > 0) {
+            foreach ($colors as $key => $color) {
+                $record = MColor::find($color);
+                
+                $ballWithName[data_get($record,'id')] = [
+                    'name' => data_get($record, 'name'),
+                    'alphabet_name' => data_get($record, 'alphabet_name'),
+                    'color' => data_get($record, 'color'),
+                    'second_color' => data_get($record, 'second_color'),
+                    'image_path' => data_get($record, 'image_path'),
+                ];
+            }
+        }
+
+        return $ballWithName;
+    }
+    
+    /**
+     * @return int
+     */
+    public function getColorCountAttribute(): int
+    {
+        $color_array = $this->color_array;
+        $colors = explode(',', $color_array);
+
+        return count($colors);
+    }
+    
+    /**
      * @param $id
      * @return bool
      */
@@ -86,4 +128,17 @@ class MProduct extends Model
     {
         return isset(self::find($id)->serial_guide_type) && self::find($id)->serial_guide_type;
     }
+    
+    /**
+     * @return string
+     */
+    public function getMainImageUrlAttribute(): string
+    {
+        if (!data_get($this, 'image_path')) {
+            return asset('img/admin/noImage/product.png');
+        } else {
+            return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
+        }
+    }
+    
 }

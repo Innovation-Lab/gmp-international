@@ -64,23 +64,25 @@
                   </th>
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 44; $i++)
+                  @forelse ($products as $product)
                   <!-- 1人 -->
-                  <tr data-href="{{ route('admin.masters.product.detail') }}">
+                  <tr data-href="{{ route('admin.masters.product.detail', $product) }}">
                     <td class="item">
-                      <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="" style="height: 40px;">
+                      <img class="" src="{{ data_get($product, 'main_image_url') }}" alt="" style="height: 40px;">
                     </td>
                     <td class="item">
-                      COCO BRAKE EX FROM BIRTH ココブレーキEX フロムバース
+                      {{ data_get($product, 'name') }} {{ data_get($product, 'name_kana') }}
                     </td>
                     <td class="item">
-                      AIRBUGGY
+                      {{ data_get($product, 'mBrand.name') }}
                     </td>
                     <td class="item">
-                      8
+                      {{ data_get($product, 'color_count') }}
                     </td>
                   </tr>
-                  @endfor
+                  @empty
+                    <tr><td style="border-bottom: none;">データはありません。</td></tr>
+                  @endforelse
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
@@ -114,7 +116,9 @@
           <div class="l-index__foot">
             <div class="p-index__foot">
               {{-- ページネーション --}}
-              @include('admin.masters.product._pagination')
+              @include('admin.components._pagination', [
+                  'paginate' => $products,
+              ])
             </div>
           </div>
         </div>

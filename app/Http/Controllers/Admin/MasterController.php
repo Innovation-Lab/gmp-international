@@ -9,11 +9,13 @@ use App\Http\Requests\StoreShopRequest;
 use App\Models\Admin;
 use App\Models\MBrand;
 use App\Models\MColor;
+use App\Models\MProduct;
 use App\Models\MShop;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -82,27 +84,78 @@ class MasterController extends Controller
         return redirect()->route('admin.masters.brand')
             ->with(['success' => '登録しました。']);
     }
-
-    //製品マスタ
+    
+    /**
+     * @param Request $request
+     * @return View|Factory|Application
+     */
     public function product(Request $request): View|Factory|Application
     {
         return view('admin.masters.product.index', [
+            'products' => $this->searchProduct($request)->paginate(20),
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
         ]);
     }
-    public function productEdit(Request $request): View|Factory|Application
-    {
-        return view('admin.masters.product.edit.index', [
-        ]);
-    }
-    public function productDetail(Request $request): View|Factory|Application
+    
+    /**
+     * @param MProduct $product
+     * @return View|Factory|Application
+     */
+    public function productDetail(MProduct $product): View|Factory|Application
     {
         return view('admin.masters.product.detail.index', [
+            'product' => $product
+        ]);
+    }
+    
+    /**
+     * @param MProduct $product
+     * @return View|Factory|Application
+     */
+    public function productEdit(MProduct $product): View|Factory|Application
+    {
+        return view('admin.masters.product.edit.index', [
+            'product' => $product
         ]);
     }
     public function productCreate(Request $request): View|Factory|Application
     {
         return view('admin.masters.product.create.index', [
         ]);
+    }
+    
+    /**
+     * @param Request $request
+     * @return Builder
+     */
+    private function searchProduct(Request $request): Builder
+    {
+        $query = MProduct::query()->select('m_products.*');
+        
+        if ($request->get('keyword')) {
+            $half_space_string = mb_convert_kana($request->get('keyword'), 's');
+            $search_array = explode(' ', $half_space_string);
+            
+            $query->where(function ($_query) use ($search_array) {
+                foreach ($search_array as $search_word) {
+                    $_query->where(function ($sub_query) use ($search_word) {
+                        $sub_query->where('m_products.name', 'LIKE', '%' . $search_word . '%')
+                            ->orWhere('m_products.name_kana', 'LIKE', '%' . $search_word . '%');
+                    });
+                }
+            });
+        }
+        
+        if ($request->get('m_brand_id')) {
+            $query->where('m_products.m_brand_id', $request->get('m_brand_id'));
+        }
+        
+        if ($request->get('m_color_id')) {
+            $query->whereRaw("FIND_IN_SET('{$request->get('m_color_id')}', m_products.color_array)");
+        }
+        
+        return $query;
     }
     
     /**
