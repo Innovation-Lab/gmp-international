@@ -90,7 +90,7 @@
                   </div>
                   <div class="p-edit__main__box__foot">
                     <button onclick="window.location='{{ request()->url() }}'" class="c-button__reset">変更をリセット</button>
-                    <button form="updateBrandForm" class="c-button">変更を反映する</button>
+                    <button form="updateBrandForm" class="c-button">@if(str_contains(request()->url(), 'edit')) 変更を反映する @else 新規追加する @endif</button>
                   </div>
                 </div>
               </div>
