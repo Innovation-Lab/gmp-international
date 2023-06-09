@@ -66,7 +66,7 @@
                                 <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
                                   @if ($loop->index == 0)
                                     <div class="p-formList__label">
-                                      カラー
+                                      カラー（メイン画像）
                                     </div>
                                   @else
                                     <div style="margin-top: 30px;"></div>
@@ -85,9 +85,9 @@
                                   </div>
                                   @if ($loop->index != 0)
                                   <div class="p-formList__btn" style="margin-left: auto;">
-                                    <button class="c-textButton__icon c-textButton--gray delete" onclick="deleteColorForm({{ $loop->index + 1 }})">
-                                      <svg class="icon"><use href="#delete"></use></svg>削除
-                                    </button>
+                                    <a class="c-textButton__icon c-textButton--gray delete" onclick="deleteExistingColorForm({{ $loop->index + 1 }}, {{ data_get($product, 'id') }}, {{  data_get($color, 'id') }})">
+                                      削除
+                                    </a>
                                   </div>
                                   @endif
                                 </div>
@@ -106,11 +106,6 @@
                                   </div>
                                   <div class="p-formList__data  u-max--360">
                                     <input type="text" name="color[add][1][url]" placeholder="https://www.sample.page.com/airbuggy.png" value="">
-                                  </div>
-                                  <div class="p-formList__btn" style="margin-left: auto;">
-                                    <button class="c-textButton__icon c-textButton--gray delete">
-                                      <svg class="icon"><use href="#delete"></use></svg>削除
-                                    </button>
                                   </div>
                                 </div>
                               @endforelse
@@ -192,6 +187,29 @@
 
 
     });
+
+    // 既存のカラー削除
+    function deleteExistingColorForm(
+        number,
+        product_id,
+        color_id
+    ) {
+        if(confirm('本当に削除してよろしいですか？')) {
+          $.post({
+              url: "{{ route('admin.masters.product.color.delete') }}",
+              headers: {
+                  "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+              },
+              data: {
+                  'product_id': product_id,
+                  'color_id': color_id,
+              },
+          }).done(function (response) {
+              let target = '#js_delete_' + number;
+              $(target).empty();
+          });
+        }
+    }
 
     function deleteColorForm(number) {
         let target = '#js_delete_' + number;
