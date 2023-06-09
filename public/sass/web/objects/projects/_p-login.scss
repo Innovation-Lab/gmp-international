@@ -225,7 +225,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: 48px;
+      margin-top: 56px;
     }
     @include global.responsive(lg) {
       display: block;
@@ -233,7 +233,7 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      margin-top: 48px;
+      margin-top: 56px;
     }
     .c-txt{
       @include global.responsive(md) {
@@ -291,6 +291,7 @@
   &__link{
     display: flex;
     justify-content: center;
+    position: relative;
   }
   &__registered{
     margin-top: 12px;
@@ -353,10 +354,9 @@
       padding: 64px 64px 40px;
     }
     .c-btn--text{
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      margin-top: 16px;
+      position: absolute;
+      right: 1.2%;
+      bottom: -12%;
     }
 
     /* ! ----------
