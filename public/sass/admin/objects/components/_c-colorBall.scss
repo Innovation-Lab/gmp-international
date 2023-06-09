@@ -20,6 +20,11 @@
   &:before{
     display: none;
   }
+  &--sm{
+    width: 12px; height: 12px;
+    // display: flex;
+    // align-items: baseline;
+  }
   //2色目
   &__pallet2{
     position: absolute;

@@ -30,31 +30,29 @@
                     </a>
                   </div>
                   <div class="p-detail__main__box__body">
-                    {{--登録製品なしデザイン--}}
-                    @if($sales_products->count() <= 0)
-                      <div class="noProduct" style="">登録されている製品はありません。</div>
-                    @endif
                     <div class="p-productScroll c-scroll">
-                      @foreach($sales_products as $sales_product)
-                        <ul class="p-product p-product--list">
-                          <li class="p-product__item">
-                            <div class="p-product__item__left">
-                              <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
-                            </div>
-                            <div class="p-product__item__right">
-                              <div class="p-product__item__head">
-                                <div class="p-product__item__ttl">
-                                  <div class="item">{{ data_get($sales_product,'mProduct.mBrand.name') }}</div>
-                                  <div class="item">{{ data_get($sales_product,'mProduct.name') }}</div>
+                      <ul class="p-product p-product--list">
+                        @foreach($sales_products as $sales_product)
+                        <li class="p-product__item">
+                          <div class="p-product__item__left">
+                            <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
+                          </div>
+                          <div class="p-product__item__right">
+                            <div class="p-product__item__head">
+                              <div class="p-product__item__ttl">
+                                <div class="item">{{ data_get($sales_product,'mProduct.mBrand.name') }}</div>
+                                <div class="item">{{ data_get($sales_product,'mProduct.name') }}</div>
+                              </div>   
+                              <div class="p-product__item__other">
+                                <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
+                                {{--カラーボール--}}
+                                <div class="p-product__item__other__box">
+                                  <div class="c-colorBall c-colorBall--sm" style="background: #fff;">
+                                    {{-- 2色の場合に追加 --}}
+                                    <div class="c-colorBall__pallet2" style="background: #000;"></div>
+                                  </div>
+                                  <div class="item">COLOR</div>
                                 </div>
-                                <div class="p-product__item__other">
-                                  <!-- <a href="
-                                    {{-- {{route('admin.users.edit-products')}} --}}
-                                    " class="c-textButton">編集</a> -->
-                                  <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
-                                <div class="color">
-                                {{ data_get($sales_product,'mColor.alphabet_name') }}
-                              </div>
                               </div>
                             </div>
                             <ul class="p-product__item__body">
@@ -101,11 +99,11 @@
                             </ul>
                           </div>
                         </li>
-                        </ul>
-                      @endforeach
+                        @endforeach
                         {{-- ---------- リスト ---------- --}}
-                      </div>
+                      </ul>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
