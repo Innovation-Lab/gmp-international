@@ -116,7 +116,9 @@ class MasterController extends Controller
     public function productEdit(MProduct $product): View|Factory|Application
     {
         return view('admin.masters.product.edit.index', [
-            'product' => $product
+            'product' => $product,
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
         ]);
     }
     public function productCreate(Request $request): View|Factory|Application

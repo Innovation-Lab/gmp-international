@@ -95,13 +95,14 @@ class MProduct extends Model
         if (count($colors) > 0) {
             foreach ($colors as $key => $color) {
                 $record = MColor::find($color);
-                
                 $ballWithName[data_get($record,'id')] = [
+                    'id' => data_get($record, 'id'),
                     'name' => data_get($record, 'name'),
                     'alphabet_name' => data_get($record, 'alphabet_name'),
                     'color' => data_get($record, 'color'),
                     'second_color' => data_get($record, 'second_color'),
                     'image_path' => data_get($record, 'image_path'),
+                    'url' => data_get($record, 'colorUrls.url'),
                 ];
             }
         }

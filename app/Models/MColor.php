@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class MColor extends Model
 {
@@ -18,6 +21,15 @@ class MColor extends Model
     protected $guarded = [
         'id'
     ];
+    
+    
+    /**
+     * @return HasOne
+     */
+    public function colorUrls(): HasOne
+    {
+        return $this->hasOne(ColorUrl::class);
+    }
     
     /**
      * @return string

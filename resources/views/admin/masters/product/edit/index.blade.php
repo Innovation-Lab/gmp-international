@@ -31,9 +31,9 @@
                                 <div class="p-formList__data  u-max--360">
                                   <select name="brand" class="select2">
                                     <option value="" hidden>選択してください</option>
-                                    <option value="brand1" selected>AIRBUGGY</option>
-                                    <option value="brand2">AIRBUGGY1</option>
-                                    <option value="brand3">AIRBUGGY2</option>
+                                    @foreach($brands as $k => $v)
+                                      <option value="{{ $k }}" @if(old('m_brand_id', data_get($product, 'm_brand_id')) == $k) selected @endif>{{ $v }}</option>
+                                    @endforeach
                                   </select>
                                 </div>
                               </div>
@@ -44,109 +44,56 @@
                                   製品名
                                 </div>
                                 <div class="p-formList__data u-max--360">
-                                  <input placeholder="例）COCO PREMIER FROM BIRTH" name="product" type="text">
+                                  <input placeholder="例）COCO PREMIER FROM BIRTH" name="name" type="text" value="{{ old('name', data_get($product, 'name')) }}">
                                 </div>
                               </div>
                             </li>
-                          <ul class="p-formList u-max--320">
                             <li class="p-formList__item">
-                              <div class="p-formList__content">
-                                <div class="p-formList__label">
-                                  カラー
+                              @forelse(data_get($product, 'color_ball_with_name') as $color)
+                                <div class="p-formList__content">
+                                  @if ($loop->index == 0)
+                                    <div class="p-formList__label">
+                                      カラー
+                                    </div>
+                                  @else
+                                    <div style="margin-top: 10px;"></div>
+                                  @endif
+                                  <div class="p-formList__data  u-max--360">
+                                    <select name="m_color_id[{{ data_get($color, 'id') }}][color]" class="select2">
+                                      <option value="" hidden>選択してください</option>
+                                      @foreach($colors as $k => $v)
+                                        <option value="{{ $k }}" @if(old('m_color_id', data_get($color, 'id')) == $k ) selected @endif>{{ $v }}</option>
+                                      @endforeach
+                                    </select>
+                                  </div>
+                                  <div class="p-formList__data  u-max--360">
+                                    <input type="text" name="m_color_id[{{ data_get($color, 'id') }}][url]" placeholder="https://www.sample.page.com/airbuggy.png" value="{{ data_get($color, 'url') }}">
+                                  </div>
                                 </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <select name="color" class="select2">
-                                    <option value="" hidden>選択してください</option>
-                                    <option value="color1" selected>BLOSSOM</option>
-                                    <option value="color2">Blue</option>
-                                    <option value="color3">Green</option>
-                                  </select>
+                              @empty
+                                <div class="p-formList__content">
+                                  <div class="p-formList__label">
+                                    カラー
+                                  </div>
+                                  <div class="p-formList__data  u-max--360">
+                                    <select name="m_color_id[add][1][m_color_id]" class="select2">
+                                      <option value="" hidden>選択してください</option>
+                                      @foreach($colors as $k => $v)
+                                        <option value="{{ $k }}">{{ $v }}</option>
+                                      @endforeach
+                                    </select>
+                                  </div>
+                                  <div class="p-formList__data  u-max--360">
+                                    <input type="text" name="m_color_id[add][1][url]" placeholder="https://www.sample.page.com/airbuggy.png" value="">
+                                  </div>
                                 </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
-                                </div>
-                              </div>
+                              @endforelse
+
+                                {{-- ここに追加していく --}}
+
                               <div class="p-formList__btn">
                                 <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
                                   <svg class="icon"><use href="#add"/></svg>カラーを追加する
-                                </button>
-                              </div>
-                            </li>
-                            <li class="p-formList__item">
-                              <div class="p-formList__content">
-                                <div class="p-formList__label">
-                                  カラー
-                                </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <select name="color" class="select2">
-                                    <option value="" hidden>選択してください</option>
-                                    <option value="color1" selected>BLOSSOM</option>
-                                    <option value="color2">Blue</option>
-                                    <option value="color3">Green</option>
-                                  </select>
-                                </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
-                                </div>
-                              </div>
-                              <div class="p-formList__btn">
-                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
-                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
-                                </button>
-                                <button class="c-textButton__icon c-textButton--gray delete">
-                                  <svg class="icon"><use href="#delete"/></svg>削除
-                                </button>
-                              </div>
-                            </li>
-                            <li class="p-formList__item">
-                              <div class="p-formList__content">
-                                <div class="p-formList__label">
-                                  カラー
-                                </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <select name="color" class="select2">
-                                    <option value="" hidden>選択してください</option>
-                                    <option value="color1" selected>BLOSSOM</option>
-                                    <option value="color2">Blue</option>
-                                    <option value="color3">Green</option>
-                                  </select>
-                                </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
-                                </div>
-                              </div>
-                              <div class="p-formList__btn">
-                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
-                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
-                                </button>
-                                <button class="c-textButton__icon c-textButton--gray delete">
-                                  <svg class="icon"><use href="#delete"/></svg>削除
-                                </button>
-                              </div>
-                            </li>
-                            <li class="p-formList__item">
-                              <div class="p-formList__content">
-                                <div class="p-formList__label">
-                                  カラー
-                                </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <select name="color" class="select2">
-                                    <option value="" hidden>選択してください</option>
-                                    <option value="color1" selected>BLOSSOM</option>
-                                    <option value="color2">Blue</option>
-                                    <option value="color3">Green</option>
-                                  </select>
-                                </div>
-                                <div class="p-formList__data  u-max--360">
-                                  <input type="text" placeholder="URLを入力" value=https://www.airbuggy.com/wp-content/uploads/2021/04/airbuggy_coco_premire_newflame_blossom_front.png">
-                                </div>
-                              </div>
-                              <div class="p-formList__btn">
-                                <button class="c-textButton__icon c-textButton--gray {{--u-mt--24--}}">
-                                  <svg class="icon"><use href="#add"/></svg>カラーを追加する
-                                </button>
-                                <button class="c-textButton__icon c-textButton--gray delete">
-                                  <svg class="icon"><use href="#delete"/></svg>削除
                                 </button>
                               </div>
                             </li>
@@ -156,7 +103,7 @@
                     </form>
                   </div>
                   <div class="p-edit__main__box__foot">
-                    <button class="c-button__reset">変更をリセット</button>
+                    <button onclick="window.location.href = {{ request()->url() }}" class="c-button__reset">変更をリセット</button>
                     <button class="c-button">@if(str_contains(request()->url(), 'edit')) 変更を反映する @else 新規追加する @endif</button>
                   </div>
                 </div>
