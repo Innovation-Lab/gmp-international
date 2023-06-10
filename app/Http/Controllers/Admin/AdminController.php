@@ -74,7 +74,7 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
         
@@ -92,7 +92,7 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
         

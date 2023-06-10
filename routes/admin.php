@@ -77,6 +77,7 @@ Route::group([
             Route::get('/brand/edit/{brand}', [MasterController::class, 'brandEdit'])->name('brand.edit');
             Route::get('/brand/create', [MasterController::class, 'brandCreate'])->name('brand.create');
             Route::post('/brand/updateOrCreate', [MasterController::class, 'brandUpdateOrCreate'])->name('brand.updateOrCreate');
+            Route::post('/brand/delete/{brand}', [MasterController::class, 'brandDelete'])->name('brand.delete');
             //製品マスタ
             Route::get('/product', [MasterController::class, 'product'])->name('product');
             Route::get('/product/detail/{product}', [MasterController::class, 'productDetail'])->name('product.detail');
@@ -84,18 +85,21 @@ Route::group([
             Route::get('/product/create', [MasterController::class, 'productCreate'])->name('product.create');
             Route::post('/product/updateOrCreate', [MasterController::class, 'productUpdateOrCreate'])->name('product.updateOrCreate');
             Route::post('/product/color/delete', [MasterController::class, 'productColorDelete'])->name('product.color.delete');
+            Route::post('/product/delete/{product}', [MasterController::class, 'productDelete'])->name('product.delete');
             //店舗マスタ
             Route::get('/store', [MasterController::class, 'store'])->name('store');
             Route::get('/store/detail/{shop}', [MasterController::class, 'storeDetail'])->name('store.detail');
             Route::get('/store/edit/{shop}', [MasterController::class, 'storeEdit'])->name('store.edit');
             Route::get('/store/create', [MasterController::class, 'storeCreate'])->name('store.create');
             Route::post('/store/updateOrCreate', [MasterController::class, 'storeUpdateOrCreate'])->name('store.updateOrCreate');
+            Route::post('/store/delete/{store}', [MasterController::class, 'storeDelete'])->name('store.delete');
             
             //カラーマスタ
             Route::get('/color', [MasterController::class, 'color'])->name('color');
             Route::get('/color/edit/{color}', [MasterController::class, 'colorEdit'])->name('color.edit');
             Route::get('/color/create', [MasterController::class, 'colorCreate'])->name('color.create');
             Route::post('/color/updateOrCreate', [MasterController::class, 'colorUpdateOrCreate'])->name('color.updateOrCreate');
+            Route::post('/color/delete/{color}', [MasterController::class, 'colorDelete'])->name('color.delete');
         });
         
         // アカウント

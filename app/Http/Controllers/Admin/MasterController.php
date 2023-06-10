@@ -79,7 +79,7 @@ class MasterController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
         
@@ -145,7 +145,7 @@ class MasterController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
         
@@ -259,7 +259,7 @@ class MasterController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
         
@@ -303,12 +303,96 @@ class MasterController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
         
         return redirect()->route('admin.masters.color')
             ->with(['success' => '登録しました。']);
+    }
+    
+    /**
+     * @param MBrand $brand
+     * @return RedirectResponse
+     */
+    public function brandDelete(MBrand $brand): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            if(count(data_get($brand, 'm_products')) > 0) {
+                return redirect()->back()
+                    ->with(['alert' => '製品が紐づいているため削除できません。']);
+            }
+            $brand->delete();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['alert' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.brand')
+            ->with(['success' => '削除しました。']);
+    }
+    
+    /**
+     * @param MProduct $product
+     * @return RedirectResponse
+     */
+    public function productDelete(MProduct $product): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $product->delete();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['alert' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.product')
+            ->with(['success' => '削除しました。']);
+    }
+    
+    /**
+     * @param MShop $shop
+     * @return RedirectResponse
+     */
+    public function storeDelete(Mshop $shop): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $shop->delete();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['alert' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.store')
+            ->with(['success' => '削除しました。']);
+    }
+    
+    /**
+     * @param MColor $color
+     * @return RedirectResponse
+     */
+    public function colorDelete(MColor $color): RedirectResponse
+    {
+        DB::beginTransaction();
+        try {
+            $color->delete();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['alert' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.masters.color')
+            ->with(['success' => '削除しました。']);
     }
 
 }

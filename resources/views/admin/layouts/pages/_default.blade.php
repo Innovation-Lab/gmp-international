@@ -9,30 +9,8 @@
   <p style="font-size:1rem;" font-weight: 700;>Now Loading</p>
 </div>
 {{-- フラッシュメッセージ --}}
-{{--
-@component('admin.components._flash',[
-  "flash" => [
-    [
-      "type" => "info",  // info,success,alert
-      "title" => "tttttt",
-      "description" => "zzzzz",
-      "auto-hide" => false,
-    ],
-    [
-      "type" => "success",  // info,success,alert
-      "title" => "正しく保存されました",
-      "auto-hide" => true,
-    ],
-    [
-      "type" => "alert",  // info,success,alert
-      "title" => "titletitle",
-      "description" => "説明文説明文説明文説明文",
-      "auto-hide" => false,
-    ]
-  ]
-])
-@endcomponent
---}}
+@include('admin.components._flash')
+
 @include('admin.layouts._modal-develop')
 
 {{-- ページフレーム --}}
