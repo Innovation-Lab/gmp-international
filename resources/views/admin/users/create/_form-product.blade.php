@@ -80,13 +80,13 @@
             </select>
           </div>
         </div>
-      </li>
-      <!-- 上記以外のカラー選択時のフォーム -->
-      <li class="p-formList__item" style="display:none;">
-        <div class="p-formList__content p-formList__other open-other-text-input">
-          <div class="p-formList__label">上記以外のカラー</div>
-          <div class="p-formList__data">
-            <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
+        <!-- 上記以外のカラー選択時のフォーム -->
+        <div class="p-formList__item p-formList__other" style="display:none;">
+          <div class="p-formList__content open-other-text-input">
+            <div class="p-formList__label">上記以外のカラー</div>
+            <div class="p-formList__data">
+              <input placeholder="例）赤" class="" name="other_color_name" type="text" value="{{ old('other_color_name') }}">
+            </div>
           </div>
         </div>
       </li>
@@ -95,8 +95,11 @@
           <div class="p-formList__label">
             シリアルナンバー
           </div>
-          <div class="p-formList__data">
+          <div class="p-formList__data" style="display: block;">
             {!! Form::text('product_code', old('product_code'), ['placeholder' => '例）GMP123456789']) !!}
+            @error('product_code')
+            <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -111,16 +114,17 @@
               @foreach ($shops as $k => $v)
                   <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach
+              <option value="other" @if(old('m_shop_id') == 'other') selected @endif>上記以外の店舗</option>
             </select>
           </div>
         </div>
-      </li>
-      <!-- 上記以外の店舗選択時のフォーム -->
-      <li class="p-formList__item" style="display:none;">
-        <div class="p-formList__content p-formList__other open-other-text-input">
-          <div class="p-formList__label">上記以外の店舗</div>
-          <div class="p-formList__data">
-            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="">
+        <!-- 上記以外の店舗選択時のフォーム -->
+        <div class=" p-formList__item p-formList__other open-other-text-input" style="display:none;">
+          <div class="p-formList__content">
+            <div class="p-formList__label">上記以外の店舗</div>
+            <div class="p-formList__data">
+              <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="{{ old('other_shop_name') }}">
+            </div>
           </div>
         </div>
       </li>
@@ -134,10 +138,20 @@
             管理メモ
           </div>
           <div class="p-formList__content__data">
-            <textarea name="memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll">{{ old('memo') }}</textarea>
+            <textarea name="product_memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll">{{ old('product_memo') }}</textarea>
           </div>
         </div>
       </li>
     </ul>
   </div>
 </div>
+{{-- フォームの表示切り替え --}}
+<script>
+  $('select').on('keydown keyup keypress change click lord',function(){
+      if($(this).val() == 'other'){
+          $(this).parents('.p-formList__item').find('.p-formList__other').css('display','grid');
+      }else{
+          $(this).parents('.p-formList__item').find('.p-formList__other').hide();
+      }
+  }).change();
+</script>

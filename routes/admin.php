@@ -39,6 +39,7 @@ Route::group([
         ], function() {
             Route::get('/', [UserController::class, 'index'])->name('index');
             Route::get('/create', [UserController::class, 'create'])->name('create');
+            Route::post('/store', [UserController::class, 'store'])->name('store');
             Route::get('/create/products/{user}', [UserController::class, 'createProducts'])->name('create-products');
             Route::post('/store-products/{user}', [UserController::class, 'storeProducts'])->name('store-products');
             Route::get('/detail/{user}', [UserController::class, 'detail'])->name('detail');
