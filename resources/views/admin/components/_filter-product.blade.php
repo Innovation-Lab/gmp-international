@@ -1,12 +1,12 @@
-<form action="">
+<form method="GET" action="{{ route('admin.products.index') }}">
   <div class="p-filter">
     <div class="p-filter__body">
       <ul class="p-filterList">
         {{-- キーワード検索 --}}
         <li class="p-filterList__item">
           <div class="p-filterList__keyword">
-            <input type="text" placeholder="キーワードで探す">
-            <button class="c-button__search">検索する</button>
+            <input type="text" name="keyword" value="{{ request()->get('keyword') }}" placeholder="キーワードで探す">
+            <button type="submit" class="c-button__search">検索する</button>
           </div>
         </li>
         {{-- 絞り込み検索 --}}
@@ -16,7 +16,7 @@
       </ul>
     </div>
     <div class="p-filter__action">
-      <button class="c-button__reset">絞り込みをクリア</button>
+      <a href="{{ url()->current() }}" class="c-button__reset">絞り込みをクリア</a>
     </div>
   </div>
 </form>
