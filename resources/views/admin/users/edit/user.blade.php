@@ -115,9 +115,9 @@
                                 <div class="p-formList__data">
                                   <div class="radio">
                                     <input type="radio" id="inq1-2" name="is_dm" value="1" {{ old('is_dm', data_get($user, 'is_dm')) == 1 ? 'checked' : '' }}>
-                                    <label for="inq1-2">同意する</label>
+                                    <label for="inq1-2">受け取る</label>
                                     <input type="radio" id="inq2-2" name="is_dm" value="0" {{ old('is_dm', data_get($user, 'is_dm')) == 0 ? 'checked' : '' }}>
-                                    <label for="inq2-2">同意しない</label>
+                                    <label for="inq2-2">受け取らない</label>
                                   </div>
                                 </div>
                               </div>

@@ -162,5 +162,5 @@
     } else {
         $('.p-formList__other.other_shop_name').hide();
     }
-});
+  });
 </script>
