@@ -72,7 +72,6 @@ class ProductController extends Controller
 
     }
 
-
     public function detail(SalesProduct $product): View
     {
         $user = data_get($product, 'user');
@@ -83,9 +82,30 @@ class ProductController extends Controller
         ]);
     }
 
-    public function edit(): View
+    public function edit(SalesProduct $product): View
     {
-        return view('admin.products.edit.index');
+        return view('admin.products.edit.index', $product,[
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+            'product' => $product,
+        ]);
+    }
+
+    public function update(SalesProduct $product, StoreProductRequest $request)
+    {
+        if ($this->productRepository->update($product, $request)) {
+            return redirect()
+                ->route('admin.products.index')
+                ->with('status', 'success')
+                ->with('message', '登録が完了しました。');
+        } else {
+            return redirect()
+                ->back()
+                ->with('status', 'failed')
+                ->with('message', '登録に失敗しました。');
+        }
     }
     
     // /**
