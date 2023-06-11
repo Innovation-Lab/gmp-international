@@ -32,8 +32,11 @@
                                 <div class="p-formList__label">
                                   購入日
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   {!! Form::input('date', 'purchase_date', data_get($product, 'purchase_date'), ['placeholder' => '0000/00/00']) !!}
+                                  @error('purchase_date')
+                                    <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -42,13 +45,16 @@
                                 <div class="p-formList__label">
                                   ブランド名
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   <select name="m_brand_id" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($brands as $k => $v)
                                       <option value="{{ $k }}" {{ old('m_brand_id', data_get($product, 'mProduct.m_brand_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
                                   </select>
+                                  @error('m_brand_id')
+                                    <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -57,13 +63,16 @@
                                 <div class="p-formList__label">
                                   製品名
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   <select name="m_product_id" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($products as $k => $v)
                                       <option value="{{ $k }}" {{ old('m_product_id', data_get($product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
                                   </select>
+                                  @error('m_product_id')
+                                    <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -121,7 +130,7 @@
                                 <div class="p-formList__label">
                                   購入店舗
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   <select name="m_shop_id" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($shops as $k => $v)
@@ -129,6 +138,9 @@
                                     @endforeach
                                     <option value="other">上記以外の店舗</option>
                                   </select>
+                                  @error('m_shop_id')
+                                    <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>

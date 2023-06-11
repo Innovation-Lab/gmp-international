@@ -39,14 +39,27 @@ class ProductRepository implements ProductRepositoryInterface
      * @param Request $request
      * 登録製品の追加
      */
-    public function store($sales_product, $user, Request $request)
+    public function store($product, Request $request)
     {
+        \DB::beginTransaction();
+        try {
+            $data = $request->all();
+        
+            $product->fill($data)->save();
+            
+            \DB::commit();
+            return true;
+            
+        } catch(\Exception $e) {
+            \DB::rollback();
+        }
 
+        return false;
     }
 
     /**
      * @param Request $request
-     * 登録製品の編集
+     * 登録製品の更新
      */
     public function update($product, Request $request)
     {

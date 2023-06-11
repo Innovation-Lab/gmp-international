@@ -53,6 +53,15 @@ class User extends Authenticatable
         return $this->hasMany(SalesProduct::class);
     }
 
+     /**
+     * @return HasMany
+     * 購入者の選択表示
+     */
+    public function getSelectUserAttribute()
+    {
+        return $this->getFullNameAttribute() . ' （会員番号：' . $this->id . '）';
+    }
+
     /**
      * フルネーム
      *

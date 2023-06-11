@@ -17,8 +17,11 @@
           <div class="p-formList__label">
             購入日
           </div>
-          <div class="p-formList__data">
+          <div class="p-formList__data" style="display: block;">
             {!! Form::date('purchase_date', null, ['placeholder' => '0000/00/00']) !!}
+            @error('purchase_date')
+              <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -27,13 +30,16 @@
           <div class="p-formList__label">
             ブランド名
           </div>
-          <div class="p-formList__data">
+          <div class="p-formList__data" style="display: block;">
             <select name="m_brand_id" class="select2">
               <option value="" hidden>選択してください</option>
               @foreach ($brands as $k => $v)
                 <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach
             </select>
+            @error('m_brand_id')
+              <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -42,13 +48,34 @@
           <div class="p-formList__label">
             製品名
           </div>
-          <div class="p-formList__data">
+          <div class="p-formList__data" style="display: block;">
             <select name="m_product_id" class="select2">
               <option value="" hidden>選択してください</option>
               @foreach ($products as $k => $v)
                 <option value="{{ $k }}" {{ old('m_product_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach
             </select>
+            @error('m_product_id')
+              <p class="error">{{ $message }}</p>
+            @enderror
+          </div>
+        </div>
+      </li>
+      <li class="p-formList__item">
+        <div class="p-formList__content">
+          <div class="p-formList__label">
+            購入者
+          </div>
+          <div class="p-formList__data" style="display: block;">
+            <select name="user_id" class="select2">
+              <option value="" hidden {{ old('user_id') == '' ? 'selected' : '' }}>選択してください</option>
+              @foreach ($users as $k => $v)
+                <option value="{{ $k }}" {{ ( old('user_id') != null && old('user_id') == $k ) ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
+            </select>
+            @error('user_id')
+              <p class="error">{{ $message }}</p>
+            @enderror
           </div>
         </div>
       </li>
@@ -97,7 +124,7 @@
             シリアルナンバー
           </div>
           <div class="p-formList__data">
-            {!! Form::text('serial_number', null, ['placeholder' => '例）GMP123456789']) !!}
+            {!! Form::text('product_code', old('product_code'), ['placeholder' => '例）GMP123456789']) !!}
           </div>
         </div>
       </li>
