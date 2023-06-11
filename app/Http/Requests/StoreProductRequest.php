@@ -42,6 +42,7 @@ class StoreProductRequest extends FormRequest
             'purchase_date' => '購入日',
             'm_brand_id' => 'ブランド',
             'm_product_id' => '製品',
+            'product_code' => 'シリアルナンバー',
         ];
     }
     
@@ -50,6 +51,7 @@ class StoreProductRequest extends FormRequest
         return [
             'purchase_date.required' => '購入日を入力してください。',
             '*.required' => ':attributeを選択してください。',
+            'product_code.unique' => 'この:attributeはすでに存在しています。',
         ];
     }
 

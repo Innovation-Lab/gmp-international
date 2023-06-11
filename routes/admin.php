@@ -57,9 +57,9 @@ Route::group([
             'as' => 'products.',
         ], function() {
             Route::get('/', [ProductController::class, 'index'])->name('index');
-            Route::get('/create', [ProductController::class, 'createProduct'])->name('create');
-            Route::post('/store', [ProductController::class, 'storeProduct'])->name('store');
-            Route::get('/detail', [ProductController::class, 'detail'])->name('detail');
+            Route::get('/create', [ProductController::class, 'create'])->name('create');
+            Route::post('/store', [ProductController::class, 'store'])->name('store');
+            Route::get('/detail/{product}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/edit', [ProductController::class, 'edit'])->name('edit-products');
         });
         

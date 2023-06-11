@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductRequest;
 use App\Repositories\ProductRepositoryInterface;
 
 class ProductController extends Controller
@@ -51,19 +52,35 @@ class ProductController extends Controller
         ]);
     }
 
-     public function create(): View
+    //  public function create(): View
+    // {
+    //     return view('admin.products.create.index');
+    // }
+
+    public function create(): View
     {
-        return view('admin.products.create.index');
+        return view('admin.products.create.products',[
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
     }
-    public function createProduct(): View
+
+    public function store(StoreProductRequest $request)
     {
-        return view('admin.products.create.products');
+
     }
 
 
-    public function detail(): View
+    public function detail(SalesProduct $product): View
     {
-        return view('admin.products.detail.index');
+        $user = data_get($product, 'user');
+
+        return view('admin.products.detail.index')->with([
+            'product' => $product,
+            'user' => $user,
+        ]);
     }
 
     public function edit(): View

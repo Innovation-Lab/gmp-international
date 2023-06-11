@@ -38,14 +38,14 @@
                         </div>
                         <ul class="p-list">
                           @foreach([
-                            'ブランド名' => 'AIRBUGGY',
-                            '製品名' => 'COCO BRAKE EX FROM BIRTH',
-                            'カラー' => 'BLOSSOM',
-                            '購入日' => '2023/04/04',
-                            '購入店舗' => 'エアバギー代々木公園本店',
-                            'シリアルNo.' => 'GMP123456789',
+                            'ブランド名' => data_get($product, 'mProduct.mBrand.name'),
+                            '製品名' => data_get($product, 'mProduct.name'),
+                            'カラー' => data_get($product, 'mColor.alphabet_name') ? data_get($product, 'mColor.alphabet_name') : data_get($product, 'other_color_name', '登録されておりません'),
+                            '購入日' => formatYmdSlash(data_get($product, 'purchase_date')),
+                            '購入店舗' => data_get($product, 'mShop.name') ? data_get($product, 'mShop.name') : data_get($product, 'other_shop_name', '登録されておりません'),
+                            'シリアルNo.' => data_get($product, 'product_code'),
                             {{--'登録番号' => 'AB01-097M-HIUA',--}}
-                            '管理メモ' => '2024/04/04　タイヤ交換',
+                            '管理メモ' => data_get($product, 'memo'),
                             ] as $key => $val)
                           <li class="p-list__item">
                             <div class="p-list__label">
@@ -68,45 +68,43 @@
               <div class="p-detail__full">
                 {{-- ---------- 登録ユーザー情報 ---------- --}}
                 <div class="p-detail__full__box">
-                  <div class="p-detail__full__box__wrapper" style="display: none;">
-                    {{-- ---------- 未登録 ---------- --}}
-                    <div class="p-list__head p-list__head--center">
-                      <h3 class="p-detail__main__box__head__title center">ユーザー情報は登録されていません</p>
+                  @if ($user)
+                    <div class="p-detail__full__box__wrapper">
+                      {{-- ---------- 登録済み ---------- --}}
+                      <div class="p-list__head">
+                        <h3 class="p-detail__main__box__head__title">登録ユーザー情報</p>
+                        <a href="{{ route('admin.users.detail', $user) }}" class="c-button__2">登録ユーザーへ</a>
+                      </div>
+                      <ul class="p-list p-list--user">
+                        @foreach([
+                          '会員番号' => 'No.000000123456',
+                          '名前<span>（フリガナ）</span>' => data_get($user, 'full_name') . '<span>（' . data_get($user, 'full_name_kana') . '）</span>',
+                          '電話番号' => data_get($user, 'formatted_tel'),
+                          'メールアドレス' => data_get($user, 'email'),
+                          '住所' => '〒' . data_get($user, 'zip_code') . '<br>' . data_get($user, 'full_address') . '<br>' ,
+                          '新着情報、お得情報' => data_get($user, 'string_dm'),
+                          'アカウント作成日時' => formatYmdSlash(data_get($user, 'created_at')) . '　' . formatHiSlash(data_get($user, 'created_at')),
+                          '管理メモ' => data_get($user, 'memo'),
+                        ] as $key => $val)
+                        <li class="p-list__item">
+                          <div class="p-list__label">
+                            {!! $key !!}
+                          </div>
+                          <div class="p-list__data">
+                            {!! $val !!}
+                          </div>
+                          @endforeach
+                        </li>
+                      </ul>
                     </div>
-                  </div>
-                  <div class="p-detail__full__box__wrapper">
-                    {{-- ---------- 登録済み ---------- --}}
-                    <div class="p-list__head">
-                      <h3 class="p-detail__main__box__head__title">登録ユーザー情報</p>
-                      <a href="
-                      {{-- {{ route('admin.users.detail', $user) }} --}}
-                      " 
-                      class="c-button__2">登録ユーザーへ</a>
+                  @else
+                    <div class="p-detail__full__box__wrapper">
+                      {{-- ---------- 未登録 ---------- --}}
+                      <div class="p-list__head p-list__head--center">
+                        <h3 class="p-detail__main__box__head__title center">ユーザー情報は登録されていません</p>
+                      </div>
                     </div>
-                    <ul class="p-list p-list--user">
-                      @foreach([
-                        '会員番号' => 'No.000000123456',
-                        '名前<span>（フリガナ）</span>' => '山田　太郎<span>（ヤマダ　タロウ）</span>',
-                        '電話番号' => '080-1234-5678',
-                        'メールアドレス' => 'gmp@sample.com',
-                        '住所' => '
-                        〒1530001<br>
-                        東京都千代田区紀尾井町1-1-1　紀尾井町ビル16F',
-                        '新着情報、お得情報' => '受け取る',
-                        'アカウント作成日時' => '2023/04/04　10:12',
-                        '管理メモ' => '2024/04/04　タイヤ交換',
-                      ] as $key => $val)
-                      <li class="p-list__item">
-                        <div class="p-list__label">
-                          {!! $key !!}
-                        </div>
-                        <div class="p-list__data">
-                          {!! $val !!}
-                        </div>
-                        @endforeach
-                      </li>
-                    </ul>
-                  </div>
+                  @endif
                 </div>
               </div>
             </div>

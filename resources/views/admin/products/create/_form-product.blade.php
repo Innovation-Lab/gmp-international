@@ -4,9 +4,9 @@
   </h3>
 </div>
 {{-- @if(Route::current()->getName() == 'admin.products.create-products') --}}
-<div class="p-form__title">
+{{-- <div class="p-form__title">
   <p>製品1</p>
-</div>
+</div> --}}
 {{-- @else
 @endif --}}
 <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -28,11 +28,11 @@
             ブランド名
           </div>
           <div class="p-formList__data">
-            <select name="brand" class="select2">
+            <select name="m_brand_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="brand1">AIRBUGGY</option>
-              <option value="brand2">AIRBUGGY1</option>
-              <option value="brand3">AIRBUGGY2</option>
+              @foreach ($brands as $k => $v)
+                <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
             </select>
           </div>
         </div>
@@ -43,11 +43,11 @@
             製品名
           </div>
           <div class="p-formList__data">
-            <select name="brand" class="select2">
+            <select name="m_product_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="product1">COCO PREMIER FROM BIRTH</option>
-              <option value="product2">COCO PREMIER FROM BIRTH 1</option>
-              <option value="product3">COCO PREMIER FROM BIRTH 2</option>
+              @foreach ($products as $k => $v)
+                <option value="{{ $k }}" {{ old('m_product_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
             </select>
           </div>
         </div>
@@ -72,21 +72,22 @@
             カラー
           </div>
           <div class="p-formList__data">
-            <select name="color" class="select2">
+            <select name="m_color_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="color1">Red</option>
-              <option value="color2">Blue</option>
-              <option value="color3">Green</option>
+              @foreach ($colors as $k => $v)
+                <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
+              <option value="other">上記以外のカラー</option>
             </select>
           </div>
         </div>
       </li>
       <!-- 上記以外のカラー選択時のフォーム -->
-      <li class="p-formList__item" style="display:none;">
-        <div class="p-formList__content p-formList__other open-other-text-input">
+      <li class="p-formList__item p-formList__other m_color" style="display:none;">
+        <div class="p-formList__content open-other-text-input">
           <div class="p-formList__label">上記以外のカラー</div>
           <div class="p-formList__data">
-            <input placeholder="例）赤" class="" name="products[1][other_color_name]" type="text" value="{{ old('products[1][other_color_name"]') }}">
+            <input placeholder="例）赤" class="" name="other_color_name" type="text" value="{{ old('other_color_name') }}">
           </div>
         </div>
       </li>
@@ -106,21 +107,22 @@
             購入店舗
           </div>
           <div class="p-formList__data">
-            <select name="store" class="select2">
+            <select name="m_shop_id" class="select2">
               <option value="" hidden>選択してください</option>
-              <option value="store1">エアバギー代官山店</option>
-              <option value="store2">エアバギー渋谷店</option>
-              <option value="store3">エアバギー新宿店</option>
+              @foreach ($shops as $k => $v)
+                <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
+              @endforeach
+              <option value="other">上記以外の店舗</option>
             </select>
           </div>
         </div>
       </li>
       <!-- 上記以外の店舗選択時のフォーム -->
-      <li class="p-formList__item" style="display:none;">
-        <div class="p-formList__content p-formList__other open-other-text-input">
+      <li class="p-formList__item p-formList__other m_shop" style="display:none;">
+        <div class="p-formList__content open-other-text-input">
           <div class="p-formList__label">上記以外の店舗</div>
           <div class="p-formList__data">
-            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="">
+            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="{{ old('other_shop_name') }}">
           </div>
         </div>
       </li>
@@ -148,10 +150,37 @@
             管理メモ
           </div>
           <div class="p-formList__content__data">
-            <textarea placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
+            <textarea name="memo" placeholder="修正対応や報告事項を記載してください。"class="c-scroll">{{ old('memo') }}</textarea>
           </div>
         </div>
       </li>
     </ul>
   </div>
 </div>
+{{-- フォームの表示切り替え --}}
+<script>
+  // $('select').on('keydown keyup keypress change click lord',function(){
+  //     if($(this).val() == 'other'){
+  //         $(this).parents('.p-formList').find('.p-formList__other', '.m_shop', '.m_color').css('display','grid');
+  //     }else{
+  //         $(this).parents('.p-formList').find('.p-formList__other', '.m_shop', '.m_color').hide();
+  //     }
+  // }).change();
+
+  $('select[name="m_shop_id"], select[name="m_color_id"]').on('change', function() {
+    var colorValue = $('select[name="m_color_id"]').val();
+    var shopValue = $('select[name="m_shop_id"]').val();
+
+    if (colorValue == 'other') {
+      $('.p-formList__other.m_color').css('display', 'grid');
+    } else {
+      $('.p-formList__other.m_color').hide();
+    }
+    
+    if (shopValue == 'other') {
+        $('.p-formList__other.m_shop').css('display', 'grid');
+    } else {
+        $('.p-formList__other.m_shop').hide();
+    }
+});
+</script>

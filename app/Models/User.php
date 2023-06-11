@@ -79,7 +79,7 @@ class User extends Authenticatable
      */
     public function getFullAddressAttribute(): string
     {
-        return $this->prefecture .' '. $this->address_city .' '. $this->address_block .' '. $this->address_building;
+        return $this->prefecture . $this->address_city . $this->address_block . $this->address_building;
     }
     
     /**

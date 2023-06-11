@@ -78,7 +78,7 @@
                 </thead>
                 <tbody>
                   @foreach ($sales_products as $product)
-                    <tr data-href="{{ route('admin.products.detail') }}">
+                    <tr data-href="{{ route('admin.products.detail', $product) }}">
                       <td class="item">
                         {{ data_get($product, 'mProduct.mBrand.name') }}
                       </td>
