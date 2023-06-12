@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\StoreColorRequest;
+use App\Http\Requests\StoreMProductRequest;
 use App\Http\Requests\StoreShopRequest;
 use App\Models\Admin;
 use App\Models\MBrand;
@@ -20,6 +21,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class MasterController extends Controller
 {
@@ -117,6 +119,19 @@ class MasterController extends Controller
      */
     public function productEdit(MProduct $product): View|Factory|Application
     {
+        $fix_product = Session::get('product', []);
+        
+        if (count($fix_product) > 0) {
+            Session::forget('product');
+            
+            return view('admin.masters.product.edit._fix', [
+                'product' => $product,
+                'fix_product' => $fix_product,
+                'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+                'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            ]);
+        }
+        
         return view('admin.masters.product.edit.index', [
             'product' => $product,
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
@@ -134,10 +149,10 @@ class MasterController extends Controller
     }
     
     /**
-     * @param Request $request
+     * @param StoreMProductRequest $request
      * @return RedirectResponse
      */
-    public function productUpdateOrCreate(Request $request): RedirectResponse
+    public function productUpdateOrCreate(StoreMProductRequest $request): RedirectResponse
     {
         DB::beginTransaction();
         try {

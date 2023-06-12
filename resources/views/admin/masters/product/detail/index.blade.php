@@ -21,7 +21,7 @@
                     <div class="p-list--product">
                       <div class="p-list__left" style="display: flex; align-items: center;">
                         <!-- <div class="p-list__img" style="width: 200px;"> -->
-                          <img class="" src="{{ data_get($product, 'main_image_url') }}" alt="">
+                          <img class="" src="{{ data_get($product, 'first_color_url.url', data_get($product, 'main_image_url')) }}" alt="">
                         <!-- </div> -->
                       </div>
                       <div class="p-list__right">

@@ -30,13 +30,16 @@
                                 <div class="p-formList__label optional">
                                   ブランド名
                                 </div>
-                                <div class="p-formList__data  u-max--360">
+                                <div class="p-formList__data  u-max--360" style="display: block;">
                                   <select name="m_brand_id" class="select2">
                                     <option value="" hidden>選択してください</option>
                                     @foreach($brands as $k => $v)
                                       <option value="{{ $k }}" @if(old('m_brand_id', data_get($product, 'm_brand_id')) == $k) selected @endif>{{ $v }}</option>
                                     @endforeach
                                   </select>
+                                  @error('m_brand_id')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -45,8 +48,11 @@
                                 <div class="p-formList__label optional">
                                   製品名
                                 </div>
-                                <div class="p-formList__data u-max--360">
+                                <div class="p-formList__data u-max--360" style="display: block;">
                                   <input placeholder="例）COCO PREMIER FROM BIRTH" name="name" type="text" value="{{ old('name', data_get($product, 'name')) }}">
+                                  @error('name')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -55,8 +61,11 @@
                                 <div class="p-formList__label optional">
                                   製品名（カナ）
                                 </div>
-                                <div class="p-formList__data u-max--360">
-                                  <input placeholder="例）ココプレミア フロムバース" name="name_kana" type="text" value="{{ old('name', data_get($product, 'name_kana')) }}">
+                                <div class="p-formList__data u-max--360" style="display: block;">
+                                  <input placeholder="例）ココプレミア フロムバース" name="name_kana" type="text" value="{{ old('name_kana', data_get($product, 'name_kana')) }}">
+                                  @error('name_kana')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
