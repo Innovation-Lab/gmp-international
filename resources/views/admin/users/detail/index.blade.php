@@ -30,9 +30,13 @@
                     </a>
                   </div>
                   <div class="p-detail__main__box__body">
-                    <div class="p-productScroll c-scroll">
+                  {{--登録製品なしデザイン--}}
+                  @if($sales_products->count() <= 0)
+                    <div class="noProduct" style="">登録されている製品はありません。</div>
+                  @endif
+                  <div class="p-productScroll c-scroll">
+                    @foreach($sales_products as $sales_product)
                       <ul class="p-product p-product--list">
-                        @foreach($sales_products as $sales_product)
                         <li class="p-product__item">
                           <div class="p-product__item__left">
                             <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
@@ -47,13 +51,11 @@
                                 <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
                                 {{--カラーボール--}}
                                 <div class="p-product__item__other__box">
-                                  <div class="c-colorBall c-colorBall--sm" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                                  <div class="c-colorBall c-colorBall--sm" style="background: #fff;">
                                     {{-- 2色の場合に追加 --}}
-                                  @if (data_get($sales_product, 'mColor.second_color'))
-                                    <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
-                                  @endif
+                                    <div class="c-colorBall__pallet2" style="background: #000;"></div>
                                   </div>
-                                  <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', 'カラーは登録されておりません') }}</div>
+                                  <div class="item">COLOR</div>
                                 </div>
                               </div>
                             </div>
@@ -101,9 +103,9 @@
                             </ul>
                           </div>
                         </li>
-                        @endforeach
                         {{-- ---------- リスト ---------- --}}
                       </ul>
+                      @endforeach
                     </div>
                   </div>
                 </div>
@@ -125,8 +127,6 @@
 </div>
 {{-- ユーザー写真 --}}
 @include('admin.users._modal-users-photo')
-{{-- アラートモーダル --}}
-@include('admin.components.modal._modal-alert-user')
 <script>
   // (function() {
   //   const table = $('table');
