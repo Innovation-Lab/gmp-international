@@ -230,9 +230,10 @@ class UserController extends Controller
      * @param StoreProductRequest $request
      * @return RedirectResponse
      */
-    public function updateProducts(SalesProduct $sales_product, StoreProductRequest $request)
+    public function updateProducts(User $user, SalesProduct $sales_product, StoreProductRequest $request)
     {
         $params = $request->all();
+        $user = data_get($sales_product, 'user');
 
         \DB::beginTransaction();
         try {
@@ -248,7 +249,8 @@ class UserController extends Controller
 
             \DB::commit();
 
-            return redirect($request->headers->get('referer'))
+            return redirect()
+                ->route('admin.users.detail', $user)
                 ->with('message', '更新が完了しました。');
 
         } catch(\Exception $e) {
@@ -280,17 +282,8 @@ class UserController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $user = User::find($request->input('userId'));
-        $timestamp = Carbon::now()->format('YmdHi');
-        $user->fill([
-            'email' => $user->email.'@'.$timestamp,
-            'tel' => $user->tel.'@'.$timestamp,
-            'firebase_uid' => $user->firebase_uid.'@'.$timestamp
-        ])->save();
-        $user->cars->each(function ($car) {
-            $car->delete();
-        });
-        $user->delete();
-        return redirect()->route('user.index');
+        $user = User::find($request->input('user_id'));
+        $this->userRepository->destroy($user);
+        return redirect()->route('admin.users.index');
     }
 }

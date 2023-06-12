@@ -45,6 +45,7 @@ Route::group([
             Route::get('/detail/{user}', [UserController::class, 'detail'])->name('detail');
             Route::get('/edit-user/{user}', [UserController::class, 'editUser'])->name('edit-user');
             Route::post('/user-update/{user}', [UserController::class, 'updateUser'])->name('update-user');
+            Route::post('/destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
             Route::get('/edit-products/{sales_product}', [UserController::class, 'editProducts'])->name('edit-products');
             Route::post('/update-products/{sales_product}', [UserController::class, 'updateProducts'])->name('update-products');
             // Route::get('/detail/userEdit', [ProductController::class, 'userEdit'])->name('userEdit');
@@ -62,6 +63,7 @@ Route::group([
             Route::get('/detail/{product}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
             Route::post('/update/{product}', [ProductController::class, 'update'])->name('update');
+            Route::post('/destroy/{product}', [ProductController::class, 'destroy'])->name('destroy');
         });
         
         // マスタ

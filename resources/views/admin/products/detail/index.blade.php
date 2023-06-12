@@ -115,6 +115,8 @@
 </div>
 {{-- ユーザー写真 --}}
 {{--@include('users._modal-users-photo')--}}
+{{-- アラートモーダル --}}
+@include('admin.components.modal._modal-alert-product')
 <script>
   // (function() {
   //   const table = $('table');

@@ -37,8 +37,6 @@
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
-              {{--検索結果なしデザイン--}}
-              <div class="noResult" style="display: none;">検索結果がありません。</div>
               <table>
                 <colgroup>
                   <col>
@@ -66,7 +64,7 @@
                   </th>
                 </thead>
                 <tbody>
-                @foreach($users as $user)
+                @forelse($users as $user)
                   <tr data-href="{{ route('admin.users.detail', $user) }}">
                     <td class="item">
                       {{ data_get($user, 'full_name') }}
@@ -99,7 +97,9 @@
                       </span>
                     </td>
                   </tr>
-                @endforeach
+                @empty
+                  <tr><td style="border-bottom: none;">データはありません。</td></tr>
+                @endforelse
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
