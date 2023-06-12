@@ -38,9 +38,6 @@
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
               {{--検索結果なしデザイン--}}
-              @if ($sales_products->count() == 0)
-              <div class="noResult">検索結果がありません。</div>
-              @endif
               <table>
                 <colgroup>
                   <col>
@@ -77,7 +74,7 @@
                   </th>--}}
                 </thead>
                 <tbody>
-                  @foreach ($sales_products as $product)
+                  @forelse ($sales_products as $product)
                     <tr data-href="{{ route('admin.products.detail', $product) }}">
                       <td class="item">
                         {{ data_get($product, 'mProduct.mBrand.name') }}
@@ -109,7 +106,9 @@
                         AB01-097M-HIUA
                       </td>--}}
                     </tr>
-                  @endforeach
+                  @empty
+                    <tr><td style="border-bottom: none;">データはありません。</td></tr>
+                  @endforelse
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
