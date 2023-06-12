@@ -30,6 +30,7 @@ class StoreAdminAccountRequest extends FormRequest
             $rules = [
                 'last_name' => 'required|max:40',
                 'first_name' => 'required|max:40',
+                'm_shop_id' => 'required',
                 'last_name_kana' => 'max:20|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                 'first_name_kana' => 'max:20|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                 'email' => 'required|string|max:255|unique:admins',
@@ -41,6 +42,7 @@ class StoreAdminAccountRequest extends FormRequest
                 $rules = [
                     'last_name' => 'required|max:40',
                     'first_name' => 'required|max:40',
+                    'm_shop_id' => 'required',
                     'last_name_kana' => 'required|max:40|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                     'first_name_kana' => 'required|max:40|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                     'email' => 'required|string|max:255',
@@ -51,6 +53,7 @@ class StoreAdminAccountRequest extends FormRequest
                 $rules = [
                     'last_name' => 'required|max:40',
                     'first_name' => 'required|max:40',
+                    'm_shop_id' => 'required',
                     'last_name_kana' => 'required|max:40|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                     'first_name_kana' => 'required|max:40|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                     'email' => 'required|string|max:255',
@@ -83,9 +86,7 @@ class StoreAdminAccountRequest extends FormRequest
             'first_name' => '名',
             'last_name_kana' => 'セイ',
             'first_name_kana' => 'メイ',
-            'birth-year' => '年',
-            'birth-month' => '月',
-            'birth-day' => '日',
+            'm_shop_id' => '所属店舗',
             'email' => 'メールアドレス',
         ];
         
