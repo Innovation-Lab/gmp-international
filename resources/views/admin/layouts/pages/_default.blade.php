@@ -64,8 +64,6 @@
 <!-- その他 -->
 {{-- ヒントモーダル --}}
 @include('admin.components.modal._modal-hint')
-{{-- アラートモーダル --}}
-@include('admin.components.modal._modal-alert')
 
 {{-- ---------- スクリプト ---------- --}}
 {{-- ナビゲーション表示/非表示 --}}

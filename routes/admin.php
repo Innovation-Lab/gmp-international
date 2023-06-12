@@ -63,6 +63,7 @@ Route::group([
             Route::get('/detail/{product}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
             Route::post('/update/{product}', [ProductController::class, 'update'])->name('update');
+            Route::post('/destroy/{product}', [ProductController::class, 'destroy'])->name('destroy');
         });
         
         // マスタ

@@ -77,4 +77,15 @@ class ProductRepository implements ProductRepositoryInterface
 
         return false;
     }
+
+    /**
+     * @param $user
+     * @return mixed
+     */
+    public function destroy($product, Request $request): mixed
+    {
+        return \DB::transaction(function () use ($product) {
+            $product->delete();
+        });
+    }
 }

@@ -9,6 +9,7 @@ use App\Models\MBrand;
 use App\Models\MColor;
 use App\Models\MShop;
 use App\Models\SalesProduct;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -153,6 +154,17 @@ class ProductController extends Controller
                 ->with('status', 'failed')
                 ->with('message', '登録に失敗しました。');
         }
+    }
+
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        $product = SalesProduct::find($request->input('product_id'));
+        $this->productRepository->destroy($product, $request);
+        return redirect()->route('admin.products.index');
     }
     
     // /**
