@@ -104,7 +104,7 @@ class UserController extends Controller
             \DB::commit();
 
             return redirect($request->headers->get('referer'))
-                ->with('message', '更新が完了しました。');
+                ->with('success', '更新が完了しました。');
 
         } catch (\Exception $e) {
             \DB::rollBack();
@@ -112,7 +112,7 @@ class UserController extends Controller
 
         return redirect()
             ->back()
-            ->with('error', 'エラーが発生しました。');
+            ->with('alert', 'エラーが発生しました。');
     }
     
     /**
@@ -129,7 +129,7 @@ class UserController extends Controller
             \DB::commit();
             return redirect()
                 ->route('mypage.index')
-                ->with('message', '製品の削除が完了しました。');
+                ->with('success', '製品の削除が完了しました。');
 
         } catch (\Exception $e) {
             \DB::rollBack();
@@ -137,7 +137,7 @@ class UserController extends Controller
         
         return redirect()
             ->back()
-            ->with('error', 'エラーが発生しました。');
+            ->with('alert', 'エラーが発生しました。');
         
     }
 
@@ -166,12 +166,12 @@ class UserController extends Controller
             return redirect()
                 ->route('mypage.index', $user)
                 ->with('status', 'success')
-                ->with('message', '更新が完了しました。');
+                ->with('success', '更新が完了しました。');
         } else {
             return redirect()
                 ->back()
                 ->with('status', 'failed')
-                ->with('message', '更新に失敗しました。');
+                ->with('alert', '更新に失敗しました。');
         }
     }
 
@@ -202,12 +202,12 @@ class UserController extends Controller
             return redirect()
             ->route('mypage.index', $user)
             ->with('status', 'success')
-            ->with('message', '更新が完了しました。');
+            ->with('success', '更新が完了しました。');
         } else {
             return redirect()
                 ->back()
                 ->with('status', 'failed')
-                ->with('message', '更新に失敗しました。');
+                ->with('alert', '更新に失敗しました。');
         }
     }
     

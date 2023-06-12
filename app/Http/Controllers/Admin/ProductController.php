@@ -99,12 +99,12 @@ class ProductController extends Controller
             return redirect()
                 ->route('admin.products.index')
                 ->with('status', 'success')
-                ->with('message', '登録が完了しました。');
+                ->with('success', '登録が完了しました。');
         } else {
             return redirect()
                 ->back()
                 ->with('status', 'failed')
-                ->with('message', '登録に失敗しました。');
+                ->with('alert', '登録に失敗しました。');
         }
     }
 
@@ -147,12 +147,12 @@ class ProductController extends Controller
             return redirect()
                 ->route('admin.products.index')
                 ->with('status', 'success')
-                ->with('message', '登録が完了しました。');
+                ->with('success', '登録が完了しました。');
         } else {
             return redirect()
                 ->back()
                 ->with('status', 'failed')
-                ->with('message', '登録に失敗しました。');
+                ->with('alert', '登録に失敗しました。');
         }
     }
 
