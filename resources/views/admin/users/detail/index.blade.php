@@ -51,11 +51,29 @@
                                 <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
                                 {{--カラーボール--}}
                                 <div class="p-product__item__other__box">
-                                  <div class="c-colorBall c-colorBall--sm" style="background: #fff;">
-                                    {{-- 2色の場合に追加 --}}
-                                    <div class="c-colorBall__pallet2" style="background: #000;"></div>
+                                  {{-- @if ($sales_product->mProduct && isset($sales_product->mProduct->getColorUrl($sales_product->m_color_id)->url))
+                                    <div class="c-colorBall c-colorBall--sm" style="background: url({{ $sales_product->mProduct->getColorUrl($sales_product->m_color_id)->url }});">
+                                  @else
+                                    @if ($sales_product->mColor->color)
+                                      <div class="c-colorBall c-colorBall--sm" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                                        @if ($sales_product->mColor->second_color)
+                                          <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                                        @endif
+                                    @endif
+                                  @endif --}}
+
+                                  @if ($sales_product->mProduct && isset($sales_product->mProduct->getColorUrl($sales_product->m_color_id)->url))
+                                    <div class="c-colorBall c-colorBall--sm" style="background: url({{ $sales_product->mProduct->getColorUrl($sales_product->m_color_id)->url }});">
+                                  @else
+                                    @if (isset($sales_product->mColor->color) && isset($sales_product->mColor->second_color))
+                                      <div class="c-colorBall c-colorBall--sm" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                                      <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                                    @else
+                                      <div class="c-colorBall c-colorBall--sm" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                                    @endif
+                                  @endif
                                   </div>
-                                  <div class="item">COLOR</div>
+                                  <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', 'カラーは登録されておりません') }}</div>
                                 </div>
                               </div>
                             </div>
