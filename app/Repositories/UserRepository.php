@@ -97,6 +97,9 @@ class UserRepository implements UserRepositoryInterface
     {
         return DB::transaction(function () use ($user) {
             $user->email = $user->email . '@' . date('YmdHis');
+            $user->salesProducts->each(function ($sales_product) {
+                    $sales_product->delete();
+                });
             $user->save();
             $user->delete();
         });

@@ -12,8 +12,11 @@
         本当に削除しますか？
       </main>
       <footer class="modal__footer">
-        <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">戻る</button>
-        <button class="modal__btn-alert" data-micromodal-close aria-label="Close this dialog window">削除する</button>
+      {{ Form::open(['method' => 'POST', 'route' => ['admin.users.destroy', $user], 'id' => 'deleteForm']) }}
+        <input type="hidden" name="user_id" value="{{ $user->id }}">
+      {{ Form::close() }}
+      <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">戻る</button>
+      <button type="submit" class="modal__btn-alert" form="deleteForm">削除する</button>
       </footer>
     </div>
   </div>
