@@ -15,6 +15,11 @@
   &__item {
     display: flex;
   }
+  &__color{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 430px;
+  }
   &__item {
     display: grid;
     grid-template-columns: 130px 1fr;
@@ -62,6 +67,7 @@
   }
   .color{
     padding: 4px 8px;
+    margin: 4px 4px 0 0;
     border: 1px solid #000;
     border-radius: 20px;
     width: max-content;

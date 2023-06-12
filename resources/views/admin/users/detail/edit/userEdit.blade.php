@@ -29,7 +29,7 @@
                     <li class="p-formList__item">
                       <div class="l-grid__2 l-grid__gap1">
                         <div class="p-formList__content">
-                          <div class="p-formList__label">
+                          <div class="p-formList__label optional">
                             姓
                           </div>
                           <div class="p-formList__data">
@@ -37,7 +37,7 @@
                           </div>
                         </div>
                         <div class="p-formList__content">
-                          <div class="p-formList__label">
+                          <div class="p-formList__label optional">
                             名
                           </div>
                           <div class="p-formList__data">
@@ -49,7 +49,7 @@
                     <li class="p-formList__item">
                       <div class="l-grid__2 l-grid__gap1">
                         <div class="p-formList__content">
-                          <div class="p-formList__label">
+                          <div class="p-formList__label optional">
                             セイ
                           </div>
                           <div class="p-formList__data">
@@ -57,7 +57,7 @@
                           </div>
                         </div>
                         <div class="p-formList__content">
-                          <div class="p-formList__label">
+                          <div class="p-formList__label optional">
                             メイ
                           </div>
                           <div class="p-formList__data">

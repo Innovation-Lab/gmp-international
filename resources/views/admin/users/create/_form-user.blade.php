@@ -1,6 +1,6 @@
 <div class="p-create__main__box__head">
   <h3 class="p-create__main__box__head__title">
-  ユーザー情報新規追加
+  ユーザー新規追加
   </h3>
 </div>
 <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -9,7 +9,7 @@
       <li class="p-formList__item">
         <div class="l-grid__2 l-grid__gap2">
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               姓
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               名
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -35,7 +35,7 @@
       <li class="p-formList__item">
         <div class="l-grid__2 l-grid__gap2">
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               セイ
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               メイ
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -60,7 +60,7 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             メールアドレス
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -73,8 +73,8 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
-            電話番号
+          <div class="p-formList__label optional">
+            電話番号<small>（ハイフンなし）</small>
           </div>
           <div class="p-formList__data" style="display: block;">
             {!! Form::tel('tel', old('tel'), ['placeholder' => '例）09012345678']) !!}
@@ -86,7 +86,7 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             新着情報、お得情報
           </div>
           <div class="p-formList__data">
@@ -104,38 +104,34 @@
   <div class="l-grid__item">
     <ul class="p-formList">
       <li class="p-formList__item">
-        <div class="l-grid__2 l-grid__gap2">
-          <div class="l-grid__item">
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                郵便番号
-              </div>
-              <div class="p-formList__data" style="display: block;">
-                {!! Form::number('zip_code', old('zip_code'), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
-                @error('zip_code')
-                  <div class="error">{{ $message }}</div>
-                @enderror
-              </div>
-            </div>
+        <div class="p-formList__content">
+          <div class="p-formList__label optional" style="white-space: nowrap;">
+            郵便番号<small>（ハイフンなし）</small>
           </div>
-          <div class="l-grid__item">
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                都道府県
-              </div>
-              <div class="p-formList__data" style="display: block;">
-                {!! Form::select('prefecture', $prefectures, old('prefecture'), ['class' => 'p-region', 'placeholder' => '都道府県を選択']) !!}
-                @error('prefecture')
-                  <div class="error">{{ $message }}</div>
-                @enderror
-              </div>
-            </div>
+          <div class="p-formList__data" style="width: 143.5px;">
+            {!! Form::number('zip_code', old('zip_code'), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
+            @error('zip_code')
+              <div class="error">{{ $message }}</div>
+            @enderror
           </div>
         </div>
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
+            都道府県
+          </div>
+          <div class="p-formList__data" style="width: 143.5px;">
+            {!! Form::select('prefecture', $prefectures, old('prefecture'), ['class' => 'p-region', 'placeholder' => '都道府県を選択']) !!}
+            @error('prefecture')
+              <div class="error">{{ $message }}</div>
+            @enderror
+          </div>
+        </div>
+      </li>
+      <li class="p-formList__item">
+        <div class="p-formList__content">
+          <div class="p-formList__label optional">
             市区町村
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -148,7 +144,7 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             番地
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -171,8 +167,8 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
-            パスワード<small>（半角英数字6~10文字）</small>
+          <div class="p-formList__label optional">
+            パスワード<small>（半角英数字6文字~）</small>
           </div>
           <div class="p-formList__data" style="display: block;">
             <input type="password" name="password" value="" placeholder="例）gmp0001" autocomplete="new-password">

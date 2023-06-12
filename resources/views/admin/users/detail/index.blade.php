@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', '登録製品詳細')
 @section('content')
 <div class="p-detail p-detail--user noBorder">
   <div class="l-detail">

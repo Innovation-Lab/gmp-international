@@ -5,7 +5,7 @@
 <div class="p-index">
   <div class="l-index">
     <div class="l-index__head">
-      <div class="p-index__head">
+      <div class="p-index__head" style="margin: 0 0 1.5rem;">
         <div class="wrapper">
           <div class="container">
             <div class="p-index__head__inner">

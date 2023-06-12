@@ -27,7 +27,7 @@
                           <ul class="p-formList u-max--320">
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   ブランド名
                                 </div>
                                 <div class="p-formList__data  u-max--360">
@@ -42,7 +42,7 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   製品名
                                 </div>
                                 <div class="p-formList__data u-max--360">
@@ -52,7 +52,7 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   製品名（カナ）
                                 </div>
                                 <div class="p-formList__data u-max--360">
@@ -65,7 +65,7 @@
                                 <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
                                 <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
                                   @if ($loop->index == 0)
-                                    <div class="p-formList__label">
+                                    <div class="p-formList__label optional">
                                       カラー（メイン画像）
                                     </div>
                                   @else
@@ -93,7 +93,7 @@
                                 </div>
                               @empty
                                 <div class="p-formList__content add_color" id="js_delete_1">
-                                  <div class="p-formList__label">
+                                  <div class="p-formList__label optional">
                                     カラー
                                   </div>
                                   <div class="p-formList__data  u-max--360">

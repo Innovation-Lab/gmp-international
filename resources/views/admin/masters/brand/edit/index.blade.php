@@ -72,7 +72,7 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   ブランド名
                                 </div>
                                 <div class="p-formList__data u-max--240" style="display: block;">

@@ -23,7 +23,7 @@
                     {!! Form::hidden('id', data_get($shop, 'id')) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
-                        店舗情報編集
+                          店舗情報編集
                         </h3>
                       </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -65,7 +65,7 @@
                           <ul class="p-formList">
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   店舗名
                                 </div>
                                 <div class="p-formList__data" style="display: block;">
@@ -78,47 +78,31 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <!-- <div class="p-formList__label optional"> -->
-                                <div class="p-formList__label">
-                                  電話番号<small>（ハイフンなしで入力してください）</small>
+                                <div class="p-formList__label optional">
+                                  郵便番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="p-formList__data">
-                                  {!! Form::tel('tel',  old('tel', data_get($shop, 'tel')), ['placeholder' => '例）09012345678']) !!}
+                                <div class="p-formList__data" style="width: 143.5px;">
+                                  {!! Form::number('zip_code',  old('zip_code', data_get($shop, 'zip_code')), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
                                 </div>
                               </div>
-                            </li>
                             <li class="p-formList__item">
-                              <div class="l-grid__2 l-grid__gap2">
-                                <div class="l-grid__item">
-                                  <div class="p-formList__content">
-                                    <div class="p-formList__label">
-                                      郵便番号
-                                    </div>
-                                    <div class="p-formList__data">
-                                      {!! Form::number('zip_code',  old('zip_code', data_get($shop, 'zip_code')), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
-                                    </div>
-                                  </div>
+                              <div class="p-formList__content">
+                                <div class="p-formList__label optional">
+                                  都道府県
                                 </div>
-                                <div class="l-grid__item">
-                                  <div class="p-formList__content">
-                                    <div class="p-formList__label">
-                                      都道府県
-                                    </div>
-                                    <div class="p-formList__data">
-                                      <select id="prefecture" name="prefecture" class="p-region">
-                                        <option value="" hidden>都道府県</option>
-                                        @foreach($prefectures as $index => $name)
-                                          <option value="{{ $index }}" {{ old('prefecture', data_get($shop, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
-                                        @endforeach
-                                      </select>
-                                    </div>
-                                  </div>
+                                <div class="p-formList__data" style="width: 143.5px">
+                                  <select id="prefecture" name="prefecture" class="p-region">
+                                    <option value="" hidden>都道府県</option>
+                                    @foreach($prefectures as $index => $name)
+                                      <option value="{{ $index }}" {{ old('prefecture', data_get($shop, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
+                                    @endforeach
+                                  </select>
                                 </div>
                               </div>
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   市区町村
                                 </div>
                                 <div class="p-formList__data">
@@ -141,10 +125,21 @@
                         <div class="l-grid__item">
                           <ul class="p-formList">
                             <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <!-- <div class="p-formList__label optional optional"> -->
+                                <div class="p-formList__label optional">
+                                  電話番号<small>（ハイフンなし）</small>
+                                </div>
+                                <div class="p-formList__data">
+                                  {!! Form::tel('tel',  old('tel', data_get($shop, 'tel')), ['placeholder' => '例）09012345678']) !!}
+                                </div>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
                               <div class="l-grid__1 l-grid__gap2">
                                 <div class="l-grid__item">
                                   <div class="p-formList__content">
-                                    <div class="p-formList__label">
+                                    <div class="p-formList__label optional">
                                       営業時間1
                                     </div>
                                     <div class="l-grid__4">

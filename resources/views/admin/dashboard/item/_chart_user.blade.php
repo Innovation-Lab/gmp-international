@@ -13,7 +13,7 @@
       </form>
     </div>
   </div>
-  <div class="p-dashboard__body" style="padding: 2rem 1.5rem;">
+  <div class="p-dashboard__body" style="padding: 1rem;">
     <div class="p-dashboard__content">
       <canvas id="chart-dashboard" height="320px"></canvas>
       <script src="{{ asset('js/admin/library/jquery-3.5.1.min.js') }}"></script>

@@ -118,7 +118,7 @@ img {
   --color_border_2: hsl(var(--h), 16%, 48%);
   --color_form_button: hsl(var(--h), 16%, 56%);
   --color_form_border: hsl(var(--h), 16%, 64%);
-  --color_form_ps: hsl(var(--h), 16%, 64%);
+  --color_form_ps: hsl(349, 867%, 41%);
   --color_form_placeholder: hsl(var(--h), 16%, 72%);
   --color_form_disabled: hsl(var(--h), 16%, 80%);
   --color_form_background: hsl(var(--h), 16%, 99%);
@@ -302,7 +302,7 @@ strong {
   letter-spacing: 0.04em;
 }
 .c-text__xxs, .p-form small, .p-formList__data .error, .p-dataList__label {
-  font: 500 0.75rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font: 500 0.65625rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 0.04em;
 }
 .c-text__weight--800 {
@@ -323,7 +323,7 @@ strong {
 
 small {
   color: var(--color_text_3);
-  font: 400 0.75rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font: 400 0.625rem / 1.3 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* ! ==================================================
@@ -678,6 +678,7 @@ select {
 }
 .select2 + .select2-container--default .select2-selection--single {
   height: 100%;
+  border: 1px solid var(--gray-2);
 }
 .select2 + .select2-container--default .select2-selection--single .select2-selection__rendered {
   height: 100%;
@@ -820,7 +821,7 @@ input[type=file] + label.logo {
   padding: 16px;
 }
 input[type=file] + label.logo:before {
-  opacity: 1;
+  opacity: 0.8;
   background: #1F266F;
 }
 input[type=file] + label.logo:after {
@@ -871,7 +872,7 @@ input[type=file] + label.colorPattern {
   max-width: 200px;
 }
 input[type=file] + label.colorPattern:before {
-  opacity: 1;
+  opacity: 0.8;
   background: #1F266F;
 }
 input[type=file] + label.colorPattern:after {
@@ -4024,12 +4025,12 @@ textarea {
 .optional::after {
   color: var(--color_form_ps);
   font: 700 0.625rem / 1 "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  content: "任意入力";
+  content: "必須";
   display: inline-flex;
   height: 1rem;
   align-items: center;
   padding: 0.15em 0.4em 0;
-  background-color: var(--color_background_3);
+  background-color: var(--color_alert_background);
   margin: 0 0 0 0.5em;
   border-radius: 3px;
   transform: translateY(-1px);
@@ -5127,7 +5128,7 @@ textarea {
   color: var(--color_text_1);
   margin-top: 0;
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.25;
   box-sizing: border-box;
