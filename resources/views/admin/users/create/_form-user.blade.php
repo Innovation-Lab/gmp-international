@@ -139,7 +139,7 @@
             市区町村
           </div>
           <div class="p-formList__data" style="display: block;">
-            {!! Form::text('address_city', old('address_city'), ['class' => 'p-locality', 'placeholder' => '例）渋谷区']) !!}
+            {!! Form::text('address_city', old('address_city'), ['class' => 'p-locality p-street-address', 'placeholder' => '例）渋谷区']) !!}
             @error('address_city')
               <div class="error">{{ $message }}</div>
             @enderror
@@ -152,7 +152,7 @@
             番地
           </div>
           <div class="p-formList__data" style="display: block;">
-            {!! Form::text('address_block', old('address_block'), ['class' => 'p-street-address', 'placeholder' => '例）渋谷1-2-3']) !!}
+            {!! Form::text('address_block', old('address_block'), ['class' => '', 'placeholder' => '例）1-2-3']) !!}
             @error('address_block')
               <div class="error">{{ $message }}</div>
             @enderror
