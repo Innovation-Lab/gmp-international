@@ -105,7 +105,7 @@
                   </div>
                   <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
                     <div class="c-input c-input--post">
-                      <input id="postcode" placeholder="例）1230000" maxlength="7" class="required p-postal-code" name="zip_code" type="text" value="{{ old('zip_code', data_get($user, 'zip_code')) }}" pattern="[0-9]{7}">
+                      <input id="postcode" placeholder="例）1230000" maxlength="7" class="required p-postal-code" name="zip_code" type="tel" value="{{ old('zip_code', data_get($user, 'zip_code')) }}" pattern="[0-9]{7}">
                     </div>
                     @error('zip_code')
                       <div class="c-txt c-txt--err">{{ $message }}</div>

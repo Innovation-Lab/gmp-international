@@ -44,7 +44,7 @@
     @include global.responsive(md) {
       // margin-bottom: 30px;
       width: 50%;
-      padding-right: 24px;
+      padding-right: 32px;
       border-right: 1px solid #E2E2E2;
     }
     @include global.responsive(md) {
@@ -60,7 +60,7 @@
     justify-content: flex-end;
     @include global.responsive(md) {
       width: 50%;
-      padding-left: 24px;
+      padding-left: 32px;
     }
     form{
       // min-width: 300px;

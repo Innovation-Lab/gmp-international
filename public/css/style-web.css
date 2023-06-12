@@ -1683,7 +1683,7 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-login__register {
     width: 50%;
-    padding-right: 24px;
+    padding-right: 32px;
     border-right: 1px solid #E2E2E2;
   }
 }
@@ -1701,7 +1701,7 @@ input[type=file] + label img {
 @media screen and (min-width: 768px) {
   .p-login__auth {
     width: 50%;
-    padding-left: 24px;
+    padding-left: 32px;
   }
 }
 .p-login__auth form {
