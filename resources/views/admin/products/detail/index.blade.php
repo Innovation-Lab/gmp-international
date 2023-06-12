@@ -42,7 +42,7 @@
                             'カラー' => data_get($product, 'mColor.alphabet_name') ? data_get($product, 'mColor.alphabet_name') : data_get($product, 'other_color_name', '登録されておりません'),
                             '購入日' => formatYmdSlash(data_get($product, 'purchase_date')),
                             '購入店舗' => data_get($product, 'mShop.name') ? data_get($product, 'mShop.name') : data_get($product, 'other_shop_name', '登録されておりません'),
-                            'シリアルNo.' => data_get($product, 'product_code'),
+                            'シリアルNo.' => data_get($product, 'product_code', '登録されておりません'),
                             {{--'登録番号' => 'AB01-097M-HIUA',--}}
                             '管理メモ' => data_get($product, 'memo'),
                             ] as $key => $val)

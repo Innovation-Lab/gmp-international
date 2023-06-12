@@ -61,7 +61,7 @@
                                   シリアルNo.
                                 </div>
                                 <div class="p-product__data">
-                                  {{ data_get($sales_product, 'product_code') }}
+                                  {{ data_get($sales_product, 'product_code', '登録されておりません') }}
                                 </div>
                               </li>
                               <li class="p-product__item__body__list auto">
