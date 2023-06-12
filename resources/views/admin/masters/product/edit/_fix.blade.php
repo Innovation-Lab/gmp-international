@@ -102,7 +102,7 @@
                                   </div>
                                 @empty
                                   <div class="p-formList__content add_color" id="js_delete_1">
-                                    <div class="p-formList__label optional">
+                                    <div class="p-formList__label">
                                       カラー
                                     </div>
                                     <div class="p-formList__data  u-max--360">

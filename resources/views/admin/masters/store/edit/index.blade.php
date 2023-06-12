@@ -81,8 +81,11 @@
                                 <div class="p-formList__label optional">
                                   郵便番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="p-formList__data" style="width: 143.5px;">
+                                <div class="p-formList__data" style="width: 162.5px; display: block;" >
                                   {!! Form::number('zip_code',  old('zip_code', data_get($shop, 'zip_code')), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
+                                  @error('zip_code')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             <li class="p-formList__item">
@@ -90,13 +93,16 @@
                                 <div class="p-formList__label optional">
                                   都道府県
                                 </div>
-                                <div class="p-formList__data" style="width: 143.5px">
+                                <div class="p-formList__data" style="width: 162.5px; display: block;">
                                   <select id="prefecture" name="prefecture" class="p-region">
                                     <option value="" hidden>都道府県</option>
                                     @foreach($prefectures as $index => $name)
                                       <option value="{{ $index }}" {{ old('prefecture', data_get($shop, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
                                     @endforeach
                                   </select>
+                                  @error('prefecture')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -105,8 +111,11 @@
                                 <div class="p-formList__label optional">
                                   市区町村
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   {!! Form::text('address_city_block',  old('address_city_block', data_get($shop, 'address_city_block')), ['class' => 'p-locality p-street-address p-extended-address', 'placeholder' => '例）渋谷区渋谷1-2-3']) !!}
+                                  @error('address_city_block')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -126,12 +135,14 @@
                           <ul class="p-formList">
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <!-- <div class="p-formList__label optional optional"> -->
                                 <div class="p-formList__label optional">
                                   電話番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display: block;">
                                   {!! Form::tel('tel',  old('tel', data_get($shop, 'tel')), ['placeholder' => '例）09012345678']) !!}
+                                  @error('tel')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
@@ -139,7 +150,7 @@
                               <div class="l-grid__1 l-grid__gap2">
                                 <div class="l-grid__item">
                                   <div class="p-formList__content">
-                                    <div class="p-formList__label optional">
+                                    <div class="p-formList__label">
                                       営業時間1
                                     </div>
                                     <div class="l-grid__4">

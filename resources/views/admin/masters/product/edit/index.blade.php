@@ -74,7 +74,7 @@
                                 <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
                                 <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
                                   @if ($loop->index == 0)
-                                    <div class="p-formList__label optional">
+                                    <div class="p-formList__label">
                                       カラー（メイン画像）
                                     </div>
                                   @else
@@ -102,9 +102,6 @@
                                 </div>
                               @empty
                                 <div class="p-formList__content add_color" id="js_delete_1">
-                                  <div class="p-formList__label optional">
-                                    カラー
-                                  </div>
                                   <div class="p-formList__data  u-max--360">
                                     <select name="color[add][1][m_color_id]" class="select2">
                                       <option value="" hidden>選択してください</option>
