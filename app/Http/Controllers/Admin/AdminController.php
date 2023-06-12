@@ -97,7 +97,7 @@ class AdminController extends Controller
         DB::commit();
         
         return redirect()->route('admin.staffs.index')
-            ->with(['success' => '登録しました。']);
+            ->with(['success' => '削除しました。']);
     }
     
     /**
