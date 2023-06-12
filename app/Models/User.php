@@ -121,6 +121,8 @@ class User extends Authenticatable
             $formatted_tel = substr($tel, 0, 3) . '-' . substr($tel, 3, 4) . '-' . substr($tel, 7, 4);
         } elseif (strlen($tel) === 12) {
             $formatted_tel = substr($tel, 0, 4) . '-' . substr($tel, 4, 4) . '-' . substr($tel, 8, 4);
+        } else {
+            $formatted_tel = '';
         }
 
         return $formatted_tel;
