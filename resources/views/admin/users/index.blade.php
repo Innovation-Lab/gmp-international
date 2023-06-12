@@ -37,10 +37,6 @@
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
-              {{--検索結果なしデザイン--}}
-              @if($users->count() == 0)
-                <div class="noResult">検索結果がありません。</div>
-              @endif
               <table>
                 <colgroup>
                   <col>
