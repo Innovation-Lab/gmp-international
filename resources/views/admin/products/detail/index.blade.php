@@ -23,12 +23,12 @@
                         <div class="p-list__img" style="width: 200px;">
                           <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="">
                         </div>
-                        <div class="p-list__status p-list__status--registered">
+                        {{-- <div class="p-list__status p-list__status--registered">
                           <span class="status">登録済み</span>
                         </div>
                         <div class="p-list__status p-list__status--notregistered" style="display: none;">
                           <span class="status">未登録</span>
-                        </div>
+                        </div> --}}
                       </div>
                       <div class="p-list__right">
                         <div class="p-list__head">
