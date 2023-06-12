@@ -47,7 +47,7 @@
                             <div class="p-list__label">
                               登録カラー
                             </div>
-                            <div class="p-list__color" style="display: flex;">
+                            <div class="p-list__color">
                               @foreach(data_get($product, 'color_ball_with_name') as $color)
                                 @if (data_get($color, 'image_path'))
                                   {{-- 画像表示の場合 --}}
