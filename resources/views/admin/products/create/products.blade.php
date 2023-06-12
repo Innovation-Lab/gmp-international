@@ -20,10 +20,10 @@
                     {{-- フォーム --}}
                     {{ Form::open(['method' => 'POST', 'route' => 'admin.products.store', 'class' => 'p-form', 'id' => 'submitProductForm']) }}
                       @include('admin.products.create._form-product')
-                      <button class="c-textButton__icon c-textButton--gray u-mt--24">
+                      {{-- <button class="c-textButton__icon c-textButton--gray u-mt--24">
                         <svg class="icon"><use href="#add"/></svg>
                         登録製品を追加する
-                      </button>
+                      </button> --}}
                     {{ Form::close() }}
                   </div>
                   <div class="p-create__main__box__foot">

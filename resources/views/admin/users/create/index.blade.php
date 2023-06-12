@@ -18,17 +18,18 @@
                 <div class="p-create__main__box">
                   <div class="p-create__main__box__wrapper">
                     {{-- フォーム --}}
-                    <form action="" class="p-form">
+                    {{ Form::open(['method' => 'POST', 'route' => 'admin.users.store', 'class' => 'p-form h-adr', 'id' => 'submitForm']) }}
+                    <span class="p-country-name" style="display:none;">Japan</span>
                       {{-- ユーザー情報 --}}
                       @include('admin.users.create._form-user')
                       <div class="c-div--xl"></div>
                       {{-- 登録製品情報 --}}
                       @include('admin.users.create._form-product')
-                    </form>
+                    {{ Form::close() }}
                   </div>
                   <div class="p-create__main__box__foot">
                     <a href="{{route('admin.users.index')}}" class="c-button__reset">戻る</a>
-                    <button class="c-button">この内容で登録する</button>
+                    <button type="submit" form="submitForm" class="c-button">この内容で登録する</button>
                 </div>
               </div>
             </div>

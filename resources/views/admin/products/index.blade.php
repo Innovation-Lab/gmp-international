@@ -38,7 +38,9 @@
             {{-- ---------- テーブル ---------- --}}
             <div class="p-table">
               {{--検索結果なしデザイン--}}
-              <div class="noResult" style="display: none;">検索結果がありません。</div>
+              @if ($sales_products->count() == 0)
+              <div class="noResult">検索結果がありません。</div>
+              @endif
               <table>
                 <colgroup>
                   <col>
@@ -75,40 +77,39 @@
                   </th>--}}
                 </thead>
                 <tbody>
-                  @for ($i = 0; $i < 30; $i++)
-                  <!-- 1人 -->
-                  <tr data-href="{{ route('admin.products.detail') }}">
-                    <td class="item">
-                      AIRBUGGY
-                    </td>
-                    <td class="item">
-                      COCO PREMIER FROM BIRTH
-                    </td>
-                    <td class="item">
-                      <span>グラスグリーン</span>
-                      GRASS
-                    </td>
-                    <td class="item">
-                      GMP 123456789
-                    </td>
-                    <td class="item">
-                      エアバギー代々木公園本店
-                    </td>
-                    <td class="item">
-                      {{--<a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>--}}
-                      山田 太郎
-                    </td>
-                    {{--<td class="item">
-                      <div>
-                        <span class="status status--yet">登録済み</span>
-                        <span class="status status--not" style="display: none;">未登録</span>
-                      </div>
-                    </td>--}}
-                    {{--<td class="item">
-                      AB01-097M-HIUA
-                    </td>--}}
-                  </tr>
-                  @endfor
+                  @foreach ($sales_products as $product)
+                    <tr data-href="{{ route('admin.products.detail', $product) }}">
+                      <td class="item">
+                        {{ data_get($product, 'mProduct.mBrand.name') }}
+                      </td>
+                      <td class="item">
+                        {{ data_get($product, 'mProduct.name') }}
+                      </td>
+                      <td class="item">
+                        <span>{{ data_get($product, 'mColor.name') }}</span>
+                        {{ data_get($product, 'mColor.alphabet_name') }}
+                      </td>
+                      <td class="item">
+                        {{ data_get($product, 'product_code') }}
+                      </td>
+                      <td class="item">
+                        {{ data_get($product, 'mShop.name') }}
+                      </td>
+                      <td class="item">
+                        {{--<a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>--}}
+                        {{ data_get($product, 'user.full_name') }}
+                      </td>
+                      {{--<td class="item">
+                        <div>
+                          <span class="status status--yet">登録済み</span>
+                          <span class="status status--not" style="display: none;">未登録</span>
+                        </div>
+                      </td>--}}
+                      {{--<td class="item">
+                        AB01-097M-HIUA
+                      </td>--}}
+                    </tr>
+                  @endforeach
                 </tbody>
                 <tfoot style="display: none;">
                   <td>
@@ -143,7 +144,7 @@
             <div class="p-index__foot">
               {{-- ページネーション --}}
               @include('admin.components._pagination', [
-                  'paginate' => $products
+                  'paginate' => $sales_products
               ])
             </div>
           </div>

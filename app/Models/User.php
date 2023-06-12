@@ -53,6 +53,15 @@ class User extends Authenticatable
         return $this->hasMany(SalesProduct::class);
     }
 
+     /**
+     * @return HasMany
+     * 購入者の選択表示
+     */
+    public function getSelectUserAttribute()
+    {
+        return $this->getFullNameAttribute() . ' （会員番号：' . $this->id . '）';
+    }
+
     /**
      * フルネーム
      *
@@ -79,7 +88,7 @@ class User extends Authenticatable
      */
     public function getFullAddressAttribute(): string
     {
-        return $this->prefecture .' '. $this->address_city .' '. $this->address_block .' '. $this->address_building;
+        return $this->prefecture . $this->address_city . $this->address_block . $this->address_building;
     }
     
     /**
@@ -112,6 +121,8 @@ class User extends Authenticatable
             $formatted_tel = substr($tel, 0, 3) . '-' . substr($tel, 3, 4) . '-' . substr($tel, 7, 4);
         } elseif (strlen($tel) === 12) {
             $formatted_tel = substr($tel, 0, 4) . '-' . substr($tel, 4, 4) . '-' . substr($tel, 8, 4);
+        } else {
+            $formatted_tel = '';
         }
 
         return $formatted_tel;

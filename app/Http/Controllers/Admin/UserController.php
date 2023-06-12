@@ -8,9 +8,11 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
+// use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminUserUpdateRequest;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\AdminUserProductStoreRequest;
 use App\Models\User;
 use App\Models\MBrand;
 use App\Models\MProduct;
@@ -67,12 +69,66 @@ class UserController extends Controller
     // }
     public function create(): View
     {
+        $prefectures = config('prefecture');
+
         return view('admin.users.create.index')->with([
+            'prefectures' => $prefectures,
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
+    }
+
+    public function store(AdminUserProductStoreRequest $request)
+    {
+        $params = $request->all();
+
+        \DB::beginTransaction();
+        try {
+            $user = User::create([
+                'last_name' => data_get($params, 'last_name'),
+                'first_name' => data_get($params, 'first_name'),
+                'last_name_kana' => data_get($params, 'last_name_kana'),
+                'first_name_kana' => data_get($params, 'first_name_kana'),
+                'email' => data_get($params, 'email'),
+                'tel' => data_get($params, 'tel'),
+                'is_dm' => data_get($params, 'is_dm'),
+                'zip_code' => data_get($params, 'zip_code'),
+                'prefecture' => data_get($params, 'prefecture'),
+                'address_city' => data_get($params, 'address_city'),
+                'address_block' => data_get($params, 'address_block'),
+                'address_building' => data_get($params, 'address_building'),
+                'password' => data_get($params, 'password'),
+                'memo' => data_get($params, 'user_memo'),
+            ]);
+
+            SalesProduct::create([
+                'user_id' => data_get($user, 'id'),
+                'purchase_date' => data_get($params, 'purchase_date'),
+                'm_brand_id' => data_get($params, 'm_brand_id'),
+                'm_product_id' => data_get($params, 'm_product_id'),
+                'm_color_id' => data_get($params, 'm_color_id') && data_get($params, 'm_color_id') != '9999999' && data_get($params, 'm_color_id') != 'other' ? data_get($params, 'm_color_id') : NULL,
+                'other_color_name' => data_get($params, 'other_color_name'),
+                'product_code' => data_get($params, 'product_code'),
+                'm_shop_id' => data_get($params, 'm_shop_id') && data_get($params, 'm_shop_id') != '9999999' && data_get($params, 'm_shop_id') != 'other' ? data_get($params, 'm_shop_id') : NULL,
+                'zip_code' => data_get($params, 'zip_code'),
+                'prefecture' => data_get($params, 'prefecture'),
+                'other_shop_name' => data_get($params, 'other_shop_name'),
+                'memo' => data_get($params, 'product_memo'),
+            ]);
+
+            \DB::commit();
+
+            return redirect()
+                ->route('admin.users.index')
+                ->with('message', '登録が完了しました。');
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            return redirect()
+                ->back()
+                ->with('error', 'エラーが発生しました。');
+        }
     }
 
     public function createProducts(User $user): View
@@ -113,7 +169,7 @@ class UserController extends Controller
 
             return redirect()
                 ->back()
-                ->with('error', 'エラーが発生しました。');;
+                ->with('error', 'エラーが発生しました。');
         }
     }
 

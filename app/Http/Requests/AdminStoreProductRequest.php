@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Validator;
 
-class StoreProductRequest extends FormRequest
+class AdminStoreProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,30 +26,33 @@ class StoreProductRequest extends FormRequest
      */
     public function rules()
     {
-        $params = $this->request->all();
-        Session::put('product', $params);
-        
-        return [
+
+        $rules = [
             'purchase_date' => 'required',
             'm_brand_id' => 'required',
             'm_product_id' => 'required',
+            'user_id' => 'required',
         ];
+
+        return $rules;
     }
-    
+
     public function attributes()
     {
         return [
             'purchase_date' => '購入日',
-            'm_brand_id' => 'ブランド',
-            'm_product_id' => '製品',
+            'm_brand_id' => 'ブランド名',
+            'm_product_id' => '製品名',
             'product_code' => 'シリアルナンバー',
+            'user_id' => '購入者',
         ];
     }
-    
+
     public function messages()
     {
         return [
             'purchase_date.required' => '購入日を入力してください。',
+            'user_id.required' => '購入者を入力してください。',
             '*.required' => ':attributeを選択してください。',
             'product_code.unique' => 'この:attributeはすでに存在しています。',
         ];
