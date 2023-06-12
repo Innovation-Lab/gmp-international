@@ -122,12 +122,12 @@ class UserController extends Controller
 
             return redirect()
                 ->route('admin.users.index')
-                ->with('message', '登録が完了しました。');
+                ->with('success', '登録が完了しました。');
         } catch (\Exception $e) {
             \DB::rollBack();
             return redirect()
                 ->back()
-                ->with('error', 'エラーが発生しました。');
+                ->with('alert', 'エラーが発生しました。');
         }
     }
 
@@ -163,13 +163,13 @@ class UserController extends Controller
 
             return redirect()
                 ->route('admin.users.detail', $user)
-                ->with('message', '登録が完了しました。');
+                ->with('success', '登録が完了しました。');
         } catch (\Exception $e) {
             \DB::rollback();
 
             return redirect()
                 ->back()
-                ->with('error', 'エラーが発生しました。');
+                ->with('alert', 'エラーが発生しました。');
         }
     }
 
@@ -204,12 +204,12 @@ class UserController extends Controller
             return redirect()
             ->route('admin.users.detail', $user)
             ->with('status', 'success')
-            ->with('message', '更新が完了しました。');
+            ->with('success', '更新が完了しました。');
         } else {
             return redirect()
                 ->back()
                 ->with('status', 'failed')
-                ->with('message', '更新に失敗しました。');
+                ->with('alert', '更新に失敗しました。');
         }
     }
 
@@ -251,7 +251,7 @@ class UserController extends Controller
 
             return redirect()
                 ->route('admin.users.detail', $user)
-                ->with('message', '更新が完了しました。');
+                ->with('success', '更新が完了しました。');
 
         } catch(\Exception $e) {
             \DB::rollback();
@@ -259,7 +259,7 @@ class UserController extends Controller
 
         return redirect()
             ->back()
-            ->with('error', 'エラーが発生しました。');
+            ->with('alert', 'エラーが発生しました。');
     }
 
     // public function userEdit(): View

@@ -192,7 +192,7 @@ class RegisterController extends Controller
         if (!$this->userRepository->createWithProduct($user, $product)) {
             return redirect()
                 ->back()
-                ->with(['error' => 'エラーが発生しました。']);
+                ->with(['alert' => 'エラーが発生しました。']);
         }
         
         Session::forget('user_info');

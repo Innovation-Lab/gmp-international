@@ -102,7 +102,7 @@ class SalesProductController extends Controller
 
             return redirect()
                 ->route('mypage.index')
-                ->with('message', '登録が完了しました。');
+                ->with('success', '登録が完了しました。');
 
         } catch (\Exception $e) {
             \DB::rollBack();
@@ -112,7 +112,7 @@ class SalesProductController extends Controller
 
         return redirect()
             ->back()
-            ->with('error', 'エラーが発生しました。');
+            ->with('alert', 'エラーが発生しました。');
     }
     
     /**
