@@ -47,11 +47,13 @@
                                 <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
                                 {{--カラーボール--}}
                                 <div class="p-product__item__other__box">
-                                  <div class="c-colorBall c-colorBall--sm" style="background: #fff;">
+                                  <div class="c-colorBall c-colorBall--sm" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
                                     {{-- 2色の場合に追加 --}}
-                                    <div class="c-colorBall__pallet2" style="background: #000;"></div>
+                                  @if (data_get($sales_product, 'mColor.second_color'))
+                                    <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                                  @endif
                                   </div>
-                                  <div class="item">COLOR</div>
+                                  <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', 'カラーは登録されておりません') }}</div>
                                 </div>
                               </div>
                             </div>

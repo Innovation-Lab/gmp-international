@@ -230,9 +230,10 @@ class UserController extends Controller
      * @param StoreProductRequest $request
      * @return RedirectResponse
      */
-    public function updateProducts(SalesProduct $sales_product, StoreProductRequest $request)
+    public function updateProducts(User $user, SalesProduct $sales_product, StoreProductRequest $request)
     {
         $params = $request->all();
+        $user = data_get($sales_product, 'user');
 
         \DB::beginTransaction();
         try {
@@ -248,7 +249,8 @@ class UserController extends Controller
 
             \DB::commit();
 
-            return redirect($request->headers->get('referer'))
+            return redirect()
+                ->route('admin.users.detail', $user)
                 ->with('message', '更新が完了しました。');
 
         } catch(\Exception $e) {
