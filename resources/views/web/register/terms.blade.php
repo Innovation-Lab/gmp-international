@@ -130,27 +130,29 @@
               </ul>
             </div>
             <div class="p-terms__foot">
-              <p class="other">以上</p>
+              <span class="other">
+                <p>以上</p>
+              </span>
               <ul class="p-terms__foot__list">
                 <li class="p-terms__foot__list__item">
-                  <p class="c-description">会社名</p>
+                  <p class="c-txt--gr">会社名</p>
                   <p class="c-description">株式会社GMPインターナショナル</p>
                 </li>
                 <li class="p-terms__foot__list__item">
-                  <p class="c-description">所在地</p>
+                  <p class="c-txt--gr">所在地</p>
                   <p class="c-description">151-0063　東京都渋谷区富ヶ谷一丁目18-5</p>
                 </li>
                 <li class="p-terms__foot__list__item">
-                  <p class="c-description">お問い合わせ先</p>
+                  <p class="c-txt--gr">お問い合わせ先</p>
                   <div class="p-terms__foot__list__box">
-                    <p class="c-description">GMPお問い合わせフォーム</p>
+                    <p class="">□GMPお問い合わせフォーム</p>
                     <a href="https://www.gmp-intl.co.jp/contact/">https://www.gmp-intl.co.jp/contact/</a>
                   </div>
                   <div class="p-terms__foot__list__box">
-                    <p class="c-description">GMPサポートデスク</p>
-                    <span class="c-description wd">ベビー用品<a href="tel:0120-178-363" class="tel">0120-178-363</a></span>
-                    <span class="c-description wd">ペット用品<a href="tel:0120-98-1511" class="tel">0120-98-1511</a></span>
-                    <p class="c-description">営業時間：平日10:00-17:00<p>
+                    <p class="">□GMPサポートデスク</p>
+                    <span class=""><p class="c-txt--gr c-txt--gr--wd">ベビー用品</p><a href="tel:0120-178-363" class="tel">0120-178-363</a></span>
+                    <span class=""><p class="c-txt--gr c-txt--gr--wd">ペット用品</p><a href="tel:0120-98-1511" class="tel">0120-98-1511</a></span>
+                    <span class=""><p class="c-txt--gr c-txt--gr--wd">営業時間</p><p>平日10:00-17:00<p>
                   </div>
                 </li>
               </ul>

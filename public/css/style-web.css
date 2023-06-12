@@ -5849,20 +5849,31 @@ input[type=file] + label img {
 .p-terms__foot {
   margin-top: 24px;
 }
+.p-terms__foot .c-txt--gr--wd {
+  width: 80px;
+}
 .p-terms__foot .other {
+  margin-top: 40px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 }
 .p-terms__foot__list {
   border-top: solid 1px #EAEBEA;
-  padding: 24px 16px 0;
+  padding: 32px 16px 0;
   margin-top: 40px;
   font-size: 14px;
   margin-top: 40px;
   font-size: 14px;
 }
+.p-terms__foot__list__box {
+  margin-top: 4px;
+}
 .p-terms__foot__list__box + div {
   margin-top: 8px;
+}
+.p-terms__foot__list__box .c-description {
+  margin-top: 0;
 }
 .p-terms__foot__list__item span {
   display: flex;
@@ -5870,14 +5881,14 @@ input[type=file] + label img {
 }
 .p-terms__foot__list__item a {
   color: var(--color_text_1);
-  -webkit-text-decoration: revert;
-          text-decoration: revert;
 }
 .p-terms__foot__list__item + .p-terms__foot__list__item {
   margin-top: 16px;
 }
+.p-terms__foot__list__item .c-description {
+  margin-top: 4px;
+}
 .p-terms__foot__list__item .tel {
-  margin-left: 8px;
   display: flex;
   align-items: center;
 }
@@ -5889,9 +5900,6 @@ input[type=file] + label img {
   background: url(../img/web/icon/freedial--black.svg) no-repeat center;
   background-size: contain;
   margin-right: 2px;
-}
-.p-terms__foot__list .wd {
-  min-width: 70px;
 }
 .p-terms__foot .tel {
   color: var(--color_text_1);
