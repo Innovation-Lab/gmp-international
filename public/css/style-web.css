@@ -1856,7 +1856,7 @@ input[type=file] + label img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 48px;
+    margin-top: 56px;
   }
 }
 @media screen and (min-width: 992px) {
@@ -1866,7 +1866,7 @@ input[type=file] + label img {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 48px;
+    margin-top: 56px;
   }
 }
 .p-login__support .c-txt {
@@ -1925,6 +1925,7 @@ input[type=file] + label img {
 .p-login__link {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .p-login__registered {
   margin-top: 12px;
@@ -1988,10 +1989,9 @@ input[type=file] + label img {
   }
 }
 .p-login__body .c-btn--text {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 16px;
+  position: absolute;
+  right: 1.2%;
+  bottom: -12%;
 }
 .p-login__body__text {
   max-width: 25rem;
@@ -5841,9 +5841,76 @@ input[type=file] + label img {
 }
 .p-terms__head .c-description {
   margin: 16px 0 0;
+  white-space: pre-line;
 }
 .p-terms__body {
   margin: 40px 0 0;
+}
+.p-terms__foot {
+  margin-top: 24px;
+}
+.p-terms__foot .c-txt--gr--wd {
+  width: 80px;
+}
+.p-terms__foot .other {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.p-terms__foot__list {
+  border-top: solid 1px #EAEBEA;
+  padding: 32px 16px 0;
+  margin-top: 40px;
+  font-size: 14px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+.p-terms__foot__list__box {
+  margin-top: 4px;
+}
+.p-terms__foot__list__box + div {
+  margin-top: 8px;
+}
+.p-terms__foot__list__box .c-description {
+  margin-top: 0;
+}
+.p-terms__foot__list__item span {
+  display: flex;
+  align-items: center;
+}
+.p-terms__foot__list__item a {
+  color: var(--color_text_1);
+}
+.p-terms__foot__list__item + .p-terms__foot__list__item {
+  margin-top: 16px;
+}
+.p-terms__foot__list__item .c-description {
+  margin-top: 4px;
+}
+.p-terms__foot__list__item .tel {
+  display: flex;
+  align-items: center;
+}
+.p-terms__foot__list__item .tel::before {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 9px;
+  background: url(../img/web/icon/freedial--black.svg) no-repeat center;
+  background-size: contain;
+  margin-right: 2px;
+}
+.p-terms__foot .tel {
+  color: var(--color_text_1);
+}
+.p-terms__foot .tel:before {
+  content: "";
+  width: 14px;
+  height: 9px;
+  background: url(../img/web/icon/freedial--black.svg) no-repeat center;
+  background-size: contain;
+  margin: 0 4px 0 0;
 }
 .p-terms__scroll {
   max-height: 400px;
@@ -5879,6 +5946,7 @@ input[type=file] + label img {
 }
 .p-terms__list__item .c-description {
   padding: 16px;
+  white-space: pre-line;
 }
 
 .p-btnWrap {

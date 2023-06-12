@@ -75,8 +75,8 @@
             <input class="login" type="submit" name="button" value="ログイン">
             {!! Form::close() !!}
           </div>
+          <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
         </div>
-        <a class="c-btn c-btn--text" href="{{route('password.request')}}">パスワードを忘れた方はこちら</a>
         <div class="p-login__support">
           <p class="c-txt">GMPサポートデスク　営業時間：平日10:00〜17:00</p>
           <div class="p-footer__tel">

@@ -101,7 +101,7 @@
               <li class="p-formList__item">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
-                      <p class="c-txt">郵便番号 <span class="c-txt c-txt--must">必須</span></p>
+                      <p class="c-txt">郵便番号<br>(ハイフンなし) <span class="c-txt c-txt--must">必須</span></p>
                   </div>
                   <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
                     <div class="c-input c-input--post">
