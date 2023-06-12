@@ -33,6 +33,14 @@ class MShop extends Model
     {
         return $this->hasMany(MProduct::class);
     }
+
+    /**
+     * @return HasMany
+     */
+    public function salesProduct(): HasMany
+    {
+        return $this->hasMany(SalesProduct::class);
+    }
     
     /**
      * @return string

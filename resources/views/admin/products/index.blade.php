@@ -101,6 +101,7 @@
                           <span class="status status--yet">登録済み</span>
                           <span class="status status--not" style="display: none;">未登録</span>
                         </div>
+
                       </td>--}}
                       {{--<td class="item">
                         AB01-097M-HIUA

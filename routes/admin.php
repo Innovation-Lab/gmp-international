@@ -92,7 +92,7 @@ Route::group([
             Route::get('/store/edit/{shop}', [MasterController::class, 'storeEdit'])->name('store.edit');
             Route::get('/store/create', [MasterController::class, 'storeCreate'])->name('store.create');
             Route::post('/store/updateOrCreate', [MasterController::class, 'storeUpdateOrCreate'])->name('store.updateOrCreate');
-            Route::post('/store/delete/{store}', [MasterController::class, 'storeDelete'])->name('store.delete');
+            Route::post('/store/delete/{shop}', [MasterController::class, 'storeDelete'])->name('store.delete');
             
             //カラーマスタ
             Route::get('/color', [MasterController::class, 'color'])->name('color');

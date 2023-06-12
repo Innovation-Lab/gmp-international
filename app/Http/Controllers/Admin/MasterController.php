@@ -135,7 +135,7 @@ class MasterController extends Controller
         return view('admin.masters.product.edit.index', [
             'product' => $product,
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'colors' => MColor::withTrashed()->pluck('alphabet_name', 'id')->toArray(),
         ]);
     }
     
@@ -334,7 +334,7 @@ class MasterController extends Controller
     {
         DB::beginTransaction();
         try {
-            if(count(data_get($brand, 'm_products')) > 0) {
+            if(count(data_get($brand, 'mProducts')) > 0) {
                 return redirect()->back()
                     ->with(['alert' => '製品が紐づいているため削除できません。']);
             }
@@ -358,6 +358,10 @@ class MasterController extends Controller
     {
         DB::beginTransaction();
         try {
+            if(count(data_get($product, 'SalesProduct')) > 0) {
+                return redirect()->back()
+                    ->with(['alert' => 'ユーザー登録済み製品が紐づいているため削除できません。']);
+            }
             $product->delete();
         } catch (\Exception $e) {
             DB::rollback();
@@ -378,6 +382,10 @@ class MasterController extends Controller
     {
         DB::beginTransaction();
         try {
+            if(count(data_get($shop, 'salesProduct')) > 0) {
+                return redirect()->back()
+                    ->with(['alert' => 'ユーザー登録済み製品が紐づいているため削除できません。']);
+            }
             $shop->delete();
         } catch (\Exception $e) {
             DB::rollback();

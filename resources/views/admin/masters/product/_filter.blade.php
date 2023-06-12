@@ -17,7 +17,7 @@
       </ul>
     </div>
     <div class="p-filter__action">
-      <button onclick="window.location.href = {{ route('admin.masters.product') }}" class="c-button__reset">絞り込みをクリア</button>
+      <button onclick="window.location = {{ route('admin.masters.product') }}" class="c-button__reset">絞り込みをクリア</button>
     </div>
   </div>
 </form>

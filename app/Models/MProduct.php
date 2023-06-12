@@ -49,7 +49,7 @@ class MProduct extends Model
      */
     public function mColors(): HasMany
     {
-        return $this->hasMany(MColor::class);
+        return $this->hasMany(MColor::class)->withTrashed();
     }
     
     /**
@@ -91,7 +91,7 @@ class MProduct extends Model
         $alphabet_name = '';
         if (count($colors) > 0) {
             foreach ($colors as $key => $color) {
-                $name = MColor::find($color)->alphabet_name;
+                $name = MColor::withTrashed()->find($color)->alphabet_name;
                 if ($key == 0) {
                     $alphabet_name = $name;
                 } else {
@@ -115,7 +115,7 @@ class MProduct extends Model
         
         if (count($colors) > 0) {
             foreach ($colors as $key => $color) {
-                $record = MColor::find($color);
+                $record = MColor::withTrashed()->find($color);
                 $ballWithName[data_get($record,'id')] = [
                     'id' => data_get($record, 'id'),
                     'name' => data_get($record, 'name'),
