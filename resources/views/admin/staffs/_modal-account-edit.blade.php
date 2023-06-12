@@ -14,7 +14,7 @@
             <li class="p-formList__item">
               <div class="l-grid__2 l-grid__gap1">
                 <div class="p-formList__content">
-                  <div class="p-formList__label">
+                  <div class="p-formList__label optional">
                     姓
                   </div>
                   <div class="p-formList__data">
@@ -22,7 +22,7 @@
                   </div>
                 </div>
                 <div class="p-formList__content">
-                  <div class="p-formList__label">
+                  <div class="p-formList__label optional">
                     名
                   </div>
                   <div class="p-formList__data">
@@ -34,7 +34,7 @@
             <li class="p-formList__item">
               <div class="l-grid__2 l-grid__gap1">
                 <div class="p-formList__content">
-                  <div class="p-formList__label">
+                  <div class="p-formList__label optional">
                     セイ
                   </div>
                   <div class="p-formList__data">
@@ -42,7 +42,7 @@
                   </div>
                 </div>
                 <div class="p-formList__content">
-                  <div class="p-formList__label">
+                  <div class="p-formList__label optional">
                     メイ
                   </div>
                   <div class="p-formList__data">
@@ -53,7 +53,7 @@
             </li>
             <li class="p-formList__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   性別
                 </div>
                 <div class="p-formList__data">
@@ -68,7 +68,7 @@
             </li>
             <li class="p-formList__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   生年月日
                 </div>
                 <div class="p-formList__data">
@@ -139,7 +139,7 @@
             </li>
             <li class="p-formList__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   メールアドレス
                 </div>
                 <div class="p-formList__data">
@@ -149,7 +149,7 @@
             </li>
             <li class="p-formList__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   パスワード
                 </div>
                 <div class="p-formList__data">
@@ -177,7 +177,7 @@
             </li>
             <li class="p-formList__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   権限
                 </div>
                 <div class="p-formList__data">

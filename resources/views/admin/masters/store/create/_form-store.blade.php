@@ -2,7 +2,7 @@
 <form action="" class="p-form">
   <div class="p-edit__main__box__head">
     <h3 class="p-edit__main__box__head__title">
-    店舗情報追加登録
+      店舗情報追加登録
     </h3>
   </div>
   <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -42,22 +42,21 @@
         </li>
         <li class="p-formList__item">
           <div class="p-formList__content">
-            <!-- <div class="p-formList__label optional"> -->
-            <div class="p-formList__label">
-              電話番号
+            <!-- <div class="p-formList__label optional optional"> -->
+            <div class="p-formList__label optional">
+              電話番号<small>（ハイフンなし）</small>
             </div>
             <div class="p-formList__data">
               {!! Form::tel('telephone', '', ['placeholder' => '例）09012345678']) !!}
             </div>
-            <!-- <small>ハイフンなしで入力してください</small> -->
           </div>
         </li>
         <li class="p-formList__item">
           <div class="l-grid__2 l-grid__gap2">
             <div class="l-grid__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
-                  郵便番号
+                <div class="p-formList__label optional">
+                  郵便番号<small>（ハイフンなし）</small>
                 </div>
                 <div class="p-formList__data">
                   {!! Form::number('zip', '', ['placeholder' => '例）1230000']) !!}
@@ -66,7 +65,7 @@
             </div>
             <div class="l-grid__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   都道府県
                 </div>
                 <div class="p-formList__data">
@@ -88,7 +87,7 @@
         </li>
         <li class="p-formList__item">
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               市区町村
             </div>
             <div class="p-formList__data">
@@ -114,7 +113,7 @@
           <div class="l-grid__1 l-grid__gap2">
             <div class="l-grid__item">
               <div class="p-formList__content">
-                <div class="p-formList__label">
+                <div class="p-formList__label optional">
                   営業時間1
                 </div>
                 <div class="l-grid__4">

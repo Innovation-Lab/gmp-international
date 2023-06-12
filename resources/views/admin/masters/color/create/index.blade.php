@@ -29,7 +29,7 @@
                                 <ul class="p-formList" style="max-width: 320px;">
                                   <li class="p-formList__item">
                                     <div class="p-formList__content">
-                                      <div class="p-formList__label">
+                                      <div class="p-formList__label optional">
                                         カラータイプ
                                       </div>
                                       <div class="p-formList__data">
@@ -50,7 +50,7 @@
                                   </li>
                                   <li class="p-formList__item">
                                     <div class="p-formList__content">
-                                      <div class="p-formList__label">
+                                      <div class="p-formList__label optional">
                                         カラー
                                       </div>
                                       <div class="p-formList__data">
@@ -98,7 +98,7 @@
                                   </li>
                                   <li class="p-formList__item">
                                     <div class="p-formList__content">
-                                      <div class="p-formList__label">
+                                      <div class="p-formList__label optional">
                                         カラー名
                                       </div>
                                       <div class="p-formList__data">
@@ -108,7 +108,7 @@
                                   </li>
                                   <li class="p-formList__item">
                                     <div class="p-formList__content">
-                                      <div class="p-formList__label">
+                                      <div class="p-formList__label optional">
                                         カラー名(英字)
                                       </div>
                                       <div class="p-formList__data">

@@ -51,7 +51,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
             </div>
           </div>
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               権限
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -72,7 +72,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
       <li class="p-formList__item">
         <div class="l-grid__2 l-grid__gap2">
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               姓
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -83,7 +83,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
             </div>
           </div>
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               名
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -98,7 +98,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
       <li class="p-formList__item">
         <div class="l-grid__2 l-grid__gap2">
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               セイ
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -109,7 +109,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
             </div>
           </div>
           <div class="p-formList__content">
-            <div class="p-formList__label">
+            <div class="p-formList__label optional">
               メイ
             </div>
             <div class="p-formList__data" style="display: block;">
@@ -123,7 +123,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             所属店舗
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -141,7 +141,7 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             メールアドレス
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -163,8 +163,8 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
             </div>
           </div>
           <div class="p-formList__content js-target__change-password u-mt--10" style="display: none;">
-            <div class="p-formList__label">
-              パスワード<small>（半角英数字6〜10文字）</small>
+            <div class="p-formList__label optional">
+              パスワード<small>（半角英数字6文字〜）</small>
             </div>
             <div class="p-formList__data" style="display: block;">
               {!! Form::password('password', null, ['placeholder' => '例）gmp123456', 'disabled' => 'false']) !!}
@@ -201,8 +201,8 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
       @else
         <li class="p-formList__item">
           <div class="p-formList__content u-mt--10">
-            <div class="p-formList__label">
-              パスワード<small>（半角英数字6〜10文字）</small>
+            <div class="p-formList__label optional">
+              パスワード<small>（半角英数字6文字〜）</small>
             </div>
             <div class="p-formList__data" style="display: block;">
               {!! Form::password('password', null, ['placeholder' => '例）gmp123456']) !!}

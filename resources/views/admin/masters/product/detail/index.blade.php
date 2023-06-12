@@ -45,13 +45,13 @@
                           </li>
                           <li class="p-list__item">
                             <div class="p-list__label">
-                              カラー登録数
+                              登録カラー
                             </div>
-                            <div style="display: flex;">
+                            <div class="p-list__color" style="display: flex;">
                               @foreach(data_get($product, 'color_ball_with_name') as $color)
                                 @if (data_get($color, 'image_path'))
                                   {{-- 画像表示の場合 --}}
-                                  <div class="p-list__data color" style="margin-right: 10px;">
+                                  <div class="p-list__data color">
                                     <div class="c-colorBall ball" style="background: url({{ \Storage::disk('s3')->temporaryUrl(data_get($color, 'image_path'), \Carbon\Carbon::now()->addMinute(10)) }})"></div>{{ data_get($color, 'name') }}
                                   </div>
                                 @else

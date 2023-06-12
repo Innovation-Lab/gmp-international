@@ -14,7 +14,7 @@
     <ul class="p-formList">
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             購入日
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -27,7 +27,7 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             ブランド名
           </div>
           <div class="p-formList__data" style="display: block;">
@@ -45,7 +45,7 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label">
+          <div class="p-formList__label optional">
             製品名
           </div>
           <div class="p-formList__data" style="display: block;">

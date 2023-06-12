@@ -22,7 +22,7 @@
                     {!! Form::hidden('id', data_get($user, 'id')) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
-                        ユーザー情報
+                        ユーザー情報編集
                         </h3>
                       </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -31,7 +31,7 @@
                             <li class="p-formList__item">
                               <div class="l-grid__2 l-grid__gap2">
                                 <div class="p-formList__content">
-                                  <div class="p-formList__label">
+                                  <div class="p-formList__label optional optional">
                                     姓
                                   </div>
                                   <div class="p-formList__data">
@@ -42,7 +42,7 @@
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
-                                  <div class="p-formList__label">
+                                  <div class="p-formList__label optional">
                                     名
                                   </div>
                                   <div class="p-formList__data">
@@ -57,7 +57,7 @@
                             <li class="p-formList__item">
                               <div class="l-grid__2 l-grid__gap2">
                                 <div class="p-formList__content">
-                                  <div class="p-formList__label">
+                                  <div class="p-formList__label optional">
                                     セイ
                                   </div>
                                   <div class="p-formList__data">
@@ -68,7 +68,7 @@
                                   </div>
                                 </div>
                                 <div class="p-formList__content">
-                                  <div class="p-formList__label">
+                                  <div class="p-formList__label optional">
                                     メイ
                                   </div>
                                   <div class="p-formList__data">
@@ -82,7 +82,7 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   メールアドレス
                                 </div>
                                 <div class="p-formList__data">
@@ -95,9 +95,9 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <!-- <div class="p-formList__label optional"> -->
-                                <div class="p-formList__label">
-                                  電話番号
+                                <!-- <div class="p-formList__label optional optional"> -->
+                                <div class="p-formList__label optional">
+                                  電話番号<small>（ハイフンなし）</small>
                                 </div>
                                 <div class="p-formList__data">
                                   {!! Form::tel('tel', old('tel', data_get($user, 'tel')), ['placeholder' => '例）09012345678']) !!}
@@ -109,7 +109,7 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   新着情報、お得情報
                                 </div>
                                 <div class="p-formList__data">
@@ -127,38 +127,34 @@
                         <div class="l-grid__item">
                           <ul class="p-formList">
                             <li class="p-formList__item">
-                              <div class="l-grid__2 l-grid__gap2">
-                                <div class="l-grid__item">
-                                  <div class="p-formList__content">
-                                    <div class="p-formList__label">
-                                      郵便番号
-                                    </div>
-                                    <div class="p-formList__data">
-                                      {!! Form::number('zip_code', old('zip_code', data_get($user, 'zip_code')), ['placeholder' => '例）1230000']) !!}
-                                      @error('zip_code')
-                                        <div class="error">{{ $message }}</p>
-                                      @enderror
-                                    </div>
-                                  </div>
+                              <div class="p-formList__content">
+                                <div class="p-formList__label optional" style="white-space: nowrap">
+                                  郵便番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="l-grid__item">
-                                  <div class="p-formList__content">
-                                    <div class="p-formList__label">
-                                      都道府県
-                                    </div>
-                                    <div class="p-formList__data">
-                                      {!! Form::select('prefecture', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
-                                      @error('prefecture')
-                                        <div class="error">{{ $message }}</p>
-                                      @enderror
-                                    </div>
-                                  </div>
+                                <div class="p-formList__data" style="width: 143.5px;">
+                                  {!! Form::number('zip_code', old('zip_code', data_get($user, 'zip_code')), ['placeholder' => '例）1230000']) !!}
+                                  @error('zip_code')
+                                    <div class="error">{{ $message }}</p>
+                                  @enderror
                                 </div>
                               </div>
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
+                                  都道府県
+                                </div>
+                                <div class="p-formList__data" style="width: 143.5px;">
+                                  {!! Form::select('prefecture', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
+                                  @error('prefecture')
+                                    <div class="error">{{ $message }}</p>
+                                  @enderror
+                                </div>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label optional">
                                   市区町村
                                 </div>
                                 <div class="p-formList__data">
@@ -171,7 +167,7 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
+                                <div class="p-formList__label optional">
                                   番地
                                 </div>
                                 <div class="p-formList__data">
@@ -194,8 +190,8 @@
                             </li>
                             <li class="p-formList__item">
                               <div class="p-formList__content">
-                                <div class="p-formList__label">
-                                  パスワード<small>（半角英数字6~10文字）</small>
+                                <div class="p-formList__label optional">
+                                  パスワード<small>（半角英数字6文字~）</small>
                                 </div>
                                 <div class="p-formList__data">
                                   {!! Form::password('password', ['placeholder' => '例）gmp0001']) !!}

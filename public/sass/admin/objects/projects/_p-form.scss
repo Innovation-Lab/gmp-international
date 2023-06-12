@@ -58,11 +58,10 @@
       }
     }
     &__label {
-      // color: var(--color_text_button);
       @extend .c-text__xs !optional;
       display: flex;
       align-items: center;
-
+      
       /* ! ----------
       　Optional 任意
       ---------- */
@@ -70,12 +69,12 @@
         &::after {
           color: var(--color_form_ps);
           font: global.font(700, 10px, 1);
-          content: "任意入力";
+          content: "必須";
           display: inline-flex;
           height: 1rem;
           align-items: center;
           padding: 0.15em 0.4em 0;
-          background-color: var(--color_background_3);
+          background-color: var(--color_alert_background);
           margin: 0 0 0 0.5em;
           border-radius: 3px;
           transform: translateY(-1px);

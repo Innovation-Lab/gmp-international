@@ -4,7 +4,7 @@
       各製品登録数
     </h3>
   </div>
-  <div class="p-dashboard__body" style="height: 560px;">
+  <div class="p-dashboard__body" style="max-height: 530px;">
     <div class="p-dashboard__content">
       <div class="p-dashboard__ranking__sales">
         <ul class="p-dashboard__ranking__list">
