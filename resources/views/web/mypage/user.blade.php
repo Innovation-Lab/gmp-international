@@ -84,7 +84,7 @@
                   </div>
                   <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
                     <div class="c-input c-input--post">
-                      <input id="postcode" placeholder="例）1230000" maxlength="7" class="required" name="zip_code" type="number" value="{{ old('zip_code', data_get($user, 'zip_code')) }}">
+                      <input id="postcode" placeholder="例）1230000" maxlength="7" class="required" name="zip_code" type="tel" value="{{ old('zip_code', data_get($user, 'zip_code')) }}">
                     </div>
                     @error('zip_code')
                       <div class="c-txt c-txt--err">{{ $message }}</div>
