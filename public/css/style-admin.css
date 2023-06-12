@@ -2998,6 +2998,11 @@ textarea {
 .p-list__item {
   display: flex;
 }
+.p-list__color {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 430px;
+}
 .p-list__item {
   display: grid;
   grid-template-columns: 130px 1fr;
@@ -3036,6 +3041,7 @@ textarea {
 }
 .p-list .color {
   padding: 4px 8px;
+  margin: 4px 4px 0 0;
   border: 1px solid #000;
   border-radius: 20px;
   width: -webkit-max-content;

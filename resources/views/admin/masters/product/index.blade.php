@@ -60,7 +60,7 @@
                     <div class="item">ブランド名</div>
                   </th>
                   <th>
-                    <div class="item">カラー登録数</div>
+                    <div class="item">登録カラー数</div>
                   </th>
                 </thead>
                 <tbody>
