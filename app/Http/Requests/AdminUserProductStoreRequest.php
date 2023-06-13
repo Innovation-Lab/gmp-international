@@ -42,8 +42,13 @@ class AdminUserProductStoreRequest extends FormRequest
                 'purchase_date' => 'required',
                 'm_brand_id' => 'required',
                 'm_product_id' => 'required',
-                'product_code' => 'unique:sales_products',
             ];
+
+            if ($this->filled('product_code')) {
+                $rules = [
+                    'product_code' => 'unique:sales_products',
+                ];
+            }
 
         return $rules;
     }
