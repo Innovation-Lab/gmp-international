@@ -62,7 +62,7 @@
                                           <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
                                         @endif
                                       </div>
-                                      <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', 'カラー未設定') }}</div>
+                                      <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', data_get($sales_product ,'other_color_name', 'カラー未設定')) }}</div>
                                     @endif
                                   </div>
                                 </div>
