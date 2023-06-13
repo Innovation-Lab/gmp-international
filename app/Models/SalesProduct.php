@@ -73,8 +73,7 @@ class SalesProduct extends Model
     {
         if (
             data_get($this, 'other_color_name') &&
-            (!data_get($this, 'm_color_id') ||
-            data_get($this, 'm_color_id') == '9999999')
+            !data_get($this, 'm_color_id')
         ) {
             return data_get($this, 'other_color_name');
         }
@@ -89,8 +88,7 @@ class SalesProduct extends Model
     {
         if (
             data_get($this, 'other_shop_name') &&
-            (!data_get($this, 'm_shop_id') ||
-            data_get($this, 'm_shop_id') == '9999999')
+            !data_get($this, 'm_shop_id')
         ) {
             return data_get($this, 'other_shop_name');
         }
