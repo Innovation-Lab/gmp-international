@@ -34,8 +34,8 @@ class StoreAdminAccountRequest extends FormRequest
                 'last_name_kana' => 'max:20|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                 'first_name_kana' => 'max:20|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                 'email' => 'required|string|max:255|unique:admins',
-                'password' => 'required|nullable|max:100',
-                'password_confirmation' => 'required|nullable|same:password|max:100',
+                'password' => 'required|nullable|min:6|max:100',
+                'password_confirmation' => 'required|nullable|same:password|min:6|max:100',
             ];
         } else {
             if ($this->request->get('change-password')) {
@@ -47,7 +47,7 @@ class StoreAdminAccountRequest extends FormRequest
                     'first_name_kana' => 'required|max:40|regex:/^[ァ-ヾ 　〜ー−]+$/u',
                     'email' => 'required|string|max:255',
                     'password' => 'required|nullable|max:100',
-                    'password_confirmation' => 'required|nullable|same:password|max:100',
+                    'password_confirmation' => 'required|nullable|same:password|min:6|max:100',
                 ];
             } else {
                 $rules = [
