@@ -11,11 +11,11 @@
           @foreach($sales_product_ranks as $product)
           <li class="p-dashboard__ranking__list__item">
             <div class="p-dashboard__ranking__list__image">
-              <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="40px" height="40px">
+              <img src="{{ data_get($product, 'mProduct.first_color_url.url', data_get($product, 'mProduct.main_image_url')) }}" width="40px" height="40px">
             </div>
             <div class="p-dashboard__ranking__list__text">
-              <p class="title">{{ data_get($product, 'name', '---') }}</p>
-              <p class="sub">{{ data_get($product, 'name_kana', '---') }}</p>
+              <p class="title">{{ data_get($product, 'mProduct.name', '---') }}</p>
+              <p class="sub">{{ data_get($product, 'mProduct.name_kana', '---') }}</p>
             </div>
             <div class="p-dashboard__ranking__list__data">
               <p class="amount">

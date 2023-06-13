@@ -26,7 +26,7 @@ class HomeController extends Controller
         
         $salesCountsBySelectPer = (clone$salesProductQuery)
             ->select(
-                'm_products.*',
+                'sales_products.*',
                 DB::raw('COUNT(*) AS member_count')
             )
             ->leftJoin('m_products', 'm_products.id', 'sales_products.m_product_id')
