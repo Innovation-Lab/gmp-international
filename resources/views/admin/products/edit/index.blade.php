@@ -32,7 +32,7 @@
                                 <div class="p-formList__label">
                                   購入日
                                 </div>
-                                <div class="p-formList__data" style="display: block;">
+                                <div class="p-formList__data" style="width: 50%; display: block;">
                                   {!! Form::input('date', 'purchase_date', data_get($product, 'purchase_date'), ['placeholder' => '0000/00/00']) !!}
                                   @error('purchase_date')
                                     <p class="error">{{ $message }}</p>

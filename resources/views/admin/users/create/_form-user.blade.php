@@ -108,7 +108,7 @@
           <div class="p-formList__label optional" style="white-space: nowrap;">
             郵便番号<small>（ハイフンなし）</small>
           </div>
-          <div class="p-formList__data" style="width: 143.5px; display:block;">
+          <div class="p-formList__data" style="width: 207px; display:block;">
             {!! Form::number('zip_code', old('zip_code'), ['class' => 'p-postal-code', 'placeholder' => '例）1230000']) !!}
             @error('zip_code')
               <div class="error">{{ $message }}</div>
@@ -121,7 +121,7 @@
           <div class="p-formList__label optional">
             都道府県
           </div>
-          <div class="p-formList__data" style="width: 143.5px; display:block;">
+          <div class="p-formList__data" style="width: 207px; display:block;">
             {!! Form::select('prefecture', $prefectures, old('prefecture'), ['class' => 'p-region', 'placeholder' => '都道府県を選択']) !!}
             @error('prefecture')
               <div class="error">{{ $message }}</div>
