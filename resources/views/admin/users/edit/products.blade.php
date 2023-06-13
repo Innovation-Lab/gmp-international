@@ -91,13 +91,13 @@
                                     @foreach($colors as $k => $v)
                                     <option value="{{ $k }}" {{ old('m_color_id', data_get($sales_product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
-                                    <option value="other" {{ old('m_color_id') == 'other' ? 'selected' : ''  }}>上記以外のカラー</option>
+                                    <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || (empty(data_get($sales_product, 'm_color_id')) && !empty(data_get($sales_product, 'other_color_name')) ) ) selected @endif>上記以外のカラー</option>
                                   </select>
                                 </div>
                               </div>
                             </li>
                             <!-- 上記以外のカラー選択時のフォーム -->
-                            <li class="p-formList__item" style="display:none;">
+                            <li style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__item p-formList__other other_color_name">
                               <div class="p-formList__content p-formList__other open-other-text-input">
                                 <div class="p-formList__label">上記以外のカラー</div>
                                 <div class="p-formList__data">
@@ -126,13 +126,13 @@
                                     @foreach($shops as $k => $v)
                                     <option value="{{ $k }}" {{ old('m_shop_id', data_get($sales_product, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
-                                    <option value="other" @if(old('m_shop_id') == 'other') selected @endif>上記以外の店舗</option>
+                                    <option value="other" @if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other' || (empty(data_get($sales_product, 'm_shop_id')) && !empty(data_get($sales_product, 'other_shop_name')) ) ) selected @endif>上記以外の店舗</option>
                                   </select>
                                 </div>
                               </div>
                             </li>
                             <!-- 上記以外の店舗選択時のフォーム -->
-                            <li class="p-formList__item p-formList__other other_shop_name" style="display:none;">
+                            <li style="@if(old('m_shop_id', data_get($sales_product, 'm_shop_id')) == 'other' || data_get($sales_product, 'other_shop_name')) display:block; @else display:none; @endif" class="p-formList__item p-formList__other other_shop_name">
                               <div class="p-formList__content open-other-text-input">
                                 <div class="p-formList__label">上記以外の店舗</div>
                                 <div class="p-formList__data">
@@ -190,7 +190,7 @@
 </script>
 {{-- フォームの表示切り替え --}}
 <script>
-  $('select[name="m_shop_id"], select[name="m_color_id"]').on('change', function() {
+  $('select').on('keydown keyup keypress change click lord',function(){
     var colorValue = $('select[name="m_color_id"]').val();
     var shopValue = $('select[name="m_shop_id"]').val();
 
