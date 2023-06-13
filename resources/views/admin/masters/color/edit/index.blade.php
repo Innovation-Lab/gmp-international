@@ -46,11 +46,11 @@
                                         <div class="p-formList__colorSet">
                                           <div class="p-formList__colorSet__type">
                                             <div class="radio">
-                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="single" @if( data_get($color, 'type_color_picker') == 'single' ) checked @endif>
+                                              <input type="radio" id="colorSet_type_single" name="colorSet_type" value="single" @if( old('colorSet_type', data_get($color, 'type_color_picker')) == 'single' ) checked @endif>
                                               <label for="colorSet_type_single">1色</label>
-                                              <input type="radio" id="colorSet_type_double" name="colorSet_type" value="double" @if( data_get($color, 'type_color_picker') == 'double' ) checked @endif>
+                                              <input type="radio" id="colorSet_type_double" name="colorSet_type" value="double" @if( old('colorSet_type',data_get($color, 'type_color_picker')) == 'double' ) checked @endif>
                                               <label for="colorSet_type_double">2色</label>
-                                              <input type="radio" id="colorSet_type_mix" name="colorSet_type" value="mix" @if( data_get($color, 'type_color_picker') == 'mix' ) checked @endif>
+                                              <input type="radio" id="colorSet_type_mix" name="colorSet_type" value="mix" @if( old('colorSet_type',data_get($color, 'type_color_picker')) == 'mix' ) checked @endif>
                                               <label for="colorSet_type_mix">パターン</label>
                                             </div>
                                           </div>
@@ -75,6 +75,9 @@
                                                 <input type="text" class="color_code" name="color" placeholder="#FFD3D3" value="{{ old('color', data_get($color, 'color')) }}" @if( data_get($color, 'type_color_picker') != 'single' ) disabled @endif>
                                               </div>
                                             </div>
+                                            @error('color')
+                                              <p class="error" style="margin-top: 2px">{{ $message }}</p>
+                                            @enderror
                                           </div>
                                           <!-- 2色 -->
                                           <div class="p-formList__colorSet__type__item js_prop_double" style="display:none;">
@@ -86,6 +89,9 @@
                                                 <input type="text" class="color_code" name="color" placeholder="#FFD3D3" value="{{ old('color', data_get($color, 'color')) }}" @if( data_get($color, 'type_color_picker') != 'double' ) disabled @endif>
                                               </div>
                                             </div>
+                                            @error('color')
+                                            <p class="error" style="margin-top: 2px">{{ $message }}</p>
+                                            @enderror
                                             <div class="p-inputColor">
                                               <div class="p-inputColor__palet">
                                                 <input type="color" class="color_palet" name="" placeholder="" value="{{ old('second_color', data_get($color, 'second_color')) }}">
@@ -94,6 +100,9 @@
                                                 <input type="text" class="color_code" name="second_color" placeholder="#FFD3D3" value="{{ old('second_color', data_get($color, 'second_color')) }}" @if( data_get($color, 'type_color_picker') != 'double' ) disabled @endif>
                                               </div>
                                             </div>
+                                            @error('second_color')
+                                              <p class="error" style="margin-top: 2px">{{ $message }}</p>
+                                            @enderror
                                           </div>
                                           <!-- パターン -->
                                           <div class="p-formList__colorSet__type__item js_prop_mix" style="display:none;">
@@ -124,6 +133,9 @@
                                                     $('.colorPattern').addClass('clear_fake')
                                                 }
                                             </script>
+                                            @error('image_path')
+                                              <p class="error" style="margin-top: 2px">{{ $message }}</p>
+                                            @enderror
                                           </div>                                 
                                         </div>
                                       </div>
