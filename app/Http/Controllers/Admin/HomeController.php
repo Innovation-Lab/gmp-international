@@ -69,8 +69,8 @@ class HomeController extends Controller
                 $_dateIndex2 = $_dateIndex->addMonthsWithOverflow($i);
                 $_dateIndex3 = $_dateIndex2->year.'-'.sprintf('%02d', $_dateIndex2->month).'-'.sprintf('%02d', $_dateIndex2->day).' '.'00:00:00';
                 $_dateIndex4 = carbon::parse($_dateIndex3);
-                $target_start_time = $_dateIndex4->format('Y-m-01 H:i:s');
-                $target_end_time = $_dateIndex4->format('Y-m-t H:i:s');
+                $target_start_time = $_dateIndex4->format('Y-m-01 00:00:00');
+                $target_end_time = $_dateIndex4->format('Y-m-t 23:59:59');
                 $graph['label'][$i] = sprintf('%02d', $start_at->month);
                 $graph['data'][$i] = (clone$userQuery)
                     ->select(
