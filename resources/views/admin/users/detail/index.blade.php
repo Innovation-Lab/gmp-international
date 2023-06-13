@@ -62,7 +62,7 @@
                                           <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
                                         @endif
                                       </div>
-                                      <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', 'カラー未設定') }}</div>
+                                      <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name', data_get($sales_product ,'other_color_name', '未登録')) }}</div>
                                     @endif
                                   </div>
                                 </div>
@@ -73,7 +73,7 @@
                                     シリアルNo.
                                   </div>
                                   <div class="p-product__data">
-                                    {{ data_get($sales_product, 'product_code', '登録されておりません') }}
+                                    {{ data_get($sales_product, 'product_code', '未登録') }}
                                   </div>
                                 </li>
                                 <li class="p-product__item__body__list auto">
@@ -97,7 +97,7 @@
                                     購入店舗
                                   </div>
                                   <div class="p-product__data">
-                                    {{ data_get($sales_product, 'select_shop_name') }}
+                                    {{ data_get($sales_product, 'select_shop_name', '未登録') }}
                                   </div>
                                 </li>
                                 <li class="p-product__item__body__list large">

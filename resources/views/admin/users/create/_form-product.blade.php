@@ -82,11 +82,11 @@
         </div>
       </li>
       <!-- 上記以外のカラー選択時のフォーム -->
-      <li class="p-formList__item p-formList__other other_color_name" style="display:none;">
+      <li style="@if(old('m_color_id') == 'other') display:block; @else display:none; @endif" class="p-formList__item p-formList__other other_color_name">
         <div class="p-formList__content open-other-text-input">
           <div class="p-formList__label">上記以外のカラー</div>
           <div class="p-formList__data">
-            <input placeholder="例）赤" class="" name="other_color_name" type="text" value="{{ old('other_color_name') }}">
+            <input placeholder="例）赤" class="" name="other_color_name" type="text" value="{{ old('m_color_id') == 'other' ? old('other_color_name') : '' }}">
           </div>
         </div>
       </li>
@@ -120,11 +120,11 @@
         </div>
       </li>
       <!-- 上記以外の店舗選択時のフォーム -->
-      <li class=" p-formList__item p-formList__other other_shop_name open-other-text-input" style="display:none;">
+      <li style="@if(old('m_shop_id') == 'other') display:block; @else display:none; @endif" class="p-formList__item p-formList__other other_shop_name open-other-text-input">
         <div class="p-formList__content">
           <div class="p-formList__label">上記以外の店舗</div>
           <div class="p-formList__data">
-            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="{{ old('other_shop_name') }}">
+            <input placeholder="例）アカチャンホンポ○○店" class="required" name="other_shop_name" type="text" value="{{ old('m_shop_id') == 'other' ? old('other_shop_name') : '' }}">
           </div>
         </div>
       </li>
@@ -147,7 +147,7 @@
 </div>
 {{-- フォームの表示切り替え --}}
 <script>
-  $('select[name="m_shop_id"], select[name="m_color_id"]').on('change', function() {
+  $('select').on('keydown keyup keypress change click lord',function(){
     var colorValue = $('select[name="m_color_id"]').val();
     var shopValue = $('select[name="m_shop_id"]').val();
 
