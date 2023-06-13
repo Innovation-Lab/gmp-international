@@ -104,13 +104,13 @@
               @foreach ($colors as $k => $v)
                 <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach
-              <option value="other">上記以外のカラー</option>
+              <option value="other" @if(old('m_color_id') == 'other') selected @endif>上記以外のカラー</option>
             </select>
           </div>
         </div>
       </li>
       <!-- 上記以外のカラー選択時のフォーム -->
-      <li class="p-formList__item p-formList__other m_color" style="display:none;">
+      <li style="@if(old('m_color_id') == 'other') display:block; @else display:none; @endif" class="p-formList__item p-formList__other m_color">
         <div class="p-formList__content open-other-text-input">
           <div class="p-formList__label">上記以外のカラー</div>
           <div class="p-formList__data">
@@ -139,13 +139,13 @@
               @foreach ($shops as $k => $v)
                 <option value="{{ $k }}" {{ old('m_shop_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach
-              <option value="other">上記以外の店舗</option>
+              <option value="other" @if(old('m_shop_id') == 'other') selected @endif>上記以外の店舗</option>
             </select>
           </div>
         </div>
       </li>
       <!-- 上記以外の店舗選択時のフォーム -->
-      <li class="p-formList__item p-formList__other m_shop" style="display:none;">
+      <li style="@if(old('m_shop_id') == 'other') display:block; @else display:none; @endif" class="p-formList__item p-formList__other m_shop">
         <div class="p-formList__content open-other-text-input">
           <div class="p-formList__label">上記以外の店舗</div>
           <div class="p-formList__data">

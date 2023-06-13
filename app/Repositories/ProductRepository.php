@@ -41,6 +41,13 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function store($product, Request $request)
     {
+        if (data_get($request, 'm_color_id') == 'other') {
+            $request['m_color_id'] = NULL;
+        }
+        if (data_get($request, 'm_shop_id') == 'other') {
+            $request['m_shop_id'] = NULL;
+        }
+
         \DB::beginTransaction();
         try {
             $data = $request->all();
