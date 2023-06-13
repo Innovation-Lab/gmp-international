@@ -208,7 +208,7 @@
                                   管理メモ
                                 </div>
                                 <div class="p-formList__content__data">
-                                  <textarea name="memo" value="{{ old('memo', data_get($user, 'memo')) }}" placeholder="修正対応や報告事項を記載してください。" class="c-scroll"></textarea>
+                                  <textarea name="memo" placeholder="修正対応や報告事項を記載してください。" class="c-scroll">{{ old('memo', data_get($user, 'memo')) }}</textarea>
                                 </div>
                               </div>
                             </li>
