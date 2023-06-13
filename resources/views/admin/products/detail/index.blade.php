@@ -21,7 +21,7 @@
                     <div class="p-list--product">
                       <div class="p-list__left">
                         <div class="p-list__img" style="width: 200px;">
-                          <img class="" src="{{ asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" alt="">
+                          <img class="" src="{{ data_get($product, 'mProduct.first_color_url.url', data_get($product, 'mProduct.main_image_url')) }}" alt="">
                         </div>
                         {{-- <div class="p-list__status p-list__status--registered">
                           <span class="status">登録済み</span>
@@ -39,11 +39,10 @@
                           @foreach([
                             'ブランド名' => data_get($product, 'mProduct.mBrand.name'),
                             '製品名' => data_get($product, 'mProduct.name'),
-                            'カラー' => data_get($product, 'mColor.alphabet_name') ? data_get($product, 'mColor.alphabet_name') : data_get($product, 'other_color_name', '登録されておりません'),
+                            'カラー' => data_get($product, 'mColor.alphabet_name') ? data_get($product, 'mColor.alphabet_name') : data_get($product, 'other_color_name', '未登録'),
                             '購入日' => formatYmdSlash(data_get($product, 'purchase_date')),
-                            '購入店舗' => data_get($product, 'mShop.name') ? data_get($product, 'mShop.name') : data_get($product, 'other_shop_name', '登録されておりません'),
-                            'シリアルNo.' => data_get($product, 'product_code', '登録されておりません'),
-                            {{--'登録番号' => 'AB01-097M-HIUA',--}}
+                            '購入店舗' => data_get($product, 'mShop.name') ? data_get($product, 'mShop.name') : data_get($product, 'other_shop_name', '未登録'),
+                            'シリアルNo.' => data_get($product, 'product_code', '未登録'),
                             '管理メモ' => data_get($product, 'memo'),
                             ] as $key => $val)
                           <li class="p-list__item">

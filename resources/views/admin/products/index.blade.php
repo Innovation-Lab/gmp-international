@@ -83,17 +83,28 @@
                         {{ data_get($product, 'mProduct.name') }}
                       </td>
                       <td class="item">
-                        <span>{{ data_get($product, 'mColor.name') }}</span>
-                        {{ data_get($product, 'mColor.alphabet_name') }}
+                        @if(data_get($product, 'mColor.name'))
+                          <span>{{ data_get($product, 'mColor.name') }}</span>
+                          {{ data_get($product, 'mColor.alphabet_name') }}
+                        @else
+                          <div class="noProducts">未登録</div>
+                        @endif
                       </td>
                       <td class="item">
-                        {{ data_get($product, 'product_code') }}
+                        @if(data_get($product, 'product_code'))
+                          {{ data_get($product, 'product_code') }}
+                        @else
+                          <div class="noProducts">未登録</div>
+                        @endif
                       </td>
                       <td class="item">
-                        {{ data_get($product, 'mShop.name') }}
+                        @if(data_get($product, 'mShop.name'))
+                          {{ data_get($product, 'mShop.name') }}
+                        @else
+                          <div class="noProducts">未登録</div>
+                        @endif
                       </td>
                       <td class="item">
-                        {{--<a data-href="{{ route('admin.users.detail') }}" class="user-link">山田 太郎</a>--}}
                         {{ data_get($product, 'user.full_name') }}
                       </td>
                       {{--<td class="item">

@@ -39,7 +39,7 @@
                         @foreach($sales_products as $sales_product)
                           <li class="p-product__item">
                             <div class="p-product__item__left">
-                              <img src="{{asset('img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')}}" width="64px" height="64px">
+                              <img src="{{ data_get($sales_product, 'mProduct.first_color_url.url', data_get($sales_product, 'mProduct.main_image_url')) }}" width="64px" height="64px">
                             </div>
                             <div class="p-product__item__right">
                               <div class="p-product__item__head">

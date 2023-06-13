@@ -80,14 +80,14 @@
                     </td>
                     <td class="item">
                       @if(count($user->salesProducts) > 0)
-                        <span class="products" style="background-image:url('../img/web/product/airbuggy_coco_premire_newflame_blossom_front.png')">
+                        <span class="products" style="background-image:url({{ data_get($user,'first_product.first_color_url.url', data_get($user, 'first_product.main_image_url')) }})">
                           {{ data_get($user,'first_product') ? data_get($user,'first_product.mBrand.name') : '' }}<br>
                           {{ data_get($user,'first_product') ? data_get($user,'first_product.name') : '' }}
                           @if($user->other_product_count > 0)
                           <span class="number">{{ data_get($user,'other_product_count') > 1 ? '+' . data_get($user,'other_product_count') : '' }}</span>
                           @endif
                       @else
-                        <div class="noProducts">登録されている製品はありません</div>
+                        <div class="noProducts">未登録</div>
                       @endif
                       </span>
                     </td>
