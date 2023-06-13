@@ -135,12 +135,18 @@ class MasterRepository implements MasterRepositoryInterface
                 'second_color' => NULL,
                 'image_path' => NULL,
             ],
-            default => [
+            'double' => [
                 'name' => $request->input('name'),
                 'alphabet_name' => $request->input('alphabet_name'),
                 'color' => $request->input('color'),
                 'second_color' => $request->input('second_color'),
                 'image_path' => NULL,
+            ],
+            default => [
+                'name' => $request->input('name'),
+                'alphabet_name' => $request->input('alphabet_name'),
+                'color' => $request->input('color'),
+                'second_color' => $request->input('second_color'),
             ],
         };
     }
