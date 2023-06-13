@@ -74,7 +74,7 @@
                                   <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
                                   <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
                                     @if ($loop->index == 0)
-                                      <div class="p-formList__label optional">
+                                      <div class="p-formList__label">
                                         カラー（メイン画像）
                                       </div>
                                     @else
