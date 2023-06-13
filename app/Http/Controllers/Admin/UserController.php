@@ -20,6 +20,7 @@ use App\Models\MColor;
 use App\Models\MShop;
 use App\Models\SalesProduct;
 use App\Repositories\UserRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 use Exception;
 use Illuminate\Support\Carbon;
 
@@ -83,6 +84,7 @@ class UserController extends Controller
     public function store(AdminUserProductStoreRequest $request)
     {
         $params = $request->all();
+        $params['password'] = Hash::make($request->input('password'));
 
         \DB::beginTransaction();
         try {

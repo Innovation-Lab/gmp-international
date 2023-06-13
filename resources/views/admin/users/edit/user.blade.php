@@ -34,7 +34,7 @@
                                   <div class="p-formList__label optional optional">
                                     姓
                                   </div>
-                                  <div class="p-formList__data">
+                                  <div class="p-formList__data" style="display:block;">
                                     {!! Form::text('last_name', old('last_name', data_get($user, 'last_name')), ['placeholder' => '例）山田']) !!}
                                     @error('last_name')
                                     <div class="error">{{ $message }}</div>
@@ -45,7 +45,7 @@
                                   <div class="p-formList__label optional">
                                     名
                                   </div>
-                                  <div class="p-formList__data">
+                                  <div class="p-formList__data" style="display:block;">
                                     {!! Form::text('first_name', old('first_name', data_get($user, 'first_name')), ['placeholder' => '例）太郎']) !!}
                                     @error('first_name')
                                       <div class="error">{{ $message }}</p>
@@ -60,7 +60,7 @@
                                   <div class="p-formList__label optional">
                                     セイ
                                   </div>
-                                  <div class="p-formList__data">
+                                  <div class="p-formList__data" style="display:block;">
                                     {!! Form::text('last_name_kana', old('last_name_kana', data_get($user, 'last_name_kana')), ['placeholder' => '例）ヤマダ']) !!}
                                     @error('last_name_kana')
                                       <div class="error">{{ $message }}</p>
@@ -71,7 +71,7 @@
                                   <div class="p-formList__label optional">
                                     メイ
                                   </div>
-                                  <div class="p-formList__data">
+                                  <div class="p-formList__data" style="display:block;">
                                     {!! Form::text('first_name_kana', old('first_name_kana', data_get($user, 'first_name_kana')), ['placeholder' => '例）タロウ']) !!}
                                     @error('first_name_kana')
                                       <div class="error">{{ $message }}</p>
@@ -85,7 +85,7 @@
                                 <div class="p-formList__label optional">
                                   メールアドレス
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display:block;">
                                   {!! Form::email('email', data_get($user, 'email', old('email')), ['placeholder' => '例）sample@example.com']) !!}
                                   @error('email')
                                     <div class="error">{{ $message }}</p>
@@ -99,7 +99,7 @@
                                 <div class="p-formList__label optional">
                                   電話番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display:block;">
                                   {!! Form::tel('tel', old('tel', data_get($user, 'tel')), ['placeholder' => '例）09012345678']) !!}
                                   @error('tel')
                                     <div class="error">{{ $message }}</p>
@@ -131,7 +131,7 @@
                                 <div class="p-formList__label optional" style="white-space: nowrap">
                                   郵便番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="p-formList__data" style="width: 143.5px;">
+                                <div class="p-formList__data" style="width: 143.5px; display:block;">
                                   {!! Form::number('zip_code', old('zip_code', data_get($user, 'zip_code')), ['placeholder' => '例）1230000']) !!}
                                   @error('zip_code')
                                     <div class="error">{{ $message }}</p>
@@ -144,7 +144,7 @@
                                 <div class="p-formList__label optional">
                                   都道府県
                                 </div>
-                                <div class="p-formList__data" style="width: 143.5px;">
+                                <div class="p-formList__data" style="width: 143.5px; display:block;">
                                   {!! Form::select('prefecture', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
                                   @error('prefecture')
                                     <div class="error">{{ $message }}</p>
@@ -157,7 +157,7 @@
                                 <div class="p-formList__label optional">
                                   市区町村
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display:block;">
                                   {!! Form::text('address_city', old('address_city', data_get($user, 'address_city')), ['placeholder' => '例）渋谷区']) !!}
                                   @error('address_city')
                                     <div class="error">{{ $message }}</p>
@@ -170,7 +170,7 @@
                                 <div class="p-formList__label optional">
                                   番地
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display:block;">
                                   {!! Form::text('address_block', old('address_block', data_get($user, 'address_block')), ['placeholder' => '例）渋谷1-2-3']) !!}
                                   @error('address_block')
                                     <div class="error">{{ $message }}</p>
@@ -193,7 +193,7 @@
                                 <div class="p-formList__label optional">
                                   パスワード<small>（半角英数字6文字~）</small>
                                 </div>
-                                <div class="p-formList__data">
+                                <div class="p-formList__data" style="display:block;">
                                   {!! Form::password('password', ['placeholder' => '例）gmp0001']) !!}
                                 </div>
                               </div>
