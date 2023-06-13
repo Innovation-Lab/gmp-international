@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', 'ユーザー管理')
+@section('title', 'ユーザー新規追加')
 @section('content')
 <div class="p-create">
   <div class="l-create">
@@ -8,7 +8,7 @@
       @include('admin.users.create._head')
     </div>
     <div class="l-create__body">
-      <div class="wrapper u-max--800">
+      <div class="wrapper u-max--850">
         <div class="container">
           <div class="l-create__body__inner single">
             {{-- メイン --}}

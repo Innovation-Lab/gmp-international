@@ -8,7 +8,7 @@
       @include('admin.users.edit._head', $user)
     </div>
     <div class="l-edit__body">
-      <div class="wrapper u-max--800">
+      <div class="wrapper u-max--850">
         <div class="container">
           <div class="l-edit__body__inner single">
             {{-- メイン --}}
@@ -131,7 +131,7 @@
                                 <div class="p-formList__label optional" style="white-space: nowrap">
                                   郵便番号<small>（ハイフンなし）</small>
                                 </div>
-                                <div class="p-formList__data" style="width: 143.5px; display:block;">
+                                <div class="p-formList__data" style="width: 207px; display:block;">
                                   {!! Form::number('zip_code', old('zip_code', data_get($user, 'zip_code')), ['placeholder' => '例）1230000']) !!}
                                   @error('zip_code')
                                     <div class="error">{{ $message }}</p>
@@ -144,7 +144,7 @@
                                 <div class="p-formList__label optional">
                                   都道府県
                                 </div>
-                                <div class="p-formList__data" style="width: 143.5px; display:block;">
+                                <div class="p-formList__data" style="width: 207px; display:block;">
                                   {!! Form::select('prefecture', $prefectures, old('prefecture', data_get($user, 'prefecture')), ['placeholder' => '都道府県を選択']) !!}
                                   @error('prefecture')
                                     <div class="error">{{ $message }}</p>

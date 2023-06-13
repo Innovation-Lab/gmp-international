@@ -21,7 +21,7 @@
                     {!! Form::open(['method' => 'POST', 'route' => ['admin.users.update-products', $sales_product], 'class' => 'p-form', 'id' => 'salesProductSubmitForm']) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
-                        登録製品情報
+                        登録製品情報の編集
                         </h3>
                       </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
@@ -32,7 +32,7 @@
                                 <div class="p-formList__label optional">
                                   購入日
                                 </div>
-                                <div class="p-formList__data" style="display: block;">
+                                <div class="p-formList__data" style="width: 50%; display: block;">
                                   {!! Form::input('date', 'purchase_date', data_get($sales_product, 'purchase_date'), ['placeholder' => '0000/00/00']) !!}
                                   @error('purchase_date')
                                     <p class="error">{{ $message }}</p>

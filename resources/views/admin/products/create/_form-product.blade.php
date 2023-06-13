@@ -17,7 +17,7 @@
           <div class="p-formList__label optional">
             購入日
           </div>
-          <div class="p-formList__data" style="display: block;">
+          <div class="p-formList__data" style="width: 50%; display: block;">
             {!! Form::date('purchase_date', null, ['placeholder' => '0000/00/00']) !!}
             @error('purchase_date')
               <p class="error">{{ $message }}</p>
