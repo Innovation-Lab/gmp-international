@@ -8,6 +8,7 @@ use App\Http\Requests\StoreColorRequest;
 use App\Http\Requests\StoreMProductRequest;
 use App\Http\Requests\StoreShopRequest;
 use App\Models\Admin;
+use App\Models\ColorUrl;
 use App\Models\MBrand;
 use App\Models\MColor;
 use App\Models\MProduct;
@@ -362,6 +363,7 @@ class MasterController extends Controller
                 return redirect()->back()
                     ->with(['alert' => 'ユーザー登録済み製品が紐づいているため削除できません。']);
             }
+            ColorUrl::where('m_product_id', $product->id)->delete();
             $product->delete();
         } catch (\Exception $e) {
             DB::rollback();
