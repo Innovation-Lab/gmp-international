@@ -57,7 +57,7 @@
                                       <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name') }}</div>
                                     @else
                                       {{-- 2色の場合に追加 --}}
-                                      <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff')}};">
+                                      <div class="c-colorBall c-colorBall--sm" style="background: {{ data_get($sales_product, 'mColor.color', '#fff')}};">
                                         @if (data_get($sales_product, 'mColor.second_color'))
                                           <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
                                         @endif
