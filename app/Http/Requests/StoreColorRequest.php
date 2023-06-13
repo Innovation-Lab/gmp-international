@@ -35,12 +35,7 @@ class StoreColorRequest extends FormRequest
                 'name' => 'required|max:100',
                 'alphabet_name' => 'required|max:100'
             ],
-            'mix' => [
-                'image_path' => 'required',
-                'name' => 'required|max:100',
-                'alphabet_name' => 'required|max:100'
-            ],
-            'default' => [
+            default => [
                 'name' => 'required|max:100',
                 'alphabet_name' => 'required|max:100'
             ]
