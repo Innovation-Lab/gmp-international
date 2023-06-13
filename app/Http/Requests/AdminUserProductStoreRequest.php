@@ -69,6 +69,7 @@ class AdminUserProductStoreRequest extends FormRequest
             'm_brand_id' => 'ブランド名',
             'm_product_id' => '製品名',
             'product_code' => 'シリアルナンバー',
+            'password' => 'パスワード',
         ];
     }
 
