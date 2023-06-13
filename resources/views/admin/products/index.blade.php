@@ -105,7 +105,11 @@
                         @endif
                       </td>
                       <td class="item">
-                        {{ data_get($product, 'user.full_name') }}
+                        @if(data_get($product, 'user.full_name'))
+                          {{ data_get($product, 'user.full_name') }}
+                        @else
+                          <div class="noProducts">退会ユーザー</div>
+                        @endif
                       </td>
                       {{--<td class="item">
                         <div>
