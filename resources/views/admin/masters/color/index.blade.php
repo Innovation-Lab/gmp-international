@@ -92,8 +92,12 @@
                       {{ data_get($color, 'alphabet_name') }}
                     </td>
                     <td class="item">
-                      {{ data_get($color, 'color', '#fff') }} {{ data_get($color, 'second_color') ? '/ '.data_get($color, 'second_color') : '' }}
-                    </td>
+                      @if (data_get($color, 'image_path'))
+                      <div class="noProducts">なし</div>
+                      @else
+                        {{ data_get($color, 'color', '#fff') }} {{ data_get($color, 'second_color') ? '/ '.data_get($color, 'second_color') : '' }}
+                      @endif
+                      </td>
                     <td class="item"></td>
                     <td class="item">
                       <div class="p-btnWrap">
