@@ -101,14 +101,15 @@
                                     @foreach ($colors as $k => $v)
                                       <option value="{{ $k }}" {{ old('m_color_id', data_get($product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
-                                    <option value="other" @if(old('m_color_id') == 'other') selected @endif>上記以外のカラー</option>
+                                      {{-- 上記以外のカラーを選択--}}
+                                    <option value="other" {{ old('m_color_id') == 'other' || (old('m_color_id', data_get($product, 'm_color_id')) == NULL && old('other_color_name', data_get($product, 'other_color_name'))) ? 'selected' : '' }}>上記以外のカラー</option>
                                   </select>
                                 </div>
                               </div>
                             </li>
                             <!-- 上記以外のカラー選択時のフォーム -->
-                            <li class="p-formList__item p-formList__other other_color_name" style="display:;">
-                              <div class="p-formList__content open-other-text-input">
+                            <li style="@if(old('m_color_id') == 'other' || (old('m_color_id', data_get($product, 'm_color_id')) == NULL && data_get($product, 'other_color_name'))) display:block; @else display:none; @endif" class="p-formList__item p-formList__other other_color_name">
+                              <div class="p-formList__content p-formList__other open-other-text-input">
                                 <div class="p-formList__label">上記以外のカラー</div>
                                 <div class="p-formList__data">
                                   <input placeholder="例）赤" class="" name="other_color_name" type="text" value="{{ old('other_color_name', data_get($product, 'other_color_name')) }}">
@@ -136,7 +137,7 @@
                                     @foreach ($shops as $k => $v)
                                       <option value="{{ $k }}" {{ old('m_shop_id', data_get($product, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                                     @endforeach
-                                    <option value="other">上記以外の店舗</option>
+                                    <option value="other" {{ old('m_shop_id') == 'other' || (old('m_shop_id', data_get($product, 'm_shop_id')) == NULL && old('other_shop_name', data_get($product, 'other_shop_name'))) ? 'selected' : '' }}>上記以外の店舗</option>
                                   </select>
                                   @error('m_shop_id')
                                     <p class="error">{{ $message }}</p>
@@ -145,7 +146,7 @@
                               </div>
                             </li>
                             <!-- 上記以外の店舗選択時のフォーム -->
-                            <li class="p-formList__item p-formList__other other_shop_name" style="display:;">
+                            <li style="@if(old('m_shop_id') == 'other' || (old('m_shop_id', data_get($product, 'm_shop_id')) == NULL && data_get($product, 'other_shop_name'))) display:block; @else display:none; @endif" class="p-formList__item p-formList__other other_shop_name">
                               <div class="p-formList__content open-other-text-input">
                                 <div class="p-formList__label">上記以外の店舗</div>
                                 <div class="p-formList__data">
@@ -215,11 +216,8 @@
   //   table.css('grid-template-columns','repeat(' + thLength + ', minmax(max-content, 1fr))')
   // })();
 </script>
-@endsection
-{{-- フォームの表示切り替え --}}
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <script>
-  $('select[name="m_shop_id"], select[name="m_color_id"]').on('change', function() {
+  $('select[name="m_color_id"], select[name="m_shop_id"]').on('change',function(){
     var colorValue = $('select[name="m_color_id"]').val();
     var shopValue = $('select[name="m_shop_id"]').val();
 
@@ -230,9 +228,10 @@
     }
 
     if (shopValue == 'other') {
-      $('.p-formList__other.other_shop_name').css('display', 'grid');
+        $('.p-formList__other.other_shop_name').css('display', 'grid');
     } else {
-      $('.p-formList__other.other_shop_name').hide();
+        $('.p-formList__other.other_shop_name').hide();
     }
   });
 </script>
+@endsection
