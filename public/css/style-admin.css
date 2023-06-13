@@ -3566,9 +3566,9 @@ textarea {
 }
 .p-table tbody td .products {
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 32px;
   background-position: left;
-  padding-left: 36px;
+  padding-left: 40px;
   color: var(--color_text_1);
 }
 .p-table tbody td .number {
