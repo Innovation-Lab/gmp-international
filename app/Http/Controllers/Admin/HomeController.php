@@ -63,14 +63,14 @@ class HomeController extends Controller
         $graph = [];
         
         if($request->get('period') == 'year') {
-            $stop = $end_at->diffInMonths($start_at) - 1;
+            $stop = $end_at->diffInMonths($start_at);
             for ($i=0; $stop >= $i; $i++) {
                 $_dateIndex = Carbon::today()->subMonthsWithOverflow($period_key);
                 $_dateIndex2 = $_dateIndex->addMonthsWithOverflow($i);
                 $_dateIndex3 = $_dateIndex2->year.'-'.sprintf('%02d', $_dateIndex2->month).'-'.sprintf('%02d', $_dateIndex2->day).' '.'00:00:00';
                 $_dateIndex4 = carbon::parse($_dateIndex3);
-                $target_start_time = $_dateIndex4->format('Y-m-d H:i:s');
-                $target_end_time = $_dateIndex4->addMonthsWithOverflow(1)->subSecond(1)->format('Y-m-d H:i:s');
+                $target_start_time = $_dateIndex4->format('Y-m-01 H:i:s');
+                $target_end_time = $_dateIndex4->addMonthsWithOverflow(1)->subSecond(1)->format('Y-m-t H:i:s');
 
                 $graph['label'][$i] = sprintf('%02d', $start_at->month);
                 $graph['data'][$i] = (clone$userQuery)
