@@ -70,38 +70,43 @@
                               </div>
                             </li>
                             <li class="p-formList__item">
-                              @forelse(data_get($product, 'color_ball_with_name') as $key => $color)
-                                <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
-                                <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
-                                  @if ($loop->index == 0)
-                                    <div class="p-formList__label">
-                                      カラー（メイン画像）
+                              @if (data_get($product, 'id'))
+                                @foreach(data_get($product, 'color_ball_with_name') as $key => $color)
+                                  <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
+                                  <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
+                                    @if ($loop->index == 0)
+                                      <div class="p-formList__label">
+                                        カラー（メイン画像）
+                                      </div>
+                                    @else
+                                      <div style="margin-top: 30px;"></div>
+                                    @endif
+                                    <div class="p-formList__data  u-max--360">
+                                      <select name="color[edit][{{ data_get($color, 'id') }}][m_color_id]" class="select2">
+                                        <option value="" hidden>選択してください</option>
+                                        @foreach($colors as $k => $v)
+                                          <option value="{{ $k }}" @if(old('m_color_id', data_get($color, 'id')) == $k ) selected @endif>{{ $v }}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
-                                  @else
-                                    <div style="margin-top: 30px;"></div>
-                                  @endif
-                                  <div class="p-formList__data  u-max--360">
-                                    <select name="color[edit][{{ data_get($color, 'id') }}][m_color_id]" class="select2">
-                                      <option value="" hidden>選択してください</option>
-                                      @foreach($colors as $k => $v)
-                                        <option value="{{ $k }}" @if(old('m_color_id', data_get($color, 'id')) == $k ) selected @endif>{{ $v }}</option>
-                                      @endforeach
-                                    </select>
+                                    <div class="p-formList__data  u-max--360">
+                                      <input type="hidden" name="color[edit][{{ data_get($color, 'id') }}][id]" value="{{ data_get($product->getColorUrl(data_get($color, 'id')), 'id') }}">
+                                      <input type="text" name="color[edit][{{ data_get($color, 'id') }}][url]" placeholder="https://www.sample.page.com/airbuggy.png" value="{{ data_get($product->getColorUrl(data_get($color, 'id')), 'url')  }}">
+                                    </div>
+                                    @if ($loop->index != 0)
+                                    <div class="p-formList__btn" style="margin-left: auto;">
+                                      <a class="c-textButton__icon c-textButton--gray delete" onclick="deleteExistingColorForm({{ $loop->index + 1 }}, {{ data_get($product, 'id') }}, {{  data_get($color, 'id') }})">
+                                        削除
+                                      </a>
+                                    </div>
+                                    @endif
                                   </div>
-                                  <div class="p-formList__data  u-max--360">
-                                    <input type="hidden" name="color[edit][{{ data_get($color, 'id') }}][id]" value="{{ data_get($product->getColorUrl(data_get($color, 'id')), 'id') }}">
-                                    <input type="text" name="color[edit][{{ data_get($color, 'id') }}][url]" placeholder="https://www.sample.page.com/airbuggy.png" value="{{ data_get($product->getColorUrl(data_get($color, 'id')), 'url')  }}">
-                                  </div>
-                                  @if ($loop->index != 0)
-                                  <div class="p-formList__btn" style="margin-left: auto;">
-                                    <a class="c-textButton__icon c-textButton--gray delete" onclick="deleteExistingColorForm({{ $loop->index + 1 }}, {{ data_get($product, 'id') }}, {{  data_get($color, 'id') }})">
-                                      削除
-                                    </a>
-                                  </div>
-                                  @endif
-                                </div>
-                              @empty
+                                @endforeach
+                              @else
                                 <div class="p-formList__content add_color" id="js_delete_1">
+                                  <div class="p-formList__label">
+                                    カラー（メイン画像）
+                                  </div>
                                   <div class="p-formList__data  u-max--360">
                                     <select name="color[add][1][m_color_id]" class="select2">
                                       <option value="" hidden>選択してください</option>
@@ -114,7 +119,7 @@
                                     <input type="text" name="color[add][1][url]" placeholder="https://www.sample.page.com/airbuggy.png" value="">
                                   </div>
                                 </div>
-                              @endforelse
+                              @endif
 
                                 {{-- ここに追加していく --}}
 

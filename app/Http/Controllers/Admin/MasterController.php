@@ -142,10 +142,23 @@ class MasterController extends Controller
     
     public function productCreate(Request $request): View|Factory|Application
     {
+        $fix_product = Session::get('product', []);
+ 
+        if (count($fix_product) > 0) {
+            Session::forget('product');
+            
+            return view('admin.masters.product.edit._fix', [
+                'product' => new MProduct(),
+                'fix_product' => $fix_product,
+                'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+                'colors' => MColor::withTrashed()->pluck('alphabet_name', 'id')->toArray(),
+            ]);
+        }
+        
         return view('admin.masters.product.edit.index', [
             'product' => new MProduct(),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'colors' => MColor::withTrashed()->pluck('alphabet_name', 'id')->toArray(),
         ]);
     }
     
@@ -165,6 +178,7 @@ class MasterController extends Controller
         }
         DB::commit();
         
+        Session::forget('product');
         return redirect()->route('admin.masters.product')
             ->with(['success' => '登録しました。']);
     }
