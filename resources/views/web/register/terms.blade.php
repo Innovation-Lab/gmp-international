@@ -140,7 +140,7 @@
                 </li>
                 <li class="p-terms__foot__list__item">
                   <p class="c-txt--gr">所在地</p>
-                  <p class="c-description">151-0063　東京都渋谷区富ヶ谷一丁目18-5</p>
+                  <p class="c-description">〒151-0063　東京都渋谷区富ヶ谷一丁目18-5</p>
                 </li>
                 <li class="p-terms__foot__list__item">
                   <p class="c-txt--gr">お問い合わせ先</p>
