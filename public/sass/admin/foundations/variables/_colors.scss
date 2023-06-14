@@ -37,6 +37,7 @@
   --color_text_1: hsl(var(--h), var(--s-text), var(--l-text));
   --color_text_2: hsl(var(--h), var(--s-text), calc(var(--l-text) + 24%));
   --color_text_3: hsl(var(--h), var(--s-text), calc(var(--l-text) + 40%));
+  --color_text_4: hsl(var(--h), var(--s-text), calc(var(--l-text) + 70%));
   --color_text_button: hsl(var(--h), var(--s-text), calc(var(--l-text) + 32%));
 
 

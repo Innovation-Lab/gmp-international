@@ -31,7 +31,7 @@ label {
 select {
   padding-right: 1.5rem;
   background-image: url(../img/admin/form/select.png);
-  // background-size: 1.5rem 1.5rem;
+  background-size: 8px auto;
   background-position: right 8px center;
   background-repeat: no-repeat;
 }
@@ -255,7 +255,7 @@ input[type="file"] + label {
       background: #1F266F;
     }
     &:after{
-      content: 'パターンを選択';
+      content: '画像を選択';
       opacity: 1;
       white-space: nowrap;
     }
@@ -295,9 +295,9 @@ input[type="file"] + label {
   }
   //カラーパターン
   &.colorPattern{
-    // width: 56px;
-    height: 60px;
-    width: 130px;
+    height: 100px;
+    width: 100px;
+     border-radius: 50%;
   }
 }
 

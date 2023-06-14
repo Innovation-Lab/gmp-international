@@ -22,6 +22,8 @@
                       <div class="p-list__left">
                         <div class="p-list__img" style="width: 200px;">
                           <img class="" src="{{ data_get($product, 'mProduct.first_color_url.url', data_get($product, 'mProduct.main_image_url')) }}" alt="">
+                          {{--登録製品情報未登録写真--}}
+                          <img class="" src="http://localhost:8100/img/admin/noImage/product-detail.png" alt="">
                         </div>
                         {{-- <div class="p-list__status p-list__status--registered">
                           <span class="status">登録済み</span>

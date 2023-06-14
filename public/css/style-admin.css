@@ -112,6 +112,7 @@ img {
   --color_text_1: hsl(var(--h), var(--s-text), var(--l-text));
   --color_text_2: hsl(var(--h), var(--s-text), calc(var(--l-text) + 24%));
   --color_text_3: hsl(var(--h), var(--s-text), calc(var(--l-text) + 40%));
+  --color_text_4: hsl(var(--h), var(--s-text), calc(var(--l-text) + 70%));
   --color_text_button: hsl(var(--h), var(--s-text), calc(var(--l-text) + 32%));
   --color_border_0: hsl(var(--h), 16%, 94%);
   --color_border_1: hsl(var(--h), 16%, 88%);
@@ -666,6 +667,7 @@ label {
 select {
   padding-right: 1.5rem;
   background-image: url(../img/admin/form/select.png);
+  background-size: 8px auto;
   background-position: right 8px center;
   background-repeat: no-repeat;
 }
@@ -876,7 +878,7 @@ input[type=file] + label.colorPattern:before {
   background: #1F266F;
 }
 input[type=file] + label.colorPattern:after {
-  content: "パターンを選択";
+  content: "画像を選択";
   opacity: 1;
   white-space: nowrap;
 }
@@ -912,8 +914,9 @@ input[type=file] + label.icon--edit::after {
   content: "変更する";
 }
 input[type=file] + label.colorPattern {
-  height: 60px;
-  width: 130px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 /* ! ----------
@@ -1284,6 +1287,9 @@ textarea {
   /* ! ----------
   　Foot フット
   ---------- */
+  /* ! ----------
+  　Full フル
+  ---------- */
 }
 .l-detail__head {
   grid-area: head;
@@ -1330,6 +1336,10 @@ textarea {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+}
+.l-detail__full--detail {
+  display: grid;
+  gap: 1.5rem;
 }
 
 /* ! ----------
@@ -2013,23 +2023,13 @@ textarea {
   align-items: center;
 }
 .p-dashboard__ranking__list__image {
-  border-radius: 100%;
   overflow: hidden;
   flex: 0 0 auto;
   margin: 0 8px 0 0;
-  border: solid 1px #ccc;
   width: 2rem;
   height: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.25rem;
-}
-@media screen and (min-width: 1200px) {
-  .p-dashboard__ranking__list__image {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
 }
 .p-dashboard__ranking__list__image img {
   width: 100%;
@@ -2105,6 +2105,14 @@ textarea {
 }
 .p-index__head__action {
   margin: 0 0 0 auto;
+}
+.p-index__head__action .p-form .chart {
+  color: var(--gray-2);
+  font-size: 13px;
+  font-weight: 500;
+  height: 28px;
+  padding: 0 24px 0 6px;
+  background-size: 8px auto;
 }
 .p-index__body {
   flex: auto;
@@ -2992,16 +3000,41 @@ textarea {
   　Label ラベル
   ---------- */
 }
+.p-list--detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
+}
+@media screen and (min-width: 1400px) {
+  .p-list--detail {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
 .p-list--2 {
   grid-template-columns: 1fr 1fr;
 }
 .p-list__item {
   display: flex;
 }
-.p-list__color {
+.p-list__color .color {
   display: flex;
-  flex-wrap: wrap;
-  max-width: 430px;
+  align-items: center;
+  justify-content: center;
+}
+.p-list__color .color .ball {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #E0B8AC;
+  margin: 0 4px 0 0;
+  box-shadow: 0 0 1px rgb(0, 0, 0);
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 .p-list__item {
   display: grid;
@@ -3011,6 +3044,37 @@ textarea {
   padding-top: 12px;
   border-top: 1px solid var(--p-list__border);
   align-items: baseline;
+}
+.p-list__item--detail {
+  border: 0;
+  padding: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.p-list__item--detail .p-list__color .color {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-list__item--detail .p-list__color .color .ball2 {
+  background: #a84343;
+  position: absolute;
+  top: 2px;
+  left: -18px;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #E0B8AC;
+  margin: 0 4px 0 0;
+  box-shadow: 0 0 1px rgb(0, 0, 0);
+  display: inline-block;
+}
+.p-list__item--detail .list {
+  padding-left: 24px;
 }
 .p-list__content {
   display: grid;
@@ -3039,31 +3103,17 @@ textarea {
 .p-list__data span {
   font-size: 12px;
 }
-.p-list .color {
-  padding: 4px 8px;
-  margin: 4px 4px 0 0;
-  border: 1px solid #000;
-  border-radius: 20px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+.p-list__data .color {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-.p-list .ball {
-  width: 14px;
-  height: 14px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #E0B8AC;
-  margin: 0 4px 0 0;
-  box-shadow: 0 0 1px rgb(0, 0, 0);
-  display: inline-block;
-  overflow: hidden;
+.p-list .color {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 140px;
   position: relative;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
 }
 .p-list__memo__area {
   max-height: 108px;
@@ -3080,12 +3130,19 @@ textarea {
 .p-list__left {
   width: 200px;
 }
+.p-list__left--detail {
+  display: grid;
+  gap: 1rem;
+}
 .p-list__img {
   border: 1px solid #8c8c8c;
   padding: 40px;
 }
 .p-list__img--store {
   padding: 0;
+}
+.p-list__img--detail {
+  width: 100px;
 }
 .p-list__status {
   padding: 16px;
@@ -3145,7 +3202,7 @@ textarea {
   gap: 0.125rem;
 }
 .p-product__label {
-  color: var(--color_text_button);
+  color: var(--color_text_3);
   display: flex;
   justify-content: space-between;
   padding: 1px 0 0;
@@ -3222,7 +3279,7 @@ textarea {
 }
 .p-product--list .p-product__item__ttl .item:last-child {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
 }
 .p-product--list .p-product__item__other {
   display: flex;
@@ -3243,7 +3300,7 @@ textarea {
 }
 .p-product--list .p-product__data {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 /* ! ==================================================
@@ -3615,7 +3672,7 @@ textarea {
   justify-content: center;
 }
 .p-table tbody td .noProducts {
-  color: var(--color_text_3);
+  color: var(--color_text_4);
   display: block;
 }
 .p-table tfoot td {
@@ -4013,6 +4070,11 @@ textarea {
   display: grid;
   gap: 0.25rem;
 }
+.p-formList__colorSet__type .js_prop_mix {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
 .p-formList__content {
   display: grid;
   grid-auto-rows: auto;
@@ -4048,6 +4110,9 @@ textarea {
   /* ! ----------
   　Error エラー
   ---------- */
+}
+.p-formList__data--pattern {
+  margin-top: 16px;
 }
 .p-formList__data + .p-formList__data {
   margin-top: 8px;

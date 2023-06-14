@@ -6,7 +6,7 @@
     <div class="p-index__head__action">
       {{-- フォーム --}}
       <form method="get" action="{{route('admin.home') }}"  class="p-form" id="chartForm">
-        <select name="period_length" id="js-store-period-length" data-period="{{ request()->get('period_length', 'month') }}">
+        <select class="chart" name="period_length" id="js-store-period-length" data-period="{{ request()->get('period_length', 'month') }}">
           <option value="month" @if(request()->get('period_length', 'month') == 'month') selected @endif>月間</option>
           <option value="year" @if(request()->input('period_length') == 'year') selected @endif>年間</option>
         </select>

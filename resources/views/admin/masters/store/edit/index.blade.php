@@ -45,7 +45,7 @@
                                       }
                                     "
                                   >
-                                  <label for="store_img" class=" @if(data_get($shop, 'image_path')) clear_fake @endif">
+                                  <label for="store_img" class=" @if(data_get($shop, 'image_path')) clear_fake @endif" style="max-height: 150px; border-radius: 0;">
                                     <img
                                       id="image_preview_form"
                                       src="{{ data_get($shop, 'main_image_url') }}"

@@ -1,5 +1,5 @@
 @extends('admin.layouts.pages._default')
-@section('title', '店舗の追加登録')
+@section('title', '店舗情報追加登録')
 @section('content')
 <div class="p-create">
   <div class="l-create">
@@ -26,6 +26,7 @@
                   <div class="p-create__main__box__foot">
                     <a href="{{route('admin.users.index')}}" class="c-button__reset">戻る</a>
                     <button class="c-button">この内容で登録する</button>
+                  </div>
                 </div>
               </div>
             </div>
