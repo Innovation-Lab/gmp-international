@@ -73,6 +73,21 @@ class ProductRepository implements ProductRepositoryInterface
         \DB::beginTransaction();
         try {
             $data = $request->all();
+
+            if ($data['m_color_id'] == 'other') {
+                $data['m_color_id'] = NULL;
+            }
+            if ($data['m_shop_id'] == 'other') {
+                $data['m_shop_id'] = NULL;
+            }
+
+            if ($data['m_color_id'] != 'other') {
+                $data['other_color_name'] = NULL;
+            }
+            if ($data['m_shop_id'] != 'other') {
+                $data['other_shop_name'] = NULL;
+            }
+
             $product->fill($data)->save();
 
             \DB::commit();
