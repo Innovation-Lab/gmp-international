@@ -48,6 +48,11 @@
         display: grid;
         gap: 0.25rem;
       }
+      .js_prop_mix{
+        display: flex;
+        align-items: flex-end;
+        gap: 1rem;
+      }
     }
     &__content {
       display: grid;
@@ -82,6 +87,9 @@
       }
     }
     &__data {
+      &--pattern{
+        margin-top: 16px
+      }
       @extend .c-text__sm !optional;
       display: flex;
       gap: 8px;

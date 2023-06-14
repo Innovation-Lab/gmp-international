@@ -30,7 +30,8 @@
   　Label ラベル
   ---------- */
   &__label {
-    color: var(--color_text_button);
+    // color: var(--color_text_button);
+    color: var(--color_text_3);
     @extend .c-text__xs !optional;
     display: flex;
     justify-content: space-between;
@@ -114,7 +115,7 @@
           }
           &:last-child {
             font-size: 16px;
-            font-weight:700;
+            font-weight:500;
           }
         }
       }
@@ -138,7 +139,7 @@
     }
     &__data {
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 }

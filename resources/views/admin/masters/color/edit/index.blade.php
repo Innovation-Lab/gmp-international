@@ -63,7 +63,7 @@
                                       <div class="p-formList__label optional">
                                         カラー
                                       </div>
-                                      <div class="p-formList__data">
+                                      <div class="p-formList__data p-formList__data--pattern">
                                         <div class="p-formList__colorSet__type">
                                           <!-- 1色 -->
                                           <div class="p-formList__colorSet__type__item js_prop_single" style="display:none;">
@@ -136,6 +136,7 @@
                                             @error('image_path')
                                               <p class="error" style="margin-top: 2px">{{ $message }}</p>
                                             @enderror
+                                            <p style="font-size: 13px; font-weight: 500; color: var(--color_text_3);">※推奨画像サイズ<br>サイズ：100px × 100px以上<br>解像度：72ppi以上</p>
                                           </div>                                 
                                         </div>
                                       </div>

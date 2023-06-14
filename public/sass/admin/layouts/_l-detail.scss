@@ -102,4 +102,14 @@
     position: sticky;
     bottom: 0;
   }
+
+    /* ! ----------
+  　Full フル
+  ---------- */
+  &__full {
+    &--detail{
+      display: grid;
+      gap: 1.5rem;
+    }
+  }
 }

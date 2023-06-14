@@ -21,19 +21,16 @@
       　Image イメージ
       ---------- */
       &__image {
-        border-radius: 100%;
-        overflow: hidden;
-        flex: 0 0 auto;
-        margin: 0 8px 0 0;
-        border: solid 1px #ccc;
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        align-items: center; justify-content: center;
-        padding: .25rem;
+          overflow: hidden;
+          flex: 0 0 auto;
+          margin: 0 8px 0 0;
+          width: 2rem;
+          height: 2rem;
+          display: flex;
+          align-items: center;
         @include global.responsive(xl) {
-          width: 2.5rem;
-          height: 2.5rem;
+          // width: 2.5rem;
+          // height: 2.5rem;
         }
         img {
           width: 100%;

@@ -1,6 +1,6 @@
 <div class="p-create__main__box__head">
   <h3 class="p-create__main__box__head__title">
-  登録製品の追加
+  登録製品追加
   </h3>
 </div>
 {{-- @if(Route::current()->getName() == 'admin.products.create-products') --}}

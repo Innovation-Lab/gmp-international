@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\MColor;
 use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\MColor;
 
 class MProduct extends Model
 {
@@ -116,6 +116,7 @@ class MProduct extends Model
         if (count($colors) > 0) {
             foreach ($colors as $key => $color) {
                 $record = MColor::withTrashed()->find($color);
+                $imageValid = filter_var(data_get($record, 'colorUrls.url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($record, 'colorUrls.url')) !== false;
                 $ballWithName[data_get($record,'id')] = [
                     'id' => data_get($record, 'id'),
                     'name' => data_get($record, 'name'),
@@ -123,11 +124,73 @@ class MProduct extends Model
                     'color' => data_get($record, 'color'),
                     'second_color' => data_get($record, 'second_color'),
                     'image_path' => data_get($record, 'image_path'),
-                    'url' => data_get($record, 'colorUrls.url'),
+                    'url' => $imageValid ? data_get($record, 'colorUrls.url') : asset('img/admin/noImage/product.png'),
                 ];
             }
         }
 
+        return $ballWithName;
+    }
+    
+    /**
+     * @return array
+     */
+    public function getOtherColorBallWithNameAttribute(): array
+    {
+        $color_array = $this->color_array;
+        $colors = explode(',', $color_array);
+        array_shift($colors);
+        
+        $ballWithName = [];
+        
+        if (count($colors) > 0) {
+            foreach ($colors as $key => $color) {
+                $record = MColor::withTrashed()->find($color);
+                $color_url = ColorUrl::query()->where('m_product_id', $this->id)->where('m_color_id', $color)->first();
+                $imageValid = filter_var(data_get($color_url, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($color_url, 'url')) !== false;
+                
+                $ballWithName[data_get($record,'id')] = [
+                    'id' => data_get($record, 'id'),
+                    'name' => data_get($record, 'name'),
+                    'alphabet_name' => data_get($record, 'alphabet_name'),
+                    'color' => data_get($record, 'color'),
+                    'second_color' => data_get($record, 'second_color'),
+                    'image_path' => data_get($record, 'image_path'),
+                    'url' => $imageValid ? data_get($color_url, 'url') : asset('img/admin/noImage/product.png'),
+                ];
+            }
+        }
+        
+        return $ballWithName;
+    }
+    
+    /**
+     * @return array
+     */
+    public function getFirstColorBallWithNameAttribute(): array
+    {
+        $color_array = $this->color_array;
+        $colors = explode(',', $color_array);
+        $colors = array_slice($colors, 0, 1);
+        $record = MColor::withTrashed()->whereIn('id', $colors)->first();
+        
+        $ballWithName = [];
+        
+        if ($record) {
+            $color_url = ColorUrl::query()->where('m_product_id', $this->id)->where('m_color_id', $record->id)->first();
+            $imageValid = filter_var(data_get($color_url, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($color_url, 'url')) !== false;
+            
+            $ballWithName = [
+                'id' => data_get($record, 'id'),
+                'name' => data_get($record, 'name'),
+                'alphabet_name' => data_get($record, 'alphabet_name'),
+                'color' => data_get($record, 'color'),
+                'second_color' => data_get($record, 'second_color'),
+                'image_path' => data_get($record, 'image_path'),
+                'url' => $imageValid ? data_get($color_url, 'url') : asset('img/admin/noImage/product.png'),
+            ];
+        }
+        
         return $ballWithName;
     }
     

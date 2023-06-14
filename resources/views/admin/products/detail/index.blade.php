@@ -21,14 +21,8 @@
                     <div class="p-list--product">
                       <div class="p-list__left">
                         <div class="p-list__img" style="width: 200px;">
-                          <img class="" src="{{ data_get($product, 'mProduct.first_color_url.url', data_get($product, 'mProduct.main_image_url')) }}" alt="">
+                          <img class="" src="{{ data_get($product, 'mProduct.first_color_url.url', asset('img/admin/noImage/product-detail.png')) }}" alt="">
                         </div>
-                        {{-- <div class="p-list__status p-list__status--registered">
-                          <span class="status">登録済み</span>
-                        </div>
-                        <div class="p-list__status p-list__status--notregistered" style="display: none;">
-                          <span class="status">未登録</span>
-                        </div> --}}
                       </div>
                       <div class="p-list__right">
                         <div class="p-list__head">

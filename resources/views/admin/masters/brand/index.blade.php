@@ -69,7 +69,7 @@
                   <!-- 1人 -->
                   <tr>
                     <td class="item">
-                      <img src="{{ data_get($brand, 'main_image_url') }}" alt="ブランドロゴ" height=16>
+                      <img src="{{ data_get($brand, 'main_image_url') }}" alt="ブランドロゴ" height="20px">
                     </td>
                     <td class="item">
                       {{ data_get($brand, 'name') }}

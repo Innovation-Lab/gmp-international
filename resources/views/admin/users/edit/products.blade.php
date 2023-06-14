@@ -21,7 +21,7 @@
                     {!! Form::open(['method' => 'POST', 'route' => ['admin.users.update-products', $sales_product], 'class' => 'p-form', 'id' => 'salesProductSubmitForm']) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
-                        登録製品情報の編集
+                        登録製品情報編集
                         </h3>
                       </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
