@@ -55,6 +55,7 @@ Route::group([
     // ajax
     Route::get('js-get-array', [RegisterController::class, 'jsGetArray']);
     Route::get('js-get-tying-array', [RegisterController::class, 'jsGetTyingArray']);
+    Route::get('js-get-tying-color-array', [RegisterController::class, 'jsGetTyingColorArray']);
     Route::get('js-search-serial', [RegisterController::class, 'jsSearchSerial']);
     Route::get('/js-get-serial-guide-type', [RegisterController::class, 'jsGetSerialGuideType']);
 });

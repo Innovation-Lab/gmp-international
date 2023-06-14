@@ -267,6 +267,29 @@ class RegisterController extends Controller
             ->header('Content-Type', 'text/plain');
     }
     
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetTyingColorArray(Request $request): Response|Application|ResponseFactory
+    {
+        $id = $request->input('id');
+        $loop_num = $request->input('loop');
+        
+        $product = MProduct::find($id);
+        $color_array = explode(',', $product->color_array);
+        $colors = MColor::query()->whereIn('id', $color_array)->pluck('alphabet_name', 'id');
+
+        $view = view('web.register._ajax_select_color_list', [
+            'colors' => $colors,
+            'checkVal' => false,
+            'loop_num' => $loop_num
+        ])->render();
+        
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+    
     
     /**
      * @param Request $request

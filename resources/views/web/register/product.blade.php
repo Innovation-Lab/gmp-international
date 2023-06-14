@@ -82,7 +82,12 @@
                     </div>
                     <div class="p-formList__data ">
                       <div class="c-input c-input--select">
-                        <select name="products[1][m_product_id]" class="required js-ty-product" onchange="getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));" data-loop="1" data-insert="brand">
+                        <select name="products[1][m_product_id]" class="required js-ty-product" onchange="
+                          getTyArray('product', $(this).val(), $(this).data('loop'), $(this).data('insert'));
+                          getTyColorArray($(this).val(), $(this).data('loop'), $(this).data('color'));
+                          "
+                          data-loop="1" data-insert="brand" data-color="color"
+                        >
                           <option value="" selected>製品を選択してください</option>
                           @foreach($products as $k => $v)
                             <option value="{{ $k }}">{{ $v }}</option>
@@ -93,7 +98,7 @@
                   </div>
                 </li>
                 <!-- カラー -->
-                <li class="p-formList__item">
+                <li class="p-formList__item js-insert-list-color-1">
                   <div class="p-formList__content">
                     <div class="p-formList__label p-formList__label--guide">
                       <p class="c-txt">カラー</p>
@@ -103,8 +108,8 @@
                     </div>
                     <div class="p-formList__data parent-element">
                       <div class="c-input c-input--select">
-                        <select name="products[1][m_color_id]" class="js-ty-color">
-                          <option value="" selected>カラーを選択してください</option>
+                        <select name="products[1][m_color_id]" class="js-ty-color" disabled>
+                          <option value="" selected>先に製品を選択してください</option>
                           @foreach($colors as $k => $v)
                             <option value="{{ $k }}">{{ $v }}</option>
                           @endforeach
@@ -276,53 +281,52 @@
               url: '/register/js-get-array',
               method: 'GET',
               success: function(response) {
-                  var array = response;
-                  var brands = array.brands;
-                  var products = array.products;
-                  var colors = array.colors;
-                  var shops = array.shops;
-                  var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
-                    '<option value="" selected>ブランドを選択してください</option>';
-
-                  $.each(brands, function(key, value) {
-                      selectBrandHtml += '<option value="' + key + '">' + value + '</option>';
-                  });
-                  selectBrandHtml += '</select>';
-
-                  var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="brand" data-loop="'+ num +'">' +
-                    '<option value="" selected>製品を選択してください</option>';
-
-                  $.each(products, function(key, value) {
-                      selectProductHtml += '<option value="' + key + '">' + value + '</option>';
-                  });
-                  selectProductHtml += '</select>';
-
-                  var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'">' +
-                      '<option value="" selected>カラーを選択してください</option>';
-
-                  $.each(colors, function(key, value) {
-                      selectColorHtml += '<option value="' + key + '">' + value + '</option>';
-                  });
-                  selectColorHtml += '<option value="other">上記以外のカラー</option>';
-                  selectColorHtml += '</select>';
-
-                  var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
-                      '<option value="" selected>購入店舗を選択してください</option>';
-
-                  $.each(shops, function(key, value) {
-                      selectShopHtml += '<option value="' + key + '">' + value + '</option>';
-                  });
-                  selectShopHtml += '<option value="other">上記以外の店舗</option>';
-                  selectShopHtml += '</select>';
-
-                  var today = new Date();
-                  var year = today.getFullYear();
-                  var month = String(today.getMonth() + 1).padStart(2, '0');
-                  var day = String(today.getDate()).padStart(2, '0');
-
-                  var formattedDate = year + '/' + month + '/' + day;
-
                   function addForm() {
+                      var array = response;
+                      var brands = array.brands;
+                      var products = array.products;
+                      var colors = array.colors;
+                      var shops = array.shops;
+                      var selectBrandHtml = '<select name="products['+ num +']['+ 'm_brand_id' +']" class="js-ty-brand" onchange="getTyArray(\'brand\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\'));" data-insert="product" data-loop="'+ num +'">' +
+                        '<option value="" selected>ブランドを選択してください</option>';
+
+                      $.each(brands, function(key, value) {
+                          selectBrandHtml += '<option value="' + key + '">' + value + '</option>';
+                      });
+                      selectBrandHtml += '</select>';
+
+                      var selectProductHtml = '<select name="products['+ num +']['+ 'm_product_id' +']" class="js-ty-product" onchange="getTyArray(\'product\', $(this).val(), $(this).data(\'loop\'), $(this).data(\'insert\')); getTyColorArray($(this).val(), $(this).data(\'loop\'), $(this).data(\'color\'));" data-insert="brand" data-color="color" data-loop="'+ num +'">' +
+                        '<option value="" selected>製品を選択してください</option>';
+
+                      $.each(products, function(key, value) {
+                          selectProductHtml += '<option value="' + key + '">' + value + '</option>';
+                      });
+                      selectProductHtml += '</select>';
+
+                      var selectColorHtml = '<select name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'" disabled>' +
+                          '<option value="" selected>先に製品を選択してください</option>';
+
+                      $.each(colors, function(key, value) {
+                          selectColorHtml += '<option value="' + key + '">' + value + '</option>';
+                      });
+                      selectColorHtml += '<option value="other">上記以外のカラー</option>';
+                      selectColorHtml += '</select>';
+
+                      var selectShopHtml = '<select name="products['+ num +']['+ 'm_shop_id' +']">' +
+                          '<option value="" selected>購入店舗を選択してください</option>';
+
+                      $.each(shops, function(key, value) {
+                          selectShopHtml += '<option value="' + key + '">' + value + '</option>';
+                      });
+                      selectShopHtml += '<option value="other">上記以外の店舗</option>';
+                      selectShopHtml += '</select>';
+
+                      var today = new Date();
+                      var year = today.getFullYear();
+                      var month = String(today.getMonth() + 1).padStart(2, '0');
+                      var day = String(today.getDate()).padStart(2, '0');
+
+                      var formattedDate = year + '/' + month + '/' + day;
                       var newForm = '<div class="l-stack__item l-stack__item--line add_product" id="" style="">' +
                       '<!-- 登録製品追加 -->' +
                       '<ul class="p-formList">' +
@@ -518,6 +522,32 @@
 
             });
         }
+      }
+
+      function getTyColorArray(
+          value = '',
+          loop = '',
+          insert = '',
+      ) {
+        $.get({
+            url: '/register/js-get-tying-color-array',
+            data: {
+                'id': value,
+                'loop': loop,
+            },
+            success: function (response) {
+                let place = '.js-insert-list-' + insert + '-' + loop;
+                console.log(place);
+                $(place).empty().append(response);
+                $('select.js-ty-color').on('change', function() {
+                    if( $(this).val() != 0 && $(this).val() != '' && $(this).val()  != undefined ){
+                        $(this).css('color', '#000');
+                    }else{
+                        $(this).css('color', '');
+                    }
+                })
+            }
+        });
       }
   </script>
 
