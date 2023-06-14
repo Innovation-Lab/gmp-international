@@ -545,7 +545,14 @@
                     }else{
                         $(this).css('color', '');
                     }
+
+                    if ($(this).val() === 'other') {
+                        $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+                    } else {
+                        $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+                    }
                 })
+
             }
         });
       }
