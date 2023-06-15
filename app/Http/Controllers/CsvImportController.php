@@ -47,7 +47,7 @@ class CsvImportController extends Controller
             $csv = $this->importCsvService->preProcess($file_path);
             
             $this->userRepository->importUser($csv);
-        } catch (\Exception $e) {dd($e);
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()
                 ->back()
