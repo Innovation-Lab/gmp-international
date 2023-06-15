@@ -41,6 +41,9 @@ class CsvImportController extends Controller
                 ]);
         }
         
+        // 最大５分間実行
+        ini_set('max_execution_time', 300);
+        
         DB::beginTransaction();
         try {
             $file_path = StorageService::storeCsvFile($request->file('csv_file'));
