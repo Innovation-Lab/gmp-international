@@ -172,24 +172,30 @@ class UserRepository implements UserRepositoryInterface
         return collect($csv)->chunk($chunkSize)->each(function ($chunk) use($userCsvHeader) {
             foreach ($chunk as $item) {
                 $params = [];
-
+                
+                // 住所の調整
+                if (isset($item[10])) {
+                    $pattern = '/^(.*?)(\d.*)$/';
+                    if (preg_match($pattern, $item[10], $matches)) {
+                        $city = $matches[1];
+                        $street = $matches[2];
+                        $item[12] = $item[11];
+                        $item[11] = $street ;
+                        $item[10] = $city;
+                    }
+                }
+                
                 foreach($item as $key => $value) {
                     if ($userCsvHeader[$key] == 'old_id' && User::where('old_id', $value)->exists()) {
                         continue;
                     }
-
                     if ($userCsvHeader[$key] == 'deleted_at' && $value == '1') {
                         $value = date('2000-01-01 00:00:00');
-                    } else {
+                    } elseif($userCsvHeader[$key] == 'deleted_at' && $value == '0') {
                         $value = NULL;
                     }
-    
-                    if ($userCsvHeader[$key] == 'address_city') {
-                        // todo 市町区村と番地を分ける
-                    }
-                    
+
                     $params[$userCsvHeader[$key]] = $value;
-                    
                 }
 
                 User::create($params);
