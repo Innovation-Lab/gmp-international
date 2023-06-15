@@ -18,7 +18,7 @@
   <link href="{{ asset('css/style-admin.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
+{{--  <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">--}}
   {{-- フォント --}}
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -34,5 +34,5 @@
   <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <script type="text/javascript" src="{{ asset('js/component/js-flashMessage.js') }}"></script>
-  <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+{{--  <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>--}}
 </head>
