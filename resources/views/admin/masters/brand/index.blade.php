@@ -13,7 +13,7 @@
                 <div class="c-buttonWrap">
                   <a href="{{route('admin.masters.brand.create')}}" class="c-button__2" >ブランドを新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">ブランド情報CSV入力</a>
-                  <a href="" class="c-button__icon__line c-button__icon--export">ブランド情報CSV出力</a>
+                  <a href="{{ route('admin.csv.brand.export') }}" class="c-button__icon__line c-button__icon--export">ブランド情報CSV出力</a>
                 </div>
               </div>
             </div>

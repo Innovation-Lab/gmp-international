@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MasterController;
+use App\Http\Controllers\CsvExportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
@@ -113,6 +114,20 @@ Route::group([
             Route::get('/edit/{admin}', [AdminController::class, 'edit'])->name('edit');
             Route::post('/delete/{admin}', [AdminController::class, 'delete'])->name('delete');
             Route::post('/updateOrCreate', [AdminController::class, 'updateOrCreate'])->name('updateOrCreate');
+        });
+        
+        // CSV
+        Route::group([
+            'namespace' => 'Csv',
+            'prefix' => 'csv',
+            'as' => 'csv.',
+        ], function() {
+            Route::get('/brand/export', [CsvExportController::class, 'brand'])->name('brand.export');
+            Route::get('/shop/export', [CsvExportController::class, 'shop'])->name('shop.export');
+            Route::get('/color/export', [CsvExportController::class, 'color'])->name('color.export');
+            Route::get('/user/export', [CsvExportController::class, 'user'])->name('user.export');
+            Route::get('/sales-product/export', [CsvExportController::class, 'salesProduct'])->name('salesProduct.export');
+            Route::get('/product/export', [CsvExportController::class, 'product'])->name('product.export');
         });
     });
 

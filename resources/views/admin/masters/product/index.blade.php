@@ -13,7 +13,7 @@
                 <div class="c-buttonWrap">
                   <a href="{{route('admin.masters.product.create')}}" class="c-button__2">製品を新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">製品情報CSV入力</a>
-                  <a href="" class="c-button__icon__line c-button__icon--export">製品情報CSV出力</a>
+                  <a href="{{ route('admin.csv.product.export') }}" class="c-button__icon__line c-button__icon--export">製品情報CSV出力</a>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@
                 <div class="c-buttonWrap">
                   <a href="{{route('admin.masters.color.create')}}" class="c-button__2">カラーを新規追加</a>
                   <a href="" class="c-button__icon c-button__icon--import">カラー情報CSV入力</a>
-                  <a href="" class="c-button__icon__line c-button__icon--export">カラー情報CSV出力</a>
+                  <a href="{{ route('admin.csv.color.export') }}" class="c-button__icon__line c-button__icon--export">カラー情報CSV出力</a>
                 </div>
               </div>
             </div>

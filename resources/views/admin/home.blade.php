@@ -63,10 +63,10 @@
                 <div class="c-buttonWrap c-buttonWrap--dashboard">
                   {{-- ユーザー情報CSV --}}
                   <a href="" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
-                  <a href="" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
+                  <a href="{{ route('admin.csv.user.export') }}" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
                   {{-- 製品情報CSV --}}
                   <a href="" class="c-button__icon c-button__icon--import">製品情報CSV入力</a>
-                  <a href="" class="c-button__icon__line c-button__icon--export">製品情報CSV出力</a>
+                  <a href="{{ route('admin.csv.salesProduct.export') }}" class="c-button__icon__line c-button__icon--export">製品情報CSV出力</a>
                 </div>
               @endcomponent
             @endcomponent
