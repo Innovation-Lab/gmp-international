@@ -48,11 +48,16 @@
                     <p class="c-txt c-txt--sm">{{ $sales_product->mProduct->name_kana }}</p>
                   </div>
                   <div class="p-card__color">
-                    <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
-                      @if (data_get($sales_product, 'mColor.second_color'))
-                        <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
-                      @endif
-                    </div>
+                    @if (data_get($sales_product, 'mColor.image_path'))
+                      {{-- 画像表示の場合 --}}
+                      <div class="c-colorBall c-colorBall--sm" style="background: url({{ data_get($sales_product, 'mColor.main_image_url') }})"></div>
+                    @else
+                      <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                        @if (data_get($sales_product, 'mColor.second_color'))
+                          <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                        @endif
+                      </div>
+                    @endif
                     <p class="c-txt">{{ data_get($sales_product, 'select_color_name', 'カラーは選択されていません。')}}</p>
                   </div>
                 </div>
@@ -75,7 +80,7 @@
               <div class="p-card__other">
                 <!-- 製品画像 -->
                 <div class="p-card__img">
-                  <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="60px" height="75px">
+                  <img src="{{ data_get($sales_product, 'select_color_url') }}" width="60px" height="75px">
                 </div>
                 <!-- 編集ボタン -->
                 <button class="modalOpen c-btn c-btn--ghost c-btn--ghost--wh js-remodal-open-{{ $sales_product->id }}" data-micromodal-trigger="modal-edit--product-{{ $sales_product->id }}" role="button">編集する</button>

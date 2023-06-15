@@ -80,7 +80,7 @@
                     </td>
                     <td class="item">
                       @if(count($user->salesProducts) > 0)
-                        <span class="products" style="background-image:url({{ data_get($user,'first_product.first_color_url.url', data_get($user, 'first_product.main_image_url')) }})">
+                        <span class="products" style="background-image:url({{ data_get($user, 'firstSalesProduct.select_color_url')  }})">
                           {{ data_get($user,'first_product') ? data_get($user,'first_product.mBrand.name') : '' }}<br>
                           {{ data_get($user,'first_product') ? data_get($user,'first_product.name') : '' }}
                           @if($user->other_product_count > 0)

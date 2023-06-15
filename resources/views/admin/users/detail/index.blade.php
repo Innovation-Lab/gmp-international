@@ -39,7 +39,7 @@
                         @foreach($sales_products as $sales_product)
                           <li class="p-product__item">
                             <div class="p-product__item__left">
-                              <img src="{{ data_get($sales_product, 'mProduct.first_color_url.url', data_get($sales_product, 'mProduct.main_image_url')) }}" width="64px" height="64px">
+                              <img src="{{ data_get($sales_product, 'select_color_url') }}" width="64px" height="64px">
                             </div>
                             <div class="p-product__item__right">
                               <div class="p-product__item__head">
@@ -51,9 +51,9 @@
                                   <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
                                   {{--カラーボール--}}
                                   <div class="p-product__item__other__box">
-                                    @if (data_get($sales_product, 'mColor.image_path'))
+                                    @if (data_get($sales_product, 'mColor.main_image_url'))
                                       {{-- 画像表示の場合 --}}
-                                      <div class="c-colorBall c-colorBall--sm" style="background: url({{ data_get($sales_product, 'mColor.image_path') }})"></div>
+                                      <div class="c-colorBall c-colorBall--sm" style="background: url({{ data_get($sales_product, 'mColor.main_image_url') }})"></div>
                                       <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name') }}</div>
                                     @else
                                       {{-- 2色の場合に追加 --}}

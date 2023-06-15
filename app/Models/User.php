@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -52,8 +54,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(SalesProduct::class);
     }
-
-     /**
+    
+    
+    /**
+     * 最初に登録した製品
+     * @return HasOne
+     */
+    public function firstSalesProduct(): HasOne
+    {
+        return $this->hasOne(SalesProduct::class)
+            ->orderBy('created_at');
+    }
+    
+    
+    /**
      * @return HasMany
      * 購入者の選択表示
      */

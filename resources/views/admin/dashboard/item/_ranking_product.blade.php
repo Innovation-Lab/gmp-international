@@ -11,7 +11,7 @@
           @foreach($sales_product_ranks as $product)
           <li class="p-dashboard__ranking__list__item">
             <div class="p-dashboard__ranking__list__image">
-              <img src="{{ data_get($product, 'mProduct.first_color_url.url', data_get($product, 'mProduct.main_image_url')) }}" width="40px" height="40px">
+              <img src="{{ data_get($product, 'mProduct.first_color_ball_with_name.url') }}" width="40px" height="40px">
             </div>
             <div class="p-dashboard__ranking__list__text">
               <p class="title">{{ data_get($product, 'mProduct.name', '---') }}</p>

@@ -49,12 +49,17 @@
                           <p class="c-txt c-txt--lg">{{ data_get($sales_product, 'mProduct.name') }}</p>
                         </div>
                         <div class="p-card__color">
-                          <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff') }};">
+                          @if (data_get($sales_product, 'mColor.image_path'))
+                            {{-- 画像表示の場合 --}}
+                            <div class="c-colorBall" style="background: url({{ data_get($sales_product, 'mColor.main_image_url') }})"></div>
+                          @else
                             {{-- 2色の場合に追加 --}}
-                            @if (data_get($sales_product, 'mColor.second_color'))
-                              <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
-                            @endif
-                          </div>
+                            <div class="c-colorBall" style="background: {{ data_get($sales_product, 'mColor.color', '#fff')}};">
+                              @if (data_get($sales_product, 'mColor.second_color'))
+                                <div class="c-colorBall__pallet2" style="background: {{ data_get($sales_product, 'mColor.second_color', '#fff') }};"></div>
+                              @endif
+                            </div>
+                          @endif
                           <p class="c-txt">
                             {{ data_get($sales_product, 'select_color_name', '未登録')}}
                           </p>
@@ -79,7 +84,7 @@
                     </div>
                     <!-- 製品画像 -->
                     <div class="p-card__img p-card__img--top">
-                      <img src="{{asset('img/web/user/sample/product_sample.png')}}" width="110px" height="140px">
+                      <img src="{{ data_get($sales_product, 'select_color_url') }}" width="110px" height="140px">
                     </div>
                   </div>
                 </div>
