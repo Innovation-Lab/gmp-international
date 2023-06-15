@@ -189,11 +189,15 @@ class UserRepository implements UserRepositoryInterface
                     if ($userCsvHeader[$key] == 'old_id' && User::where('old_id', $value)->exists()) {
                         continue;
                     }
+                    if ($userCsvHeader[$key] == 'password' && $value) {
+                        $value = Hash::make($value);
+                    }
                     if ($userCsvHeader[$key] == 'deleted_at' && $value == '1') {
                         $value = date('2000-01-01 00:00:00');
                     } elseif($userCsvHeader[$key] == 'deleted_at' && $value == '0') {
                         $value = NULL;
                     }
+                    
 
                     $params[$userCsvHeader[$key]] = $value;
                 }
