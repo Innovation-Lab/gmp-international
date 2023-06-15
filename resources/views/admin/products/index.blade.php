@@ -170,40 +170,4 @@
 </div>
 {{-- 登録製品管理絞り込み検索モーダル --}}
 @include('admin.products._modal-products-fillter')
-<script>
-  // (function() {
-  //   $('tbody tr[data-href]').addClass('clickable').click( function() {
-  //       window.location = $(this).attr('data-href');
-  //   }).find('label','a').hover( function() {
-  //       $(this).parents('tr').unbind('click');
-  //   }, function() {
-  //       $(this).parents('tr').click( function() {
-  //           window.location = $(this).attr('data-href');
-  //       });
-  //   });
-  // })();
-</script>
-<script>
-  // (function() {
-  //   $('.p-filterList__label').on('click', function (e) {
-  //     const target = $(this).siblings('.p-filterList__content');
-  //     $('.p-filterList__content').removeClass('is-active');
-  //     target.addClass('is-active');
-  //     e.stopPropagation();
-  //   });
-  //   $('.p-filterList__content').on('click', function (e) {
-  //     e.stopPropagation();
-  //   });
-  //   $(document).on('click', function (e) {
-  //     $('.p-filterList__content').removeClass('is-active');
-  //   });
-  // })();
-</script>
-<script>
-  // (function() {
-  //   const table = $('table');
-  //   const thLength = table.find('th').length;
-  //   table.css('grid-template-columns','repeat(' + thLength + ', minmax(max-content, 1fr))')
-  // })();
-</script>
 @endsection

@@ -45,6 +45,8 @@
 {{-- アラートモーダル --}}
 @include('admin.components.modal._modal-alert')
 
+@include('admin.components.modal._modal-user-csv-import')
+
 {{-- ---------- スクリプト ---------- --}}
 {{-- ナビゲーション表示/非表示 --}}
 <script src="{{ asset('js/admin/gnavHide.js') }}"></script>

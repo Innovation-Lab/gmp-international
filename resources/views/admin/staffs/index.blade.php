@@ -106,7 +106,6 @@
               @include('admin.components._pagination', [
                   'paginate' => $admins,
               ])
-              </a>
             </div>
           </div>
         </div>

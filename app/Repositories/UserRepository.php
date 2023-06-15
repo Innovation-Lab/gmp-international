@@ -8,6 +8,7 @@ use App\Repositories\UserRepositoryInterface;
 use App\Services\SendMailService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreAccountRequest;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -161,5 +162,40 @@ class UserRepository implements UserRepositoryInterface
         }
         
         return false;
+    }
+    
+    public function importUser(array $csv)
+    {
+        $chunkSize = 30;
+        $userCsvHeader = Config::get('import_mapping_const.user_csv_header');
+
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use($userCsvHeader) {
+            foreach ($chunk as $item) {
+                $params = [];
+
+                foreach($item as $key => $value) {
+                    if ($userCsvHeader[$key] == 'old_id' && User::where('old_id', $value)->exists()) {
+                        continue;
+                    }
+
+                    if ($userCsvHeader[$key] == 'deleted_at' && $value == '1') {
+                        $value = date('2000-01-01 00:00:00');
+                    } else {
+                        $value = NULL;
+                    }
+    
+                    if ($userCsvHeader[$key] == 'address_city') {
+                        // todo 市町区村と番地を分ける
+                    }
+                    
+                    $params[$userCsvHeader[$key]] = $value;
+                    
+                }
+
+                User::create($params);
+                
+            }
+        });
+    
     }
 }

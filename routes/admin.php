@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MasterController;
 use App\Http\Controllers\CsvExportController;
+use App\Http\Controllers\CsvImportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
@@ -128,6 +129,7 @@ Route::group([
             Route::get('/user/export', [CsvExportController::class, 'user'])->name('user.export');
             Route::get('/sales-product/export', [CsvExportController::class, 'salesProduct'])->name('salesProduct.export');
             Route::get('/product/export', [CsvExportController::class, 'product'])->name('product.export');
+            Route::post('/user/import', [CsvImportController::class, 'user'])->name('user.import');
         });
     });
 

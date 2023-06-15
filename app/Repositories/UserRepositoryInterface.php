@@ -15,4 +15,5 @@ interface UserRepositoryInterface
     public function userUpdate(User $user, Request $request);
     public function destroy($user);
     public function createWithProduct(array $users, array $products);
+    public function importUser(array $csv);
 }
