@@ -45,7 +45,13 @@
 {{-- アラートモーダル --}}
 @include('admin.components.modal._modal-alert')
 
+{{-- csvモーダル --}}
 @include('admin.components.modal._modal-user-csv-import')
+@include('admin.components.modal._modal-shop-csv-import')
+@include('admin.components.modal._modal-brand-csv-import')
+@include('admin.components.modal._modal-color-csv-import')
+@include('admin.components.modal._modal-product-csv-import')
+@include('admin.components.modal._modal-sales_product-csv-import')
 
 {{-- ---------- スクリプト ---------- --}}
 {{-- ナビゲーション表示/非表示 --}}

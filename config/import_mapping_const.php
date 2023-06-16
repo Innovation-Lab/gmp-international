@@ -23,4 +23,24 @@ return [
         16 => 'seq',
         17 => 'deleted_at'
     ],
+    
+    'shop_csv_header' => [
+        0 => 'name',
+        1 => 'tel',
+        2 => 'fax',
+        3 => 'zip_code',
+        4 => 'prefecture',
+        5 => 'address_city_block',
+        6 => 'address_building',
+        7 => 'week_business_hour',
+        8 => 'week_business_hour_memo',
+        9 => 'holiday_business_hour',
+        10 => 'holiday_business_hour_memo',
+    ],
+    
+    'brand_csv_header' => [
+        0 => 'name',
+    ],
+    
 ];
+

@@ -123,13 +123,20 @@ Route::group([
             'prefix' => 'csv',
             'as' => 'csv.',
         ], function() {
+            // エクスポート
             Route::get('/brand/export', [CsvExportController::class, 'brand'])->name('brand.export');
             Route::get('/shop/export', [CsvExportController::class, 'shop'])->name('shop.export');
             Route::get('/color/export', [CsvExportController::class, 'color'])->name('color.export');
             Route::get('/user/export', [CsvExportController::class, 'user'])->name('user.export');
             Route::get('/sales-product/export', [CsvExportController::class, 'salesProduct'])->name('salesProduct.export');
             Route::get('/product/export', [CsvExportController::class, 'product'])->name('product.export');
+            // インポート
             Route::post('/user/import', [CsvImportController::class, 'user'])->name('user.import');
+            Route::post('/brand/import', [CsvImportController::class, 'brand'])->name('brand.import');
+            Route::post('/shop/import', [CsvImportController::class, 'shop'])->name('shop.import');
+            Route::post('/color/import', [CsvImportController::class, 'color'])->name('color.import');
+            Route::post('/product/import', [CsvImportController::class, 'product'])->name('product.import');
+            Route::post('/sales-product/import', [CsvImportController::class, 'salesProduct'])->name('salesProduct.import');
         });
     });
 

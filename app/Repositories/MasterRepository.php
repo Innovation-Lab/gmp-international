@@ -7,8 +7,11 @@ use App\Models\MBrand;
 use App\Models\MColor;
 use App\Models\MProduct;
 use App\Models\MShop;
+use App\Models\User;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -223,5 +226,77 @@ class MasterRepository implements MasterRepositoryInterface
         
         return MProduct::query()->where('id', $request->get('product_id'))
             ->update(['color_array' => $result]);
+    }
+    
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importBrand(array $csv): Collection
+    {
+        $chunkSize = 30;
+        $brandCsvHeader = Config::get('import_mapping_const.brand_csv_header');
+        
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($brandCsvHeader) {
+            $brandToCreate = [];
+            
+            foreach ($chunk as $item) {
+                $params = [];
+                
+                foreach ($item as $key => $value) {
+                    $value = trim($value);
+                    if ($brandCsvHeader[$key] == 'name' && MBrand::where('name', $value)->exists()) {
+                        continue 2;
+                    }
+                    
+                    $params[$brandCsvHeader[$key]] = $value;
+                }
+                
+                $brandToCreate[] = $params;
+            }
+            
+            MBrand::insert($brandToCreate);
+        });
+    }
+    
+    public function importColor(array $csv)
+    {
+        // TODO: Implement importColor() method.
+    }
+    
+    public function importProduct(array $csv)
+    {
+        // TODO: Implement importProduct() method.
+    }
+    
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importShop(array $csv): Collection
+    {
+        $chunkSize = 30;
+        $shopCsvHeader = Config::get('import_mapping_const.shop_csv_header');
+        
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($shopCsvHeader) {
+            $shopToCreate = [];
+            
+            foreach ($chunk as $item) {
+                $params = [];
+
+                foreach ($item as $key => $value) {
+                    $value = trim($value);
+                    if ($shopCsvHeader[$key] == 'name' && MShop::where('name', $value)->exists()) {
+                        continue 2;
+                    }
+                    
+                    $params[$shopCsvHeader[$key]] = $value;
+                }
+                
+                $shopToCreate[] = $params;
+            }
+
+            MShop::insert($shopToCreate);
+        });
     }
 }
