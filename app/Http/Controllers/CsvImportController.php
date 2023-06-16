@@ -184,7 +184,7 @@ class CsvImportController extends Controller
             
             $this->masterRepository->importProduct($csv);
             
-        } catch (\Exception $e) {dd($e);
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()
                 ->back()
