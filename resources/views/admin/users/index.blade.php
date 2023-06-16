@@ -12,7 +12,7 @@
               <div class="p-index__head__action">
                 <div class="c-buttonWrap">
                   <a href="{{route('admin.users.create')}}" class="c-button__2">ユーザーを新規追加</a>
-                  <a href="" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
+                  <a  data-micromodal-trigger="modal-user-import"class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
                   <a href="{{ route('admin.csv.user.export') }}" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
                 </div>
               </div>
