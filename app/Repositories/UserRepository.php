@@ -202,7 +202,10 @@ class UserRepository implements UserRepositoryInterface
                     $params[$userCsvHeader[$key]] = $value;
                 }
 
-                User::create($params);
+                if (isset($params['old_id'])) {
+                    User::create($params);
+                }
+
                 
             }
         });
