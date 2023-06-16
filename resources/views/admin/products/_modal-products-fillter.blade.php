@@ -1,9 +1,9 @@
 <div class="modal micromodal-slide" id="modal-products-fillter" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1">
-    <div class="modal__container md" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+    <div class="modal__container lg" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <header class="modal__header">
         <h2 class="modal__title" id="modal-1-title">
-          絞り込み検索
+          絞り込み検索b
         </h2>
       </header>
       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
@@ -17,7 +17,7 @@
                   <div class="p-formList__label">
                     ブランド名
                   </div>
-                  <div class="p-formList__data w-348">
+                  <div class="p-formList__data w-700">
                     <select name="m_brand_id[]" class="select2" multiple>
                       <option value="" hidden>選択してください</option>
                       @foreach($brands as $k => $v)
@@ -34,7 +34,7 @@
                   <div class="p-formList__label">
                     製品名
                   </div>
-                  <div class="p-formList__data w-348">
+                  <div class="p-formList__data w-700">
                     <select name="m_product_id[]" class="select2" multiple>
                       <option value="" hidden>選択してください</option>
                       @foreach($products as $k => $v)
@@ -51,7 +51,7 @@
                     <div class="p-formList__label">
                       店舗名
                     </div>
-                    <div class="p-formList__data w-348">
+                    <div class="p-formList__data w-700">
                       <select name="m_shop_id[]" class="select2" multiple>
                         <option value="" >選択してください</option>
                         @foreach($shops as $k => $v)
@@ -68,7 +68,7 @@
                     <div class="p-formList__label">
                       カラー
                     </div>
-                    <div class="p-formList__data w-348">
+                    <div class="p-formList__data w-700">
                       <select name="m_color_id[]" class="select2" multiple>
                         <option value="" >選択してください</option>
                         @foreach($colors as $k => $v)
@@ -85,7 +85,7 @@
                   <div class="p-formList__label">
                     登録番号
                   </div>
-                  <div class="p-formList__data w-348">
+                  <div class="p-formList__data w-700">
                     {!! Form::text('registr_number1', '', ['placeholder' => '例）QYO']) !!}
                     <span class="unit">ー</span>
                     {!! Form::number('registr_number2', '', ['placeholder' => '1000']) !!}
@@ -101,7 +101,7 @@
                   <div class="p-formList__label">
                     ステータス
                   </div>
-                  <div class="p-formList__data w-348">
+                  <div class="p-formList__data w-700">
                     <select name="brand" class="select2">
                       <option value="" hidden>選択してください</option>
                       <option value="product1">未登録</option>
@@ -172,6 +172,16 @@
     });
   });
 </script> -->
+
+
+
+<script>
+  $('.select2').select2({
+    multiple: true, //複数選択可能
+    closeOnSelect: false, //選択するたびに閉じないよう設定
+    language: 'ja' // Select2のメッセージに使用する言語を指定
+  });
+</script>
 
 <script>
     $(function () {
