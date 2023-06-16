@@ -68,7 +68,7 @@
                   <!-- 1人 -->
                   <tr data-href="{{ route('admin.masters.product.detail', $product) }}">
                     <td class="item">
-                      <img class="" src="{{ data_get($product, 'first_color_ball_with_name.url') }}" alt="" style="height: 40px;">
+                      <img class="" src="{{ data_get($product, 'first_color_ball_with_name.url', asset('img/admin/noImage/product.png')) }}" alt="" style="height: 40px;">
                     </td>
                     <td class="item">
                       {{ data_get($product, 'name') }} {{ data_get($product, 'name_kana') }}

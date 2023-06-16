@@ -303,9 +303,43 @@ class MasterRepository implements MasterRepositoryInterface
         });
     }
     
-    public function importProduct(array $csv)
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importProduct(array $csv): Collection
     {
-        // TODO: Implement importProduct() method.
+        $chunkSize = 30;
+        $productCsvHeader = Config::get('import_mapping_const.product_csv_header');
+
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($productCsvHeader) {
+            $productToCreate = [];
+            
+            foreach ($chunk as $item) {
+                $params = [];
+//                dd($item);
+                foreach ($item as $key => $value) {
+                    $value = trim($value);
+                    if ($productCsvHeader[$key] == 'name' && MShop::where('name', $value)->exists()) {
+                        continue 2;
+                    }
+
+                    if ($productCsvHeader[$key] == 'serial_guide_type' && ($value == NULL || $value == '')) {
+                        $value = NULL;
+                    }
+
+                    $params[$productCsvHeader[$key]] = $value;
+                }
+                
+                if (isset($params['name']) && isset($params['name_kana']) && isset($params['m_brand_id'])) {
+                    $productToCreate[] = $params;
+                }
+                
+                
+            }
+            
+            MProduct::insert($productToCreate);
+        });
     }
     
     /**

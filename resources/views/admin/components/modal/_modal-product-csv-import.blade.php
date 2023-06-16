@@ -13,10 +13,10 @@
       {!! Form::open(['method' => 'post', 'route' => 'admin.csv.product.import', 'files' => true, 'id' => 'productImportForm']) !!}
         <div class="c-input ">
           <label for="result_csv" class="">
-            {{ Form::file('csv_file', ['id' => 'file', 'style' => 'width: auto;', 'onchange' => "$('#fake_text_box').val($(this).prop('files')[0].name)"]) }}
-            <input type="text" id="result_csv" value="ファイル選択" onClick="$('#file').click();" style="display:none;">
+            {{ Form::file('csv_file', ['id' => 'product_file', 'style' => 'width: auto;', 'onchange' => "$('#product_fake_text_box').val($(this).prop('files')[0].name)"]) }}
+            <input type="text" id="result_csv" value="ファイル選択" onClick="$('#product_file').click();" style="display:none;">
           </label>
-          <input type="text" id="fake_text_box" value="ファイルを選択" size="35" readonly onClick="$('#file').click();">
+          <input type="text" id="product_fake_text_box" value="ファイルを選択" size="35" readonly onClick="$('#product_file').click();">
         </div>
       {!! Form::close() !!}
       <footer class="modal__footer">

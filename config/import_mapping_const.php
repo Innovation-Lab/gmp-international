@@ -53,5 +53,12 @@ return [
         0 => 'name',
     ],
     
+    'product_csv_header' => [
+        0 => 'm_brand_id',
+        1 => 'name',
+        2 => 'name_kana',
+        3 => 'serial_guide_type',
+    ],
+    
 ];
 
