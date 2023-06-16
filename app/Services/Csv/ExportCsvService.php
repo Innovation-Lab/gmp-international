@@ -131,7 +131,7 @@ final class ExportCsvService
                     'DMフラグ' => data_get($value, 'is_dm'),
                     '管理者メモ' => data_get($value, 'memo'),
                     '削除日' => data_get($value, 'deleted_at'),
-                    '作成び' => data_get($value, 'created_at'),
+                    '作成日' => data_get($value, 'created_at'),
                     '更新日' => data_get($value, 'updated_at'),
                 ];
             });
