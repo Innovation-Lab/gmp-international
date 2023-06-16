@@ -20,7 +20,7 @@
                     {{-- ---------- リスト ---------- --}}
                     <div class="p-list--product p-list--product--detail">
                       <div class="p-list__left p-list__left--detail" style="">
-                        <img class="" src="{{ data_get($product, 'first_color_ball_with_name.url') }}" alt="">
+                        <img class="" src="{{ data_get($product, 'first_color_ball_with_name.url', asset('img/admin/noImage/product.png')) }}" alt="">
                         <div class="p-list__color">
                             @if (data_get($product, 'first_color_ball_with_name.image_path'))
                               {{-- 画像表示の場合 --}}

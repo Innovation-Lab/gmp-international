@@ -212,8 +212,9 @@ class UserRepository implements UserRepositoryInterface
                             }
                             break;
                     }
-                    
-                    $params[$userCsvHeader[$key]] = $value;
+                    if(isset($params[$userCsvHeader[$key]])) {
+                        $params[$userCsvHeader[$key]] = $value;
+                    }
                 }
                 
                 if (isset($params['old_id'])) {
