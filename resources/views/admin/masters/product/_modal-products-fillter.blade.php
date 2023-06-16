@@ -3,7 +3,7 @@
     <div class="modal__container lg" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <header class="modal__header">
         <h2 class="modal__title" id="modal-1-title">
-          絞り込み検索a
+          絞り込み検索
         </h2>
       </header>
       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
