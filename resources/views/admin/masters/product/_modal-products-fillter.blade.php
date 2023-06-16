@@ -20,7 +20,7 @@
                   <select name="m_brand_id[]" class="select2" multiple>
                     <option value="" hidden>選択してください</option>
                     @foreach($brands as $k => $v)
-                      <option value="{{ $k }}" {{ in_array($k, $request->input('m_brand_id', [])) ? 'selected' : '' }}>{{ $v }}</option>
+                      <option value="{{ $k }}" {{ in_array($k, request()->input('m_brand_id', [])) ? 'selected' : '' }}>{{ $v }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -36,7 +36,7 @@
                 <select name="m_color_id[]" class="select2" multiple>
                   <option value="" >選択してください</option>
                   @foreach($colors as $k => $v)
-                  <option value="{{ $k }}" {{ in_array($k, $request->input('m_color_id', [])) ? 'selected' : '' }}>{{ $v }}</option>
+                  <option value="{{ $k }}" {{ in_array($k, request()->input('m_color_id', [])) ? 'selected' : '' }}>{{ $v }}</option>
                   @endforeach
                 </select>
               </div>
