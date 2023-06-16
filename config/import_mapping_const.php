@@ -38,6 +38,17 @@ return [
         10 => 'holiday_business_hour_memo',
     ],
     
+    'color_csv_header' => [
+        0 => 'name',
+        1 => 'alphabet_name',
+        2 => 'color',
+        3 => 'second_color',
+        4 => 'image_path',
+        5 => 'created_at',
+        6 => 'updated_at',
+        7 => 'deleted_at'
+    ],
+    
     'brand_csv_header' => [
         0 => 'name',
     ],

@@ -12,10 +12,10 @@
       {!! Form::open(['method' => 'post', 'route' => 'admin.csv.color.import', 'files' => true, 'id' => 'colorImportForm']) !!}
         <div class="c-input ">
           <label for="result_csv" class="">
-            {{ Form::file('csv_file', ['id' => 'file', 'style' => 'width: auto;', 'onchange' => "$('#fake_text_box').val($(this).prop('files')[0].name)"]) }}
-            <input type="text" id="result_csv" value="ファイル選択" onClick="$('#file').click();" style="display:none;">
+            {{ Form::file('csv_file', ['id' => 'color_file', 'style' => 'width: auto;', 'onchange' => "$('#color_fake_text_box').val($(this).prop('files')[0].name)"]) }}
+            <input type="text" id="result_csv" value="ファイル選択" onClick="$('#color_file').click();" style="display:none;">
           </label>
-          <input type="text" id="fake_text_box" value="ファイルを選択" size="35" readonly onClick="$('#file').click();">
+          <input type="text" id="color_fake_text_box" value="ファイルを選択" size="35" readonly onClick="$('#color_file').click();">
         </div>
       {!! Form::close() !!}
       <footer class="modal__footer">

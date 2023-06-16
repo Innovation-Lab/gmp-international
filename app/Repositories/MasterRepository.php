@@ -259,9 +259,48 @@ class MasterRepository implements MasterRepositoryInterface
         });
     }
     
-    public function importColor(array $csv)
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importColor(array $csv): Collection
     {
-        // TODO: Implement importColor() method.
+        $chunkSize = 30;
+        $colorCsvHeader = Config::get('import_mapping_const.color_csv_header');
+        
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($colorCsvHeader) {
+            $colorToCreate = [];
+            
+            foreach ($chunk as $item) {
+                $params = [];
+
+                foreach ($item as $key => $value) {
+                    $value = trim($value);
+                    
+                    if ($colorCsvHeader[$key] == 'image_path') {
+                        $value = NULL;
+                    }
+                    
+                    if ($colorCsvHeader[$key] == 'created_at') {
+                        $value = date('Y-m-d');
+                    }
+                    
+                    if ($colorCsvHeader[$key] == 'updated_at') {
+                        $value = date('Y-m-d');
+                    }
+                    
+                    if ($colorCsvHeader[$key] == 'deleted_at') {
+                        $value = NULL;
+                    }
+                    
+                    $params[$colorCsvHeader[$key]] = $value;
+                }
+
+                $colorToCreate[] = $params;
+            }
+
+            MColor::insert($colorToCreate);
+        });
     }
     
     public function importProduct(array $csv)
