@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\MasterRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\Csv\ImportCsvService;
@@ -15,21 +16,25 @@ class CsvImportController extends Controller
     private UserRepositoryInterface $userRepository;
     private ProductRepositoryInterface $productRepository;
     private ImportCsvService $importCsvService;
+    private MasterRepositoryInterface $masterRepository;
     
     /**
      * @param UserRepositoryInterface $userRepository
      * @param ProductRepositoryInterface $productRepository
      * @param ImportCsvService $importCsvService
+     * @param MasterRepositoryInterface $masterRepository
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
         ProductRepositoryInterface $productRepository,
-        ImportCsvService $importCsvService
+        ImportCsvService $importCsvService,
+        MasterRepositoryInterface $masterRepository
     )
     {
         $this->userRepository = $userRepository;
         $this->productRepository = $productRepository;
         $this->importCsvService = $importCsvService;
+        $this->masterRepository = $masterRepository;
     }
     
     /**
@@ -132,6 +137,8 @@ class CsvImportController extends Controller
         try {
             $file_path = StorageService::storeCsvFile($request->file('csv_file'));
             $csv = $this->importCsvService->preProcess($file_path);
+
+            $this->masterRepository->importShop($csv);
             
         } catch (\Exception $e) {
             DB::rollback();
