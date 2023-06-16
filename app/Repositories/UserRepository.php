@@ -8,6 +8,7 @@ use App\Repositories\UserRepositoryInterface;
 use App\Services\SendMailService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreAccountRequest;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -164,12 +165,18 @@ class UserRepository implements UserRepositoryInterface
         return false;
     }
     
-    public function importUser(array $csv)
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importUser(array $csv): Collection
     {
         $chunkSize = 30;
         $userCsvHeader = Config::get('import_mapping_const.user_csv_header');
-
-        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use($userCsvHeader) {
+        
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($userCsvHeader) {
+            $usersToCreate = [];
+            
             foreach ($chunk as $item) {
                 $params = [];
                 
@@ -180,34 +187,41 @@ class UserRepository implements UserRepositoryInterface
                         $city = $matches[1];
                         $street = $matches[2];
                         $item[12] = $item[11];
-                        $item[11] = $street ;
+                        $item[11] = $street;
                         $item[10] = $city;
                     }
                 }
                 
-                foreach($item as $key => $value) {
-                    if ($userCsvHeader[$key] == 'old_id' && User::where('old_id', $value)->exists()) {
-                        continue;
-                    }
-                    if ($userCsvHeader[$key] == 'password' && $value) {
-                        $value = Hash::make($value);
-                    }
-                    if ($userCsvHeader[$key] == 'deleted_at' && $value == '1') {
-                        $value = date('2000-01-01 00:00:00');
-                    } elseif($userCsvHeader[$key] == 'deleted_at' && $value == '0') {
-                        $value = NULL;
+                foreach ($item as $key => $value) {
+                    switch ($userCsvHeader[$key]) {
+                        case 'old_id':
+                            if (User::where('old_id', $value)->exists()) {
+                                continue 2;
+                            }
+                            break;
+                        case 'password':
+                            if ($value) {
+                                $value = Hash::make($value);
+                            }
+                            break;
+                        case 'deleted_at':
+                            if ($value == '1') {
+                                $value = '2000-01-01 00:00:00';
+                            } elseif ($value == '0') {
+                                $value = null;
+                            }
+                            break;
                     }
                     
-
                     $params[$userCsvHeader[$key]] = $value;
                 }
-
-                if (isset($params['old_id'])) {
-                    User::create($params);
-                }
-
                 
+                if (isset($params['old_id'])) {
+                    $usersToCreate[] = $params;
+                }
             }
+            
+            User::insert($usersToCreate);
         });
     
     }
