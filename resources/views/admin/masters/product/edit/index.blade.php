@@ -70,7 +70,7 @@
                               </div>
                             </li>
                             <li class="p-formList__item">
-                              @if (data_get($product, 'id'))
+                              @if (data_get($product, 'color_array'))
                                 @foreach(data_get($product, 'color_ball_with_name') as $key => $color)
                                   <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
                                   <div class="p-formList__content add_color" id="js_delete_{{ $loop->index + 1 }}">
@@ -103,6 +103,7 @@
                                   </div>
                                 @endforeach
                               @else
+                                <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
                                 <div class="p-formList__content add_color" id="js_delete_1">
                                   <div class="p-formList__label">
                                     カラー（メイン画像）
