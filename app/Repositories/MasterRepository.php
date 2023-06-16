@@ -10,6 +10,7 @@ use App\Models\MShop;
 use App\Models\User;
 use App\Repositories\MasterRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -227,9 +228,35 @@ class MasterRepository implements MasterRepositoryInterface
             ->update(['color_array' => $result]);
     }
     
-    public function importBrand(array $csv)
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importBrand(array $csv): Collection
     {
-        // TODO: Implement importBrand() method.
+        $chunkSize = 30;
+        $brandCsvHeader = Config::get('import_mapping_const.brand_csv_header');
+        
+        return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($brandCsvHeader) {
+            $brandToCreate = [];
+            
+            foreach ($chunk as $item) {
+                $params = [];
+                
+                foreach ($item as $key => $value) {
+                    $value = trim($value);
+                    if ($brandCsvHeader[$key] == 'name' && MBrand::where('name', $value)->exists()) {
+                        continue 2;
+                    }
+                    
+                    $params[$brandCsvHeader[$key]] = $value;
+                }
+                
+                $brandToCreate[] = $params;
+            }
+            
+            MBrand::insert($brandToCreate);
+        });
     }
     
     public function importColor(array $csv)
@@ -242,7 +269,11 @@ class MasterRepository implements MasterRepositoryInterface
         // TODO: Implement importProduct() method.
     }
     
-    public function importShop(array $csv)
+    /**
+     * @param array $csv
+     * @return Collection
+     */
+    public function importShop(array $csv): Collection
     {
         $chunkSize = 30;
         $shopCsvHeader = Config::get('import_mapping_const.shop_csv_header');

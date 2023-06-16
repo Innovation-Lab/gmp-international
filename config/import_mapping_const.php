@@ -37,5 +37,10 @@ return [
         9 => 'holiday_business_hour',
         10 => 'holiday_business_hour_memo',
     ],
+    
+    'brand_csv_header' => [
+        0 => 'name',
+    ],
+    
 ];
 
