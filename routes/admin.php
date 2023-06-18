@@ -114,6 +114,10 @@ Route::group([
             Route::post('/delete/{admin}', [AdminController::class, 'delete'])->name('delete');
             Route::post('/updateOrCreate', [AdminController::class, 'updateOrCreate'])->name('updateOrCreate');
         });
+
+        // ajax
+        Route::get('js-get-tying-array', [ProductController::class, 'jsGetTyingArray']);
+        Route::get('js-get-tying-color-array', [ProductController::class, 'jsGetTyingColorArray']);
     });
 
     

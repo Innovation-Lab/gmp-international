@@ -25,13 +25,14 @@
           </div>
         </div>
       </li>
-      <li class="p-formList__item">
+      <li class="p-formList__item js-insert-list-brand">
         <div class="p-formList__content">
           <div class="p-formList__label optional">
             ブランド名
           </div>
           <div class="p-formList__data" style="display: block;">
-            <select name="m_brand_id" class="select2">
+            <select name="m_brand_id" class="select2 js-ty-brand"
+             onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product">
               <option value="" hidden>選択してください</option>
               @foreach ($brands as $k => $v)
                 <option value="{{ $k }}" {{ old('m_brand_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -43,13 +44,17 @@
           </div>
         </div>
       </li>
-      <li class="p-formList__item">
+      <li class="p-formList__item js-insert-list-product">
         <div class="p-formList__content">
           <div class="p-formList__label optional">
             製品名
           </div>
           <div class="p-formList__data" style="display: block;">
-            <select name="m_product_id" class="select2">
+            <select name="m_product_id"
+            class="select2 required js-ty-product" onchange="
+            getTyArray('product', $(this).val(), $(this).data('insert'));
+            getTyColorArray($(this).val(), $(this).data('color'));"
+            data-insert="brand" data-color="color">
               <option value="" hidden>選択してください</option>
               @foreach ($products as $k => $v)
                 <option value="{{ $k }}" {{ old('m_product_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -93,14 +98,14 @@
   </div>
   <div class="l-grid__item">
     <ul class="p-formList">
-      <li class="p-formList__item">
+      <li class="p-formList__item js-insert-list-color">
         <div class="p-formList__content">
           <div class="p-formList__label">
             カラー
           </div>
           <div class="p-formList__data">
-            <select name="m_color_id" class="select2">
-              <option value="" hidden>選択してください</option>
+            <select name="m_color_id" class="js-ty-color" disabled>
+              <option value="" selected>先に製品を選択してください</option>
               @foreach ($colors as $k => $v)
                 <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach
@@ -211,3 +216,73 @@
     }
 });
 </script>
+
+  {{-- 紐付け配列の取得 --}}
+  <script>
+      // 共通処理
+      function getTyArray(
+          key,
+          value = '',
+          insert = '',
+      ) {
+        $.get({
+            url: '/admin/js-get-tying-array',
+            data: {
+                'key_name': key,
+                'id': value,
+            },
+            success: function (response) {
+              let place = '.js-insert-list-' + insert;
+              console.log('テスト');
+                $(place).empty().append(response);
+                $('select').each(function(index, elem) {
+                    if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
+                        $(elem).css('color', '#000');
+                    }else{
+                        $(elem).css('color', '');
+                    }
+                })
+            }
+        });
+      }
+
+      function getTyColorArray(
+          value = '',
+          insert = '',
+      ) {
+        $.get({
+            url: '/admin/js-get-tying-color-array',
+            data: {
+                'id': value,
+            },
+            success: function (response) {
+                let place = '.js-insert-list-' + insert;
+                console.log(place);
+                $(place).empty().append(response);
+                $('select.js-ty-color').on('change', function() {
+                  if( $(this).val() != 0 && $(this).val() != '' && $(this).val()  != undefined ){
+                        $(this).css('color', '#000');
+                    }else{
+                        $(this).css('color', '');
+                    }
+                    
+                  var colorValue = $('select[name="m_color_id"]').val();
+                  var shopValue = $('select[name="m_shop_id"]').val();
+
+                  if (colorValue == 'other') {
+                    $('.p-formList__other.m_color').css('display', 'grid');
+                  } else {
+                    $('.p-formList__other.m_color').hide();
+                  }
+                  
+                  if (shopValue == 'other') {
+                      $('.p-formList__other.m_shop').css('display', 'grid');
+                  } else {
+                      $('.p-formList__other.m_shop').hide();
+                  }
+              });
+
+            }
+        });
+      }
+  </script>
