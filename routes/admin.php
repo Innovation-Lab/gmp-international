@@ -116,6 +116,8 @@ Route::group([
         });
 
         // ajax
+        Route::get('js-get-tying-array', [UserController::class, 'jsGetTyingArray']);
+        Route::get('js-get-tying-color-array', [UserController::class, 'jsGetTyingColorArray']);
         Route::get('js-get-tying-array', [ProductController::class, 'jsGetTyingArray']);
         Route::get('js-get-tying-color-array', [ProductController::class, 'jsGetTyingColorArray']);
     });
