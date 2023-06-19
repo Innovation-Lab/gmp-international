@@ -65,7 +65,7 @@
                   </div>
                 </div>
               </div>
-              <div class="p-detail__full">
+              <div class="p-detail__full" style="display: none;">
                 {{-- ---------- カラーバリエーション ---------- --}}
                 <div class="p-detail__full__box">
                   <div class="p-detail__full__box__wrapper">
