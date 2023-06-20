@@ -175,4 +175,56 @@ class ProductController extends Controller
     // {
     //     return view('admin.products.detail', compact('product'));
     // }
+
+    public function jsGetTyingArray(Request $request)
+    {
+        $key = $request->input('key_name');
+        $id = $request->input('id');
+
+        switch ($key) {
+            case 'brand':
+                $items = MProduct::query()->where('m_brand_id', $id)->pluck('name', 'id');
+                $view = view('admin.products.create._ajax_select_product_list', [
+                    'items' => $items,
+                    'checkVal' => false,
+                    'id' => $id,
+                ])->render();
+                break;
+            case 'product':
+                $product = MProduct::find($id);
+                $color_array = explode(',', $product->color_array);
+                $items = MBrand::query()->pluck('name', 'id');
+                $view = view('admin.products.create._ajax_select_brand_list', [
+                    'items' => $items,
+                    'checkVal' => $product->m_brand_id,
+                    'id' => $id,
+                ])->render();
+                break;
+            default:
+                $view = NULL;
+        }
+
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetTyingColorArray(Request $request)
+    {
+        $id = $request->input('id');
+        $product = MProduct::find($id);
+        $color_array = explode(',', $product->color_array);
+        $colors = MColor::query()->whereIn('id', $color_array)->pluck('alphabet_name', 'id');
+
+        $view = view('admin.products.create._ajax_select_color_list', [
+            'colors' => $colors,
+            'checkVal' => false,
+        ])->render();
+        
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
 }

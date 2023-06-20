@@ -138,6 +138,12 @@ Route::group([
             Route::post('/product/import', [CsvImportController::class, 'product'])->name('product.import');
             Route::post('/sales-product/import', [CsvImportController::class, 'salesProduct'])->name('salesProduct.import');
         });
+
+        // ajax
+        Route::get('js-get-tying-array', [UserController::class, 'jsGetTyingArray']);
+        Route::get('js-get-tying-color-array', [UserController::class, 'jsGetTyingColorArray']);
+        Route::get('js-get-tying-array', [ProductController::class, 'jsGetTyingArray']);
+        Route::get('js-get-tying-color-array', [ProductController::class, 'jsGetTyingColorArray']);
     });
 
     

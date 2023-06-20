@@ -64,7 +64,10 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'));" data-insert="brand" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <select name="m_product_id" onchange="
+                          getTyArray('product', $(this).val(), $(this).data('insert'));
+                          getTyColorArray($(this).val(), $(this).data('color'));"
+                           data-insert="brand" data-color="color" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -78,7 +81,7 @@
                     </div>
                   </li>
                   <!-- カラー -->
-                  <li class="p-formList__item">
+                  <li class="p-formList__item js-insert-list-color">
                     <div class="p-formList__content">
                       <div class="p-formList__label p-formList__label--guide">
                         <p class="c-txt">カラー</p>
@@ -88,8 +91,8 @@
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="m_color_id">
-                            <option value="" selected>カラーを選択してください</option>
+                          <select name="m_color_id" class="js-ty-color" disabled>
+                            <option value="" selected>先に製品を選択してください</option>
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" {{ old('m_color_id', data_get($sales_product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                             @endforeach
@@ -97,12 +100,12 @@
                           </select>
                         </div>
                         <!-- 上記以外のカラー選択時のフォーム -->
-                        <div style="@if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || data_get($sales_product, 'other_color_name')) display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
+                        <div style="@if(old('m_color_id') == 'other') display:block; @else display:none; @endif" class="p-formList__content p-formList__other open-other-text-input">
                           <div class="p-formList__label">
                             <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
                           </div>
                           <div class="p-formList__data">
-                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name', data_get($sales_product, 'other_color_name')) }}">
+                            <input placeholder="例）赤" class="required" name="other_color_name" type="name" value="{{ old('other_color_name') }}">
                           </div>
                         </div>
                       </div>
@@ -271,6 +274,37 @@
                   }
               });
           }
+      }
+
+      function getTyColorArray(
+          value = '',
+          insert = '',
+      ) {
+        $.get({
+            url: '/mypage/js-get-tying-color-array',
+            data: {
+                'id': value,
+            },
+            success: function (response) {
+                let place = '.js-insert-list-' + insert;
+                console.log(place);
+                $(place).empty().append(response);
+                $('select.js-ty-color').on('change', function() {
+                    if( $(this).val() != 0 && $(this).val() != '' && $(this).val()  != undefined ){
+                        $(this).css('color', '#000');
+                    }else{
+                        $(this).css('color', '');
+                    }
+
+                    if ($(this).val() === 'other') {
+                        $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+                    } else {
+                        $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+                    }
+                })
+
+            }
+        });
       }
   </script>
   <script>

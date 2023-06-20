@@ -8,6 +8,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\Routing\ResponseFactory;
 // use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminUserUpdateRequest;
@@ -289,5 +291,57 @@ class UserController extends Controller
         $user = User::find($request->input('user_id'));
         $this->userRepository->destroy($user);
         return redirect()->route('admin.users.index');
+    }
+
+    public function jsGetTyingArray(Request $request)
+    {
+        $key = $request->input('key_name');
+        $id = $request->input('id');
+
+        switch ($key) {
+            case 'brand':
+                $items = MProduct::query()->where('m_brand_id', $id)->pluck('name', 'id');
+                $view = view('admin.products.create._ajax_select_product_list', [
+                    'items' => $items,
+                    'checkVal' => false,
+                    'id' => $id,
+                ])->render();
+                break;
+            case 'product':
+                $product = MProduct::find($id);
+                $color_array = explode(',', $product->color_array);
+                $items = MBrand::query()->pluck('name', 'id');
+                $view = view('admin.products.create._ajax_select_brand_list', [
+                    'items' => $items,
+                    'checkVal' => $product->m_brand_id,
+                    'id' => $id,
+                ])->render();
+                break;
+            default:
+                $view = NULL;
+        }
+
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetTyingColorArray(Request $request)
+    {
+        $id = $request->input('id');
+        $product = MProduct::find($id);
+        $color_array = explode(',', $product->color_array);
+        $colors = MColor::query()->whereIn('id', $color_array)->pluck('alphabet_name', 'id');
+
+        $view = view('admin.products.create._ajax_select_color_list', [
+            'colors' => $colors,
+            'checkVal' => false,
+        ])->render();
+        
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
     }
 }
