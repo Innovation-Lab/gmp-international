@@ -248,9 +248,7 @@ class MasterRepository implements MasterRepositoryInterface
                     if ($brandCsvHeader[$key] == 'name' && MBrand::where('name', $value)->exists()) {
                         continue 2;
                     }
-                    if(isset($params[$brandCsvHeader[$key]])) {
-                        $params[$brandCsvHeader[$key]] = $value;
-                    }
+                    $params[$brandCsvHeader[$key]] = $value;
                 }
                 
                 $brandToCreate[] = $params;
@@ -293,9 +291,7 @@ class MasterRepository implements MasterRepositoryInterface
                     if ($colorCsvHeader[$key] == 'deleted_at') {
                         $value = NULL;
                     }
-                    if(isset($params[$colorCsvHeader[$key]])) {
-                        $params[$colorCsvHeader[$key]] = $value;
-                    }
+                    $params[$colorCsvHeader[$key]] = $value;
                 }
 
                 $colorToCreate[] = $params;
@@ -322,22 +318,17 @@ class MasterRepository implements MasterRepositoryInterface
 
                 foreach ($item as $key => $value) {
                     $value = trim($value);
-                    if ($productCsvHeader[$key] == 'name' && MShop::where('name', $value)->exists()) {
+                    if ($productCsvHeader[$key] == 'name' && MProduct::where('name', $value)->exists()) {
                         continue 2;
                     }
 
                     if ($productCsvHeader[$key] == 'serial_guide_type' && ($value == NULL || $value == '')) {
                         $value = NULL;
                     }
-                    if(isset($params[$productCsvHeader[$key]])) {
-                        $params[$productCsvHeader[$key]] = $value;
-                    }
+                    $params[$productCsvHeader[$key]] = $value;
                 }
                 
-                if (isset($params['name']) && isset($params['name_kana']) && isset($params['m_brand_id'])) {
-                    $productToCreate[] = $params;
-                }
-                
+                $productToCreate[] = $params;
                 
             }
             
@@ -366,9 +357,7 @@ class MasterRepository implements MasterRepositoryInterface
                         continue 2;
                     }
                     
-                    if(isset($params[$shopCsvHeader[$key]])) {
-                        $params[$shopCsvHeader[$key]] = $value;
-                    }
+                    $params[$shopCsvHeader[$key]] = $value;
                 }
                 
                 $shopToCreate[] = $params;
