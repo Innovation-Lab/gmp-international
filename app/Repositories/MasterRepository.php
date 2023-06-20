@@ -165,6 +165,7 @@ class MasterRepository implements MasterRepositoryInterface
                 'm_brand_id' => $request->input('m_brand_id'),
                 'name' => $request->input('name'),
                 'name_kana' => $request->input('name_kana'),
+                'serial_guide_type' => $request->input('serial_guide_type'),
             ],
             'color_url' => []
         ];

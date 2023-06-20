@@ -25,9 +25,9 @@ class MProduct extends Model
     ];
     
     public const GUIDE = [
-        1 => 'coco', // COCOシリーズ
-        2 => 'cube', // CUBEシリーズ
-        3 => 'gowalker', // gowalkerシリーズ
+        'coco' => 'COCOシリーズ', // COCOシリーズ
+        'cube' => 'CUBEシリーズ', // CUBEシリーズ
+        'gowalker' => 'gowalkerシリーズ', // gowalkerシリーズ
     ];
 
     /*

@@ -70,6 +70,24 @@
                               </div>
                             </li>
                             <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label">
+                                  シリアルコードのガイドタイプ
+                                </div>
+                                <div class="p-formList__data  u-max--360" style="display: block;">
+                                  <select name="serial_guide_type" class="select2">
+                                    <option value="" hidden>選択してください</option>
+                                    @foreach(\App\Models\MProduct::GUIDE as $k => $v)
+                                      <option value="{{ $k }}" @if(old('serial_guide_type', data_get($product, 'serial_guide_type')) == $k) selected @endif>{{ $v }}</option>
+                                    @endforeach
+                                  </select>
+                                  @error('serial_guide_type')
+                                  <p class="error">{{ $message }}</p>
+                                  @enderror
+                                </div>
+                              </div>
+                            </li>
+                            <li class="p-formList__item">
                               @if (data_get($product, 'color_array'))
                                 @foreach(data_get($product, 'color_ball_with_name') as $key => $color)
                                   <input type="hidden" name="id" value="{{ data_get($product, 'id') }}">
