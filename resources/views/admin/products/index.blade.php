@@ -85,7 +85,7 @@
                       <td class="item">
                         @if(data_get($product, 'mColor.name'))
                           <span>{{ data_get($product, 'mColor.name') }}</span>
-                          {{ data_get($product, 'mColor.alphabet_name') }}
+                          {{ data_get($product, 'mColor.alphabet_name', data_get($product, 'other_color_name')) }}
                         @else
                           <div class="noProducts">未登録</div>
                         @endif
@@ -98,8 +98,8 @@
                         @endif
                       </td>
                       <td class="item">
-                        @if(data_get($product, 'mShop.name'))
-                          {{ data_get($product, 'mShop.name') }}
+                        @if(data_get($product, 'mShop.name', data_get($product, 'other_shop_name')))
+                          {{ data_get($product, 'mShop.name', data_get($product, 'other_shop_name')) }}
                         @else
                           <div class="noProducts">未登録</div>
                         @endif
