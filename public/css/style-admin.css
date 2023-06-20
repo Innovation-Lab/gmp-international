@@ -3100,7 +3100,7 @@ textarea {
   justify-content: center;
 }
 .p-list__item--detail .p-list__color .color .ball2 {
-  background: #a84343;
+  background: linear-gradient(180deg, #dc143c 49.9%, #c0c0c0 50%);
   position: absolute;
   top: 2px;
   left: -18px;
