@@ -65,7 +65,7 @@
                   <a data-micromodal-trigger="modal-user-import" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
                   <a href="{{ route('admin.csv.user.export') }}" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
                   {{-- 製品情報CSV --}}
-                  <a  data-micromodal-trigger="modal-sales_product-import" class="c-button__icon c-button__icon--import">登録製品情報CSV入力</a>
+                  <a data-micromodal-trigger="modal-sales_product-import" class="c-button__icon c-button__icon--import">登録製品情報CSV入力</a>
                   <a href="{{ route('admin.csv.salesProduct.export') }}" class="c-button__icon__line c-button__icon--export">登録製品情報CSV出力</a>
                 </div>
               @endcomponent

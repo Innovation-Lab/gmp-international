@@ -60,5 +60,16 @@ return [
         3 => 'serial_guide_type',
     ],
     
+    'sales_product_csv_header' => [
+        0 => 'user_id',
+        1 => 'product_code',
+        2 => 'product_code_spare', // インポート不要
+        3 => 'purchase_date',
+        4 => 'brand_name', // インポート不要
+        5 => 'product_name', // インポート不要
+        6 => 'color_name', // インポート不要
+        7 => 'store_name', // インポート不要
+    ],
+    
 ];
 

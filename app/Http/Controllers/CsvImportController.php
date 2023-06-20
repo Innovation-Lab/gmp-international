@@ -264,6 +264,8 @@ class CsvImportController extends Controller
             $file_path = StorageService::storeCsvFile($request->file('csv_file'));
             $csv = $this->importCsvService->preProcess($file_path);
             
+            $this->productRepository->import($csv);
+
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()
