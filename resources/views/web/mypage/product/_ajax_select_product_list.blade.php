@@ -4,7 +4,10 @@
   </div>
   <div class="p-formList__data">
     <div class="c-input c-input--select">
-      <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'), {{ $sales_id }});" data-insert="brand">
+      <select name="m_product_id" class="js-ty-product" onchange="
+        getTyArray('product', $(this).val(), $(this).data('insert'), {{ $sales_id }});
+        getTyColorArray($(this).val(), $(this).data('color'));"
+        data-insert="brand" data-color="color">
         <option value="" selected>製品を選択してください</option>
         @foreach($items as $k => $v)
           <option value="{{ $k }}" @if($checkVal) selected @endif>{{ $v }}</option>

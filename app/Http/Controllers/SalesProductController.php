@@ -154,6 +154,27 @@ class SalesProductController extends Controller
             ->header('Content-Type', 'text/plain');
     }
     
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetTyingColorArray(Request $request): Response|Application|ResponseFactory
+    {
+        $id = $request->input('id');
+        
+        $product = MProduct::find($id);
+        $color_array = explode(',', $product->color_array);
+        $colors = MColor::query()->whereIn('id', $color_array)->pluck('alphabet_name', 'id');
+
+        $view = view('web.mypage.product._ajax_select_color_list', [
+            'colors' => $colors,
+            'checkVal' => false,
+            
+        ])->render();
+        
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
     
     /**
      * @param Request $request

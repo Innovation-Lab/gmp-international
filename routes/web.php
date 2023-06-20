@@ -89,6 +89,7 @@ Route::middleware(['auth:web'])->group(function () {
         Route::post('/add', [SalesProductController::class, 'productAdd'])->name('add');
         
         Route::get('/js-get-tying-array', [SalesProductController::class, 'jsGetTyingArray']);
+        Route::get('js-get-tying-color-array', [SalesProductController::class, 'jsGetTyingColorArray']);
         Route::get('/js-search-serial', [SalesProductController::class, 'jsSearchSerial']);
         Route::get('/js-get-serial-guide-type', [SalesProductController::class, 'jsGetSerialGuideType']);
         
