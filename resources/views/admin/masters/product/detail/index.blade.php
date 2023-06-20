@@ -65,7 +65,7 @@
                   </div>
                 </div>
               </div>
-              <div class="p-detail__full" style="display: none;">
+              <div class="p-detail__full" style="@if(count(data_get($product, 'other_color_ball_with_name')) <= 0)display: none; @endif">
                 {{-- ---------- カラーバリエーション ---------- --}}
                 <div class="p-detail__full__box">
                   <div class="p-detail__full__box__wrapper">
