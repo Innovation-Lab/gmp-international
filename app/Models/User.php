@@ -212,6 +212,7 @@ class User extends Authenticatable
                             ->orWhere('users.tel', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.email', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.is_dm', 'LIKE', '%' . $search_word . '%')
+                            ->orWhere('users.old_id', 'LIKE', '%' . $search_word . '%')
                             ->orWhereHas('salesProducts', function ($query) use ($search_word) {
                                 $query->whereHas('mProduct', function ($query) use ($search_word) {
                                     $query->where('name', 'LIKE', '%' . $search_word . '%');
