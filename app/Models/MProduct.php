@@ -174,7 +174,9 @@ class MProduct extends Model
         $colors = array_slice($colors, 0, 1);
         $record = MColor::withTrashed()->whereIn('id', $colors)->first();
         
-        $ballWithName = [];
+        $ballWithName = [
+            'url' => asset('img/admin/noImage/product.png')
+        ];
         
         if ($record) {
             $color_url = ColorUrl::query()->where('m_product_id', $this->id)->where('m_color_id', $record->id)->first();
