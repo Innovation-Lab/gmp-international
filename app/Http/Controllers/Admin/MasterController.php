@@ -122,6 +122,15 @@ class MasterController extends Controller
     {
         $fix_product = Session::get('product', []);
         
+        $colors = MColor::withTrashed()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
+        
+        
         if (count($fix_product) > 0) {
             Session::forget('product');
             
@@ -129,14 +138,14 @@ class MasterController extends Controller
                 'product' => $product,
                 'fix_product' => $fix_product,
                 'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-                'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+                'colors' => $colors,
             ]);
         }
         
         return view('admin.masters.product.edit.index', [
             'product' => $product,
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::withTrashed()->pluck('alphabet_name', 'id')->toArray(),
+            'colors' => $colors,
         ]);
     }
     

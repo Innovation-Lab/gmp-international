@@ -57,7 +57,6 @@ return [
         0 => 'm_brand_id',
         1 => 'name',
         2 => 'name_kana',
-        3 => 'serial_guide_type',
     ],
     
     'sales_product_csv_header' => [

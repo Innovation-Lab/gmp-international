@@ -184,8 +184,8 @@
                 success: function (response) {
                     var colors = response.colors;
 
-                    var selectColorHtml = '<select name="color[add]['+ num +'][m_color_id]" style="background-color: #e4d6d6">' +
-                        '<option value="" selected>追加カラーを選択してください</option>';
+                    var selectColorHtml = '<select name="color[add]['+ num +'][m_color_id]" style="background-color: #e4d6d6" class="select2">' +
+                        '<option value="" hidden>追加カラーを選択してください</option>';
 
                     $.each(colors, function(key, value) {
                         selectColorHtml += '<option value="' + key + '">' + value + '</option>';
@@ -209,6 +209,11 @@
 
                     $('.add_color').last().after(newForm);
                     $('#addColorForm').removeClass('disabled');
+                    $('.select2').each(function(index, elem) {
+                       $(elem).select2({
+                           placeholder: '選択してください'
+                       });
+                    });
                 }
             })
             num++;

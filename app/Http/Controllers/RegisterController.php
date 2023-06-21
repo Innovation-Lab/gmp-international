@@ -216,7 +216,13 @@ class RegisterController extends Controller
     {
         $brands = MBrand::query()->pluck('name', 'id')->toArray();
         $products = MProduct::query()->pluck('name', 'id')->toArray();
-        $colors = MColor::query()->pluck('alphabet_name', 'id')->toArray();
+        $colors = MColor::query()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
         $shops = MShop::query()->pluck('name', 'id')->toArray();
         
         $array = [
