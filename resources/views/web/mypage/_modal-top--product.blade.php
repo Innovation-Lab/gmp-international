@@ -60,7 +60,10 @@
                     </div>
                     <div class="p-formList__data">
                       <div class="c-input c-input--select">
-                        <select name="m_product_id" onchange="getTyArray('product', $(this).val(), $(this).data('insert'), {{ $sales_product->id }});" data-insert="brand" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                        <select name="m_product_id" onchange="
+                          getTyArray('product', $(this).val(), $(this).data('insert'), {{ $sales_product->id }});
+                          getTyColorArray($(this).val(), $(this).data('color'), {{ $sales_product->id }});"
+                          data-insert="brand" data-color="color" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                           <option value="" selected>製品を選択してください</option>
                           @foreach($products as $k => $v)
                             <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -74,7 +77,7 @@
                   </div>
                 </li>
                 <!-- カラー -->
-                <li class="p-formList__item">
+                <li class="p-formList__item js-insert-list-color">
                   <div class="p-formList__content">
                     <div class="p-formList__label p-formList__label--modal">
                       <p class="c-txt">カラー</p>
@@ -84,9 +87,11 @@
                     </div>
                     <div class="p-formList__data parent-element">
                       <div class="c-input c-input--select">
-                        <select name="m_color_id">
-                          <option value="" selected>カラーを選択してください</option>
-                          @foreach($colors as $k => $v)
+                        <select name="m_color_id" class="js-ty-color">
+                          <option value="" selected>
+                            @if(data_get($sales_product, 'm_color_id')) 製品を選択してください @else 先に製品を選択してください @endif
+                          </option>
+                          @foreach(data_get($sales_product, 'mProduct.select_tying_colors') as $k => $v)
                             <option value="{{ $k }}" {{ old('m_color_id', data_get($sales_product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
                           @endforeach
                           <option value="other" @if(old('m_color_id', data_get($sales_product, 'm_color_id')) == 'other' || (empty(data_get($sales_product, 'm_color_id')) && !empty(data_get($sales_product, 'other_color_name')) ) ) selected @endif>上記以外のカラー</option>

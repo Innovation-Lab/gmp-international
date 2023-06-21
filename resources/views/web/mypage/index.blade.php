@@ -376,6 +376,38 @@
     }
 </script>
 <script>
+    function getTyColorArray(
+          value = '',
+          insert = '',
+      ) {
+        $.get({
+            url: '/mypage/js-get-tying-color-array',
+            data: {
+                'id': value,
+            },
+            success: function (response) {
+                let place = '.js-insert-list-' + insert;
+                console.log(place);
+                $(place).empty().append(response);
+                $('select.js-ty-color').on('change', function() {
+                    if( $(this).val() != 0 && $(this).val() != '' && $(this).val()  != undefined ){
+                        $(this).css('color', '#000');
+                    }else{
+                        $(this).css('color', '');
+                    }
+
+                    if ($(this).val() === 'other') {
+                        $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'block');
+                    } else {
+                        $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
+                    }
+                })
+
+            }
+        });
+      }
+</script>
+<script>
     // 共通処理
     function searchserial(
         code = ''
