@@ -27,8 +27,8 @@
           <div class="inner">
             {{-- ---------- タブ ---------- --}}
             @include('admin.masters._tab')
-            <!-- {{-- ---------- フィルター ---------- --}}
-            @include('admin.components._filter') -->
+            {{-- ---------- フィルター ---------- --}}
+            @include('admin.masters.color._filter')
           </div>
         </div>
       </div>
@@ -38,7 +38,9 @@
         <div class="container">
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
-            <div class="p-table">
+            <div class="p-table p-table--short">
+              {{--検索結果なしデザイン--}}
+              <div class="noResult" style="display: none;">検索結果がありません。</div>
               <table>
                 <colgroup>
                   <col width=60>
@@ -150,4 +152,6 @@
     </div>
   </div>
 </div>
+{{-- 製品マスタ絞り込み検索モーダル --}}
+@include('admin.masters.color._modal-colors-fillter')
 @endsection
