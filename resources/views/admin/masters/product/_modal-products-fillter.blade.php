@@ -17,7 +17,7 @@
                   ブランド名
                 </div>
                 <div class="p-formList__data w-700">
-                  <select name="m_brand_id[]" class="select2" multiple>
+                  <select name="m_brand_id[]" class="select2" multiple form="productMasterForm">
                     <option value="" hidden>選択してください</option>
                     @foreach($brands as $k => $v)
                       <option value="{{ $k }}" {{ in_array($k, request()->input('m_brand_id', [])) ? 'selected' : '' }}>{{ $v }}</option>
@@ -33,7 +33,7 @@
                 カラー
               </div>
               <div class="p-formList__data w-700">
-                <select name="m_color_id[]" class="select2" multiple>
+                <select name="m_color_id[]" class="select2" multiple form="productMasterForm">
                   <option value="" >選択してください</option>
                   @foreach($colors as $k => $v)
                   <option value="{{ $k }}" {{ in_array($k, request()->input('m_color_id', [])) ? 'selected' : '' }}>{{ $v }}</option>

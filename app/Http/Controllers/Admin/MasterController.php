@@ -234,14 +234,16 @@ class MasterController extends Controller
             });
         }
         
-        if ($request->get('m_brand_id')) {
-            $query->where('m_products.m_brand_id', $request->get('m_brand_id'));
+        if ($request->get('m_brand_id') && count($request->get('m_brand_id')) > 0) {
+            $query->whereIn('m_products.m_brand_id', $request->get('m_brand_id'));
         }
         
-        if ($request->get('m_color_id')) {
-            $query->whereRaw("FIND_IN_SET('{$request->get('m_color_id')}', m_products.color_array)");
+        if ($request->get('m_color_id') && count($request->get('m_color_id')) > 0) {
+            foreach ($request->get('m_color_id') as $color) {
+                $query->whereRaw("FIND_IN_SET('{$color}', m_products.color_array)");
+            }
         }
-        
+
         return $query;
     }
     
