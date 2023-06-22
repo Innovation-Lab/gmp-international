@@ -38,7 +38,7 @@
         <div class="container">
           <div class="inner">
             {{-- ---------- テーブル ---------- --}}
-            <div class="p-table p-table--product">
+            <div class="p-table p-table--short">
               {{--検索結果なしデザイン--}}
               <div class="noResult" style="display: none;">検索結果がありません。</div>
               <table>

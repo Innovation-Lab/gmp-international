@@ -1193,7 +1193,7 @@ textarea {
 .l-index__body .p-table {
   height: calc(100vh - 16.5rem);
 }
-.l-index__body .p-table--product {
+.l-index__body .p-table--short {
   height: calc(100vh - 20rem);
 }
 .nofilter .l-index__body .p-table {

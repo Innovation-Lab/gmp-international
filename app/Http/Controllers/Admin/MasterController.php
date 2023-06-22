@@ -272,6 +272,46 @@ class MasterController extends Controller
     
     /**
      * @param Request $request
+     * @return Builder
+     */
+    private function searchColor(Request $request): Builder
+    {
+        $query = Mcolor::query();
+        
+        $search_int = 0;
+        if ($request->get('keyword')) {
+            $half_space_string = mb_convert_kana($request->get('keyword'), 's');
+            $search_array = explode(' ', $half_space_string);
+            
+            $query->where(function ($_query) use ($search_array) {
+                foreach ($search_array as $search_word) {
+                    $_query->where(function ($sub_query) use ($search_word) {
+                        $sub_query->where('m_colors.name', 'LIKE', '%' . $search_word . '%')
+                            ->orWhere('m_colors.alphabet_name', 'LIKE', '%' . $search_word . '%')
+                            ->orWhere('m_colors.color', 'LIKE', '%' . $search_word . '%')
+                            ->orWhere('m_colors.second_color', 'LIKE', '%' . $search_word . '%');
+                    });
+                }
+            });
+            $search_int++;
+        }
+        
+        if ($request->get('m_color_id') && count($request->get('m_color_id')) > 0) {
+            $query->whereIn('id', $request->get('m_color_id'));
+            $search_int++;
+        }
+        
+        if($search_int > 0) {
+            Session::put('preview', url()->full());
+        } else {
+            Session::forget('preview');
+        }
+
+        return $query;
+    }
+    
+    /**
+     * @param Request $request
      * @return View|Factory|Application
      */
     public function store(Request $request): View|Factory|Application
@@ -338,20 +378,33 @@ class MasterController extends Controller
      */
     public function color(Request $request): View|Factory|Application
     {
+        $select_colors = MColor::query()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
+        
         return view('admin.masters.color.index', [
-            'colors' => MColor::query()->paginate(20)
+            'colors' => $this->searchColor($request)->paginate(20),
+            'select_colors' => $select_colors
         ]);
     }
     public function colorEdit(MColor $color): View|Factory|Application
     {
+        $preview = Session::get('preview');
         return view('admin.masters.color.edit.index', [
-            'color' => $color
+            'color' => $color,
+            'preview' => $preview
         ]);
     }
     public function colorCreate(Request $request): View|Factory|Application
     {
+        $preview = Session::get('preview');
         return view('admin.masters.color.edit.index', [
-            'color' => new MColor()
+            'color' => new MColor(),
+            'preview' => $preview
         ]);
     }
     
@@ -370,6 +423,13 @@ class MasterController extends Controller
                 ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
+        
+        $preview = Session::get('preview');
+        
+        if ($preview) {
+            return redirect()->to($preview)
+                ->with(['success' => '登録しました。']);
+        }
         
         return redirect()->route('admin.masters.color')
             ->with(['success' => '登録しました。']);

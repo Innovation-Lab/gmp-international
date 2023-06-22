@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <div class="p-detail__head__inner">
-        <a href="{{route('admin.masters.color')}}" class="c-button__2">戻る</a>
+        <a href="{{$preview ?? route('admin.masters.color')}}" class="c-button__2">戻る</a>
         <div class="p-detail__head__action">
           @if(str_contains(request()->url(), 'edit'))
             <div class="c-button__2" data-micromodal-trigger="modal-alert-color">削除</div>
