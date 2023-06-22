@@ -228,4 +228,17 @@ class MProduct extends Model
         }
     }
     
+    /**
+     * @return array
+     */
+    public function getSelectTyingColorsAttribute()
+    {
+        $color_array = explode(',', $this->color_array);
+        $colors = MColor::whereIn('id', $color_array)
+            ->get()
+            ->pluck('name', 'id')
+            ->toArray();
+
+        return $colors;
+    }
 }

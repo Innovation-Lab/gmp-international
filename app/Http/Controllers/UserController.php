@@ -97,8 +97,8 @@ class UserController extends Controller
                 'm_shop_id' => data_get($params, 'm_shop_id') && data_get($params, 'm_shop_id') != 'other' ? data_get($params, 'm_shop_id') : NULL,
                 'product_code' => data_get($params, 'product_code'),
                 'm_color_id' => data_get($params, 'm_color_id') && data_get($params, 'm_color_id') != 'other' ? data_get($params, 'm_color_id') : NULL,
-                'other_color_name' => data_get($params, 'other_color_name'),
-                'other_shop_name' => data_get($params, 'other_shop_name'),
+                'other_color_name' => data_get($params, 'other_color_name') && data_get($params, 'm_color_id') == 'other' ? data_get($params, 'other_color_name') : NULL,
+                'other_shop_name' => data_get($params, 'other_shop_name') && data_get($params, 'm_shop_id') == 'other' ? data_get($params, 'other_shop_name') : NULL,
             ]);
 
             \DB::commit();
