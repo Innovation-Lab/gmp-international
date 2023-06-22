@@ -109,8 +109,10 @@ class MasterController extends Controller
      */
     public function productDetail(MProduct $product): View|Factory|Application
     {
+        $preview = Session::get('preview');
         return view('admin.masters.product.detail.index', [
-            'product' => $product
+            'product' => $product,
+            'preview' => $preview
         ]);
     }
     
@@ -120,6 +122,7 @@ class MasterController extends Controller
      */
     public function productEdit(MProduct $product): View|Factory|Application
     {
+        $preview = Session::get('preview');
         $fix_product = Session::get('product', []);
         
         $colors = MColor::withTrashed()
@@ -146,11 +149,13 @@ class MasterController extends Controller
             'product' => $product,
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'colors' => $colors,
+            'preview' => $preview
         ]);
     }
     
     public function productCreate(Request $request): View|Factory|Application
     {
+        $preview = Session::get('preview');
         $fix_product = Session::get('product', []);
  
         if (count($fix_product) > 0) {
@@ -168,6 +173,7 @@ class MasterController extends Controller
             'product' => new MProduct(),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::withTrashed()->pluck('alphabet_name', 'id')->toArray(),
+            'preview' => $preview
         ]);
     }
     
@@ -188,6 +194,13 @@ class MasterController extends Controller
         DB::commit();
         
         Session::forget('product');
+        $preview = Session::get('preview');
+        
+        if ($preview) {
+            return redirect()->to($preview)
+                ->with(['success' => '登録しました。']);
+        }
+        
         return redirect()->route('admin.masters.product')
             ->with(['success' => '登録しました。']);
     }
@@ -220,6 +233,7 @@ class MasterController extends Controller
     {
         $query = MProduct::query()->select('m_products.*');
         
+        $search_int = 0;
         if ($request->get('keyword')) {
             $half_space_string = mb_convert_kana($request->get('keyword'), 's');
             $search_array = explode(' ', $half_space_string);
@@ -232,16 +246,25 @@ class MasterController extends Controller
                     });
                 }
             });
+            $search_int++;
         }
         
         if ($request->get('m_brand_id') && count($request->get('m_brand_id')) > 0) {
             $query->whereIn('m_products.m_brand_id', $request->get('m_brand_id'));
+            $search_int++;
         }
         
         if ($request->get('m_color_id') && count($request->get('m_color_id')) > 0) {
             foreach ($request->get('m_color_id') as $color) {
                 $query->whereRaw("FIND_IN_SET('{$color}', m_products.color_array)");
             }
+            $search_int++;
+        }
+        
+        if($search_int > 0) {
+            Session::put('preview', url()->full());
+        } else {
+            Session::forget('preview');
         }
 
         return $query;

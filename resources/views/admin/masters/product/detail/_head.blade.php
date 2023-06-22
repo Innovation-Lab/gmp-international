@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <div class="p-detail__head__inner">
-        <a href="{{url()->previous()}}" class="c-button__2">戻る</a>
+        <a href="{{$preview ?? route('admin.masters.product')}}" class="c-button__2">戻る</a>
         <div class="p-detail__head__action">
           @if(str_contains(request()->url(), 'detail'))
             <div class="c-button__2" data-micromodal-trigger="modal-alert-m_product">削除</div>
