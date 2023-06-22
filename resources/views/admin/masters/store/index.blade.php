@@ -80,7 +80,7 @@
                       </td>
                     </tr>
                   @empty
-                    <tr><td style="border-bottom: none;">データはありません。</td></tr>
+                    <tr><td class="noResult" style="border-bottom: none;">データはありません。</td></tr>
                   @endforelse
                 </tbody>
                 <tfoot style="display: none;">
