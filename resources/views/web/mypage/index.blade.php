@@ -357,7 +357,7 @@
                     'id': value,
                 },
                 success: function (response) {
-                    if(response != 'undefined' && response != null && response != '') {
+                    if(Object.keys(response).length > 0) {
                         let insert ='      <div class="p-formlist__content"> ' +
                             '          <div class="p-formlist__label"> ' +
                             '              <p class="c-txt">シリアルナンバー</p> ' +
