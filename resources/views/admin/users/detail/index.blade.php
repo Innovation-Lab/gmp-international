@@ -51,7 +51,7 @@
                                   <a href="{{route('admin.users.edit-products', $sales_product)}}" class="c-button">編集</a>
                                   {{--カラーボール--}}
                                   <div class="p-product__item__other__box">
-                                    @if (data_get($sales_product, 'mColor.main_image_url'))
+                                    @if (data_get($sales_product, 'mColor.image_path'))
                                       {{-- 画像表示の場合 --}}
                                       <div class="c-colorBall c-colorBall--sm" style="background: url({{ data_get($sales_product, 'mColor.main_image_url') }})"></div>
                                       <div class="item">{{ data_get($sales_product, 'mColor.alphabet_name') }}</div>
