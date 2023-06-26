@@ -155,10 +155,10 @@
                                     </div>
                                     <div class="l-grid__4">
                                       <div class="p-formList__data">
-                                        {!! Form::time('open_time_of_week', old('open_time_of_week', data_get($shop, 'week_business_hour') ? data_get($shop, 'week_business_work_array')[0]: ''), ['placeholder' => '例）10:00']) !!}
+                                        {!! Form::time('open_time_of_week', old('open_time_of_week', data_get($shop, 'week_business_hour')) ? data_get($shop, 'week_business_work_array')[0]: '', ['placeholder' => '例）10:00']) !!}
                                       </div>
                                       <div class="p-formList__data store">
-                                        {!! Form::time('close_time_of_week', old('close_time_of_week', data_get($shop, 'week_business_hour') ? data_get($shop, 'week_business_work_array')[1]: ''), ['placeholder' => '例）19:00']) !!}
+                                        {!! Form::time('close_time_of_week', old('close_time_of_week', data_get($shop, 'week_business_hour')) ? data_get($shop, 'week_business_work_array')[1]: '', ['placeholder' => '例）19:00']) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -184,10 +184,10 @@
                                     </div>
                                     <div class="l-grid__4">
                                       <div class="p-formList__data">
-                                        {!! Form::time('open_time_of_holiday', old('open_time_of_holiday', data_get($shop, 'holiday_business_hour') ? data_get($shop, 'holiday_business_work_array')[0]: ''), ['placeholder' => '例）10:00']) !!}
+                                        {!! Form::time('open_time_of_holiday', old('open_time_of_holiday', data_get($shop, 'holiday_business_hour')) ? data_get($shop, 'holiday_business_work_array')[0]: '', ['placeholder' => '例）10:00']) !!}
                                       </div>
                                       <div class="p-formList__data store">
-                                        {!! Form::time('close_time_of_holiday', old('close_time_of_holiday', data_get($shop, 'holiday_business_hour') ? data_get($shop, 'holiday_business_work_array')[1]: ''), ['placeholder' => '例）19:00']) !!}
+                                        {!! Form::time('close_time_of_holiday', old('close_time_of_holiday', data_get($shop, 'holiday_business_hour')) ? data_get($shop, 'holiday_business_work_array')[1]: '', ['placeholder' => '例）19:00']) !!}
                                       </div>
                                     </div>
                                   </div>

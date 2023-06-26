@@ -69,7 +69,7 @@ class MShop extends Model
      */
     public function getWeekBusinessWorkArrayAttribute(): array
     {
-        return explode('〜', data_get($this, 'week_business_hour'));
+        return explode('~', data_get($this, 'week_business_hour'));
     }
     
     /**
@@ -77,6 +77,6 @@ class MShop extends Model
      */
     public function getHolidayBusinessWorkArrayAttribute(): array
     {
-        return explode('〜', data_get($this, 'holiday_business_hour'));
+        return explode('~', data_get($this, 'holiday_business_hour'));
     }
 }
