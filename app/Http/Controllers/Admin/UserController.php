@@ -54,8 +54,8 @@ class UserController extends Controller
     {
         return view('admin.users.index', [
             'users' => $this->userRepository->search($request)->orderByDesc('id')->paginate(50),
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'request' => $request,
         ]);
     }
@@ -76,8 +76,8 @@ class UserController extends Controller
 
         return view('admin.users.create.index')->with([
             'prefectures' => $prefectures,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
@@ -139,8 +139,8 @@ class UserController extends Controller
     {
         return view('admin.users.create.products')->with([
             'user' => $user,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
@@ -222,8 +222,8 @@ class UserController extends Controller
         return view('admin.users.edit.products')->with([
             'user' => $user,
             'sales_product' => $sales_product,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);

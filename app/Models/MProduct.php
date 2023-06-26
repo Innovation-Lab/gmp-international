@@ -241,4 +241,14 @@ class MProduct extends Model
 
         return $colors;
     }
+    
+    
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopePublic($query): mixed
+    {
+        return $query->where('public_flag', '1');
+    }
 }

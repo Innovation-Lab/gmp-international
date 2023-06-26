@@ -42,8 +42,8 @@ class SalesProductController extends Controller
 
         return view('web.mypage.product.add')->with([
             'sales_product' => $sales_product,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             'back' => $back
@@ -68,8 +68,8 @@ class SalesProductController extends Controller
         
         return view('web.mypage.product.confirm')->with([
             'product' => $product,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);

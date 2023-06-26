@@ -50,8 +50,8 @@ class ProductController extends Controller
     {
         return view('admin.products.index', [
             'sales_products' => $this->productRepository->search($request)->orderByDesc('id')->paginate(50),
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             'request' => $request,
@@ -78,8 +78,8 @@ class ProductController extends Controller
             ->toArray();
 
         return view('admin.products.create.products',[
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             'users' => $users,
@@ -129,8 +129,8 @@ class ProductController extends Controller
     public function edit(SalesProduct $product): View
     {
         return view('admin.products.edit.index', $product,[
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             'product' => $product,

@@ -50,8 +50,8 @@ class UserController extends Controller
         return view('web.mypage.index')->with([
             'user' => $user,
             'sales_products' => $sales_products,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
@@ -71,8 +71,8 @@ class UserController extends Controller
         return view('web.mypage.product.index')->with([
             'user' => $user,
             'sales_products' => $sales_products,
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);

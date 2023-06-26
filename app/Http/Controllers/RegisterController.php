@@ -137,16 +137,16 @@ class RegisterController extends Controller
         if (count($sales_products) > 0) {
             return view('web.register.product_fix', [
                 'sales_products' => $sales_products,
-                'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-                'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+                'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+                'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
                 'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
                 'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             ]);
         }
         
         return view('web.register.product', [
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
@@ -173,8 +173,8 @@ class RegisterController extends Controller
         return view('web.register.confirm', [
             'user' => Session::get('user_info', []),
             'sales_products' => Session::get('products', []),
-            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
@@ -214,8 +214,8 @@ class RegisterController extends Controller
      */
     public function jsGetArray(): JsonResponse
     {
-        $brands = MBrand::query()->pluck('name', 'id')->toArray();
-        $products = MProduct::query()->pluck('name', 'id')->toArray();
+        $brands = MBrand::query()->public()->pluck('name', 'id')->toArray();
+        $products = MProduct::query()->public()->pluck('name', 'id')->toArray();
         $colors = MColor::query()
             ->select(['id', 'alphabet_name', 'name'])
             ->get()

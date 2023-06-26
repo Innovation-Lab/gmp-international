@@ -46,4 +46,13 @@ class MBrand extends Model
             return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
         }
     }
+    
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopePublic($query): mixed
+    {
+        return $query->where('public_flag', '1');
+    }
 }
