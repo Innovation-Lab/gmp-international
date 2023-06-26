@@ -15,6 +15,26 @@
               <div class="l-grid__2 l-grid__gap3">
                 <div class="p-formList__content">
                   <div class="p-formList__label">
+                    新会員番号
+                  </div>
+                  <div class="p-formList__data">
+                    {!! Form::number('id', $request['id'], ['placeholder' => '']) !!}
+                  </div>
+                </div>
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                    旧会員番号
+                  </div>
+                  <div class="p-formList__data">
+                    {!! Form::number('kana', $request['old_id'], ['placeholder' => '']) !!}
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="p-formList__item">
+              <div class="l-grid__2 l-grid__gap3">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
                     名前
                   </div>
                   <div class="p-formList__data">

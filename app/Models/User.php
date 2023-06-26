@@ -209,10 +209,11 @@ class User extends Authenticatable
                             ->orWhere('users.address_city', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.address_block', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.address_building', 'LIKE', '%' . $search_word . '%')
-                            ->orWhere('users.tel', 'LIKE', '%' . $search_word . '%')
+//                            ->orWhere('users.tel', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.email', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.is_dm', 'LIKE', '%' . $search_word . '%')
                             ->orWhere('users.old_id', 'LIKE', '%' . $search_word . '%')
+                            ->orWhere('users.id', 'LIKE', '%' . $search_word . '%')
                             ->orWhereHas('salesProducts', function ($query) use ($search_word) {
                                 $query->whereHas('mProduct', function ($query) use ($search_word) {
                                     $query->where('name', 'LIKE', '%' . $search_word . '%');
@@ -243,6 +244,14 @@ class User extends Authenticatable
                     ->orWhereRaw("CONCAT(users.last_name, ' ', users.first_name) LIKE ?", ["%{$name}%"])
                     ->orWhereRaw("REPLACE(CONCAT(users.last_name, users.first_name), ' ', '') LIKE ?", ["%{$name}%"]);
             });
+        }
+        
+        if ($request->filled('id')) {
+            $query->where('id', $request->filled('id'));
+        }
+        
+        if ($request->filled('old_id')) {
+            $query->where('old_id', $request->filled('old_id'));
         }
 
         if ($request->filled('kana')) {

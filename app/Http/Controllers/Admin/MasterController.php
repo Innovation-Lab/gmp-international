@@ -44,7 +44,7 @@ class MasterController extends Controller
     public function brand(Request $request): View|Factory|Application
     {
         return view('admin.masters.brand.index', [
-            'brands' => MBrand::query()->paginate(20)
+            'brands' => MBrand::query()->paginate(50)
         ]);
     }
     
@@ -97,7 +97,7 @@ class MasterController extends Controller
     public function product(Request $request): View|Factory|Application
     {
         return view('admin.masters.product.index', [
-            'products' => $this->searchProduct($request)->paginate(20),
+            'products' => $this->searchProduct($request)->paginate(50),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
         ]);
@@ -233,6 +233,8 @@ class MasterController extends Controller
     {
         $query = MProduct::query()->select('m_products.*');
         
+        $query->where('color_array', 'DESC');
+        
         $search_int = 0;
         if ($request->get('keyword')) {
             $half_space_string = mb_convert_kana($request->get('keyword'), 's');
@@ -317,7 +319,7 @@ class MasterController extends Controller
     public function store(Request $request): View|Factory|Application
     {
         return view('admin.masters.store.index', [
-            'shops' => MShop::query()->paginate(20)
+            'shops' => MShop::query()->paginate(50)
         ]);
     }
     
@@ -387,7 +389,7 @@ class MasterController extends Controller
             ->toArray();
         
         return view('admin.masters.color.index', [
-            'colors' => $this->searchColor($request)->paginate(20),
+            'colors' => $this->searchColor($request)->paginate(50),
             'select_colors' => $select_colors
         ]);
     }

@@ -49,7 +49,7 @@ class ProductController extends Controller
     public function index(Request $request): View|Factory|Application
     {
         return view('admin.products.index', [
-            'sales_products' => $this->productRepository->search($request)->orderByDesc('id')->paginate(20),
+            'sales_products' => $this->productRepository->search($request)->orderByDesc('id')->paginate(50),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),

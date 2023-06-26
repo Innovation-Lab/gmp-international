@@ -26,7 +26,7 @@ class AdminController extends Controller
     public function index(Request $request): View|Factory|Application
     {
         return view('admin.staffs.index', [
-            'admins' => Admin::query()->paginate(20)
+            'admins' => Admin::query()->paginate(50)
         ]);
     }
     
