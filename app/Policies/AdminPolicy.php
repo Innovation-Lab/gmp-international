@@ -66,10 +66,8 @@ class AdminPolicy
         if ($user->authority == Admin::MANAGER) {
             return true;
         }
-        if (!$admin->id) {
-            return true;
-        }
-        return true;
+   
+        return false;
     }
     
     /**

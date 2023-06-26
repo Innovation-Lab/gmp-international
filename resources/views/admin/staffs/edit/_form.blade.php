@@ -50,23 +50,27 @@ if(count($errors->get('password')) > 0 || count($errors->get('password_confirmat
               </script>
             </div>
           </div>
-          <div class="p-formList__content">
-            <div class="p-formList__label optional">
-              権限
-            </div>
-            <div class="p-formList__data" style="display: block;">
-              <div class="f-tab">
-                <label for="inq1-2">
-                  <input type="radio" id="inq1-2" name="authority" value="2" {{ data_get($admin, 'authority', 1) == 2 ? 'checked' : '' }}>
-                  一般
-                </label>
-                <label for="inq2-2">
-                  <input type="radio" id="inq2-2" name="authority" value="1" {{ data_get($admin, 'authority', 1) == 1 ? 'checked' : '' }}>
-                  管理者
-                </label>
+          @can('changeAuthority', Auth::user())
+            <div class="p-formList__content">
+              <div class="p-formList__label optional">
+                権限
+              </div>
+              <div class="p-formList__data" style="display: block;">
+                <div class="f-tab">
+                  <label for="inq1-2">
+                    <input type="radio" id="inq1-2" name="authority" value="2" {{ data_get($admin, 'authority', 1) == 2 ? 'checked' : '' }}>
+                    一般
+                  </label>
+                  <label for="inq2-2">
+                    <input type="radio" id="inq2-2" name="authority" value="1" {{ data_get($admin, 'authority', 1) == 1 ? 'checked' : '' }}>
+                    管理者
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
+          @else
+            <input hidden name="authority" value="{{ data_get($admin, 'authority', 2) }}">
+          @endcan
         </div>
       </li>
       <li class="p-formList__item">

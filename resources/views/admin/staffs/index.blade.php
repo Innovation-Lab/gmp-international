@@ -11,7 +11,9 @@
             <div class="p-index__head__inner">
               <h2 class="p-index__head__title">管理者管理</h2>
               <div class="p-index__head__action">
-                <a href="{{route('admin.staffs.create')}}" class="c-button__2">管理者を新規追加</a>
+                @can('create', Auth::user())
+                  <a href="{{route('admin.staffs.create')}}" class="c-button__2">管理者を新規追加</a>
+                @endcan
               </div>
             </div>
           </div>
@@ -82,7 +84,9 @@
                         {{ formatYmdSlash(data_get($admin, 'created_at')) }}<br>{{ formatHiSlash(data_get($admin, 'created_at')) }}
                       </td>
                       <td class="item">
-                        <a href="{{route('admin.staffs.edit', $admin)}}" class="c-button">編集</a>
+                        @can('update', $admin)
+                          <a href="{{route('admin.staffs.edit', $admin)}}" class="c-button">編集</a>
+                        @endcan
                         @can('delete', $admin)
                           <button onclick="
                               if(confirm('本当に削除してよろしいですか？')) {
@@ -91,7 +95,7 @@
                             " class="c-button__2">
                             削除
                           </button>
-                        @endif
+                        @endcan
                       </td>
                     </tr>
                     <form method="POST" action="{{ route('admin.staffs.delete', $admin) }}" id="deleteAdminAccountForm{{ $admin->id }}">@csrf</form>
