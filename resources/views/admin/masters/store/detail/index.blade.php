@@ -36,18 +36,34 @@
                             '住所' => 
                             '〒 '.format_zip_code(data_get($shop, 'zip_code')).'<br>
                             '.data_get($shop, 'full_address'),
-                            '営業時間1<br>備考' => data_get($shop, 'week_business_hour').'<br>（'.data_get($shop, 'week_business_hour_memo').'）',
-                            '営業時間2<br>備考' => data_get($shop, 'holiday_business_hour').'<br>（'.data_get($shop, 'holiday_business_hour_memo').'）',
                             ] as $key => $val)
-                          <li class="p-list__item">
-                            <div class="p-list__label">
-                              {!! $key !!}
-                            </div>
-                            <div class="p-list__data">
-                              {!! $val !!}
-                            </div>
-                            @endforeach
-                          </li>
+                            <li class="p-list__item">
+                              <div class="p-list__label">
+                                {!! $key !!}
+                              </div>
+                              <div class="p-list__data">
+                                {!! $val !!}
+                              </div>
+                            </li>
+                          @endforeach
+                            <li class="p-list__item">
+                              <div class="p-list__label">
+                                営業時間1<br>備考
+                              </div>
+                              <div class="p-list__data">
+                                {!! data_get($shop, 'week_business_hour') !!}<br>
+                                {!! data_get($shop, 'week_business_hour_memo') ? '('.data_get($shop, 'week_business_hour_memo').')' : '' !!}
+                              </div>
+                            </li>
+                            <li class="p-list__item">
+                              <div class="p-list__label">
+                                営業時間2<br>備考
+                              </div>
+                              <div class="p-list__data">
+                                {!! data_get($shop, 'holiday_business_hour') !!}<br>
+                                {!! data_get($shop, 'holiday_business_hour_memo') ? '('.data_get($shop, 'holiday_business_hour_memo').')' : '' !!}
+                              </div>
+                            </li>
                         </ul>
                       </div>
                     </div>
