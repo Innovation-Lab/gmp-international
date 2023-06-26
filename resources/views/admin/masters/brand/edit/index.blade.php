@@ -83,6 +83,21 @@
                                 </div>
                               </div>
                             </li>
+                            <li class="p-formList__item">
+                              <div class="p-formList__content">
+                                <div class="p-formList__label ">
+                                  公開 / 非公開
+                                </div>
+                                <div class="p-formList__data">
+                                  <div class="radio">
+                                    {!! Form::radio('public_flag', '1', !old('public_flag', data_get($brand, 'public_flag')) || old('public_flag', data_get($brand, 'public_flag')) == 1, ['id' => 'is_public']) !!}
+                                    {!! Form::label('is_public', '公開') !!}
+                                    {!! Form::radio('public_flag', '2', old('public_flag', data_get($brand, 'public_flag')) == 2, ['id' => 'not_public']) !!}
+                                    {!! Form::label('not_public', '非公開') !!}
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                       </div>

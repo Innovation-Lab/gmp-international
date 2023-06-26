@@ -97,7 +97,8 @@ class MasterRepository implements MasterRepositoryInterface
     private function arrayShapeBrand(Request $request): array
     {
         return [
-            'name' => $request->input('name')
+            'name' => $request->input('name'),
+            'public_flag' => $request->input('public_flag'),
         ];
     }
     
@@ -166,6 +167,7 @@ class MasterRepository implements MasterRepositoryInterface
                 'name' => $request->input('name'),
                 'name_kana' => $request->input('name_kana'),
                 'serial_guide_type' => $request->input('serial_guide_type'),
+                'public_flag' => $request->input('public_flag'),
             ],
             'color_url' => []
         ];
