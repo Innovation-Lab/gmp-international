@@ -82,10 +82,12 @@
                         </div>
                       </div>
                     </div>
-                    <!-- 製品画像 -->
-                    <div class="p-card__img p-card__img--top">
-                      <img src="{{ data_get($sales_product, 'select_color_url') }}" width="110px" max-height="90px">
-                    </div>
+                    @if(data_get($sales_product, 'select_color_url_main_view'))
+                      <!-- 製品画像 -->
+                      <div class="p-card__img p-card__img--top">
+                        <img src="{{ data_get($sales_product, 'select_color_url') }}" width="110px" max-height="90px">
+                      </div>
+                    @endif
                   </div>
                 </div>
               </li>

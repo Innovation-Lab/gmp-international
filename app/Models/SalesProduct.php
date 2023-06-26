@@ -97,6 +97,21 @@ class SalesProduct extends Model
     }
     
     /**
+     * カラーに紐づくURLの取得
+     * @return array|mixed|string
+     */
+    public function getSelectColorUrlMainViewAttribute(): mixed
+    {
+        $colorUrl = $this->mProduct->getColorUrl(data_get($this, 'm_color_id'));
+        $imageValid = false;
+        if ($colorUrl) {
+            $imageValid = filter_var(data_get($colorUrl, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($colorUrl, 'url')) !== false;
+        }
+        
+        return $imageValid ? data_get($colorUrl, 'url') : NULL;
+    }
+    
+    /**
      * @return array|mixed
      */
     public function getSelectShopNameAttribute(): mixed
