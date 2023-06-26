@@ -233,7 +233,7 @@ class MasterController extends Controller
     {
         $query = MProduct::query()->select('m_products.*');
         
-        $query->where('color_array', 'DESC');
+//        $query->where('color_array', 'DESC');
         
         $search_int = 0;
         if ($request->get('keyword')) {
