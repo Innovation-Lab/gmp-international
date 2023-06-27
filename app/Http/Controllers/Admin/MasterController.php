@@ -180,7 +180,7 @@ class MasterController extends Controller
         return view('admin.masters.product.edit.index', [
             'product' => new MProduct(),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::withTrashed()->pluck('alphabet_name', 'id')->toArray(),
+            'colors' => $colors,
             'preview' => $preview
         ]);
     }
