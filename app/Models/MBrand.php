@@ -19,6 +19,12 @@ class MBrand extends Model
     protected $guarded = [
         'id'
     ];
+    
+    
+    public const PUBLIC_TEXT = [
+        '1' => '公開',
+        '2' => '非公開',
+    ];
 
     /*
     |--------------------------------------------------------------------------

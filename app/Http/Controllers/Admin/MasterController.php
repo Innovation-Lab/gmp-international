@@ -97,7 +97,7 @@ class MasterController extends Controller
     public function product(Request $request): View|Factory|Application
     {
         return view('admin.masters.product.index', [
-            'products' => $this->searchProduct($request)->paginate(50),
+            'products' => $this->searchProduct($request)->paginate(20),
             'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
         ]);

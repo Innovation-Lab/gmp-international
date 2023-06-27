@@ -58,6 +58,9 @@
                     <div class="item">登録製品数</div>
                   </th>
                   <th>
+                    <div class="item">公開 / 非公開</div>
+                  </th>
+                  <th>
                     <div class="item"></div>
                   </th>
                   <th>
@@ -76,6 +79,9 @@
                     </td>
                     <td class="item">
                       {{ count(data_get($brand, 'mProducts')) }}
+                    </td>
+                    <td class="item">
+                      {{ \App\Models\MBrand::PUBLIC_TEXT[data_get($brand, 'public_flag')] }}
                     </td>
                     <td class="item">
                     </td>
