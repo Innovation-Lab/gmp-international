@@ -44,7 +44,7 @@ class MasterController extends Controller
     public function brand(Request $request): View|Factory|Application
     {
         return view('admin.masters.brand.index', [
-            'brands' => MBrand::query()->orderBy('public_flag')->paginate(50)
+            'brands' => MBrand::query()->orderBy('seq')->paginate(50)
         ]);
     }
     
