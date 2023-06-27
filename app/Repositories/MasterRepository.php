@@ -108,8 +108,8 @@ class MasterRepository implements MasterRepositoryInterface
      */
     private function arrayShapeShop(Request $request): array
     {
-        $week_business_hour = $request->get('open_time_of_week'). '〜' .$request->get('close_time_of_week');
-        $holiday_business_hour = $request->get('open_time_of_holiday'). '〜' .$request->get('close_time_of_holiday');
+        $week_business_hour = $request->get('open_time_of_week'). '~' .$request->get('close_time_of_week');
+        $holiday_business_hour = $request->get('open_time_of_holiday'). '~' .$request->get('close_time_of_holiday');
 
         return [
             'name' => $request->input('name'),
