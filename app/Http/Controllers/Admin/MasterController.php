@@ -241,6 +241,7 @@ class MasterController extends Controller
     {
         $query = MProduct::query()->select('m_products.*');
         
+        $query->orderBy('public_flag');
         $query->orderBy('seq');
         $query->orderByRaw('LENGTH(m_products.color_array) DESC');
         
