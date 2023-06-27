@@ -10,7 +10,7 @@
           </div>
           <div class="p-footer__tel__item">
             <p class="c-ttl">ペット用品</p>
-            <a href="tel:0120-178-363" class="c-txt c-txt--tel">0120-98-1511</a>
+            <a href="tel:0120-98-1511" class="c-txt c-txt--tel">0120-98-1511</a>
           </div>
         </div>
       </div>
