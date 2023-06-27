@@ -29,7 +29,8 @@ class ImportCsvService
         $lexer = new Lexer($config);
     
         //CharsetをUTF-8に変換、CSVのヘッダー行を無視
-        $config->setFromCharset("UTF-8");
+        $config->setFromCharset("sjis-win");
+        $config->setToCharset("UTF-8");
         $config->setIgnoreHeaderLine(true);
     
         $dataList = [];

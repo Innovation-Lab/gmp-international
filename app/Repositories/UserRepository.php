@@ -173,30 +173,26 @@ class UserRepository implements UserRepositoryInterface
     {
         $chunkSize = 30;
         $userCsvHeader = Config::get('import_mapping_const.user_csv_header');
-        
+
         return collect($csv)->chunk($chunkSize)->each(function ($chunk) use ($userCsvHeader) {
             $usersToCreate = [];
             
             foreach ($chunk as $item) {
                 $params = [];
                 
-                // 住所の調整
-                if (isset($item[10])) {
-                    $pattern = '/^(.*?)(\d.*)$/';
-                    if (preg_match($pattern, $item[10], $matches)) {
-                        $city = $matches[1];
-                        $street = $matches[2];
-                        $item[12] = $item[11];
-                        $item[11] = $street;
-                        $item[10] = $city;
-                    }
-                }
-                
                 foreach ($item as $key => $value) {
                     switch ($userCsvHeader[$key]) {
-                        case 'old_id':
-                            if (User::where('old_id', $value)->exists()) {
+                        case 'email':
+                            if (!$value) {
                                 continue 2;
+                            }
+                            if (User::where('email', $value)->exists()) {
+                                continue 2;
+                            }
+                            break;
+                        case 'tel':
+                            if ($value) {
+                                $value = '0'.$value;
                             }
                             break;
                         case 'password':
@@ -212,14 +208,10 @@ class UserRepository implements UserRepositoryInterface
                             }
                             break;
                     }
-                    if(isset($params[$userCsvHeader[$key]])) {
-                        $params[$userCsvHeader[$key]] = $value;
-                    }
+                    
+                    $params[$userCsvHeader[$key]] = $value;
                 }
-                
-                if (isset($params['old_id'])) {
-                    $usersToCreate[] = $params;
-                }
+                $usersToCreate[] = $params;
             }
             
             User::insert($usersToCreate);
