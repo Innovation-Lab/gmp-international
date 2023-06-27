@@ -205,6 +205,8 @@ class UserRepository implements UserRepositoryInterface
                                 $value = '2000-01-01 00:00:00';
                             } elseif ($value == '0') {
                                 $value = null;
+                            } else {
+                                $value = null;
                             }
                             break;
                     }
