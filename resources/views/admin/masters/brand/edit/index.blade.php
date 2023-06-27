@@ -53,12 +53,10 @@
                                     "
                                   >
                                   <label for="brand_logo" class="logo @if(data_get($brand, 'image_path')) clear_fake @endif">
-                                    @if (Route::currentRouteName() == 'admin.masters.brand.edit')
                                       <img
                                         id="image_preview_form"
-                                        src="{{ data_get($brand, 'main_image_url') }}"
+                                        @if(Route::currentRouteName() == 'admin.masters.brand.edit') src="{{ data_get($brand, 'main_image_url') }}" @endif
                                       >
-                                    @endif
                                   </label>
                                   @error('image_path')
                                   <p class="error">{{ $message }}</p>
