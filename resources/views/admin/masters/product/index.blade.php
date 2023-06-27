@@ -62,7 +62,9 @@
                   <th>
                     <div class="item">登録カラー数</div>
                   </th>
-               
+                  <th>
+                    <div class="item">公開 / 非公開</div>
+                  </th>
                 </thead>
                 <tbody>
                   @forelse ($products as $product)
@@ -79,6 +81,9 @@
                     </td>
                     <td class="item">
                       {{ data_get($product, 'color_count') }}
+                    </td>
+                    <td class="item">
+                      {{ \App\Models\MProduct::PUBLIC_TEXT[data_get($product, 'public_flag', 1)] }}
                     </td>
                   </tr>
                   @empty
