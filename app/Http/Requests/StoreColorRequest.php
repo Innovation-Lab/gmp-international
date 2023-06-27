@@ -37,7 +37,8 @@ class StoreColorRequest extends FormRequest
             ],
             default => [
                 'name' => 'required|max:100',
-                'alphabet_name' => 'required|max:100'
+                'alphabet_name' => 'required|max:100',
+                'image_path' => 'required'
             ]
         };
 
@@ -62,6 +63,7 @@ class StoreColorRequest extends FormRequest
         return [
             'color.required' => ':attributeを入力してください。',
             'second_color.required' => ':attributeを入力してください。',
+            'image_path.required' => ':attributeを登録してください。',
         ];
     }
     

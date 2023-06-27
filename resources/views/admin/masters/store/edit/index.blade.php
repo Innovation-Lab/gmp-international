@@ -23,7 +23,11 @@
                     {!! Form::hidden('id', data_get($shop, 'id')) !!}
                       <div class="p-edit__main__box__head">
                         <h3 class="p-edit__main__box__head__title">
-                          店舗情報編集
+                          @if (Route::currentRouteName() == 'admin.masters.store.create')
+                            店舗を新規追加
+                          @elseif (Route::currentRouteName() == 'admin.masters.store.edit')
+                            店舗情報編集
+                          @endif
                         </h3>
                       </div>
                       <div class="l-grid__2 l-grid__2--xl" style="gap: 1.5rem 2rem;">
