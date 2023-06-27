@@ -85,7 +85,7 @@
                         @enderror
                       </div>
                       <!-- メイ -->
-                      <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
+                      <div class="c-input__item @error('first_name_kana') c-input__item--err @enderror">
                         <div class="c-input">
                           <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana', data_get($user, 'first_name_kana')) }}">
                         </div>
