@@ -8,6 +8,9 @@
         <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
       </header>
       <main class="modal__content" id="modal-1-content">
+        <div class="modal__content__input" style="margin-bottom: 10px; text-align: center">
+          <a href="{{ storage_path('csv/user/user_template.csv') }}" download="テンプレート.csv" class="c-button">テンプレートをダウンロード</a>
+        </div>
         {!! Form::open(['method' => 'post', 'route' => 'admin.csv.user.import', 'files' => true, 'id' => 'userImportForm']) !!}
         <div class="modal__content__input">
           <label for="result_csv" class="">
