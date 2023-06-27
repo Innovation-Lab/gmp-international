@@ -11,7 +11,7 @@
       {{-- ---------- リスト ---------- --}}
       <ul class="p-list">
         @foreach([
-          '会員番号' => 'No.'.str_pad(data_get($user, 'id'), 12, '0', STR_PAD_LEFT),
+          '会員番号' => data_get($user, 'id'),
           '名前<span>（フリガナ）</span>' => data_get($user, 'full_name') . '<span>（' . data_get($user, 'full_name_kana') . '）</span>',
           '電話番号' => data_get($user, 'formatted_tel'),
           'メールアドレス' => data_get($user, 'email'),
@@ -37,7 +37,7 @@
               ※旧会員番号
             </div>
             <div class="p-list__data">
-              {!! 'No.'.data_get($user, 'old_id') !!}
+              {!! data_get($user, 'old_id') !!}
             </div>
           </li>
         @endif

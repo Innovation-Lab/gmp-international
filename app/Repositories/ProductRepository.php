@@ -140,7 +140,7 @@ class ProductRepository implements ProductRepositoryInterface
 
                     switch ($productCsvHeader[$key]) {
                         case 'user_id':
-                            $user = User::where('old_id', $value)->first();
+                            $user = Use不要r::where('old_id', $value)->first();
                             if($user) {
                                 $new_params['user_id'] = $user->id;
                             } else {
