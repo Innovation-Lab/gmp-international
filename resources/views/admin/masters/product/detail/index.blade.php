@@ -48,7 +48,8 @@
                           @foreach([
                             'ブランド名' => data_get($product, 'mBrand.name'),
                             '製品名' => data_get($product, 'name').' '.data_get($product, 'name_kana'),
-                            '登録カラー数' => data_get($product, 'color_count')
+                            '登録カラー数' => data_get($product, 'color_count'),
+                            '公開 / 非公開' => \App\Models\MProduct::PUBLIC_TEXT[data_get($product, 'public_flag', 1)]
                             ] as $key => $val)
                           <li class="p-list__item">
                             <div class="p-list__label">
