@@ -46,4 +46,11 @@ class StoreShopRequest extends FormRequest
             'tel' => '電話番号',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'prefecture.required' => ':attributeを選択してください。',
+        ];
+    }
 }

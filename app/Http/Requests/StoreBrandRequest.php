@@ -47,5 +47,13 @@ class StoreBrandRequest extends FormRequest
             'name' => 'ブランド名',
             'image_path' => 'ブランドロゴ',
         ];
+
+    }
+
+    public function messages()
+    {
+        return [
+            'image_path.required' => ':attributeを登録してください。',
+        ];
     }
 }
