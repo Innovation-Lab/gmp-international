@@ -247,11 +247,11 @@ class User extends Authenticatable
         }
         
         if ($request->filled('id')) {
-            $query->where('id', $request->filled('id'));
+            $query->where('users.id', $request->get('id'));
         }
         
         if ($request->filled('old_id')) {
-            $query->where('old_id', $request->filled('old_id'));
+            $query->where('old_id', $request->get('old_id'));
         }
 
         if ($request->filled('kana')) {

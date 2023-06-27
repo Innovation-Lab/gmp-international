@@ -26,7 +26,7 @@
                     旧会員番号
                   </div>
                   <div class="p-formList__data">
-                    {!! Form::number('kana', $request['old_id'], ['placeholder' => '']) !!}
+                    {!! Form::number('old_id', $request['old_id'], ['placeholder' => '']) !!}
                   </div>
                 </div>
               </div>
