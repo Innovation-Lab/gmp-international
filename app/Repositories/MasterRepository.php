@@ -181,6 +181,8 @@ class MasterRepository implements MasterRepositoryInterface
                 }
                 if (isset($value['url'])) {
                     $params['color_url'][$key]['url'] = $value['url'];
+                } else {
+                    $params['color_url'][$key]['url'] = NULL;
                 }
                 if (isset($value['id'])) {
                     $params['color_url'][$key]['id'] = $value['id'];
@@ -196,6 +198,8 @@ class MasterRepository implements MasterRepositoryInterface
                 }
                 if (isset($value['url'])) {
                     $params['color_url'][$key]['url'] = $value['url'];
+                } else {
+                    $params['color_url'][$key]['url'] = NULL;
                 }
             }
         }
