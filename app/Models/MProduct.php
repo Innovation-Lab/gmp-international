@@ -153,6 +153,12 @@ class MProduct extends Model
                 $record = MColor::withTrashed()->find($color);
                 $color_url = ColorUrl::query()->where('m_product_id', $this->id)->where('m_color_id', $color)->first();
                 $imageValid = filter_var(data_get($color_url, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($color_url, 'url')) !== false;
+                if(!$imageValid) {
+                    $image_path = 'products/'.data_get($this, 'name').'_'.data_get($color, 'alphabet_name').'.png';
+                    $image_path = str_replace(' ', '', $image_path);
+                    $s3Image =  $this->getTemporaryImageUrl($image_path);
+                    $imageSecondValid = filter_var($s3Image, FILTER_VALIDATE_URL) !== false && @getimagesize($s3Image) !== false;
+                }
                 
                 $ballWithName[data_get($record,'id')] = [
                     'id' => data_get($record, 'id'),
@@ -161,7 +167,7 @@ class MProduct extends Model
                     'color' => data_get($record, 'color'),
                     'second_color' => data_get($record, 'second_color'),
                     'image_path' => data_get($record, 'image_path'),
-                    'url' => $imageValid ? data_get($color_url, 'url') : asset('img/admin/noImage/product.png'),
+                    'url' => $imageValid ? data_get($color_url, 'url') : ($imageSecondValid ? $s3Image :asset('img/admin/noImage/product.png')),
                 ];
             }
         }
@@ -186,7 +192,13 @@ class MProduct extends Model
         if ($record) {
             $color_url = ColorUrl::query()->where('m_product_id', $this->id)->where('m_color_id', $record->id)->first();
             $imageValid = filter_var(data_get($color_url, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($color_url, 'url')) !== false;
-            
+           
+            if(!$imageValid) {
+                $image_path = 'products/'.data_get($this, 'name').'_'.data_get($record, 'alphabet_name').'.png';
+                $image_path = str_replace(' ', '', $image_path);
+                $s3Image =  $this->getTemporaryImageUrl($image_path);
+                $imageSecondValid = filter_var($s3Image, FILTER_VALIDATE_URL) !== false && @getimagesize($s3Image) !== false;
+            }
             $ballWithName = [
                 'id' => data_get($record, 'id'),
                 'name' => data_get($record, 'name'),
@@ -194,7 +206,7 @@ class MProduct extends Model
                 'color' => data_get($record, 'color'),
                 'second_color' => data_get($record, 'second_color'),
                 'image_path' => data_get($record, 'image_path'),
-                'url' => $imageValid ? data_get($color_url, 'url') : asset('img/admin/noImage/product.png'),
+                'url' => $imageValid ? data_get($color_url, 'url') : ($imageSecondValid ? $s3Image :asset('img/admin/noImage/product.png')),
             ];
         }
         
