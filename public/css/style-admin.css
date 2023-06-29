@@ -3172,7 +3172,11 @@ textarea {
 }
 .p-list__left--detail {
   display: grid;
+  justify-content: center;
   gap: 1rem;
+}
+.p-list__left--detail .productimg {
+  max-height: 200px;
 }
 .p-list__img {
   border: 1px solid #8c8c8c;
@@ -3183,6 +3187,11 @@ textarea {
 }
 .p-list__img--detail {
   width: 100px;
+  display: flex;
+  justify-content: center;
+}
+.p-list__img--detail .balldetailimg {
+  max-height: 100px;
 }
 .p-list__status {
   padding: 16px;

@@ -167,7 +167,11 @@
     width: 200px;
     &--detail{
       display: grid;
+      justify-content: center;
       gap: 1rem;
+      .productimg{
+        max-height: 200px;
+      }
     }
   }
   &__img{
@@ -178,6 +182,11 @@
     }
     &--detail{
       width: 100px;
+      display: flex;
+      justify-content: center;
+      .balldetailimg{
+        max-height: 100px;
+      }
     }
   }
   &__status{
