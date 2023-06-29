@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SalesProduct extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, GetImageTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -93,7 +94,36 @@ class SalesProduct extends Model
             $imageValid = filter_var(data_get($colorUrl, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($colorUrl, 'url')) !== false;
         }
         
-        return $imageValid ? data_get($colorUrl, 'url') : asset('img/admin/noImage/product.png');
+        if(!$imageValid) {
+            $image_path = 'products/'.data_get($this, 'mProduct.name').'_'.data_get($this, 'mColor.alphabet_name').'.png';
+            $image_path = str_replace(' ', '', $image_path);
+            $s3Image =  $this->getTemporaryImageUrl($image_path);
+            $imageSecondValid = filter_var($s3Image, FILTER_VALIDATE_URL) !== false && @getimagesize($s3Image) !== false;
+        }
+        
+        return $imageValid ? data_get($colorUrl, 'url') : ($imageSecondValid ? $s3Image :asset('img/admin/noImage/product.png'));
+    }
+    
+    /**
+     * カラーに紐づくURLの取得(製品詳細)
+     * @return array|mixed|string
+     */
+    public function getSelectViewDetailColorUrlAttribute(): mixed
+    {
+        $colorUrl = $this->mProduct->getColorUrl(data_get($this, 'm_color_id'));
+        $imageValid = false;
+        if ($colorUrl) {
+            $imageValid = filter_var(data_get($colorUrl, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($colorUrl, 'url')) !== false;
+        }
+        
+        if(!$imageValid) {
+            $image_path = 'products/'.data_get($this, 'mProduct.name').'_'.data_get($this, 'mColor.alphabet_name').'.png';
+            $image_path = str_replace(' ', '', $image_path);
+            $s3Image =  $this->getTemporaryImageUrl($image_path);
+            $imageSecondValid = filter_var($s3Image, FILTER_VALIDATE_URL) !== false && @getimagesize($s3Image) !== false;
+        }
+        
+        return $imageValid ? data_get($colorUrl, 'url') : ($imageSecondValid ? $s3Image :asset('img/admin/noImage/product-detail.png'));
     }
     
     /**

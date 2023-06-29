@@ -21,7 +21,7 @@
                     <div class="p-list--product">
                       <div class="p-list__left">
                         <div class="p-list__img" style="width: 200px;">
-                          <img class="" src="{{ data_get($product, 'select_color_url')  }}" alt="">
+                          <img class="" src="{{ data_get($product, 'select_view_detail_color_url')  }}" alt="">
                         </div>
                       </div>
                       <div class="p-list__right">
