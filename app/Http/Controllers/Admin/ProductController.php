@@ -145,7 +145,7 @@ class ProductController extends Controller
     {
         if ($this->productRepository->update($product, $request)) {
             return redirect()
-                ->route('admin.products.index')
+                ->route('admin.products.detail', $product)
                 ->with('status', 'success')
                 ->with('success', '登録が完了しました。');
         } else {

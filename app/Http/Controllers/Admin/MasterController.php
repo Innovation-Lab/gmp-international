@@ -200,16 +200,11 @@ class MasterController extends Controller
                 ->with(['alert' => 'エラーが発生しました。']);
         }
         DB::commit();
-        
+
+        $product = MProduct::latest('updated_at')->first()->id;
         Session::forget('product');
-        $preview = Session::get('preview');
         
-        if ($preview) {
-            return redirect()->to($preview)
-                ->with(['success' => '登録しました。']);
-        }
-        
-        return redirect()->route('admin.masters.product')
+        return redirect()->route('admin.masters.product.detail', $product)
             ->with(['success' => '登録しました。']);
     }
     
