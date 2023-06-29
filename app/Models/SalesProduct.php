@@ -137,8 +137,14 @@ class SalesProduct extends Model
         if ($colorUrl) {
             $imageValid = filter_var(data_get($colorUrl, 'url'), FILTER_VALIDATE_URL) !== false && @getimagesize(data_get($colorUrl, 'url')) !== false;
         }
+        if(!$imageValid) {
+            $image_path = 'products/'.data_get($this, 'mProduct.name').'_'.data_get($this, 'mColor.alphabet_name').'.png';
+            $image_path = str_replace(' ', '', $image_path);
+            $s3Image =  $this->getTemporaryImageUrl($image_path);
+            $imageSecondValid = filter_var($s3Image, FILTER_VALIDATE_URL) !== false && @getimagesize($s3Image) !== false;
+        }
         
-        return $imageValid ? data_get($colorUrl, 'url') : NULL;
+        return $imageValid ? data_get($colorUrl, 'url') : ($imageSecondValid ? $s3Image : NULL);
     }
     
     /**
