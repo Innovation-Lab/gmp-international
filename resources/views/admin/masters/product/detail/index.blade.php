@@ -20,7 +20,7 @@
                     {{-- ---------- リスト ---------- --}}
                     <div class="p-list--product p-list--product--detail">
                       <div class="p-list__left p-list__left--detail" style="">
-                        <img class="" src="{{ data_get($product, 'first_color_ball_with_name.url', asset('img/admin/noImage/product.png')) }}" alt="">
+                        <img class="productimg" src="{{ data_get($product, 'first_color_ball_with_name.url', asset('img/admin/noImage/product.png')) }}" alt="">
                         <div class="p-list__color">
                             @if (data_get($product, 'first_color_ball_with_name.image_path'))
                               {{-- 画像表示の場合 --}}
@@ -79,7 +79,7 @@
                           @foreach(data_get($product, 'other_color_ball_with_name') as $color)
                           <li class="p-list__item p-list__item--detail">
                             <div class="p-list__img--detail">
-                              <img src="{{data_get($color, 'url')}}">
+                              <img class="detailimg" src="{{data_get($color, 'url')}}">
                             </div>
                             <div class="p-list__color list">
                               @if (data_get($color, 'image_path'))
