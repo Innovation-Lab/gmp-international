@@ -3190,7 +3190,7 @@ textarea {
   display: flex;
   justify-content: center;
 }
-.p-list__img--detail .balldetailimg {
+.p-list__img--detail .detailimg {
   max-height: 100px;
 }
 .p-list__status {
