@@ -327,7 +327,8 @@
                             height: auto;
                         }
                         @include global.responsive(md) {
-                            width: 180px;
+                            width: auto;
+                            height: 180px;
                         }
                     }
                 }

@@ -85,7 +85,7 @@
                     @if(data_get($sales_product, 'select_color_url_main_view'))
                       <!-- 製品画像 -->
                       <div class="p-card__img p-card__img--top">
-                        <img src="{{ data_get($sales_product, 'select_color_url') }}" width="110px" max-height="90px">
+                        <img src="{{ data_get($sales_product, 'select_color_url') }}">
                       </div>
                     @endif
                   </div>
@@ -131,7 +131,7 @@
                     </div>
                     <!-- 製品画像 -->
                     <div class="p-card__img">
-                      <img src="{{asset('img/web/product/product-ghost.png')}}" width="110px" height="140px">
+                      <img src="{{asset('img/web/product/product-ghost.png')}}">
                     </div>
                   </div>
                   <div class="p-card__add">
