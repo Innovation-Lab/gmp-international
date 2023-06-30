@@ -4621,6 +4621,9 @@ input[type=file] + label img {
     bottom: 0;
   }
 }
+.p-card .slick-slide li .p-card__img--top img {
+  height: 100px;
+}
 @media screen and (min-width: 576px) {
   .p-card .slick-slide li .p-card__img--top img {
     height: 120px;
@@ -5024,12 +5027,19 @@ input[type=file] + label img {
     justify-content: center;
   }
 }
+.p-card--list .p-card__img img {
+  max-height: 70px;
+  max-width: 60px;
+  width: auto;
+  height: auto;
+}
 @media screen and (min-width: 768px) {
   .p-card--list .p-card__img img {
-    max-width: 100%;
-    height: auto;
-    max-height: 100%;
     position: relative;
+    max-height: 80px;
+    width: auto;
+    max-width: 60px;
+    height: auto;
   }
 }
 @media screen and (min-width: 768px) {
