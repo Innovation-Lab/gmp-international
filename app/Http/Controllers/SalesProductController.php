@@ -127,7 +127,14 @@ class SalesProductController extends Controller
         
         switch ($key) {
             case 'brand':
-                $items = MProduct::query()->where('m_brand_id', $id)->pluck('name', 'id');
+                $items = MProduct::query()->where('m_brand_id', $id)
+                    ->select(['id', 'name_kana', 'name'])
+                    ->get()
+                    ->mapWithKeys(function ($product) {
+                        return [$product->id => $product->name.' / '.$product->name_kana];
+                    })
+                    ->toArray();
+                
                 $view = view('web.mypage.product._ajax_select_product_list', [
                     'items' => $items,
                     'checkVal' => false,
@@ -164,11 +171,19 @@ class SalesProductController extends Controller
         
         $product = MProduct::find($id);
         $color_array = explode(',', $product->color_array);
-        $colors = MColor::query()->whereIn('id', $color_array)->pluck('alphabet_name', 'id');
+        $colors = MColor::withTrashed()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->whereIn('id', $color_array)
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
 
         $view = view('web.mypage.product._ajax_select_color_list', [
             'colors' => $colors,
             'checkVal' => false,
+            'page' => $request->get('page') ?? null,
             
         ])->render();
         

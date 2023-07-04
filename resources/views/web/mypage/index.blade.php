@@ -85,7 +85,7 @@
                     @if(data_get($sales_product, 'select_color_url_main_view'))
                       <!-- 製品画像 -->
                       <div class="p-card__img p-card__img--top">
-                        <img src="{{ data_get($sales_product, 'select_color_url') }}" width="110px" max-height="90px">
+                        <img src="{{ data_get($sales_product, 'select_color_url') }}">
                       </div>
                     @endif
                   </div>
@@ -131,7 +131,7 @@
                     </div>
                     <!-- 製品画像 -->
                     <div class="p-card__img">
-                      <img src="{{asset('img/web/product/product-ghost.png')}}" width="110px" height="140px">
+                      <img src="{{asset('img/web/product/product-ghost.png')}}">
                     </div>
                   </div>
                   <div class="p-card__add">
@@ -301,6 +301,7 @@
     });
 
     function othertextbind() {
+
         $('select').change(function() {
             // 選択されたオプションの値を取得
             var selectedvalue = $(this).val();
@@ -339,6 +340,10 @@
                 let place = '.js-insert-list-' + insert + '-' + product_id;
                 $(place).empty().append(response);
 
+                $('.select2').select2({
+                    placeholder: '選択してください'
+                });
+
                 othertextbind();
 
                 $('select').each(function(index, elem) {
@@ -360,11 +365,11 @@
                 },
                 success: function (response) {
                     if(Object.keys(response).length > 0) {
-                        let insert ='      <div class="p-formlist__content"> ' +
-                            '          <div class="p-formlist__label"> ' +
+                        let insert ='      <div class="p-formList__content"> ' +
+                            '          <div class="p-formList__label p-formList__label--modal"> ' +
                             '              <p class="c-txt">シリアルナンバー</p> ' +
-                            '              <div class="p-formlist__guide"> ' +
-                            '                  <a class="p-formlist__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
+                            '              <div class="p-formList__guide"> ' +
+                            '                  <a class="p-formList__guide__btn" onclick="$(\'#modal__guide--serial-'+ response +'\').show()" role="button"></a> ' +
                             '              </div> ' +
                             '          </div> ' +
                             '          <div class="p-formlist__data"> ' +
@@ -409,6 +414,15 @@
                         $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
                     }
                 })
+
+                $('.select2').select2({
+                    placeholder: '選択してください'
+                });
+
+                MicroModal.init({
+                    disableScroll: true,
+                    awaitOpenAnimation: true,
+                });
 
             }
         });

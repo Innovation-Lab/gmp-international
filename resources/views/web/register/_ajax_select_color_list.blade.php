@@ -7,7 +7,7 @@
   </div>
   <div class="p-formList__data parent-element">
     <div class="c-input c-input--select">
-      <select name="products[{{ $loop_num }}][m_color_id]" class="js-ty-color">
+      <select name="products[{{ $loop_num }}][m_color_id]" class="js-ty-color select2">
         <option value="" selected>カラーを選択してください</option>
         @foreach($colors as $k => $v)
           <option value="{{ $k }}">{{ $v }}</option>

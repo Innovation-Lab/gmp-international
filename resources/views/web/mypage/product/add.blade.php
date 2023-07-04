@@ -26,7 +26,7 @@
                           <p class="c-txt">購入日 <span class="c-txt c-txt--must">必須</span></p>
                       </div>
                       <div class="p-formList__data">
-                        <div class="c-input c-input--date" style="width: 100%;">
+                        <div class="c-input c-input--date">
                           <input id="date" placeholder="<?php echo date('Y/m/d'); ?>" class="required" name="purchase_date" type="text" value="{{ old('purchase_date', data_get($sales_product, 'purchase_date')) }}" style=" @error('purchase_date') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                         </div>
                         @error('purchase_date')
@@ -43,7 +43,7 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                          <select class="select2" name="m_brand_id" onchange="getTyArray('brand', $(this).val(), $(this).data('insert'));" data-insert="product" data-placeholder="ブランドを選択してください" style=" @error('m_brand_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>ブランドを選択してください</option>
                             @foreach($brands as $k => $v)
                               <option value="{{ $k }}" {{ old('m_brand_id', data_get($sales_product, 'm_brand_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -64,10 +64,10 @@
                       </div>
                       <div class="p-formList__data">
                         <div class="c-input c-input--select">
-                          <select name="m_product_id" onchange="
+                          <select class="select2" name="m_product_id" onchange="
                           getTyArray('product', $(this).val(), $(this).data('insert'));
                           getTyColorArray($(this).val(), $(this).data('color'));"
-                           data-insert="brand" data-color="color" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
+                           data-placeholder="製品を選択してください" data-insert="brand" data-color="color" style=" @error('m_product_id') background: #FFE0E6; border: #C30E2E 1px solid; @enderror">
                             <option value="" selected>製品を選択してください</option>
                             @foreach($products as $k => $v)
                               <option value="{{ $k }}" {{ old('m_product_id', data_get($sales_product, 'm_product_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -91,7 +91,7 @@
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="m_color_id" class="js-ty-color" disabled>
+                          <select name="m_color_id" class="js-ty-color select2" disabled data-placeholder="先に製品を選択してください">
                             <option value="" selected>先に製品を選択してください</option>
                             @foreach($colors as $k => $v)
                               <option value="{{ $k }}" {{ old('m_color_id', data_get($sales_product, 'm_color_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -134,12 +134,12 @@
                       <div class="p-formList__label p-formList__label--guide">
                         <p class="c-txt">購入店舗</p>
                         <div class="p-formList__guide">
-                          <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--shop" role="button"></a>
+                          <a class="p-formList__guide__btn" onclick="$('#modal__guide--shop').show()" role="button"></a>
                         </div>
                       </div>
                       <div class="p-formList__data parent-element">
                         <div class="c-input c-input--select">
-                          <select name="m_shop_id">
+                          <select name="m_shop_id" class="select2" data-placeholder="購入店舗を選択してください">
                             <option value="" selected>購入店舗を選択してください</option>
                             @foreach($shops as $k => $v)
                               <option value="{{ $k }}" {{ old('m_shop_id', data_get($sales_product, 'm_shop_id')) == $k ? 'selected' : '' }}>{{ $v }}</option>
@@ -189,6 +189,10 @@
         $('.c-input--date input').datepicker();
         otherTextBind();
 
+        $('.modal__close').on('click', function(){
+            $('.modal').hide();
+        });
+
         $('select').each(function(index, elem) {
             if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
                 $(elem).css('color', '#000');
@@ -233,6 +237,10 @@
               success: function (response) {
                   let place = '.js-insert-list-' + insert;
                   $(place).empty().append(response);
+
+                  $('.select2').select2({
+                      placeholder: '選択してください'
+                  });
 
                   $('select').each(function(index, elem) {
                       if( $(elem).val() != 0 && $(elem).val()  != '' && $(elem).val()  != undefined ){
@@ -284,12 +292,22 @@
             url: '/mypage/js-get-tying-color-array',
             data: {
                 'id': value,
+                'page': 'add'
             },
             success: function (response) {
                 let place = '.js-insert-list-' + insert;
                 console.log(place);
                 $(place).empty().append(response);
-                $('select.js-ty-color').on('change', function() {
+
+                $('.select2').select2({
+                    placeholder: '選択してください'
+                });
+
+                $('.modal__close').on('click', function(){
+                    $('.modal').hide();
+                });
+
+                $('select.js-ty-color.select2').on('change', function() {
                     if( $(this).val() != 0 && $(this).val() != '' && $(this).val()  != undefined ){
                         $(this).css('color', '#000');
                     }else{

@@ -1,13 +1,13 @@
 <div class="p-formList__content">
-  <div class="p-formList__label p-formList__label--guide">
+  <div class="p-formList__label p-formList__label--@if($page)guide @else modal @endif">
     <p class="c-txt">カラー</p>
     <div class="p-formList__guide">
-      <a class="p-formList__guide__btn" data-micromodal-trigger="modal__guide--color" role="button"></a>
+      <a class="p-formList__guide__btn" onclick="$('#modal__guide--color').show()" role="button"></a>
     </div>
   </div>
   <div class="p-formList__data parent-element">
     <div class="c-input c-input--select">
-      <select name="m_color_id" class="js-ty-color">
+      <select name="m_color_id" class="js-ty-color select2">
         <option value="" selected>カラーを選択してください</option>
         @foreach($colors as $k => $v)
           <option value="{{ $k }}" {{ old('m_color_id') == $k ? 'selected' : '' }}>{{ $v }}</option>

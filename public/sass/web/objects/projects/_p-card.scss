@@ -318,6 +318,7 @@
                         bottom: 0;
                     }   
                     img{
+                        height: 100px;
                         @include global.responsive(sm) {
                             height: 120px;
                             width: auto;
@@ -327,7 +328,8 @@
                             height: auto;
                         }
                         @include global.responsive(md) {
-                            width: 180px;
+                            width: auto;
+                            height: 180px;
                         }
                     }
                 }
@@ -722,11 +724,20 @@
                     justify-content: center;
                 }
                 img{
+                    max-height: 70px;
+                    max-width: 60px;
+                    width: auto;
+                    height: auto;
                     @include global.responsive(md) {
-                        max-width: 100%;
-                        height: auto;
-                        max-height: 100%;
+                        // max-width: 100%;
+                        // height: auto;
+                        // max-height: 100%;
                         position: relative;
+
+                        max-height: 80px;
+                        width: auto;
+                        max-width: 60px;
+                        height: auto;
                     }
                 }
             }

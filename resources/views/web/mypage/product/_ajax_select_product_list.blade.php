@@ -4,7 +4,7 @@
   </div>
   <div class="p-formList__data">
     <div class="c-input c-input--select">
-      <select name="m_product_id" class="js-ty-product" onchange="
+      <select class="select2" name="m_product_id" class="js-ty-product" onchange="
         getTyArray('product', $(this).val(), $(this).data('insert'), {{ $sales_id }});
         getTyColorArray($(this).val(), $(this).data('color'));"
         data-insert="brand" data-color="color">

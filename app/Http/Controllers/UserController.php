@@ -46,13 +46,28 @@ class UserController extends Controller
         Session::forget('product');
         $user = Auth::user();
         $sales_products = data_get($user, 'salesProducts');
-
+        
+        $colors = MColor::withTrashed()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
+        
+        $products = MProduct::select(['id', 'name_kana', 'name'])
+            ->get()
+            ->mapWithKeys(function ($product) {
+                return [$product->id => $product->name.' / '.$product->name_kana];
+            })
+            ->toArray();
+        
         return view('web.mypage.index')->with([
             'user' => $user,
             'sales_products' => $sales_products,
             'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'products' => $products,
+            'colors' => $colors,
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
 

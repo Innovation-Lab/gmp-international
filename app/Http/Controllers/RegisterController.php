@@ -133,21 +133,36 @@ class RegisterController extends Controller
     public function product(): View|Factory|Application
     {
         $sales_products = Session::get('products', []);
+        
+        $colors = MColor::withTrashed()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
+        
+        $products = MProduct::select(['id', 'name_kana', 'name'])
+            ->get()
+            ->mapWithKeys(function ($product) {
+                return [$product->id => $product->name.' / '.$product->name_kana];
+            })
+            ->toArray();
 
         if (count($sales_products) > 0) {
             return view('web.register.product_fix', [
                 'sales_products' => $sales_products,
                 'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
-                'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
-                'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+                'products' => $products,
+                'colors' => $colors,
                 'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             ]);
         }
         
         return view('web.register.product', [
             'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'products' => $products,
+            'colors' => $colors,
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
     }
@@ -284,7 +299,14 @@ class RegisterController extends Controller
         
         $product = MProduct::find($id);
         $color_array = explode(',', $product->color_array);
-        $colors = MColor::query()->whereIn('id', $color_array)->pluck('alphabet_name', 'id');
+        $colors = MColor::withTrashed()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->whereIn('id', $color_array)
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
 
         $view = view('web.register._ajax_select_color_list', [
             'colors' => $colors,
