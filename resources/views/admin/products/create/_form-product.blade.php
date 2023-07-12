@@ -68,34 +68,40 @@
       </li>
       <li class="p-formList__item">
         <div class="p-formList__content">
-          <div class="p-formList__label optional">
+          <div class="p-formList__label">
             購入者
           </div>
           <div class="p-formList__data" style="display: block;">
-            <select name="user_id" class="select2">
-              <option value="" hidden {{ old('user_id') == '' ? 'selected' : '' }}>選択してください</option>
-              @foreach ($users as $k => $v)
-                <option value="{{ $k }}" {{ ( old('user_id') != null && old('user_id') == $k ) ? 'selected' : '' }}>{{ $v }}</option>
-              @endforeach
-            </select>
+            <input type="text" id="user_search" placeholder="例）キーワードで検索">
             @error('user_id')
-              <p class="error">{{ $message }}</p>
+            <p class="error">{{ $message }}</p>
             @enderror
           </div>
+          <div class="p-formList__data js-insert-user"></div>
         </div>
       </li>
-      {{--<li class="p-formList__item">
-        <div class="p-formList__content">
-          <div class="p-formList__label">
-            登録番号
-          </div>
-          <div class="p-formList__data">
-            {!! Form::text('register_number', 'AB01-097M-HIUA', ['placeholder' => '例）AB01097MHIUA']) !!}
-          </div>
-        </div>
-      </li>--}}
     </ul>
   </div>
+
+  <script>
+    $(function() {
+        $('#user_search').on('keyup', function(e) {
+            let target = $(this).val();
+            $.get({
+                url: '/admin/js-get-user',
+                data: {
+                    'keyword': target,
+                },
+                success: function (response) {
+                    $('.js-insert-user').empty().append(response);
+                    $('.select2').select2({
+                        placeholder: '選択してください'
+                    });
+                }
+            });
+        })
+    })
+  </script>
   <div class="l-grid__item">
     <ul class="p-formList">
       <li class="p-formList__item js-insert-list-color">

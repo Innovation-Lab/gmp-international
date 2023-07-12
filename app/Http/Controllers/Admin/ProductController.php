@@ -69,20 +69,12 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        $users = User::query()
-            ->select(['id', 'last_name', 'first_name'])
-            ->get()
-            ->mapWithKeys(function ($user) {
-                return [$user->id => $user->select_user];
-            })
-            ->toArray();
 
         return view('admin.products.create.products',[
             'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
             'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
-            'users' => $users,
         ]);
     }
 
@@ -223,6 +215,29 @@ class ProductController extends Controller
         $view = view('admin.products.create._ajax_select_color_list', [
             'colors' => $colors,
             'checkVal' => false,
+        ])->render();
+        
+        return response($view, 200)
+            ->header('Content-Type', 'text/plain');
+    }
+
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function jsGetUser(Request $request)
+    {
+        $users = User::query()->keyword($request)
+            ->select([
+                'id',
+                \DB::raw('CONCAT(users.last_name, users.first_name, " （", "会員番号：", users.id, "）") as user_name')
+            ])
+            ->get()
+            ->pluck('user_name', 'id')
+            ->toArray();
+        
+        $view = view('admin.products.create._ajax_select_user', [
+            'users' => $users,
         ])->render();
         
         return response($view, 200)

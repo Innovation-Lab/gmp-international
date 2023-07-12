@@ -148,6 +148,7 @@ Route::group([
         Route::get('js-get-tying-color-array', [UserController::class, 'jsGetTyingColorArray']);
         Route::get('js-get-tying-array', [ProductController::class, 'jsGetTyingArray']);
         Route::get('js-get-tying-color-array', [ProductController::class, 'jsGetTyingColorArray']);
+        Route::get('js-get-user', [ProductController::class, 'jsGetUser']);
     });
 
     
