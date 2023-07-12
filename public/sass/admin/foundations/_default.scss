@@ -1,0 +1,128 @@
+@use "../global/" as global;
+
+/* ! ==================================================
+　レイアウト要素
+================================================== */
+/* ! ----------
+　ラッパー
+---------- */
+.wrapper {
+  padding: 0 1.5rem;
+  width: 100%;
+  @include global.responsive(xl) {
+    padding: 0 2.5rem;
+  }
+}
+
+/* ! ----------
+　コンテナ
+---------- */
+.container {
+  // ダッシュボード
+  .body_dashboard & {
+    max-width: global.rem(1280px);
+  }
+  // 詳細ページ
+  // .p-detail & {
+  //   max-width: global.rem(1440px);
+
+  //   // 編集ページ
+  //   .edit & {
+  //     max-width: global.rem(1080px);
+  //     margin: 0 auto;
+  //   }
+  // }
+}
+
+/* ! ----------
+　インナー
+---------- */
+.inner {
+  width: 100%;
+}
+
+/* ! --------------------------------------------------
+Html,Body
+-------------------------------------------------- */
+html {
+}
+body {
+  // background: #fff;
+  color: var(--color_text_1);
+  font-size: global.rem(16px);
+  font-family: "Roboto", "Noto Sans JP", -apple-system, "BlinkMacSystemFont",
+    "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-feature-settings: "palt";
+  display: flex;
+  flex: auto;
+  min-height: 100vh;
+}
+// ダッシュボード・編集ページ
+.body_dashboard .l-frame__main,
+.body_edit .l-frame__main {
+  background-color: var(--gray-background1);
+}
+
+/* ! --------------------------------------------------
+　Text テキスト
+-------------------------------------------------- */
+p {
+  color: var(--color_text_1);
+  font-weight: 400;
+  font-size: global.rem(14px);
+  line-height: 1.71429em;
+  letter-spacing: 0.04em;
+  word-break: break-all;
+  @include global.responsive(sm) {
+    line-height: 1.71429em;
+  }
+
+  /* ! ----------
+  　フォーカス（ヴィジュアル）
+  ---------- */
+  &.focus {
+    display: grid;
+    place-items: center;
+    padding: 0.5rem;
+    border: 1px solid var(--color_border_1);
+    background-color: var(--color_background_1);
+  }
+}
+a {
+  color: var(--color_text_button);
+  font-weight: 400;
+  font-size: global.rem(14px);
+  line-height: 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+}
+::selection {
+  color: #fff;
+  background: #000;
+}
+strong {
+  font-weight: 700;
+}
+
+/* ! --------------------------------------------------
+　Icon アイコン
+-------------------------------------------------- */
+.svg-defs {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  positoin: fixed;
+  bottom: 0;
+}
+/* SVGアイコンクラス */
+.icon {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  /* baselineより垂直方向にちょっとだけ下げる */
+  top: 0.125em;
+}

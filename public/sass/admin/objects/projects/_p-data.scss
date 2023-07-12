@@ -1,0 +1,39 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　DataList データリスト
+================================================== */
+.p-data {
+  &List {
+    display: grid;
+    gap: 1rem;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color_border_1);
+      // ボールド
+      &--bold {
+        border-color: var(--color_border_2);
+      }
+    }
+
+    // ラベル
+    &__label {
+      @extend .c-text__xxs !optional;
+    }
+
+    // データ
+    &__data {
+      @extend .c-text__xs !optional;
+      font-weight: 700;
+      letter-spacing: 0;
+
+      // ボールド
+      b {
+        font-size: 1rem;
+      }
+    }
+  }
+}

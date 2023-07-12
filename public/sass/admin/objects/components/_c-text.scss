@@ -1,0 +1,50 @@
+@use "../../global/" as global;
+
+.c-text {
+  &__xl {
+    font: global.font(700, 24px, 1.3);
+    letter-spacing: 0;
+  }
+  &__lg {
+    font: global.font(500, 20px, 1.3);
+    letter-spacing: 0.04em;
+  }
+  &__md {
+    font: global.font(500, 16px, 1.3);
+    letter-spacing: 0.04em;
+  }
+  &__sm {
+    font: global.font(500, 14px, 1.3);
+    letter-spacing: 0.04em;
+  }
+  &__xs {
+    font: global.font(500, 13px, 1.3);
+    letter-spacing: 0.04em;
+  }
+  &__xxs {
+    font: global.font(500, 10.5px, 1.3);
+    letter-spacing: 0.04em;
+  }
+  &__weight{
+    &--800{
+      font-weight: 800;
+    }
+    &--700{
+      font-weight: 700;
+    }
+    &--600{
+      font-weight: 600;
+    }
+    &--500{
+      font-weight: 500;
+    }
+    &--400{
+      font-weight: 400;
+    }
+  }
+}
+
+small {
+  color: var(--color_text_3);
+  font: global.font(400, 10px, 1.3);
+}

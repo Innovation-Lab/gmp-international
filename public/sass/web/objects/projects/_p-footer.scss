@@ -1,13 +1,84 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　フッター
+================================================== */
 .p-footer {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 80px 0 24px;
-  height: 60px;
+  // padding: 80px 0 24px;
+  padding: 80px 0 24px;
+  &__shop{
+    display: none;
+    @include global.responsive(md) {
+      display: block;
+    }
+    > .c-txt{
+      color: #8C8C8C;
+      font-size: 12px;
+    }
+  }
+  &__tel{
+    display: flex;
+    margin-top: 6px;
+    &__item{
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      .c-ttl{
+        font-size: 12px;
+        color: #8C8C8C;
+        margin: 0 8px 0 0;
+        line-height: 1;
+      }
+      .c-txt{
+        &--tel{
+          display: flex;
+          align-items: center;
+          font-weight: 600;
+          letter-spacing: 0;
+          color: #222;
+          line-height: 1;
+          &:before{
+            content: '';
+            width: 14px; height: 9px;
+            background: url(../img/web/icon/freedial--black.svg)no-repeat center;
+            background-size: contain;
+            margin: 0 4px 0 0;
+          }
+        }
+      }
+      & + &{
+        border-left: solid 1px #ddd;
+        padding: 0 0 0 4px;
+        margin: 0 0 0 6px;
+      }
+    }
+  }
   &--login{
     flex-direction: column;
     margin-bottom: 16px;
+    .c-txt--login{
+      font-size: 12px;
+      color: #8c8c8c;
+    }
+    .c-txt--tel{
+      font-size: 12px;
+    }
+    @include global.responsive(md) {
+      display: none;
+    }
+  }
+  &--brand{
+    display: none;
+    flex-direction: column;
+    margin-bottom: 16px;
+    @include global.responsive(md) {
+      display: block;
+    }
   }
   &--txt{
     display: flex;
@@ -15,5 +86,50 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
+  }
+  &--form{
+    @include global.responsive(md) {
+      background: #F7F4EC;
+    }
+    .l-container{
+      @include global.responsive(md) {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        max-width: none;
+        width: 100%;
+      }
+      .c-txt--copyright{
+        @include global.responsive(md) {
+          color: #8C8C8C;
+        }
+      }
+    }
+  }
+  &--mypage{
+    display: none;
+    /* PC */
+    @include global.responsive(md) {
+      display: block;
+      padding: 16px 24px 32px;
+      margin-top: auto;
+    }
+    .c-txt{
+      &--copyRight{
+        @include global.responsive(md) {
+          text-align: right;
+          font-size: 12px;
+          color: #ccc;
+        }
+      }
+    }
+  }
+}
+//完了画面
+.body_complete{
+  .p-footer{
+    &--form{
+      background: #F7F4EC;
+    }
   }
 }

@@ -1,0 +1,233 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　List リスト
+================================================== */
+.p-list {
+  --p-list__border: #EAEBEA;
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 12px;
+  &--detail{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 24px;
+    @include global.responsive(xxl) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  &__item {
+    display: flex;
+  }
+  &__color{
+    .color{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .ball{
+        width: 14px;
+        height: 14px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: #E0B8AC;
+        margin: 0 4px 0 0;
+        box-shadow: 0 0 1px rgb(0, 0, 0);
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+      }
+    }
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    grid-auto-rows: auto;
+    // gap: 0.125rem;
+    gap: 1rem;
+    padding-top: 12px;
+    border-top: 1px solid var(--p-list__border);
+    align-items: baseline;
+    &--detail{
+      border: 0;
+      padding: 0;
+      border: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .p-list__color{
+        .color{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .ball2{
+            background: linear-gradient(180deg, #dc143c 49.9%, #c0c0c0 50%);
+            // background: #a84343;
+            position: absolute;
+            top: 2px;
+            left: -18px;
+            width: 14px;
+            height: 14px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: #E0B8AC;
+            margin: 0 4px 0 0;
+            box-shadow: 0 0 1px rgb(0, 0, 0);
+            display: inline-block;
+            // background-size: contain !important;
+            // background-repeat: no-repeat !important;
+            // background-position: center !important;
+          }
+        }
+      }
+      .list{
+        padding-left: 24px;
+      }
+    }
+  }
+  &__content {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 0.125rem;
+  }
+
+  /* ! ----------
+  　Label ラベル
+  ---------- */
+  &__label {
+    color: var(--color_text_3);
+    @extend .c-text__sm !optional;
+    font-size: 13px;
+    display: flex;
+    align-items: baseline;
+    a,
+    [data-micromodal-trigger] {
+      @extend .c-text__xs !optional;
+      color: var(--color_text_button);
+      text-decoration: underline;
+      font-weight: 500;
+      &:hover {
+        color: var(--color_primary);
+      }
+    }
+    span {
+      font-size: 11px
+    }
+  }
+  &__data {
+    @extend .c-text__sm !optional;
+    span {
+      font-size: 12px
+    }
+    .color{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .color{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 140px;
+    position: relative;
+
+    // padding: 4px 8px;
+    // margin: 4px 4px 0 0;
+    // border: 1px solid #000;
+    // border-radius: 20px;
+    // width: max-content;
+    // display: flex;
+    // align-items: center;
+
+  }
+  
+  &__memo {
+    &__area {
+      max-height: 108px;
+      min-height: 108px;
+      padding: 8px;
+      border: 1px solid #ccc;
+    }
+  }
+  &__head{
+    margin: 0 0 1.5rem;
+    &--center{
+      margin: 0;
+    }
+  }
+  &__left{
+    width: 200px;
+    &--detail{
+      display: grid;
+      justify-content: center;
+      gap: 1rem;
+      .productimg{
+        max-height: 200px;
+      }
+    }
+  }
+  &__img{
+    border: 1px solid #8c8c8c;
+    padding: 40px;
+    &--store{
+      padding: 0;
+    }
+    &--detail{
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      .detailimg{
+        max-height: 100px;
+      }
+    }
+  }
+  &__status{
+    padding: 16px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    &--registered{
+      border: 1px solid var(--color_primary);
+      background-color: #EAF4FF;
+      .status{
+        color: var(--color_primary);
+      }
+    }
+    &--notregistered{
+      border: 1px solid #8c8c8c;
+      background-color: #EAEBEA;
+      .status{
+        color: #8c8c8c;
+      }
+    }
+  }
+  
+  &--product{
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    // &--detail{
+    //   gap: 2rem 0;
+    //   .p-list__right{
+    //     grid-column: 2 / 4;
+    //   }
+    //   .p-list__foot{
+    //     grid-column: 1 / 4;
+    //   }
+    // }
+  }
+  &--user{
+    .p-list__item{
+      gap: 3.25rem;
+    }
+  }
+}

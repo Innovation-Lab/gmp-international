@@ -24,7 +24,7 @@ class ForgotPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'required|min:8|max:16|regex:/^[a-zA-Z0-9]+$/',
+            'password' => 'required|min:6|max:10|regex:/^[a-zA-Z0-9]+$/',
             'password_confirmation' => 'required|same:password',
         ];
     }
@@ -41,8 +41,8 @@ class ForgotPasswordRequest extends FormRequest
     {
         return [
             'password.regex' => 'パスワードは半角英数字で入力してください',
-            'password.min' => 'パスワードは8文字以上16文字以下で入力してください',
-            'password.max' => 'パスワードは8文字以上16文字以下で入力してください',
+            'password.min' => 'パスワードは6文字以上10文字以下で入力してください',
+            'password.max' => 'パスワードは6文字以上10文字以下で入力してください',
         ];
     }
 

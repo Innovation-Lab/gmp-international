@@ -1,0 +1,794 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+.visual{
+    background-color: #9f9f9f;
+    margin-bottom: 60px;
+}
+.p-card {
+    &__img{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    margin-top: 24px;
+    p:not(.c-txt--sm--ghost){
+        color: #fff;
+    }
+    // 製品未登録
+    &--notRegister{
+        display: flex;
+        flex: auto;
+        position: relative;
+        margin-top: 16px;
+        li{
+            flex: auto;
+        }
+        .p-card__add{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .p-card__item{
+            background: #b5b5b5;
+            @include global.responsive(min) {
+                width: 100%;
+            }
+            @include global.responsive(sm) {
+                width: 100%;
+            }
+            @include global.responsive(md) {
+                height: 100%;
+                position: relative;
+                padding: 32px;
+                min-height: 420px;
+            }
+            @include global.responsive(xl) {
+                min-height: auto;
+            }
+        }
+        .p-card__info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .p-card__brand{
+            .c-txt{
+                @include global.responsive(md) {
+                    font-size: 24px;
+                    font-weight: 300;
+                    line-height: 24px;
+                }
+                @include global.responsive(xl) {
+                    font-size: 32px;
+                    line-height: 32px;
+                }
+            }
+        }
+        .p-card__product{
+            .c-txt{
+                @include global.responsive(md) {
+                    font-size: 40px;
+                    width: auto;
+                    margin: 10px 0 0;
+                }
+                @include global.responsive(xl) {
+                    font-size: 55px;
+                }
+            }
+        }
+        .p-card__color{
+            display: flex;
+            align-items: center;
+            @include global.responsive(md) {
+                margin-top: 18px;
+            }
+            .c-colorBall{
+                width: 12px; height: 12px;
+                border-radius: 18px;
+                margin-right: 4px;
+                @include global.responsive(md) {
+                    width: 18px; height: 18px;
+                    border-radius: 18px;
+                    margin-right: 8px;
+                }
+                @include global.responsive(xl) {
+                    width: 18px; height: 18px;
+                }
+            }
+            .c-txt{
+                @include global.responsive(md) {
+                    font-size: 20px;
+                }
+                @include global.responsive(xl) {
+                    font-size: 24px;
+                }
+            }
+        }
+        .p-card__subData{
+            > div{
+                @include global.responsive(md) {
+                    flex-direction: column;
+                }
+                + div{
+                    @include global.responsive(md) {
+                        margin: 8px 0 0;
+                    }
+                }
+                .label{
+                    @include global.responsive(md) {
+                        font-size: 16px;
+                        width: auto;
+                    }
+                    @include global.responsive(xl) {
+                        font-size: 16px;
+                    }
+                }
+                .data{
+                    @include global.responsive(md) {
+                        font-size: 16px;
+                        margin: 6px 0 0;
+                    }
+                    @include global.responsive(xl) {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+        .p-card__img{
+            @include global.responsive(md) {
+                position: absolute;
+                right: 16px;
+                bottom: 16px;
+            }
+            // @include global.responsive(md) {
+            //     width: 140px;
+            //     height: auto;
+            // }
+            // @include global.responsive(md) {
+            //     width: 180px;
+            // }
+        }
+    }
+    // 製品登録
+    // スライダー
+    .slick-list{
+        overflow: visible;
+        @include global.responsive(md) {
+            display: flex;
+            flex-direction: column;
+            flex: auto;
+            min-height: 1px;
+            overflow: hidden;
+            margin: 0 -8px;
+        }
+    }
+    .slick-track{
+        @include global.responsive(md) {
+            flex: auto;
+            min-height: 1px;
+        }
+    }
+    .slick-slide{
+        @include global.responsive(md) {
+            height: 100%;
+            min-height: 1px;
+            margin: 0 8px;
+        }
+        > div{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        li{
+            @include global.responsive(md) {
+                flex: auto;
+                min-height: 1px;
+            }
+            .p-card{
+                &__item{
+                    @include global.responsive(md) {
+                        height: 100%;
+                        position: relative;
+                        padding: 32px;
+                        min-height: 420px;
+                    }
+                    @include global.responsive(xl) {
+                        min-height: auto;
+                    }
+                }
+                &__brand{
+                    .c-txt{
+                        @include global.responsive(md) {
+                            font-size: 24px;
+                            font-weight: 500;
+                            line-height: 24px;
+                        }
+                        @include global.responsive(xl) {
+                            font-size: 32px;
+                            line-height: 32px;
+                        }
+                    }
+                }
+                &__product{
+                    .c-txt{
+                        @include global.responsive(md) {
+                            font-size: 40px;
+                            width: auto;
+                            margin: 10px 0 0;
+                        }
+                        @include global.responsive(xl) {
+                            font-size: 55px;
+                        }
+                    }
+                }
+                &__color{
+                    display: flex;
+                    align-items: center;
+                    @include global.responsive(md) {
+                        margin-top: 18px;
+                    }
+                    .c-colorBall{
+                        width: 12px; height: 12px;
+                        border-radius: 18px;
+                        margin-right: 4px;
+                        @include global.responsive(md) {
+                            width: 18px; height: 18px;
+                            border-radius: 18px;
+                            margin-right: 8px;
+                        }
+                        @include global.responsive(xl) {
+                            width: 18px; height: 18px;
+                        }
+                    }
+                    .c-txt{
+                        @include global.responsive(md) {
+                            font-size: 20px;
+                        }
+                        @include global.responsive(xl) {
+                            font-size: 24px;
+                        }
+                    }
+                }
+                &__subData{
+                    width: 50%;
+                    > div{
+                        @include global.responsive(md) {
+                            flex-direction: column;
+                        }
+                        + div{
+                            @include global.responsive(md) {
+                                margin: 16px 0 0;
+                            }
+                        }
+                        .label{
+                            @include global.responsive(md) {
+                                color: #fff;
+                                font-size: 14px;
+                                width: auto;
+                            }
+                            @include global.responsive(xl) {
+                                font-size: 16px;
+                            }
+                        }
+                        .data{
+                            @include global.responsive(md) {
+                                font-size: 16px;
+                                margin: 6px 0 0;
+                            }
+                            @include global.responsive(xl) {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+                &__img{
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: right;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    // display: flex;
+                    // align-items: flex-end;
+                    // justify-content: right;
+                    @include global.responsive(md) {
+                        position: absolute;
+                        right: 16px;
+                        bottom: 16px;
+                    }   
+                    img{
+                        @include global.responsive(md) {
+                            width: 140px;
+                            height: auto;
+                        }
+                        @include global.responsive(md) {
+                            width: 180px;
+                        }
+                    }
+                }
+                &__img--top{
+                    @include global.responsive(md) {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                    }   
+                    img{
+                        height: 100px;
+                        @include global.responsive(sm) {
+                            height: 120px;
+                            width: auto;
+                        }
+                        @include global.responsive(md) {
+                            width: 140px;
+                            height: auto;
+                        }
+                        @include global.responsive(md) {
+                            width: auto;
+                            height: 180px;
+                        }
+                    }
+                }
+                &__info{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    @include global.responsive(md) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                &__subData{
+                    @include global.responsive(md) {
+                        margin-top: auto;
+                        padding-top: 24px;
+                    }
+                }
+                &__store{
+                    display: none;
+                    @include global.responsive(md) {
+                        display: block;
+                    }
+                }
+                &__other{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: relative;
+                }
+            }
+        }
+    }
+    > li,
+    .slick-slide li{
+        padding-right: 8px;
+        @include global.responsive(sm) {
+            padding-right: 16px;
+        }
+        @include global.responsive(md) {
+            padding-right: 0px;
+        }
+    }
+    .slick-arrow{
+        position: absolute;
+        bottom: -40px;
+        font-size: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: url(../img/web/icon/arrow--prev.png)no-repeat center;
+        background-size: contain !important;
+        left: 0;
+        display: none;
+        cursor: pointer;
+        @include global.responsive(md) {
+            display: block;
+        }
+        @include global.responsive(xl) {
+            bottom: -45px;
+        }
+        &[aria-disabled="true"]{
+            background: url(../img/web/icon/arrow--prev--disabled.png)no-repeat center;
+            cursor: default;
+        }
+        &.slick-next{
+            background: url(../img/web/icon/arrow--next.png)no-repeat center;
+            left: 114px;
+            &[aria-disabled="true"]{
+                background: url(../img/web/icon/arrow--next--disabled.png)no-repeat center;
+            }
+        }
+    }
+    .slick-dots{
+        display: flex;
+        align-items: center;
+        margin: -4px;
+        margin-top: 4px;
+        margin-bottom: -16px;
+        @include global.responsive(md) {
+            position: absolute;
+            left: 0; bottom: -34px;
+            margin: 0 48px;
+        }
+        @include global.responsive(xl) {
+            bottom: -38px;
+        }
+        > li{
+            padding: 4px;
+            font-size: 0;
+            button{
+              font-size: 0;
+              padding: 0;
+              border: none;
+              width: 8px; height: 8px;
+              border-radius: 50%;
+              background: rgba(195, 14, 47, 0.2);
+              cursor: pointer;
+              @include global.responsive(md) {
+                width: 10px; height: 10px;
+              }
+            }
+            &.slick-active{
+                button{
+                    background: rgba(195, 14, 47, 1);
+                }
+            }
+        }
+    }
+    &__item{
+        min-height: 235px;
+        background: #c30e2e;
+        border-radius: 10px;
+        padding: 24px;
+        max-width: 100%;
+        width: 330px;
+        display: flex;
+        @include global.responsive(md) {
+            border-radius: 20px;
+        }
+        @include global.responsive(min) {
+            width: 340px;
+            padding: 24px;
+        }
+        @include global.responsive(sm) {
+            width: 100%;
+        }
+        &__item + &{
+            margin-left: 16px;
+        }
+        &--list{
+            padding: 16px;
+        }
+    }
+    &__box{
+        display: flex;
+        justify-content: space-between;
+        flex: auto;
+        min-width: 1px;
+        position: relative;
+    }
+    &__info{
+        flex: auto;
+        min-width: 1px;
+    }
+    &__mainData{}
+    &__brand{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+    }
+    &__product{}
+    &__color{
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        .c-colorBall{
+            width: 12px; height: 12px;
+            border-radius: 18px;
+            margin-right: 4px;
+            display: inline-block;
+        }
+    }
+    &__subData{
+        margin-top: 24px;
+        &--list{
+            margin-top: 16px;
+        }
+        > div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            @include global.responsive(sm) {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            + div{
+                margin: 4px 0 0;
+                @include global.responsive(sm) {
+                    margin: 4px 0 0;
+                }
+            }
+            .label{
+                flex: 0 0 auto;
+                // width: 120px;
+                line-height: 1.3em;
+            }
+            .data{
+                flex: auto;
+                min-width: 1px;
+                line-height: 1.3em;
+                font-size: 13px;
+                // width: 190px;
+                // white-space: nowrap;
+                // overflow: hidden;
+                // text-overflow: ellipsis;
+                @include global.responsive(min) {
+                    // width: 140px;
+                }
+                @include global.responsive(xs) {
+                    // width: 230px;
+                }
+                @include global.responsive(md) {
+                    // width: 140px;
+                }
+            }
+        }
+        
+    }
+    &__purchase{
+        &--all{
+            @include global.responsive(xl) {
+                // width: 130px;
+            }
+        }
+    }
+    &__serialNum{
+        &--all{
+            @include global.responsive(xl) {
+                // width: 160px;
+            }
+        }
+    }
+    &__store{
+        &--all{
+            @include global.responsive(xl) {
+                max-width: 180px;
+            }
+        }
+    }
+    &__other{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        @include global.responsive(md) {
+            position: static;
+        }
+    }
+    //一覧ページ
+    &--list{
+        display: flex;
+        flex-wrap: wrap;
+        margin: -4px;
+        margin-top: 16px;
+        > li{
+            padding: 4px;
+            flex: auto;
+            min-width: 1px;
+            display: flex;
+            @include global.responsive(sm) {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+            @include global.responsive(md) {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+        } 
+        .c-txt{
+            color: #fff;
+        }
+        .p-card{    
+            &__item{
+                flex: auto;
+                min-width: 1px;
+                @include global.responsive(md) {
+                    padding-left: 100px;
+                    position: relative;
+                    min-height: 104px;
+                }
+            }        
+            &__info{
+                display: flex;
+                flex-direction: column;
+                @include global.responsive(md) {
+                    
+                }
+                @include global.responsive(xxl) {
+                    flex-direction: row;
+                }
+            }
+            &__other{
+                flex: 0 0 auto;
+            }
+            &__mainData{
+                flex: 0 0 auto;
+                max-width: 360px;
+            }
+            &__brand p,
+            &__product .c-txt--sm{
+                font-weight: 300;
+            }
+            &__product{
+                .c-txt--md{
+                    @include global.responsive(md) {
+                        font-size: 22px;
+                        line-height: 24px;
+                    }
+                }
+            }
+            &__store{
+                .data{
+                    width: 190px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    @include global.responsive(lg) {
+                        width: 100%;
+                        white-space: unset;
+                    }
+                }
+                &--all{
+                    @include global.responsive(xl) {
+                        max-width: 300px;
+                    }
+                }
+            }
+            &__subData{
+                margin-top: auto;
+                padding: 16px 0 0;
+                @include global.responsive(md) {
+                    display: flex;
+                    padding: 0;
+                    margin: 12px 0 0;
+                }
+                @include global.responsive(xxl) {
+                    padding: 0 0 0 16px;
+                    margin: 0 0 0 auto;
+                    flex: auto;
+                    max-width: 460px;
+                    min-width: 1px;
+                }
+                > div{
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    @include global.responsive(xs) {
+                        flex-direction: row;
+                    }
+                    @include global.responsive(md) {
+                        flex-direction: column;
+                        padding: 0 16px;
+                        border-left: solid 1px rgba(255,255,255,.3);
+                        border-right: solid 1px rgba(255,255,255,.3);
+                        min-height: 48px;
+                    }
+                    @include global.responsive(xl) {
+                        // padding: 0 24px;
+                        // width: auto;
+                        // flex: auto;
+                        // min-width: 1px;
+                    }
+                    + div{
+                        border-left: none !important;
+                        margin: 0;
+                    }
+                    .label{
+                        width: 80px;
+                        @include global.responsive(md) {
+                            line-height: 1.2em;
+                        }
+                    }
+                    .data{
+                        // @include global.responsive(md) {
+                        //     display: flex;
+                        //     align-items: center;
+                        // }
+                        @include global.responsive(lg) {
+
+                        }
+                    }
+                }
+            }
+            &__other{
+                @include global.responsive(md) {
+                    margin: 0 0 0 24px;
+                    position: static;
+                }
+            }
+            &__img{
+                @include global.responsive(md) {
+                    position: absolute;
+                    left: 24px;
+                    top: 8px;
+                    height: calc(100% - 16px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                img{
+                    max-height: 70px;
+                    max-width: 60px;
+                    width: auto;
+                    height: auto;
+                    @include global.responsive(md) {
+                        // max-width: 100%;
+                        // height: auto;
+                        // max-height: 100%;
+                        position: relative;
+
+                        max-height: 80px;
+                        width: auto;
+                        max-width: 60px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+        .p-card__subData{
+            @include global.responsive(md) {
+                display: block;
+                min-width: 320px;
+                div{
+                    border: none;
+                    display: flex;
+                    flex-direction: inherit;
+                    min-height: 24px;
+                    align-items: center;
+                }
+                > div{
+                    padding: 0;
+                }
+                .label{
+                    width: 100px;
+                }
+            }
+            @include global.responsive(lg) {
+                display: flex;
+                padding: 0;
+                margin: 12px 0 0;
+                div{
+                    flex-direction: column;
+                    align-items: baseline;
+                    .data{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                    }
+                }
+                > div{
+                    padding: 0 16px;
+                    border-left: solid 1px rgba(255, 255, 255, 0.3);
+                    border-right: solid 1px rgba(255, 255, 255, 0.3);
+                    min-height: 48px;
+                }
+            }
+            @include global.responsive(xl) {
+                div{
+                    // width: auto;
+                }
+            }
+            @include global.responsive(xxl) {
+                padding: 0 0 0 16px;
+                margin: 0 0 0 auto;
+            }
+        }
+    }
+}

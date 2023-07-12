@@ -3,103 +3,132 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAdminAccountRequest;
+use App\Models\MShop;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
-
-use Auth;
-use DB;
-
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     /**
-     * アカウント一覧
-     *
      * @param Request $request
+     * @return Application|Factory|View
+     */
+    public function index(Request $request): View|Factory|Application
+    {
+        return view('admin.staffs.index', [
+            'admins' => Admin::query()->paginate(50)
+        ]);
+    }
+    
+    /**
      * @return View
      */
-    public function showIndex(Request $request): View
+    public function create(): View
     {
-        $sort = $request->sort;
-        $admin_query = Admin::where(function(Builder $q) use ($request){
-            if($request->filled('keyword')){
-                $q->where(function(Builder $q_keyword) use ($request) {
-                    $keyword_reg = '%' . $request->query('keyword') . '%';
-                    $q_keyword->where('name', 'LIKE', $keyword_reg)
-                        ->orWhere('email', 'LIKE', $keyword_reg);
-                });
-            }
-
-            if($request->filled('auth')) $q->where('authority', $request->query('auth'));
-        });
-
-        if($sort === 'asc' || is_null($sort)){
-            $admin_query->orderBy('id')->orderByDesc('created_at');
-        } else if ($sort === 'desc'){
-            $admin_query->orderByDesc('id')->orderByDesc('created_at');
-        }
-
-        $admins = $admin_query
-            ->paginate(50)
-            ->appends($request->query());
-
-        return view('account.index', ['admins' => $admins]);
+        return view('admin.staffs.edit.index', [
+            'admin' => new Admin(),
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
     }
-
-
+    
     /**
-     * 削除処理
+     * @param Admin $admin
+     * @return View
      */
-    public function destroy(Request $request)
+    public function edit(Admin $admin): View
     {
-        // delete実行時にログインが切れてしまうので現在のログインを保存して処理完了後に再ログインさせる
-        $auth_user = Auth::guard('admin')->user();
+        return view('admin.staffs.edit.index', [
+            'admin' => $admin,
+            'shops' => MShop::query()->pluck('name', 'id')->toArray(),
+        ]);
+    }
+    
+    /**
+     * @param StoreAdminAccountRequest $request
+     * @return RedirectResponse
+     */
+    public function updateOrCreate(StoreAdminAccountRequest $request): RedirectResponse
+    {
         DB::beginTransaction();
-
-        try{
-            $admin = Admin::find($request->input('adminId'));
-            $admin->update([
-                // 再登録が可能なように削除時にはタイムスタンプでEメールをエスケープする
-                'email' => $admin->email . '@' . now()->format('YmdHis')
-            ]);
+        try {
+            $params = $this->arrayShapeAdmin($request);
+            
+            // 画像の登録
+            if ($request->file('image_path')) {
+                $file = $request->file('image_path');
+                $path = Storage::disk('s3')->put('admin', $file);
+                $params['image_path'] = $path;
+            }
+            
+            Admin::updateOrCreate(['id'=> $request->input('id')], $params);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with(['alert' => 'エラーが発生しました。']);
+        }
+        DB::commit();
+        
+        return redirect()->route('admin.staffs.index')
+            ->with(['success' => '登録しました。']);
+    }
+    
+    public function delete(Admin $admin)
+    {
+        DB::beginTransaction();
+        try {
+            $admin->email = $admin->email . '@' . date('YmdHis');
+            $admin->save();
             $admin->delete();
         } catch (\Exception $e) {
             DB::rollback();
-            Auth::guard('admin')->login($auth_user);
-
-            throw new \Exception($e->getMessage() ?: 'エラーが発生しました。');
+            return redirect()->back()
+                ->with(['alert' => 'エラーが発生しました。']);
         }
-
         DB::commit();
-        if($auth_user) Auth::guard('admin')->login($auth_user);
-
-        return redirect()
-            ->route('account.index');
+        
+        return redirect()->route('admin.staffs.index')
+            ->with(['success' => '削除しました。']);
     }
-
-    public function showEdit($admin_id)
+    
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function arrayShapeAdmin(Request $request): array
     {
-        $admin = Admin::find($admin_id);
-        return view('account.edit', compact('admin'));
-    }
-
-
-    public function edit(UpdateAdminRequest $request, $admin_id)
-    {
-        $admin = Admin::find($admin_id);
-        $admin->fill([
-            'authority' => $request->input('authority'),
-            'email' => $request->input('email'),
-            'name' => $request->input('name'),
-        ]);
-        if ($request->input('password1234')) {
-            $admin->password = Hash::make($request->input('password'));
+        if ($request->input('password')) {
+            $array = [
+                'authority' => $request->input('authority'),
+                'last_name' => $request->input('last_name'),
+                'first_name' => $request->input('first_name'),
+                'last_name_kana' => $request->input('last_name_kana'),
+                'first_name_kana' => $request->input('first_name_kana'),
+                'm_shop_id' => $request->input('m_shop_id'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password'))
+            ];
+        } else {
+            $array = [
+                'authority' => $request->input('authority'),
+                'last_name' => $request->input('last_name'),
+                'first_name' => $request->input('first_name'),
+                'last_name_kana' => $request->input('last_name_kana'),
+                'first_name_kana' => $request->input('first_name_kana'),
+                'm_shop_id' => $request->input('m_shop_id'),
+                'email' => $request->input('email'),
+            ];
         }
-        $admin->save();
-        return redirect()->route('account.index');
+        
+        return $array;
     }
 }

@@ -1,0 +1,143 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Filter フィルター
+================================================== */
+.p-filter {
+  display: flex;
+  //margin: 0 0 1.5rem;
+  height: 56px;
+  background: #fff;
+  padding: 0 16px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  /* ! ----------
+  　Body ボディ
+  ---------- */
+  &__body {
+  }
+
+  /* ! ----------
+  　Action アクション
+  ---------- */
+  &__action {
+    margin: 0 0 0 auto;
+  }
+
+  /* ! --------------------------------------------------
+  　Filter List フィルターリスト
+  -------------------------------------------------- */
+  &List {
+    display: flex;
+    gap: 1rem;
+
+    // アイテム
+    &__item {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & + .p-filterList__item {
+        border-left: 1px solid var(--gray-1);
+        padding-left: 1rem;
+      }
+    }
+
+    /* ! --------------------------------------------------
+    　Label ラベル
+    -------------------------------------------------- */
+    &__label {
+      @extend .c-text__sm !optional;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 2rem;
+      padding: 0 2rem 0 0.5rem;
+      background-image: url(../img/admin/form/select.png);
+      // background-size: 1.5rem 1.5rem;
+      background-position: right 8px center;
+      background-repeat: no-repeat;
+      border-bottom: 1px solid var(--color_text_button);
+      user-select: none;
+      cursor: pointer;
+
+      /* ! ----------
+      　Active アクティブ （フィルターが1つ以上適用されている状態）
+      ---------- */
+      .is-active & {
+        color: var(--color_primary);
+        font-weight: 700;
+        border-color: var(--color_primary);
+      }
+
+      & > span {
+        color: #fff;
+        @extend .c-text__xs !optional;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.125rem;
+        min-width: 1.125rem;
+        padding: 0 0.25rem;
+        background-color: var(--color_primary);
+        border-radius: 1rem;
+      }
+    }
+
+    /* ! --------------------------------------------------
+    　Content コンテンツ
+    -------------------------------------------------- */
+    &__content {
+      display: none;
+      width: max-content;
+      border: 1px solid var(--color_border_1);
+      background-color: #fff;
+      box-shadow: 0px 8px 24px -2px rgb(0 0 0 / 24%);
+      position: absolute;
+      top: 90%;
+      left: 0;
+      z-index: 1;
+
+      /* ! ----------
+      　ボディ
+      ---------- */
+      &__body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.5rem;
+      }
+      /* ! ----------
+      　フット
+      ---------- */
+      &__foot {
+        padding: 0.5rem;
+        border-top: 1px solid var(--color_border_1);
+      }
+
+      /* ! ----------
+      　Active アクティブ
+      ---------- */
+      .is-active + & {
+        display: block;
+      }
+    }
+    /* ! --------------------------------------------------
+    　Keyword キーワード検索
+    -------------------------------------------------- */
+    &__keyword {
+      display: flex;
+      gap: 8px;
+      input {
+        border-radius: 4px;
+        height: 26px;
+        max-width: 200px;
+        width: 100%;
+        border: 1px solid var(--gray-1);
+      }
+    }
+  }
+}

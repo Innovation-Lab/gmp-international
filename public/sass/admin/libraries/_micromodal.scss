@@ -1,0 +1,213 @@
+@use "../global" as global;
+@use "../global/_components.scss";
+
+/* ! ==================================================
+　Micromodal マイクロモーダル
+================================================== */
+/* ! ----------
+　開くボタン
+---------- */
+[data-micromodal-trigger] {
+  cursor: pointer;
+}
+
+.modal {
+  position: relative;
+  z-index: 10;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 32px;
+  max-width: 330px;
+  width: 100%;
+  max-height: 100vh;
+  border-radius: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  position: relative;
+  &.lg {
+    max-width: 576px;
+  }
+  &.md {
+    max-width: 410px;
+  }
+  &.sm {
+    max-width: 316px;
+  }
+}
+
+/* ! ----------
+　Header ヘッダー
+---------- */
+.modal__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 1.5rem;
+}
+
+.modal__title {
+  color: var(--color_text_1);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  box-sizing: border-box;
+}
+
+/* ! ----------
+　閉じる
+---------- */
+.modal__close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 -0.25rem 0 0.5rem;
+  position: absolute;
+  inset: 10px 10px auto auto;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.modal__header .modal__close:before,
+.modal__close:before {
+  content: "\2715";
+  font-size: 20px;
+  color: #8c8c8c;
+}
+
+/* ! ----------
+　Content 内容
+---------- */
+.modal__content{
+  &__input {
+    input{
+      text-align: center;
+      color: var(--color_primary);
+      background-color: #fff;
+      border-color: var(--color_primary);
+      letter-spacing: 0rem;
+      font-weight: 500;
+      height: 3rem;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--color_background_3);
+        transition: 0.5s;
+      }
+    }
+  }
+  &__text{
+    font-size: 12px;
+    color: var(--gray-2);
+    margin-top: 8px;
+  }
+}
+
+/* ! ----------
+　Footer フッター
+---------- */
+.modal__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 2rem 0 0;
+}
+
+/* ! ----------
+　Button ボタン
+---------- */
+.modal {
+  &__btn {
+    @extend .c-button__2 !optional;
+    &-primary {
+      @extend .c-button !optional;
+    }
+    &-alert {
+      @extend .c-button__alert !optional;
+    }
+  }
+}
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mmslideIn {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mmslideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+// .micromodal-slide[aria-hidden="false"] .modal__overlay {
+//   animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+// }
+
+// .micromodal-slide[aria-hidden="false"] .modal__container {
+//   animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+// }
+
+// .micromodal-slide[aria-hidden="true"] .modal__overlay {
+//   animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+// }
+
+// .micromodal-slide[aria-hidden="true"] .modal__container {
+//   animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+// }
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}

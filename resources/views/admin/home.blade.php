@@ -5,27 +5,13 @@
 <div class="p-index">
   <div class="l-index">
     <div class="l-index__head">
-      <div class="p-index__head">
+      <div class="p-index__head" style="margin: 0 0 1.5rem;">
         <div class="wrapper">
           <div class="container">
             <div class="p-index__head__inner">
               <h2 class="p-index__head__title">
                 ダッシュボード
               </h2>
-              <div class="p-index__head__action">
-                {{-- フォーム --}}
-                {!! Form::open(['class' => 'p-form']) !!}
-                  {!!
-                    Form::select('analysis-period', 
-                      [
-                      'analysis-period-this-month' => '今月',
-                      'analysis-period-last-month' => '先月',
-                      ],
-                      'analysis-period-this-month', ['placeholder' => '選択']
-                    )
-                  !!}
-                {!! Form::close() !!}
-              </div>
             </div>
           </div>
         </div>
@@ -40,107 +26,47 @@
             {{-- -------------------- 行 1 -------------------- --}}
             @component('admin.dashboard._row')
               {{-- 列 --}}
-              @component('admin.dashboard._col',['span' => '8'])
+              @component('admin.dashboard._col',['span' => '7'])
                 {{-- 行 --}}
                 @component('admin.dashboard._row')
                   {{-- 列 --}}
                   @component('admin.dashboard._col',[
                     'span' => '6',
                   ])
-                    {{-- プラン売上 --}}
-                    @include('admin.dashboard.item._sales_plan')
+                    {{-- ユーザー数 --}}
+                    @include('admin.dashboard.item._count_user')
                   @endcomponent
                   @component('admin.dashboard._col',[
                     'span' => '6',
                   ])
-                    {{-- 商品売上 --}}
-                    @include('admin.dashboard.item._sales_item')
+                    {{-- 製品登録数 --}}
+                    @include('admin.dashboard.item._count_item')
                   @endcomponent
                 @endcomponent
                 @component('admin.dashboard._row')
                   {{-- 列 --}}
                   @component('admin.dashboard._col',['span' => '12'])
-                    {{-- 売上推移チャート --}}
-                    @include('admin.dashboard.item._chart_sales')
+                    {{-- ユーザー数推移チャート --}}
+                    @include('admin.dashboard.item._chart_user')
                   @endcomponent
                 @endcomponent
               @endcomponent
-              @component('admin.dashboard._col',['span' => '4'])
-                {{-- 売上ランキング --}}
-                @include('admin.dashboard.item._ranking_sales')
+              @component('admin.dashboard._col',['span' => '5'])
+                {{-- 製品登録数 --}}
+                @include('admin.dashboard.item._ranking_product')
               @endcomponent
             @endcomponent
             {{-- -------------------- 行 2 -------------------- --}}
             @component('admin.dashboard._row')
               {{-- 列 --}}
-              @component('admin.dashboard._col',['span' => '4'])
-                <div class="p-dashboard__item">
-                  <div class="p-dashboard__head">
-                    <h3 class="p-dashboard__head__title">
-                      支払い履歴
-                    </h3>
-                  </div>
-                  <div class="p-dashboard__body">
-                    内容
-                  </div>
-                </div>
-              @endcomponent
-              @component('admin.dashboard._col',['span' => '4'])
-                {{-- コンテンツ --}}
-                <div class="p-dashboard__item">
-                  <div class="p-dashboard__head">
-                    <h3 class="p-dashboard__head__title">
-                      推移
-                    </h3>
-                  </div>
-                  <div class="p-dashboard__body">
-                    4<br>
-                    4<br>
-                    4<br>
-                    4<br>
-                  </div>
-                </div>
-                {{-- コンテンツ end --}}
-              @endcomponent
-              @component('admin.dashboard._col',['span' => '4'])
-                <div class="p-dashboard__item">
-                  4
-                </div>
-              @endcomponent
-            @endcomponent
-            {{-- -------------------- 行 3 -------------------- --}}
-            @component('admin.dashboard._row')
-              {{-- 列 --}}
-              @component('admin.dashboard._col',[
-                'span' => '6',
-                'xxl' => '3'
-              ])
-                <div class="p-dashboard__item">
-                  3
-                </div>
-              @endcomponent
-              @component('admin.dashboard._col',[
-                'span' => '6',
-                'xxl' => '3'
-              ])
-                <div class="p-dashboard__item">
-                  3
-                </div>
-              @endcomponent
-              @component('admin.dashboard._col',[
-                'span' => '6',
-                'xxl' => '3'
-              ])
-                <div class="p-dashboard__item">
-                  3
-                </div>
-              @endcomponent
-              @component('admin.dashboard._col',[
-                'span' => '6',
-                'xxl' => '3'
-              ])
-                <div class="p-dashboard__item">
-                  3
+              @component('admin.dashboard._col',['span' => '12'])
+                <div class="c-buttonWrap c-buttonWrap--dashboard">
+                  {{-- ユーザー情報CSV --}}
+                  <a data-micromodal-trigger="modal-user-import" class="c-button__icon c-button__icon--import">ユーザー情報CSV入力</a>
+                  <a href="{{ route('admin.csv.user.export') }}" class="c-button__icon__line c-button__icon--export">ユーザー情報CSV出力</a>
+                  {{-- 製品情報CSV --}}
+                  <a data-micromodal-trigger="modal-sales_product-import" class="c-button__icon c-button__icon--import">登録製品情報CSV入力</a>
+                  <a href="{{ route('admin.csv.salesProduct.export') }}" class="c-button__icon__line c-button__icon--export">登録製品情報CSV出力</a>
                 </div>
               @endcomponent
             @endcomponent
@@ -151,7 +77,7 @@
   </div>
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<script src="{{ asset('js/admin/chart-dashboard.js') }}"></script>
+{{--<script src="{{ asset('js/admin/chart-dashboard.js') }}"></script>--}}
 <script>
   // (function() {
   //   $('tbody tr[data-href]').addClass('clickable').click( function() {

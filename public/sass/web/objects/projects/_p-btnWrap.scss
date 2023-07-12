@@ -1,7 +1,19 @@
 .p-btnWrap {
-  margin-top: 40px;
+  // margin-top: 40px;
   display: flex;
-  a + a{
-    margin-left: 8px;
+  margin: -4px;
+  > *{
+    margin: 4px;
+  }
+  &--single{
+    // width: 200px;
+    // margin-top: 40px;
+    // display: flex;
+    // align-products: center;
+    // justify-content: center;
+  }
+  &--center{
+    justify-content: center;
   }
 }
+

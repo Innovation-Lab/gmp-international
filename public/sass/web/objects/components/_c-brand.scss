@@ -1,0 +1,11 @@
+@use "../../global/" as global;
+
+.c-brand {
+  height: 24px;
+  width: auto;
+  &--pc{
+    // width: 50%;
+    height: auto;
+
+  }
+}

@@ -1,72 +1,49 @@
 <div class="p-sidebar">
-  <header class="p-sidebar__head">
-    {{-- ロゴ --}}
-    <a href="{{route('home')}}" class="p-sidebar__head__logo">
-      <img
-        class="normal"
-        src="{{ asset('img/admin/logo/normal.svg')}}"
-        width="160px"
-        height="42px"
-      >
-      <img
-        class="icon"
-        src="{{ asset('img/admin/logo/icon.png')}}"
-        width="24px"
-        height="24px"
-      >
-    </a>
-    {{-- 表示サイズ切り替え --}}
-    <div class="p-sidebar__head__hide">
-      <div class="p-gnav__head__switch" id="js-trigger__gnavSwitch">
-        <img src="{{asset('img/admin/nav/burger.png')}}" width="24px" height="24px">
+  <div class="l-container">
+    <header class="p-sidebar__head">
+      <div class="p-sidebar__logo">  
+        <a href="{{ route('mypage.index') }}" class="c-link"><img src="{{ asset('img/web/user/logo/GMP_logo.png')}}" alt="" style="width: 45px;"></a>
       </div>
-    </div>
-  </header>
-  <aside class="p-sidebar__body">
-    <div class="p-gnav">
-      @foreach(config('const.global_navigation') as $key => $val)
-      <div class="p-gnav__item {{ in_array(explode('.', Route::currentRouteName())[1], [explode('.', $val['path'])[1]], TRUE) ? 'is-active' : '' }}">
-        <a
-          href="{{ route($val['path'])}}"
-          class="p-gnav__button"
-        >
-          @if(in_array(explode('.', Route::currentRouteName())[1], [explode('.', $val['path'])[1]], TRUE))
-            <img
-              src="{{ asset('img/admin/nav/'.$key.'_active.png')}}"
-              width="24px"
-              height="24px"
-            >
-          @else
-            <img
-              src="{{ asset('img/admin/nav/'.$key.'.png')}}"
-              width="24px"
-              height="24px"
-            >
+    </header>
+    <div class="p-sidebar__body">
+      <div class="p-dashboard">
+        <div class="p-dashboard__userName">
+          <p class="c-txt c-txt--md">{{ $user->full_name }}<span class="c-txt--sm"> 様</span></p>
+        </div>
+        <ul class="p-dashboard__list">
+          <li class="p-dashboard__item"><a href="{{route('mypage.index')}}" class="c-txt">マイページ</a></li>
+          @if (\Auth::user()->hasProduct())
+            <li class="p-dashboard__item"><a href="{{route('mypage.product')}}" class="c-txt">登録済み製品一覧</a></li>
           @endif
-          <label>
-            {{$val['label']}}
-          </label>
-        </a>
+          <li class="p-dashboard__item"><a href="{{route('mypage.user')}}" class="c-txt">ユーザー情報編集</a></li>
+          <li class="p-dashboard__item"><a href="{{route('mypage.account')}}" class="c-txt">アカウント情報編集</a></li>
+        </ul>
       </div>
-      @endforeach
     </div>
-  </aside>
-  <div class="p-sidebar__foot">
-    {{-- プロフィール --}}
-    <div class="p-profile" data-micromodal-trigger="modal-account-menu">
-      <div class="p-profile__image">
-        <img
-          src="{{ asset('img/admin/sample/profile.png')}}"
-          width="48px"
-          height="48px"
-        >
-      </div>
-      <div class="p-profile__text">
-        <p class="p-profile__text__title">田中 直人</p>
-        <div class="p-profile__text__sub">
-          h.tajima@soushin-lab.co.jp
+    <div class="p-sidebar__foot">
+      <div class="p-support">
+        <div class="p-support__ttl">
+          <p class="c-ttl">GMPサポートデスク</p>
+        </div>
+        <div class="p-support__data">
+          <p class="c-txt c-txt--gr">営業時間</p>
+          <p class="c-txt c-txt--md">平日 10:00〜17:00</p>
+        </div>
+        <div class="p-support__tel">
+          <p class="c-txt c-txt--gr">ベビー用品</p>
+          <a href="tel:0120-178-363" class="c-txt c-txt--lg c-txt--lg--rd">0120-178-363</a>
+        </div>
+        <div class="p-support__tel">
+          <p class="c-txt c-txt--gr">ペット用品</p>
+          <a href="tel:0120-98-1511" class="c-txt c-txt--lg c-txt--lg--rd">0120-98-1511</a>
         </div>
       </div>
+    </div>
+    <div class="p-sidebar__logout">
+      {!! Form::open(['method' => 'POST', 'route' => 'logout']) !!}
+        {{-- <p class="c-txt c-txt--md c-txt--md--gr">ログアウト</p> --}}
+        <input type="submit" name="button" value="ログアウト" class="c-txt c-txt--md c-txt--md--gr" style="background-color:transparent;">
+      {!! Form::close() !!}
     </div>
   </div>
 </div>

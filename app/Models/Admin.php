@@ -2,39 +2,22 @@
 
 namespace App\Models;
 
-use App\Http\Common\SerializeDate;
+use App\Traits\GetImageTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use App\Notifications\Admin\Auth\ResetPasswordNotification;
 
 class Admin extends Authenticatable
 {
-    use HasFactory,SoftDeletes;
-    use Notifiable;
-    use SerializeDate;
+    use HasFactory, GetImageTrait, SoftDeletes;
 
     protected $guarded = [
         'id'
     ];
-
-    public function sendPasswordResetNotification($token): void
-    {
-        $this->notify(new ResetPasswordNotification($token, $this->email));
-    }
-
-    public function getDisplayCreatedAtAttribute()
-    {
-        return Carbon::parse($this->created_at)->format('Y/m/d H:i');
-    }
-
-    public function getAuthorityLabelAttribute(): string
-    {
-        return data_get($this, 'authority') ? self::AUTHORITY_LIST[data_get($this, 'authority')] : '';
-    }
 
     const MANAGER = 1;
     const GENERAL = 2;
@@ -42,7 +25,22 @@ class Admin extends Authenticatable
         self::MANAGER => '管理者',
         self::GENERAL => '一般',
     ];
-
+    const AUTHORITY_CLASS_LIST = [
+        self::MANAGER => 'admin',
+        self::GENERAL => 'general',
+    ];
+    
+    /**
+     * @return BelongsTo
+     */
+    public function mShop(): BelongsTo
+    {
+        return $this->belongsTo(MShop::class);
+    }
+    
+    /**
+     * @return bool
+     */
     public function isManager()
     {
         return $this->authority == self::MANAGER;
@@ -64,5 +62,32 @@ class Admin extends Authenticatable
     public function getFullNameKanaAttribute(): string
     {
         return $this->last_name_kana.' '.$this->first_name_kana;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getMainImageUrlAttribute(): string
+    {
+        if (!data_get($this, 'image_path')) {
+            return asset('img/admin/noImage/product.png');
+        } else {
+            return $this->getTemporaryImageUrl(data_get($this, 'image_path'));
+        }
+    }
+    
+    /**
+     * @return string
+     */
+    public function getAuthorityLabelAttribute(): string
+    {
+        return data_get($this, 'authority') ? self::AUTHORITY_LIST[data_get($this, 'authority')] : '';
+    }
+    /**
+     * @return string
+     */
+    public function getAuthorityClassAttribute(): string
+    {
+        return data_get($this, 'authority') ? self::AUTHORITY_CLASS_LIST[data_get($this, 'authority')] : '';
     }
 }

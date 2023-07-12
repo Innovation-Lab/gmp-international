@@ -12,7 +12,7 @@
         本当に削除しますか？
       </main>
       <footer class="modal__footer">
-        <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">閉じる</button>
+        <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">戻る</button>
         <button class="modal__btn-alert" data-micromodal-close aria-label="Close this dialog window">削除する</button>
       </footer>
     </div>

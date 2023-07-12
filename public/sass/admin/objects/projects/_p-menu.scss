@@ -1,0 +1,34 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Menu メニュー
+================================================== */
+.p-menu {
+  /* ! ----------
+  　List リスト
+  ---------- */
+  &List {
+    &__item {
+      border-top: 1px solid var(--color_border_1);
+      &:last-of-type {
+        border-bottom: 1px solid var(--color_border_1);
+      }
+    }
+
+    // ボタン
+    &__button {
+      color: var(--color_text_button);
+      @extend .c-text__sm !optional;
+      min-width: 15rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      &:hover {
+        color: var(--color_text_1);
+        background-color: var(--color_background_2);
+      }
+    }
+  }
+}

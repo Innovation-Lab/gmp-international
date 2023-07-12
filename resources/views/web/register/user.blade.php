@@ -2,171 +2,237 @@
 @section('title', 'ユーザー情報の入力')
 @section('class', 'body_')
 @section('content')
-<div class="l-frame__body">
-  <div class="l-container">
-    <div class="p-register">
-      <div class="p-register__head">
-        <div class="p-register__ttl">
-          <p>新規会員登録</p>
-        </div>
-        <!-- ステップ2 -->
-        <div class="p-register__step">
-          <ul class="p-step">
-            <li class="p-step__item p-step__item--complete">
-              <p class="c-txt c-txt--step">アカウント<br>情報の入力</p>
-            </li>
-            <li class="p-step__item p-step__item--current">
-              <p class="c-txt c-txt--step">ユーザー<br>情報の入力</p>
-            </li>
-            <li class="p-step__item">
-              <p class="c-txt c-txt--step">購入製品<br>登録</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="p-register__body">
-        <ul class="p-formList">
-          <!-- お名前 -->
-          <li class="p-formList__item p-formList__item__half">
-            <!-- 姓 -->
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                お名前　<span class="c-txt c-txt--must">必須</b>
-              </div>
-              <div class="p-formList__data">
-                <input placeholder="例）山田" class="required" name="name" type="name" value="">
-              </div>
-              <span class="c-txt--err">「姓」を入力してください。<br>※全角で入力してください。</span>
-            </div>
-            <!-- 名 -->
-            <div class="p-formList__content">
-              <div class="p-formList__data">
-                <input placeholder="例）太郎" class="required" name="email" type="email" value="">
-              </div>
-              <span class="c-txt--err">「名」を入力してください。<br>※全角で入力してください。</span>
-            </div>
-          </li>
-          <!-- フリガナ -->
-          <li class="p-formList__item p-formList__item__half">
-            <!-- セイ -->
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                フリガナ　<span class="c-txt c-txt--must">必須</b>
-              </div>
-              <div class="p-formList__data">
-                <input placeholder="例）ヤマダ" class="required" name="name" type="name" value="">
-              </div>
-              <span class="c-txt--err">「セイ」を入力してください。<br>※全角カタカナで入力してください。</span>
-            </div>
-            <!-- 名 -->
-            <div class="p-formList__content">
-              <div class="p-formList__data">
-                <input placeholder="例）タロウ" class="required" name="email" type="email" value="">
-              </div>
-              <span class="c-txt--err">「メイ」を入力してください。<br>※全角カタカナで入力してください。</span>
-            </div>
-          </li>
-          <!-- 郵便番号 -->
-          <li class="p-formList__item">
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                郵便番号　<span class="c-txt">必須</span>
-              </div>
-              <div class="p-formList__data">
-                <input placeholder="" maxlength="7" class="required" name="passward" type="passward" value="">
-              </div>
-              <span class="c-txt--err">郵便番号を入力してください。</span>
-            </div>
-          </li>
-          <!-- 住所 -->
-          <li class="p-formList__item">
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                住所　<span class="c-txt">必須</span>
-              </div>
-              <div class="p-formList__data">
-                <select name="pref">
-                  <option value="" selected>都道府県</option>
-                  <option value="北海道">北海道</option>
-                  <option value="青森県">青森県</option>
-                  <option value="岩手県">岩手県</option>
-                  <option value="宮城県">宮城県</option>
-                  <option value="秋田県">秋田県</option>
-                  <option value="山形県">山形県</option>
-                  <option value="福島県">福島県</option>
-                  <option value="茨城県">茨城県</option>
-                  <option value="栃木県">栃木県</option>
-                  <option value="群馬県">群馬県</option>
-                  <option value="埼玉県">埼玉県</option>
-                  <option value="千葉県">千葉県</option>
-                  <option value="東京都">東京都</option>
-                  <option value="神奈川県">神奈川県</option>
-                  <option value="新潟県">新潟県</option>
-                  <option value="富山県">富山県</option>
-                  <option value="石川県">石川県</option>
-                  <option value="福井県">福井県</option>
-                  <option value="山梨県">山梨県</option>
-                  <option value="長野県">長野県</option>
-                  <option value="岐阜県">岐阜県</option>
-                  <option value="静岡県">静岡県</option>
-                  <option value="愛知県">愛知県</option>
-                  <option value="三重県">三重県</option>
-                  <option value="滋賀県">滋賀県</option>
-                  <option value="京都府">京都府</option>
-                  <option value="大阪府">大阪府</option>
-                  <option value="兵庫県">兵庫県</option>
-                  <option value="奈良県">奈良県</option>
-                  <option value="和歌山県">和歌山県</option>
-                  <option value="鳥取県">鳥取県</option>
-                  <option value="島根県">島根県</option>
-                  <option value="岡山県">岡山県</option>
-                  <option value="広島県">広島県</option>
-                  <option value="山口県">山口県</option>
-                  <option value="徳島県">徳島県</option>
-                  <option value="香川県">香川県</option>
-                  <option value="愛媛県">愛媛県</option>
-                  <option value="高知県">高知県</option>
-                  <option value="福岡県">福岡県</option>
-                  <option value="佐賀県">佐賀県</option>
-                  <option value="長崎県">長崎県</option>
-                  <option value="熊本県">熊本県</option>
-                  <option value="大分県">大分県</option>
-                  <option value="宮崎県">宮崎県</option>
-                  <option value="鹿児島県">鹿児島県</option>
-                  <option value="沖縄県">沖縄県</option>
-                </select>
-              </div>
-              <div class="p-formList__data">
-                <input placeholder="市区町村 番地" class="required" name="passward" type="passward" value="">
-              </div>
-              <div class="p-formList__data">
-                <input placeholder="建物名" class="required" name="passward" type="passward" value="">
-              </div>
-              <span class="c-txt--err">都道府県を選択してください。</span>
-            </div>
-          </li>
-          <!-- 住所 -->
-          <li class="p-formList__item">
-            <div class="p-formList__content">
-              <div class="p-formList__label">
-                電話番号　<span class="c-txt">必須</span>
-              </div>
-              <div class="p-formList__data">
-                <input placeholder="例）08012345678" class="required" name="passward" type="passward" value="">
-              </div>
-              <span class="c-txt--err">電話番号を入力してください。</span>
-            </div>
-          </li>
-        </ul>
-        <div class="p-btnWrap">
-          <a href="localhost:8082/login" class="c-btn">戻る</a>
-          <button type="submit" class="c-btn" id="register_form_button">購入製品の登録へ</button>
+  <div class="l-frame__body">
+    <div class="p-formPage">
+      <div class="p-formPage__head">
+        <div class="l-container">
+          <!-- ステップ2 -->
+          <div class="p-formPage__step">
+            <ul class="p-step">
+              <li class="p-step__item p-step__item--complete">
+                <p class="c-txt c-txt--step">STEP1</p>
+              </li>
+              <li class="p-step__item p-step__item--current">
+                <p class="c-txt c-txt--step">STEP2</p>
+              </li>
+              <li class="p-step__item">
+                <p class="c-txt c-txt--step">STEP3</p>
+              </li>
+            </ul>
+          </div>
+          <div class="p-formPage__head__ttl">
+            <p class="c-ttl">ユーザー情報の入力</p>
+          </div>
         </div>
       </div>
-      <div class="p-register__foot">
-
+      <div class="l-container">
+        <div class="p-formPage__body">
+          {{--<div class="skip">
+            <a class="c-btn c-btn--text c-btn--text--bk " onclick="addHiddenFieldAndSubmit()">
+              後で登録する
+            </a>
+          </div>--}}
+          <form method="POST" class="h-adr" action="{{ route('register.store.information') }}" id="informationSubmitForm">
+            @csrf
+            <input type="hidden" name="is_skip" id="is_skip_input" value="0">
+            <span class="p-country-name" style="display:none;">Japan</span>
+            <ul class="p-formList">
+              <!-- お名前 -->
+              <li class="p-formList__item p-formList__item--half">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                      <p class="c-txt">お名前 <span class="c-txt c-txt--must">必須</span></p>
+                  </div>
+                  <div class="p-formList__data">
+                    <div class="c-input c-input--name">
+                      <!-- 姓 -->
+                      <div class="c-input__item @error('last_name') c-input__item--err @enderror">
+                        <div class="c-input">
+                          <input placeholder="例）山田" class="required" name="last_name" type="text" value="{{ old('last_name', data_get($user, 'last_name')) }}">
+                        </div>
+                        @error('last_name')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
+                      </div>
+                      <!-- 名 -->
+                      <div class="c-input__item @error('first_name') c-input__item--err @enderror">
+                        <div class="c-input">
+                          <input placeholder="例）太郎" class="required" name="first_name" type="text" value="{{ old('first_name', data_get($user, 'first_name')) }}">
+                        </div>
+                        @error('first_name')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- フリガナ -->
+              <li class="p-formList__item p-formList__item--half">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                      <p class="c-txt">フリガナ <span class="c-txt c-txt--must">必須</span></p>
+                  </div>
+                  <div class="p-formList__data">
+                    <div class="c-input c-input--name">
+                      <!-- セイ -->
+                      <div class="c-input__item @error('last_name_kana') c-input__item--err @enderror">
+                        <div class="c-input">
+                          <input placeholder="例）ヤマダ" class="required" name="last_name_kana" type="text" value="{{ old('last_name_kana', data_get($user, 'last_name_kana')) }}">
+                        </div>
+                        @error('last_name_kana')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
+                      </div>
+                      <!-- メイ -->
+                      <div class="c-input__item @error('first_name_kana') c-input__item--err @enderror">
+                        <div class="c-input">
+                          <input placeholder="例）タロウ" class="required" name="first_name_kana" type="text" value="{{ old('first_name_kana', data_get($user, 'first_name_kana')) }}">
+                        </div>
+                        @error('first_name_kana')
+                          <div class="c-txt c-txt--err">{{ $message }}</div>
+                        @enderror
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- 郵便番号 -->
+              <li class="p-formList__item">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                      <p class="c-txt">郵便番号<br>(ハイフンなし) <span class="c-txt c-txt--must">必須</span></p>
+                  </div>
+                  <div class="p-formList__data @error('zip_code') p-formList__data--err @enderror">
+                    <div class="c-input c-input--post">
+                      <input id="postcode" placeholder="例）1230000" maxlength="7" class="required p-postal-code" name="zip_code" type="tel" value="{{ old('zip_code', data_get($user, 'zip_code')) }}" pattern="[0-9]{7}">
+                    </div>
+                    @error('zip_code')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
+                  </div>
+                </div>
+              </li>
+              <!-- 住所 -->
+              <li class="p-formList__item">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                      <p class="c-txt">住所 <span class="c-txt c-txt--must">必須</span></p>
+                  </div>
+                  <div class="p-formList__data @error('prefecture') p-formList__data--selectErr @enderror">
+                    <div class="c-input c-input--select c-input--prefectures">
+                      <select id="prefecture" name="prefecture" class="p-region">
+                        <option value="" hidden>都道府県</option>
+                        @foreach($prefectures as $index => $name)
+                          <option value="{{ $index }}" {{ old('prefecture', data_get($user, 'prefecture')) == $index ? 'selected' : '' }} >{{ $name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                      @error('prefecture')
+                        <div class="c-txt c-txt--err" style="margin-bottom: 7px">{{ $message }}</div>
+                      @enderror
+                    <div class="c-input p-formList__data @error('address_city') p-formList__data--err @enderror">
+                      <input id="address2" placeholder="市区町村" class="required p-locality p-street-address " name="address_city" type="text" value="{{ old('address_city', data_get($user, 'address_city')) }}">
+                      @error('address_city')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="c-input p-formList__data @error('address_block') p-formList__data--err @enderror">
+                      <input placeholder="番地" class="required p-extended-address" name="address_block" type="text" value="{{ old('address_block', data_get($user, 'address_block')) }}">
+                      @error('address_block')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="c-input">
+                      <input placeholder="建物名" class="required" name="address_building" type="text" value="{{ old('address_building', data_get($user, 'address_building')) }}">
+                      @error('address_building')
+                        <div class="c-txt c-txt--err">{{ $message }}</div>
+                      @enderror
+                    </div>
+                  </div>                  
+                </div>
+              </li>
+              <!-- 電話番号 -->
+              <li class="p-formList__item">
+                <div class="p-formList__content">
+                  <div class="p-formList__label">
+                      <p class="c-txt">電話番号<br>(ハイフンなし)  <span class="c-txt c-txt--must">必須</span></p>
+                  </div>
+                  <div class="p-formList__data @error('tel') p-formList__data--err @enderror">
+                    <div class="c-input c-input--tel">
+                      <input placeholder="例）08012345678" class="required" name="tel" type="tel" value="{{ old('tel', data_get($user, 'tel')) }}">
+                    </div>
+                    @error('tel')
+                      <div class="c-txt c-txt--err">{{ $message }}</div>
+                    @enderror
+                  </div>
+                </div>
+              </li>
+              {{--個人情報の取り扱いについて--}}
+              <li class="p-formList__item">
+                <div class="p-formList__content">
+                  <div class="p-formList__label p-formList__label--thin">
+                      <p class="c-txt"></p>
+                  </div>
+                  <div class="p-formList__data">
+                    <div class="c-input c-input--radio">
+                      <input type="checkbox" id="inq1-2" name="is_dm" value="1" {{ config('const.FORM_DM_STATUS')[old('is_dm', data_get($user, 'is_dm', 1))] }}>
+                      <label for="inq1-2" style="width: auto;">新着情報、お得情報を受け取る</label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </form>
+        </div>
+        <div class="p-formPage__foot p-formPage__foot--wide">
+          <div class="p-btnWrap p-btnWrap--center">
+            <a href="{{route('register.account')}}" class="c-btn c-btn--back">戻る</a>
+            <button type="submit" class="c-btn c-btn--next" form="informationSubmitForm">購入製品の登録へ</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+  <script>
+    function addHiddenFieldAndSubmit() {
+        $("#is_skip_input").val(1);
+        $("#informationSubmitForm").submit();
+    }
+  </script>
+
+  <script>
+    function changeColor(hoge){
+      if( hoge.value == 0 ){
+        hoge.style.color = '';
+      }else{
+        hoge.style.color = '#000';
+      }
+    }
+  </script>
+  <script>
+    //郵便番号入力が発火
+    $('#postcode').on('change keydown keyup click keypress', function(){
+      $(this).delay(100).queue(function(next){ //遅延処理
+        if($(this).val() == ''){ 
+          //番号が記入されていない場合↓
+          $('#prefecture').val(''); //初期値
+          $('#prefecture').css('color','#acb1c3');
+        }else{ 
+          //番号が記入されている場合↓
+          if( $('#prefecture').val() == ''){
+            //都道府県がヒットしていない
+            $('#prefecture').val(''); //初期値
+            $('#prefecture').css('color','#acb1c3');
+          }else{
+            //都道府県がヒットしている
+            $('#prefecture').css('color','#000');
+          }
+        }
+      next();
+      });
+    });
+  </script>
 @endsection
+

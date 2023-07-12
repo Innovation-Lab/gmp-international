@@ -1,26 +1,260 @@
+@use "../../global/" as global;
+@use "../../global/_components.scss";
 
 /* ! ==================================================
 　Button ボタン
 ================================================== */
 .c-btn {
-    font-size: 16px;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    color: #fff;
+    background: #000;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    display: inline-flex;
     align-items: center;
-    padding: 16px 0px;
-    border-radius: 5px;
+    justify-content: center;
+    gap: 4px;
+    padding: 0.2em 1.2em;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    vertical-align: middle;
+    transition-property: box-shadow, color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+    user-select: none;
+    cursor: pointer;
+    &--register{
+        background: #fff;
+        color: #C30E2E;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 4px 24px;
+        border-radius: 30px;
+        margin-top: 8px;
+        @include global.responsive(md) {
+            background: #fff;
+            color: #C30E2E;
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 30px;
+            margin-top: 24px;
+        }
+    }
+    &--register--rd{
+        background: #C30E2E;
+        color: #fff;
+        font-size: 14px;
+        // line-height: 14px;
+        font-weight: 500;
+        padding: 4px 24px;
+        border-radius: 30px;
+        margin-top: 8px;
+        @include global.responsive(md) {
+            background: #C30E2E;
+            color: #fff;
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 30px;
+            margin-top: 24px;
+        }
+    }
+    &--img{
+        width: 32px;
+        margin-right: 14px;
+        padding-left: 6px;
+        height: 45px;
+        margin-top: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-right: solid 1px #ddd;
+        @include global.responsive(md) {
+            display: none;
+        }
+    }
+    &--arrow{
+        width: 12px;
+        height: auto;
+    }
+    &--login{
+        background: #C30E2E;
+        border-radius: 35px;
+        width: 240px;
+        height: 48px;
+        padding: 16px 0;
+        font-size: 16px;
+        font-weight: 500;
+        &:hover{
+            background: #99152c;
+        }
+        @include global.responsive(md) {
+            height: 60px;
+            // width: 320px;
+            width: 100%;
+            font-size: 20px;
+        }
+        &:hover{
+            background: #99152c;
+        }
+    }
+    &--rd{
+        background: #c30e2e;
+        &:hover{
+            background: #99152c;
+        }
+    }
+    &--bk{
+        &:hover{
+            background: lighten(#000,20%);
+
+        }
+    }
     &--back{
+        font-size: 16px;
         background: #fff;
         color: #C30E2E;
         border: 1px solid #C30E2E;
-        min-width: 120px;
+        border-radius: 5px;
+        padding: 0.7em 0;
+        min-width: 90px;
+        &:hover{
+            background: #ffe3e8;
+        }
+        @include global.responsive(sm) {
+         min-width: 120px;
+        }
     }
-    &--next{
+    &--next,
+    &--accent{
+        font-size: 16px;
         background: #C30E2E;
+        border-radius: 5px;
         color: #fff;
         width: 100%;
+        padding: 0.7em 1em;
+        height: 48px;
+        max-width: 220px;
+        font-weight: 600;
+        &:hover{
+            background: #99152c;
+        }
+        @include global.responsive(md) {
+            height: 60px;
+            max-width: 260px;
+        }
     }
+    &--ghost{
+        color: #8c8c8c;
+        background-color: transparent;
+        &:hover{
+            color: darken(#8C8C8C,10%);
+            background: none;
+        }
+        &--rd{
+            color: #c30e2e;
+            border-color: #c30e2e;
+            &:hover{
+                color: darken(#c30e2e,10%);
+                border-color: darken(#c30e2e,10%);
+                background: none;
+            }
+        }
+        &--wh{
+            color: #fff;
+            border-color: #fff;
+            &:hover{
+                // background: darken(#c30e2e,10%);
+                color: darken(#fff,20%);
+                border-color: darken(#fff,20%);
 
+            }
+            &--mypage{
+                @include global.responsive(md) {
+                    height: 32px;
+                    min-width: 88px;
+                }
+            }
+        }
+    }
+    &--icon{
+        background-image: url(../img/web/user/register/add.png);
+        background-repeat: no-repeat;
+    }
+    &--text{
+        text-decoration: underline;
+        color: #8C8C8C;
+        padding: 0;
+        background: none;
+        font-size: 14px;
+        font-weight: 400;
+        &:hover{
+            color: darken(#8C8C8C,10%);
+            background: none;
+        }
+        &--nv{
+            color: #27305A;
+            font-size: 14px;
+        }
+        &--bk{
+            color: #000;
+            // &:hover{
+            //     color: lighten(#000000,30%);
+                
+            // }
+        }
+    }
+    //アイコン
+    &--ico{
+        padding: 0;
+        background: none;
+        color: #8c8c8c;
+        font-size: 16px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        &:hover{
+            color: darken(#8c8c8c,10%);
+            text-decoration: underline;
+        }
+        &:before{
+            //content: '';
+            width: 16px; height: 16px;
+            background-size: contain !important;
+            margin: 0 2px 0 0;
+        }
+        &--add{
+            &:before{
+                content: '';
+                background: url(../img/web/icon/btn--add.png)no-repeat center;
+            }
+        }
+        &--remove{
+            &:before{
+                content: '';
+                background: url(../img/web/icon/btn--remove.png)no-repeat center;
+            }
+        }
+    }
+    &--innerIco{
+        padding: 0 28px 0 16px;
+        position: relative;
+        max-width: none;
+        &:after{
+          content: '';
+          position: absolute;
+          right: 8px; top: 50%;
+          transform: translate(0, -50%);
+          width: 12px; height: 12px;
+          background-size: contain !important;
+        }
+        &--add{
+            &:after{
+                background: url(../img/web/icon/btn--add--red.png)no-repeat center;
+            }
+        }
+    }
 }

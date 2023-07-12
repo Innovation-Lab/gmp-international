@@ -15,18 +15,75 @@
 　Frames 全体フレーム
 ================================================== */
 .l-frame {
+  position: relative;
+  overflow: hidden;
   flex: auto;
   min-width: 0;
   display: grid;
-  // テーブル表示の関係で、幅計算の必要がある↓
-  // grid:
-  //   "sidebar main" 1fr
-  //   / var(--width_sidebar) calc(100vw - var(--width_sidebar));
-  // &.is-hide {
-  //   --width_sidebar: 4.5rem;
-  //   @extend .c-text__sm !optional;
-  // }
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* PC */
+  @include global.responsive(md) {
+    display: flex;
+  }
+  &__background{
+    position: absolute;
+    overflow: hidden;
+    top: 350px;
+    width: 640px;
+    border-radius: 50% 50% 0 0;
+    background: #F7F4EC;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    @include global.responsive(sm) {
+      height: 100%;
+      width: 110%;
+      min-width: 830px;
+    }
+  }
+  //マイページ
+  &--mypage{
+    @include global.responsive(md) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+    .l-frame{
+      &__head{
+        @include global.responsive(md) {
+          display: none;
+        }
+        .p-header{
+          display: flex;
+          justify-content: center;
+          &__logo{
+            margin: 0;
+          }
+          &__btn{
+            top: 50%;
+            transform: translate(0, -50%);
+            right: 24px;
+          }
+        }
+      }
+      &__main{
+        max-width: 100%;
+        @include global.responsive(md) {
+          overflow: hidden;
+        }
+      }
+      &__body{
+        @include global.responsive(md) {
+          flex: auto;
+          min-height: 1px;
+          display: flex;
+        }
+      }
+    }
+  }
   /* ! ----------
   　編集ページの場合
   ---------- */
@@ -40,7 +97,13 @@
   　Sidebar サイドバーフレーム
   -------------------------------------------------- */
   &__sidebar {
-    display: flex;
+    display: none;
+    flex: 0 0 auto;
+    width: 200px;
+    /* PC */
+    @include global.responsive(md) {
+      display: flex;
+    }
   }
 
   /* ! --------------------------------------------------
@@ -50,5 +113,40 @@
     // display: flex;
     // 最大幅　1024px - サイドバー幅
     // min-width: calc(64rem - var(--width_sidebar));
+    justify-content: center;
+  }
+  &__head{
+    flex: 0 0 auto;
+    @include global.responsive(md) {
+      // margin-top: 24px;
+    }
+    &__mypage{
+      @include global.responsive(md) {
+        display: none;
+      }
+    }
+  }
+  &__main,
+  &__body{
+    flex: auto;
+    min-height: 1px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__body{
+  }
+  &__foot{
+    flex: 0 0 auto;
+    &--mypage{
+      @include global.responsive(md) {
+        display: none;
+      }
+    }
+  }
+}
+
+.body_mypage--home{
+  @include global.responsive(md) {
+    background: #F7F4EC;
   }
 }

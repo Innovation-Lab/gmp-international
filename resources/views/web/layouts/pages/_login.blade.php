@@ -5,8 +5,10 @@
   <body class="@yield('class')" id="body">
     {{-- ローディング --}}
     {{-- フラッシュメッセージ --}}
+    @include('components.project._p-flashMessage')
     {{-- ページフレーム --}}
     <div class="l-frame" id="js-target__gnavSwitch">
+      <div class="l-frame__background"></div>
       @include('web.layouts._header--login')
       <main class="l-frame__main">
         @yield('content')
@@ -44,4 +46,5 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
     <script src="{{ asset('js/admin/flatPickr.js') }}"></script>
     --}}
+  </body>
 </html>

@@ -1,0 +1,179 @@
+@use "../../global/" as global;
+@use "./c-text";
+
+/* ! ==================================================
+　Button ボタン
+================================================== */
+.c-button {
+  color: #fff;
+  @extend .c-text__sm !optional;
+  line-height: 1;
+  display: inline-grid;
+  place-items: center;
+  height: 2rem;
+  padding: 0 1em;
+  background-color: var(--color_primary);
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  transition-property: box-shadow, color, background-color;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  user-select: none;
+
+  /* ! ----------
+  　Small 小さいボタン
+  ---------- */
+  &.small {
+    font-size: global.rem(13px);
+    height: 1.5rem;
+  }
+
+  /* ! ----------
+  　Hover ホバー
+  ---------- */
+  &:hover {
+    background-color: var(--color_primary_dark);
+  }
+  /* ! --------------------------------------------------
+  　Secondary
+  -------------------------------------------------- */
+  &__2 {
+    @extend .c-button !optional;
+    color: var(--gray-2);
+    background-color: #fff;
+    border-color: var(--gray-1);
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_background_3);
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　line
+  -------------------------------------------------- */
+  &__line {
+    @extend .c-button !optional;
+    background: none;
+    border-color: var(--color_primary);
+    color: var(--color_primary);
+    height: 2rem;
+    padding: 0 1em;
+    &:hover{
+      background: lighten(rgb(58, 91, 223),40%);
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Reset リセット
+  -------------------------------------------------- */
+  &__reset {
+    @extend .c-button !optional;
+    color: var(--color_primary);
+    background-color: #fff;
+    border-color: var(--color_border_1);
+    letter-spacing: 0rem;
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_background_3);
+      border-color: var(--color_primary);
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Alert アラート
+  -------------------------------------------------- */
+  &__alert {
+    @extend .c-button !optional;
+    color: #fff;
+    background-color: var(--color_alert);
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_alert_dark);
+    }
+  }
+  /* ! --------------------------------------------------
+  　Disabled ディスエイブルド
+  -------------------------------------------------- */
+  &__disabled {
+    @extend .c-button !optional;
+    background-color: var(--color_form_disabled);
+    pointer-events: none;
+
+    /* ! ----------
+    　ホバー
+    ---------- */
+    &:hover {
+      background-color: var(--color_background_3);
+    }
+  }
+  /* ! --------------------------------------------------
+  　Icon アイコンありボタン
+  -------------------------------------------------- */
+  &__icon{
+    @extend .c-button !optional;
+    display: inline-flex;
+    &:before{
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: #eee;
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      margin: 0 4px 0 0;
+    }
+    &__line{
+      @extend .c-button__icon !optional;
+      @extend .c-button__line !optional;
+    }
+    &--import{
+      &:before{
+        background: url(../img/admin/button/import.png);
+      }
+    }
+    &--export{
+      background: #fff;
+      &:before{
+        background: url(../img/admin/button/export.png);
+      }
+    }
+  }
+  &Wrap{
+    display: flex;
+    align-items: center;
+    // grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+    &--dashboard{
+      grid-template-rows: 32px 32px;
+      grid-template-columns: 1fr 1fr;
+      @include global.responsive(xl) {
+        grid-template-rows: 32px;
+        grid-template-columns: 210px 210px 180px 180px;
+      }
+      .c-button{
+        justify-content: center;
+      }
+    }
+  }
+   /* ! --------------------------------------------------
+  　Search 検索する
+  -------------------------------------------------- */
+  &__search {
+    @extend .c-button__2 !optional;
+    height: 26px;
+    white-space: nowrap;
+    color: #000;
+    padding: 0 8px;
+  }
+}

@@ -1,0 +1,20 @@
+@use "sass:math";
+
+/* ! ==================================================
+　strip-unit 単位を分離
+================================================== */
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+  @return $number;
+}
+
+/* ! ==================================================
+　rem レム
+================================================== */
+@function rem($px, $base: 16px) {
+  $value: $px;
+  $value: math.div(strip-unit($px), strip-unit($base)) * 1rem;
+  @return $value;
+}

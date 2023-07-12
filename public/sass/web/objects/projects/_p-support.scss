@@ -1,0 +1,39 @@
+.p-support {
+  > div{
+    + div{
+      margin: 12px 0 0;
+    }
+  }
+  &__data{
+    .c-txt{
+      &--gr{
+        font-size: 12px;
+        margin: 0 0 2px;
+      }
+    }
+  }
+  &__tel{
+    .c-txt{
+      &--gr{
+        font-size: 12px;
+        margin: 0 0 2px;
+      }
+      &--lg--rd{
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        letter-spacing: 0;
+        &:before{
+          content: '';
+          width: 21px; height: 14px;
+          background: url(../img/web/icon/freedial--red.svg)no-repeat center;
+          background-size: contain;
+          flex: 0 0 auto;
+          margin: 0 2px 0 0;
+        }
+      }
+    }
+  }
+  &__ttl{
+  }
+}

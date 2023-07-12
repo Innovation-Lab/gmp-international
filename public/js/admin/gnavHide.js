@@ -19,3 +19,12 @@
         localStorage.setItem("switchHide",JSON.stringify(switchOnOff));
     }
 })();
+
+
+// 管理者メニュー表示
+$(document).ready(function () {
+    $(".p-staffMenu").hide();
+    $(".p-profileWrap").click(function () {
+      $(".p-staffMenu").slideToggle();
+    });
+  });

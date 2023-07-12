@@ -1,0 +1,63 @@
+/* ! ==================================================
+　規約同意
+================================================== */
+.p-delete {
+  .Product__txt{
+    .p-card__purchase{
+      width: 100%;
+    }
+  }
+  &__head{
+    .c-ttl{
+      margin: 40px 0 0;
+    }
+    // .c-description{
+    //   margin: 16px 0 0;
+    // }
+  }
+  &__body{
+    margin: 40px 0 0;
+  }
+  &__scroll{
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    border: solid 1px #EAEBEA;
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 0;
+      transition: all 0.4s ease;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 12px;
+      background: #EAEBEA;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background: #8C8C8C;
+    }
+  }
+  &__list{
+    flex: 0 0 auto;
+    &__item{
+      & + &{
+        margin-top: 16px;
+      }
+      b{
+        color: #C30E2E;
+      }
+      .c-ttl{
+        min-height: 44px;
+        // background: #F7F4EC;
+        display: flex;
+        align-items: center;
+        // padding: 8px 16px;
+        line-height: 1.3em;
+      }
+      .c-description{
+
+      }
+    }
+  }
+}

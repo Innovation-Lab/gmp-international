@@ -1,0 +1,145 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　product リスト
+================================================== */
+.p-product {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 1.5rem;
+  
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  &__item {
+    display: flex;
+  }
+  &__item {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 0.125rem;
+  }
+  &__content {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 0.125rem;
+  }
+
+  /* ! ----------
+  　Label ラベル
+  ---------- */
+  &__label {
+    // color: var(--color_text_button);
+    color: var(--color_text_3);
+    @extend .c-text__xs !optional;
+    display: flex;
+    justify-content: space-between;
+    padding: 1px 0 0;
+    a,
+    [data-micromodal-trigger] {
+      @extend .c-text__xs !optional;
+      color: var(--color_text_button);
+      text-decoration: underline;
+      font-weight: 500;
+      &:hover {
+        color: var(--color_primary);
+      }
+    }
+  }
+  &__data {
+    @extend .c-text__sm !optional;
+  }
+
+  // スクロール
+  &Scroll {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+
+// ユーザー管理詳細：登録商品情報
+.p-product--list {
+  gap: 8px;
+  padding: 0 4px 0 0;
+  .p-product {
+    &__item {
+      grid-template-columns: 64px 1fr;
+      gap: 1rem;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--gray-1);
+      &__head {
+        padding-bottom: 14px;
+        border-bottom: 1px solid #D9D9D9;
+        margin-bottom:  14px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      &__body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @media screen and (max-width:1240px) {
+          grid-template-columns: 1fr;
+        }
+        gap: 8px;
+        &__list {
+          display: grid;
+          grid-template-columns: 70px 1fr;
+          gap: 10px;
+          // labelの幅auto
+          &.auto {
+            grid-template-columns: auto 1fr;
+            @media screen and (max-width:1240px) {
+              grid-template-columns: 70px 1fr;
+            }
+          }
+          // grid-column: 1/3;
+          &.large {
+            grid-column: 1/3;
+            @media screen and (max-width:1240px) {
+              grid-column: auto;
+            }
+          }
+        }
+      }
+      // 商品名
+      &__ttl {
+        .item {
+          &:first-child {
+            font-size: 14px;
+            font-weight: 500;
+          }
+          &:last-child {
+            font-size: 16px;
+            font-weight:500;
+          }
+        }
+      }
+      &__other {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 10px;
+        &__box{
+          display: flex;
+          align-items: center;
+          .item{
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    &__label {
+      font-size: 12px;
+    }
+    &__data {
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+}

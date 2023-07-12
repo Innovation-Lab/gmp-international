@@ -34,6 +34,9 @@
 // Container コンテナ
 @use "web/layouts/_l-container.scss";
 
+// Stack スタック
+@use "web/layouts/_l-stack.scss";
+
 /* ! --------------------------------------------------
 　Components コンポーネント
 -------------------------------------------------- */
@@ -46,14 +49,35 @@
 // Color カラー
 @use "web/objects/components/_c-color.scss";
 
+// ColorBall カラーボール
+@use "web/objects/components/_c-colorBall.scss";
+
 // Scroll スクロール
 @use "web/objects/components/_c-scroll.scss";
 
 // Text テキスト
 @use "web/objects/components/_c-txt.scss";
 
+// Title タイトル
+@use "web/objects/components/_c-ttl.scss";
+
 // Button ボタン
 @use "web/objects/components/_c-btn.scss";
+
+// Description デスクリプション
+@use "web/objects/components/_c-description.scss";
+
+// Label ラベル
+@use "web/objects/components/_c-label.scss";
+
+// Dots ドット
+@use "web/objects/components/_c-dots.scss";
+
+// input フォーム
+@use "web/objects/components/_c-input.scss";
+
+// Brand ブランド
+@use "web/objects/components/_c-brand.scss";
 
 
 /* ! --------------------------------------------------
@@ -125,7 +149,19 @@
 
 // Flash Message フラッシュメッセージ
 @use "web/objects/projects/_p-flash.scss";
+@use "web/objects/projects/_p-flashMessage.scss";
 
+// Card カード
+@use "web/objects/projects/_p-card.scss";
+
+// Information インフォメーション
+@use "web/objects/projects/_p-info.scss";
+
+// マイページレイアウト
+@use "web/objects/projects/_p-mypage.scss";
+
+// モーダル製品削除
+@use "web/objects/projects/_p-deleteProduct";
 
 
 /* ! ----------
@@ -143,8 +179,20 @@
 // Step ステップ
 @use "web/objects/projects/_p-step.scss";
 
+// Terms タームス
+@use "web/objects/projects/_p-terms.scss";
+
 // BtnWrap ボタンラップ
 @use "web/objects/projects/_p-btnWrap.scss";
+
+// Confirm コンファーム
+@use "web/objects/projects/_p-confirm.scss";
+
+// Support サポート
+@use "web/objects/projects/_p-support.scss";
+
+// Delete デリート
+@use "web/objects/projects/_p-delete.scss";
 
 /* ! --------------------------------------------------
 　Libraries ライブラリ

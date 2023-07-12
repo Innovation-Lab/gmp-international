@@ -1,0 +1,82 @@
+@use "../../../global" as global;
+@use "../../../global/_components.scss";
+
+/* ! ==================================================
+　Ranking ランキング
+================================================== */
+.p-dashboard {
+  &__ranking {
+    /* ! --------------------------------------------------
+    　List リスト
+    -------------------------------------------------- */
+    &__list {
+      display: grid;
+      grid-row-gap: 1rem;
+      &__item {
+        display: flex;
+        align-items: center;
+      }
+
+      /* ! ----------
+      　Image イメージ
+      ---------- */
+      &__image {
+          overflow: hidden;
+          flex: 0 0 auto;
+          margin: 0 8px 0 0;
+          width: 2rem;
+          height: 2rem;
+          display: flex;
+          align-items: center;
+        @include global.responsive(xl) {
+          // width: 2.5rem;
+          // height: 2.5rem;
+        }
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      /* ! ----------
+      　Text テキスト
+      ---------- */
+      &__text {
+        flex: auto;
+        min-width: 1px;
+        .title {
+          @extend .c-text__sm !optional;
+          font-weight: 700;
+          @include global.responsive(xl) {
+          }
+        }
+        .sub {
+          color: var(--color_text_3);
+          @extend .c-text__xs !optional;
+        }
+      }
+      &__data {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        &:before{
+          content: '';
+          width: 40px;
+          height: 1px;
+          background: #ddd;
+          margin: 0 16px;
+        }
+        .amount {
+          @extend .c-text__md !optional;
+          font-weight: 700;
+          letter-spacing: 0;
+          text-align: right;
+          background-color: #fff;
+          padding: 0 0 0 0.5rem;
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+  }
+}

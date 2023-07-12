@@ -5,6 +5,7 @@
   <body class="@yield('class')" id="body">
     {{-- ローディング --}}
     {{-- フラッシュメッセージ --}}
+    @include('components.project._p-flashMessage')
     {{-- ページフレーム --}}
     <div class="l-frame" id="js-target__gnavSwitch">
       @include('web.layouts._header--form')
@@ -14,21 +15,26 @@
       @include('web.layouts._footer--form')
     </div>
 
-    {{-- ---------- モーダル ---------- --}}
-    <!-- アカウント関連 -->
-
-    <!-- その他 -->
-
     {{-- ---------- スクリプト ---------- --}}
-    {{-- jQuery読み込み --}}
-    <script src="{{ asset('js/admin/library/jquery-3.5.1.min.js') }}"></script>
-    {{-- モーダル --}}
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script>
       MicroModal.init({
-        disableScroll: true,
+        disableScroll: false,
         awaitOpenAnimation: true,
         // awaitCloseAnimation: true
+      });
+    </script>
+    {{-- 住所検索 --}}
+    <script type="text/javascript">
+      $(window).ready( function() {
+        $('#postcode').jpostal({
+          postcode : [
+            '#postcode'
+          ],
+          address : {
+            '#address1'  : '%3',
+            '#address2'  : '%4%5',
+          }
+        });
       });
     </script>
     {{-- ボタン --}}
@@ -44,4 +50,5 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
     <script src="{{ asset('js/admin/flatPickr.js') }}"></script>
     --}}
+  </body>
 </html>

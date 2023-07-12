@@ -1,0 +1,96 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ----------
+ステータスカラー
+---------- */
+:root {
+  //Status Base
+  --s-status: 72%;
+  --l-status: 48%;
+
+  // Status Colors ステータスの色
+  --color_plan1: hsl(324, var(--s-status), var(--l-status));
+  --color_plan1_background: hsla(324, var(--s-status), var(--l-status),.1);
+  --color_plan2: hsl(190, var(--s-status), var(--l-status));
+  --color_plan2_background: hsla(190, var(--s-status), var(--l-status),.1);
+  --color_plan3: hsl(228, var(--s-status), var(--l-status));
+  --color_plan3_background: hsla(228, var(--s-status), var(--l-status),.1);
+  --color_plan4: hsl(200, var(--s-status), 24%);
+  --color_plan4_background: hsla(200, var(--s-status), 24%,.2);
+}
+
+/* ! ==================================================
+　Status ステータス表示
+================================================== */
+.c-status {
+  font: global.font(500, 12px, 1);
+  display: inline-flex;
+  height: 1.5rem;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-radius: 0.125rem;
+
+  /* ! ----------
+  　ステータスの種類と色
+  ---------- */
+  $status: (
+    /* ! ----------
+    　プラン
+    ---------- */
+    plan-free: (
+      フリー,
+      --color_plan1,
+      --color_plan1_background,
+    ),
+    plan-basic: (
+      ベーシック,
+      --color_plan2,
+      --color_plan2_background,
+    ),
+    plan-standard: (
+      スタンダード,
+      --color_plan3,
+      --color_plan3_background,
+    ),
+    plan-professional: (
+      プロフェッショナル,
+      --color_plan4,
+      --color_plan4_background,
+    ),
+    /* ! ----------
+    　権限
+    ---------- */
+    auth-admin: (
+      管理者,
+      --color_primary,
+      --color_plan3_background,
+    ),
+    auth-general: (
+      一般,
+      --gray-2,
+      --gray-background2,
+    ),
+  );
+  @each $key, $val in $status {
+    &__#{$key} {
+      @extend .c-status !optional;
+      color: var(nth($val, 2));
+      background-color: var(nth($val, 3));
+      &::before {
+        content: "#{nth($val, 1)}";
+      }
+    }
+  }
+  /* ! ----------
+  　権限（個別ステータス）
+  ---------- */
+  &__auth-admin,
+  &__auth-general {
+    min-width: 70px;
+    height: 2rem;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 0.25rem;
+  }
+}

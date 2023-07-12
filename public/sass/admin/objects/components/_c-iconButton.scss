@@ -1,0 +1,23 @@
+@use "../../global/" as global;
+@use "./c-text";
+
+.c-iconButton {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid color(lineLight);
+  border-radius: 0.25rem;
+  background-color: #fff;
+  background-size: rem(20px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  &:hover {
+    border-color: color(line);
+  }
+  &--invoice {
+    background-image: url(../img/admin/button/invoice.svg);
+  }
+  &--combined {
+    background-image: url(../img/admin/button/combined.svg);
+  }
+}

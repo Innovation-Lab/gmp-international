@@ -1,0 +1,115 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Sidebar サイドバー
+================================================== */
+.p-sidebar {
+  width: 100%;
+  display: grid;
+  grid:
+    "head" auto
+    "body" 1fr
+    "foot" auto
+    / 100%;
+  background-color: var(--color_background_1);
+  border-right: 1px solid var(--color_border_1);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+
+  /* ! --------------------------------------------------
+  　Head ヘッド
+  -------------------------------------------------- */
+  &__head {
+    grid-area: head;
+    height: 7rem;
+    padding: 1.75rem 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+
+    .is-hide & {
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+
+    /* ! ----------
+    　Logo ロゴ
+    ---------- */
+    &__logo {
+      display: block;
+
+      // イメージ
+      .normal {
+        width: global.rem(80px);
+        height: auto;
+        @include global.responsive(xl) {
+        }
+      }
+      .icon {
+        display: none;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      // 隠し時
+      .is-hide & {
+        .normal {
+          display: none;
+        }
+        .icon {
+          display: block;
+        }
+      }
+    }
+
+    /* ! ----------
+    　Hide 隠すボタン
+    ---------- */
+    &__hide {
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+      margin: 0 -1rem 0 0;
+      display: none;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--color_background_3);
+        border-color: var(--color_border_1);
+      }
+
+      // 隠し時
+      .is-hide & {
+        margin: 0;
+      }
+    }
+  }
+
+  /* ! --------------------------------------------------
+  　Body ボディ
+  -------------------------------------------------- */
+  &__body {
+    grid-area: body;
+    overflow: auto;
+  }
+
+  /* ! --------------------------------------------------
+  　Foot フット
+  -------------------------------------------------- */
+  &__foot {
+    grid-area: foot;
+    // height: 6rem;
+    // display: grid;
+    // place-items: center;
+    // border-top: 1px solid var(--color_border_1);
+    // padding: 0 1rem;
+    position: sticky;
+    bottom: 0;
+  }
+}

@@ -13,73 +13,222 @@
 
 .modal {
   position: relative;
-  z-index: 10;
+  z-index: 1;
+  + .modal{
+    .modal__overlay{
+      z-index: 2;
+    }
+  }
 }
 
 .modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  max-height: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 24px;
+  flex-direction: column;
+  height: 100vh;
+  z-index: 1;
 }
 
 .modal__container {
   background-color: #fff;
-  padding: 30px;
-  max-width: 500px;
+  padding: 32px 0;
+  max-width: 340px;
   max-height: 100vh;
-  border-radius: 4px;
-  overflow-y: auto;
+  border-radius: 10px;
   box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 1px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &--min{
+    max-width: 340px;
+  }
+  &--thin{
+    padding: 24px 0;
+    .modal__header{
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+    }
+    .modal__content{
+      &__head{
+        padding: 0 24px;
+      }
+      &__body{
+        padding: 0 24px;
+      }
+      &__foot{
+        padding: 0 24px;
+        .p-btnWrap{
+          .c-btn{
+            height: 48px;
+          }
+        }
+      }
+    }
+  }
+}
+.modal__box {
+  flex: auto;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ! ----------
 　Header ヘッダー
 ---------- */
 .modal__header {
+  margin: 0 0 1.5rem;
+  padding: 0 32px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 0 0 2rem;
+  justify-content: center;
+  &--column{
+    flex-direction: column;
+    &--mn{
+      margin: 0;
+    }
+  }
 }
 
 .modal__title {
-  color: var(--color_text_1);
-  margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 1.25rem;
+  color: #222;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1.25;
-  box-sizing: border-box;
+  &--sub{
+    font-size: 16px;
+    padding: 1.5rem 0;
+    border-top: 1px solid #E2E2E2;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    // text-align: left;
+    .product{
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .desc{
+      color: #8c8c8c;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 8px;
+    }
+  }
+}
+.modal__description{
+  margin: 1rem 0 0;
+  font-size: 13px;
+  b{
+    color: #C30E2E;
+  }
 }
 
 /* ! ----------
 　閉じる
 ---------- */
 .modal__close {
-  background: transparent;
-  border: 0;
+  position: absolute;
+  right: 0; top: -12px;
+  width: 20px; height: 20px;
+  background: url(../img/web/icon/close--white.png)no-repeat center;
+  background-size: contain;
+  padding: 0;
+  transform: translate(0, -100%);
+  z-index: 1;
+  border: none;
   cursor: pointer;
-  user-select: none;
-  margin: 0 -0.25rem 0 0.5rem;
   &:hover {
     opacity: 0.5;
   }
 }
 
-.modal__header .modal__close:before {
-  content: "\2715";
-}
+// .modal__header .modal__close:before {
+//   content: "\2715";
+// }
 
 /* ! ----------
 　Content 内容
 ---------- */
 .modal__content {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  &__head{
+    flex: 0 0 auto;
+    padding: 0 32px;
+    &--serial{
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__body{
+    flex: auto;
+    min-height: 1px;
+    overflow: auto;
+    padding: 0 32px;
+    &--serial{
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    img{
+      height: 180px;
+      width: auto;
+    }
+    .p-formList{
+      &__item{
+        + .p-formList__item{
+          margin-top: 16px;
+        }
+      }
+      &__content{
+        flex-direction: column;
+      }
+      &__label{
+        padding: 0;
+        width: auto;
+        .c-txt{
+          font-size: 14px;
+          color: #000;
+          &--must{
+            color: #C30E2E;
+
+          }
+        }
+      }
+    }
+  }
+  &__foot{
+    margin: 1.5rem 0 0;
+    flex: 0 0 auto;
+    padding: 0 32px;
+    .p-btnWrap{
+      .c-btn{
+        font-size: 14px;
+        height: 56px;
+      }
+    }
+  }
 }
 
 /* ! ----------
@@ -148,6 +297,11 @@
 
 .micromodal-slide {
   display: none;
+}
+#modal-login {
+  @include global.responsive(md) {
+    display: none;
+  }
 }
 
 .micromodal-slide.is-open {

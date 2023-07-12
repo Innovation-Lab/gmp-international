@@ -1,0 +1,59 @@
+/* ! ==================================================
+　IndexFlame 一覧ページフレーム
+================================================== */
+.l-index {
+  width: 100%;
+  display: grid;
+  grid:
+    "head" auto
+    "middle" auto
+    "body" 1fr
+    "foot" auto
+    / 100%;
+  &--gray{
+    background: #F6F6F6;
+  }
+  /* ! ----------
+    　Head ヘッド
+    ---------- */
+  &__head {
+    grid-area: head;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  /* ! ----------
+    　Middle ミドル
+    ---------- */
+  &__middle {
+    grid-area: middle;
+  }
+
+  /* ! ----------
+    　Body ボディ
+    ---------- */
+  &__body {
+    grid-area: body;
+    .p-table {
+      height: calc(100vh - 16.5rem);
+      //製品・カラーマスタのみ
+      &--short{
+        height: calc(100vh - 20rem);
+      }
+      // フィルターがない場合
+      .nofilter & {
+        height: calc(100vh - 13rem);
+      }
+    }
+  }
+
+  /* ! ----------
+    　Foot フット
+    ---------- */
+  &__foot {
+    grid-area: foot;
+    position: sticky;
+    bottom: 0;
+  }
+}

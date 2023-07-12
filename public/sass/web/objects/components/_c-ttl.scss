@@ -1,0 +1,51 @@
+@use "../../global/" as global;
+
+.c-ttl {
+  font-size: 16px;
+  font-weight: 500;
+  &--lg{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    @include global.responsive(md) {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 32px;
+    }
+    
+  }
+  &--xl{
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+  &--xxl{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    @include global.responsive(md) {
+      font-size: 55px;
+      font-weight: 500;
+      line-height: 55px;
+    }
+    &--wh{
+      color: #fff;
+      white-space: nowrap;
+      @include global.responsive(md) {
+        font-size: 50px;
+        font-weight: 500;
+        line-height: 56px;
+      }
+    }
+    &--rd{
+      color: #c30e2e;
+      font-size: 24px;
+      line-height: 24px;
+      @include global.responsive(xl) {
+        font-size: 32px;
+
+      }
+    }
+  }
+
+}

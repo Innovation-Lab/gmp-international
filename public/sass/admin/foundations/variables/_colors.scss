@@ -1,0 +1,70 @@
+/* ! ==================================================
+　Colors
+================================================== */
+:root {
+  //Primary Base
+  --h: 234;
+  --s: 46%;
+  --l: 50%;
+
+  // Pimary プライマリ
+  --color_primary: hsl(var(--h), var(--s), var(--l));
+  --color_primary_dark: hsl(var(--h), var(--s), calc(var(--l) - 15%));
+  --color_primary_darkest: hsl(var(--h), var(--s), calc(var(--l) - 30%));
+  --color_primary_background: #3959df33;
+
+  // Secondary セカンダリ
+  --h-secondary: 200;
+  --s-secondary: 96%;
+  --l-secondary: 48%;
+  --color_secondary: hsl(
+    var(--h-secondary),
+    var(--s-secondary),
+    var(--l-secondary)
+  );
+
+  // Background
+  --s-bg: 24%;
+  --l-bg: 99%;
+  --color_background_1: hsl(var(--h), var(--s-bg), var(--l-bg));
+  --color_background_2: hsl(var(--h), var(--s-bg), calc(var(--l-bg) - 1%));
+  --color_background_3: hsl(var(--h), var(--s-bg), calc(var(--l-bg) - 3%));
+  --color_background_4: hsl(var(--h), var(--s-bg), calc(var(--l-bg) - 8%));
+
+  // Text
+  --s-text: 12%;
+  --l-text: 12%;
+  --color_text_1: hsl(var(--h), var(--s-text), var(--l-text));
+  --color_text_2: hsl(var(--h), var(--s-text), calc(var(--l-text) + 24%));
+  --color_text_3: hsl(var(--h), var(--s-text), calc(var(--l-text) + 40%));
+  --color_text_4: hsl(var(--h), var(--s-text), calc(var(--l-text) + 70%));
+  --color_text_button: hsl(var(--h), var(--s-text), calc(var(--l-text) + 32%));
+
+
+  // Border
+  --color_border_0: hsl(var(--h), 16%, 94%);
+  --color_border_1: hsl(var(--h), 16%, 88%);
+  --color_border_2: hsl(var(--h), 16%, 48%);
+  // --color_border_1: #e0e3e8;
+
+  // Form
+  // --color_form_button: #6c7d8f;
+  --color_form_button: hsl(var(--h), 16%, 56%);
+  --color_form_border: hsl(var(--h), 16%, 64%);
+  --color_form_ps: hsl(349, 867%, 41%);
+  --color_form_placeholder: hsl(var(--h), 16%, 72%);
+  --color_form_disabled: hsl(var(--h), 16%, 80%);
+  --color_form_background: hsl(var(--h), 16%, 99%);
+
+  // Alert
+  --color_alert: hsl(349, 867%, 41%);
+  --color_alert_dark: hsl(349, 97%, 33%);
+  --color_alert_background: hsla(337, 72%, 55%, 0.1);
+
+  // Gray
+  --gray-1: hsl(0, 0%, 80%); //#ccc
+  --gray-2: hsl(0, 0%, 55%); //#8C8C8C
+  --gray-2-dark: hsl(0, 0%, 30%);
+  --gray-background1: hsl(0, 0%, 96%); //F6F6F6
+  --gray-background2: hsl(120, 2%, 92%); //EAEBEA
+}

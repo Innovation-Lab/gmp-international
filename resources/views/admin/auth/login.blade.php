@@ -9,7 +9,7 @@
           <div class="p-login__head">
             <div class="p-login__head__logo">
               <img
-                src="{{ asset('img/admin/logo/normal.png')}}"
+                src="{{ asset('img/admin/logo/GMP_logo.png')}}"
                 width="160px"
                 height="42px"
               >
@@ -19,58 +19,49 @@
             {{-- テキスト --}}
             <div class="p-login__body__text">
               {{-- フォーム --}}
-              {!! Form::open(['class' => 'p-form']) !!}
-                <div class="p-login__body__text__head">
-                  <h1 class="p-login__body__text__head__title">管理システムログイン</h1>
-                </div>
+              {!! Form::open(['method' => 'POST', 'route' => 'admin.login', 'class' => 'p-form']) !!}
+                @csrf
                 <div class="p-login__body__text__body">
                   <ul class="p-formList">
                     <li class="p-formList__item">
                       <div class="p-formList__content">
-                        <div class="p-formList__label">
-                          メールアドレス
-                        </div>
-                        <div class="p-formList__data">
-                          {!! Form::email('email', null, ['placeholder' => 'メールアドレスを入力']) !!}
+                        <div class="p-formList__data p-formList__data--login">
+                          {!! Form::email('email', null, ['placeholder' => 'メールアドレス']) !!}
+                        @error('email')
+                          <div class="error">{{ $message }}</p>
+                        @enderror
                         </div>
                       </div>
                     </li>
                     <li class="p-formList__item">
                       <div class="p-formList__content">
-                        <div class="p-formList__label">
-                          パスワード
-                        </div>
-                        <div class="p-formList__data">
-                          {!! Form::password('password', ['placeholder' => 'パスワードを入力']) !!}
-                          <div class="error">メールアドレスとパスワードが一致しません</div>
+                        <div class="p-formList__data p-formList__data--login">
+                          {!! Form::password('password', ['placeholder' => 'パスワード']) !!}
+                          {{-- <div class="error">メールアドレスとパスワードが一致しません</div> --}}
+                        @error('password')
+                          <div class="error">{{ $message }}</div>
+                        @enderror
                         </div>
                       </div>
                     </li>
                     <li class="p-formList__item">
-                      <a class="c-button" href="{{route(('admin.users.index'))}}">ログイン</a>
-                      {{--
-                        <button onclick="window.location='{{ route("admin.users.index") }}'" class="c-button">ログイン</button>
-                      --}}
+                      <input type="submit" name="button" value="ログイン">
                     </li>
-                    <li class="p-formList__item">
+                    {{-- <li class="p-formList__item">
                       <div class="l-grid">
                         <div class="l-grid__item">
                           <input type="checkbox" id="keep-login">
                           <label for="keep-login">ログイン状態を保持</label>
                         </div>
                       </div>
-                    </li>
+                    </li> --}}
                   </ul>
                 </div>
               {!! Form::close() !!}
             </div>
-            {{-- 画像 --}}
-            <div class="p-login__body__image">
-              <img src="{{asset('img/admin/auth/login.png')}}" width="720px" height="560px">
-            </div>
           </div>
           <div class="p-login__foot">
-            <div class="copyright">© 2022 Innovation Lab, Inc.</div>
+            <div class="copyright">Copyright©2023 GMP International Co., Ltd. All Right Reserved</div>
           </div>
         </div>
       </div>

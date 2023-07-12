@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\PasswordRegisterRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
@@ -19,7 +20,12 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request): View
     {
-        return view('auth.reset-password', ['request' => $request]);
+        $token = $request->route()->parameter('token');
+
+        // パスワードの再設定ページ
+        return view('web.auth.reset.index')->with([
+            'token' => $token, 'email' => $request->email
+        ]);
     }
 
     /**
@@ -27,13 +33,15 @@ class NewPasswordController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(PasswordRegisterRequest $request): RedirectResponse
     {
-        $request->validate([
-            'token' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        // $request->validate([
+        //     'token' => ['required'],
+        //     'email' => ['required', 'email'],
+        //     'password' => ['required',
+        //      'confirmed', Rules\Password::defaults()
+        // ]
+        // ]);
 
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
@@ -43,9 +51,10 @@ class NewPasswordController extends Controller
             function ($user) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
+                    // 'remember_token' => Str::random(60),
                 ])->save();
-
+                \Auth::loginUsingId($user->id);
+                
                 event(new PasswordReset($user));
             }
         );
@@ -54,8 +63,24 @@ class NewPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         return $status == Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
+                    ? redirect()->route('reset.complete')->with('status', __($status))
                     : back()->withInput($request->only('email'))
                             ->withErrors(['email' => __($status)]);
+    }
+
+    /**
+     * Display the password forgot complete view.
+     */
+    public function forgotComplete(): View
+    {
+        return view('web.auth.forgot.complete');
+    }
+
+    /**
+     * Display the password reset complete view.
+     */
+    public function resetComplete(): View
+    {
+        return view('web.auth.reset.complete');
     }
 }

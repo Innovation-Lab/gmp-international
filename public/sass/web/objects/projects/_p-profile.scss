@@ -142,7 +142,7 @@
         @extend .c-text__md !optional;
         span {
           @extend .c-text__xs !optional;
-          color: var(--color_text_2);
+          color: var(--color_text_3);
         }
         > * + * {
           margin: 0.5em 0 0;

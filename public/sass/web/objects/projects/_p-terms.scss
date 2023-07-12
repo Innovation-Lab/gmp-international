@@ -1,5 +1,126 @@
+/* ! ==================================================
+　規約同意
+================================================== */
 .p-terms {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  &__head{
+    .c-ttl{
+      margin: 40px 0 0;
+    }
+    .c-description{
+      margin: 16px 0 0;
+      white-space: pre-line;
+    }
+  }
+  &__body{
+    margin: 40px 0 0;
+  }
+  &__foot{
+    margin-top: 24px;
+    .c-txt--gr{
+      &--wd{
+        width: 80px;
+      }
+    }
+    .other{
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    &__list{
+      border-top: solid 1px #EAEBEA;
+      padding: 32px 16px 0;
+      margin-top: 40px;
+      font-size: 14px;
+      &__box{
+        margin-top: 4px;
+        & + div{
+          margin-top: 8px;
+        }
+        .c-description{
+          margin-top: 0;
+        }
+      }
+      &__item{
+        span{
+          display: flex;
+          align-items: center;
+        }
+        a{
+          color: var(--color_text_1);
+          // text-decoration: revert;
+        }
+        & + &{
+          margin-top: 16px;
+        }
+        .c-description{
+          margin-top: 4px;
+        }
+        .tel{
+          display: flex;
+          align-items: center;
+          &::before{
+            content: "";
+            display: block;
+            width: 14px;
+            height: 9px;
+            background: url(../img/web/icon/freedial--black.svg) no-repeat center;
+            background-size: contain;
+            margin-right: 2px;
+          }
+        }
+      }
+      margin-top: 40px;
+      font-size: 14px;
+    }
+    .tel{
+      color: var(--color_text_1);
+      &:before{
+        content: "";
+        width: 14px;
+        height: 9px;
+        background: url(../img/web/icon/freedial--black.svg) no-repeat center;
+        background-size: contain;
+        margin: 0 4px 0 0;
+      }
+    }
+  }
+  &__scroll{
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    border: solid 1px #EAEBEA;
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 0;
+      transition: all 0.4s ease;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 12px;
+      background: #EAEBEA;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background: #8C8C8C;
+    }
+  }
+  &__list{
+    flex: 0 0 auto;
+    &__item{
+      .c-ttl{
+        min-height: 44px;
+        background: #F7F4EC;
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        line-height: 1.3em;
+      }
+      .c-description{
+        padding: 16px;
+        white-space: pre-line;
+      }
+    }
+  }
 }

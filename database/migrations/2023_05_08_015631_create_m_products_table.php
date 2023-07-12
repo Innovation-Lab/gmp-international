@@ -15,12 +15,14 @@ class CreateMProductsTable extends Migration
     {
         Schema::create('m_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('brand_id')->comment('ブランドID');
-            $table->foreign('brand_id')->references('id')->on('m_brands');
+            $table->unsignedInteger('m_brand_id')->comment('ブランドID');
             $table->string('name', 255)->comment('商品名');
-            $table->string('color_array', 255)->comment('カラー');
-            $table->string('image_path', 255)->comment('画像');
+            $table->string('name_kana')->comment('商品名（カナ）');
+            $table->string('color_array', 255)->nullable()->comment('カラー');
+            $table->string('image_path', 255)->nullable()->comment('画像');
             $table->timestamps();
+            
+            $table->foreign('m_brand_id')->references('id')->on('m_brands');
         });
     }
 

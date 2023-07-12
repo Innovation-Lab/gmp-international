@@ -2,6 +2,12 @@
 　Breakpoints　ブレイクポイント
 ================================================== */
 $breakpoints: (
+  "min": (
+    min-width: 374px,
+  ),
+  "xs": (
+    min-width: 460px,
+  ),
   "sm": (
     min-width: 576px,
   ),
@@ -12,9 +18,10 @@ $breakpoints: (
     min-width: 992px,
   ),
   "xl": (
-    min-width: 1200px,
+    min-width: 1280px,
   ),
+  
   "xxl": (
-    min-width: 1400px,
+    min-width: 1366px,
   ),
 ) !default;

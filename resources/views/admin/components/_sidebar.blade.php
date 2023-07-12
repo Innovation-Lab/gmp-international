@@ -4,7 +4,7 @@
     <a href="{{route('admin.home')}}" class="p-sidebar__head__logo">
       <img
         class="normal"
-        src="{{ asset('img/admin/logo/normal.svg')}}"
+        src="{{ asset('img/admin/logo/GMP_logo.png')}}"
         width="160px"
         height="42px"
       >
@@ -32,13 +32,13 @@
         >
           @if(in_array(explode('.', Route::currentRouteName())[1], [explode('.', $val['path'])[1]], TRUE))
             <img
-              src="{{ asset('img/admin/nav/'.$key.'_active.png')}}"
+              src="{{ asset('img/admin/nav/nav--'.$key.'--color.png')}}"
               width="24px"
               height="24px"
             >
           @else
             <img
-              src="{{ asset('img/admin/nav/'.$key.'.png')}}"
+              src="{{ asset('img/admin/nav/nav--'.$key.'.png')}}"
               width="24px"
               height="24px"
             >
@@ -52,19 +52,36 @@
     </div>
   </aside>
   <div class="p-sidebar__foot">
+    {{-- 管理者一覧へ/ログアウト --}}
+    <div class="p-staffMenu">
+      <ul>  
+        <li class="p-staffMenu__item"><a href="{{route('admin.staffs.index')}}" class="staff">管理者一覧へ</a></li>
+        <li class="p-staffMenu__item"><a onclick="window.location='{{ route("admin.logout") }}'" class="logout">ログアウト</a></li>
+      </ul>
+    </div>
     {{-- プロフィール --}}
-    <div class="p-profile" data-micromodal-trigger="modal-account-menu">
-      <div class="p-profile__image">
-        <img
-          src="{{ asset('img/admin/sample/profile.png')}}"
-          width="48px"
-          height="48px"
-        >
-      </div>
-      <div class="p-profile__text">
-        <p class="p-profile__text__title">田中 直人</p>
-        <div class="p-profile__text__sub">
-          h.tajima@soushin-lab.co.jp
+    @php
+      $currentRoute = Route::current()->getName();
+      $isAdminStaffsPage = strpos($currentRoute, 'admin.staffs') !== false;
+    @endphp
+    @if($isAdminStaffsPage)
+      <div class="p-profileWrap active">
+    @else
+      <div class="p-profileWrap">
+    @endif 
+      <div class="p-profile">
+        <div class="p-profile__image">
+          <img
+            src="{{ data_get(Auth::user(), 'main_image_url') }}"
+            width="48px"
+            height="48px"
+          >
+        </div>
+        <div class="p-profile__text">
+          <p class="p-profile__text__title">{{ Auth::user()->full_name }}</p>
+          <div class="p-profile__text__sub">
+            {{ Auth::user()->email }}
+          </div>
         </div>
       </div>
     </div>

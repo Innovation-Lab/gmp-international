@@ -1,0 +1,41 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　Filter フィルター
+================================================== */
+.p-inputColor {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 -2px;
+  &__palet{
+    flex: 0 0 auto;
+    overflow: hidden;
+    border-radius: 3px;
+    border: solid 1px #959bb2;
+    position: relative;
+    height: 32px;
+    margin: 0 4px 0 0;
+    width: 32px;
+    cursor: pointer;
+    input[type="color"]{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 43px;
+      height: 43px;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+  &__code{
+    flex: auto;
+    min-width: 1px;
+    input[type="text"]{
+
+    }
+  }
+}

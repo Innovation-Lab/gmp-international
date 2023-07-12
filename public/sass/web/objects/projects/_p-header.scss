@@ -1,29 +1,94 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+/* ! ==================================================
+　ヘッダー
+================================================== */
+
 .p-header {
+  @include global.responsive(md) {
+    display: none;
+  }
   position: relative;
   width: 100%;
   height: 64px;
+  &--bar{
+    display: flex;
+    align-items: center;
+    @include global.responsive(md) {
+      display: none;
+    }
+  }
+  &--login{
+    display: none;
+    @include global.responsive(md) {
+      display: block;
+      height: 100%;
+    }
+  }
   &--form{
-    background: #F5F2E7;
+    background: #F7F4EC;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include global.responsive(md) {
+      // background: #fff;
+      height: 115px;
+      // border-bottom: solid 1px #ccc;
+    }
+    .p-header__logo{
+      @include global.responsive(md) {
+        margin: 0;
+      }
+      img{
+        @include global.responsive(md) {
+          width: 80px;
+        }
+      }
+    }
   }
   &__logo{
+    @include global.responsive(md) {
+      margin-top: 32px;
+    }
     margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  &__brand{
+    @include global.responsive(md) {
+      display: none;
+    }
+    display: flex;
+      li{
+        padding-right: 32px;
+        width: auto !important;
+      }
+
+    .slick-track{
+      display: flex;
+      align-items: center;
+    }
+  }
   &__btn{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px 16px;
     border: 1px solid #8C8C8C;
     border-radius: 20px;
     position: absolute;
     right: 2rem;
-    top: 1.2rem;
+    top: 0.4rem;
     height: 24px;
   }
+  // &--mypage{
+  //   display: none;
+  // }
+  /* PC */
+  // @media screen and (min-width: 768px){
+  //   &--mypage{
+  //     display: block;
+  //   }
+  // }
 }

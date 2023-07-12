@@ -1,0 +1,105 @@
+@use "../../global" as global;
+@use "../../global/_components.scss";
+
+.p-info {
+    border: solid #eaebea;
+    margin-top: 24px;
+    padding: 24px 0;
+    border-width: 1px 0 0 0;
+    flex: 0 0 auto;
+    /* PC */
+    @include global.responsive(md) {
+        padding: 40px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    + .p-info{
+        margin-top: 0;
+        @include global.responsive(md) {
+            margin: 24px 0 0;
+        }
+        @include global.responsive(xl) {
+            margin: 32px 0 0;
+        }
+    }
+    &--notRegister{
+        border: solid #C30E2E;
+        margin-top: 12px;
+        padding: 24px 0;
+        border-width: 1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: auto;
+        .p-card__add{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @include global.responsive(md) {
+            padding: 40px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+    }
+    &__bar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__ttl{
+
+    }
+    &__btn{
+        .c-btn{
+            @include global.responsive(md) {
+                height: 32px;
+                min-width: 88px;
+            }
+        }
+    }
+    &__txt{
+        margin-top: 4px;
+        @include global.responsive(md) {
+            margin-top: 32px;
+        }
+        .c-txt{
+            font-size: 13px;
+            color: #222;
+            @include global.responsive(md) {
+                display: flex;
+            }
+            a{
+                color: #222;
+                font-size: 13px;
+                pointer-events: none;
+            }
+            &:before{
+                content: attr(data-ttl);
+                flex: 0 0 auto;
+                // width: 200px;
+                width: 160px;
+                display: none;
+                @include global.responsive(md) {
+                    display: block;
+                }
+            }
+            + .c-txt{
+                margin-top: 4px;
+                @include global.responsive(md) {
+                    margin-top: 16px;
+                }
+            }
+            span{
+                @include global.responsive(md) {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+}
