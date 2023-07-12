@@ -9,6 +9,10 @@ use App\Http\Controllers\SalesProductController;
 
 require __DIR__.'/auth.php';
 
+if (config('app.env') == 'production') {
+    URL::forceScheme('https');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
