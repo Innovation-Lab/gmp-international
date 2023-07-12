@@ -147,8 +147,8 @@
                                         fontFamily: 'Roboto',
                                         fontColor: color_text,
                                         min: 0,
-                                        // max: 10000000,
-                                        stepSize: 10000,
+                                        // max: 10000,
+                                        stepSize: 10,
                                         /* 人数をカンマ区切りで表示 */
                                         callback: function(label, index, labels) {
                                             return  label.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '人';

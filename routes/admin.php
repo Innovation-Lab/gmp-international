@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 
+if (config('app.env') == 'production') {
+    URL::forceScheme('https');
+}
+
 /*
 |--------------------------------------------------------------------------
 | 管理画面
