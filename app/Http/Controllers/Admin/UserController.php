@@ -61,8 +61,7 @@ class UserController extends Controller
     }
     
     /**
-     * @param $id
-     * @return Application|Factory|View
+     * @return View
      */
     // public function detail($id): View|Factory|Application
     // {

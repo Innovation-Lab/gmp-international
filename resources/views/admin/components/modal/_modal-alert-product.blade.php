@@ -16,7 +16,10 @@
       {{ Form::close() }}
       <footer class="modal__footer">
         <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">戻る</button>
-        <button type="submit" class="modal__btn-alert" form="deleteForm">削除する</button>
+        <button onClick="
+          $('#deleteForm').submit();
+          $(this).prop('disabled', true);
+        " class="modal__btn-alert" >削除する</button>
       </footer>
     </div>
   </div>

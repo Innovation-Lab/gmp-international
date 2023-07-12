@@ -164,7 +164,8 @@ class ProductController extends Controller
     {
         $product = SalesProduct::find($request->input('product_id'));
         $this->productRepository->destroy($product, $request);
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+            ->with(['success' => '製品を削除しました。']);
     }
     
     // /**
