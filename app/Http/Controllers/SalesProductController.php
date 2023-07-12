@@ -85,7 +85,7 @@ class SalesProductController extends Controller
         return view('web.mypage.product.confirm')->with([
             'product' => $product,
             'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);

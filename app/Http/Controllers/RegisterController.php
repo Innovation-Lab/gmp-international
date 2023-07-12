@@ -188,8 +188,8 @@ class RegisterController extends Controller
         return view('web.register.confirm', [
             'user' => Session::get('user_info', []),
             'sales_products' => Session::get('products', []),
-            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
+            'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
         ]);
