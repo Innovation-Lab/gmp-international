@@ -39,12 +39,28 @@ class SalesProductController extends Controller
     {
         $sales_product = Session::get('product', []);
         $back = url()->previous();
-
+        
+        $colors = MColor::withTrashed()
+            ->select(['id', 'alphabet_name', 'name'])
+            ->get()
+            ->mapWithKeys(function ($color) {
+                return [$color->id => $color->alphabet_name.' / '.$color->name];
+            })
+            ->toArray();
+        
+        $products = MProduct::select(['id', 'name_kana', 'name'])
+            ->get()
+            ->mapWithKeys(function ($product) {
+                return [$product->id => $product->name.' / '.$product->name_kana];
+            })
+            ->toArray();
+        
+        
         return view('web.mypage.product.add')->with([
             'sales_product' => $sales_product,
             'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
-            'products' => MProduct::query()->public()->pluck('name', 'id')->toArray(),
-            'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
+            'products' => $products,
+            'colors' => $colors,
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
             'back' => $back
         ]);
