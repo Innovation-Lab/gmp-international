@@ -19,7 +19,7 @@
                 onclick="
                 $(this).prop('disabled', true);
                 $('#withdrawalForm').submit()
-              ">削除する</a>
+              ">退会する</a>
             </div>
           </div>
         </main>

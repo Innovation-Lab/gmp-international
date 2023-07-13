@@ -2,6 +2,9 @@
 　Breakpoints　ブレイクポイント
 ================================================== */
 $breakpoints: (
+  "min-2": (
+    min-width: 360px,
+  ),
   "min": (
     min-width: 374px,
   ),

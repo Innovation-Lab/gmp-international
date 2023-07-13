@@ -57,6 +57,10 @@ select{
       .select2-selection__rendered {
         height: 100%;
         width: 100%;
+        max-width: 264px;
+        @include global.responsive(min-2) {
+          max-width: 292px;
+        }
         padding: 0.6rem 0.8rem;
         border: none;
         // border-radius: 0.4em 0.4em 0 0;
@@ -98,12 +102,17 @@ select{
   height: 2rem;
   background: #fff;
 }
+.select2-dropdown .select2-dropdown--above{
+  border: none!important;
+}
 .select2-search--dropdown{
   background: #f5f5f5;
-  padding: 4px 8px!important;
+  padding: 0 8px 8px!important;
+  margin-top: -6px;
 }
 .select2-results{
   background: #f5f5f5;
+  border-radius: 0.4em;
 }
 .select2-results__option{
   padding: 6px 12px!important;
