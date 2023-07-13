@@ -85,7 +85,7 @@
 
   <script>
     $(function() {
-        $('#user_search').on('keyup', function(e) {
+        $('#user_search').on('change', function(e) {
             let target = $(this).val();
             $.get({
                 url: '/admin/js-get-user',
