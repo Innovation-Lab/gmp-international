@@ -49,6 +49,7 @@ class SalesProductController extends Controller
             ->toArray();
         
         $products = MProduct::select(['id', 'name_kana', 'name'])
+            ->public()
             ->get()
             ->mapWithKeys(function ($product) {
                 return [$product->id => $product->name.' / '.$product->name_kana];
@@ -84,7 +85,7 @@ class SalesProductController extends Controller
         
         return view('web.mypage.product.confirm')->with([
             'product' => $product,
-            'brands' => MBrand::query()->public()->pluck('name', 'id')->toArray(),
+            'brands' => MBrand::query()->pluck('name', 'id')->toArray(),
             'products' => MProduct::query()->pluck('name', 'id')->toArray(),
             'colors' => MColor::query()->pluck('alphabet_name', 'id')->toArray(),
             'shops' => MShop::query()->pluck('name', 'id')->toArray(),
