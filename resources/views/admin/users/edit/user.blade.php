@@ -31,13 +31,13 @@
                             <li class="p-formList__item">
                               <div class="l-grid__2 l-grid__gap2">
                                 <div class="p-formList__content">
-                                  <div class="p-formList__label optional optional">
+                                  <div class="p-formList__label optional">
                                     姓
                                   </div>
                                   <div class="p-formList__data" style="display:block;">
                                     {!! Form::text('last_name', old('last_name', data_get($user, 'last_name')), ['placeholder' => '例）山田']) !!}
                                     @error('last_name')
-                                    <div class="error">{{ $message }}</div>
+                                      <div class="error">{{ $message }}</div>
                                     @enderror
                                   </div>
                                 </div>
@@ -63,7 +63,7 @@
                                   <div class="p-formList__data" style="display:block;">
                                     {!! Form::text('last_name_kana', old('last_name_kana', data_get($user, 'last_name_kana')), ['placeholder' => '例）ヤマダ']) !!}
                                     @error('last_name_kana')
-                                      <div class="error">{{ $message }}</p>
+                                      <div class="error">{{ $message }}</div>
                                     @enderror
                                   </div>
                                 </div>
