@@ -87,7 +87,7 @@
                     </td>
                   </tr>
                   @empty
-                    <tr><td colspan=4 class="noResult" style="border-bottom: none;">データはありません。</td></tr>
+                    <tr><td colspan=5 class="noResult" style="border-bottom: none;">データはありません。</td></tr>
                   @endforelse
                 </tbody>
                 <tfoot style="display: none;">
