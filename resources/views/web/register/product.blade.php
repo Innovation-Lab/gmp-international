@@ -162,33 +162,6 @@
                     </div>
                   </div>
                 </li>
-
-
-
-                <!-- セレクト内カラーボール -->
-                <li class="p-formList__item">
-                  <div class="p-formList__content">
-                    <div class="p-formList__label p-formList__label--guide">
-                      <p class="c-txt">カラー</p>
-                      <div class="p-formList__guide">
-                        <a class="p-formList__guide__btn" onclick="$('#modal__guide--color').show()" role="button"></a>
-                      </div>
-                    </div>
-                    <div class="p-formList__data parent-element">
-                      <div class="c-input c-input--select">
-                        <select id="cmbIdioma" name="" class="js-ty-color select2">
-                          <option value="" selected>先に製品を選択してください</option>
-                          @foreach($colors as $k => $v)
-                            <option value="{{ $k }}">{{ $v }}</option>
-                          @endforeach
-                          <option value="other">上記以外のカラー</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-
               </ul>
             </div>
           </div>
@@ -212,16 +185,6 @@
   @include('web.components.modal._modal-guide--serial')
   @include('web.components.modal._modal-guide--shop')
 
-
-
-  <script>
-      $("#cmbIdioma").select2({
-        templateResult: function (idioma) {
-          var $span = $('<span><div class="p-list__data color"></div></span>');
-          return $span;
-        }
-      });
-  </script>
 
   {{-- 登録製品追加 / 削除 --}}
   <script>
@@ -340,7 +303,7 @@
                       });
                       selectProductHtml += '</select>';
 
-                      var selectColorHtml = '<select class="select2" name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'" disabled>' +
+                      var selectColorHtml = '<select class="select2 js-ty-color" name="products['+ num +']['+ 'm_color_id' +']" data-loop="'+ num +'" disabled>' +
                           '<option value="" selected>先に製品を選択してください</option>';
 
                       $.each(colors, function(key, value) {
@@ -528,7 +491,6 @@
                 $('.select2').select2({
                     placeholder: '選択してください'
                 });
-
             }
         });
 
@@ -597,10 +559,17 @@
                         $(this).closest('.parent-element').find('.open-other-text-input').css('display', 'none');
                     }
                 })
-                $('.select2').select2({
-                    placeholder: '選択してください'
+                $(".js-ty-color").select2({
+                  placeholder: '選択してください',
+                  templateResult: function (idioma) {
+                    var $span = $('<div class="p-list__data"><div class="c-image" style="background: url(img/color/'+idioma.id+'.png)"></div><p class="title">'+idioma.text+'</p></div>');
+                    return $span;
+                  },
+                  templateSelection: function (idioma) {
+                    var $span = $('<div class="p-list__data"><div class="c-image" style="background: url(img/color/'+idioma.id+'.png)"></div><p class="title">'+idioma.text+'</p></div>');
+                    return $span;
+                  }
                 });
-
             }
         });
       }
