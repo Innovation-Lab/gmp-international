@@ -560,13 +560,13 @@
                     }
                 })
                 $(".js-ty-color").select2({
-                  placeholder: '選択してください',
+                  placeholder: 'カラーを選択してください',
                   templateResult: function (idioma) {
-                    var $span = $('<div class="p-list__data"><div class="c-image" style="background: url(img/color/'+idioma.id+'.png)"></div><p class="title">'+idioma.text+'</p></div>');
+                    var $span = $('<div class="p-card__color"><div class="c-colorBall c-colorBall--sm" style="background: url()"></div><p class="title">'+idioma.text+'</p></div>');
                     return $span;
                   },
                   templateSelection: function (idioma) {
-                    var $span = $('<div class="p-list__data"><div class="c-image" style="background: url(img/color/'+idioma.id+'.png)"></div><p class="title">'+idioma.text+'</p></div>');
+                    var $span = $('<div class="p-card__color"><div class="c-colorBall c-colorBall--sm" style="background: url(img/color/'+idioma.id+'.png)"></div><p class="title">'+idioma.text+'</p></div>');
                     return $span;
                   }
                 });

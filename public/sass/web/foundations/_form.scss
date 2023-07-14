@@ -118,6 +118,35 @@ select{
   padding: 6px 12px!important;
 }
 
+//formのカラーボール
+.select2-selection__placeholder{
+  .p-card__color{
+    margin-top: 0;
+    .c-colorBall{
+      display: none;
+    }
+  }
+}
+.select2-selection__rendered{
+  .p-card__color{
+    margin-top: 0;
+  }
+}
+.select2-selection__rendered[title="上記以外のカラー"] .c-colorBall{
+  display: none;
+}
+.select2-results__option .select2-results__option--highlighted{
+  margin-top: 0;
+}
+// .select2-results__option .select2-results__option--highlighted{
+//   .c-colorBall{
+//       display: none;
+//   }
+// }
+// .select2-selection__rendered[title="カラーを選択してください"] .c-colorBall{
+//   display: none;
+// }
+
 // .select2-container .select2-selection--multiple .select2-selection__rendered{
 //   display: block;
 //   padding-left: 8px!important;

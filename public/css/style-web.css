@@ -490,6 +490,25 @@ select {
   padding: 6px 12px !important;
 }
 
+.select2-selection__placeholder .p-card__color {
+  margin-top: 0;
+}
+.select2-selection__placeholder .p-card__color .c-colorBall {
+  display: none;
+}
+
+.select2-selection__rendered .p-card__color {
+  margin-top: 0;
+}
+
+.select2-selection__rendered[title=上記以外のカラー] .c-colorBall {
+  display: none;
+}
+
+.select2-results__option .select2-results__option--highlighted {
+  margin-top: 0;
+}
+
 .change {
   color: #000;
 }
@@ -1628,6 +1647,7 @@ input[type=file] + label img {
 .c-input .p-list__data {
   width: 15px;
   height: 15px;
+  height: 100%;
 }
 .c-input--post, .c-input--prefectures {
   width: 50%;
