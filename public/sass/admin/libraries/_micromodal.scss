@@ -111,6 +111,14 @@
         transition: 0.5s;
       }
     }
+    .c-button{
+      width: 100%;
+      background-color: #8c8c8c;
+      &:hover {
+        background-color: #515151;
+        transition: 0.5s;
+      }
+    }
   }
   &__text{
     font-size: 12px;

@@ -24,7 +24,7 @@
       </main>
       <footer class="modal__footer">
         <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">戻る</button>
-        <button type="submit" form="userImportForm" class="modal__btn-primary">入力する</button>
+        <button type="submit" form="userImportForm" class="modal__btn-primary">実行する</button>
       </footer>
     </div>
   </div>
