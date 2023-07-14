@@ -57,9 +57,9 @@ select{
       .select2-selection__rendered {
         height: 100%;
         width: 100%;
-        max-width: 264px;
+        // max-width: 264px;
         @include global.responsive(min-2) {
-          max-width: 292px;
+          // max-width: 292px;
         }
         padding: 0.6rem 0.8rem;
         border: none;

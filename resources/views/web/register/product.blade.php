@@ -116,7 +116,7 @@
                           <option value="other">上記以外のカラー</option>
                         </select>
                       </div>
-                      <!-- 上記以外の店舗選択時のフォーム -->
+                      <!-- 上記以外のカラー選択時のフォーム -->
                       <div style="display:none;" class="p-formList__content p-formList__other open-other-text-input">
                         <div class="p-formList__label">
                           <p class="c-txt">「上記以外のカラー」を選択した方はこちら</p>
@@ -162,6 +162,33 @@
                     </div>
                   </div>
                 </li>
+
+
+
+                <!-- セレクト内カラーボール -->
+                <li class="p-formList__item">
+                  <div class="p-formList__content">
+                    <div class="p-formList__label p-formList__label--guide">
+                      <p class="c-txt">カラー</p>
+                      <div class="p-formList__guide">
+                        <a class="p-formList__guide__btn" onclick="$('#modal__guide--color').show()" role="button"></a>
+                      </div>
+                    </div>
+                    <div class="p-formList__data parent-element">
+                      <div class="c-input c-input--select">
+                        <select id="cmbIdioma" name="" class="js-ty-color select2">
+                          <option value="" selected>先に製品を選択してください</option>
+                          @foreach($colors as $k => $v)
+                            <option value="{{ $k }}">{{ $v }}</option>
+                          @endforeach
+                          <option value="other">上記以外のカラー</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
               </ul>
             </div>
           </div>
@@ -179,12 +206,22 @@
         </div>
       </div>
     </div>
-  </div>
   
   {{-- モーダル --}}
   @include('web.components.modal._modal-guide--color')
   @include('web.components.modal._modal-guide--serial')
   @include('web.components.modal._modal-guide--shop')
+
+
+
+  <script>
+      $("#cmbIdioma").select2({
+        templateResult: function (idioma) {
+          var $span = $('<span><div class="p-list__data color"></div></span>');
+          return $span;
+        }
+      });
+  </script>
 
   {{-- 登録製品追加 / 削除 --}}
   <script>

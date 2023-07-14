@@ -431,16 +431,10 @@ select {
 .select2 + .select2-container--default .select2-selection--single .select2-selection__rendered {
   height: 100%;
   width: 100%;
-  max-width: 264px;
   padding: 0.6rem 0.8rem;
   border: none;
   border-radius: 0.4em;
   background: #f5f5f5;
-}
-@media screen and (min-width: 360px) {
-  .select2 + .select2-container--default .select2-selection--single .select2-selection__rendered {
-    max-width: 292px;
-  }
 }
 .select2 + .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 100%;
@@ -1630,6 +1624,10 @@ input[type=file] + label img {
 
 .c-input {
   position: relative;
+}
+.c-input .p-list__data {
+  width: 15px;
+  height: 15px;
 }
 .c-input--post, .c-input--prefectures {
   width: 50%;
@@ -5620,6 +5618,7 @@ input[type=file] + label img {
   }
 }
 .p-formList__data {
+  min-width: 1px;
   /* ! ----------
   Error エラー
   ---------- */
